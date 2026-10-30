@@ -1,0 +1,9 @@
+# Reference and chronology notes
+
+Each level carries a specific book/chapter reference in `09_Data/campaign.json` and its Markdown prompt. Summaries are original paraphrases. Optional source checking can use a licensed print Bible offline; external reading links are development references only. Useful review portals: [BibleGateway](https://www.biblegateway.com/) and [BibleProject book overviews](https://bibleproject.com/explore/book-overviews/). Do not scrape or embed their copyrighted material by default.
+
+Broad order: Genesis → Exodus → wilderness/law → Joshua → judges/Ruth → Samuel/kings → prophetic interludes → fall/exile → return/Esther/Nehemiah → Gospel arrival/ministry → death/burial/resurrection. Numbers 13–14 precedes Numbers 21 in levels 27–28. Ezra 3–6 rebuilding precedes the Esther interlude, then Nehemiah. Psalms, Ruth, Jonah and prophetic selections are labeled interludes where exact chronology is not asserted. David’s shepherd account is explicitly a recollection within 1 Samuel 17. Micah/Malachi in level 61 are prior-prophecy lookbacks. Gospel episodes provide a readable dramatic arrangement, not a claim to settle every harmonization question.
+
+Canonical outcomes remain fixed. Dru and Ken’s tasks and dialogue are fiction. Goliath’s extended encounter is labeled a game reenactment and resolves with one decisive stone. Miracles are not caused by the player’s score. The campaign covers the main biblical narrative arc up to Jesus’ death and resurrection; it does not claim to enact all 66 books, every verse or post-resurrection history.
+
+Before a full game release, have a qualified narrative reviewer check each level against its sources and the audience’s preferred translation/age expectations. Record disputed interpretation as context rather than declaring invented detail canonical. This review is a production task; no formal theological review is claimed for this prompt pack.

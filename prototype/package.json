@@ -1,0 +1,14 @@
+{
+  "name": "covenant-clash-offline-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/simulation.test.cjs",
+    "test:browser": "node tests/browser-smoke.cjs",
+    "build": "node build.cjs",
+    "test:package": "node tests/offline-package.test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

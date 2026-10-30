@@ -1,0 +1,76 @@
+(node:20192) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all 84 authored scene controllers initialize from clean state (5.2562ms)
+✔ first chapter has real objectives and safe completion through interaction controllers (13.2561ms)
+✔ carrying disables attacks and allows recover after safe set-down (0.4129ms)
+✔ puzzle retries keep the fixed outcome and do not penalize progress (0.3224ms)
+✔ checkpoint restore preserves completed tasks and safe section (0.4214ms)
+✔ campaign pause freezes world, task state and hazards (0.512ms)
+✔ canonical four-wave builders encounter and eleven boss definitions remain intact (0.8824ms)
+✔ Goliath has a non-damageable reenactment and one decisive opportunity (0.3588ms)
+✔ every finale level has no combat or action skill requirement (1.3145ms)
+✔ empty tomb context keeps the four Gospel cards attributed separately (0.8449ms)
+✔ all 84 completion controllers resolve, with combat success provided as a fixture (12.1839ms)
+✔ canonical roster, moves, six maps and 84-level order are complete (1.1563ms)
+✔ every authored attack has valid timing, geometry and finite projectiles (0.3141ms)
+✔ built launch is self-contained with a no-connection policy (3.3733ms)
+✔ finale and sacred figures stay outside arena combat definitions (0.1946ms)
+✔ standalone scripts parse and every explicit UI element reference resolves (8.7402ms)
+(node:25772) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ exported semantic replay resimulates with a verified checksum including pause (44.6676ms)
+✔ replay rejects content mismatch, altered geometry and nonsemantic payloads (12.8971ms)
+✔ replay bounds players and input history before execution (7.5213ms)
+(node:19216) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all 57 noncombat routes complete through movement and interaction inputs without teleporting (192.3103ms)
+(node:41836) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ fixed countdown does not spend combat time; unknown choices normalize (1.9885ms)
+✔ pause freezes complete canonical state and restores deliberate play (10.443ms)
+✔ ground jump apex and two air jumps have bounded resources (2.2303ms)
+✔ releasing jump cuts upward motion without cutting heavy recovery (0.8231ms)
+✔ directional ground dodge dashes without spending a dodge cooldown (0.5415ms)
+✔ spot dodge has vulnerable startup and spends fixed cooldown (0.6257ms)
+✔ air neutral dodge cancels into a grounded signature without refreshing resources (0.3916ms)
+✔ directional air dodge cannot perform a grounded cancel (0.3141ms)
+✔ one-way platform drop-through never passes through solid floor (1.3859ms)
+✔ solid walls and underside block swept movement (0.314ms)
+✔ wall resources refresh once and cannot support unlimited jumps (0.2798ms)
+✔ all 147 move records resolve through weapon and signature grammar (0.6952ms)
+✔ mirroring authored boxes preserves width and reverses facing (0.9901ms)
+✔ capsule edge contact does not use decorative fighter geometry (0.1639ms)
+✔ melee has one-hit ledger, whiff recovery, and damage growth (0.5955ms)
+✔ simultaneous melee contacts trade from pre-hit state (0.5638ms)
+✔ charge extends startup only, releases once, and cannot add invulnerability (1.8647ms)
+✔ unarmed start and neutral weapon pickups alternate A B A (0.884ms)
+✔ dropped weapons preserve exact family and do not toggle neutral sequence (0.5603ms)
+✔ throw retains weapon through startup and becomes unarmed on release (0.4075ms)
+✔ interrupted throw does not duplicate or remove held weapon (0.2314ms)
+✔ projectile budgets and lifetime prevent accumulation (3.8076ms)
+✔ ring-out resets damage and one stock with explicit respawn delay (1.126ms)
+✔ last stock produces real loss, guard depletion real boss victory (0.5046ms)
+✔ finite wave list clears exactly seven enemies and three waves (7.0105ms)
+✔ team friendly fire follows visible setting (0.7432ms)
+✔ 10,000-tick recordings and snapshot restore agree at every difficulty (420.9182ms)
+✔ same semantic recording is invariant under render batching 30 60 120 (39.6572ms)
+✔ simultaneous neutral pickup ties alternate match priority without duplication (1.0348ms)
+✔ entity hitstop freezes action and position while cooldowns and unrelated projectiles continue (0.5335ms)
+✔ Down plus Jump on secondary solid campaign floors jumps instead of dropping through (0.4248ms)
+(node:43836) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ completion is idempotent and unlocks the next level locally (1.4665ms)
+✔ corrupted primary recovers previous valid backup (0.3715ms)
+✔ denied storage retains playable progress and exports it (0.2289ms)
+✔ export/import round trips settings, checkpoint and history (1.1928ms)
+✔ save validation rejects oversized and executable-shaped content (0.3441ms)
+✔ all chapter unlocks resolve once after the 84-level progression (6.8803ms)
+ℹ tests 57
+ℹ suites 0
+ℹ pass 57
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7463.4928
+

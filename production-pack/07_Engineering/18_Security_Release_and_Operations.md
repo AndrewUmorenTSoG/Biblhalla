@@ -1,0 +1,9 @@
+# Offline release and local-data validation prompt
+
+Ship a self-contained offline game. Do not include authentication, remote operations or player telemetry. The main threats are malformed imported files, corrupt saves, unsafe dynamic markup, untrusted content modifications, missing assets and incompatible updates. Local scores have no competitive global authority and need no network anti-cheat service.
+
+Validate import size/schema, stable content IDs, safe numeric bounds, atlas bounds and replay duration. Treat player names and imported text as text, never executable HTML. Do not execute scripts from save files or open arbitrary URLs. Maintain dependency lock/audit and resource provenance. Never include secrets. The standalone prototype can use a restrictive content policy that allows only its inline script/style, data images, local audio synthesis and no outbound connections; the signed wrapper also blocks external navigation.
+
+Release artifacts: reproducible PC build, iPad source/build configuration, signed device package when actually built, content manifest, offline installation guide, save migration/recovery instructions, test report and known limitations. Do not claim an unsigned Xcode project is a working .ipa or an App Store release. Updates are explicit installed packages; keep a prior safe version and migrate saves before use. Never hot-swap simulation code during active play.
+
+Test clean installation and cold airplane-mode launch, no external requests, corrupt/missing art, denied storage, malicious import, wrong content version, low disk space, interrupted save, restored prior save, native wrapper lifecycle and 20 rematches. Publication, paid distribution and storefront agreements are separate from preparing the requested ZIPs. Report actual devices tested; do not invent security certification or physical-iPad results.

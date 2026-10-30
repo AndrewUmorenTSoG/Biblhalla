@@ -1,0 +1,11 @@
+# Palm Court: image-generation prompt
+
+```text
+Use case: stylized-concept
+Asset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.
+Original premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.
+Primary request: one polished landscape arena illustration for Palm Court. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional open training court near a palm grove; enormous palm fronds frame a distant landscape, plum fabric awnings, soft jade foliage, carved pale stone platform; no throne or sacred relic.
+Composition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 1 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.
+Color palette: jade / pale limestone / plum. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.
+Constraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks.
+```

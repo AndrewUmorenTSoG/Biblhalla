@@ -1,0 +1,14 @@
+{
+  "scope": "package/content consistency only, not engine/gameplay/device tests",
+  "passed_checks": 3237,
+  "failed_checks": 0,
+  "markdown_links_checked": 379,
+  "fighters": 12,
+  "attacks": 147,
+  "maps": 6,
+  "artwork": 18,
+  "campaign_levels": 84,
+  "chapters": 14,
+  "offline_only": true,
+  "errors": []
+}

@@ -1,0 +1,11 @@
+# Continuous story and companion prompts
+
+Write an original continuous script around the fixed biblical accounts. At chapter openings, Dru and Ken arrive at the next archive exhibit; one asks a question from the previous chapter. Midchapter, an invented task makes that question practical. At the close, a small change in their relationship carries into the next chapter. Avoid repeating generic “we learned a lesson” dialogue after every fight.
+
+Dru: adult fictional learner, confident and active, gradually learns to wait, ask for help and protect rather than dominate. Clean silhouette: blue travel scarf, tan layered tunic, leather belt and ordinary training sword/sling. This is an original protagonist concept; no dedicated Dru image or animation is yet supplied. Ken: adult fictional companion, observant and practical, green shoulder cloth and compact satchel, ordinary tools. Give Ken agency, humor and useful route observations; he does not exist only to be rescued. No glow, halo, divine ancestry or weaponized Scripture.
+
+Chapter 1: curiosity and broken trust. Chapter 2: impatience and promise. Chapter 3: betrayal and forgiveness. Chapter 4: fear and deliverance. Chapter 5: listening and belonging. Chapter 6: strength and loyalty. Chapter 7: appearance and mercy. Chapter 8: wisdom and fractured leadership. Chapter 9: warning and hope. Chapter 10: endurance and rebuilding. Chapter 11: waiting and arrival. Chapter 12: greatness and service. Chapter 13: welcome and cost. Chapter 14: sorrow and resurrection hope.
+
+For each level generate: a 15–25-second arrival exchange; a reference-anchored narrator summary; two optional contextual observations; one short situational combat/route line where appropriate; a 10–20-second departure exchange. Keep ordinary conversation distinct from the narrated account. Never invent dialogue by God or Jesus and present it as quotation. For historical speech, use a licensed translation or an explicitly labeled original paraphrase. Reference metadata is visible through Context.
+
+Optional journal has Context, What happened, Archive task and Companion reflection. Do not assign morality points to people or evaluate salvation. The ending shows Dru and Ken leaving the archive and helping an ordinary neighbor: a gentle completion of their fictional arc, not a claim about their place in biblical history.

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "stockDefault": 3,
+  "matchTicks": 18000,
+  "respawnDelayTicks": 90,
+  "respawnInvulnerabilityTicks": 120,
+  "respawnAttackCancelsInvulnerability": true,
+  "koTest": "fighter center outside inclusive blast bounds",
+  "friendlyFireCasual": false,
+  "suddenDeath": {
+    "stocks": 1,
+    "damageTenths": 1500,
+    "durationTicks": 3600,
+    "stillTied": "draw"
+  },
+  "localMaxPlayers": 4,
+  "pickups": {
+    "initialTick": 120,
+    "intervalTicks": 480,
+    "jitterTicks": 60,
+    "maxNeutral": 2,
+    "lifetimeTicks": 720,
+    "acquireTicks": 6,
+    "radiusUnits": 48,
+    "maxVerticalUnits": 60
+  },
+  "throw": {
+    "startup": 6,
+    "release": 1,
+    "recovery": 16,
+    "speedQ": 3072,
+    "gravityQ": 40,
+    "lifetimeTicks": 90,
+    "damageTenths": 100,
+    "hitstunTicks": 15,
+    "baseForceQ": 768,
+    "growthQPerDamage": 5
+  },
+  "drop": {
+    "startup": 4,
+    "release": 1,
+    "recovery": 10,
+    "lifetimeTicks": 480
+  },
+  "offlineOnly": true,
+  "requiresAccount": false,
+  "requiresNetwork": false,
+  "friendlyFireLocalTeams": false,
+  "difficultyIds": [
+    "easy",
+    "hard",
+    "extreme"
+  ],
+  "storyLevelCount": 84,
+  "storyChapterCount": 14,
+  "difficulty": {
+    "easy": {
+      "reactionTicks": 27,
+      "decisionTicks": 14
+    },
+    "hard": {
+      "reactionTicks": 12,
+      "decisionTicks": 6
+    },
+    "extreme": {
+      "reactionTicks": 6,
+      "decisionTicks": 3
+    }
+  }
+}

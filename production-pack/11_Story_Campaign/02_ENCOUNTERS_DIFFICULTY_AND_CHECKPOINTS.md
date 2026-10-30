@@ -1,0 +1,13 @@
+# Campaign encounter implementation prompt
+
+Implement wave, boss, escort, traversal, exploration, puzzle, witness, survival, escape, stealth and building scene controllers. Every controller has prepare → intro → active → completion → save → exit states and a safe Retry checkpoint transition. Narration can be skipped and replayed. Scene state is data, not hardcoded scattered UI conditions.
+
+Wave controller: finite explicit composition list, visible gates, 90-tick arrival cues, complete-clear condition and 120-tick breaks. Two simultaneous attackers on Easy, three on Hard/Extremely Hard; remaining actors space or wind up. Do not spawn inside the player hurtbox or enter with an already active hit. Keep a route out of each pressure pocket. Ordinary enemies use one stock and the authored shared physics. No friendly fire against travelers. Four-wave Nehemiah finale is explicit in level 60.
+
+Boss controller: one large threat, visible guard/opening label, phase state based on progress, attacks with locked tells and real recovery. Use the detailed phases in the individual prompt. Larger hurtbox/guard are stated encounter rules. Difficulty changes observation delay, planning and accuracy, never hidden stats. Goliath has composure stages and one decisive shot rather than a depleting health meter. All tells remain visually readable and captioned; Extremely Hard still has at least 24 ticks of lead for a new boss attack.
+
+Escort/build controller: safe bays between sections, visible regroup, set-down and recover actions, invulnerable travelers after rescue, solo-capable companion AI. Carry tasks disable attacks until set down. Do not make objective failure depend on an NPC damaged offscreen. Witness controller: no combat simulation contacts, source-based narration, optional context, captions and Continue; never gate the resurrection behind performance.
+
+Difficulty IDs easy / hard / extreme display Easy / Hard / Extremely Hard. Observation/decision budgets are 27/14, 12/6 and 6/3 ticks. All use legal semantic inputs; never allow future reads or a hidden hitbox adjustment. Environmental hints and generous tell timing can differ explicitly. No difficulty locks a chapter or biblical context. Changing difficulty at a checkpoint retains completion history but records the medal setting locally.
+
+Checkpoints at entry, middle/phase two, exit. Local save includes campaign content version, completed IDs, level/checkpoint, seen context IDs, settings and replay seed where needed. Save the completion transaction once. If storage fails, continue with a clear message and offer Export save. On focus loss/visibility loss/controller disconnect pause simulation and clear held inputs. Resume is explicit, never automatic after a long background.

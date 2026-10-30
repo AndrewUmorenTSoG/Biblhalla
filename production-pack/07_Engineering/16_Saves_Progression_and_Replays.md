@@ -1,0 +1,11 @@
+# Local saves, progression and replay prompt
+
+All data stays on the device. Store settings/remaps/touch layout/accessibility, tutorial completion, selected fighter/arena/difficulty, campaign checkpoints, completed levels, seen context cards and optional local medals. All 12 arena fighters and weapons are available without paid unlocks. No login, remote ranking, cloud save or religious profile is required.
+
+Versioned records include schemaVersion, contentVersion, update revision, payload and corruption checksum. Use transactional or atomic writes, preserve a previous valid copy, validate source IDs and migrate with a backup. A checksum detects accidental corruption, not cheating. Storage denied/private browsing yields a clear in-memory fallback; gameplay continues. Save success appears after actual write completion, not button click. Offer local Export / Import under Settings. User-confirmed Delete local progress has a backup/export path.
+
+Campaign completion is an idempotent local transaction by level/checkpoint ID. Continue restarts a safe authored checkpoint; do not restore a mid-contact frame without complete state. Settings and UI scale never change combat stats. Difficulty may change at a checkpoint, keeping story progress and recording the local medal setting. Medals do not measure faith or righteousness.
+
+Production replay contains schema/simulation/content versions, rules, nonzero seed, initial state, participant IDs, ordered semantic inputs and periodic state hashes. Playback runs the deterministic sim; it is not a video. Keep 20 newest or 100 MB, whichever is smaller, with pinning/export. Show old-content incompatibility clearly and allow export. Import rejects oversized/invalid data and never executes code or follows remote URLs. Prototype scope: settings persist where browser storage is permitted; replay and campaign saves are not implemented in its combat slice.
+
+Verify first launch, reload, corrupt records, denied storage, interrupted write, migration, export/import, invalid IDs, old replay compatibility, local completion retry and 10,000-tick deterministic replay. Browser storage is not guaranteed permanent; the installed native build should use a durable app-local save with recovery and user-selected export.

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "prototype-1",
+  "tickRate": 60,
+  "fixedScale": 256,
+  "coordinates": "positive Y upward; feet-centered position",
+  "runMaxQ": 1536,
+  "runSpeedPerStatQ": 64,
+  "groundAccelerationQ": 192,
+  "groundBrakeQ": 256,
+  "airAccelerationQ": 96,
+  "gravityQ": 77,
+  "groundJumpQ": 2816,
+  "airJumpQ": 2432,
+  "jumpCutCapQ": 1408,
+  "fallCapQ": 2048,
+  "fastFallCapQ": 3072,
+  "fastFallGravityMultiplier": 2,
+  "airJumps": 2,
+  "recoveryUses": 1,
+  "dash": {
+    "speedQ": 2816,
+    "durationTicks": 8,
+    "repeatLockTicks": 10,
+    "invulnerable": false,
+    "dashJumpCapQ": 2304
+  },
+  "dodge": {
+    "ground": {
+      "startup": 3,
+      "invulnerable": 12,
+      "recovery": 5,
+      "cooldown": 45
+    },
+    "air": {
+      "startup": 3,
+      "invulnerable": 10,
+      "recovery": 7,
+      "cooldown": 105,
+      "speedQ": 2048
+    },
+    "landingCooldownClamp": 45
+  },
+  "airCancel": {
+    "firstActionTick": 4,
+    "lastActionTickInclusive": 9,
+    "neutralDodgeOnly": true,
+    "endsInvulnerability": true,
+    "gravityFreeze": "startupAndActive",
+    "refreshesResources": false
+  },
+  "chase": {
+    "tokenTicks": 10,
+    "speedQ": 2048,
+    "durationTicks": 7,
+    "invulnerable": false,
+    "signaturesEligible": false,
+    "lightMeleeHitCancel": "firstRecoveryTick"
+  },
+  "wall": {
+    "slideFallCapQ": 512,
+    "maxCumulativeTicks": 90,
+    "refreshesPerAirborneJourney": 1,
+    "jumpAwayQ": 1536,
+    "jumpUpQ": 2432
+  },
+  "coyoteTicks": 4,
+  "inputBufferTicks": 4,
+  "dropThroughTicks": 12,
+  "groundResetContactTicks": 2,
+  "knockbackDecayXQ": 24,
+  "knockbackCapQ": 6144,
+  "hurtboxUnits": [
+    40,
+    74
+  ],
+  "powerDamagePermillePerStat": 20,
+  "guardForcePermillePerStat": -25,
+  "statBaseline": 5,
+  "directionScale": 1024,
+  "directionLookup": {
+    "0": [
+      1024,
+      0
+    ],
+    "22": [
+      949,
+      384
+    ],
+    "45": [
+      724,
+      724
+    ],
+    "67": [
+      400,
+      943
+    ],
+    "90": [
+      0,
+      1024
+    ],
+    "-22": [
+      949,
+      -384
+    ],
+    "-45": [
+      724,
+      -724
+    ],
+    "-67": [
+      400,
+      -943
+    ],
+    "-90": [
+      0,
+      -1024
+    ]
+  }
+}

@@ -1,0 +1,842 @@
+[
+  {
+    "id": "L001",
+    "title": "Light over the Waters",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L002",
+    "title": "The Garden Paths",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L003",
+    "title": "The Broken Choice",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L004",
+    "title": "My Brother’s Keeper",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L005",
+    "title": "The Ark Workshop",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L006",
+    "title": "Through the Flood",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L007",
+    "title": "The Scattered Tower",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L008",
+    "title": "A Road without a Map",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L009",
+    "title": "The Rescue of Lot",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L010",
+    "title": "Stars beyond Counting",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L011",
+    "title": "The Mountain of Provision",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L012",
+    "title": "Water at the Well",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L013",
+    "title": "A Stairway in the Night",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L014",
+    "title": "The Long Walk to Esau",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L015",
+    "title": "The Torn Coat",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L016",
+    "title": "Integrity in the House",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L017",
+    "title": "Beyond the Prison Gate",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L018",
+    "title": "Bread for the Hungry",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L019",
+    "title": "A Basket on the River",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L020",
+    "title": "The Burning Bush",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L021",
+    "title": "A Hard-Hearted Court",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L022",
+    "title": "The Passover Night",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L023",
+    "title": "The Path through the Sea",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L024",
+    "title": "Water, Bread and Battle",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L025",
+    "title": "A Covenant at Sinai",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L026",
+    "title": "A Place to Gather",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L027",
+    "title": "The Spies’ Report",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L028",
+    "title": "Look and Live",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L029",
+    "title": "Stones from the Jordan",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L030",
+    "title": "Around the Walls",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L031",
+    "title": "Under Deborah’s Palm",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L032",
+    "title": "The Call of Gideon",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L033",
+    "title": "Three Hundred Lanterns",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L034",
+    "title": "The Lion on the Road",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L035",
+    "title": "The Gates of Gaza",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L036",
+    "title": "Grain in the Field",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L037",
+    "title": "A Voice in the Night",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L038",
+    "title": "The King the People Wanted",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L039",
+    "title": "Jonathan’s Narrow Climb",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L040",
+    "title": "The Shepherd’s Courage",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L041",
+    "title": "David and Goliath",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L042",
+    "title": "Mercy in the Cave",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L043",
+    "title": "The Procession to Jerusalem",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L044",
+    "title": "A Song in the Wilderness",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L045",
+    "title": "The Wisdom of a King",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L046",
+    "title": "Building the Temple",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L047",
+    "title": "A Kingdom in Pieces",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L048",
+    "title": "Fire and a Quiet Voice",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L049",
+    "title": "A River and a Return",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L050",
+    "title": "The Runaway Prophet",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L051",
+    "title": "A Promise through Isaiah",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L052",
+    "title": "The Siege at the Gate",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L053",
+    "title": "The Book Found Again",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L054",
+    "title": "Hope in Exile",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L055",
+    "title": "Faithful in a Foreign Court",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L056",
+    "title": "The Furnace Witness",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L057",
+    "title": "The Lions’ Den",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L058",
+    "title": "The First Return",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L059",
+    "title": "For Such a Time",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L060",
+    "title": "Builders under Watch",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L061",
+    "title": "The Long Wait",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L062",
+    "title": "The Announcement",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L063",
+    "title": "Bethlehem at Night",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L064",
+    "title": "The Road to Egypt",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L065",
+    "title": "A Voice by the Jordan",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L066",
+    "title": "The Wilderness Choice",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L067",
+    "title": "Follow on the Shore",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L068",
+    "title": "The Mountain Teaching",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L069",
+    "title": "The Road of Mercy",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "not fully certified",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L070",
+    "title": "The Storm on the Lake",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L071",
+    "title": "Five Loaves and Two Fish",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L072",
+    "title": "Across the Water",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L073",
+    "title": "Through the Roof",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L074",
+    "title": "The Way Home",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L075",
+    "title": "Above the Crowd",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L076",
+    "title": "The Call at Bethany",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L077",
+    "title": "The Road into Jerusalem",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L078",
+    "title": "Teaching in the Courts",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L079",
+    "title": "Bread and the Cup",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L080",
+    "title": "Weapons Put Away",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L081",
+    "title": "The Courtyard at Night",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L082",
+    "title": "At the Cross",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L083",
+    "title": "The Quiet Tomb",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  },
+  {
+    "id": "L084",
+    "title": "Dawn at the Empty Tomb",
+    "controller": "implemented development adaptation",
+    "headlessCompletion": "passed with combat-success fixtures where applicable",
+    "movementInputReachability": "passed",
+    "art": "development vector",
+    "humanPlaythrough": "not performed",
+    "narrativeReview": "pending"
+  }
+]

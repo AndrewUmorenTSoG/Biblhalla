@@ -1,0 +1,11 @@
+# Build plan and its pack copy stay local only
+claude-build-plan/
+
+# Tooling
+node_modules/
+.npm-cache/
+dist/
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

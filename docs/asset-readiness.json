@@ -1,0 +1,211 @@
+{
+  "runtime": {
+    "fighters": [
+      {
+        "id": "david",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "saul",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "samson",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "joshua",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "deborah",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "gideon",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "jonathan",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "moses",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "esther",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "miriam",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "nehemiah",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      },
+      {
+        "id": "caleb",
+        "asset": "procedural Canvas rig",
+        "readiness": "development",
+        "finalAnimationCoverage": false
+      }
+    ],
+    "arenas": [
+      {
+        "id": "elah_training_terrace",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      },
+      {
+        "id": "wilderness_waystation",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      },
+      {
+        "id": "jericho_outskirts",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      },
+      {
+        "id": "deborahs_palm_court",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      },
+      {
+        "id": "susa_garden_balcony",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      },
+      {
+        "id": "jerusalem_builders_court",
+        "asset": "authored vector scenery and collision-aligned platforms",
+        "readiness": "development",
+        "finalLayeredArt": false
+      }
+    ],
+    "campaignRegions": "procedural vector variations; final unique regional artwork outstanding",
+    "finale": "original restrained vector symbols and original caption text"
+  },
+  "references": [
+    {
+      "path": "10_Generated_Artwork/Characters/01_david_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/02_saul_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/03_samson_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/08_moses_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/09_esther_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/01_elah_training_terrace_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/02_wilderness_waystation_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/03_jericho_outskirts_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/04_deborahs_palm_court_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/05_susa_garden_balcony_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    },
+    {
+      "path": "10_Generated_Artwork/Maps/06_jerusalem_builders_court_arena.png",
+      "readiness": "concept complete",
+      "usedAsRuntimeSprite": false
+    }
+  ],
+  "provenance": "Production-pack generation prompts and manifests preserved; new Canvas code authored for this build."
+}

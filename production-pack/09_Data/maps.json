@@ -1,0 +1,476 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "prototype-1",
+  "maps": [
+    {
+      "id": "elah_training_terrace",
+      "name": "Elah Training Terrace",
+      "scriptureContext": "1 Samuel 17",
+      "main": {
+        "id": "elah_training_terrace_main",
+        "kind": "solid",
+        "rectUnits": [
+          -540,
+          0,
+          1080,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "elah_training_terrace_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -330,
+            150,
+            200,
+            16
+          ]
+        },
+        {
+          "id": "elah_training_terrace_upper_1",
+          "kind": "oneWay",
+          "rectUnits": [
+            130,
+            150,
+            200,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -1040,
+        "maxX": 1040,
+        "minY": -680,
+        "maxY": 680
+      },
+      "spawnFeetUnits": [
+        [
+          -220,
+          82
+        ],
+        [
+          220,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": true,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/01_elah_training_terrace_arena.png",
+      "artStatus": "concept_only"
+    },
+    {
+      "id": "wilderness_waystation",
+      "name": "Wilderness Waystation",
+      "scriptureContext": "Exodus 16–17",
+      "main": {
+        "id": "wilderness_waystation_main",
+        "kind": "solid",
+        "rectUnits": [
+          -520,
+          0,
+          1040,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "wilderness_waystation_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -160,
+            190,
+            320,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -1000,
+        "maxX": 1000,
+        "minY": -680,
+        "maxY": 700
+      },
+      "spawnFeetUnits": [
+        [
+          -220,
+          82
+        ],
+        [
+          220,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": true,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/02_wilderness_waystation_arena.png",
+      "artStatus": "concept_only"
+    },
+    {
+      "id": "jericho_outskirts",
+      "name": "Jericho Outskirts",
+      "scriptureContext": "Joshua 6",
+      "main": {
+        "id": "jericho_outskirts_main",
+        "kind": "solid",
+        "rectUnits": [
+          -560,
+          0,
+          1120,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "jericho_outskirts_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -310,
+            170,
+            180,
+            16
+          ]
+        },
+        {
+          "id": "jericho_outskirts_upper_1",
+          "kind": "oneWay",
+          "rectUnits": [
+            130,
+            170,
+            180,
+            16
+          ]
+        },
+        {
+          "id": "jericho_outskirts_upper_2",
+          "kind": "oneWay",
+          "rectUnits": [
+            -90,
+            310,
+            180,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -1060,
+        "maxX": 1060,
+        "minY": -700,
+        "maxY": 820
+      },
+      "spawnFeetUnits": [
+        [
+          -240,
+          82
+        ],
+        [
+          240,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": false,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/03_jericho_outskirts_arena.png",
+      "artStatus": "concept_only"
+    },
+    {
+      "id": "deborahs_palm_court",
+      "name": "Palm Court",
+      "scriptureContext": "Judges 4:5",
+      "main": {
+        "id": "deborahs_palm_court_main",
+        "kind": "solid",
+        "rectUnits": [
+          -500,
+          0,
+          1000,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "deborahs_palm_court_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -110,
+            170,
+            220,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -980,
+        "maxX": 980,
+        "minY": -660,
+        "maxY": 680
+      },
+      "spawnFeetUnits": [
+        [
+          -210,
+          82
+        ],
+        [
+          210,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": true,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/04_deborahs_palm_court_arena.png",
+      "artStatus": "concept_only"
+    },
+    {
+      "id": "susa_garden_balcony",
+      "name": "Susa Garden Balcony",
+      "scriptureContext": "Esther 1–7",
+      "main": {
+        "id": "susa_garden_balcony_main",
+        "kind": "solid",
+        "rectUnits": [
+          -580,
+          0,
+          1160,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "susa_garden_balcony_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -360,
+            145,
+            220,
+            16
+          ]
+        },
+        {
+          "id": "susa_garden_balcony_upper_1",
+          "kind": "oneWay",
+          "rectUnits": [
+            140,
+            145,
+            220,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -1100,
+        "maxX": 1100,
+        "minY": -700,
+        "maxY": 720
+      },
+      "spawnFeetUnits": [
+        [
+          -240,
+          82
+        ],
+        [
+          240,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": false,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/05_susa_garden_balcony_arena.png",
+      "artStatus": "concept_only"
+    },
+    {
+      "id": "jerusalem_builders_court",
+      "name": "Builders’ Court",
+      "scriptureContext": "Nehemiah 4",
+      "main": {
+        "id": "jerusalem_builders_court_main",
+        "kind": "solid",
+        "rectUnits": [
+          -540,
+          0,
+          1080,
+          80
+        ],
+        "wallRecoverable": true
+      },
+      "platforms": [
+        {
+          "id": "jerusalem_builders_court_upper_0",
+          "kind": "oneWay",
+          "rectUnits": [
+            -310,
+            170,
+            180,
+            16
+          ]
+        },
+        {
+          "id": "jerusalem_builders_court_upper_1",
+          "kind": "oneWay",
+          "rectUnits": [
+            130,
+            170,
+            180,
+            16
+          ]
+        }
+      ],
+      "blastBoundsUnits": {
+        "minX": -1040,
+        "maxX": 1040,
+        "minY": -680,
+        "maxY": 700
+      },
+      "spawnFeetUnits": [
+        [
+          -220,
+          82
+        ],
+        [
+          220,
+          82
+        ],
+        [
+          -360,
+          82
+        ],
+        [
+          360,
+          82
+        ]
+      ],
+      "pickupSpawnUnits": [
+        [
+          0,
+          160
+        ],
+        [
+          -220,
+          160
+        ],
+        [
+          220,
+          160
+        ]
+      ],
+      "competitiveCandidate": true,
+      "competitiveApproved": false,
+      "artReference": "10_Generated_Artwork/Maps/06_jerusalem_builders_court_arena.png",
+      "artStatus": "concept_only"
+    }
+  ]
+}

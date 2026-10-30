@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "prototype-1",
+  "fighters": [
+    {
+      "id": "david",
+      "name": "David",
+      "title": "The Shepherd Champion",
+      "weaponPair": [
+        "sling",
+        "sword"
+      ],
+      "stats": {
+        "power": 4,
+        "guard": 4,
+        "speed": 7
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "david_sling_nsig",
+        "david_sling_ssig",
+        "david_sling_dsig",
+        "david_sword_nsig",
+        "david_sword_ssig",
+        "david_sword_dsig"
+      ],
+      "scriptureReferences": "1 Samuel 17:34–51; 2 Samuel 5:1–5",
+      "storyContext": "A shepherd who trusted the Lord when facing Goliath; later king of Israel. His trust is a story theme, not a combat power meter.",
+      "conceptImage": "10_Generated_Artwork/Characters/01_david_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "saul",
+      "name": "Saul",
+      "title": "The First King",
+      "weaponPair": [
+        "spear",
+        "sword"
+      ],
+      "stats": {
+        "power": 6,
+        "guard": 6,
+        "speed": 3
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "saul_spear_nsig",
+        "saul_spear_ssig",
+        "saul_spear_dsig",
+        "saul_sword_nsig",
+        "saul_sword_ssig",
+        "saul_sword_dsig"
+      ],
+      "scriptureReferences": "1 Samuel 9:1–2; 10:24; 18:10–11; 31:1–6",
+      "storyContext": "Israel’s first king, notably tall. His failures are not rewritten as righteousness; competitive inclusion is not moral endorsement.",
+      "conceptImage": "10_Generated_Artwork/Characters/02_saul_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "samson",
+      "name": "Samson",
+      "title": "The Strong Judge",
+      "weaponPair": [
+        "gauntlets",
+        "hammer"
+      ],
+      "stats": {
+        "power": 8,
+        "guard": 5,
+        "speed": 2
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "samson_gauntlets_nsig",
+        "samson_gauntlets_ssig",
+        "samson_gauntlets_dsig",
+        "samson_hammer_nsig",
+        "samson_hammer_ssig",
+        "samson_hammer_dsig"
+      ],
+      "scriptureReferences": "Judges 13:24–25; 14:5–6; 15:14–17; 16:28–30",
+      "storyContext": "A judge associated with remarkable strength given by God. Strength is represented as a fictional athlete’s silhouette; weapons and sporting moves are adaptations, not Scripture.",
+      "conceptImage": "10_Generated_Artwork/Characters/03_samson_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "joshua",
+      "name": "Joshua",
+      "title": "The Steadfast Leader",
+      "weaponPair": [
+        "sword",
+        "spear"
+      ],
+      "stats": {
+        "power": 5,
+        "guard": 5,
+        "speed": 5
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "joshua_sword_nsig",
+        "joshua_sword_ssig",
+        "joshua_sword_dsig",
+        "joshua_spear_nsig",
+        "joshua_spear_ssig",
+        "joshua_spear_dsig"
+      ],
+      "scriptureReferences": "Joshua 1:6–9; 5:13–15; 6:1–20",
+      "storyContext": "Led Israel after Moses; courage and obedience anchor the profile. God’s victory at Jericho is not reduced to a magic sword attack.",
+      "conceptImage": "10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "deborah",
+      "name": "Deborah",
+      "title": "The Resolute Judge",
+      "weaponPair": [
+        "staff",
+        "blades"
+      ],
+      "stats": {
+        "power": 3,
+        "guard": 5,
+        "speed": 7
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "deborah_staff_nsig",
+        "deborah_staff_ssig",
+        "deborah_staff_dsig",
+        "deborah_blades_nsig",
+        "deborah_blades_ssig",
+        "deborah_blades_dsig"
+      ],
+      "scriptureReferences": "Judges 4:4–10; 5:1–31",
+      "storyContext": "A prophetess and judge who encouraged Barak. These staff and blade arena moves are fictional; the text does not describe her fighting this way.",
+      "conceptImage": "10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "gideon",
+      "name": "Gideon",
+      "title": "The Courageous Few",
+      "weaponPair": [
+        "sword",
+        "hammer"
+      ],
+      "stats": {
+        "power": 5,
+        "guard": 6,
+        "speed": 4
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "gideon_sword_nsig",
+        "gideon_sword_ssig",
+        "gideon_sword_dsig",
+        "gideon_hammer_nsig",
+        "gideon_hammer_ssig",
+        "gideon_hammer_dsig"
+      ],
+      "scriptureReferences": "Judges 6:11–16; 7:16–22; 8:22–27",
+      "storyContext": "Called by God despite fear and associated with the three hundred. Trumpets, jars and torch shapes are visual motifs; they do not become automatic miracles.",
+      "conceptImage": "10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "jonathan",
+      "name": "Jonathan",
+      "title": "The Loyal Archer",
+      "weaponPair": [
+        "bow",
+        "sword"
+      ],
+      "stats": {
+        "power": 4,
+        "guard": 3,
+        "speed": 8
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "jonathan_bow_nsig",
+        "jonathan_bow_ssig",
+        "jonathan_bow_dsig",
+        "jonathan_sword_nsig",
+        "jonathan_sword_ssig",
+        "jonathan_sword_dsig"
+      ],
+      "scriptureReferences": "1 Samuel 14:1–14; 18:1–4; 20:18–42",
+      "storyContext": "Saul’s son, courageous warrior and loyal friend of David. Friendship is expressed in dialogue; it is not a stat buff for a specific teammate.",
+      "conceptImage": "10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "moses",
+      "name": "Moses",
+      "title": "The Wilderness Leader",
+      "weaponPair": [
+        "staff",
+        "sling"
+      ],
+      "stats": {
+        "power": 4,
+        "guard": 7,
+        "speed": 4
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "moses_staff_nsig",
+        "moses_staff_ssig",
+        "moses_staff_dsig",
+        "moses_sling_nsig",
+        "moses_sling_ssig",
+        "moses_sling_dsig"
+      ],
+      "scriptureReferences": "Exodus 3:1–12; 14:13–31; 17:8–13; Numbers 20:7–12",
+      "storyContext": "Led Israel from Egypt by God’s command. The game does not turn the plagues, Red Sea, commandments or miracles into repeatable offensive spells; sling combat is explicitly fictional.",
+      "conceptImage": "10_Generated_Artwork/Characters/08_moses_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "esther",
+      "name": "Esther",
+      "title": "The Courageous Queen",
+      "weaponPair": [
+        "blades",
+        "staff"
+      ],
+      "stats": {
+        "power": 3,
+        "guard": 4,
+        "speed": 8
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "esther_blades_nsig",
+        "esther_blades_ssig",
+        "esther_blades_dsig",
+        "esther_staff_nsig",
+        "esther_staff_ssig",
+        "esther_staff_dsig"
+      ],
+      "scriptureReferences": "Esther 4:13–16; 5:1–8; 7:1–6",
+      "storyContext": "A Jewish queen who risked her position and life for her people. Combat is a fictional arena interpretation; it must not be presented as an event in Esther.",
+      "conceptImage": "10_Generated_Artwork/Characters/09_esther_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "miriam",
+      "name": "Miriam",
+      "title": "The Joyful Leader",
+      "weaponPair": [
+        "staff",
+        "sling"
+      ],
+      "stats": {
+        "power": 3,
+        "guard": 6,
+        "speed": 6
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "miriam_staff_nsig",
+        "miriam_staff_ssig",
+        "miriam_staff_dsig",
+        "miriam_sling_nsig",
+        "miriam_sling_ssig",
+        "miriam_sling_dsig"
+      ],
+      "scriptureReferences": "Exodus 15:20–21; Numbers 12:1–15",
+      "storyContext": "A prophetess associated with celebration after the Exodus, with a later failure also recorded. Tambourine motifs and arena weapons are fictional; music never mind-controls opponents.",
+      "conceptImage": "10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "nehemiah",
+      "name": "Nehemiah",
+      "title": "The Watchful Builder",
+      "weaponPair": [
+        "hammer",
+        "sword"
+      ],
+      "stats": {
+        "power": 6,
+        "guard": 7,
+        "speed": 2
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "nehemiah_hammer_nsig",
+        "nehemiah_hammer_ssig",
+        "nehemiah_hammer_dsig",
+        "nehemiah_sword_nsig",
+        "nehemiah_sword_ssig",
+        "nehemiah_sword_dsig"
+      ],
+      "scriptureReferences": "Nehemiah 2:17–18; 4:16–18; 6:15–16",
+      "storyContext": "Organized the rebuilding of Jerusalem’s wall. Nehemiah 4 describes armed work; his mallet and moves are practical fictional arena interpretations.",
+      "conceptImage": "10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    },
+    {
+      "id": "caleb",
+      "name": "Caleb",
+      "title": "The Unwavering Scout",
+      "weaponPair": [
+        "spear",
+        "gauntlets"
+      ],
+      "stats": {
+        "power": 7,
+        "guard": 5,
+        "speed": 3
+      },
+      "hurtboxUnits": {
+        "width": 40,
+        "height": 74,
+        "shape": "capsule",
+        "anchor": "feet"
+      },
+      "signatureIds": [
+        "caleb_spear_nsig",
+        "caleb_spear_ssig",
+        "caleb_spear_dsig",
+        "caleb_gauntlets_nsig",
+        "caleb_gauntlets_ssig",
+        "caleb_gauntlets_dsig"
+      ],
+      "scriptureReferences": "Numbers 13:30; 14:6–9; Joshua 14:6–14",
+      "storyContext": "Trusted the Lord with Joshua and remained willing to face difficult territory. Age is portrayed with dignity; mountain and scout motifs do not grant magical terrain powers.",
+      "conceptImage": "10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
+      "animationStatus": "not_created",
+      "rosterUnlock": "available"
+    }
+  ]
+}

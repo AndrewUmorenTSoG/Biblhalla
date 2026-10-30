@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "weapons": [
+    {
+      "id": "sword",
+      "identity": "Clean medium-range arcs; reliable fundamentals; exposed endings prevent safe heavy spam.",
+      "attackIds": [
+        "sword_nlight",
+        "sword_slight",
+        "sword_dlight",
+        "sword_nair",
+        "sword_sair",
+        "sword_dair",
+        "sword_recovery",
+        "sword_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "spear",
+      "identity": "Long linear spacing and clear blind zones; close approaches punish the shaft’s missed thrust.",
+      "attackIds": [
+        "spear_nlight",
+        "spear_slight",
+        "spear_dlight",
+        "spear_nair",
+        "spear_sair",
+        "spear_dair",
+        "spear_recovery",
+        "spear_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "sling",
+      "identity": "Ordinary stones and close cloth/foot strikes; single-projectile caps require spacing and patience.",
+      "attackIds": [
+        "sling_nlight",
+        "sling_slight",
+        "sling_dlight",
+        "sling_nair",
+        "sling_sair",
+        "sling_dair",
+        "sling_recovery",
+        "sling_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "gauntlets",
+      "identity": "Short range with fast starters; approaching safely is necessary and heavy whiffs remain punishable.",
+      "attackIds": [
+        "gauntlets_nlight",
+        "gauntlets_slight",
+        "gauntlets_dlight",
+        "gauntlets_nair",
+        "gauntlets_sair",
+        "gauntlets_dair",
+        "gauntlets_recovery",
+        "gauntlets_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "staff",
+      "identity": "Broad spacing envelopes with moderate damage; long visible motion invites close whiff punishment.",
+      "attackIds": [
+        "staff_nlight",
+        "staff_slight",
+        "staff_dlight",
+        "staff_nair",
+        "staff_sair",
+        "staff_dair",
+        "staff_recovery",
+        "staff_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "hammer",
+      "identity": "Heavy delayed commitments with strong launches; no armor protects the windup.",
+      "attackIds": [
+        "hammer_nlight",
+        "hammer_slight",
+        "hammer_dlight",
+        "hammer_nair",
+        "hammer_sair",
+        "hammer_dair",
+        "hammer_recovery",
+        "hammer_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "bow",
+      "identity": "Ordinary training arrows mixed with close bow-body strikes; arrows are finite and cannot auto-aim.",
+      "attackIds": [
+        "bow_nlight",
+        "bow_slight",
+        "bow_dlight",
+        "bow_nair",
+        "bow_sair",
+        "bow_dair",
+        "bow_recovery",
+        "bow_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "blades",
+      "identity": "Paired short practice blades, one-hit crossed contact; quick close pressure and short reach.",
+      "attackIds": [
+        "blades_nlight",
+        "blades_slight",
+        "blades_dlight",
+        "blades_nair",
+        "blades_sair",
+        "blades_dair",
+        "blades_recovery",
+        "blades_ground_pound"
+      ],
+      "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "unarmed",
+      "identity": "A complete fallback kit; shorter reach avoids making weapon denial irrelevant.",
+      "attackIds": [
+        "unarmed_nlight",
+        "unarmed_slight",
+        "unarmed_dlight",
+        "unarmed_nair",
+        "unarmed_sair",
+        "unarmed_dair",
+        "unarmed_recovery",
+        "unarmed_ground_pound",
+        "unarmed_nsig",
+        "unarmed_ssig",
+        "unarmed_dsig"
+      ],
+      "groundedHeavySource": "sharedUnarmed"
+    }
+  ]
+}

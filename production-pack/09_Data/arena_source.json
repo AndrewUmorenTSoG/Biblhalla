@@ -1,0 +1,272 @@
+[
+  {
+    "id": "elah_training_terrace",
+    "name": "Elah Training Terrace",
+    "ref": "1 Samuel 17",
+    "theme": "A fictional sporting terrace inspired by the Valley of Elah; warm limestone, olive scrub, distant hills, pale blue sky, training banners in cobalt and ochre; no battlefield corpses.",
+    "main": [
+      -540,
+      0,
+      1080,
+      80
+    ],
+    "platforms": [
+      [
+        -330,
+        150,
+        200,
+        16
+      ],
+      [
+        130,
+        150,
+        200,
+        16
+      ]
+    ],
+    "blast": [
+      -1040,
+      1040,
+      -680,
+      680
+    ],
+    "spawns": [
+      [
+        -220,
+        82
+      ],
+      [
+        220,
+        82
+      ]
+    ],
+    "role": "Balanced starter arena; equal height side platforms create readable chase and escape routes.",
+    "color": "sunlit cream / olive / cobalt",
+    "competitive": true,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Elah Training Terrace. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional sporting terrace inspired by the Valley of Elah; warm limestone, olive scrub, distant hills, pale blue sky, training banners in cobalt and ochre; no battlefield corpses.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 2 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: sunlit cream / olive / cobalt. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  },
+  {
+    "id": "wilderness_waystation",
+    "name": "Wilderness Waystation",
+    "ref": "Exodus 16–17",
+    "theme": "A fictional flat stone waystation above a desert ravine, sandstone cliffs and fabric shade canopies in the distance, clean gold morning light; no sacred tabernacle as a battle prop.",
+    "main": [
+      -520,
+      0,
+      1040,
+      80
+    ],
+    "platforms": [
+      [
+        -160,
+        190,
+        320,
+        16
+      ]
+    ],
+    "blast": [
+      -1000,
+      1000,
+      -680,
+      700
+    ],
+    "spawns": [
+      [
+        -220,
+        82
+      ],
+      [
+        220,
+        82
+      ]
+    ],
+    "role": "Single elevated center platform rewards vertical reads while leaving lateral lanes open.",
+    "color": "sand / terracotta / teal",
+    "competitive": true,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Wilderness Waystation. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional flat stone waystation above a desert ravine, sandstone cliffs and fabric shade canopies in the distance, clean gold morning light; no sacred tabernacle as a battle prop.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 1 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: sand / terracotta / teal. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  },
+  {
+    "id": "jericho_outskirts",
+    "name": "Jericho Outskirts",
+    "ref": "Joshua 6",
+    "theme": "A fictional practice arena outside ancient city architecture: broad limestone ledge, distant ochre city wall, palms, blue-gold dusk, flags; not a miracle reenactment and no destruction during competitive play.",
+    "main": [
+      -560,
+      0,
+      1120,
+      80
+    ],
+    "platforms": [
+      [
+        -310,
+        170,
+        180,
+        16
+      ],
+      [
+        130,
+        170,
+        180,
+        16
+      ],
+      [
+        -90,
+        310,
+        180,
+        16
+      ]
+    ],
+    "blast": [
+      -1060,
+      1060,
+      -700,
+      820
+    ],
+    "spawns": [
+      [
+        -240,
+        82
+      ],
+      [
+        240,
+        82
+      ]
+    ],
+    "role": "Three-platform vertical arena for casual and advanced aerial play; upper platform increases match length risk.",
+    "color": "ochre / ultramarine / gold",
+    "competitive": false,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Jericho Outskirts. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional practice arena outside ancient city architecture: broad limestone ledge, distant ochre city wall, palms, blue-gold dusk, flags; not a miracle reenactment and no destruction during competitive play.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 3 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: ochre / ultramarine / gold. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  },
+  {
+    "id": "deborahs_palm_court",
+    "name": "Palm Court",
+    "ref": "Judges 4:5",
+    "theme": "A fictional open training court near a palm grove; enormous palm fronds frame a distant landscape, plum fabric awnings, soft jade foliage, carved pale stone platform; no throne or sacred relic.",
+    "main": [
+      -500,
+      0,
+      1000,
+      80
+    ],
+    "platforms": [
+      [
+        -110,
+        170,
+        220,
+        16
+      ]
+    ],
+    "blast": [
+      -980,
+      980,
+      -660,
+      680
+    ],
+    "spawns": [
+      [
+        -210,
+        82
+      ],
+      [
+        210,
+        82
+      ]
+    ],
+    "role": "Compact neutral-control arena with one short middle platform; fast interactions, symmetric collision.",
+    "color": "jade / pale limestone / plum",
+    "competitive": true,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Palm Court. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional open training court near a palm grove; enormous palm fronds frame a distant landscape, plum fabric awnings, soft jade foliage, carved pale stone platform; no throne or sacred relic.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 1 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: jade / pale limestone / plum. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  },
+  {
+    "id": "susa_garden_balcony",
+    "name": "Susa Garden Balcony",
+    "ref": "Esther 1–7",
+    "theme": "A fictional Persian-inspired palace garden terrace with tiled turquoise arches, distant hanging gardens, warm rose sunset, subtle geometric stonework; no combat in the throne room and no sacred symbols.",
+    "main": [
+      -580,
+      0,
+      1160,
+      80
+    ],
+    "platforms": [
+      [
+        -360,
+        145,
+        220,
+        16
+      ],
+      [
+        140,
+        145,
+        220,
+        16
+      ]
+    ],
+    "blast": [
+      -1100,
+      1100,
+      -700,
+      720
+    ],
+    "spawns": [
+      [
+        -240,
+        82
+      ],
+      [
+        240,
+        82
+      ]
+    ],
+    "role": "Wide horizontal spacing arena; longer projectile lanes countered by equally accessible side platforms.",
+    "color": "turquoise / ivory / rose gold",
+    "competitive": false,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Susa Garden Balcony. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional Persian-inspired palace garden terrace with tiled turquoise arches, distant hanging gardens, warm rose sunset, subtle geometric stonework; no combat in the throne room and no sacred symbols.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 2 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: turquoise / ivory / rose gold. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  },
+  {
+    "id": "jerusalem_builders_court",
+    "name": "Builders’ Court",
+    "ref": "Nehemiah 4",
+    "theme": "A fictional completed-wall-adjacent workers’ practice platform, limestone masonry, simple timber scaffolds in the background, blue fabric bundles, copper sunset; tools and ropes remain decorative away from collision edges.",
+    "main": [
+      -540,
+      0,
+      1080,
+      80
+    ],
+    "platforms": [
+      [
+        -310,
+        170,
+        180,
+        16
+      ],
+      [
+        130,
+        170,
+        180,
+        16
+      ]
+    ],
+    "blast": [
+      -1040,
+      1040,
+      -680,
+      700
+    ],
+    "spawns": [
+      [
+        -220,
+        82
+      ],
+      [
+        220,
+        82
+      ]
+    ],
+    "role": "Two small separated platforms create controlled spacing and straightforward wall recovery.",
+    "color": "limestone / slate blue / copper",
+    "competitive": true,
+    "art_prompt": "Use case: stylized-concept\nAsset type: original 2D platform-fighter arena concept artwork, NOT a precision collision diagram or separate production layer set.\nOriginal premium hand-drawn 2D platform-fighter art for Kendrew Games, working title COVENANT CLASH. Strong expressive silhouettes, heroic slightly exaggerated anatomy, approximately 4.5 heads tall, readable hands and feet, clean dark ink contours, warm painterly cel shading, two main shade bands, parchment and jewel-tone accents, physically grounded fabrics and bronze props. Biblical-era inspired West Asian and North African character design with individual faces and varied brown complexions. Contemporary animation polish, no photorealism, no plastic 3D, no copied Brawlhalla character, costume, logo, map, or interface. No gore, no halo, no supernatural holy power effects. This is fictional sporting arena combat, not a claim that Scripture records these moves.\nPrimary request: one polished landscape arena illustration for Builders’ Court. Wide 16:9 composition, flat side-on gameplay plane with gentle painted depth only in the background. No characters, no UI, no title, no watermark. A fictional completed-wall-adjacent workers’ practice platform, limestone masonry, simple timber scaffolds in the background, blue fabric bundles, copper sunset; tools and ropes remain decorative away from collision edges.\nComposition: main stone fighting ledge is horizontally level, centered in lower-middle frame, with clearly visible left and right drop-offs and recoverable side walls. 2 thin suspended wooden or stone side-view upper platform(s), readable above the main ledge. Background scenery subdued and lower contrast than platform silhouettes. Large clean air region above the arena for aerial movement. Floating illustration platforms are fictional arena design.\nColor palette: limestone / slate blue / copper. Clean dark outlines on playable ledges, warm cel-shaded stone texture, no foreground plants or rope crossing platform edges. Make the arena look inviting and exciting on an iPad, with simple readable silhouettes.\nConstraints: do not copy any existing Brawlhalla stage; art gives visual direction only; exact platform dimensions live in separate JSON. No particle fog across the combat plane; no gore, gods, magic spell effects, crosses used as weapons, or watermarks."
+  }
+]
