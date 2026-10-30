@@ -29,18 +29,19 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
       return f.ai.tell === 0 ? input({ x: f.ai.tellDir, heavy: true }) : input();
     }
   }
+  // A bot knows its own resources exactly, so recovery is planned every tick rather
+  // than on the decision interval used for reading the opponent.
+  const main = s.map.main.rectUnits;
+  const left = main[0] * Q, right = (main[0] + main[2]) * Q, top = (main[1] + main[3]) * Q;
+  const beyondEdge = f.x < left - 10 * Q || f.x > right + 10 * Q;
+  if (!f.ground && (beyondEdge || f.y < top - 10 * Q)) return recover(f, left, right, top);
+
   if (s.tick < f.ai.next) return { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false };
   f.ai.next = s.tick + d.decisionTicks;
 
   const delta = seen.x - f.x, dist = Math.abs(delta) / Q, sign = Math.sign(delta) || f.facing;
   const v: Partial<Input> = { x: sign, jumpHeld: true };
-  const main = s.map.main.rectUnits;
-  const offStage = f.y < (main[1] + main[3]) * Q - 10 * Q || f.x < (main[0] - 25) * Q || f.x > (main[0] + main[2] + 25) * Q;
-  if (offStage) {
-    v.x = f.x < 0 ? 1 : -1;
-    if (f.vy < 0 && f.jumps) v.jump = true;
-    else if (f.recovery) v.heavy = true;
-  } else {
+  {
     if (f.weapon === 'unarmed') {
       if (eligibleItem(ctx, s, f)) v.item = true;
       else if (s.items.length) {
@@ -66,6 +67,23 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
     }
     if (s.difficulty === 'extreme' && dist < 55 && f.ground && nextRandom(s) % 100 < 35) { v.x = -sign; v.dodge = true; }
   }
+  // Never walk off the main stage while chasing something beyond it.
+  if (f.ground && f.ground === s.map.main.id && v.x && !v.jump) {
+    const ahead = f.x + v.x * EDGE_MARGIN_UNITS * Q;
+    if (ahead < left || ahead > right) v.x = 0;
+  }
   f.ai.intent = input(v);
   return f.ai.intent;
+}
+
+const EDGE_MARGIN_UNITS = 30;
+
+/** Head for the stage: spend air jumps while falling, then the recovery move. */
+function recover(f: Fighter, left: number, right: number, top: number): Input {
+  const v: Partial<Input> = { x: f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0, jumpHeld: true };
+  if (f.action || f.stun || f.hitstop) return input(v);
+  const below = f.y < top + 40 * Q;
+  if (f.vy < 0 && below && f.jumps > 0) v.jump = true;
+  else if (f.vy < 0 && f.y < top && f.jumps === 0 && f.recovery > 0) v.heavy = true;
+  return input(v);
 }

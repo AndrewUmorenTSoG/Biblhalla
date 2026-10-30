@@ -3,7 +3,7 @@
 Status key: **yes** done and evidenced · **partial** some coverage, gaps listed · **no** not started · **n/a**.
 "Playable" means reachable through the real menus in `dist/PLAY.html`. "Reviewed" means a human (art, narrative, balance or device) sign-off, which nothing has yet.
 
-Last updated: 2026-10-30 (architecture restructure, phase 1).
+Last updated: 2026-10-30 (phase 2: movement and combat audited against the gameplay specs).
 
 | Area | Designed | Implemented | Playable | Tested | Reviewed | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -13,10 +13,10 @@ Last updated: 2026-10-30 (architecture restructure, phase 1).
 | Offline single-file bundle | yes | yes | partial | yes | no | Page boots in a browser with no console errors; in-game loop not browser-verified yet |
 | Movement (run, jumps, dash, dodges, wall, recovery, fast-fall) | yes | yes | partial | yes | no | Ported engine; parity suite passes |
 | Attack grammar, all 147 records | yes | yes | partial | yes | no | Every record resolves; animation alignment pending |
-| Hit resolution, trades, hitstop, projectiles | yes | yes | partial | yes | no | |
-| Weapons: pickup A/B/A, drop, throw, reacquire | yes | yes | partial | yes | no | |
-| Bots: Easy / Hard / Extremely Hard | yes | yes | partial | yes | no | Win-rate tuning not done |
-| Modes: duel, waves, boss, training, 1v1, FFA, 2v2 | yes | yes | partial | partial | no | Controller hardware not tested |
+| Hit resolution, trades, hitstop, projectiles | yes | yes | partial | yes | no | Charge uses authored permille; projectile hits no longer freeze the shooter; launch ties by instance; knockback holds through hitstun |
+| Weapons: pickup A/B/A, drop, throw, reacquire | yes | yes | partial | yes | no | Thrown weapons drop after a hit too; pickups clear stale buffers; drop keeps respawn protection |
+| Bots: Easy / Hard / Extremely Hard | yes | partial | partial | yes | no | Per-tick recovery and edge safety; `tools/bot-harness.ts` self-KO rate ~7–27% Easy, ~20–47% Hard/Extreme (4-match sample). Full candidate scoring and 200-match runs pending |
+| Modes: duel, waves, boss, training, 1v1, FFA, 2v2 | yes | yes | partial | yes | no | Team tiebreak by summed stocks/damage; simultaneous final KO goes to sudden death, then draw; farthest-from-enemy respawn; blast test at centre (+37). Controller hardware not tested |
 | Runtime fighter atlases (12 fighters, A/B/unarmed) | yes | no | no | no | no | Procedural rigs only; concept sheets excluded from build |
 | Layered arenas (6) | yes | partial | partial | no | no | Collision from maps.json; scenery is procedural |
 | VFX and audio feedback | yes | partial | partial | no | no | Minimal hit rings and synth cues |

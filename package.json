@@ -15,6 +15,7 @@
     "test:prototype": "node --test prototype/tests/simulation.test.cjs",
     "validate:content": "node tools/compile-content.ts --check",
     "serve": "node tools/serve.ts",
+    "bots": "node tools/bot-harness.ts",
     "verify": "npm run typecheck && npm run build && npm test"
   },
   "devDependencies": {

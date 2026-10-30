@@ -43,7 +43,7 @@ export function createEngine(content: Content) {
     eligibleItem: (s: SimState, f: Fighter) => eligibleItem(ctx, s, f),
     moveFighter: (s: SimState, f: Fighter, dx: number, dy: number) => moveFighter(ctx, s, f, dx, dy),
     knockOut: (s: SimState, f: Fighter) => knockOut(ctx, s, f),
-    invincible,
+    invincible: (f: Fighter) => invincible(ctx, f),
     rectFor: (f: Fighter, rect: Rect, facing?: number) => rectFor(f, rect, facing),
     capsuleRect: (f: Fighter, b: Box) => capsuleRect(ctx, f, b),
     segmentBox,

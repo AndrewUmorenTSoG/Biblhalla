@@ -19,6 +19,8 @@ export function releaseItem(ctx: SimContext, s: SimState, f: Fighter, a: Action)
     // Neutral crates alternate the fighter's pair A, B, A...; dropped weapons keep their exact family.
     f.weapon = it.neutral ? defs[f.hero].weaponPair[f.nextWeapon % 2] : it.weapon!;
     if (it.neutral) { f.nextWeapon++; s.pickupPriority++; }
+    // The grammar just changed; inputs buffered for the old weapon are dropped.
+    f.buffer = null;
     s.items = s.items.filter(v => v.id !== it.id);
     event(s, 'pickup', { fighter: f.id, weapon: f.weapon });
     return;

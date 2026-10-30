@@ -1,9 +1,9 @@
 // The fixed 60 Hz tick: step(state, inputFrames) -> state + events.
 
 import type { SimContext } from './context.ts';
-import type { Input, InputFrames, SimState } from './types.ts';
+import type { Fighter, Input, InputFrames, SimState } from './types.ts';
 import { finish, input } from './state.ts';
-import { updateFighter, outside } from './physics.ts';
+import { updateFighter, fighterOutside } from './physics.ts';
 import { updateItems } from './items.ts';
 import { combat } from './combat.ts';
 import { arrivals, checkResult, knockOut } from './rules.ts';
@@ -39,8 +39,14 @@ export function step(ctx: SimContext, s: SimState, inputs: InputFrames = {}): Si
   for (const f of order) updateFighter(ctx, s, f, frames[f.id]);
   updateItems(ctx, s);
   combat(ctx, s);
-  for (const f of s.fighters) if (f.stocks && !f.respawn && outside(s, f.x, f.y)) knockOut(ctx, s, f);
+  // All KOs resolve from the same tick before any result is decided.
+  const finalKOs: Fighter[] = [];
+  for (const f of s.fighters) {
+    if (!f.stocks || f.respawn || !fighterOutside(s, f)) continue;
+    knockOut(ctx, s, f);
+    if (!f.stocks) finalKOs.push(f);
+  }
   if (hasWaves(s) && s.remaining <= 0) finish(s, false, 'Encounter time expired');
-  else checkResult(ctx, s);
+  else checkResult(ctx, s, finalKOs);
   return s;
 }

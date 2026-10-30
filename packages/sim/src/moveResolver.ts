@@ -5,6 +5,7 @@ import type { SimContext } from './context.ts';
 import type { Action, ActionKind, Fighter, Input, Item, SimState } from './types.ts';
 import { Q, clamp } from './fixed.ts';
 import { event } from './state.ts';
+import { dodgeTicks } from './physics.ts';
 
 const SIGNATURE = { neutral: 'nsig', side: 'ssig', down: 'dsig' } as const;
 const GROUND_LIGHT = { neutral: 'nlight', side: 'slight', down: 'dlight' } as const;
@@ -101,7 +102,7 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
     if (f.dodgeCD === 0) {
       const air = !f.ground;
       f.dodgeCD = air ? P.dodge.air.cooldown : P.dodge.ground.cooldown;
-      beginAction(s, f, 'dodge', 20, { airborne: air, dx: air ? i.x * P.dodge.air.speedQ : 0, dy: air ? i.y * P.dodge.air.speedQ : 0 });
+      beginAction(s, f, 'dodge', dodgeTicks(ctx, air), { airborne: air, dx: air ? i.x * P.dodge.air.speedQ : 0, dy: air ? i.y * P.dodge.air.speedQ : 0 });
       return;
     }
   }
@@ -113,7 +114,8 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
       const drop = i.y < 0;
       beginAction(s, f, drop ? 'drop' : 'throw', drop ? R.drop.startup + R.drop.release + R.drop.recovery : R.throw.startup + R.throw.release + R.throw.recovery,
         { weapon: f.weapon, dx: i.x, dy: i.y });
-      f.invulnerable = 0;
+      // Throwing ends respawn protection; a harmless drop does not.
+      if (!drop) f.invulnerable = 0;
       return;
     }
   }

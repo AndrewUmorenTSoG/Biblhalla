@@ -22,12 +22,29 @@ export function outside(s: SimState, x: number, y: number): boolean {
   return x < b.minX * Q || x > b.maxX * Q || y < b.minY * Q || y > b.maxY * Q;
 }
 
-/** Dodge invulnerability window, or respawn protection. Attacks never grant it. */
-export function invincible(f: Fighter): boolean {
+/** Total ticks of a dodge: startup + invulnerable + recovery from physics data. */
+export function dodgeTicks(ctx: SimContext, airborne: boolean): number {
+  const d = airborne ? ctx.P.dodge.air : ctx.P.dodge.ground;
+  return d.startup + d.invulnerable + d.recovery;
+}
+
+/**
+ * Dodge invulnerability window, or respawn protection. Attacks never grant it.
+ * `a.tick` has already advanced past the local tick that just ran, as with hit zones.
+ */
+export function invincible(ctx: SimContext, f: Fighter): boolean {
   if (f.invulnerable) return true;
   const a = f.action;
   if (a?.kind !== 'dodge') return false;
-  return a.tick >= 3 && a.tick < (a.airborne ? 13 : 15);
+  const d = a.airborne ? ctx.P.dodge.air : ctx.P.dodge.ground;
+  const local = a.tick - 1;
+  return local >= d.startup && local < d.startup + d.invulnerable;
+}
+
+/** Blast zones test the fighter's centre point, 37 units above the feet. */
+export const BLAST_CENTER_UNITS = 37;
+export function fighterOutside(s: SimState, f: Fighter): boolean {
+  return outside(s, f.x, f.y + BLAST_CENTER_UNITS * Q);
 }
 
 /** Swept move against solid walls/floors/undersides and one-way tops. */
@@ -82,10 +99,28 @@ export function moveFighter(ctx: SimContext, s: SimState, f: Fighter, dx: number
   }
 }
 
+const MIN_SPAWN_SEPARATION_UNITS = 180;
+
+/**
+ * Safe respawn point: the authored spawn farthest from living enemies, preferring
+ * points at least 180 units clear; ties go to the lower spawn index.
+ */
+export function chooseSpawn(s: SimState, f: Fighter): [number, number] {
+  const points = s.map.spawnFeetUnits;
+  const enemies = s.fighters.filter(e => e.id !== f.id && e.team !== f.team && e.stocks && !e.respawn);
+  if (!enemies.length) return points[(f.id - 1) % points.length];
+  const clearance = ([x, y]: [number, number]) =>
+    Math.min(...enemies.map(e => Math.abs(e.x - x * Q) + Math.abs(e.y - y * Q)));
+  let best = 0;
+  for (let i = 1; i < points.length; i++) if (clearance(points[i]) > clearance(points[best])) best = i;
+  return points[best];
+}
+
 function respawn(ctx: SimContext, s: SimState, f: Fighter): void {
   const { P, R } = ctx;
-  const pt = s.map.spawnFeetUnits[(f.id - 1) % s.map.spawnFeetUnits.length];
-  f.x = pt[0] * Q; f.y = pt[1] * Q; f.vx = f.vy = f.kx = 0; f.damage = 0;
+  const pt = chooseSpawn(s, f);
+  f.x = pt[0] * Q; f.y = pt[1] * Q; f.vx = f.vy = f.kx = 0;
+  f.damage = s.suddenDeath ? R.suddenDeath.damageTenths : 0;
   f.invulnerable = R.respawnInvulnerabilityTicks; f.jumps = P.airJumps; f.recovery = P.recoveryUses;
   f.dodgeCD = 0; f.wallTicks = 0; f.wallRefresh = 1; f.ground = null;
   event(s, 'respawn', { fighter: f.id });
@@ -122,7 +157,7 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   } else {
     f.vx = approach(f.vx, 0, f.ground ? P.groundBrakeQ : AIR_BRAKE_Q);
   }
-  if (a?.kind === 'dodge' && a.airborne && a.tick >= 3 && a.tick < 13) { f.vx = a.dx || 0; f.vy = a.dy || 0; freezeY = true; }
+  if (a?.kind === 'dodge' && a.airborne && a.tick >= P.dodge.air.startup && a.tick < P.dodge.air.startup + P.dodge.air.invulnerable) { f.vx = a.dx || 0; f.vy = a.dy || 0; freezeY = true; }
   if (a?.kind === 'attack') {
     const m = moves[a.move!];
     if (a.cancelled && a.tick < m.startup + m.active) freezeY = true;
@@ -145,7 +180,8 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
     f.wallTicks++;
     f.vy = Math.max(f.vy, -P.wall.slideFallCapQ);
   }
-  f.kx = approach(f.kx, 0, P.knockbackDecayXQ);
+  // Launch velocity holds through hitstun, then decays toward zero.
+  if (!f.stun) f.kx = approach(f.kx, 0, P.knockbackDecayXQ);
   moveFighter(ctx, s, f, f.vx + f.kx + dx, freezeY && a?.cancelled ? 0 : f.vy);
   if (a) {
     const m = a.move ? moves[a.move] : null;

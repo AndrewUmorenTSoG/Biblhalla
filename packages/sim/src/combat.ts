@@ -9,7 +9,7 @@ import { event } from './state.ts';
 import { invincible, outside, platforms } from './physics.ts';
 
 export type Box = [number, number, number, number];
-type HitSpec = Pick<Attack, 'damageTenths' | 'hitstunTicks' | 'hitstopTicks' | 'baseForceQ' | 'growthQPerDamage' | 'launchAngle' | 'chargeMaxTicks'>;
+type HitSpec = Pick<Attack, 'damageTenths' | 'hitstunTicks' | 'hitstopTicks' | 'baseForceQ' | 'growthQPerDamage' | 'launchAngle' | 'chargeMaxTicks' | 'chargeMaxDamagePermille'>;
 interface HitRecord { target: number; owner: number; instance: number; m: HitSpec; facing: number; charge: number; melee: boolean }
 
 /** Attack rect [leftX, bottomY, w, h] in units -> world box, mirrored by facing. */
@@ -67,8 +67,13 @@ export function startProjectile(ctx: SimContext, s: SimState, f: Fighter, m: Att
   event(s, 'projectile', { fighter: f.id });
 }
 
+/** rawKQ = baseForceQ + floor(growthQPerDamage * D10 / 10), D10 = damage after this tick's hits. */
+export function launchForceQ(m: Pick<Attack, 'baseForceQ' | 'growthQPerDamage'>, damageTenths: number): number {
+  return m.baseForceQ + Math.floor((m.growthQPerDamage * damageTenths) / 10);
+}
+
 function throwSpec(ctx: SimContext): HitSpec {
-  return { ...ctx.R.throw, hitstopTicks: 3, launchAngle: 22, chargeMaxTicks: 0 };
+  return { ...ctx.R.throw, hitstopTicks: 3, launchAngle: 22, chargeMaxTicks: 0, chargeMaxDamagePermille: 1000 };
 }
 
 export function combat(ctx: SimContext, s: SimState): void {
@@ -76,7 +81,7 @@ export function combat(ctx: SimContext, s: SimState): void {
   const hits: HitRecord[] = [];
   const zones: { f: Fighter; a: Action; m: Attack; box: Box }[] = [];
   const hittable = (target: Fighter, ownerId: number, team: number) =>
-    target.id !== ownerId && target.stocks > 0 && !target.respawn && !invincible(target) && (s.friendlyFire || target.team !== team);
+    target.id !== ownerId && target.stocks > 0 && !target.respawn && !invincible(ctx, target) && (s.friendlyFire || target.team !== team);
 
   for (const f of s.fighters) {
     const a = f.action;
@@ -136,6 +141,8 @@ export function combat(ctx: SimContext, s: SimState): void {
         const m = p.move === 'throw' ? throwSpec(ctx) : moves[p.move];
         hits.push({ target: target.id, owner: p.owner, instance: p.instance, m, facing: p.facing, charge: p.charge, melee: false });
         removed.add(p.id);
+        // A thrown weapon's one hit spends it; it drops as a non-damaging item of the same family.
+        if (p.weapon) s.items.push({ id: ++s.entityId, x: p.x, y: p.y, vy: 512, life: R.drop.lifetimeTicks, neutral: false, weapon: p.weapon, claim: null });
         break;
       }
     }
@@ -151,7 +158,8 @@ export function combat(ctx: SimContext, s: SimState): void {
     let damage = 0, stun = 0, stop = 0;
     for (const h of group) {
       const owner = s.fighters.find(f => f.id === h.owner);
-      const chargeScale = h.m.chargeMaxTicks ? 1000 + Math.floor((250 * h.charge) / h.m.chargeMaxTicks) : 1000;
+      // Charge scales damage linearly up to the authored permille; never size, time or angle.
+      const chargeScale = h.m.chargeMaxTicks ? 1000 + Math.floor(((h.m.chargeMaxDamagePermille - 1000) * h.charge) / h.m.chargeMaxTicks) : 1000;
       const power = 1000 + P.powerDamagePermillePerStat * ((owner?.stats.power ?? P.statBaseline) - P.statBaseline);
       const amount = roundMul(roundMul(h.m.damageTenths, power), chargeScale);
       damage += amount;
@@ -160,18 +168,21 @@ export function combat(ctx: SimContext, s: SimState): void {
       if (owner) {
         owner.damageDealt += amount;
         owner.hits++;
-        owner.hitstop = Math.max(owner.hitstop, h.m.hitstopTicks);
-        if (h.melee) owner.chase = P.chase.tokenTicks;
+        // Hitstop freezes melee participants only; a distant thrower keeps moving.
+        if (h.melee) {
+          owner.hitstop = Math.max(owner.hitstop, h.m.hitstopTicks);
+          owner.chase = P.chase.tokenTicks;
+        }
       }
       event(s, 'hit', { fighter: target.id, attacker: h.owner, x: target.x, y: target.y + 40 * Q, damage: amount });
     }
     target.damage = clamp(target.damage + damage, 0, 9990);
     if (target.guard !== null) target.guard = Math.max(0, target.guard - damage);
-    // Strongest launch wins; ties keep the first in stable order.
+    // Strongest pre-scaling launch wins; equal magnitudes go to the lower attack instance.
     let best = group[0], bestRaw = -1;
     for (const h of group) {
-      const raw = h.m.baseForceQ + Math.floor((h.m.growthQPerDamage * target.damage) / 10);
-      if (raw > bestRaw) { best = h; bestRaw = raw; }
+      const raw = launchForceQ(h.m, target.damage);
+      if (raw > bestRaw || (raw === bestRaw && h.instance < best.instance)) { best = h; bestRaw = raw; }
     }
     const guardScale = 1000 + P.guardForcePermillePerStat * (target.stats.guard - P.statBaseline);
     const force = clamp(roundMul(bestRaw, guardScale), 0, P.knockbackCapQ);
