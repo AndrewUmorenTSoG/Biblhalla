@@ -12,7 +12,7 @@ const DIST = join(ROOT, 'dist');
  * Readiness levels that may ship in the page. "concept_cut" frames are cleaned,
  * transparent cut-outs of concept poses: labelled stand-ins, never final art.
  */
-export const SHIPPABLE_READINESS = ['runtime_alpha', 'concept_cut'];
+export const SHIPPABLE_READINESS = ['runtime_alpha', 'concept_cut', 'concept_backdrop'];
 
 /** External-resource patterns that must never appear in the shipped page. */
 export const FORBIDDEN_RUNTIME = [
@@ -21,7 +21,7 @@ export const FORBIDDEN_RUNTIME = [
   /url\(\s*["']?https?:\/\//i,
 ];
 
-interface ArtEntry { image: string; sha256: string; readiness: string; frames: Record<string, unknown> }
+interface ArtEntry { image: string; sha256: string; readiness: string; frames?: Record<string, unknown> }
 
 /** Embed fighter atlases whose manifest entry is shippable and whose bytes match their hash. */
 function runtimeArt(): { images: Record<string, string>; atlas: Record<string, unknown>; readiness: Record<string, string>; skipped: string[] } {
@@ -41,6 +41,21 @@ function runtimeArt(): { images: Record<string, string>; atlas: Record<string, u
   return { images, atlas, readiness, skipped };
 }
 
+/** Arena far-backdrop bands plus palette samples; platforms always come from collision data. */
+function arenaArt(): Record<string, { uri: string; horizon: string; stone: string }> {
+  const metaPath = join(ROOT, 'assets', 'runtime', 'arenas', 'arenas.json');
+  const out: Record<string, { uri: string; horizon: string; stone: string }> = {};
+  if (!existsSync(metaPath)) return out;
+  const meta: Record<string, ArtEntry & { horizon: string; stone: string }> = JSON.parse(readFileSync(metaPath, 'utf8'));
+  for (const [id, entry] of Object.entries(meta)) {
+    if (!SHIPPABLE_READINESS.includes(entry.readiness)) continue;
+    const bytes = readFileSync(join(ROOT, entry.image));
+    if (sha256(bytes) !== entry.sha256) throw new Error(`Asset ${entry.image} does not match its manifest hash`);
+    out[id] = { uri: 'data:image/png;base64,' + bytes.toString('base64'), horizon: entry.horizon, stone: entry.stone };
+  }
+  return out;
+}
+
 export function build(): { html: string; manifest: Record<string, unknown> } {
   const content = loadContent();
   const bundle = buildSync({
@@ -55,7 +70,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
   }).outputFiles[0].text;
   const art = runtimeArt();
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
-    + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, readiness: art.readiness }) + ';';
+    + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, readiness: art.readiness, arenas: arenaArt() }) + ';';
   const html = readFileSync(join(APP, 'shell.html'), 'utf8')
     .replace('/* STYLE */', () => readFileSync(join(APP, 'style.css'), 'utf8'))
     .replace('/* DATA */', () => data)

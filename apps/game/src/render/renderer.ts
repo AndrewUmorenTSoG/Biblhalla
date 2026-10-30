@@ -6,25 +6,31 @@ import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
-export interface RuntimeArt { images: Record<string, HTMLImageElement>; atlas: Record<string, any> }
+export interface ArenaArt { image: HTMLImageElement; horizon: string; stone: string }
+export interface RuntimeArt { images: Record<string, HTMLImageElement>; atlas: Record<string, any>; arenas?: Record<string, ArenaArt> }
 
 /** On-screen height of a standing fighter at zoom 1, in CSS pixels. */
 const FIGURE_PX=96;
 export const colors:any={david:['#e7c57a','#486c82','#654332'],saul:['#776c99','#c09f60','#453932'],samson:['#b8784d','#d1a265','#372721'],joshua:['#7e9f88','#d5ba76','#55372a'],deborah:['#587d8c','#cf9f67','#322a2b'],gideon:['#829469','#b89158','#493a2b'],jonathan:['#729da7','#dac693','#6a4630'],moses:['#b8ad90','#637c89','#d4c6b2'],esther:['#a06886','#dec18c','#33252a'],miriam:['#9bb3b5','#d4a664','#342a25'],nehemiah:['#8c7665','#bcb391','#4f3e32'],caleb:['#a59a63','#98694c','#5a3c2a'],dru:['#ba8559','#456e80','#4e3228'],ken:['#778d75','#d9b27b','#493b31']};
 const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','#b29163','#666d60'],['#bd9d87','#f1d5a1','#be8f61','#5b776e'],['#82a09c','#e7d7a5','#a49f75','#59786f'],['#8a9fb1','#dcc2ac','#baa791','#73687c'],['#91a3aa','#e5d2ad','#bbaa8a','#6c7e76']];
 export class Renderer{
-  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;symbolic=false;camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
-  constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;}
+  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;symbolic=false;camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
+  constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};}
   round(x:number,y:number,w:number,h:number,r=5){const c=this.ctx;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();c.stroke();}
+  /** Loaded painted backdrop for an arena palette slot, if one shipped. */
+  arenaArt(palette:number):ArenaArt|null{const a=this.arenas[this.S.content.maps.maps[palette%6].id];return a&&a.image.complete&&a.image.naturalWidth?a:null;}
   background(tick:number,palette:number,story:any=null){const c=this.ctx;const p=palettes[palette%6];const sky=c.createLinearGradient(0,0,0,650);sky.addColorStop(0,p[0]);sky.addColorStop(.72,p[1]);sky.addColorStop(1,p[2]);c.fillStyle=sky;c.fillRect(0,0,1280,720);
-    c.fillStyle='#ffefca';c.globalAlpha=.7;c.beginPath();c.arc(story?.level.chapter===14?210:1020,story?.level.chapter===14?280:115,58,0,Math.PI*2);c.fill();c.globalAlpha=1;
-    for(let layer=0;layer<3;layer++){c.fillStyle=layer===0?p[2]:layer===1?p[3]:'#384f53';c.globalAlpha=.18+layer*.11;c.beginPath();c.moveTo(0,600);for(let x=-100;x<=1400;x+=100){const y=390+layer*65+Math.sin((x+palette*131-this.camera.x*.08)/(230-layer*30))*55;c.lineTo(x,y);}c.lineTo(1280,720);c.lineTo(0,720);c.closePath();c.fill();}c.globalAlpha=1;
+    // Painted far layer: sky and distant land only. Platforms come from collision data, never the painting.
+    const art=this.arenaArt(palette);let painted=false;
+    if(art){const h=330,w=h*art.image.naturalWidth/art.image.naturalHeight,off=this.reduced?0:Math.max(-(w-1280)/2,Math.min((w-1280)/2,-this.camera.x*.05));c.drawImage(art.image,640-w/2+off,0,w,h);const fade=c.createLinearGradient(0,h-70,0,h+50);fade.addColorStop(0,art.horizon+'00');fade.addColorStop(1,art.horizon);c.fillStyle=fade;c.fillRect(0,h-70,1280,120);c.fillStyle=art.horizon;c.fillRect(0,h+50,1280,720-h-50);painted=true;}
+    if(!painted){c.fillStyle='#ffefca';c.globalAlpha=.7;c.beginPath();c.arc(story?.level.chapter===14?210:1020,story?.level.chapter===14?280:115,58,0,Math.PI*2);c.fill();c.globalAlpha=1;}
+    if(!painted){for(let layer=0;layer<3;layer++){c.fillStyle=layer===0?p[2]:layer===1?p[3]:'#384f53';c.globalAlpha=.18+layer*.11;c.beginPath();c.moveTo(0,600);for(let x=-100;x<=1400;x+=100){const y=390+layer*65+Math.sin((x+palette*131-this.camera.x*.08)/(230-layer*30))*55;c.lineTo(x,y);}c.lineTo(1280,720);c.lineTo(0,720);c.closePath();c.fill();}c.globalAlpha=1;
     // Original separate scenery layer; platform tops are drawn from collision data.
     c.strokeStyle=p[3];c.lineWidth=3;c.globalAlpha=.25;
     for(let n=0;n<9;n++){const x=((n*170-this.camera.x*.12)%1500+1500)%1500-100;const y=455+Math.sin(n*2.7)*25;
       if(palette%3===0){c.beginPath();c.moveTo(x,y);c.quadraticCurveTo(x+18,y-105,x+4,y-155);c.stroke();for(let b=0;b<5;b++){c.beginPath();c.moveTo(x+4,y-155);c.quadraticCurveTo(x+Math.cos(b*1.5)*65,y-180,x+Math.cos(b*1.5)*80,y-120);c.stroke();}}
       else{c.fillStyle=p[3];c.fillRect(x,y-80,65,120);c.fillRect(x-8,y-87,80,10);c.fillRect(x+18,y-67,27,60);}}
-    c.globalAlpha=1;
+    c.globalAlpha=1;}else{const shade=c.createLinearGradient(0,380,0,720);shade.addColorStop(0,'rgba(20,30,34,0)');shade.addColorStop(1,'rgba(20,30,34,.35)');c.fillStyle=shade;c.fillRect(0,380,1280,340);}
     if(story?.level.number>=79){c.save();c.strokeStyle='#334e5588';c.fillStyle='#e7d7b477';c.lineWidth=5;const n=story.level.number;if(n===82){c.beginPath();c.moveTo(1010,290);c.lineTo(1010,405);c.moveTo(975,323);c.lineTo(1045,323);c.stroke();}else if(n===83||n===84){c.beginPath();c.arc(1000,405,64,Math.PI,0);c.lineTo(1064,455);c.lineTo(936,455);c.closePath();c.fill();c.stroke();c.fillStyle='#334e5599';c.fillRect(977,389,45,65);if(n===83){c.beginPath();c.arc(998,423,38,0,Math.PI*2);c.fill();}else{c.beginPath();c.arc(1070,443,33,0,Math.PI*2);c.fill();}}else {c.beginPath();c.moveTo(940,390);c.lineTo(1080,390);c.moveTo(958,390);c.lineTo(958,437);c.moveTo(1062,390);c.lineTo(1062,437);c.stroke();}if(this.symbolic){c.fillStyle='#213b44';c.font='14px Georgia';c.textAlign='center';c.fillText('Text & symbols · '+story.level.scripture,1010,480);}c.restore();}
     if(story){c.fillStyle='rgba(16,31,39,.45)';c.font='16px Georgia';c.fillText(story.level.location,28,692);}
   }
@@ -69,9 +75,9 @@ export class Renderer{
     if(isRoute){cx=Math.max(450,Math.min(3300,player.x/Q+200));cy=170;zoom=.95;}
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{this.camera.x+=(cx-this.camera.x)*.08;this.camera.y+=(cy-this.camera.y)*.06;this.camera.zoom+=(zoom-this.camera.zoom)*.06;}
-    const palette=scene?(scene.level.chapter-1)%6:Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
+    const palette=scene?(scene.level.chapter-1)%6:Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);const stone=this.arenaArt(palette)?.stone;
     c.save();c.translate(640,460);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
-    for(const pl of [map.main,...map.platforms]){const [x,y,w,h]=pl.rectUnits;c.fillStyle=pl.kind==='solid'?'#7d8172':'#a19c7a';c.strokeStyle='#3e514b';c.lineWidth=3;c.fillRect(x,y,w,h);c.strokeRect(x,y,w,h);c.fillStyle='#e3d2a3';c.fillRect(x,y+h-8,w,8);c.fillStyle='#546759';for(let n=0;n<w;n+=90)c.fillRect(x+n,y+6,2,h-14);}
+    for(const pl of [map.main,...map.platforms]){const [x,y,w,h]=pl.rectUnits;c.fillStyle=pl.kind==='solid'?(stone||'#7d8172'):(stone?stone+'cc':'#a19c7a');c.strokeStyle='#3e514b';c.lineWidth=3;c.fillRect(x,y,w,h);c.strokeRect(x,y,w,h);c.fillStyle='#e3d2a3';c.fillRect(x,y+h-8,w,8);c.fillStyle='#546759';for(let n=0;n<w;n+=90)c.fillRect(x+n,y+6,2,h-14);}
     for(const it of world.items){const x=it.x/Q,y=it.y/Q;c.save();c.translate(x,y+18);c.scale(1,-1);c.fillStyle=it.neutral?'#c7a466':'#9caa93';c.strokeStyle='#493e2e';this.round(-18,-18,36,32,5);c.beginPath();c.moveTo(-12,-12);c.lineTo(12,9);c.moveTo(12,-12);c.lineTo(-12,9);c.stroke();c.restore();}
     if(scene){
       for(const m of scene.markers){if(m.done)continue;if(scene.level.number===1&&m.id>scene.done.length)continue;const x=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x)/Q,y=m.y/Q;

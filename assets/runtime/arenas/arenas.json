@@ -1,0 +1,74 @@
+{
+  "elah_training_terrace": {
+    "image": "assets/runtime/arenas/elah_training_terrace.png",
+    "sha256": "4143b47036e7852ea73f53aebd04e3f9e581bca772a9ac3c761674bc953e8d61",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/01_elah_training_terrace_arena.png",
+    "sourceSha256": "a3e36d5434f036edeb4fe0bdd48130e16e48df34625f44cd089ab979711c5419",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#929cb1",
+    "stone": "#83684f"
+  },
+  "wilderness_waystation": {
+    "image": "assets/runtime/arenas/wilderness_waystation.png",
+    "sha256": "2be3650b4feb768128093bb1fdaf3b96072b3999826af741b5afb185a8d1be2d",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/02_wilderness_waystation_arena.png",
+    "sourceSha256": "2a2f24813828de2b5b626088fe9a0eb867ac8c1b630ed0223c848d88334ed816",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#c49a94",
+    "stone": "#d19f76"
+  },
+  "jericho_outskirts": {
+    "image": "assets/runtime/arenas/jericho_outskirts.png",
+    "sha256": "de44f4969794d9f13c4f620c0fbf787b9565eeb707e7426d7a5989e8e2459ac7",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/03_jericho_outskirts_arena.png",
+    "sourceSha256": "89e927d2588576cee32a79d16b5b37e16152862a5848f5a59ce905446d098e66",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#c4896f",
+    "stone": "#9c6b52"
+  },
+  "deborahs_palm_court": {
+    "image": "assets/runtime/arenas/deborahs_palm_court.png",
+    "sha256": "c77ba9e80cf0cce4a9ef2a2ba4e2d51a424daa6279708706939a902a878d35a4",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/04_deborahs_palm_court_arena.png",
+    "sourceSha256": "69fda4e61ebe8a83d2c559715bec2ea7d4eaf794bf7f0be840e41e5b2838ec01",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#908a7f",
+    "stone": "#ddbf94"
+  },
+  "susa_garden_balcony": {
+    "image": "assets/runtime/arenas/susa_garden_balcony.png",
+    "sha256": "87cf423a3417dcbd2f88822835fcd426e7d64fd9340b11af28db28c2a9e25323",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/05_susa_garden_balcony_arena.png",
+    "sourceSha256": "e2c0a70be6ab353b4bacbf11467ed84bbfdf21d8bcfcfae84de6d85218456493",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#96676a",
+    "stone": "#8b7052"
+  },
+  "jerusalem_builders_court": {
+    "image": "assets/runtime/arenas/jerusalem_builders_court.png",
+    "sha256": "b9f4302bc81b02d236e7a15904b68af25aa8d79a682e575c1da214e583cb7d3b",
+    "readiness": "concept_backdrop",
+    "source": "production-pack/10_Generated_Artwork/Maps/06_jerusalem_builders_court_arena.png",
+    "sourceSha256": "c8b70622c1ae732391828fcf130acf766fc903af2a71e0e4cb3ec0ad9e37f3bb",
+    "tool": "tools/art/cut-arenas.ts",
+    "cutOn": "2026-10-30",
+    "approval": "pending",
+    "horizon": "#96685d",
+    "stone": "#916b4f"
+  }
+}

@@ -20,14 +20,20 @@ function showFatal(message: string): void {
   document.body.append(box);
 }
 
-function loadArt(raw: { images?: Record<string, string>; atlas?: Record<string, unknown> } | undefined): RuntimeArt {
+type EmbeddedArt = { images?: Record<string, string>; atlas?: Record<string, unknown>; arenas?: Record<string, { uri: string; horizon: string; stone: string }> };
+
+function image(uri: string): HTMLImageElement {
+  const img = new Image();
+  img.src = uri;
+  return img;
+}
+
+function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   const images: Record<string, HTMLImageElement> = {};
-  for (const [id, uri] of Object.entries(raw?.images ?? {})) {
-    const img = new Image();
-    img.src = uri;
-    images[id] = img;
-  }
-  return { images, atlas: (raw?.atlas ?? {}) as Record<string, any> };
+  for (const [id, uri] of Object.entries(raw?.images ?? {})) images[id] = image(uri);
+  const arenas: RuntimeArt['arenas'] = {};
+  for (const [id, a] of Object.entries(raw?.arenas ?? {})) arenas[id] = { image: image(a.uri), horizon: a.horizon, stone: a.stone };
+  return { images, atlas: (raw?.atlas ?? {}) as Record<string, any>, arenas };
 }
 
 try {

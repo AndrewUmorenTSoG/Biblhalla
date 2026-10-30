@@ -3,7 +3,7 @@
 Status key: **yes** done and evidenced · **partial** some coverage, gaps listed · **no** not started · **n/a**.
 "Playable" means reachable through the real menus in `dist/PLAY.html`. "Reviewed" means a human (art, narrative, balance or device) sign-off, which nothing has yet.
 
-Last updated: 2026-10-30 (phase 2: movement and combat audited against the gameplay specs).
+Last updated: 2026-10-30 (phase 3: stand-in fighter sprites and painted arena backdrops).
 
 | Area | Designed | Implemented | Playable | Tested | Reviewed | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,8 +17,8 @@ Last updated: 2026-10-30 (phase 2: movement and combat audited against the gamep
 | Weapons: pickup A/B/A, drop, throw, reacquire | yes | yes | partial | yes | no | Thrown weapons drop after a hit too; pickups clear stale buffers; drop keeps respawn protection |
 | Bots: Easy / Hard / Extremely Hard | yes | partial | partial | yes | no | Per-tick recovery and edge safety; `tools/bot-harness.ts` self-KO rate ~7–27% Easy, ~20–47% Hard/Extreme (4-match sample). Full candidate scoring and 200-match runs pending |
 | Modes: duel, waves, boss, training, 1v1, FFA, 2v2 | yes | yes | partial | yes | no | Team tiebreak by summed stocks/damage; simultaneous final KO goes to sudden death, then draw; farthest-from-enemy respawn; blast test at centre (+37). Controller hardware not tested |
-| Runtime fighter atlases (12 fighters, A/B/unarmed) | yes | no | no | no | no | Procedural rigs only; concept sheets excluded from build |
-| Layered arenas (6) | yes | partial | partial | no | no | Collision from maps.json; scenery is procedural |
+| Runtime fighter atlases (12 fighters, A/B/unarmed) | yes | partial | yes | partial | no | Stand-ins cut from concept sheets (`tools/art/cut-fighters.ts`, readiness `concept_cut`): idle, light and six signature poses per fighter. No run/jump/air frames or real animation yet; final sprites pending |
+| Layered arenas (6) | yes | partial | yes | no | no | Painted far layer cut above the painted platforms (`tools/art/cut-arenas.ts`); platforms drawn from maps.json collision in the painting's stone colour. Middle/foreground layers pending |
 | VFX and audio feedback | yes | partial | partial | no | no | Minimal hit rings and synth cues |
 | Menus, input selection, pause, results | yes | partial | partial | partial | no | Legacy UI ported as-is; Phase 4 rewrite planned |
 | Touch, controller, remapping, accessibility | yes | partial | partial | no | no | |
