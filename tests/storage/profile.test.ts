@@ -1,0 +1,13 @@
+// @ts-nocheck -- ported legacy suite; kept verbatim as a behavior-parity baseline.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { content as C } from '../helpers/engine.ts';
+import { createProfiles } from '../../apps/game/src/storage/profile.ts';
+const B: any = createProfiles(C);
+function memory(){const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v),map};}
+test('completion is idempotent and unlocks the next level locally',()=>{const store=new B.Store(memory());assert(store.unlocked(C.campaign.levels[0]));assert(!store.unlocked(C.campaign.levels[1]));store.complete('L001','hard');store.complete('L001','hard');assert.equal(store.data.completed.length,1);assert(store.unlocked(C.campaign.levels[1]));});
+test('corrupted primary recovers previous valid backup',()=>{const m=memory(),store=new B.Store(m);store.complete('L001','easy');store.complete('L002','easy');m.setItem(B.key,'{broken');const restored=new B.Store(m);assert(restored.data.completed.includes('L001'));assert.equal(restored.status,'Recovered previous valid save');});
+test('denied storage retains playable progress and exports it',()=>{const denied={getItem(){throw Error('denied');},setItem(){throw Error('quota');}};const store=new B.Store(denied);store.complete('L001','easy');assert.equal(store.durable,false);assert(JSON.parse(store.export()).completed.includes('L001'));});
+test('export/import round trips settings, checkpoint and history',()=>{const a=new B.Store(memory());a.complete('L001','extreme');a.checkpoint('L002','middle_or_phase_two',[0,1],false,123);a.data.settings.touchSize=96;a.save();const b=new B.Store(memory());b.import(a.export());assert.deepEqual(JSON.parse(JSON.stringify(a.data)),JSON.parse(JSON.stringify(b.data)));});
+test('save validation rejects oversized and executable-shaped content',()=>{const store=new B.Store(memory());assert.throws(()=>store.import('x'.repeat(1048577)));assert.throws(()=>store.import('{"schema":999,"completed":[]}'));const raw=B.defaults();raw.completed=['L001','bad','L001'];raw.settings.deadzone=100;raw.settings.bindings.jump='eval(alert(1))';const valid=B.validate(raw);assert.equal(valid.completed.length,1);assert.equal(valid.settings.deadzone,.5);assert.equal(valid.settings.bindings.jump,'Space');});
+test('all chapter unlocks resolve once after the 84-level progression',()=>{const store=new B.Store(memory());for(const l of C.campaign.levels){assert(store.unlocked(l));store.complete(l.id,'easy');}assert.equal(store.data.completed.length,84);assert.equal(store.data.journal.length,84);});

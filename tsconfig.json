@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "none",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "strict": false,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "strict": true,
+    "noImplicitAny": false,
     "noEmit": true,
-    "skipLibCheck": true
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "main-game/*.ts"
-  ]
+  "include": ["packages/**/*.ts", "apps/**/*.ts", "tools/**/*.ts", "tests/**/*.ts"]
 }
