@@ -16,6 +16,7 @@
     "validate:content": "node tools/compile-content.ts --check",
     "serve": "node tools/serve.ts",
     "bots": "node tools/bot-harness.ts",
+    "art:check": "node tools/art/validate-art.ts",
     "verify": "npm run typecheck && npm run build && npm test"
   },
   "devDependencies": {

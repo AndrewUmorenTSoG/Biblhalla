@@ -20,7 +20,7 @@ function showFatal(message: string): void {
   document.body.append(box);
 }
 
-type EmbeddedArt = { images?: Record<string, string>; atlas?: Record<string, unknown>; arenas?: Record<string, { uri: string; horizon: string; stone: string }> };
+type EmbeddedArt = { images?: Record<string, string>; atlas?: Record<string, unknown>; clips?: RuntimeArt['clips']; arenas?: Record<string, { uri: string; horizon: string; stone: string }> };
 
 function image(uri: string): HTMLImageElement {
   const img = new Image();
@@ -33,7 +33,7 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   for (const [id, uri] of Object.entries(raw?.images ?? {})) images[id] = image(uri);
   const arenas: RuntimeArt['arenas'] = {};
   for (const [id, a] of Object.entries(raw?.arenas ?? {})) arenas[id] = { image: image(a.uri), horizon: a.horizon, stone: a.stone };
-  return { images, atlas: (raw?.atlas ?? {}) as Record<string, any>, arenas };
+  return { images, atlas: (raw?.atlas ?? {}) as Record<string, any>, clips: raw?.clips ?? {}, arenas };
 }
 
 try {

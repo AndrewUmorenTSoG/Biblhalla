@@ -7,15 +7,18 @@ import { Q } from '../../../../packages/sim/src/index.ts';
 
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
 export interface ArenaArt { image: HTMLImageElement; horizon: string; stone: string }
-export interface RuntimeArt { images: Record<string, HTMLImageElement>; atlas: Record<string, any>; arenas?: Record<string, ArenaArt> }
+export interface Clip { frames: string[]; ticks: number[] }
+export interface RuntimeArt { images: Record<string, HTMLImageElement>; atlas: Record<string, any>; clips?: Record<string, Record<string, Clip>>; arenas?: Record<string, ArenaArt> }
 
+/** Clip used for each non-attack pose the renderer derives from simulation state. */
+const POSE_CLIPS:Record<string,string>={idle:'idle',run:'run',jump:'jump',dodge:'dodge',recovery:'hitstun'};
 /** On-screen height of a standing fighter at zoom 1, in CSS pixels. */
 const FIGURE_PX=96;
 export const colors:any={david:['#e7c57a','#486c82','#654332'],saul:['#776c99','#c09f60','#453932'],samson:['#b8784d','#d1a265','#372721'],joshua:['#7e9f88','#d5ba76','#55372a'],deborah:['#587d8c','#cf9f67','#322a2b'],gideon:['#829469','#b89158','#493a2b'],jonathan:['#729da7','#dac693','#6a4630'],moses:['#b8ad90','#637c89','#d4c6b2'],esther:['#a06886','#dec18c','#33252a'],miriam:['#9bb3b5','#d4a664','#342a25'],nehemiah:['#8c7665','#bcb391','#4f3e32'],caleb:['#a59a63','#98694c','#5a3c2a'],dru:['#ba8559','#456e80','#4e3228'],ken:['#778d75','#d9b27b','#493b31']};
 const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','#b29163','#666d60'],['#bd9d87','#f1d5a1','#be8f61','#5b776e'],['#82a09c','#e7d7a5','#a49f75','#59786f'],['#8a9fb1','#dcc2ac','#baa791','#73687c'],['#91a3aa','#e5d2ad','#bbaa8a','#6c7e76']];
 export class Renderer{
-  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;symbolic=false;camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
-  constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};}
+  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;clips:Record<string,Record<string,Clip>>;symbolic=false;camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
+  constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
   round(x:number,y:number,w:number,h:number,r=5){const c=this.ctx;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();c.stroke();}
   /** Loaded painted backdrop for an arena palette slot, if one shipped. */
   arenaArt(palette:number):ArenaArt|null{const a=this.arenas[this.S.content.maps.maps[palette%6].id];return a&&a.image.complete&&a.image.naturalWidth?a:null;}
@@ -43,13 +46,20 @@ export class Renderer{
     else if(weapon==='gauntlets'){c.fillStyle='#b99862';this.round(-10,-12,24,24,7);}c.restore();
   }
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
-  frameFor(hero:string,pose:string,weapon:string,move:string){
+  frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
+    // Authored clips (docs/ART_INTEGRATION.md): attacks advance with the action tick, loops with world time.
+    const clips=this.clips[hero];
+    const name=move||POSE_CLIPS[pose]||'idle';
+    const clip=clips?.[name];
+    if(clip&&clip.frames.length){const total=clip.ticks.reduce((a:number,b:number)=>a+b,0);let t=move?Math.min(attackTick,total-1):time%Math.max(1,total);for(let k=0;k<clip.frames.length;k++){if(t<clip.ticks[k])return clip.frames[k];t-=clip.ticks[k];}return clip.frames[clip.frames.length-1];}
+    // Concept-cut fallback: one key pose per signature, the light pose for other attacks.
     if(move&&(pose==='startup'||pose==='active')){const m=/_(n|s|d)sig$/.exec(move);return m&&move.startsWith(hero+'_')?'sig_'+weapon+'_'+m[1]:'light';}
     return pose==='dodge'?'turnaround':'idle';
   }
+
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move=''){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frame=frames[this.frameFor(hero,pose,weapon,move)]||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frame=frames[this.frameFor(hero,pose,weapon,move,attackTick,time)]||frames.idle;if(frame){
       // Concept-cut stand-ins: scale so the idle pose spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced?Math.abs(Math.sin(time*.25))*3*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;if(pose==='recovery'&&!move)c.rotate(-.12);

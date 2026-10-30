@@ -21,14 +21,14 @@ export const FORBIDDEN_RUNTIME = [
   /url\(\s*["']?https?:\/\//i,
 ];
 
-interface ArtEntry { image: string; sha256: string; readiness: string; frames?: Record<string, unknown> }
+interface ArtEntry { image: string; sha256: string; readiness: string; frames?: Record<string, unknown>; clips?: Record<string, unknown> }
 
 /** Embed fighter atlases whose manifest entry is shippable and whose bytes match their hash. */
-function runtimeArt(): { images: Record<string, string>; atlas: Record<string, unknown>; readiness: Record<string, string>; skipped: string[] } {
+function runtimeArt(): { images: Record<string, string>; atlas: Record<string, unknown>; clips: Record<string, unknown>; readiness: Record<string, string>; skipped: string[] } {
   const metaPath = join(ROOT, 'assets', 'runtime', 'fighters', 'fighters.json');
-  const images: Record<string, string> = {}, atlas: Record<string, unknown> = {}, readiness: Record<string, string> = {};
+  const images: Record<string, string> = {}, atlas: Record<string, unknown> = {}, clips: Record<string, unknown> = {}, readiness: Record<string, string> = {};
   const skipped: string[] = [];
-  if (!existsSync(metaPath)) return { images, atlas, readiness, skipped };
+  if (!existsSync(metaPath)) return { images, atlas, clips, readiness, skipped };
   const meta: Record<string, ArtEntry> = JSON.parse(readFileSync(metaPath, 'utf8'));
   for (const [id, entry] of Object.entries(meta)) {
     if (!SHIPPABLE_READINESS.includes(entry.readiness)) { skipped.push(`${id} (${entry.readiness})`); continue; }
@@ -36,9 +36,10 @@ function runtimeArt(): { images: Record<string, string>; atlas: Record<string, u
     if (sha256(bytes) !== entry.sha256) throw new Error(`Asset ${entry.image} does not match its manifest hash`);
     images[id] = 'data:image/png;base64,' + bytes.toString('base64');
     atlas[id] = entry.frames;
+    if (entry.clips) clips[id] = entry.clips;
     readiness[id] = entry.readiness;
   }
-  return { images, atlas, readiness, skipped };
+  return { images, atlas, clips, readiness, skipped };
 }
 
 /** Arena far-backdrop bands plus palette samples; platforms always come from collision data. */
@@ -70,7 +71,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
   }).outputFiles[0].text;
   const art = runtimeArt();
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
-    + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, readiness: art.readiness, arenas: arenaArt() }) + ';';
+    + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, clips: art.clips, readiness: art.readiness, arenas: arenaArt() }) + ';';
   const html = readFileSync(join(APP, 'shell.html'), 'utf8')
     .replace('/* STYLE */', () => readFileSync(join(APP, 'style.css'), 'utf8'))
     .replace('/* DATA */', () => data)
