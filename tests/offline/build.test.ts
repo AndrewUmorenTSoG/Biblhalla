@@ -22,9 +22,15 @@ test('embedded content is the validated canonical content', () => {
   assert.equal(manifest.levels, 84);
 });
 
-test('concept sheets are never embedded as runtime art', () => {
-  assert.deepEqual(manifest.runtimeArt, []);
-  assert.doesNotMatch(html, /data:image\/png;base64/);
+test('only cleaned runtime art ships; raw concept sheets never do', async () => {
+  const { SHIPPABLE_READINESS } = await import('../../tools/build.ts');
+  for (const readiness of Object.values(manifest.runtimeArt as Record<string, string>)) assert.ok(SHIPPABLE_READINESS.includes(readiness));
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const dir = 'production-pack/10_Generated_Artwork/Characters';
+  for (const sheet of readdirSync(dir)) {
+    const head = readFileSync(`${dir}/${sheet}`).subarray(0, 600).toString('base64').slice(0, 400);
+    assert.ok(!html.includes(head), `${sheet} must not be embedded`);
+  }
 });
 
 test('every inline script parses', () => {

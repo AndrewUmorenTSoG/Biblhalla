@@ -8,6 +8,8 @@ import { Q } from '../../../../packages/sim/src/index.ts';
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
 export interface RuntimeArt { images: Record<string, HTMLImageElement>; atlas: Record<string, any> }
 
+/** On-screen height of a standing fighter at zoom 1, in CSS pixels. */
+const FIGURE_PX=96;
 export const colors:any={david:['#e7c57a','#486c82','#654332'],saul:['#776c99','#c09f60','#453932'],samson:['#b8784d','#d1a265','#372721'],joshua:['#7e9f88','#d5ba76','#55372a'],deborah:['#587d8c','#cf9f67','#322a2b'],gideon:['#829469','#b89158','#493a2b'],jonathan:['#729da7','#dac693','#6a4630'],moses:['#b8ad90','#637c89','#d4c6b2'],esther:['#a06886','#dec18c','#33252a'],miriam:['#9bb3b5','#d4a664','#342a25'],nehemiah:['#8c7665','#bcb391','#4f3e32'],caleb:['#a59a63','#98694c','#5a3c2a'],dru:['#ba8559','#456e80','#4e3228'],ken:['#778d75','#d9b27b','#493b31']};
 const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','#b29163','#666d60'],['#bd9d87','#f1d5a1','#be8f61','#5b776e'],['#82a09c','#e7d7a5','#a49f75','#59786f'],['#8a9fb1','#dcc2ac','#baa791','#73687c'],['#91a3aa','#e5d2ad','#bbaa8a','#6c7e76']];
 export class Renderer{
@@ -34,10 +36,20 @@ export class Renderer{
     else if(weapon==='sling'){c.lineWidth=2.5;c.beginPath();c.moveTo(0,0);c.quadraticCurveTo(24,-12,26,-42);c.quadraticCurveTo(14,-64,0,-52);c.stroke();c.fillStyle='#b6a68b';c.beginPath();c.ellipse(23,-44,9,5,-.6,0,Math.PI*2);c.fill();c.stroke();}
     else if(weapon==='gauntlets'){c.fillStyle='#b99862';this.round(-10,-12,24,24,7);}c.restore();
   }
-  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false){const c=this.ctx,p=colors[hero]||colors.dru;
-    const runtimeKey=hero==='david'||hero==='samson'?hero:null;
-    const runtimeImage=runtimeKey&&this.art[runtimeKey]&&this.atlas[runtimeKey];
-    if(runtimeImage&&runtimeImage.complete){const frame=this.atlas[runtimeKey][pose==='run'?(Math.floor(time/8)%2?'run1':'run2'):pose==='jump'?'jump':pose==='active'?'light':pose==='startup'||pose==='recovery'?'heavy':'idle']; if(frame){c.save();c.translate(x,y);c.scale(facing*scale,scale);if(ghost)c.globalAlpha=.35;c.drawImage(runtimeImage,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);c.restore();if(label){c.save();c.textAlign='center';c.font='bold 14px system-ui';c.fillStyle='#162b33';c.fillText(label,x,y-110*scale);c.restore();}return;}}c.save();c.translate(x,y);c.scale(scale*facing,scale);if(ghost)c.globalAlpha=.35;
+  /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
+  frameFor(hero:string,pose:string,weapon:string,move:string){
+    if(move&&(pose==='startup'||pose==='active')){const m=/_(n|s|d)sig$/.exec(move);return m&&move.startsWith(hero+'_')?'sig_'+weapon+'_'+m[1]:'light';}
+    return pose==='dodge'?'turnaround':'idle';
+  }
+  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move=''){const c=this.ctx,p=colors[hero]||colors.dru;
+    const sheet=this.art[hero],frames=this.atlas[hero];
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frame=frames[this.frameFor(hero,pose,weapon,move)]||frames.idle;if(frame){
+      // Concept-cut stand-ins: scale so the idle pose spans the shared 74-unit hurtbox plus head room.
+      const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced?Math.abs(Math.sin(time*.25))*3*scale:0;
+      c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;if(pose==='recovery'&&!move)c.rotate(-.12);
+      c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);c.restore();
+      if(label){c.save();c.textAlign='center';c.font='bold 14px system-ui';c.fillStyle='#162b33';c.fillText(label,x,y-(FIGURE_PX+18)*scale);c.restore();}return;}}
+    c.save();c.translate(x,y);c.scale(scale*facing,scale);if(ghost)c.globalAlpha=.35;
     c.lineCap='round';c.lineJoin='round';const step=pose==='run'?Math.sin(time*.22)*13:0;const lift=pose==='jump'?9:0;let arm=pose==='startup'?-1.1:pose==='active'?1.05:pose==='recovery'?.4:pose==='dodge'?.9:-.2;
     c.strokeStyle='#332b29';c.lineWidth=11;c.beginPath();c.moveTo(-9,-29);c.lineTo(-10+step,-12-lift);c.lineTo(-13-step,0);c.moveTo(10,-29);c.lineTo(10-step,-13-lift);c.lineTo(16+step,0);c.stroke();c.strokeStyle=p[1];c.lineWidth=7;c.stroke();
     c.fillStyle=p[0];c.strokeStyle='#332b29';c.lineWidth=2.5;c.beginPath();c.moveTo(-18,-57);c.quadraticCurveTo(0,-67,18,-57);c.lineTo(21,-24);c.quadraticCurveTo(0,-16,-22,-24);c.closePath();c.fill();c.stroke();c.fillStyle=p[1];this.round(-19,-32,38,7,2);
@@ -71,7 +83,7 @@ export class Renderer{
     const screen=(x:number,y:number)=>({x:640+(x/Q-this.camera.x)*this.camera.zoom,y:460-(y/Q-this.camera.y)*this.camera.zoom});
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
     for(const f of world.fighters){if(!f.stocks||f.respawn)continue;const p=screen(f.x,f.y);let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?'jump':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose='dodge';
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,world.tick,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4);
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,world.tick,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'');
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
