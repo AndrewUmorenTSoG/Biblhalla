@@ -2,38 +2,9 @@
 
 import type { SimContext } from './context.ts';
 import type { Fighter, SimState } from './types.ts';
-import { createFighter, event, finish, scheduleWave } from './state.ts';
+import { event, finish } from './state.ts';
 
-/** Wave enemy roles are drawn as roster fighters in invented training gear. */
-export const ENEMY_HERO: Record<string, string> = {
-  road_guard: 'joshua', archer: 'jonathan', shield_guard: 'saul', brute: 'samson',
-  captain: 'caleb', spear_guard: 'caleb', runner: 'esther',
-};
-
-const NEXT_WAVE = '__next';
-
-/** Finite wave arrivals with a live-enemy cap that depends on difficulty. */
-export function arrivals(ctx: SimContext, s: SimState): void {
-  if (s.waveWait > 0) { s.waveWait--; return; }
-  if (s.wavePending[0] === NEXT_WAVE) { s.wavePending = []; scheduleWave(s); return; }
-  const live = s.fighters.filter(f => !f.human && f.stocks > 0).length;
-  const cap = s.difficulty === 'easy' ? 2 : 3;
-  if (s.wavePending.length && live < cap) {
-    const role = s.wavePending.shift()!;
-    const f = createFighter(ctx, s, { hero: ENEMY_HERO[role] || 'joshua', team: 1, stocks: 1, name: role.replace(/_/g, ' ') }, 1 + (s.totalEnemies % 3));
-    f.weapon = ctx.defs[f.hero].weaponPair[0];
-    f.invulnerable = 30;
-    s.fighters.push(f);
-    s.totalEnemies++;
-    s.waveWait = 40;
-    event(s, 'arrival', { fighter: f.id });
-  }
-  if (!s.wavePending.length && !s.fighters.some(f => !f.human && f.stocks > 0)) {
-    s.fighters = s.fighters.filter(f => f.human);
-    if (s.waveWait === 0) { s.waveWait = 120; s.wavePending = [NEXT_WAVE]; }
-  }
-  if (s.wavePending[0] === NEXT_WAVE) { s.wavePending = []; scheduleWave(s); s.waveWait = 120; }
-}
+export { ENEMY_HERO, arrivals } from './waves.ts';
 
 export function knockOut(ctx: SimContext, s: SimState, f: Fighter): void {
   if (!f.stocks || f.respawn) return;

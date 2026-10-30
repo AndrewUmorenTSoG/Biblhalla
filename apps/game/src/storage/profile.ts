@@ -10,6 +10,7 @@ export const BACKUP_KEY = SAVE_KEY + '-backup';
 export const MAX_SAVE_BYTES = 1048576;
 const STAGES = ['entry', 'middle_or_phase_two', 'exit'];
 const DIFFICULTIES = ['easy', 'hard', 'extreme'];
+const SEEN_CARD = /^L\d{3}:\d{1,2}$/;
 const BINDABLE = /^(Key[A-Z]|Digit[0-9]|Arrow(Left|Right|Up|Down)|Space|Shift(Left|Right)|Control(Left|Right)|Enter|Escape|Backspace|Tab)$/;
 
 export const DEFAULT_BINDINGS = {
@@ -33,7 +34,7 @@ export interface Settings {
   bindings: Bindings;
 }
 
-export interface SavedCheckpoint { level: string; stage: string; seed: number; progress: number[]; combatCleared: boolean }
+export interface SavedCheckpoint { level: string; stage: string; seed: number; progress: number[]; combatCleared: boolean; seen: string[] }
 
 export interface Profile {
   schema: 1;
@@ -75,6 +76,7 @@ export function createProfiles(content: Content) {
         level: cp.level, stage: cp.stage, seed: Number.isInteger(cp.seed) ? cp.seed >>> 0 : 613891,
         progress: Array.isArray(cp.progress) ? cp.progress.filter((v: unknown) => Number.isInteger(v) && (v as number) >= 0 && (v as number) < 32) : [],
         combatCleared: !!cp.combatCleared,
+        seen: Array.isArray(cp.seen) ? cp.seen.filter((v: unknown) => typeof v === 'string' && SEEN_CARD.test(v)).slice(0, 64) : [],
       };
     }
     const s = raw.settings;
@@ -143,8 +145,8 @@ export function createProfiles(content: Content) {
       return this.durable;
     }
 
-    checkpoint(level: string, stage: string, progress: number[] = [], combatCleared = false, seed = 613891): void {
-      this.data.checkpoint = { level, stage, progress: [...progress], combatCleared, seed };
+    checkpoint(level: string, stage: string, progress: number[] = [], combatCleared = false, seed = 613891, seen: string[] = []): void {
+      this.data.checkpoint = { level, stage, progress: [...progress], combatCleared, seed, seen: [...seen] };
       this.save();
     }
 
@@ -152,7 +154,7 @@ export function createProfiles(content: Content) {
       if (!ids.has(level)) return false;
       if (!this.data.completed.includes(level)) this.data.completed.push(level);
       this.data.medals[level] = difficulty;
-      this.data.checkpoint = { level, stage: 'exit', progress: [], combatCleared: true, seed: 613891 };
+      this.data.checkpoint = { level, stage: 'exit', progress: [], combatCleared: true, seed: 613891, seen: [] };
       if (!this.data.journal.includes(level)) this.data.journal.push(level);
       this.save();
       return true;

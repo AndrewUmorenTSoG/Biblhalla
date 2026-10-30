@@ -155,6 +155,15 @@ export function validateContent(c: Content): void {
     for (const wave of l.waves) need(Array.isArray(wave) && wave.length > 0 && wave.length <= 8, `${at}: invalid wave`);
   });
   for (const ch of chapters) for (const id of ch.levels) need(levelIds.has(id), `chapter ${ch.id}: unknown level ${id}`);
+  const scripts = c.campaign.scripts ?? [];
+  need(scripts.length === levels.length, `expected ${levels.length} level scripts, found ${scripts.length}`);
+  scripts.forEach((sc, i) => {
+    const l = levels[i];
+    if (!l) return;
+    need(sc.id === l.id, `level script ${i + 1} is ${sc.id}, expected ${l.id}`);
+    need(!!sc.opening?.text && !!sc.closing?.text, `${sc.id}: missing companion lines`);
+    need(sc.waveEntries.length === l.waves.length, `${sc.id}: ${sc.waveEntries.length} wave entries for ${l.waves.length} waves`);
+  });
 
   need(c.rules.offlineOnly === true && c.rules.requiresNetwork === false && c.rules.requiresAccount === false, 'rules must be offline-only with no account');
   for (const d of ['easy', 'hard', 'extreme'] as const) need(c.rules.difficulty?.[d], `rules missing difficulty ${d}`);

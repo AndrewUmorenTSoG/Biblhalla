@@ -221,6 +221,8 @@ export interface Campaign {
   protagonists: string[];
   chapters: Chapter[];
   levels: Level[];
+  /** One script per level, in level order. */
+  scripts: LevelScript[];
 }
 
 /** Compiled runtime content: the only content object the game consumes. */
@@ -234,4 +236,15 @@ export interface Content {
   physics: Physics;
   rules: Rules;
   campaign: Campaign;
+}
+
+/** Where a wave opponent enters the arena, resolved against map geometry at runtime. */
+export type WaveGate = 'left_floor' | 'right_floor' | 'left_shelf' | 'right_shelf' | 'high_shelf' | 'center';
+
+/** Authored facts extracted from a level brief in production-pack/11_Story_Campaign/Levels. */
+export interface LevelScript {
+  id: string;
+  opening: { speaker: string; text: string };
+  closing: { speaker: string; text: string };
+  waveEntries: { roster: string; gates: WaveGate[]; archerGate: WaveGate | null }[];
 }

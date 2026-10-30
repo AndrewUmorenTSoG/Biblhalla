@@ -5,7 +5,7 @@ import { validateContent } from './validate.ts';
 
 export const PRODUCT_NAME = 'Biblhalla';
 export const SOURCE_FILES = ['fighters', 'weapons', 'attacks', 'maps', 'physics', 'rules', 'campaign'] as const;
-export type RawContent = Record<(typeof SOURCE_FILES)[number], any>;
+export type RawContent = Record<(typeof SOURCE_FILES)[number], any> & { levelScripts?: unknown[] };
 
 /** Stable JSON: object keys sorted, so the content hash never depends on key order. */
 export function canonicalJson(value: unknown): string {
@@ -25,6 +25,7 @@ export function compileContent(raw: RawContent, digest: (text: string) => string
   // The pack's working title predates the product name; the game ships as Biblhalla.
   campaign.sourceTitle = campaign.title;
   campaign.title = `${PRODUCT_NAME} — The Story Archive`;
+  campaign.scripts = raw.levelScripts ?? [];
   const body = {
     productName: PRODUCT_NAME,
     fighters: raw.fighters,

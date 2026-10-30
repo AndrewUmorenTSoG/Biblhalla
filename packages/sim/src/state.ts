@@ -47,7 +47,7 @@ export function scheduleWave(s: SimState): void {
   if (s.wave >= s.waves.length) { finish(s, true, 'All waves cleared'); return; }
   s.wave++;
   s.wavePending = [...s.waves[s.wave - 1]];
-  s.waveWait = 90;
+  s.waveWait = 0;
   event(s, 'wave', { wave: s.wave });
 }
 
@@ -63,6 +63,7 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
     map: snapshot(map), fighters: [], projectiles: [], items: [], events: [],
     remaining: R.matchTicks, result: null,
     wave: 0, waveWait: 0, wavePending: [], waves: options.waves || DEFAULT_WAVES,
+    waveEntries: options.waveEntries ? snapshot(options.waveEntries) : null, waveArrivals: 0, waveResting: false, cue: null,
     pickupTick: R.pickups.initialTick, pickupCycle: 0, pickupPriority: 0,
     friendlyFire: !!options.friendlyFire, trainingBot: options.trainingBot || 'idle',
     bossName: options.bossName || 'Training champion', suddenDeath: false, totalEnemies: 0,

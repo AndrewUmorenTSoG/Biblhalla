@@ -1,4 +1,4 @@
-import type { Difficulty, MapDef, Stats } from '../../content/src/index.ts';
+import type { Difficulty, LevelScript, MapDef, Stats } from '../../content/src/index.ts';
 
 /** One tick of semantic input. Axes are -1/0/1 with +y meaning up. */
 export interface Input {
@@ -145,10 +145,15 @@ export interface MatchOptions {
   seed?: number | string;
   fighters?: FighterConfig[];
   waves?: string[][];
+  /** Gate lists per wave, from the level brief. */
+  waveEntries?: LevelScript['waveEntries'];
   friendlyFire?: boolean;
   trainingBot?: string;
   bossName?: string;
 }
+
+/** The next wave arrival, shown at its gate before the opponent appears. */
+export interface WaveCue { x: number; y: number; role: string; ticks: number }
 
 export interface MatchResult { won: boolean; reason: string; winners: number[]; ticks: number; difficulty: string; mode: string }
 
@@ -175,6 +180,10 @@ export interface SimState {
   waveWait: number;
   wavePending: string[];
   waves: string[][];
+  waveEntries: LevelScript['waveEntries'] | null;
+  waveArrivals: number;
+  waveResting: boolean;
+  cue: WaveCue | null;
   pickupTick: number;
   pickupCycle: number;
   pickupPriority: number;

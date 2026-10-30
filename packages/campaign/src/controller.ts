@@ -15,7 +15,9 @@ export interface Marker {
   stage: number; done: boolean; carried: boolean; dropped: boolean; targetX: number;
 }
 export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe' }
-export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number }
+export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
+/** Rising water: a telegraphed surge that sweeps the floor; ledges and the air stay safe. */
+export interface Water { period: number; tell: number; active: number; state: 'calm' | 'rising' | 'high'; ticksToSurge: number }
 export interface Card {
   heading: string; text: string; reference: string; label: string;
   puzzle: boolean; choices: string[]; answer: number; prompt: string;
@@ -47,11 +49,16 @@ export interface Scene {
   world: SimState;
   waitingPlatforms?: MapDef['platforms'] | null;
   satchelClosed?: boolean;
+  /** Story cards seen this level (never removed by a retry). */
+  seen: string[];
+  closingLine: string;
+  water: Water | null;
 }
 
 const GOLIATH_LEVEL = 41;
 const RETURN_ROUTE_LEVELS = [13, 42];
 const PARABLE_LEVELS = [69, 74];
+const RISING_WATER = /water rises/i;
 const SAFE_X = 80, MIDDLE_X = 1850, ROUTE_END_X = 3650;
 
 const EMPTY_TOMB_CARDS: [string, string][] = [
@@ -88,16 +95,20 @@ export function createCampaign(S: Engine, content: Content) {
     const level = levels.find(l => l.id === levelId);
     if (!level) throw new Error('Unknown level');
     const cfg = spec(level);
+    const script = content.campaign.scripts?.find(sc => sc.id === level.id);
     const combat = level.combatEnabled && level.number !== GOLIATH_LEVEL;
     const arena = content.maps.maps[(level.chapter - 1) % 6];
     const world = S.create({
       mode: combat ? (level.kind === 'waves' ? 'story' : 'boss') : 'training',
       hero: level.number === GOLIATH_LEVEL ? 'david' : 'dru', inputId: 'keyboard', arena: arena.id, difficulty,
-      waves: level.waves, bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
+      waves: level.waves, waveEntries: script?.waveEntries, bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
     });
     const s: Scene = {
       version: 1, levelId, level, kind: level.kind, difficulty, phase: 'intro', tick: 0, stage: 'entry', done: [], carry: null,
-      pendingCard: null, combatCleared: false, caption: 'Ken: Let’s follow the path together.', captionUntil: 240,
+      pendingCard: null, combatCleared: false, caption: script ? `${script.opening.speaker}: ${script.opening.text}` : 'Ken: Let’s follow the path together.', captionUntil: 240,
+      seen: [...(checkpoint?.level === levelId ? checkpoint.seen ?? [] : [])],
+      closingLine: script ? `${script.closing.speaker}: ${script.closing.text}` : 'Dru: We can keep going. Stay beside me.',
+      water: null,
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, checkpointEvent: null, result: null,
       goliath: { stage: 0, stone: false, tell: 0, open: 0 }, sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -135,7 +146,19 @@ export function createCampaign(S: Engine, content: Content) {
       s.markers[0].label = 'Close weapon satchel';
       s.markers[1].label = 'Listen to arrest context';
     }
-    if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
+    if (!combat && RISING_WATER.test(level.uniqueRule)) {
+      // Easy gives 1.5x the surge warning; the surge itself is the same length on every setting.
+      const tell = difficulty === 'easy' ? 135 : 90;
+      s.water = { period: difficulty === 'extreme' ? 300 : 360, tell, active: 45, state: 'calm', ticksToSurge: 0 };
+      // Latches sit on the upper ledges, above the surge line.
+      const ledges = world.map.platforms.filter(p => p.kind === 'oneWay');
+      s.markers.forEach((m, n) => {
+        const ledge = ledges[Math.min(ledges.length - 1, 1 + n * 2)];
+        if (!ledge) return;
+        m.x = (ledge.rectUnits[0] + ledge.rectUnits[2] / 2) * Q;
+        m.y = (ledge.rectUnits[1] + ledge.rectUnits[3]) * Q;
+      });
+    } else if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
       for (let n = 0; n < 4; n++) {
         s.hazards.push({ id: n, x: (700 + n * 740) * Q, y: 80 * Q, period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140, tell: difficulty === 'easy' ? 90 : 60, active: 30 });
       }
@@ -171,7 +194,7 @@ export function createCampaign(S: Engine, content: Content) {
 
   function checkpoint(s: Scene): void {
     s.stage = 'middle_or_phase_two';
-    s.checkpointEvent = { level: s.levelId, stage: s.stage, progress: [...s.done], combatCleared: s.combatCleared, seed: Number(s.world.options.seed) };
+    s.checkpointEvent = { level: s.levelId, stage: s.stage, progress: [...s.done], combatCleared: s.combatCleared, seed: Number(s.world.options.seed), seen: [...s.seen] };
   }
 
   function say(s: Scene, text: string, ticks: number): void {
@@ -229,6 +252,8 @@ export function createCampaign(S: Engine, content: Content) {
   function card(s: Scene, index: number): Card | null {
     const m = s.markers[index];
     if (!m) return null;
+    const seenId = `${s.levelId}:${index}`;
+    if (!s.seen.includes(seenId)) s.seen.push(seenId);
     let text = s.sourceSummary, heading = m.label;
     if (s.level.number === 84) [heading, text] = EMPTY_TOMB_CARDS[index];
     const labels = s.level.number === 1 ? ['Light', 'Sky', 'Land and plants', 'Lights in the sky', 'Living creatures', 'Humanity and rest']
@@ -259,7 +284,7 @@ export function createCampaign(S: Engine, content: Content) {
     if (s.phase === 'complete') return;
     s.phase = 'complete';
     s.result = { won: true, level: s.levelId, next: s.level.nextLevel };
-    s.caption = s.level.number === 84 ? 'Dru: Strength can also mean walking beside a friend.' : 'Dru: We can keep going. Stay beside me.';
+    s.caption = s.closingLine;
     checkpoint(s);
     s.checkpointEvent!.stage = 'exit';
     s.stage = 'exit';
@@ -299,7 +324,22 @@ export function createCampaign(S: Engine, content: Content) {
     s.companion.x += Math.max(-maxSpeed, Math.min(maxSpeed, distance - (distance > 0 ? 100 : -100) * Q));
     s.companion.y = f.ground ? f.y : s.companion.y;
     if (s.kind === 'witness') { s.companion.x = f.x - 80 * Q; s.companion.y = f.y; }
-    if (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth') {
+    if (s.water) {
+      const w = s.water, phase = s.tick % w.period, surgeAt = w.period - w.active;
+      w.state = phase >= surgeAt ? 'high' : phase >= surgeAt - w.tell ? 'rising' : 'calm';
+      w.ticksToSurge = w.state === 'rising' ? surgeAt - phase : 0;
+      if (w.state === 'rising' && phase === surgeAt - w.tell) say(s, 'The water is rising — climb to a ledge or jump as it surges.', w.tell);
+      const onFloor = !!f.ground && s.world.map.platforms.concat(s.world.map.main).some(p => p.id === f.ground && p.kind === 'solid');
+      if (w.state === 'high' && onFloor) {
+        f.x = safeX(s); f.y = 82 * Q; f.vx = f.vy = 0;
+        say(s, 'Swept back to the safe deck. No progress lost.', 180);
+      }
+    }
+    if (s.kind === 'exploration' && s.tick % 240 === 1 && s.tick > s.captionUntil) {
+      const next = s.markers.find(m => !m.done);
+      if (next) say(s, `Listen: the river sounds are ${next.x > f.x ? 'to the right' : 'to the left'}.`, 150);
+    }
+    if (!s.water && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
       for (const h of s.hazards) {
         const phase = s.tick % h.period;
         h.state = phase < h.tell ? 'tell' : phase < h.tell + h.active ? 'active' : 'safe';

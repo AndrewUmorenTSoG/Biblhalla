@@ -6,9 +6,11 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { compileContent, SOURCE_FILES, ContentError } from '../../packages/content/src/index.ts';
 import type { Content, RawContent } from '../../packages/content/src/index.ts';
+import { loadLevelScripts } from './levels.ts';
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const DATA_DIR = join(ROOT, 'production-pack', '09_Data');
+export const LEVELS_DIR = join(ROOT, 'production-pack', '11_Story_Campaign', 'Levels');
 
 export const sha256 = (text: string | Buffer) => createHash('sha256').update(text).digest('hex');
 
@@ -25,6 +27,8 @@ export function loadRawContent(dir = DATA_DIR): RawContent {
     }
   }
   if (problems.length) throw new ContentError(problems);
+  const levelsDir = join(dir, '..', '11_Story_Campaign', 'Levels');
+  if (existsSync(levelsDir)) raw.levelScripts = loadLevelScripts(levelsDir);
   return raw as RawContent;
 }
 
