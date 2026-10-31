@@ -92,9 +92,10 @@ export function paintArenaScenery(c: CanvasRenderingContext2D, id: string, camer
 
 /** A surface's visual face is derived from its collider, including its true top Y. */
 export function paintArenaSurface(c: CanvasRenderingContext2D, id: string, rect: number[], solid: boolean) {
-  const [x, top, width, thickness] = rect;
+  // Runtime physics uses [left, bottom, width, height], including campaign maps.
+  const [x, bottom, width, thickness] = rect;
+  const top = bottom + thickness;
   const t = arenaThemes[id] ?? arenaThemes.elah_training_terrace;
-  const bottom = top - thickness;
   c.fillStyle = t.shadow; c.fillRect(x, bottom-4, width, thickness+4);
   c.fillStyle = t.stone; c.fillRect(x+3, bottom+3, width-6, thickness-5);
   c.fillStyle = t.top; c.fillRect(x, top-8, width, 8);

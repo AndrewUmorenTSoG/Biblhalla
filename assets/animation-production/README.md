@@ -1,21 +1,33 @@
 # Biblhalla animation production
 
-## Armed attack integration
+## Current integration
 
-`attacks.html` previews all twelve fighters and eight original Canvas weapon designs. Each fighter now has 22 armed attack clips whose anticipation, active contact and recovery durations match canonical move data. Signature contacts retain their distinct existing poses. The two generated weapon rows supply shared anticipation/recovery; this is an animation alpha pass, not 264 independently drawn sequences. Frames with substantial side-edge clipping are excluded from playback. Unarmed attacks, dodge/hit reactions, and bespoke directional inbetweens remain unfinished.
+All twelve fighters have the 38 required playback slots: movement/defence plus 33 attacks. This is structural coverage, not 456 independently drawn animations. The runtime art remains animation alpha. Armed moves share some anticipation/recovery drawings; unarmed directional moves share punch or kick sequences. Some signature strike poses still come from the original concept art.
 
-Reproduce with `node tools/art/import-attacks.ts`, then `node tools/art/preview-attacks.ts` and `node tools/build.ts`. Original movement manifests and images are preserved. Weapon designs live in `apps/game/src/render/weapons.ts` and are used for equipped overlays, procedural characters, and thrown weapons; weapons already painted into fighter sprites retain their existing artwork.
+The latest pass adds 192 generated unarmed/defence drawings across the roster, extracted as connected figures so extended limbs are not clipped by a fixed grid. The exact built-in image-generation prompts are saved as *-unarmed-defence.prompt.txt beside the source PNGs. Original images and manifests are preserved.
 
-The twelve `*-animation-prompts.json` files specify the full roster's movement and attacks: 38 clips per fighter, 456 clips total. Attack timing and collision references come directly from the canonical production data. These files are production specifications, not completed animation coverage.
+Running cadence follows actual movement speed. Airborne poses follow vertical velocity, landing has a short compression pose, dodges and hit reactions play once instead of looping, and paused/hitstop presentation stays still. Fighter positions interpolate between simulation ticks without changing physics. Camera easing is independent of display refresh rate.
 
-The `*-animation-draft.png` images are first-pass drawings generated with the built-in image generation tool. Each requests 8 columns and 4 rows: running, weapon A attack, weapon B attack, and jump phases. David's weapon rows are sword then sling. They are not runtime-approved atlases. The first inspected sheets have weapons crossing cell boundaries and repeated locomotion poses; fixed-grid slicing would clip artwork.
+The arena renderer now matches the simulation's bottom-origin rectangles. A simulation-based test verifies that grounded feet meet each painted floor. Contact shadows help establish weight.
 
-Before any sheet can replace runtime art, separate and clean its frames, align feet and scale, verify each silhouette and grip against the established character reference, preview the loop, and match attack contact to the canonical startup/active/recovery ticks. Missing signatures, directional attacks, weapon-specific movement, dodge and hit reactions still require their own drawn sequences. Do not report the 456 specifications as 456 finished animations.
+## Review
 
-## Integrated movement pass
+- playback.html: run, jump, idle, dodge and hit reaction previews for all twelve fighters.
+- attacks.html: all attack clips and the eight weapon designs.
+- defence-contact.png: extracted new poses, sorted alphabetically by character.
+- review.html: original first-pass draft sheets and the full prompt specifications.
 
-All twelve fighters now have eight running frames and ascent, apex, descent, landing, and neutral poses packed into sibling `*-movement.png` runtime atlases. `tools/art/import-movement.ts` removes faint residue and detached speckles, retains the character silhouette, aligns its torso and feet, and preserves the original atlases. The manifest backup is `assets/runtime/fighters/fighters-before-movement.json`.
+## Tools
 
-Running uses a 15-frame-per-second cycle driven by simulation ticks. Airborne art follows vertical velocity, so falling does not accidentally loop back to takeoff. A short landing pose plays when coming to rest. The game remains labelled `concept_cut`: weapon attack sequences and final animation polish are still incomplete. The generated attack rows have not been substituted for the existing attack poses.
+- tools/art/import-movement.ts: movement extraction and packing.
+- tools/art/import-attacks.ts: armed clips and exact canonical attack timing.
+- tools/art/import-defence.ts: unarmed, dodge and hit-reaction clips.
+- tools/art/pack-fighters.ts: compact 1024-wide runtime atlases with a 192-pixel standing body.
+- tools/art/preview-movement.ts and preview-attacks.ts: standalone review pages.
+- tools/art/validate-art.ts --strict: structure and required playback-slot validation.
 
-Open `playback.html` to inspect the extracted movement for the full roster. Rebuild it with `node tools/art/preview-movement.ts`. Open `review.html` for the original draft sheets and prompt specifications.
+Use the staged manifest backups when reproducing an import; the scripts preserve their baseline so reruns do not repeatedly append frames. Rebuild the game with node tools/build.ts after importing or packing.
+
+## Verification
+
+Typecheck, strict art validation (38/38 slots for each fighter), offline build, and all 100 project tests passed on 2026-10-31. Extracted poses were visually inspected as a contact sheet. This does not replace playtesting or a frame-by-frame professional animation review.
