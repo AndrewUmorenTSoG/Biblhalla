@@ -1,6 +1,7 @@
 // Canvas 2D renderer. Reads simulation state and events; never mutates them.
 // Floating-point camera and interpolation live here only.
 
+import { drawEncounter } from './encounter.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
@@ -95,6 +96,7 @@ export class Renderer{
       }
       for(const h of scene.hazards){c.fillStyle=h.state==='active'?'rgba(161,69,54,.45)':h.state==='tell'?'rgba(206,160,78,.35)':'rgba(61,91,75,.15)';c.fillRect(h.x/Q-48,80,96,180);c.save();c.translate(h.x/Q,300);c.scale(1,-1);c.fillStyle='#263e42';c.textAlign='center';c.font='bold 13px system-ui';c.fillText(h.state==='active'?'WAIT':h.state==='tell'?'LOOKOUT':'CLEAR',0,0);c.restore();}
     }
+    drawEncounter(c,world,scene);
     c.restore();
     const screen=(x:number,y:number)=>({x:640+(x/Q-this.camera.x)*this.camera.zoom,y:460-(y/Q-this.camera.y)*this.camera.zoom});
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}

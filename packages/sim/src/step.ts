@@ -8,6 +8,7 @@ import { updateItems } from './items.ts';
 import { combat } from './combat.ts';
 import { arrivals, checkResult, knockOut } from './rules.ts';
 import { bot } from './ai.ts';
+import { updateBoss } from './boss.ts';
 
 const hasWaves = (s: SimState) => s.mode === 'waves' || s.mode === 'story';
 
@@ -38,6 +39,7 @@ export function step(ctx: SimContext, s: SimState, inputs: InputFrames = {}): Si
   }
   for (const f of order) updateFighter(ctx, s, f, frames[f.id]);
   updateItems(ctx, s);
+  if (s.bossScript) updateBoss(ctx, s);
   combat(ctx, s);
   // All KOs resolve from the same tick before any result is decided.
   const finalKOs: Fighter[] = [];

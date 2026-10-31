@@ -11,6 +11,8 @@ const HISTORY = 64;
 
 export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && s.trainingBot === 'idle') return input();
+  // Scripted bosses act only through their authored pattern (boss.ts).
+  if (s.bossScript && f.guard !== null) return input();
   const target = s.fighters
     .filter(t => t.id !== f.id && t.team !== f.team && t.stocks && !t.respawn)
     .sort((a, b) => Math.abs(a.x - f.x) - Math.abs(b.x - f.x) || a.id - b.id)[0];

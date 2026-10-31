@@ -147,10 +147,32 @@ export interface MatchOptions {
   waves?: string[][];
   /** Gate lists per wave, from the level brief. */
   waveEntries?: LevelScript['waveEntries'];
+  /** Authored boss pattern for Story Archive boss levels. */
+  bossScript?: BossScript;
   friendlyFire?: boolean;
   trainingBot?: string;
   bossName?: string;
 }
+
+/** One authored boss move: a locked tell, an active hazard zone, then recovery. */
+export interface BossMove {
+  name: string;
+  kind: 'lane' | 'sweep' | 'charge' | 'slam';
+  tell: number;
+  active: number;
+  recovery: number;
+  /** Hazard size in units, standing on the main stage surface. */
+  width: number;
+  height: number;
+  damageTenths: number;
+  forceQ: number;
+  angle: number;
+  caption: string;
+}
+/** Three phases (guard above 65%, above 30%, below 30%), each a move sequence. */
+export interface BossScript { phases: BossMove[][] }
+export interface BossRun { phase: number; index: number; stage: 'gap' | 'tell' | 'active' | 'recovery'; ticks: number; lockX: number; originX: number; instance: number; hit: number[] }
+export interface BossHazard { name: string; kind: BossMove['kind']; stage: 'tell' | 'active'; box: [number, number, number, number]; ticks: number }
 
 /** The next wave arrival, shown at its gate before the opponent appears. */
 export interface WaveCue { x: number; y: number; role: string; ticks: number }
@@ -184,6 +206,9 @@ export interface SimState {
   waveArrivals: number;
   waveResting: boolean;
   cue: WaveCue | null;
+  bossScript: BossScript | null;
+  bossRun: BossRun | null;
+  bossHazard: BossHazard | null;
   pickupTick: number;
   pickupCycle: number;
   pickupPriority: number;

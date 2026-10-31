@@ -5,6 +5,9 @@ import type { Content, Level, MapDef } from '../../content/src/index.ts';
 import type { Engine, InputFrame, SimState } from '../../sim/src/index.ts';
 import { Q } from '../../sim/src/index.ts';
 import { LEVEL_SPECS, SUMMARIES } from './specs.ts';
+import { BOSS_SCRIPTS } from './bosses.ts';
+import { createGoliath, stepGoliath } from './goliath.ts';
+import type { GoliathState } from './goliath.ts';
 import type { LevelSpec, TaskType } from './specs.ts';
 
 export type Stage = 'entry' | 'middle_or_phase_two' | 'exit';
@@ -43,7 +46,7 @@ export interface Scene {
   companion: { x: number; y: number; following: boolean };
   checkpointEvent: Checkpoint | null;
   result: { won: boolean; level?: string; next?: string | null; reason?: string } | null;
-  goliath: { stage: number; stone: boolean; tell: number; open: number };
+  goliath: GoliathState;
   sourceSummary: string;
   config: LevelSpec;
   world: SimState;
@@ -101,7 +104,7 @@ export function createCampaign(S: Engine, content: Content) {
     const world = S.create({
       mode: combat ? (level.kind === 'waves' ? 'story' : 'boss') : 'training',
       hero: level.number === GOLIATH_LEVEL ? 'david' : 'dru', inputId: 'keyboard', arena: arena.id, difficulty,
-      waves: level.waves, waveEntries: script?.waveEntries, bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
+      waves: level.waves, waveEntries: script?.waveEntries, bossScript: BOSS_SCRIPTS[level.id], bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
     });
     const s: Scene = {
       version: 1, levelId, level, kind: level.kind, difficulty, phase: 'intro', tick: 0, stage: 'entry', done: [], carry: null,
@@ -110,7 +113,7 @@ export function createCampaign(S: Engine, content: Content) {
       closingLine: script ? `${script.closing.speaker}: ${script.closing.text}` : 'Dru: We can keep going. Stay beside me.',
       water: null,
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, checkpointEvent: null, result: null,
-      goliath: { stage: 0, stone: false, tell: 0, open: 0 }, sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
+      goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
     if (!combat) {
       world.fighters = world.fighters.slice(0, 1);
@@ -133,6 +136,8 @@ export function createCampaign(S: Engine, content: Content) {
         targetX: combat ? (180 + n * 45) * Q : Math.round(Math.min(3600, x + 190)) * Q,
       });
     }
+    // The reenactment runs its own stages (goliath.ts); there are no task markers.
+    if (level.number === GOLIATH_LEVEL) s.markers = [];
     if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
     if ([32, 36, 75].includes(level.number)) {
       const extra: TaskType = level.number === 75 ? 'route' : level.number === 36 ? 'escort' : 'building';
@@ -240,12 +245,6 @@ export function createCampaign(S: Engine, content: Content) {
     }
     if (s.level.number === 80 && m.id === 0) s.satchelClosed = true;
     if (m.type === 'witness' || m.type === 'puzzle' || (m.type === 'route' && s.level.number === 1)) { s.pendingCard = m.id; return; }
-    if (m.type === 'goliath') {
-      if (!s.goliath.stone) { s.goliath.stone = true; say(s, 'One stone collected. Visit the composure stations.', 200); }
-      mark(s, m);
-      s.goliath.stage++;
-      return;
-    }
     mark(s, m);
   }
 
@@ -305,6 +304,12 @@ export function createCampaign(S: Engine, content: Content) {
     // Carrying disables attacks until set down.
     if (f.carry) { i.light = i.heavy = i.item = false; }
     S.step(s.world, { [f.id]: i });
+    // Every boss tell is captioned, so no warning depends on colour or animation alone.
+    for (const e of s.world.events) {
+      if (e.type === 'bossTell' && e.caption) say(s, String(e.caption), 90);
+      if (e.type === 'bossOpening') say(s, 'Opening! The boss is recovering.', Number(e.ticks) || 30);
+      if (e.type === 'arrivalCue') say(s, `Arrival marked: ${String(e.role).replace(/_/g, ' ')}.`, 90);
+    }
     if (priorRespawn === 1 && !s.level.combatEnabled) { f.x = (s.stage === 'middle_or_phase_two' ? 1850 : 80) * Q; f.y = 82 * Q; f.vx = f.vy = 0; }
     if (f.respawn && s.carry !== null) {
       const m = s.markers[s.carry];
@@ -350,20 +355,8 @@ export function createCampaign(S: Engine, content: Content) {
       }
     }
     if (s.level.number === GOLIATH_LEVEL) {
-      s.goliath.tell = s.tick % 240;
-      if (s.goliath.tell < 60) say(s, 'Giant’s lane sweep — move away from the marked lane.', 2);
-      s.goliath.open = s.goliath.tell >= 150 && s.goliath.tell < 220 ? 1 : 0;
-      if (s.goliath.tell >= 60 && s.goliath.tell < 110 && f.x > 2800 * Q && f.x < 3500 * Q && f.y < 150 * Q) {
-        f.x = 2600 * Q; f.y = 82 * Q; f.vx = f.vy = 0;
-        say(s, 'The marked lane is unsafe. Regroup, then wait for the opening.', 120);
-      }
-      // One decisive stone opportunity; no health bar.
-      if (s.goliath.stage >= 3 && s.goliath.stone && s.goliath.open && i.interact && f.x > 3200 * Q) {
-        s.combatCleared = true;
-        say(s, 'One decisive stone. The account continues without graphic aftermath.', 360);
-        complete(s);
-        return;
-      }
+      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, { say: (text, ticks) => say(s, text, ticks), complete: () => { s.combatCleared = true; complete(s); } });
+      return;
     }
     if (i.interact) interact(s);
     if (!s.level.combatEnabled) s.combatCleared = true;
