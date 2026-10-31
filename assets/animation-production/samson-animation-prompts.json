@@ -1,0 +1,794 @@
+{
+  "character": "samson",
+  "identity": "\n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n**Stats:** Power 8, Guard 5, Speed 2; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Slow chase speed and punishable windups; strength never grants automatic armor.\n\n",
+  "weaponPair": [
+    "gauntlets",
+    "hammer"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "gauntlets_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Front Palm. One quick open-palm strike in front from a compact guard.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 14,
+      "totalTicks": 23,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            50,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Step Fist. A short stepping fist strike with rear hand guarding ribs.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            70,
+            42
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Low Jab. Low crouching fist strike that lifts slightly at contact.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 16,
+      "totalTicks": 27,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            55,
+            32
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Upper Guard. One close aerial upward forearm/palm strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -25,
+            25,
+            60,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Air Palm. One forward aerial palm with compact leg balance.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 19,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            75,
+            42
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Down Fist. One downward-diagonal guarded fist; body exposed above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 33,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            10,
+            -50,
+            45,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Upward Drive. A single rising uppercut and upward recovery impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 7,
+      "recovery": 22,
+      "totalTicks": 39,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            60,
+            105
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "gauntlets_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: gauntlets. Action: Braced Descent. A committed downward palm/fist strike with a clear landing brace.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 14,
+      "active": 12,
+      "recovery": 26,
+      "totalTicks": 52,
+      "collisionPhases": [
+        {
+          "firstTick": 14,
+          "lastTickExclusive": 26,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            -55,
+            40,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Mallet Tap. One compact wooden mallet swing across the near front lane.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 36,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            80,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Side Weight. A wider sideward mallet arc driven by visible hip rotation.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 5,
+      "recovery": 25,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 18,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            18,
+            115,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Low Weight. Low mallet sweep along the front training floor.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            95,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Air Weight. A single upward mallet arc above the fighter’s shoulder.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            -35,
+            30,
+            95,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Air Swing. A committed forward aerial mallet swing with backward body counterbalance.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 14,
+      "active": 5,
+      "recovery": 27,
+      "totalTicks": 46,
+      "collisionPhases": [
+        {
+          "firstTick": 14,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            18,
+            120,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Falling Mallet. One downward-diagonal mallet head strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 14,
+      "active": 5,
+      "recovery": 27,
+      "totalTicks": 46,
+      "collisionPhases": [
+        {
+          "firstTick": 14,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            -65,
+            70,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Mallet Rise. Upward mallet arc and one deliberate rising impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 15,
+      "active": 7,
+      "recovery": 28,
+      "totalTicks": 50,
+      "collisionPhases": [
+        {
+          "firstTick": 15,
+          "lastTickExclusive": 22,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            15,
+            100,
+            135
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "hammer_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: hammer. Action: Heavy Drop. Mallet head points below and leads a vulnerable vertical descent.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 20,
+      "active": 12,
+      "recovery": 33,
+      "totalTicks": 65,
+      "collisionPhases": [
+        {
+          "firstTick": 20,
+          "lastTickExclusive": 32,
+          "shape": "rect",
+          "rectUnits": [
+            -25,
+            -80,
+            50,
+            110
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_gauntlets_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Lion Lift. Samson crouches, then rises with one powerful uppercut; the other fist guards his ribs.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 20,
+      "active": 5,
+      "recovery": 31,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 20,
+          "lastTickExclusive": 25,
+          "shape": "rect",
+          "rectUnits": [
+            -23,
+            40,
+            45,
+            125
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_gauntlets_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Gate Rush. Samson takes one forceful step and strikes forward with both guarded palms; no grab or cinematic lock.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 24,
+      "active": 6,
+      "recovery": 35,
+      "totalTicks": 65,
+      "collisionPhases": [
+        {
+          "firstTick": 24,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            115,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_gauntlets_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Ground Break. Samson raises one fist, drops to a knee, and strikes the training floor in front; a short dust fan marks impact.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 27,
+      "active": 6,
+      "recovery": 36,
+      "totalTicks": 69,
+      "collisionPhases": [
+        {
+          "firstTick": 27,
+          "lastTickExclusive": 33,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            95,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_hammer_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Pillar Rise. Samson pulls his wooden mallet from low behind to high overhead in a steep upward arc.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 24,
+      "active": 6,
+      "recovery": 34,
+      "totalTicks": 64,
+      "collisionPhases": [
+        {
+          "firstTick": 24,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            40,
+            60,
+            145
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_hammer_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Heavy Resolve. Samson rotates his hips into one massive sideward mallet swing; both feet remain visible.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 28,
+      "active": 7,
+      "recovery": 38,
+      "totalTicks": 73,
+      "collisionPhases": [
+        {
+          "firstTick": 28,
+          "lastTickExclusive": 35,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            145,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "samson_hammer_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: samson. Action: Stone Step. Samson stomps forward, lowers his center of gravity, and drives the mallet into the floor ahead; dust is decorative only.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 30,
+      "active": 7,
+      "recovery": 39,
+      "totalTicks": 76,
+      "collisionPhases": [
+        {
+          "firstTick": 30,
+          "lastTickExclusive": 37,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            120,
+            15
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    }
+  ]
+}

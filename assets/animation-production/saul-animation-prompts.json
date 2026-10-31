@@ -1,0 +1,794 @@
+{
+  "character": "saul",
+  "identity": "\n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n**Stats:** Power 6, Guard 6, Speed 3; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Slow movement and long signature recovery; opponents can bait his reach.\n\n",
+  "weaponPair": [
+    "spear",
+    "sword"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "sword_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Quick Edge. A compact front slash from chest guard, one clear contact pose.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 15,
+      "totalTicks": 26,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            28,
+            70,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Step Cut. A short advancing cut ending with the blade extended in front.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 31,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            28,
+            95,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Low Lift. Low body dip then a small rising blade flick toward the opponent’s feet.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            0,
+            80,
+            40
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Air Circle. One compact overhead blade circle while airborne; no lingering rotating hits.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            35,
+            95,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Open Edge. A forward aerial horizontal sword slash with knees tucked.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 20,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            110,
+            52
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Falling Slice. Blade angles downward in front as the body remains vulnerable above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 36,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            -55,
+            65,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Ascending Guard. A rising sword arc carries the fighter upward once.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 7,
+      "recovery": 22,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 18,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            20,
+            85,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Point Drop. A downward committed sword point with a visible overhead preparation.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 15,
+      "active": 12,
+      "recovery": 27,
+      "totalTicks": 54,
+      "collisionPhases": [
+        {
+          "firstTick": 15,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -65,
+            36,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Front Thrust. One straight short spear thrust with both hands behind the point.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            30,
+            35,
+            120,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Driving Reach. One longer thrust from a small forward step, no hidden second hit.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 36,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            35,
+            32,
+            150,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Low Prod. Crouched spear tip flick forward just above the ground.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 19,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            28,
+            0,
+            120,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Overhead Wheel. A compact single-contact staff-like overhead turn of the spear.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 18,
+      "totalTicks": 33,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            -45,
+            35,
+            100,
+            90
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Extended Point. A long forward aerial spear thrust with exposed body behind.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            35,
+            28,
+            145,
+            32
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Downward Point. A short downward-diagonal spear poke; torso stays visible above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 22,
+      "totalTicks": 38,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            -70,
+            55,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Rising Pole. An upward spear sweep and one upward body impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 44,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -35,
+            20,
+            85,
+            140
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "spear_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: spear. Action: Falling Shaft. The fighter turns spear downward and commits to a narrow descending strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 12,
+      "recovery": 29,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            -15,
+            -90,
+            30,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_spear_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: Royal Reach. Saul braces his spear with both hands and drives its tip upward in a single near-vertical thrust; cloak spreads behind him.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 31,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            10,
+            40,
+            30,
+            155
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_spear_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: King’s Advance. Saul strides forward and thrusts once at chest height, leaning behind a long spear silhouette.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 34,
+      "totalTicks": 64,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            165,
+            55
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_spear_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: Border Sweep. Saul bends low and sweeps the spear shaft across the floor in front, with a clearly visible low ending pose.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 26,
+      "active": 7,
+      "recovery": 35,
+      "totalTicks": 68,
+      "collisionPhases": [
+        {
+          "firstTick": 26,
+          "lastTickExclusive": 33,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            155,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_sword_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: Crown Guard. Saul raises the sword from a guarded chest position into a broad upward arc, leaving his sides exposed.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 21,
+      "active": 6,
+      "recovery": 31,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 21,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            -33,
+            40,
+            65,
+            135
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_sword_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: Royal Cleave. Saul winds his sword behind one shoulder and releases a heavy diagonal cleave in front.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 6,
+      "recovery": 35,
+      "totalTicks": 66,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 31,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            125,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "saul_sword_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: saul. Action: Low Command. Saul lowers his body and makes one wide front-facing horizontal sword sweep at shin height.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 27,
+      "active": 6,
+      "recovery": 36,
+      "totalTicks": 69,
+      "collisionPhases": [
+        {
+          "firstTick": 27,
+          "lastTickExclusive": 33,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            125,
+            20
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    }
+  ]
+}

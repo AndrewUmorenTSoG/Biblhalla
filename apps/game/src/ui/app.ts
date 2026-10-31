@@ -9,6 +9,7 @@ import { CHAPTER_COLORS, SUMMARIES } from '../../../../packages/campaign/src/ind
 import { createProfiles } from '../storage/profile.ts';
 import { GameAudio } from '../audio/audio.ts';
 import { Renderer } from '../render/renderer.ts';
+import { paintArenaPreview } from '../render/arena-scenes.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
 import { Inputs } from '../input/inputs.ts';
 import { FixedStepRunner } from '../runner.ts';
@@ -95,6 +96,7 @@ function frame(now:number){const dt=lastTime?now-lastTime:1000/60;lastTime=now;
     if(active){
       const {sustained}=runner.advance(dt,()=>{
         const frames=inputs.readAll();
+        renderer.capture(world);
         if(replayPlayback)tickReplay();
         else if(scene){const f=world.fighters[0];A.step(scene,frames[f.inputId]||{});if(scene.checkpointEvent){const cp=scene.checkpointEvent;store.checkpoint(cp.level,cp.stage,cp.progress,cp.combatCleared,cp.seed);}}
         else {S.step(world,frames);if(replayRecord&&replayRecord.entries.length<24000)replayRecord.entries.push({kind:'input',frames});checkTutorial(frames);}
@@ -104,7 +106,7 @@ function frame(now:number){const dt=lastTime?now-lastTime:1000/60;lastTime=now;
       });
       if(sustained)pause('Performance pause');
     }else runner.reset();
-    renderer.paint(world,scene);if(world.tick-hudTick>=5||scene||world.phase==='result'){updateHud();hudTick=world.tick;}if((scene?.phase==='complete'||scene?.phase==='failed'||!scene&&world.phase==='result')&&!resultShown)showResult();
+    renderer.paint(world,scene,runner.accumulator/(1000/60),dt,active);if(world.tick-hudTick>=5||scene||world.phase==='result'){updateHud();hudTick=world.tick;}if((scene?.phase==='complete'||scene?.phase==='failed'||!scene&&world.phase==='result')&&!resultShown)showResult();
     if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}
   }
   requestAnimationFrame(frame);
@@ -131,7 +133,14 @@ document.querySelectorAll('[data-close]').forEach((b:any)=>b.addEventListener('c
 $('info-dialog').addEventListener('close',()=>{if(infoResume)resume();else if(world&&world.phase==='paused'&&!$('pause-dialog').open)open($('pause-dialog'));});
 $('pause-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();resume();});$('story-dialog').addEventListener('cancel',(e:Event)=>e.preventDefault());$('result-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();screen(scene?'chapters':'modes');});
 window.addEventListener('blur',()=>pause('Window lost focus'));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause('Game backgrounded');});window.addEventListener('orientationchange',()=>pause('Screen rotated — ready when you are'));
-for(const id of ['arena-select','local-arena'])for(const m of C.maps.maps){const opt=el('option',m.name) as HTMLOptionElement;opt.value=m.id;$(id).append(opt);}for(const f of C.fighters.fighters){const opt=el('option',f.name) as HTMLOptionElement;opt.value=f.id;$('opponent-select').append(opt);}$('opponent-select').value='samson';
+for(const id of ['arena-select','local-arena']){
+  const select=$(id) as HTMLSelectElement;
+  for(const m of C.maps.maps){const opt=el('option',m.name) as HTMLOptionElement;opt.value=m.id;select.append(opt);}
+  const preview=el('figure','','arena-preview');const canvas=document.createElement('canvas');canvas.width=640;canvas.height=360;canvas.setAttribute('aria-hidden','true');const caption=el('figcaption');preview.append(canvas,caption);select.closest('label')?.after(preview);
+  const draw=()=>{const map=C.maps.maps.find((m:any)=>m.id===select.value)??C.maps.maps[0];const backdrop=art.arenas?.[map.id]?.image;caption.textContent=map.name+' · '+map.scriptureContext;paintArenaPreview(canvas,map,backdrop);if(backdrop&&!backdrop.complete)backdrop.addEventListener('load',draw,{once:true});};
+  select.addEventListener('change',draw);draw();
+}
+for(const f of C.fighters.fighters){const opt=el('option',f.name) as HTMLOptionElement;opt.value=f.id;$('opponent-select').append(opt);}$('opponent-select').value='samson';
 renderRoster();renderLibrary();applySettings();updateHome();const homeRenderer=new Renderer($('home-art'),S,art);homeRenderer.rig('samson',330,500,2.4,1,'idle',0,0,'hammer');homeRenderer.rig('david',555,520,2.8,-1,'idle',0,0,'sling');
 root.BiblhallaLifecycle={suspend:()=>pause('App backgrounded')};
 // advanceFrame lets automated QA drive the display loop where requestAnimationFrame is throttled.

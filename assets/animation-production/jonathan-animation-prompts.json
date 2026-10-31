@@ -1,0 +1,696 @@
+{
+  "character": "jonathan",
+  "identity": "\n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n**Stats:** Power 4, Guard 3, Speed 8; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Light survivability and exploitable projectile recovery.\n\n",
+  "weaponPair": [
+    "bow",
+    "sword"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "sword_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Quick Edge. A compact front slash from chest guard, one clear contact pose.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 15,
+      "totalTicks": 26,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            28,
+            70,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Step Cut. A short advancing cut ending with the blade extended in front.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 31,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            28,
+            95,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Low Lift. Low body dip then a small rising blade flick toward the opponent’s feet.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            0,
+            80,
+            40
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Air Circle. One compact overhead blade circle while airborne; no lingering rotating hits.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            35,
+            95,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Open Edge. A forward aerial horizontal sword slash with knees tucked.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 20,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            110,
+            52
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Falling Slice. Blade angles downward in front as the body remains vulnerable above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 36,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            -55,
+            65,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Ascending Guard. A rising sword arc carries the fighter upward once.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 7,
+      "recovery": 22,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 18,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            20,
+            85,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Point Drop. A downward committed sword point with a visible overhead preparation.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 15,
+      "active": 12,
+      "recovery": 27,
+      "totalTicks": 54,
+      "collisionPhases": [
+        {
+          "firstTick": 15,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -65,
+            36,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "bow_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Quick Arrow. One short draw releases a horizontal training arrow.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 1,
+      "recovery": 19,
+      "totalTicks": 29,
+      "collisionPhases": []
+    },
+    {
+      "id": "bow_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Set Arrow. A visible longer draw releases one horizontal arrow after a short step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 1,
+      "recovery": 24,
+      "totalTicks": 38,
+      "collisionPhases": []
+    },
+    {
+      "id": "bow_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Low Arrow. A crouched low bow draw releases one arrow above floor level.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 1,
+      "recovery": 23,
+      "totalTicks": 36,
+      "collisionPhases": []
+    },
+    {
+      "id": "bow_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Bow Fan. One close overhead bow-body sweep, no arrow emitted.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 5,
+      "recovery": 18,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            32,
+            75,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "bow_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Air Arrow. One forward airborne arrow release with clearly exposed recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 1,
+      "recovery": 24,
+      "totalTicks": 38,
+      "collisionPhases": []
+    },
+    {
+      "id": "bow_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Downward Brace. A downward close bow-body strike with the bow safely braced.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 22,
+      "totalTicks": 38,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            -55,
+            55,
+            72
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "bow_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Archer Rise. A compact rising bow-body arc and one upward recovery impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 25,
+      "totalTicks": 45,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -25,
+            18,
+            75,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "bow_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: bow. Action: Bow Drop. A feet-first descending strike with bow held clear of the feet.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 12,
+      "recovery": 29,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -55,
+            36,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "jonathan_bow_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: High Signal. Jonathan draws his bow upward at a steep angle, releases one training arrow, and lowers his elbow.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 19,
+      "active": 5,
+      "recovery": 25,
+      "totalTicks": 49,
+      "collisionPhases": []
+    },
+    {
+      "id": "jonathan_bow_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: Arrow Message. Jonathan plants his leading foot, pulls the string to cheek level, and releases one horizontal arrow.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 23,
+      "active": 5,
+      "recovery": 29,
+      "totalTicks": 57,
+      "collisionPhases": []
+    },
+    {
+      "id": "jonathan_bow_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: Low Watch. Jonathan bends into a low archer stance and releases an arrow just above ground height.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 31,
+      "totalTicks": 61,
+      "collisionPhases": []
+    },
+    {
+      "id": "jonathan_sword_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: Loyal Rise. Jonathan lifts the sword in a compact upper diagonal slash with his free arm balancing behind.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 5,
+      "recovery": 24,
+      "totalTicks": 45,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 21,
+          "shape": "rect",
+          "rectUnits": [
+            -28,
+            40,
+            55,
+            115
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "jonathan_sword_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: Friend’s Resolve. Jonathan glides forward in a short lunge and strikes once through the front lane.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 20,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 53,
+      "collisionPhases": [
+        {
+          "firstTick": 20,
+          "lastTickExclusive": 25,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            110,
+            55
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "jonathan_sword_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: jonathan. Action: Covering Sweep. Jonathan crouches and cuts low ahead, keeping his body silhouette narrow.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 23,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 23,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            105,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    }
+  ]
+}

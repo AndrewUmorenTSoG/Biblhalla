@@ -1,7 +1,7 @@
 {
   "samson": {
-    "image": "assets/runtime/fighters/samson.png",
-    "sha256": "8074c0cc12de80f9ebfe2b5a07777627a822da983a75493f5b617b2e496aae5f",
+    "image": "assets/runtime/fighters/samson-attacks.png",
+    "sha256": "090acca487a2f4495aa22be3b46ab98393c9e52ea61ab93f065ecce107e3f9bf",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/03_samson_move_sheet.png",
     "sourceSha256": "e98fbb30588fd33a85e7cd7a94a6e6ab9929f104408ef0618a8ed6c328e5b8f4",
@@ -89,12 +89,727 @@
         "pivotX": 76,
         "pivotY": 203,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 454,
+        "w": 131,
+        "h": 220,
+        "pivotX": 79,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 265,
+        "y": 454,
+        "w": 206,
+        "h": 220,
+        "pivotX": 120,
+        "pivotY": 220
+      },
+      "run_1": {
+        "x": 522,
+        "y": 454,
+        "w": 206,
+        "h": 220,
+        "pivotX": 112,
+        "pivotY": 220
+      },
+      "run_2": {
+        "x": 779,
+        "y": 454,
+        "w": 178,
+        "h": 230,
+        "pivotX": 98,
+        "pivotY": 230
+      },
+      "run_3": {
+        "x": 8,
+        "y": 711,
+        "w": 184,
+        "h": 233,
+        "pivotX": 105,
+        "pivotY": 233
+      },
+      "run_4": {
+        "x": 265,
+        "y": 711,
+        "w": 209,
+        "h": 218,
+        "pivotX": 117,
+        "pivotY": 218
+      },
+      "run_5": {
+        "x": 522,
+        "y": 711,
+        "w": 199,
+        "h": 202,
+        "pivotX": 103,
+        "pivotY": 202
+      },
+      "run_6": {
+        "x": 779,
+        "y": 711,
+        "w": 157,
+        "h": 223,
+        "pivotX": 84,
+        "pivotY": 223
+      },
+      "run_7": {
+        "x": 8,
+        "y": 968,
+        "w": 207,
+        "h": 216,
+        "pivotX": 117,
+        "pivotY": 216
+      },
+      "air_rise": {
+        "x": 265,
+        "y": 968,
+        "w": 148,
+        "h": 213,
+        "pivotX": 83,
+        "pivotY": 213
+      },
+      "air_apex": {
+        "x": 522,
+        "y": 968,
+        "w": 145,
+        "h": 200,
+        "pivotX": 85,
+        "pivotY": 200
+      },
+      "air_fall": {
+        "x": 779,
+        "y": 968,
+        "w": 164,
+        "h": 199,
+        "pivotX": 96,
+        "pivotY": 199
+      },
+      "land": {
+        "x": 8,
+        "y": 1225,
+        "w": 164,
+        "h": 142,
+        "pivotX": 106,
+        "pivotY": 142
+      },
+      "attack_gauntlets_0": {
+        "x": 8,
+        "y": 1482,
+        "w": 204,
+        "h": 203,
+        "pivotX": 112,
+        "pivotY": 203
+      },
+      "attack_gauntlets_1": {
+        "x": 265,
+        "y": 1482,
+        "w": 207,
+        "h": 210,
+        "pivotX": 102,
+        "pivotY": 210
+      },
+      "attack_gauntlets_2": {
+        "x": 522,
+        "y": 1482,
+        "w": 206,
+        "h": 180,
+        "pivotX": 109,
+        "pivotY": 180
+      },
+      "attack_gauntlets_3": {
+        "x": 779,
+        "y": 1482,
+        "w": 229,
+        "h": 200,
+        "pivotX": 121,
+        "pivotY": 200
+      },
+      "attack_gauntlets_4": {
+        "x": 8,
+        "y": 1739,
+        "w": 234,
+        "h": 204,
+        "pivotX": 124,
+        "pivotY": 204
+      },
+      "attack_gauntlets_5": {
+        "x": 265,
+        "y": 1739,
+        "w": 212,
+        "h": 192,
+        "pivotX": 102,
+        "pivotY": 192
+      },
+      "attack_gauntlets_6": {
+        "x": 522,
+        "y": 1739,
+        "w": 186,
+        "h": 208,
+        "pivotX": 79,
+        "pivotY": 208
+      },
+      "attack_gauntlets_7": {
+        "x": 779,
+        "y": 1739,
+        "w": 197,
+        "h": 207,
+        "pivotX": 97,
+        "pivotY": 207
+      },
+      "attack_hammer_0": {
+        "x": 8,
+        "y": 1996,
+        "w": 218,
+        "h": 197,
+        "pivotX": 116,
+        "pivotY": 197
+      },
+      "attack_hammer_1": {
+        "x": 265,
+        "y": 1996,
+        "w": 205,
+        "h": 230,
+        "pivotX": 109,
+        "pivotY": 230
+      },
+      "attack_hammer_2": {
+        "x": 522,
+        "y": 1996,
+        "w": 230,
+        "h": 165,
+        "pivotX": 123,
+        "pivotY": 165
+      },
+      "attack_hammer_3": {
+        "x": 779,
+        "y": 1996,
+        "w": 202,
+        "h": 200,
+        "pivotX": 124,
+        "pivotY": 200
+      },
+      "attack_hammer_4": {
+        "x": 8,
+        "y": 2253,
+        "w": 234,
+        "h": 209,
+        "pivotX": 124,
+        "pivotY": 209
+      },
+      "attack_hammer_5": {
+        "x": 265,
+        "y": 2253,
+        "w": 220,
+        "h": 191,
+        "pivotX": 110,
+        "pivotY": 191
+      },
+      "attack_hammer_6": {
+        "x": 522,
+        "y": 2253,
+        "w": 202,
+        "h": 186,
+        "pivotX": 92,
+        "pivotY": 186
+      },
+      "attack_hammer_7": {
+        "x": 779,
+        "y": 2253,
+        "w": 203,
+        "h": 195,
+        "pivotX": 94,
+        "pivotY": 195
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "gauntlets_nlight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          2,
+          2,
+          2,
+          3,
+          5,
+          5,
+          4
+        ]
+      },
+      "gauntlets_slight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "gauntlets_dlight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          6,
+          5,
+          5
+        ]
+      },
+      "gauntlets_nair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "gauntlets_sair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "gauntlets_dair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          7,
+          6
+        ]
+      },
+      "gauntlets_recovery": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "gauntlets_ground_pound": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          12,
+          9,
+          9,
+          8
+        ]
+      },
+      "hammer_nlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "hammer_slight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "hammer_dlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_nair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_sair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_dair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_recovery": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          7,
+          10,
+          9,
+          9
+        ]
+      },
+      "hammer_ground_pound": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "light",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          12,
+          11,
+          11,
+          11
+        ]
+      },
+      "samson_gauntlets_nsig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_n",
+          "sig_gauntlets_n",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "samson_gauntlets_ssig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_s",
+          "sig_gauntlets_s",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          12,
+          12,
+          11
+        ]
+      },
+      "samson_gauntlets_dsig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_d",
+          "sig_gauntlets_d",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          12
+        ]
+      },
+      "samson_hammer_nsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_n",
+          "sig_hammer_n",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          12,
+          11,
+          11
+        ]
+      },
+      "samson_hammer_ssig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_s",
+          "sig_hammer_s",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          10,
+          9,
+          9,
+          7,
+          13,
+          13,
+          12
+        ]
+      },
+      "samson_hammer_dsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_d",
+          "sig_hammer_d",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          10,
+          10,
+          10,
+          7,
+          13,
+          13,
+          13
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/samson-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_gauntlets_4",
+        "attack_gauntlets_5",
+        "attack_hammer_2",
+        "attack_hammer_4",
+        "attack_hammer_5",
+        "attack_hammer_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "david": {
-    "image": "assets/runtime/fighters/david.png",
-    "sha256": "58d6111fd7b43759ca53fd97ad4ec41dd4b9f8c4c734544337d877272c8e9039",
+    "image": "assets/runtime/fighters/david-complete.png",
+    "sha256": "98fe709ebb4a191c75b278089d7c5af684b69e33e81e0c411df4b859a1a69086",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/01_david_move_sheet.png",
     "sourceSha256": "7fb4eff4652224b197097200a466a7ede487a1305accc20384082704a3cf9d6a",
@@ -182,12 +897,1081 @@
         "pivotX": 46,
         "pivotY": 168,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 455,
+        "w": 122,
+        "h": 220,
+        "pivotX": 70,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 273,
+        "y": 455,
+        "w": 218,
+        "h": 240,
+        "pivotX": 119,
+        "pivotY": 240
+      },
+      "run_1": {
+        "x": 538,
+        "y": 455,
+        "w": 208,
+        "h": 237,
+        "pivotX": 103,
+        "pivotY": 237
+      },
+      "run_2": {
+        "x": 803,
+        "y": 455,
+        "w": 196,
+        "h": 241,
+        "pivotX": 100,
+        "pivotY": 241
+      },
+      "run_3": {
+        "x": 8,
+        "y": 720,
+        "w": 221,
+        "h": 238,
+        "pivotX": 120,
+        "pivotY": 238
+      },
+      "run_4": {
+        "x": 273,
+        "y": 720,
+        "w": 191,
+        "h": 237,
+        "pivotX": 98,
+        "pivotY": 237
+      },
+      "run_5": {
+        "x": 538,
+        "y": 720,
+        "w": 186,
+        "h": 240,
+        "pivotX": 103,
+        "pivotY": 240
+      },
+      "run_6": {
+        "x": 803,
+        "y": 720,
+        "w": 202,
+        "h": 237,
+        "pivotX": 109,
+        "pivotY": 237
+      },
+      "run_7": {
+        "x": 8,
+        "y": 985,
+        "w": 227,
+        "h": 238,
+        "pivotX": 125,
+        "pivotY": 238
+      },
+      "air_rise": {
+        "x": 273,
+        "y": 985,
+        "w": 183,
+        "h": 229,
+        "pivotX": 106,
+        "pivotY": 229
+      },
+      "air_apex": {
+        "x": 538,
+        "y": 985,
+        "w": 185,
+        "h": 185,
+        "pivotX": 107,
+        "pivotY": 185
+      },
+      "air_fall": {
+        "x": 803,
+        "y": 985,
+        "w": 165,
+        "h": 199,
+        "pivotX": 95,
+        "pivotY": 199
+      },
+      "land": {
+        "x": 8,
+        "y": 1250,
+        "w": 168,
+        "h": 150,
+        "pivotX": 93,
+        "pivotY": 150
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 1515,
+        "w": 209,
+        "h": 224,
+        "pivotX": 112,
+        "pivotY": 224
+      },
+      "attack_sword_1": {
+        "x": 273,
+        "y": 1515,
+        "w": 216,
+        "h": 227,
+        "pivotX": 102,
+        "pivotY": 227
+      },
+      "attack_sword_2": {
+        "x": 538,
+        "y": 1515,
+        "w": 224,
+        "h": 237,
+        "pivotX": 112,
+        "pivotY": 237
+      },
+      "attack_sword_3": {
+        "x": 803,
+        "y": 1515,
+        "w": 232,
+        "h": 230,
+        "pivotX": 118,
+        "pivotY": 230
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 1780,
+        "w": 242,
+        "h": 216,
+        "pivotX": 128,
+        "pivotY": 216
+      },
+      "attack_sword_5": {
+        "x": 273,
+        "y": 1780,
+        "w": 216,
+        "h": 221,
+        "pivotX": 102,
+        "pivotY": 221
+      },
+      "attack_sword_6": {
+        "x": 538,
+        "y": 1780,
+        "w": 222,
+        "h": 223,
+        "pivotX": 116,
+        "pivotY": 223
+      },
+      "attack_sword_7": {
+        "x": 803,
+        "y": 1780,
+        "w": 209,
+        "h": 224,
+        "pivotX": 112,
+        "pivotY": 224
+      },
+      "attack_sling_0": {
+        "x": 8,
+        "y": 2045,
+        "w": 194,
+        "h": 219,
+        "pivotX": 111,
+        "pivotY": 219
+      },
+      "attack_sling_1": {
+        "x": 273,
+        "y": 2045,
+        "w": 228,
+        "h": 214,
+        "pivotX": 128,
+        "pivotY": 214
+      },
+      "attack_sling_2": {
+        "x": 538,
+        "y": 2045,
+        "w": 231,
+        "h": 201,
+        "pivotX": 123,
+        "pivotY": 201
+      },
+      "attack_sling_3": {
+        "x": 803,
+        "y": 2045,
+        "w": 209,
+        "h": 235,
+        "pivotX": 128,
+        "pivotY": 235
+      },
+      "attack_sling_4": {
+        "x": 8,
+        "y": 2310,
+        "w": 211,
+        "h": 205,
+        "pivotX": 120,
+        "pivotY": 205
+      },
+      "attack_sling_5": {
+        "x": 273,
+        "y": 2310,
+        "w": 202,
+        "h": 204,
+        "pivotX": 88,
+        "pivotY": 204
+      },
+      "attack_sling_6": {
+        "x": 538,
+        "y": 2310,
+        "w": 191,
+        "h": 207,
+        "pivotX": 77,
+        "pivotY": 207
+      },
+      "attack_sling_7": {
+        "x": 803,
+        "y": 2310,
+        "w": 194,
+        "h": 219,
+        "pivotX": 107,
+        "pivotY": 219
+      },
+      "defence_0": {
+        "x": 8,
+        "y": 2575,
+        "w": 152,
+        "h": 220,
+        "pivotX": 75,
+        "pivotY": 220
+      },
+      "defence_1": {
+        "x": 252,
+        "y": 2575,
+        "w": 188,
+        "h": 216,
+        "pivotX": 95,
+        "pivotY": 216
+      },
+      "defence_2": {
+        "x": 496,
+        "y": 2575,
+        "w": 228,
+        "h": 216,
+        "pivotX": 85,
+        "pivotY": 216
+      },
+      "defence_3": {
+        "x": 740,
+        "y": 2575,
+        "w": 152,
+        "h": 219,
+        "pivotX": 76,
+        "pivotY": 219
+      },
+      "defence_4": {
+        "x": 8,
+        "y": 2823,
+        "w": 152,
+        "h": 225,
+        "pivotX": 76,
+        "pivotY": 225
+      },
+      "defence_5": {
+        "x": 252,
+        "y": 2823,
+        "w": 145,
+        "h": 231,
+        "pivotX": 57,
+        "pivotY": 231
+      },
+      "defence_6": {
+        "x": 496,
+        "y": 2823,
+        "w": 213,
+        "h": 226,
+        "pivotX": 52,
+        "pivotY": 226
+      },
+      "defence_7": {
+        "x": 740,
+        "y": 2823,
+        "w": 123,
+        "h": 231,
+        "pivotX": 60,
+        "pivotY": 231
+      },
+      "defence_8": {
+        "x": 8,
+        "y": 3071,
+        "w": 153,
+        "h": 212,
+        "pivotX": 77,
+        "pivotY": 212
+      },
+      "defence_9": {
+        "x": 252,
+        "y": 3071,
+        "w": 168,
+        "h": 158,
+        "pivotX": 84,
+        "pivotY": 158
+      },
+      "defence_10": {
+        "x": 496,
+        "y": 3071,
+        "w": 222,
+        "h": 176,
+        "pivotX": 78,
+        "pivotY": 176
+      },
+      "defence_11": {
+        "x": 740,
+        "y": 3071,
+        "w": 152,
+        "h": 215,
+        "pivotX": 77,
+        "pivotY": 215
+      },
+      "defence_12": {
+        "x": 8,
+        "y": 3319,
+        "w": 152,
+        "h": 218,
+        "pivotX": 76,
+        "pivotY": 218
+      },
+      "defence_13": {
+        "x": 252,
+        "y": 3319,
+        "w": 170,
+        "h": 215,
+        "pivotX": 98,
+        "pivotY": 215
+      },
+      "defence_14": {
+        "x": 496,
+        "y": 3319,
+        "w": 164,
+        "h": 212,
+        "pivotX": 72,
+        "pivotY": 212
+      },
+      "defence_15": {
+        "x": 740,
+        "y": 3319,
+        "w": 152,
+        "h": 219,
+        "pivotX": 77,
+        "pivotY": 219
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "sling_nlight": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          1,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_slight": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "attack_sling_4",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_dlight": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sling_nair": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_sair": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          8,
+          7
+        ]
+      },
+      "sling_dair": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_recovery": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "sling_ground_pound": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          12,
+          10,
+          9,
+          9
+        ]
+      },
+      "david_sling_nsig": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "sig_sling_n",
+          "sig_sling_n",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          6,
+          5,
+          8,
+          8,
+          8
+        ]
+      },
+      "david_sling_ssig": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "sig_sling_s",
+          "sig_sling_s",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          6,
+          10,
+          9,
+          9
+        ]
+      },
+      "david_sling_dsig": {
+        "frames": [
+          "attack_sling_0",
+          "idle",
+          "attack_sling_2",
+          "sig_sling_d",
+          "sig_sling_d",
+          "idle",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          10,
+          10,
+          10
+        ]
+      },
+      "david_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "sig_sword_n",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          5,
+          8,
+          8,
+          8
+        ]
+      },
+      "david_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "sig_sword_s",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          7,
+          5,
+          10,
+          10,
+          9
+        ]
+      },
+      "david_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "sig_sword_d",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          6,
+          10,
+          10,
+          10
+        ]
+      },
+      "idle": {
+        "frames": [
+          "defence_0"
+        ],
+        "ticks": [
+          60
+        ]
+      },
+      "jump": {
+        "frames": [
+          "air_rise",
+          "air_apex",
+          "air_fall"
+        ],
+        "ticks": [
+          6,
+          6,
+          6
+        ],
+        "loop": false
+      },
+      "dodge": {
+        "frames": [
+          "defence_8",
+          "defence_9",
+          "defence_10",
+          "defence_11"
+        ],
+        "ticks": [
+          2,
+          5,
+          5,
+          5
+        ],
+        "loop": false
+      },
+      "hitstun": {
+        "frames": [
+          "defence_13",
+          "defence_14"
+        ],
+        "ticks": [
+          5,
+          7
+        ],
+        "loop": false
+      },
+      "unarmed_nlight": {
+        "frames": [
+          "defence_0",
+          "defence_1",
+          "defence_2",
+          "defence_3",
+          "defence_0"
+        ],
+        "ticks": [
+          2,
+          4,
+          3,
+          9,
+          6
+        ]
+      },
+      "unarmed_slight": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          2,
+          6,
+          4,
+          11,
+          7
+        ]
+      },
+      "unarmed_dlight": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          2,
+          5,
+          4,
+          11,
+          6
+        ]
+      },
+      "unarmed_nair": {
+        "frames": [
+          "defence_0",
+          "defence_1",
+          "defence_2",
+          "defence_3",
+          "defence_0"
+        ],
+        "ticks": [
+          2,
+          6,
+          4,
+          11,
+          6
+        ]
+      },
+      "unarmed_sair": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          3,
+          7,
+          4,
+          13,
+          7
+        ]
+      },
+      "unarmed_dair": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          3,
+          7,
+          4,
+          13,
+          8
+        ]
+      },
+      "unarmed_recovery": {
+        "frames": [
+          "defence_0",
+          "defence_1",
+          "defence_2",
+          "defence_3",
+          "defence_0"
+        ],
+        "ticks": [
+          4,
+          8,
+          7,
+          15,
+          9
+        ]
+      },
+      "unarmed_ground_pound": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          5,
+          11,
+          12,
+          18,
+          10
+        ]
+      },
+      "unarmed_nsig": {
+        "frames": [
+          "defence_0",
+          "defence_1",
+          "defence_2",
+          "defence_3",
+          "defence_0"
+        ],
+        "ticks": [
+          6,
+          12,
+          5,
+          16,
+          10
+        ]
+      },
+      "unarmed_ssig": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          7,
+          15,
+          5,
+          18,
+          10
+        ]
+      },
+      "unarmed_dsig": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7",
+          "defence_0"
+        ],
+        "ticks": [
+          8,
+          17,
+          5,
+          19,
+          11
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/david-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_sword_4",
+        "attack_sword_5",
+        "attack_sling_1",
+        "attack_sling_5",
+        "attack_sling_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+    },
+    "defenceAnimation": {
+      "readiness": "animation_alpha",
+      "notes": "New punch, kick, dodge and recoil drawings. Unarmed directional moves share punch/kick poses; no added gameplay displacement."
     }
   },
   "saul": {
-    "image": "assets/runtime/fighters/saul.png",
-    "sha256": "171e8245a9de3754d1a0672bdeaf13536eacb1f135b042220eac788e43611dbe",
+    "image": "assets/runtime/fighters/saul-attacks.png",
+    "sha256": "b5ca480324773df1d9d75a85e865209a9e9f49aea94068dd9c85dea59a6d1256",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/02_saul_move_sheet.png",
     "sourceSha256": "ddafceec80c6d6cbb2db61ae2100888fec5b47636ce0f8d9302990f1ceb35b98",
@@ -275,12 +2059,728 @@
         "pivotX": 32,
         "pivotY": 171,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 486,
+        "w": 147,
+        "h": 220,
+        "pivotX": 89,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 255,
+        "y": 486,
+        "w": 192,
+        "h": 216,
+        "pivotX": 112,
+        "pivotY": 216
+      },
+      "run_1": {
+        "x": 502,
+        "y": 486,
+        "w": 196,
+        "h": 205,
+        "pivotX": 112,
+        "pivotY": 205
+      },
+      "run_2": {
+        "x": 749,
+        "y": 486,
+        "w": 198,
+        "h": 210,
+        "pivotX": 113,
+        "pivotY": 210
+      },
+      "run_3": {
+        "x": 8,
+        "y": 733,
+        "w": 183,
+        "h": 201,
+        "pivotX": 103,
+        "pivotY": 201
+      },
+      "run_4": {
+        "x": 255,
+        "y": 733,
+        "w": 199,
+        "h": 204,
+        "pivotX": 106,
+        "pivotY": 204
+      },
+      "run_5": {
+        "x": 502,
+        "y": 733,
+        "w": 193,
+        "h": 212,
+        "pivotX": 107,
+        "pivotY": 212
+      },
+      "run_6": {
+        "x": 749,
+        "y": 733,
+        "w": 187,
+        "h": 204,
+        "pivotX": 112,
+        "pivotY": 204
+      },
+      "run_7": {
+        "x": 8,
+        "y": 980,
+        "w": 200,
+        "h": 208,
+        "pivotX": 115,
+        "pivotY": 208
+      },
+      "air_rise": {
+        "x": 255,
+        "y": 980,
+        "w": 197,
+        "h": 160,
+        "pivotX": 102,
+        "pivotY": 160
+      },
+      "air_apex": {
+        "x": 502,
+        "y": 980,
+        "w": 185,
+        "h": 144,
+        "pivotX": 94,
+        "pivotY": 144
+      },
+      "air_fall": {
+        "x": 749,
+        "y": 980,
+        "w": 178,
+        "h": 210,
+        "pivotX": 114,
+        "pivotY": 210
+      },
+      "land": {
+        "x": 8,
+        "y": 1227,
+        "w": 189,
+        "h": 135,
+        "pivotX": 119,
+        "pivotY": 135
+      },
+      "attack_spear_0": {
+        "x": 8,
+        "y": 1474,
+        "w": 224,
+        "h": 212,
+        "pivotX": 119,
+        "pivotY": 212
+      },
+      "attack_spear_1": {
+        "x": 255,
+        "y": 1474,
+        "w": 212,
+        "h": 212,
+        "pivotX": 114,
+        "pivotY": 212
+      },
+      "attack_spear_2": {
+        "x": 502,
+        "y": 1474,
+        "w": 216,
+        "h": 176,
+        "pivotX": 111,
+        "pivotY": 176
+      },
+      "attack_spear_3": {
+        "x": 749,
+        "y": 1474,
+        "w": 214,
+        "h": 194,
+        "pivotX": 108,
+        "pivotY": 194
+      },
+      "attack_spear_4": {
+        "x": 8,
+        "y": 1721,
+        "w": 224,
+        "h": 184,
+        "pivotX": 119,
+        "pivotY": 184
+      },
+      "attack_spear_5": {
+        "x": 255,
+        "y": 1721,
+        "w": 192,
+        "h": 184,
+        "pivotX": 87,
+        "pivotY": 184
+      },
+      "attack_spear_6": {
+        "x": 502,
+        "y": 1721,
+        "w": 223,
+        "h": 193,
+        "pivotX": 118,
+        "pivotY": 193
+      },
+      "attack_spear_7": {
+        "x": 749,
+        "y": 1721,
+        "w": 224,
+        "h": 214,
+        "pivotX": 119,
+        "pivotY": 214
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 1968,
+        "w": 219,
+        "h": 215,
+        "pivotX": 114,
+        "pivotY": 215
+      },
+      "attack_sword_1": {
+        "x": 255,
+        "y": 1968,
+        "w": 203,
+        "h": 214,
+        "pivotX": 103,
+        "pivotY": 214
+      },
+      "attack_sword_2": {
+        "x": 502,
+        "y": 1968,
+        "w": 216,
+        "h": 186,
+        "pivotX": 111,
+        "pivotY": 186
+      },
+      "attack_sword_3": {
+        "x": 749,
+        "y": 1968,
+        "w": 215,
+        "h": 213,
+        "pivotX": 109,
+        "pivotY": 213
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 2215,
+        "w": 212,
+        "h": 195,
+        "pivotX": 106,
+        "pivotY": 195
+      },
+      "attack_sword_5": {
+        "x": 255,
+        "y": 2215,
+        "w": 205,
+        "h": 189,
+        "pivotX": 100,
+        "pivotY": 189
+      },
+      "attack_sword_6": {
+        "x": 502,
+        "y": 2215,
+        "w": 199,
+        "h": 197,
+        "pivotX": 94,
+        "pivotY": 197
+      },
+      "attack_sword_7": {
+        "x": 749,
+        "y": 2215,
+        "w": 214,
+        "h": 207,
+        "pivotX": 112,
+        "pivotY": 207
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "spear_nlight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "spear_slight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          4,
+          7,
+          7,
+          7
+        ]
+      },
+      "spear_dlight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "spear_nair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "spear_sair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "spear_dair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "spear_recovery": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "spear_ground_pound": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "saul_spear_nsig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_n",
+          "sig_spear_n",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "saul_spear_ssig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_s",
+          "sig_spear_s",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          5,
+          12,
+          11,
+          11
+        ]
+      },
+      "saul_spear_dsig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_d",
+          "sig_spear_d",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          8,
+          7,
+          12,
+          12,
+          11
+        ]
+      },
+      "saul_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "sig_sword_n",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          7,
+          6,
+          11,
+          10,
+          10
+        ]
+      },
+      "saul_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "sig_sword_s",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          6,
+          12,
+          12,
+          11
+        ]
+      },
+      "saul_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "sig_sword_d",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          12
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/saul-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_spear_3",
+        "attack_spear_4",
+        "attack_spear_5",
+        "attack_spear_6",
+        "attack_sword_3",
+        "attack_sword_4",
+        "attack_sword_5"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "joshua": {
-    "image": "assets/runtime/fighters/joshua.png",
-    "sha256": "08aea58f46000be5dda3c0a4c8810ef564a6dad4abef017971c2ed596a9dc962",
+    "image": "assets/runtime/fighters/joshua-attacks.png",
+    "sha256": "27e6a0263492b971f1c59310a1b1b9909a1db29a7db9abd5d92d4fbeb9a26e7d",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
     "sourceSha256": "653dbd20e984453897a03cbe7e700ea5e32dda95ddae05036dd153e972d5241d",
@@ -368,12 +2868,726 @@
         "pivotX": 109,
         "pivotY": 185,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 461,
+        "w": 139,
+        "h": 220,
+        "pivotX": 84,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 276,
+        "y": 461,
+        "w": 210,
+        "h": 220,
+        "pivotX": 113,
+        "pivotY": 220
+      },
+      "run_1": {
+        "x": 544,
+        "y": 461,
+        "w": 193,
+        "h": 220,
+        "pivotX": 103,
+        "pivotY": 220
+      },
+      "run_2": {
+        "x": 812,
+        "y": 461,
+        "w": 161,
+        "h": 219,
+        "pivotX": 88,
+        "pivotY": 219
+      },
+      "run_3": {
+        "x": 8,
+        "y": 729,
+        "w": 210,
+        "h": 221,
+        "pivotX": 121,
+        "pivotY": 221
+      },
+      "run_4": {
+        "x": 276,
+        "y": 729,
+        "w": 212,
+        "h": 222,
+        "pivotX": 115,
+        "pivotY": 222
+      },
+      "run_5": {
+        "x": 544,
+        "y": 729,
+        "w": 183,
+        "h": 222,
+        "pivotX": 104,
+        "pivotY": 222
+      },
+      "run_6": {
+        "x": 812,
+        "y": 729,
+        "w": 197,
+        "h": 222,
+        "pivotX": 108,
+        "pivotY": 222
+      },
+      "run_7": {
+        "x": 8,
+        "y": 997,
+        "w": 197,
+        "h": 220,
+        "pivotX": 114,
+        "pivotY": 220
+      },
+      "air_rise": {
+        "x": 276,
+        "y": 997,
+        "w": 187,
+        "h": 227,
+        "pivotX": 95,
+        "pivotY": 227
+      },
+      "air_apex": {
+        "x": 544,
+        "y": 997,
+        "w": 189,
+        "h": 166,
+        "pivotX": 101,
+        "pivotY": 166
+      },
+      "air_fall": {
+        "x": 812,
+        "y": 997,
+        "w": 211,
+        "h": 195,
+        "pivotX": 114,
+        "pivotY": 195
+      },
+      "land": {
+        "x": 8,
+        "y": 1265,
+        "w": 192,
+        "h": 139,
+        "pivotX": 112,
+        "pivotY": 139
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 1533,
+        "w": 206,
+        "h": 201,
+        "pivotX": 108,
+        "pivotY": 201
+      },
+      "attack_sword_1": {
+        "x": 276,
+        "y": 1533,
+        "w": 202,
+        "h": 222,
+        "pivotX": 120,
+        "pivotY": 222
+      },
+      "attack_sword_2": {
+        "x": 544,
+        "y": 1533,
+        "w": 219,
+        "h": 170,
+        "pivotX": 129,
+        "pivotY": 170
+      },
+      "attack_sword_3": {
+        "x": 812,
+        "y": 1533,
+        "w": 236,
+        "h": 189,
+        "pivotX": 130,
+        "pivotY": 189
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 1801,
+        "w": 245,
+        "h": 180,
+        "pivotX": 130,
+        "pivotY": 180
+      },
+      "attack_sword_5": {
+        "x": 276,
+        "y": 1801,
+        "w": 238,
+        "h": 186,
+        "pivotX": 123,
+        "pivotY": 186
+      },
+      "attack_sword_6": {
+        "x": 544,
+        "y": 1801,
+        "w": 225,
+        "h": 195,
+        "pivotX": 118,
+        "pivotY": 195
+      },
+      "attack_sword_7": {
+        "x": 812,
+        "y": 1801,
+        "w": 211,
+        "h": 205,
+        "pivotX": 111,
+        "pivotY": 205
+      },
+      "attack_spear_0": {
+        "x": 8,
+        "y": 2069,
+        "w": 212,
+        "h": 187,
+        "pivotX": 97,
+        "pivotY": 187
+      },
+      "attack_spear_1": {
+        "x": 276,
+        "y": 2069,
+        "w": 230,
+        "h": 211,
+        "pivotX": 115,
+        "pivotY": 211
+      },
+      "attack_spear_2": {
+        "x": 544,
+        "y": 2069,
+        "w": 235,
+        "h": 172,
+        "pivotX": 120,
+        "pivotY": 172
+      },
+      "attack_spear_3": {
+        "x": 812,
+        "y": 2069,
+        "w": 211,
+        "h": 175,
+        "pivotX": 96,
+        "pivotY": 175
+      },
+      "attack_spear_4": {
+        "x": 8,
+        "y": 2337,
+        "w": 229,
+        "h": 168,
+        "pivotX": 114,
+        "pivotY": 168
+      },
+      "attack_spear_5": {
+        "x": 276,
+        "y": 2337,
+        "w": 201,
+        "h": 176,
+        "pivotX": 86,
+        "pivotY": 176
+      },
+      "attack_spear_6": {
+        "x": 544,
+        "y": 2337,
+        "w": 213,
+        "h": 184,
+        "pivotX": 99,
+        "pivotY": 184
+      },
+      "attack_spear_7": {
+        "x": 812,
+        "y": 2337,
+        "w": 219,
+        "h": 186,
+        "pivotX": 109,
+        "pivotY": 186
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "spear_nlight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "spear_slight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          4,
+          7,
+          7,
+          7
+        ]
+      },
+      "spear_dlight": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "spear_nair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "spear_sair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "spear_dair": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "spear_recovery": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "spear_ground_pound": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "joshua_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          6,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "joshua_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          5,
+          10,
+          10,
+          9
+        ]
+      },
+      "joshua_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "attack_sword_5",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          11,
+          10,
+          10
+        ]
+      },
+      "joshua_spear_nsig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_n",
+          "sig_spear_n",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "joshua_spear_ssig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_s",
+          "sig_spear_s",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "joshua_spear_dsig": {
+        "frames": [
+          "attack_spear_0",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_d",
+          "sig_spear_d",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          6,
+          11,
+          11,
+          10
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/joshua-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_sword_4",
+        "attack_spear_3",
+        "attack_spear_4",
+        "attack_spear_5",
+        "attack_spear_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "deborah": {
-    "image": "assets/runtime/fighters/deborah.png",
-    "sha256": "c0de7c358da3bdda7b2a3df2170d2816205278adbbe6d3d5218be182effb7913",
+    "image": "assets/runtime/fighters/deborah-attacks.png",
+    "sha256": "a8e7434c61a78af6b2bf0d35b7509332fcb3e01619a2d6cdc9509ae319d8e0a6",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
     "sourceSha256": "abfd154eda09646e8e8f628ac36ff03da398d18cbdacc34867d1328c76efe716",
@@ -461,12 +3675,726 @@
         "pivotX": 77,
         "pivotY": 177,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 455,
+        "w": 109,
+        "h": 220,
+        "pivotX": 61,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 264,
+        "y": 455,
+        "w": 188,
+        "h": 221,
+        "pivotX": 111,
+        "pivotY": 221
+      },
+      "run_1": {
+        "x": 520,
+        "y": 455,
+        "w": 189,
+        "h": 220,
+        "pivotX": 116,
+        "pivotY": 220
+      },
+      "run_2": {
+        "x": 776,
+        "y": 455,
+        "w": 202,
+        "h": 221,
+        "pivotX": 118,
+        "pivotY": 221
+      },
+      "run_3": {
+        "x": 8,
+        "y": 711,
+        "w": 182,
+        "h": 224,
+        "pivotX": 120,
+        "pivotY": 224
+      },
+      "run_4": {
+        "x": 264,
+        "y": 711,
+        "w": 181,
+        "h": 204,
+        "pivotX": 107,
+        "pivotY": 204
+      },
+      "run_5": {
+        "x": 520,
+        "y": 711,
+        "w": 191,
+        "h": 221,
+        "pivotX": 103,
+        "pivotY": 221
+      },
+      "run_6": {
+        "x": 776,
+        "y": 711,
+        "w": 205,
+        "h": 221,
+        "pivotX": 114,
+        "pivotY": 221
+      },
+      "run_7": {
+        "x": 8,
+        "y": 967,
+        "w": 182,
+        "h": 221,
+        "pivotX": 109,
+        "pivotY": 221
+      },
+      "air_rise": {
+        "x": 264,
+        "y": 967,
+        "w": 157,
+        "h": 189,
+        "pivotX": 87,
+        "pivotY": 189
+      },
+      "air_apex": {
+        "x": 520,
+        "y": 967,
+        "w": 153,
+        "h": 164,
+        "pivotX": 96,
+        "pivotY": 164
+      },
+      "air_fall": {
+        "x": 776,
+        "y": 967,
+        "w": 176,
+        "h": 174,
+        "pivotX": 82,
+        "pivotY": 174
+      },
+      "land": {
+        "x": 8,
+        "y": 1223,
+        "w": 151,
+        "h": 141,
+        "pivotX": 93,
+        "pivotY": 141
+      },
+      "attack_staff_0": {
+        "x": 8,
+        "y": 1479,
+        "w": 222,
+        "h": 212,
+        "pivotX": 119,
+        "pivotY": 212
+      },
+      "attack_staff_1": {
+        "x": 264,
+        "y": 1479,
+        "w": 212,
+        "h": 218,
+        "pivotX": 104,
+        "pivotY": 218
+      },
+      "attack_staff_2": {
+        "x": 520,
+        "y": 1479,
+        "w": 210,
+        "h": 215,
+        "pivotX": 121,
+        "pivotY": 215
+      },
+      "attack_staff_3": {
+        "x": 776,
+        "y": 1479,
+        "w": 205,
+        "h": 190,
+        "pivotX": 122,
+        "pivotY": 190
+      },
+      "attack_staff_4": {
+        "x": 8,
+        "y": 1735,
+        "w": 232,
+        "h": 182,
+        "pivotX": 122,
+        "pivotY": 182
+      },
+      "attack_staff_5": {
+        "x": 264,
+        "y": 1735,
+        "w": 207,
+        "h": 182,
+        "pivotX": 98,
+        "pivotY": 182
+      },
+      "attack_staff_6": {
+        "x": 520,
+        "y": 1735,
+        "w": 204,
+        "h": 204,
+        "pivotX": 95,
+        "pivotY": 204
+      },
+      "attack_staff_7": {
+        "x": 776,
+        "y": 1735,
+        "w": 219,
+        "h": 209,
+        "pivotX": 111,
+        "pivotY": 209
+      },
+      "attack_blades_0": {
+        "x": 8,
+        "y": 1991,
+        "w": 210,
+        "h": 215,
+        "pivotX": 108,
+        "pivotY": 215
+      },
+      "attack_blades_1": {
+        "x": 264,
+        "y": 1991,
+        "w": 206,
+        "h": 224,
+        "pivotX": 122,
+        "pivotY": 224
+      },
+      "attack_blades_2": {
+        "x": 520,
+        "y": 1991,
+        "w": 215,
+        "h": 223,
+        "pivotX": 107,
+        "pivotY": 223
+      },
+      "attack_blades_3": {
+        "x": 776,
+        "y": 1991,
+        "w": 222,
+        "h": 195,
+        "pivotX": 113,
+        "pivotY": 195
+      },
+      "attack_blades_4": {
+        "x": 8,
+        "y": 2247,
+        "w": 232,
+        "h": 192,
+        "pivotX": 122,
+        "pivotY": 192
+      },
+      "attack_blades_5": {
+        "x": 264,
+        "y": 2247,
+        "w": 219,
+        "h": 191,
+        "pivotX": 109,
+        "pivotY": 191
+      },
+      "attack_blades_6": {
+        "x": 520,
+        "y": 2247,
+        "w": 187,
+        "h": 203,
+        "pivotX": 78,
+        "pivotY": 203
+      },
+      "attack_blades_7": {
+        "x": 776,
+        "y": 2247,
+        "w": 205,
+        "h": 206,
+        "pivotX": 100,
+        "pivotY": 206
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "staff_nlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "staff_slight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "attack_staff_4",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "staff_dlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "staff_nair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          6,
+          6
+        ]
+      },
+      "staff_sair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_dair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_recovery": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          9,
+          8,
+          8
+        ]
+      },
+      "staff_ground_pound": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "blades_nlight": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          2,
+          2,
+          2,
+          3,
+          5,
+          5,
+          4
+        ]
+      },
+      "blades_slight": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "attack_blades_4",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "blades_dlight": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          6,
+          5,
+          5
+        ]
+      },
+      "blades_nair": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "blades_sair": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "blades_dair": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          7,
+          6
+        ]
+      },
+      "blades_recovery": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "blades_ground_pound": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "deborah_staff_nsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_n",
+          "sig_staff_n",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "deborah_staff_ssig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_s",
+          "sig_staff_s",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          7,
+          5,
+          10,
+          9,
+          9
+        ]
+      },
+      "deborah_staff_dsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_d",
+          "sig_staff_d",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          6,
+          10,
+          10,
+          10
+        ]
+      },
+      "deborah_blades_nsig": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_n",
+          "sig_blades_n",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          5,
+          8,
+          8,
+          8
+        ]
+      },
+      "deborah_blades_ssig": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_s",
+          "sig_blades_s",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          10,
+          10,
+          9
+        ]
+      },
+      "deborah_blades_dsig": {
+        "frames": [
+          "attack_blades_0",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_d",
+          "sig_blades_d",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          5,
+          11,
+          10,
+          10
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/deborah-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_staff_5",
+        "attack_staff_6",
+        "attack_blades_3",
+        "attack_blades_5",
+        "attack_blades_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "gideon": {
-    "image": "assets/runtime/fighters/gideon.png",
-    "sha256": "f06bc94052f9b439c682accfae647fcb65acde53e778a4b7c1d48715ab3ca58d",
+    "image": "assets/runtime/fighters/gideon-attacks.png",
+    "sha256": "0c2d8b3bc5e0b47acb75bb6e2f467c02f4db914d8f99766f3bb606873dc562e5",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
     "sourceSha256": "4e6803c3a5e5214e92fe4ae42e250bf522054b204b3d992863e41f94a5300896",
@@ -554,12 +4482,726 @@
         "pivotX": 100,
         "pivotY": 168,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 448,
+        "w": 145,
+        "h": 220,
+        "pivotX": 95,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 284,
+        "y": 448,
+        "w": 213,
+        "h": 224,
+        "pivotX": 116,
+        "pivotY": 224
+      },
+      "run_1": {
+        "x": 560,
+        "y": 448,
+        "w": 197,
+        "h": 229,
+        "pivotX": 118,
+        "pivotY": 229
+      },
+      "run_2": {
+        "x": 836,
+        "y": 448,
+        "w": 178,
+        "h": 229,
+        "pivotX": 104,
+        "pivotY": 229
+      },
+      "run_3": {
+        "x": 8,
+        "y": 724,
+        "w": 209,
+        "h": 220,
+        "pivotX": 115,
+        "pivotY": 220
+      },
+      "run_4": {
+        "x": 284,
+        "y": 724,
+        "w": 193,
+        "h": 224,
+        "pivotX": 109,
+        "pivotY": 224
+      },
+      "run_5": {
+        "x": 560,
+        "y": 724,
+        "w": 181,
+        "h": 227,
+        "pivotX": 105,
+        "pivotY": 227
+      },
+      "run_6": {
+        "x": 836,
+        "y": 724,
+        "w": 209,
+        "h": 222,
+        "pivotX": 117,
+        "pivotY": 222
+      },
+      "run_7": {
+        "x": 8,
+        "y": 1000,
+        "w": 190,
+        "h": 228,
+        "pivotX": 107,
+        "pivotY": 228
+      },
+      "air_rise": {
+        "x": 284,
+        "y": 1000,
+        "w": 177,
+        "h": 216,
+        "pivotX": 98,
+        "pivotY": 216
+      },
+      "air_apex": {
+        "x": 560,
+        "y": 1000,
+        "w": 187,
+        "h": 190,
+        "pivotX": 108,
+        "pivotY": 190
+      },
+      "air_fall": {
+        "x": 836,
+        "y": 1000,
+        "w": 186,
+        "h": 184,
+        "pivotX": 104,
+        "pivotY": 184
+      },
+      "land": {
+        "x": 8,
+        "y": 1276,
+        "w": 178,
+        "h": 149,
+        "pivotX": 102,
+        "pivotY": 149
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 1552,
+        "w": 245,
+        "h": 209,
+        "pivotX": 127,
+        "pivotY": 209
+      },
+      "attack_sword_1": {
+        "x": 284,
+        "y": 1552,
+        "w": 208,
+        "h": 240,
+        "pivotX": 104,
+        "pivotY": 240
+      },
+      "attack_sword_2": {
+        "x": 560,
+        "y": 1552,
+        "w": 229,
+        "h": 187,
+        "pivotX": 133,
+        "pivotY": 187
+      },
+      "attack_sword_3": {
+        "x": 836,
+        "y": 1552,
+        "w": 207,
+        "h": 225,
+        "pivotX": 116,
+        "pivotY": 225
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 1828,
+        "w": 253,
+        "h": 198,
+        "pivotX": 134,
+        "pivotY": 198
+      },
+      "attack_sword_5": {
+        "x": 284,
+        "y": 1828,
+        "w": 222,
+        "h": 211,
+        "pivotX": 104,
+        "pivotY": 211
+      },
+      "attack_sword_6": {
+        "x": 560,
+        "y": 1828,
+        "w": 204,
+        "h": 206,
+        "pivotX": 85,
+        "pivotY": 206
+      },
+      "attack_sword_7": {
+        "x": 836,
+        "y": 1828,
+        "w": 209,
+        "h": 212,
+        "pivotX": 94,
+        "pivotY": 212
+      },
+      "attack_hammer_0": {
+        "x": 8,
+        "y": 2104,
+        "w": 240,
+        "h": 207,
+        "pivotX": 122,
+        "pivotY": 207
+      },
+      "attack_hammer_1": {
+        "x": 284,
+        "y": 2104,
+        "w": 201,
+        "h": 243,
+        "pivotX": 104,
+        "pivotY": 243
+      },
+      "attack_hammer_2": {
+        "x": 560,
+        "y": 2104,
+        "w": 232,
+        "h": 171,
+        "pivotX": 133,
+        "pivotY": 171
+      },
+      "attack_hammer_3": {
+        "x": 836,
+        "y": 2104,
+        "w": 220,
+        "h": 239,
+        "pivotX": 130,
+        "pivotY": 239
+      },
+      "attack_hammer_4": {
+        "x": 8,
+        "y": 2380,
+        "w": 253,
+        "h": 241,
+        "pivotX": 134,
+        "pivotY": 241
+      },
+      "attack_hammer_5": {
+        "x": 284,
+        "y": 2380,
+        "w": 220,
+        "h": 200,
+        "pivotX": 101,
+        "pivotY": 200
+      },
+      "attack_hammer_6": {
+        "x": 560,
+        "y": 2380,
+        "w": 195,
+        "h": 192,
+        "pivotX": 77,
+        "pivotY": 192
+      },
+      "attack_hammer_7": {
+        "x": 836,
+        "y": 2380,
+        "w": 209,
+        "h": 207,
+        "pivotX": 91,
+        "pivotY": 207
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_nlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "hammer_slight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "hammer_dlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_nair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_sair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_dair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_recovery": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          7,
+          10,
+          9,
+          9
+        ]
+      },
+      "hammer_ground_pound": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "light",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          12,
+          11,
+          11,
+          11
+        ]
+      },
+      "gideon_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          7,
+          6,
+          6,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "gideon_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "gideon_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "attack_sword_5",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          6,
+          11,
+          11,
+          11
+        ]
+      },
+      "gideon_hammer_nsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_n",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          6,
+          11,
+          11,
+          10
+        ]
+      },
+      "gideon_hammer_ssig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_s",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          12
+        ]
+      },
+      "gideon_hammer_dsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "idle",
+          "sig_hammer_d",
+          "attack_hammer_5",
+          "idle",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          10,
+          9,
+          9,
+          6,
+          13,
+          12,
+          12
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/gideon-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_sword_4",
+        "attack_sword_6",
+        "attack_hammer_2",
+        "attack_hammer_4",
+        "attack_hammer_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "jonathan": {
-    "image": "assets/runtime/fighters/jonathan.png",
-    "sha256": "92b837b756fe4b212c4efe4a9872a06690daa4f181a1db215a569ef368a41a66",
+    "image": "assets/runtime/fighters/jonathan-attacks.png",
+    "sha256": "24990ce03faac43f1546b56fac7d68b4466cf780e587c20364616cfe4c0fa0d9",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
     "sourceSha256": "41ba1e05d8aabfafa6445a8225c99cea05d2506fd7490b32ccb77718e3c31994",
@@ -647,12 +5289,724 @@
         "pivotX": 102,
         "pivotY": 147,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 463,
+        "w": 142,
+        "h": 220,
+        "pivotX": 88,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 261,
+        "y": 463,
+        "w": 200,
+        "h": 215,
+        "pivotX": 112,
+        "pivotY": 215
+      },
+      "run_1": {
+        "x": 514,
+        "y": 463,
+        "w": 178,
+        "h": 203,
+        "pivotX": 100,
+        "pivotY": 203
+      },
+      "run_2": {
+        "x": 767,
+        "y": 463,
+        "w": 183,
+        "h": 207,
+        "pivotX": 108,
+        "pivotY": 207
+      },
+      "run_3": {
+        "x": 8,
+        "y": 716,
+        "w": 198,
+        "h": 216,
+        "pivotX": 114,
+        "pivotY": 216
+      },
+      "run_4": {
+        "x": 261,
+        "y": 716,
+        "w": 194,
+        "h": 207,
+        "pivotX": 113,
+        "pivotY": 207
+      },
+      "run_5": {
+        "x": 514,
+        "y": 716,
+        "w": 186,
+        "h": 203,
+        "pivotX": 96,
+        "pivotY": 203
+      },
+      "run_6": {
+        "x": 767,
+        "y": 716,
+        "w": 189,
+        "h": 216,
+        "pivotX": 103,
+        "pivotY": 216
+      },
+      "run_7": {
+        "x": 8,
+        "y": 969,
+        "w": 184,
+        "h": 205,
+        "pivotX": 103,
+        "pivotY": 205
+      },
+      "air_rise": {
+        "x": 261,
+        "y": 969,
+        "w": 173,
+        "h": 208,
+        "pivotX": 91,
+        "pivotY": 208
+      },
+      "air_apex": {
+        "x": 514,
+        "y": 969,
+        "w": 190,
+        "h": 178,
+        "pivotX": 100,
+        "pivotY": 178
+      },
+      "air_fall": {
+        "x": 767,
+        "y": 969,
+        "w": 180,
+        "h": 182,
+        "pivotX": 90,
+        "pivotY": 182
+      },
+      "land": {
+        "x": 8,
+        "y": 1222,
+        "w": 182,
+        "h": 142,
+        "pivotX": 109,
+        "pivotY": 142
+      },
+      "attack_bow_0": {
+        "x": 8,
+        "y": 1475,
+        "w": 222,
+        "h": 223,
+        "pivotX": 115,
+        "pivotY": 223
+      },
+      "attack_bow_1": {
+        "x": 261,
+        "y": 1475,
+        "w": 209,
+        "h": 231,
+        "pivotX": 113,
+        "pivotY": 231
+      },
+      "attack_bow_2": {
+        "x": 514,
+        "y": 1475,
+        "w": 222,
+        "h": 231,
+        "pivotX": 115,
+        "pivotY": 231
+      },
+      "attack_bow_3": {
+        "x": 767,
+        "y": 1475,
+        "w": 178,
+        "h": 231,
+        "pivotX": 112,
+        "pivotY": 231
+      },
+      "attack_bow_4": {
+        "x": 8,
+        "y": 1728,
+        "w": 222,
+        "h": 224,
+        "pivotX": 114,
+        "pivotY": 224
+      },
+      "attack_bow_5": {
+        "x": 261,
+        "y": 1728,
+        "w": 193,
+        "h": 224,
+        "pivotX": 108,
+        "pivotY": 224
+      },
+      "attack_bow_6": {
+        "x": 514,
+        "y": 1728,
+        "w": 189,
+        "h": 229,
+        "pivotX": 106,
+        "pivotY": 229
+      },
+      "attack_bow_7": {
+        "x": 767,
+        "y": 1728,
+        "w": 221,
+        "h": 224,
+        "pivotX": 114,
+        "pivotY": 224
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 1981,
+        "w": 217,
+        "h": 189,
+        "pivotX": 113,
+        "pivotY": 189
+      },
+      "attack_sword_1": {
+        "x": 261,
+        "y": 1981,
+        "w": 168,
+        "h": 218,
+        "pivotX": 101,
+        "pivotY": 218
+      },
+      "attack_sword_2": {
+        "x": 514,
+        "y": 1981,
+        "w": 211,
+        "h": 203,
+        "pivotX": 122,
+        "pivotY": 203
+      },
+      "attack_sword_3": {
+        "x": 767,
+        "y": 1981,
+        "w": 180,
+        "h": 204,
+        "pivotX": 115,
+        "pivotY": 204
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 2234,
+        "w": 231,
+        "h": 177,
+        "pivotX": 122,
+        "pivotY": 177
+      },
+      "attack_sword_5": {
+        "x": 261,
+        "y": 2234,
+        "w": 217,
+        "h": 182,
+        "pivotX": 108,
+        "pivotY": 182
+      },
+      "attack_sword_6": {
+        "x": 514,
+        "y": 2234,
+        "w": 183,
+        "h": 179,
+        "pivotX": 75,
+        "pivotY": 179
+      },
+      "attack_sword_7": {
+        "x": 767,
+        "y": 2234,
+        "w": 217,
+        "h": 189,
+        "pivotX": 113,
+        "pivotY": 189
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "bow_nlight": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          1,
+          7,
+          6,
+          6
+        ]
+      },
+      "bow_slight": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "attack_bow_4",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          1,
+          8,
+          8,
+          8
+        ]
+      },
+      "bow_dlight": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          8,
+          7
+        ]
+      },
+      "bow_nair": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "bow_sair": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          1,
+          8,
+          8,
+          8
+        ]
+      },
+      "bow_dair": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "bow_recovery": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          9,
+          8,
+          8
+        ]
+      },
+      "bow_ground_pound": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "light",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "jonathan_bow_nsig": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "sig_bow_n",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          7,
+          6,
+          6,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "jonathan_bow_ssig": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "sig_bow_s",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          10,
+          10,
+          9
+        ]
+      },
+      "jonathan_bow_dsig": {
+        "frames": [
+          "attack_bow_0",
+          "attack_bow_1",
+          "attack_bow_2",
+          "sig_bow_d",
+          "attack_bow_5",
+          "attack_bow_6",
+          "attack_bow_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "jonathan_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "sig_sword_n",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          5,
+          8,
+          8,
+          8
+        ]
+      },
+      "jonathan_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "sig_sword_s",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          10,
+          9,
+          9
+        ]
+      },
+      "jonathan_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "sig_sword_d",
+          "idle",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          10,
+          10,
+          10
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/jonathan-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_sword_4",
+        "attack_sword_5",
+        "attack_sword_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "moses": {
-    "image": "assets/runtime/fighters/moses.png",
-    "sha256": "7dc3cefb4b8b1797693fe7164f0d61858685ee88289bfa43d0263b4d65620f66",
+    "image": "assets/runtime/fighters/moses-attacks.png",
+    "sha256": "e541e6bcb849dcc31919a2724c7fe92bfc11a8d7e4c2b621aac7115097788c3a",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/08_moses_move_sheet.png",
     "sourceSha256": "882db00322ff10f1cbc4b9900a0c0b19069077c5cd000410891a059976919fcc",
@@ -740,12 +6094,724 @@
         "pivotX": 84,
         "pivotY": 136,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 456,
+        "w": 117,
+        "h": 220,
+        "pivotX": 70,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 272,
+        "y": 456,
+        "w": 204,
+        "h": 224,
+        "pivotX": 116,
+        "pivotY": 224
+      },
+      "run_1": {
+        "x": 536,
+        "y": 456,
+        "w": 165,
+        "h": 221,
+        "pivotX": 100,
+        "pivotY": 221
+      },
+      "run_2": {
+        "x": 800,
+        "y": 456,
+        "w": 174,
+        "h": 224,
+        "pivotX": 114,
+        "pivotY": 224
+      },
+      "run_3": {
+        "x": 8,
+        "y": 720,
+        "w": 216,
+        "h": 214,
+        "pivotX": 131,
+        "pivotY": 214
+      },
+      "run_4": {
+        "x": 272,
+        "y": 720,
+        "w": 204,
+        "h": 219,
+        "pivotX": 123,
+        "pivotY": 219
+      },
+      "run_5": {
+        "x": 536,
+        "y": 720,
+        "w": 207,
+        "h": 221,
+        "pivotX": 119,
+        "pivotY": 221
+      },
+      "run_6": {
+        "x": 800,
+        "y": 720,
+        "w": 198,
+        "h": 221,
+        "pivotX": 113,
+        "pivotY": 221
+      },
+      "run_7": {
+        "x": 8,
+        "y": 984,
+        "w": 201,
+        "h": 224,
+        "pivotX": 111,
+        "pivotY": 224
+      },
+      "air_rise": {
+        "x": 272,
+        "y": 984,
+        "w": 175,
+        "h": 202,
+        "pivotX": 102,
+        "pivotY": 202
+      },
+      "air_apex": {
+        "x": 536,
+        "y": 984,
+        "w": 179,
+        "h": 176,
+        "pivotX": 104,
+        "pivotY": 176
+      },
+      "air_fall": {
+        "x": 800,
+        "y": 984,
+        "w": 140,
+        "h": 176,
+        "pivotX": 85,
+        "pivotY": 176
+      },
+      "land": {
+        "x": 8,
+        "y": 1248,
+        "w": 188,
+        "h": 140,
+        "pivotX": 113,
+        "pivotY": 140
+      },
+      "attack_staff_0": {
+        "x": 8,
+        "y": 1512,
+        "w": 200,
+        "h": 208,
+        "pivotX": 108,
+        "pivotY": 208
+      },
+      "attack_staff_1": {
+        "x": 272,
+        "y": 1512,
+        "w": 203,
+        "h": 241,
+        "pivotX": 113,
+        "pivotY": 241
+      },
+      "attack_staff_2": {
+        "x": 536,
+        "y": 1512,
+        "w": 178,
+        "h": 236,
+        "pivotX": 117,
+        "pivotY": 236
+      },
+      "attack_staff_3": {
+        "x": 800,
+        "y": 1512,
+        "w": 241,
+        "h": 179,
+        "pivotX": 128,
+        "pivotY": 179
+      },
+      "attack_staff_4": {
+        "x": 8,
+        "y": 1776,
+        "w": 241,
+        "h": 164,
+        "pivotX": 128,
+        "pivotY": 164
+      },
+      "attack_staff_5": {
+        "x": 272,
+        "y": 1776,
+        "w": 207,
+        "h": 165,
+        "pivotX": 93,
+        "pivotY": 165
+      },
+      "attack_staff_6": {
+        "x": 536,
+        "y": 1776,
+        "w": 169,
+        "h": 184,
+        "pivotX": 56,
+        "pivotY": 184
+      },
+      "attack_staff_7": {
+        "x": 800,
+        "y": 1776,
+        "w": 185,
+        "h": 208,
+        "pivotX": 80,
+        "pivotY": 208
+      },
+      "attack_sling_0": {
+        "x": 8,
+        "y": 2040,
+        "w": 186,
+        "h": 199,
+        "pivotX": 103,
+        "pivotY": 199
+      },
+      "attack_sling_1": {
+        "x": 272,
+        "y": 2040,
+        "w": 170,
+        "h": 213,
+        "pivotX": 108,
+        "pivotY": 213
+      },
+      "attack_sling_2": {
+        "x": 536,
+        "y": 2040,
+        "w": 208,
+        "h": 195,
+        "pivotX": 117,
+        "pivotY": 195
+      },
+      "attack_sling_3": {
+        "x": 800,
+        "y": 2040,
+        "w": 223,
+        "h": 218,
+        "pivotX": 122,
+        "pivotY": 218
+      },
+      "attack_sling_4": {
+        "x": 8,
+        "y": 2304,
+        "w": 236,
+        "h": 175,
+        "pivotX": 122,
+        "pivotY": 175
+      },
+      "attack_sling_5": {
+        "x": 272,
+        "y": 2304,
+        "w": 190,
+        "h": 162,
+        "pivotX": 76,
+        "pivotY": 162
+      },
+      "attack_sling_6": {
+        "x": 536,
+        "y": 2304,
+        "w": 156,
+        "h": 184,
+        "pivotX": 43,
+        "pivotY": 184
+      },
+      "attack_sling_7": {
+        "x": 800,
+        "y": 2304,
+        "w": 171,
+        "h": 193,
+        "pivotX": 81,
+        "pivotY": 193
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sling_nlight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          1,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_slight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "attack_sling_4",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_dlight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sling_nair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_sair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          8,
+          7
+        ]
+      },
+      "sling_dair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_recovery": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "sling_ground_pound": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "light",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          12,
+          10,
+          9,
+          9
+        ]
+      },
+      "staff_nlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "staff_slight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "staff_dlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "staff_nair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          6,
+          6
+        ]
+      },
+      "staff_sair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_dair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_recovery": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          9,
+          8,
+          8
+        ]
+      },
+      "staff_ground_pound": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "moses_staff_nsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_n",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          6,
+          11,
+          10,
+          10
+        ]
+      },
+      "moses_staff_ssig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_s",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          6,
+          12,
+          11,
+          11
+        ]
+      },
+      "moses_staff_dsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_d",
+          "attack_staff_5",
+          "attack_staff_6",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          11
+        ]
+      },
+      "moses_sling_nsig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_n",
+          "sig_sling_n",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          11,
+          11,
+          10
+        ]
+      },
+      "moses_sling_ssig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_s",
+          "sig_sling_s",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          8,
+          5,
+          12,
+          12,
+          11
+        ]
+      },
+      "moses_sling_dsig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_d",
+          "sig_sling_d",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          10,
+          9,
+          9,
+          5,
+          12,
+          12,
+          12
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/moses-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_staff_3",
+        "attack_staff_4",
+        "attack_sling_5"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "esther": {
-    "image": "assets/runtime/fighters/esther.png",
-    "sha256": "34b88889177e9504a8aff67aed926595c444cef196d2227e4f85e1769538d739",
+    "image": "assets/runtime/fighters/esther-attacks.png",
+    "sha256": "a1407dda007cb59da4aeb9cd1fffee84c0ddd94597cf731161768c0545e411d9",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/09_esther_move_sheet.png",
     "sourceSha256": "8c838d757b396d6f952c2ad85b3eee8a8944022551d50e33e4078a0d0c2d53e9",
@@ -833,12 +6899,730 @@
         "pivotX": 91,
         "pivotY": 171,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 468,
+        "w": 119,
+        "h": 220,
+        "pivotX": 55,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 264,
+        "y": 468,
+        "w": 207,
+        "h": 216,
+        "pivotX": 110,
+        "pivotY": 216
+      },
+      "run_1": {
+        "x": 520,
+        "y": 468,
+        "w": 187,
+        "h": 214,
+        "pivotX": 108,
+        "pivotY": 214
+      },
+      "run_2": {
+        "x": 776,
+        "y": 468,
+        "w": 190,
+        "h": 214,
+        "pivotX": 103,
+        "pivotY": 214
+      },
+      "run_3": {
+        "x": 8,
+        "y": 724,
+        "w": 181,
+        "h": 217,
+        "pivotX": 92,
+        "pivotY": 217
+      },
+      "run_4": {
+        "x": 264,
+        "y": 724,
+        "w": 163,
+        "h": 218,
+        "pivotX": 98,
+        "pivotY": 218
+      },
+      "run_5": {
+        "x": 520,
+        "y": 724,
+        "w": 169,
+        "h": 217,
+        "pivotX": 99,
+        "pivotY": 217
+      },
+      "run_6": {
+        "x": 776,
+        "y": 724,
+        "w": 179,
+        "h": 217,
+        "pivotX": 105,
+        "pivotY": 217
+      },
+      "run_7": {
+        "x": 8,
+        "y": 980,
+        "w": 181,
+        "h": 215,
+        "pivotX": 103,
+        "pivotY": 215
+      },
+      "air_rise": {
+        "x": 264,
+        "y": 980,
+        "w": 146,
+        "h": 216,
+        "pivotX": 79,
+        "pivotY": 216
+      },
+      "air_apex": {
+        "x": 520,
+        "y": 980,
+        "w": 157,
+        "h": 178,
+        "pivotX": 92,
+        "pivotY": 178
+      },
+      "air_fall": {
+        "x": 776,
+        "y": 980,
+        "w": 155,
+        "h": 209,
+        "pivotX": 78,
+        "pivotY": 209
+      },
+      "land": {
+        "x": 8,
+        "y": 1236,
+        "w": 156,
+        "h": 146,
+        "pivotX": 100,
+        "pivotY": 146
+      },
+      "attack_blades_0": {
+        "x": 8,
+        "y": 1492,
+        "w": 217,
+        "h": 210,
+        "pivotX": 107,
+        "pivotY": 210
+      },
+      "attack_blades_1": {
+        "x": 264,
+        "y": 1492,
+        "w": 231,
+        "h": 203,
+        "pivotX": 121,
+        "pivotY": 203
+      },
+      "attack_blades_2": {
+        "x": 520,
+        "y": 1492,
+        "w": 206,
+        "h": 168,
+        "pivotX": 113,
+        "pivotY": 168
+      },
+      "attack_blades_3": {
+        "x": 776,
+        "y": 1492,
+        "w": 233,
+        "h": 210,
+        "pivotX": 123,
+        "pivotY": 210
+      },
+      "attack_blades_4": {
+        "x": 8,
+        "y": 1748,
+        "w": 233,
+        "h": 205,
+        "pivotX": 123,
+        "pivotY": 205
+      },
+      "attack_blades_5": {
+        "x": 264,
+        "y": 1748,
+        "w": 202,
+        "h": 210,
+        "pivotX": 92,
+        "pivotY": 210
+      },
+      "attack_blades_6": {
+        "x": 520,
+        "y": 1748,
+        "w": 188,
+        "h": 210,
+        "pivotX": 79,
+        "pivotY": 210
+      },
+      "attack_blades_7": {
+        "x": 776,
+        "y": 1748,
+        "w": 197,
+        "h": 210,
+        "pivotX": 103,
+        "pivotY": 210
+      },
+      "attack_staff_0": {
+        "x": 8,
+        "y": 2004,
+        "w": 224,
+        "h": 206,
+        "pivotX": 115,
+        "pivotY": 206
+      },
+      "attack_staff_1": {
+        "x": 264,
+        "y": 2004,
+        "w": 216,
+        "h": 219,
+        "pivotX": 106,
+        "pivotY": 219
+      },
+      "attack_staff_2": {
+        "x": 520,
+        "y": 2004,
+        "w": 222,
+        "h": 161,
+        "pivotX": 113,
+        "pivotY": 161
+      },
+      "attack_staff_3": {
+        "x": 776,
+        "y": 2004,
+        "w": 233,
+        "h": 200,
+        "pivotX": 123,
+        "pivotY": 200
+      },
+      "attack_staff_4": {
+        "x": 8,
+        "y": 2260,
+        "w": 232,
+        "h": 179,
+        "pivotX": 122,
+        "pivotY": 179
+      },
+      "attack_staff_5": {
+        "x": 264,
+        "y": 2260,
+        "w": 181,
+        "h": 220,
+        "pivotX": 72,
+        "pivotY": 220
+      },
+      "attack_staff_6": {
+        "x": 520,
+        "y": 2260,
+        "w": 193,
+        "h": 207,
+        "pivotX": 85,
+        "pivotY": 207
+      },
+      "attack_staff_7": {
+        "x": 776,
+        "y": 2260,
+        "w": 225,
+        "h": 205,
+        "pivotX": 123,
+        "pivotY": 205
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "staff_nlight": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "staff_slight": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "attack_staff_4",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "staff_dlight": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "staff_nair": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          6,
+          6
+        ]
+      },
+      "staff_sair": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_dair": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_recovery": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          9,
+          8,
+          8
+        ]
+      },
+      "staff_ground_pound": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "light",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "blades_nlight": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          2,
+          2,
+          2,
+          3,
+          5,
+          5,
+          4
+        ]
+      },
+      "blades_slight": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "blades_dlight": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          6,
+          5,
+          5
+        ]
+      },
+      "blades_nair": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "blades_sair": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "blades_dair": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          7,
+          6
+        ]
+      },
+      "blades_recovery": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "blades_ground_pound": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "light",
+          "light",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "esther_blades_nsig": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_n",
+          "sig_blades_n",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          5,
+          8,
+          8,
+          8
+        ]
+      },
+      "esther_blades_ssig": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_s",
+          "sig_blades_s",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          10,
+          9,
+          9
+        ]
+      },
+      "esther_blades_dsig": {
+        "frames": [
+          "idle",
+          "attack_blades_1",
+          "attack_blades_2",
+          "sig_blades_d",
+          "sig_blades_d",
+          "idle",
+          "attack_blades_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          10,
+          10,
+          10
+        ]
+      },
+      "esther_staff_nsig": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_n",
+          "sig_staff_n",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          7,
+          6,
+          6,
+          5,
+          9,
+          9,
+          8
+        ]
+      },
+      "esther_staff_ssig": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_s",
+          "sig_staff_s",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          8,
+          8,
+          7,
+          5,
+          10,
+          10,
+          10
+        ]
+      },
+      "esther_staff_dsig": {
+        "frames": [
+          "idle",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_d",
+          "sig_staff_d",
+          "attack_staff_6",
+          "idle"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          5,
+          11,
+          11,
+          10
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/esther-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_blades_0",
+        "attack_blades_3",
+        "attack_blades_4",
+        "attack_blades_5",
+        "attack_blades_6",
+        "attack_staff_0",
+        "attack_staff_3",
+        "attack_staff_5",
+        "attack_staff_7"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "miriam": {
-    "image": "assets/runtime/fighters/miriam.png",
-    "sha256": "da4aec7d55594763cb801805a506a7676c5bc38082cccf0373ef4f1bcaaa0177",
+    "image": "assets/runtime/fighters/miriam-attacks.png",
+    "sha256": "1ffa919f59912f200168d246f644b93b3bf0736026e6907cdad5f7eae0619cfd",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
@@ -926,12 +7710,722 @@
         "pivotX": 62,
         "pivotY": 145,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 473,
+        "w": 122,
+        "h": 220,
+        "pivotX": 66,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 255,
+        "y": 473,
+        "w": 197,
+        "h": 221,
+        "pivotX": 108,
+        "pivotY": 221
+      },
+      "run_1": {
+        "x": 502,
+        "y": 473,
+        "w": 156,
+        "h": 208,
+        "pivotX": 88,
+        "pivotY": 208
+      },
+      "run_2": {
+        "x": 749,
+        "y": 473,
+        "w": 167,
+        "h": 220,
+        "pivotX": 92,
+        "pivotY": 220
+      },
+      "run_3": {
+        "x": 8,
+        "y": 720,
+        "w": 165,
+        "h": 222,
+        "pivotX": 99,
+        "pivotY": 222
+      },
+      "run_4": {
+        "x": 255,
+        "y": 720,
+        "w": 193,
+        "h": 214,
+        "pivotX": 104,
+        "pivotY": 214
+      },
+      "run_5": {
+        "x": 502,
+        "y": 720,
+        "w": 145,
+        "h": 204,
+        "pivotX": 82,
+        "pivotY": 204
+      },
+      "run_6": {
+        "x": 749,
+        "y": 720,
+        "w": 154,
+        "h": 215,
+        "pivotX": 86,
+        "pivotY": 215
+      },
+      "run_7": {
+        "x": 8,
+        "y": 967,
+        "w": 171,
+        "h": 218,
+        "pivotX": 99,
+        "pivotY": 218
+      },
+      "air_rise": {
+        "x": 255,
+        "y": 967,
+        "w": 158,
+        "h": 212,
+        "pivotX": 80,
+        "pivotY": 212
+      },
+      "air_apex": {
+        "x": 502,
+        "y": 967,
+        "w": 175,
+        "h": 167,
+        "pivotX": 97,
+        "pivotY": 167
+      },
+      "air_fall": {
+        "x": 749,
+        "y": 967,
+        "w": 170,
+        "h": 182,
+        "pivotX": 95,
+        "pivotY": 182
+      },
+      "land": {
+        "x": 8,
+        "y": 1214,
+        "w": 165,
+        "h": 153,
+        "pivotX": 114,
+        "pivotY": 153
+      },
+      "attack_staff_0": {
+        "x": 8,
+        "y": 1461,
+        "w": 215,
+        "h": 214,
+        "pivotX": 109,
+        "pivotY": 214
+      },
+      "attack_staff_1": {
+        "x": 255,
+        "y": 1461,
+        "w": 213,
+        "h": 207,
+        "pivotX": 107,
+        "pivotY": 207
+      },
+      "attack_staff_2": {
+        "x": 502,
+        "y": 1461,
+        "w": 201,
+        "h": 218,
+        "pivotX": 107,
+        "pivotY": 218
+      },
+      "attack_staff_3": {
+        "x": 749,
+        "y": 1461,
+        "w": 218,
+        "h": 219,
+        "pivotX": 117,
+        "pivotY": 219
+      },
+      "attack_staff_4": {
+        "x": 8,
+        "y": 1708,
+        "w": 222,
+        "h": 181,
+        "pivotX": 117,
+        "pivotY": 181
+      },
+      "attack_staff_5": {
+        "x": 255,
+        "y": 1708,
+        "w": 199,
+        "h": 204,
+        "pivotX": 115,
+        "pivotY": 204
+      },
+      "attack_staff_6": {
+        "x": 502,
+        "y": 1708,
+        "w": 222,
+        "h": 202,
+        "pivotX": 117,
+        "pivotY": 202
+      },
+      "attack_staff_7": {
+        "x": 749,
+        "y": 1708,
+        "w": 193,
+        "h": 205,
+        "pivotX": 88,
+        "pivotY": 205
+      },
+      "attack_sling_0": {
+        "x": 8,
+        "y": 1955,
+        "w": 155,
+        "h": 209,
+        "pivotX": 104,
+        "pivotY": 209
+      },
+      "attack_sling_1": {
+        "x": 255,
+        "y": 1955,
+        "w": 199,
+        "h": 207,
+        "pivotX": 108,
+        "pivotY": 207
+      },
+      "attack_sling_2": {
+        "x": 502,
+        "y": 1955,
+        "w": 191,
+        "h": 215,
+        "pivotX": 105,
+        "pivotY": 215
+      },
+      "attack_sling_3": {
+        "x": 749,
+        "y": 1955,
+        "w": 203,
+        "h": 216,
+        "pivotX": 106,
+        "pivotY": 216
+      },
+      "attack_sling_4": {
+        "x": 8,
+        "y": 2202,
+        "w": 222,
+        "h": 197,
+        "pivotX": 117,
+        "pivotY": 197
+      },
+      "attack_sling_5": {
+        "x": 255,
+        "y": 2202,
+        "w": 199,
+        "h": 184,
+        "pivotX": 94,
+        "pivotY": 184
+      },
+      "attack_sling_6": {
+        "x": 502,
+        "y": 2202,
+        "w": 201,
+        "h": 192,
+        "pivotX": 105,
+        "pivotY": 192
+      },
+      "attack_sling_7": {
+        "x": 749,
+        "y": 2202,
+        "w": 155,
+        "h": 208,
+        "pivotX": 73,
+        "pivotY": 208
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sling_nlight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          1,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_slight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "attack_sling_4",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_dlight": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sling_nair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "sling_sair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          1,
+          8,
+          8,
+          7
+        ]
+      },
+      "sling_dair": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "sling_recovery": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "sling_ground_pound": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "light",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          6,
+          5,
+          5,
+          12,
+          10,
+          9,
+          9
+        ]
+      },
+      "staff_nlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "staff_slight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "attack_staff_4",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "staff_dlight": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "staff_nair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          6,
+          6
+        ]
+      },
+      "staff_sair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_dair": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "staff_recovery": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          9,
+          8,
+          8
+        ]
+      },
+      "staff_ground_pound": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "light",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "miriam_staff_nsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_n",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          6,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "miriam_staff_ssig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_s",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          5,
+          10,
+          10,
+          9
+        ]
+      },
+      "miriam_staff_dsig": {
+        "frames": [
+          "attack_staff_0",
+          "attack_staff_1",
+          "attack_staff_2",
+          "sig_staff_d",
+          "attack_staff_5",
+          "idle",
+          "attack_staff_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          11,
+          10,
+          10
+        ]
+      },
+      "miriam_sling_nsig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_n",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "miriam_sling_ssig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_s",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          5,
+          11,
+          10,
+          10
+        ]
+      },
+      "miriam_sling_dsig": {
+        "frames": [
+          "attack_sling_0",
+          "attack_sling_1",
+          "attack_sling_2",
+          "sig_sling_d",
+          "attack_sling_5",
+          "attack_sling_6",
+          "attack_sling_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          8,
+          5,
+          11,
+          11,
+          11
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/miriam-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_staff_6"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "nehemiah": {
-    "image": "assets/runtime/fighters/nehemiah.png",
-    "sha256": "80e443fc9d3198a8816c559f5b433c11ce3d36eba14a33e12e8a25b0d91c557a",
+    "image": "assets/runtime/fighters/nehemiah-attacks.png",
+    "sha256": "274991be1d3d484110e51329abb9869cb5087acb969c679192ceb54d88ad167c",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
@@ -1019,12 +8513,724 @@
         "pivotX": 132,
         "pivotY": 162,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 456,
+        "w": 117,
+        "h": 220,
+        "pivotX": 68,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 267,
+        "y": 456,
+        "w": 193,
+        "h": 210,
+        "pivotX": 105,
+        "pivotY": 210
+      },
+      "run_1": {
+        "x": 526,
+        "y": 456,
+        "w": 162,
+        "h": 210,
+        "pivotX": 89,
+        "pivotY": 210
+      },
+      "run_2": {
+        "x": 785,
+        "y": 456,
+        "w": 158,
+        "h": 222,
+        "pivotX": 84,
+        "pivotY": 222
+      },
+      "run_3": {
+        "x": 8,
+        "y": 715,
+        "w": 175,
+        "h": 218,
+        "pivotX": 93,
+        "pivotY": 218
+      },
+      "run_4": {
+        "x": 267,
+        "y": 715,
+        "w": 204,
+        "h": 208,
+        "pivotX": 114,
+        "pivotY": 208
+      },
+      "run_5": {
+        "x": 526,
+        "y": 715,
+        "w": 151,
+        "h": 213,
+        "pivotX": 86,
+        "pivotY": 213
+      },
+      "run_6": {
+        "x": 785,
+        "y": 715,
+        "w": 135,
+        "h": 221,
+        "pivotX": 76,
+        "pivotY": 221
+      },
+      "run_7": {
+        "x": 8,
+        "y": 974,
+        "w": 188,
+        "h": 210,
+        "pivotX": 101,
+        "pivotY": 210
+      },
+      "air_rise": {
+        "x": 267,
+        "y": 974,
+        "w": 160,
+        "h": 208,
+        "pivotX": 77,
+        "pivotY": 208
+      },
+      "air_apex": {
+        "x": 526,
+        "y": 974,
+        "w": 142,
+        "h": 150,
+        "pivotX": 81,
+        "pivotY": 150
+      },
+      "air_fall": {
+        "x": 785,
+        "y": 974,
+        "w": 165,
+        "h": 189,
+        "pivotX": 79,
+        "pivotY": 189
+      },
+      "land": {
+        "x": 8,
+        "y": 1233,
+        "w": 184,
+        "h": 148,
+        "pivotX": 113,
+        "pivotY": 148
+      },
+      "attack_hammer_0": {
+        "x": 8,
+        "y": 1492,
+        "w": 197,
+        "h": 208,
+        "pivotX": 101,
+        "pivotY": 208
+      },
+      "attack_hammer_1": {
+        "x": 267,
+        "y": 1492,
+        "w": 208,
+        "h": 207,
+        "pivotX": 117,
+        "pivotY": 207
+      },
+      "attack_hammer_2": {
+        "x": 526,
+        "y": 1492,
+        "w": 181,
+        "h": 230,
+        "pivotX": 105,
+        "pivotY": 230
+      },
+      "attack_hammer_3": {
+        "x": 785,
+        "y": 1492,
+        "w": 217,
+        "h": 183,
+        "pivotX": 106,
+        "pivotY": 183
+      },
+      "attack_hammer_4": {
+        "x": 8,
+        "y": 1751,
+        "w": 223,
+        "h": 174,
+        "pivotX": 112,
+        "pivotY": 174
+      },
+      "attack_hammer_5": {
+        "x": 267,
+        "y": 1751,
+        "w": 207,
+        "h": 166,
+        "pivotX": 96,
+        "pivotY": 166
+      },
+      "attack_hammer_6": {
+        "x": 526,
+        "y": 1751,
+        "w": 207,
+        "h": 172,
+        "pivotX": 116,
+        "pivotY": 172
+      },
+      "attack_hammer_7": {
+        "x": 785,
+        "y": 1751,
+        "w": 197,
+        "h": 208,
+        "pivotX": 101,
+        "pivotY": 208
+      },
+      "attack_sword_0": {
+        "x": 8,
+        "y": 2010,
+        "w": 198,
+        "h": 177,
+        "pivotX": 99,
+        "pivotY": 177
+      },
+      "attack_sword_1": {
+        "x": 267,
+        "y": 2010,
+        "w": 175,
+        "h": 232,
+        "pivotX": 88,
+        "pivotY": 232
+      },
+      "attack_sword_2": {
+        "x": 526,
+        "y": 2010,
+        "w": 167,
+        "h": 230,
+        "pivotX": 86,
+        "pivotY": 230
+      },
+      "attack_sword_3": {
+        "x": 785,
+        "y": 2010,
+        "w": 172,
+        "h": 219,
+        "pivotX": 97,
+        "pivotY": 219
+      },
+      "attack_sword_4": {
+        "x": 8,
+        "y": 2269,
+        "w": 231,
+        "h": 162,
+        "pivotX": 120,
+        "pivotY": 162
+      },
+      "attack_sword_5": {
+        "x": 267,
+        "y": 2269,
+        "w": 204,
+        "h": 177,
+        "pivotX": 92,
+        "pivotY": 177
+      },
+      "attack_sword_6": {
+        "x": 526,
+        "y": 2269,
+        "w": 213,
+        "h": 162,
+        "pivotX": 103,
+        "pivotY": 162
+      },
+      "attack_sword_7": {
+        "x": 785,
+        "y": 2269,
+        "w": 198,
+        "h": 177,
+        "pivotX": 99,
+        "pivotY": 177
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "sword_nlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "sword_slight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          6
+        ]
+      },
+      "sword_dlight": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "sword_nair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "sword_sair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          6
+        ]
+      },
+      "sword_dair": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "sword_recovery": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "sword_ground_pound": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "light",
+          "light",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          12,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_nlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          7,
+          7,
+          7
+        ]
+      },
+      "hammer_slight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "attack_hammer_4",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          5,
+          9,
+          8,
+          8
+        ]
+      },
+      "hammer_dlight": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_nair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "hammer_sair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_dair": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          5,
+          9,
+          9,
+          9
+        ]
+      },
+      "hammer_recovery": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          7,
+          10,
+          9,
+          9
+        ]
+      },
+      "hammer_ground_pound": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "light",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          12,
+          11,
+          11,
+          11
+        ]
+      },
+      "nehemiah_hammer_nsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "sig_hammer_n",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          6,
+          11,
+          11,
+          11
+        ]
+      },
+      "nehemiah_hammer_ssig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "sig_hammer_s",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          10,
+          9,
+          9,
+          6,
+          13,
+          12,
+          12
+        ]
+      },
+      "nehemiah_hammer_dsig": {
+        "frames": [
+          "attack_hammer_0",
+          "attack_hammer_1",
+          "attack_hammer_2",
+          "sig_hammer_d",
+          "attack_hammer_5",
+          "attack_hammer_6",
+          "attack_hammer_7"
+        ],
+        "ticks": [
+          10,
+          10,
+          10,
+          7,
+          13,
+          13,
+          13
+        ]
+      },
+      "nehemiah_sword_nsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_n",
+          "sig_sword_n",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          7,
+          5,
+          10,
+          10,
+          10
+        ]
+      },
+      "nehemiah_sword_ssig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_s",
+          "sig_sword_s",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          5,
+          12,
+          11,
+          11
+        ]
+      },
+      "nehemiah_sword_dsig": {
+        "frames": [
+          "attack_sword_0",
+          "attack_sword_1",
+          "attack_sword_2",
+          "sig_sword_d",
+          "sig_sword_d",
+          "attack_sword_6",
+          "attack_sword_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          12
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/nehemiah-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_hammer_3",
+        "attack_sword_4",
+        "attack_sword_5"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   },
   "caleb": {
-    "image": "assets/runtime/fighters/caleb.png",
-    "sha256": "bae38db3134b128c3cacebefdd27bccfd244368b1b14c87a222fb3c5eb21f003",
+    "image": "assets/runtime/fighters/caleb-attacks.png",
+    "sha256": "0a54bb812c342d9bd7209d2884d351ca604bded981aa1e516f3ed977b639ae3e",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
     "sourceSha256": "66583e5f9fe76f7151e7d1c47b89a4e4645905f995e4567dfdbc075c9105e341",
@@ -1112,7 +9318,723 @@
         "pivotX": 109,
         "pivotY": 163,
         "panel": 9
+      },
+      "motion_idle": {
+        "x": 8,
+        "y": 482,
+        "w": 141,
+        "h": 220,
+        "pivotX": 91,
+        "pivotY": 220
+      },
+      "run_0": {
+        "x": 257,
+        "y": 482,
+        "w": 193,
+        "h": 205,
+        "pivotX": 115,
+        "pivotY": 205
+      },
+      "run_1": {
+        "x": 506,
+        "y": 482,
+        "w": 183,
+        "h": 205,
+        "pivotX": 109,
+        "pivotY": 205
+      },
+      "run_2": {
+        "x": 755,
+        "y": 482,
+        "w": 200,
+        "h": 203,
+        "pivotX": 117,
+        "pivotY": 203
+      },
+      "run_3": {
+        "x": 8,
+        "y": 731,
+        "w": 182,
+        "h": 214,
+        "pivotX": 101,
+        "pivotY": 214
+      },
+      "run_4": {
+        "x": 257,
+        "y": 731,
+        "w": 204,
+        "h": 204,
+        "pivotX": 118,
+        "pivotY": 204
+      },
+      "run_5": {
+        "x": 506,
+        "y": 731,
+        "w": 191,
+        "h": 202,
+        "pivotX": 113,
+        "pivotY": 202
+      },
+      "run_6": {
+        "x": 755,
+        "y": 731,
+        "w": 194,
+        "h": 218,
+        "pivotX": 115,
+        "pivotY": 218
+      },
+      "run_7": {
+        "x": 8,
+        "y": 980,
+        "w": 196,
+        "h": 204,
+        "pivotX": 110,
+        "pivotY": 204
+      },
+      "air_rise": {
+        "x": 257,
+        "y": 980,
+        "w": 155,
+        "h": 217,
+        "pivotX": 93,
+        "pivotY": 217
+      },
+      "air_apex": {
+        "x": 506,
+        "y": 980,
+        "w": 181,
+        "h": 180,
+        "pivotX": 104,
+        "pivotY": 180
+      },
+      "air_fall": {
+        "x": 755,
+        "y": 980,
+        "w": 193,
+        "h": 177,
+        "pivotX": 102,
+        "pivotY": 177
+      },
+      "land": {
+        "x": 8,
+        "y": 1229,
+        "w": 182,
+        "h": 151,
+        "pivotX": 110,
+        "pivotY": 151
+      },
+      "attack_spear_0": {
+        "x": 8,
+        "y": 1478,
+        "w": 216,
+        "h": 183,
+        "pivotX": 109,
+        "pivotY": 183
+      },
+      "attack_spear_1": {
+        "x": 257,
+        "y": 1478,
+        "w": 217,
+        "h": 191,
+        "pivotX": 111,
+        "pivotY": 191
+      },
+      "attack_spear_2": {
+        "x": 506,
+        "y": 1478,
+        "w": 213,
+        "h": 177,
+        "pivotX": 119,
+        "pivotY": 177
+      },
+      "attack_spear_3": {
+        "x": 755,
+        "y": 1478,
+        "w": 226,
+        "h": 163,
+        "pivotX": 120,
+        "pivotY": 163
+      },
+      "attack_spear_4": {
+        "x": 8,
+        "y": 1727,
+        "w": 226,
+        "h": 164,
+        "pivotX": 120,
+        "pivotY": 164
+      },
+      "attack_spear_5": {
+        "x": 257,
+        "y": 1727,
+        "w": 217,
+        "h": 163,
+        "pivotX": 111,
+        "pivotY": 163
+      },
+      "attack_spear_6": {
+        "x": 506,
+        "y": 1727,
+        "w": 217,
+        "h": 173,
+        "pivotX": 111,
+        "pivotY": 173
+      },
+      "attack_spear_7": {
+        "x": 755,
+        "y": 1727,
+        "w": 215,
+        "h": 177,
+        "pivotX": 108,
+        "pivotY": 177
+      },
+      "attack_gauntlets_0": {
+        "x": 8,
+        "y": 1976,
+        "w": 180,
+        "h": 199,
+        "pivotX": 112,
+        "pivotY": 199
+      },
+      "attack_gauntlets_1": {
+        "x": 257,
+        "y": 1976,
+        "w": 191,
+        "h": 197,
+        "pivotX": 102,
+        "pivotY": 197
+      },
+      "attack_gauntlets_2": {
+        "x": 506,
+        "y": 1976,
+        "w": 199,
+        "h": 178,
+        "pivotX": 104,
+        "pivotY": 178
+      },
+      "attack_gauntlets_3": {
+        "x": 755,
+        "y": 1976,
+        "w": 196,
+        "h": 185,
+        "pivotX": 115,
+        "pivotY": 185
+      },
+      "attack_gauntlets_4": {
+        "x": 8,
+        "y": 2225,
+        "w": 225,
+        "h": 185,
+        "pivotX": 119,
+        "pivotY": 185
+      },
+      "attack_gauntlets_5": {
+        "x": 257,
+        "y": 2225,
+        "w": 212,
+        "h": 180,
+        "pivotX": 105,
+        "pivotY": 180
+      },
+      "attack_gauntlets_6": {
+        "x": 506,
+        "y": 2225,
+        "w": 199,
+        "h": 180,
+        "pivotX": 106,
+        "pivotY": 180
+      },
+      "attack_gauntlets_7": {
+        "x": 755,
+        "y": 2225,
+        "w": 182,
+        "h": 201,
+        "pivotX": 106,
+        "pivotY": 201
       }
+    },
+    "clips": {
+      "run": {
+        "frames": [
+          "run_0",
+          "run_1",
+          "run_2",
+          "run_3",
+          "run_4",
+          "run_5",
+          "run_6",
+          "run_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "spear_nlight": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "spear_slight": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          4,
+          7,
+          7,
+          7
+        ]
+      },
+      "spear_dlight": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "spear_nair": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          5,
+          6,
+          6,
+          6
+        ]
+      },
+      "spear_sair": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          5,
+          8,
+          8,
+          7
+        ]
+      },
+      "spear_dair": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          4,
+          4,
+          3,
+          5,
+          8,
+          7,
+          7
+        ]
+      },
+      "spear_recovery": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          5,
+          4,
+          4,
+          7,
+          8,
+          8,
+          8
+        ]
+      },
+      "spear_ground_pound": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "light",
+          "light",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          12,
+          10,
+          10,
+          9
+        ]
+      },
+      "gauntlets_nlight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          2,
+          2,
+          2,
+          3,
+          5,
+          5,
+          4
+        ]
+      },
+      "gauntlets_slight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          2,
+          4,
+          6,
+          6,
+          5
+        ]
+      },
+      "gauntlets_dlight": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          4,
+          6,
+          5,
+          5
+        ]
+      },
+      "gauntlets_nair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          2,
+          2,
+          5,
+          6,
+          5,
+          5
+        ]
+      },
+      "gauntlets_sair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          6,
+          6
+        ]
+      },
+      "gauntlets_dair": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          3,
+          3,
+          3,
+          4,
+          7,
+          7,
+          6
+        ]
+      },
+      "gauntlets_recovery": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          4,
+          3,
+          3,
+          7,
+          8,
+          7,
+          7
+        ]
+      },
+      "gauntlets_ground_pound": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "light",
+          "light",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          5,
+          5,
+          4,
+          12,
+          9,
+          9,
+          8
+        ]
+      },
+      "caleb_spear_nsig": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_n",
+          "sig_spear_n",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          8,
+          7,
+          7,
+          5,
+          10,
+          10,
+          10
+        ]
+      },
+      "caleb_spear_ssig": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_s",
+          "sig_spear_s",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          9,
+          8,
+          8,
+          5,
+          12,
+          11,
+          11
+        ]
+      },
+      "caleb_spear_dsig": {
+        "frames": [
+          "idle",
+          "attack_spear_1",
+          "attack_spear_2",
+          "sig_spear_d",
+          "sig_spear_d",
+          "idle",
+          "attack_spear_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          9,
+          6,
+          12,
+          12,
+          11
+        ]
+      },
+      "caleb_gauntlets_nsig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_n",
+          "sig_gauntlets_n",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          7,
+          7,
+          6,
+          5,
+          10,
+          9,
+          9
+        ]
+      },
+      "caleb_gauntlets_ssig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_s",
+          "sig_gauntlets_s",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          5,
+          11,
+          11,
+          10
+        ]
+      },
+      "caleb_gauntlets_dsig": {
+        "frames": [
+          "attack_gauntlets_0",
+          "attack_gauntlets_1",
+          "attack_gauntlets_2",
+          "sig_gauntlets_d",
+          "sig_gauntlets_d",
+          "attack_gauntlets_6",
+          "attack_gauntlets_7"
+        ],
+        "ticks": [
+          9,
+          9,
+          8,
+          6,
+          12,
+          11,
+          11
+        ]
+      }
+    },
+    "movement": {
+      "source": "assets/animation-production/caleb-animation-draft.png",
+      "readiness": "animation_alpha",
+      "frames": 13,
+      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+    },
+    "attackAnimation": {
+      "readiness": "animation_alpha",
+      "clips": 22,
+      "unsafeFrames": [
+        "attack_spear_0",
+        "attack_spear_3",
+        "attack_spear_4",
+        "attack_spear_5",
+        "attack_spear_6",
+        "attack_gauntlets_4",
+        "attack_gauntlets_5"
+      ],
+      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
     }
   }
 }

@@ -42,8 +42,10 @@ Clip names are either a loop clip or an attack id from `attacks.json`.
 | Clip | Plays when | Timing |
 | --- | --- | --- |
 | `idle` | standing | loops on world time |
-| `run` | moving on the ground | loops |
-| `jump` | airborne | loops |
+| `run` | moving on the ground | loops from movement start; freezes during hitstop |
+| `air_rise`, `air_apex`, `air_fall` (frame names) | airborne | selected from vertical velocity |
+| `land` (frame name) | landing at rest | held for five simulation ticks |
+| `jump` | legacy clip slot | retained for existing manifest validation |
 | `dodge` | dodge or dash | loops |
 | `hitstun` | being launched | loops |
 | `<attack id>` | that attack, e.g. `sword_nlight`, `samson_hammer_ssig`, `unarmed_dsig` | advances with the attack's own tick |

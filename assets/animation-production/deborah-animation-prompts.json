@@ -1,0 +1,794 @@
+{
+  "character": "deborah",
+  "identity": "\n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n**Stats:** Power 3, Guard 5, Speed 7; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Low finishing power; wide staff whiffs can be punished up close.\n\n",
+  "weaponPair": [
+    "staff",
+    "blades"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "staff_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Staff Tap. A clear forward staff-end strike at chest height.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            28,
+            110,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Wide Reach. A longer controlled sideward staff strike with a planted back foot.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 37,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            28,
+            25,
+            135,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Floor Sweep. One low front staff sweep, fighter lowers center of gravity.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 20,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            125,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Overhead Fan. One overhead staff sweep while airborne with a single contact.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 19,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            -45,
+            30,
+            105,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Air Reach. A long horizontal staff strike while knees stay tucked.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            22,
+            140,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Low Arc. One downward-diagonal staff tip strike with torso above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            -65,
+            60,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Rising Staff. An upward staff turn and once-per-reset rising body impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 25,
+      "totalTicks": 45,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            20,
+            100,
+            130
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Staff Descent. The staff is aligned downward and the fighter descends with exposed sides.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 12,
+      "recovery": 29,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -85,
+            36,
+            115
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Cross Tap. A single crossed front blade contact, not a hidden two-hit sequence.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 14,
+      "totalTicks": 23,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            25,
+            55,
+            40
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Short Advance. One stepping crossed slash into the close front lane.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            75,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Low Cut. A low controlled front blade cut from a knee bend.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 16,
+      "totalTicks": 27,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            60,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Open V. One upward V-shaped aerial blade fan with one contact budget.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -25,
+            25,
+            65,
+            75
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Air Cross. One front crossed blade strike while airborne.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 19,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            80,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Down Cross. One downward-diagonal crossing strike, body remains vulnerable.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 33,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            -52,
+            48,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Blade Rise. A rising V-shaped blade fan and once-per-reset upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 7,
+      "recovery": 22,
+      "totalTicks": 39,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            -25,
+            18,
+            70,
+            115
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "blades_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: blades. Action: Blade Descent. A committed downward narrow blade strike with clear anticipation.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 14,
+      "active": 12,
+      "recovery": 27,
+      "totalTicks": 53,
+      "collisionPhases": [
+        {
+          "firstTick": 14,
+          "lastTickExclusive": 26,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            -65,
+            40,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_staff_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Palm Rise. Deborah rotates a wooden staff upward past her shoulder in an open fan arc, sash trailing.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 5,
+      "recovery": 25,
+      "totalTicks": 47,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 22,
+          "shape": "rect",
+          "rectUnits": [
+            -38,
+            40,
+            75,
+            140
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_staff_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Clear Direction. Deborah shifts one foot forward and snaps the staff horizontally into a long front-facing strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 21,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 54,
+      "collisionPhases": [
+        {
+          "firstTick": 21,
+          "lastTickExclusive": 26,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            145,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_staff_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Steady Counsel. Deborah lowers to a side stance and sweeps the far end of the staff along a low front arc.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 23,
+      "active": 6,
+      "recovery": 30,
+      "totalTicks": 59,
+      "collisionPhases": [
+        {
+          "firstTick": 23,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            145,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_blades_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Decisive Lift. Deborah crosses her practice blades at waist height and separates them in one rising V-shaped cut.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 5,
+      "recovery": 24,
+      "totalTicks": 45,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 21,
+          "shape": "rect",
+          "rectUnits": [
+            -23,
+            40,
+            45,
+            110
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_blades_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Swift Verdict. Deborah dashes a short distance and makes one crossed forward blade strike, finishing in a stable stance.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 20,
+      "active": 5,
+      "recovery": 29,
+      "totalTicks": 54,
+      "collisionPhases": [
+        {
+          "firstTick": 20,
+          "lastTickExclusive": 25,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            105,
+            55
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "deborah_blades_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: deborah. Action: Low Balance. Deborah slips backward during anticipation, then turns a blade through a low front sweep.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 24,
+      "active": 5,
+      "recovery": 31,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 24,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            95,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    }
+  ]
+}

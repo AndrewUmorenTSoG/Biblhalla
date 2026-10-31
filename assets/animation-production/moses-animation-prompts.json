@@ -1,0 +1,710 @@
+{
+  "character": "moses",
+  "identity": "\n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n**Stats:** Power 4, Guard 7, Speed 4; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Slow to reposition and vulnerable during ranged windup.\n\n",
+  "weaponPair": [
+    "staff",
+    "sling"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "sling_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Stone Flick. One short sling rotation releases a small forward training stone.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 1,
+      "recovery": 18,
+      "totalTicks": 28,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Flat Release. A wider waist-level rotation releases one horizontal stone.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 1,
+      "recovery": 22,
+      "totalTicks": 35,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Low Snap. A low front kick while holding the sling safely back; no projectile.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            60,
+            32
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Sling Halo. One overhead sling sweep with a close single-contact envelope.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 5,
+      "recovery": 18,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            -35,
+            35,
+            80,
+            75
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Midair Stone. Airborne body lean and one forward stone release.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 1,
+      "recovery": 23,
+      "totalTicks": 36,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Heel Descent. A downward heel kick with sling arm safely extended upward.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 22,
+      "totalTicks": 38,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            -12,
+            -55,
+            44,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Rising Turn. An upward body twist with sling held tight and one rising impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 44,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            20,
+            75,
+            110
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Shepherd Drop. A feet-first downward strike with knees braced and clear landing recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -55,
+            36,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Staff Tap. A clear forward staff-end strike at chest height.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            28,
+            110,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Wide Reach. A longer controlled sideward staff strike with a planted back foot.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 37,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            28,
+            25,
+            135,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Floor Sweep. One low front staff sweep, fighter lowers center of gravity.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 20,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            125,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Overhead Fan. One overhead staff sweep while airborne with a single contact.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 19,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            -45,
+            30,
+            105,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Air Reach. A long horizontal staff strike while knees stay tucked.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            22,
+            140,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Low Arc. One downward-diagonal staff tip strike with torso above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 5,
+      "recovery": 23,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            -65,
+            60,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Rising Staff. An upward staff turn and once-per-reset rising body impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 25,
+      "totalTicks": 45,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            20,
+            100,
+            130
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "staff_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: staff. Action: Staff Descent. The staff is aligned downward and the fighter descends with exposed sides.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 12,
+      "recovery": 29,
+      "totalTicks": 58,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -85,
+            36,
+            115
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "moses_staff_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Wilderness Rise. Moses moves a plain staff from planted rest into a deliberate upward sweep; sleeves pull back around his forearms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 6,
+      "recovery": 31,
+      "totalTicks": 59,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -33,
+            40,
+            65,
+            150
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "moses_staff_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Leader’s Reach. Moses steps firmly and strikes forward with the staff’s long end at chest height.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 6,
+      "recovery": 34,
+      "totalTicks": 65,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 31,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            155,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "moses_staff_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Desert Boundary. Moses lowers into a braced stance and sweeps the staff across a low frontward lane, with ordinary sand dust.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 27,
+      "active": 6,
+      "recovery": 35,
+      "totalTicks": 68,
+      "collisionPhases": [
+        {
+          "firstTick": 27,
+          "lastTickExclusive": 33,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            145,
+            18
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "moses_sling_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Ridge Stone. Moses makes one controlled overhead sling rotation and releases a training stone upward.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 23,
+      "active": 5,
+      "recovery": 32,
+      "totalTicks": 60,
+      "collisionPhases": []
+    },
+    {
+      "id": "moses_sling_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Trail Marker. Moses turns his upper body and releases one stone through a horizontal front lane.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 26,
+      "active": 5,
+      "recovery": 35,
+      "totalTicks": 66,
+      "collisionPhases": []
+    },
+    {
+      "id": "moses_sling_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: moses. Action: Low Passage. Moses bends at the knee and releases a low stone across the training floor.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 28,
+      "active": 5,
+      "recovery": 36,
+      "totalTicks": 69,
+      "collisionPhases": []
+    }
+  ]
+}

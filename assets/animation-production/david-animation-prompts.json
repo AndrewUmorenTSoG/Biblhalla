@@ -1,0 +1,710 @@
+{
+  "character": "david",
+  "identity": "\n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n**Stats:** Power 4, Guard 4, Speed 7; total 15. Common capsule 40×74 units. Stats alter damage/knockback/run cap only, never frame timing. **Weakness:** Short melee reach and light survivability; sling lanes can be jumped.\n\n",
+  "weaponPair": [
+    "sling",
+    "sword"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame idle sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "run",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame run sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "jump",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame jump sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "dodge",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame dodge sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "hitstun",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nDraw an 8-frame hitstun sequence with smooth weight shifts, follow-through and secondary cloth motion. Run uses contact/down/passing/up for each leg. Jump uses anticipation, takeoff, ascent, apex, descent, landing and settle.",
+      "timing": "60Hz simulation; locomotion loops except jump and hit reactions."
+    },
+    {
+      "id": "sword_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Quick Edge. A compact front slash from chest guard, one clear contact pose.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 15,
+      "totalTicks": 26,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            28,
+            70,
+            45
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Step Cut. A short advancing cut ending with the blade extended in front.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 31,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            25,
+            28,
+            95,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Low Lift. Low body dip then a small rising blade flick toward the opponent’s feet.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            0,
+            80,
+            40
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Air Circle. One compact overhead blade circle while airborne; no lingering rotating hits.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            35,
+            95,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Open Edge. A forward aerial horizontal sword slash with knees tucked.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 20,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            110,
+            52
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Falling Slice. Blade angles downward in front as the body remains vulnerable above.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 5,
+      "recovery": 21,
+      "totalTicks": 36,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            -55,
+            65,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Ascending Guard. A rising sword arc carries the fighter upward once.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 7,
+      "recovery": 22,
+      "totalTicks": 40,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 18,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            20,
+            85,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sword_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sword. Action: Point Drop. A downward committed sword point with a visible overhead preparation.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 15,
+      "active": 12,
+      "recovery": 27,
+      "totalTicks": 54,
+      "collisionPhases": [
+        {
+          "firstTick": 15,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -65,
+            36,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Stone Flick. One short sling rotation releases a small forward training stone.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 1,
+      "recovery": 18,
+      "totalTicks": 28,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Flat Release. A wider waist-level rotation releases one horizontal stone.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 1,
+      "recovery": 22,
+      "totalTicks": 35,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Low Snap. A low front kick while holding the sling safely back; no projectile.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            60,
+            32
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Sling Halo. One overhead sling sweep with a close single-contact envelope.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 9,
+      "active": 5,
+      "recovery": 18,
+      "totalTicks": 32,
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            -35,
+            35,
+            80,
+            75
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Midair Stone. Airborne body lean and one forward stone release.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 1,
+      "recovery": 23,
+      "totalTicks": 36,
+      "collisionPhases": []
+    },
+    {
+      "id": "sling_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Heel Descent. A downward heel kick with sling arm safely extended upward.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 11,
+      "active": 5,
+      "recovery": 22,
+      "totalTicks": 38,
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            -12,
+            -55,
+            44,
+            70
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Rising Turn. An upward body twist with sling held tight and one rising impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 13,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 44,
+      "collisionPhases": [
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -30,
+            20,
+            75,
+            110
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "sling_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: sling. Action: Shepherd Drop. A feet-first downward strike with knees braced and clear landing recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -55,
+            36,
+            85
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Open Jab. One short open-palm strike with rear hand guarding.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 6,
+      "active": 3,
+      "recovery": 15,
+      "totalTicks": 24,
+      "collisionPhases": [
+        {
+          "firstTick": 6,
+          "lastTickExclusive": 9,
+          "shape": "rect",
+          "rectUnits": [
+            18,
+            28,
+            40,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_slight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Step Palm. One forward palm from a small step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 18,
+      "totalTicks": 30,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            25,
+            55,
+            35
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dlight",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Low Kick. A controlled low front kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 7,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 28,
+      "collisionPhases": [
+        {
+          "firstTick": 7,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            50,
+            30
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Up Palm. One compact upward aerial palm.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 8,
+      "active": 4,
+      "recovery": 17,
+      "totalTicks": 29,
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            25,
+            50,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_sair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Air Kick. One forward aerial kick.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 20,
+      "totalTicks": 34,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            38
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dair",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Down Heel. A downward-diagonal heel strike.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 10,
+      "active": 4,
+      "recovery": 21,
+      "totalTicks": 35,
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 14,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            -50,
+            40,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_recovery",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Rising Palm. A rising upper palm strike and one upward impulse.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 12,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 43,
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 19,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            15,
+            55,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ground_pound",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Braced Fall. A downward feet-first strike with guarded arms.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 16,
+      "active": 12,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            -50,
+            36,
+            80
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Lift. A deliberate grounded upper palm strike with a visible windup.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 26,
+      "totalTicks": 49,
+      "collisionPhases": [
+        {
+          "firstTick": 18,
+          "lastTickExclusive": 23,
+          "shape": "rect",
+          "rectUnits": [
+            -20,
+            35,
+            60,
+            100
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Drive. A forceful forward double-palm strike from a planted step.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 5,
+      "recovery": 28,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            22,
+            85,
+            50
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "unarmed_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: unarmed. Action: Unarmed Sweep. A low guarded hand/leg sweep in front with slow recovery.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 25,
+      "active": 5,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": [
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 30,
+          "shape": "rect",
+          "rectUnits": [
+            15,
+            0,
+            80,
+            28
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "david_sling_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Skyward Stone. David plants his back foot, makes one compact overhead sling circle, and releases a stone diagonally upward; scarf follows the spin.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 18,
+      "active": 5,
+      "recovery": 24,
+      "totalTicks": 47,
+      "collisionPhases": []
+    },
+    {
+      "id": "david_sling_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Valley Line. David leans into a low side step, rotates his sling at waist height, and fires one clean horizontal stone; shoulders visibly recoil.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 22,
+      "active": 6,
+      "recovery": 28,
+      "totalTicks": 56,
+      "collisionPhases": []
+    },
+    {
+      "id": "david_sling_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Shepherd Skip. David drops into a crouch and sends a single skipping stone through a short low lane; he remains at the start position.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 24,
+      "active": 6,
+      "recovery": 30,
+      "totalTicks": 60,
+      "collisionPhases": []
+    },
+    {
+      "id": "david_sword_nsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Rising Courage. David kneels slightly, then draws a narrow rising sword arc above his head; his off hand balances behind.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 17,
+      "active": 5,
+      "recovery": 24,
+      "totalTicks": 46,
+      "collisionPhases": [
+        {
+          "firstTick": 17,
+          "lastTickExclusive": 22,
+          "shape": "rect",
+          "rectUnits": [
+            -18,
+            40,
+            35,
+            120
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "david_sword_ssig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Forward Resolve. David takes two quick steps and makes one diagonal front slash; his leading knee bends and the scarf points backward.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 21,
+      "active": 5,
+      "recovery": 29,
+      "totalTicks": 55,
+      "collisionPhases": [
+        {
+          "firstTick": 21,
+          "lastTickExclusive": 26,
+          "shape": "rect",
+          "rectUnits": [
+            24,
+            24,
+            110,
+            55
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    },
+    {
+      "id": "david_sword_dsig",
+      "prompt": "Biblhalla original hand-drawn 2D animation. \n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n\nTransparent background, facing right, consistent face/costume/body proportions/weapon grip, fixed foot pivot. Eight evenly spaced frames per row, no overlap, no labels, no scenery. Draw true intermediate limb poses, never duplicates or whole-sprite rotation. Each clip is independent.\nWeapon: david. Action: Guarded Sweep. David shifts weight onto his rear heel and sweeps the blade just above the floor in front, finishing with both feet grounded.\nDraw 12 frames: four anticipation poses, two contact poses, six follow-through/recovery poses. Make contact silhouette distinct. Return toward neutral in final frame. No added hitboxes or magic.",
+      "startup": 23,
+      "active": 6,
+      "recovery": 30,
+      "totalTicks": 59,
+      "collisionPhases": [
+        {
+          "firstTick": 23,
+          "lastTickExclusive": 29,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            0,
+            105,
+            20
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ]
+    }
+  ]
+}
