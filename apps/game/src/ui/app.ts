@@ -12,7 +12,7 @@ import { GameAudio } from '../audio/audio.ts';
 import { Renderer } from '../render/renderer.ts';
 import { paintArenaPreview } from '../render/arena-scenes.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
-import { Inputs } from '../input/inputs.ts';
+import { Inputs, missingControllers } from '../input/inputs.ts';
 import { FixedStepRunner } from '../runner.ts';
 import { ComboTracker, InputHistory } from '../training/combo.ts';
 import { MenuNavigator, bindArrowKeys } from '../input/menu-nav.ts';
@@ -41,7 +41,7 @@ function applySettings(){document.documentElement.style.setProperty('--touch-siz
 function gate(next:any){if(!store.data.controlChecked){chooseInput(()=>startTutorial(next));}else next();}
 function chooseInput(next:any=null){inputNext=next;inputFromGame=!!world;document.querySelectorAll('input[name=input-method]').forEach((r:any)=>r.checked=r.value===settings.input);open($('input-dialog'));updateControllers();}
 function updateControllers(){const pads=inputs.pads(),radio=document.querySelector('input[name=input-method]:checked') as HTMLInputElement;const ready=pads.find((p:any)=>inputs.padSeen.has(p.index));$('controller-status').textContent=radio?.value==='controller'?(ready?'Controller ready: '+ready.id:'Connect a controller and press a button to test it.'):'Ready for '+(radio?.value||'keyboard')+'.';$('confirm-input').disabled=radio?.value==='controller'&&!ready;
-  if(world){const required=world.fighters.filter((f:any)=>f.human&&f.inputId.startsWith('pad:')).map((f:any)=>Number(f.inputId.split(':')[1]));if(required.some((index:number)=>!pads.some((p:any)=>p.index===index)))pause('Controller disconnected');}
+  if(world&&missingControllers(world.fighters,pads.map((p:any)=>p.index)).length)pause('Controller disconnected');
 }
 function currentInputId(){if(settings.input==='controller'){const p=inputs.pads().find((p:any)=>inputs.padSeen.has(p.index));return p?'pad:'+p.index:'unavailable';}return settings.input;}
 // Training instrumentation: combo/escape-gap tracker and input history (read-only).
@@ -149,6 +149,8 @@ $('home-play').addEventListener('click',()=>gate(()=>screen('modes')));$('home-c
 $('mode-story').addEventListener('click',()=>screen('chapters'));$('mode-quick').addEventListener('click',()=>screen('setup'));$('mode-local').addEventListener('click',()=>{screen('local');renderLocal();});
 $('confirm-input').addEventListener('click',()=>{const selected=(document.querySelector('input[name=input-method]:checked') as HTMLInputElement).value;if(selected==='controller'&&!inputs.pads().some((p:any)=>inputs.padSeen.has(p.index)))return;settings.input=selected;store.save();close($('input-dialog'));applySettings();if(inputFromGame&&world){world.fighters.find((f:any)=>f.human).inputId=currentInputId();showGame();inputs.active=false;open($('pause-dialog'));}else if(inputNext){const fn=inputNext;inputNext=null;fn();}});
 document.querySelectorAll('input[name=input-method]').forEach(r=>r.addEventListener('change',updateControllers));
+// Pause at once on unplug rather than at the next 400 ms poll.
+addEventListener('gamepaddisconnected',()=>updateControllers());
 $('battle-form').addEventListener('submit',(e:Event)=>{e.preventDefault();if(currentInputId()==='unavailable'){$('battle-status').textContent='Reconnect your controller or choose another input in Settings.';return;}const values=new FormData($('battle-form'));startGame(Object.fromEntries(values.entries()));});
 $('setup-moves').addEventListener('click',()=>movesInfo());$('back-chapters').addEventListener('click',()=>screen('chapters'));$('story-continue').addEventListener('click',continueStory);$('story-difficulty').addEventListener('change',()=>{settings.difficulty=$('story-difficulty').value;store.save();});$('journal-button').addEventListener('click',journal);$('export-story').addEventListener('click',exportSave);
 $('local-form').addEventListener('change',()=>{if(readyBoard.setRules(lobbyRules()))renderLocal();lobbyStatus();});$('local-mode').addEventListener('change',renderLocal);$('local-count').addEventListener('change',renderLocal);$('refresh-controllers').addEventListener('click',renderLocal);$('local-form').addEventListener('submit',localSubmit);

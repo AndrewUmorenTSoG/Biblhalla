@@ -4,6 +4,10 @@
 import type { Settings } from '../storage/profile.ts';
 
 const actions=['jump','light','heavy','dodge','item','interact'];
+/** Controller slots a human fighter is bound to that are no longer connected; any one pauses the match. */
+export function missingControllers(fighters:{human:boolean;inputId:string}[],connected:number[]):number[]{
+  return fighters.filter(f=>f.human&&/^pad:\d+$/.test(f.inputId)).map(f=>Number(f.inputId.slice(4))).filter(i=>!connected.includes(i));
+}
 /**
  * Standard-mapping controller -> semantic frame. Stick past the dead zone or D-pad;
  * opposite D-pad directions cancel to neutral. South Jump, West Light, North Heavy,
