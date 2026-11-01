@@ -17,7 +17,11 @@ export interface Marker {
   id: number; x: number; y: number; type: TaskType; label: string;
   stage: number; done: boolean; carried: boolean; dropped: boolean; targetX: number;
 }
-export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe' }
+export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe'; facing?: number }
+/** Lookout sight lines: a lookout sees this far in the direction it faces. */
+export const SIGHT_UNITS = 280;
+/** Cover spots on both sides of each lookout, [x0, x1] in Q units. */
+export type Cover = [number, number];
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
 export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
@@ -58,6 +62,9 @@ export interface Scene {
   seen: string[];
   closingLine: string;
   water: Water | null;
+  /** Line-of-sight stealth: lookouts face a direction; crouching in cover hides. */
+  sightLines: boolean;
+  covers: Cover[];
   /** Storm headwind gusts; they stop once the scene's tasks are complete. */
   wind: Wind | null;
   /** Route sections held back until the narrated crossing cue. */
@@ -68,6 +75,7 @@ const GOLIATH_LEVEL = 41;
 const RETURN_ROUTE_LEVELS = [13, 42];
 const PARABLE_LEVELS = [69, 74];
 const RISING_WATER = /water rises/i;
+const LINE_OF_SIGHT = /line-of-sight/i;
 const STORM = /storm ends on the narrative cue/i;
 const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
@@ -123,6 +131,8 @@ export function createCampaign(S: Engine, content: Content) {
       seen: [...(checkpoint?.level === levelId ? checkpoint.seen ?? [] : [])],
       closingLine: script ? `${script.closing.speaker}: ${script.closing.text}` : 'Dru: We can keep going. Stay beside me.',
       water: null,
+      sightLines: !combat && (level.kind === 'stealth' || LINE_OF_SIGHT.test(level.uniqueRule)),
+      covers: [],
       wind: null,
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
@@ -184,7 +194,9 @@ export function createCampaign(S: Engine, content: Content) {
       s.wind = { period: difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220, tell: difficulty === 'easy' ? 135 : 90, gust: 60, state: 'calm' };
     } else if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
       for (let n = 0; n < 4; n++) {
-        s.hazards.push({ id: n, x: (700 + n * 740) * Q, y: 80 * Q, period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140, tell: difficulty === 'easy' ? 90 : 60, active: 30 });
+        const x = 700 + n * 740;
+        s.hazards.push({ id: n, x: x * Q, y: 80 * Q, period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140, tell: difficulty === 'easy' ? 90 : 60, active: 30, facing: -1 });
+        if (s.sightLines) s.covers.push([(x - 230) * Q, (x - 150) * Q], [(x + 150) * Q, (x + 230) * Q]);
       }
     }
     if (checkpoint && checkpoint.level === levelId && checkpoint.stage !== 'exit') {
@@ -388,6 +400,17 @@ export function createCampaign(S: Engine, content: Content) {
       for (const h of s.hazards) {
         const phase = s.tick % h.period;
         h.state = phase < h.tell ? 'tell' : phase < h.tell + h.active ? 'active' : 'safe';
+        if (s.sightLines) {
+          // Lookouts turn between watches (staggered), so each side is watched in turn.
+          h.facing = (Math.floor(s.tick / h.period) + h.id) % 2 ? 1 : -1;
+          const ahead = (f.x - h.x) * h.facing;
+          const hidden = i.y < 0 && s.covers.some(([a, b]) => f.x >= a && f.x <= b);
+          if (h.state === 'active' && ahead > 0 && ahead < SIGHT_UNITS * Q && f.y < 150 * Q && !hidden) {
+            f.x = Math.max(80 * Q, safeX(s)); f.y = 82 * Q; f.vx = f.vy = 0;
+            say(s, 'Seen by an archive lookout. Back to the safe route — hide in cover while it watches.', 180);
+          }
+          continue;
+        }
         if (h.state === 'active' && Math.abs(f.x - h.x) < 45 * Q && f.y < 150 * Q && !(s.kind === 'stealth' && i.y < 0)) {
           f.x = Math.max(80 * Q, safeX(s)); f.y = 82 * Q; f.vx = f.vy = 0;
           say(s, s.kind === 'stealth' ? 'Seen by an archive lookout. Return to the safe route.' : 'Obstacle touched. Back to the safe checkpoint.', 180);

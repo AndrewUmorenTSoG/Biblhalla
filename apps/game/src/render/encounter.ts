@@ -6,6 +6,7 @@ import type { SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { AIM_ZONE, GOLIATH_X, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
+import { SIGHT_UNITS } from '../../../../packages/campaign/src/controller.ts';
 
 const TELL = 'rgba(214,164,72,.32)', TELL_EDGE = '#b5832f';
 const ACTIVE = 'rgba(176,64,48,.45)', ACTIVE_EDGE = '#8e2f22';
@@ -61,6 +62,20 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     c.fillStyle = WATER;
     c.fillRect(-400, -120, 4600, top + 120);
     label(c, w.state === 'high' ? 'SURGE — stay on a ledge' : 'Water rising', scene.world.fighters[0].x / Q, top + 40);
+  }
+  if (scene.sightLines) {
+    for (const [a, b] of scene.covers) {
+      c.fillStyle = 'rgba(60,92,70,.35)';
+      c.fillRect(a / Q, 80, (b - a) / Q, 46);
+      label(c, 'Cover — hold Down', (a + b) / 2 / Q, 142);
+    }
+    for (const h of scene.hazards) {
+      if (h.state === 'safe' || !h.facing) continue;
+      const x = h.x / Q, reach = SIGHT_UNITS * h.facing;
+      c.fillStyle = h.state === 'active' ? 'rgba(214,164,72,.35)' : 'rgba(214,164,72,.14)';
+      c.beginPath(); c.moveTo(x, 140); c.lineTo(x + reach, 200); c.lineTo(x + reach, 80); c.lineTo(x, 110); c.closePath(); c.fill();
+      label(c, h.state === 'active' ? 'WATCHING' : 'Turning…', x, 230);
+    }
   }
   const wind = scene.wind;
   if (wind && (wind.state === 'warning' || wind.state === 'gust')) {

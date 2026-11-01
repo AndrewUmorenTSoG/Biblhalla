@@ -59,3 +59,28 @@ test('a gust never pushes a fighter off the edge of their footing', () => {
   assert.ok(f.x >= (floor.rectUnits[0] + 30) * Q - Q);
   assert.ok(f.ground, 'still standing');
 });
+
+test('L016/L042: lookouts see only ahead, and crouching in cover hides you', () => {
+  for (const id of ['L016', 'L042']) {
+    const s = enter(id);
+    assert.ok(s.sightLines, `${id} uses line of sight`);
+    assert.ok(s.covers.length >= 2);
+    const h = s.hazards[0];
+    for (let t = 0; t < 600 && !(h.state === 'active'); t++) A.step(s, {});
+    const f = s.world.fighters[0];
+    const place = (dx: number) => { f.x = h.x + dx * Q * h.facing!; f.y = 82 * Q; f.vx = f.vy = 0; f.action = null; };
+    // Behind the lookout: unseen.
+    place(-120);
+    let x = f.x; A.step(s, {}); assert.equal(f.x, x, 'behind the lookout is safe');
+    // In its sight line, crouching inside cover: hidden.
+    const cover = s.covers.find(([a, b]) => Math.sign(((a + b) / 2) - h.x) === h.facing)!;
+    f.x = (cover[0] + cover[1]) / 2; f.y = 82 * Q; f.vx = f.vy = 0;
+    x = f.x; A.step(s, { y: -1 }); assert.equal(f.x, x, 'hidden in cover');
+    // In its sight line in the open: seen, sent back without harm.
+    assert.equal(h.state, 'active');
+    place(100);
+    A.step(s, { y: -1 });
+    assert.equal(f.x, 80 * Q, 'crouching in the open is still seen and sent back to the safe deck');
+    assert.equal(f.damage, 0);
+  }
+});
