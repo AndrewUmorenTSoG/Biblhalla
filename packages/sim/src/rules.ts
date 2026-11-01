@@ -12,6 +12,7 @@ export function knockOut(ctx: SimContext, s: SimState, f: Fighter): void {
   f.action = null; f.buffer = null; f.stun = f.hitstop = 0; f.vx = f.vy = f.kx = 0;
   f.weapon = 'unarmed'; f.carry = false;
   f.respawn = f.stocks ? ctx.R.respawnDelayTicks : 0;
+  if (!f.stocks) f.eliminatedAt = s.tick;
   for (const it of s.items) if (it.claim === f.id) it.claim = null;
   event(s, 'ko', { fighter: f.id, x: f.x, y: f.y });
   if (s.mode === 'training') { f.stocks = 3; f.respawn = 60; }

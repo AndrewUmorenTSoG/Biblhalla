@@ -1,7 +1,7 @@
 // Match state construction, pause, events and results.
 
 import type { SimContext } from './context.ts';
-import type { Fighter, FighterConfig, Input, InputFrame, MatchOptions, Mode, SimEvent, SimState } from './types.ts';
+import type { Fighter, FighterConfig, Input, InputFrame, MatchOptions, Mode, Placement, SimEvent, SimState } from './types.ts';
 import { Q, hash, snapshot } from './fixed.ts';
 import type { Difficulty } from '../../content/src/index.ts';
 
@@ -123,9 +123,42 @@ export function pause(s: SimState, on = true): void {
   }
 }
 
+/**
+ * Standings for the results screen: winners first, then fighters still standing by
+ * lives then lower damage, then the eliminated in reverse order of elimination.
+ * In 2v2, teammates share their team's place. Ties share a place number.
+ */
+export function placements(s: SimState, winners: number[]): Placement[] {
+  const roster = s.fighters.filter(f => !(s.mode === 'waves' || s.mode === 'story') || f.human);
+  const key = (f: Fighter): number[] => [
+    winners.includes(f.id) ? 0 : 1,
+    f.stocks ? 0 : 1,
+    -f.stocks,
+    f.stocks ? f.damage : -(f.eliminatedAt ?? 0),
+  ];
+  const groupKey = (f: Fighter) => (s.mode === 'teams' ? `t${f.team}` : `f${f.id}`);
+  // Teams rank by their best member.
+  const best = new Map<string, number[]>();
+  for (const f of roster) {
+    const k = key(f), g = groupKey(f), cur = best.get(g);
+    if (!cur || compare(k, cur) < 0) best.set(g, k);
+  }
+  const groups = [...best.entries()].sort((a, b) => compare(a[1], b[1]));
+  const placeOf = new Map<string, number>();
+  groups.forEach(([g, k], i) => placeOf.set(g, i > 0 && compare(k, groups[i - 1][1]) === 0 ? placeOf.get(groups[i - 1][0])! : i + 1));
+  return roster
+    .map(f => ({ fighter: f.id, name: f.name, human: f.human, team: f.team, place: placeOf.get(groupKey(f))!, stocks: f.stocks, damage: f.damage, damageDealt: f.damageDealt }))
+    .sort((a, b) => a.place - b.place || a.fighter - b.fighter);
+}
+
+function compare(a: number[], b: number[]): number {
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] - b[i];
+  return 0;
+}
+
 export function finish(s: SimState, won: boolean, reason: string, winners: number[] = []): void {
   if (s.phase === 'result') return;
   s.phase = 'result';
-  s.result = { won, reason, winners, ticks: s.tick, difficulty: s.difficulty, mode: s.mode };
+  s.result = { won, reason, winners, ticks: s.tick, difficulty: s.difficulty, mode: s.mode, placements: placements(s, winners) };
   event(s, 'result', { ...s.result });
 }

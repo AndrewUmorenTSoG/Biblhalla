@@ -96,6 +96,8 @@ export interface Fighter {
   damageDealt: number;
   hits: number;
   carry: boolean;
+  /** Tick this fighter lost their last stock; later means a better placement. */
+  eliminatedAt?: number;
   /** Wave archetype from the enemy catalog (road_guard, shield_guard, archer, brute). */
   role?: string;
 }
@@ -186,7 +188,10 @@ export interface BossHazard { name: string; kind: BossMove['kind']; stage: 'tell
 /** The next wave arrival, shown at its gate before the opponent appears. */
 export interface WaveCue { x: number; y: number; role: string; ticks: number }
 
-export interface MatchResult { won: boolean; reason: string; winners: number[]; ticks: number; difficulty: string; mode: string }
+/** One line of the results screen. Equal places share a number. */
+export interface Placement { fighter: number; name: string; human: boolean; team: number; place: number; stocks: number; damage: number; damageDealt: number }
+
+export interface MatchResult { won: boolean; reason: string; winners: number[]; ticks: number; difficulty: string; mode: string; placements: Placement[] }
 
 export interface SimState {
   version: number;
