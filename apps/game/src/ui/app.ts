@@ -13,6 +13,7 @@ import { paintArenaPreview } from '../render/arena-scenes.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
 import { Inputs } from '../input/inputs.ts';
 import { FixedStepRunner } from '../runner.ts';
+import { ComboTracker, InputHistory } from '../training/combo.ts';
 
 export function startApp(C: Content, S: Engine, A: CampaignApi, art: RuntimeArt): void {
 const root: any = globalThis;
@@ -38,9 +39,12 @@ function updateControllers(){const pads=inputs.pads(),radio=document.querySelect
   if(world){const required=world.fighters.filter((f:any)=>f.human&&f.inputId.startsWith('pad:')).map((f:any)=>Number(f.inputId.split(':')[1]));if(required.some((index:number)=>!pads.some((p:any)=>p.index===index)))pause('Controller disconnected');}
 }
 function currentInputId(){if(settings.input==='controller'){const p=inputs.pads().find((p:any)=>inputs.padSeen.has(p.index));return p?'pad:'+p.index:'unavailable';}return settings.input;}
+// Training instrumentation: combo/escape-gap tracker and input history (read-only).
+let comboTracker:ComboTracker|null=null,inputHistory=new InputHistory();
+function observeTraining(frames:any){if(world?.mode!=='training')return;const p=world.fighters[0],d=world.fighters[1];if(!d)return;if(!comboTracker||comboTracker.defenderId!==d.id)comboTracker=new ComboTracker(p.id,d.id);comboTracker.observe(world);inputHistory.record(world.tick,frames[p.inputId]);renderer.training={combo:comboTracker.report,history:inputHistory.entries};}
 function startGame(options:any){
   if(!options.fighters&&currentInputId()==='unavailable'){chooseInput(()=>startGame(options));return;}
-  closeDialogs();scene=null;tutorial=false;world=S.create({...options,inputId:options.inputId||currentInputId()});resultShown=false;renderer.lastEvent=0;renderer.particles=[];audio.last=0;replayPlayback=null;replayRecord={schema:1,contentHash:C.hash,initial:S.snapshot(world),entries:[],finalHash:null};
+  comboTracker=null;inputHistory=new InputHistory();renderer.training=null;closeDialogs();scene=null;tutorial=false;world=S.create({...options,inputId:options.inputId||currentInputId()});resultShown=false;renderer.lastEvent=0;renderer.particles=[];audio.last=0;replayPlayback=null;replayRecord={schema:1,contentHash:C.hash,initial:S.snapshot(world),entries:[],finalHash:null};
   showGame();updateHud();$('game-title').textContent=options.mode==='training'?'Training ground':options.mode==='waves'?'Wave challenge':options.mode==='boss'?'Champion encounter':'Arena exhibition';$('objective').textContent=options.mode==='training'?'Practice safely. Open Details to inspect timing and resources.':options.mode==='waves'?'Clear three waves. Protect your three lives.':options.mode==='boss'?'Break the champion’s guard or score a ring-out.':'Build damage. Knock opponents out. Stay on the arena.';
 }
 function showGame(){for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!=='game';currentScreen='game';$('header').hidden=$('footer').hidden=true;inputs.clear();inputs.active=true;audio.unlock();runner.reset();hudTick=-1;$('arena').focus({preventScroll:true});const quiet=scene&&(!scene.level.combatEnabled||scene.combatCleared||scene.level.number===41);$('touch-layer').hidden=settings.input!=='touch'&&!world.fighters.some((f:any)=>f.inputId==='touch');$('touch-layer').classList.toggle('quiet-controls',!!quiet);$('touch-layer').classList.toggle('witness-controls',scene?.kind==='witness');$('hud').hidden=scene?.kind==='witness'||!!quiet;$('story-progress').hidden=!scene;$('game-context').hidden=world.mode==='training'&&!scene;$('training-details').hidden=!!scene||world.mode!=='training';$('training-reset').hidden=!!scene||world.mode!=='training';$('training-bot-wrap').hidden=!!scene||world.mode!=='training';$('retry-checkpoint').hidden=!scene;$('training-bot').value=world.trainingBot||'idle';$('input-hint').textContent=settings.input==='keyboard'?'A D Move · Space Jump · J Light · K Heavy · Shift Dodge · L Pickup · E Interact · Esc Pause':settings.input==='touch'?'Move with the stick. Aim while pressing an action.':'Stick Move · South Jump · West Light · North Heavy · East Dodge · R1 Pickup · L1 Interact';}
@@ -99,7 +103,7 @@ function frame(now:number){const dt=lastTime?now-lastTime:1000/60;lastTime=now;
         renderer.capture(world);
         if(replayPlayback)tickReplay();
         else if(scene){const f=world.fighters[0];A.step(scene,frames[f.inputId]||{});if(scene.checkpointEvent){const cp=scene.checkpointEvent;store.checkpoint(cp.level,cp.stage,cp.progress,cp.combatCleared,cp.seed);}}
-        else {S.step(world,frames);if(replayRecord&&replayRecord.entries.length<24000)replayRecord.entries.push({kind:'input',frames});checkTutorial(frames);}
+        else {S.step(world,frames);if(replayRecord&&replayRecord.entries.length<24000)replayRecord.entries.push({kind:'input',frames});checkTutorial(frames);observeTraining(frames);}
         audio.play(world.events);
         if(scene&&scene.pendingCard!==null){showCard();return false;}
         return !(world.phase==='paused'||world.phase==='result'||scene?.phase==='complete'||scene?.phase==='failed');
