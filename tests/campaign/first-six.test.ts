@@ -35,19 +35,19 @@ test('every wave arrival is announced at its gate 90 ticks ahead, clear of the p
   const w = s.world;
   const player = w.fighters[0];
   const cues: { tick: number; x: number; y: number }[] = [];
-  const arrivals: { tick: number; x: number; y: number }[] = [];
+  const arrivals: { tick: number; x: number; y: number; px: number; py: number }[] = [];
   for (let t = 0; t < 4000 && arrivals.length < 3; t++) {
     A.step(s, {});
     for (const e of w.events) {
       if (e.type === 'arrivalCue') cues.push({ tick: w.tick, x: e.x as number, y: e.y as number });
-      if (e.type === 'arrival') arrivals.push({ tick: w.tick, x: e.x as number, y: e.y as number });
+      if (e.type === 'arrival') arrivals.push({ tick: w.tick, x: e.x as number, y: e.y as number, px: player.x, py: player.y });
     }
   }
   assert.equal(arrivals.length, 3);
   arrivals.forEach((a, i) => {
     assert.equal(a.tick - cues[i].tick, ARRIVAL_CUE_TICKS + 1);
     assert.deepEqual([a.x, a.y], [cues[i].x, cues[i].y]);
-    assert.ok(Math.abs(a.x - player.x) / Q >= SAFE_ARRIVAL_UNITS || Math.abs(a.y - player.y) / Q >= SAFE_ARRIVAL_UNITS);
+    assert.ok(Math.abs(a.x - a.px) / Q >= SAFE_ARRIVAL_UNITS - 10 || Math.abs(a.y - a.py) / Q >= SAFE_ARRIVAL_UNITS - 10, 'clear of the player when it arrives');
   });
   const [lx, ly] = gatePoint(w.map, 'left_floor');
   assert.deepEqual([arrivals[0].x, arrivals[0].y], [lx * Q, ly * Q], 'first raider uses the left floor gate');

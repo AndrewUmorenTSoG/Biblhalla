@@ -17,6 +17,8 @@ export const ARRIVAL_CUE_TICKS = 90;
 export const WAVE_BREAK_TICKS = 120;
 /** Never place an arrival this close to a player. */
 export const SAFE_ARRIVAL_UNITS = 140;
+/** An arrival waits while a player stands this close to its marker. */
+export const SPAWN_CLEAR_UNITS = 60;
 const GATE_INSET_UNITS = 60;
 const FEET_CLEARANCE_UNITS = 2;
 
@@ -74,12 +76,16 @@ export function arrivals(ctx: SimContext, s: SimState): void {
     if (live >= cap) return;
     // Every arrival is announced at its gate first.
     if (!s.cue) { announce(s); s.waveWait = ARRIVAL_CUE_TICKS; return; }
+    // Never appear on top of a player who walked onto the marker: hold the arrival briefly.
+    const cue = s.cue;
+    if (s.fighters.some(h => h.human && h.stocks && !h.respawn && Math.abs(h.x - cue.x) < SPAWN_CLEAR_UNITS * Q && Math.abs(h.y - cue.y) < 80 * Q)) { s.waveWait = 10; return; }
     const role = s.wavePending.shift()!;
     const f = createFighter(ctx, s, { hero: ENEMY_HERO[role] || 'joshua', team: 1, stocks: 1, name: role.replace(/_/g, ' ') }, 1);
     f.x = s.cue.x; f.y = s.cue.y;
     const player = s.fighters.find(h => h.human && h.stocks);
     f.facing = player && player.x < f.x ? -1 : 1;
     f.weapon = ctx.defs[f.hero].weaponPair[0];
+    f.role = role;
     f.invulnerable = 30;
     s.fighters.push(f);
     s.totalEnemies++;

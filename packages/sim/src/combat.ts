@@ -72,6 +72,15 @@ export function launchForceQ(m: Pick<Attack, 'baseForceQ' | 'growthQPerDamage'>,
   return m.baseForceQ + Math.floor((m.growthQPerDamage * damageTenths) / 10);
 }
 
+/**
+ * Campaign shield guards carry a frontal training shield: while idle and facing the
+ * hit, damage and launch are halved. It never covers the back, never applies during
+ * their own attacks or hitstun, and never makes them invulnerable.
+ */
+export function shieldBlocks(target: Fighter, hitFacing: number): boolean {
+  return target.role === 'shield_guard' && !target.action && !target.stun && hitFacing === -target.facing;
+}
+
 function throwSpec(ctx: SimContext): HitSpec {
   return { ...ctx.R.throw, hitstopTicks: 3, launchAngle: 22, chargeMaxTicks: 0, chargeMaxDamagePermille: 1000 };
 }
@@ -161,7 +170,10 @@ export function combat(ctx: SimContext, s: SimState): void {
       // Charge scales damage linearly up to the authored permille; never size, time or angle.
       const chargeScale = h.m.chargeMaxTicks ? 1000 + Math.floor(((h.m.chargeMaxDamagePermille - 1000) * h.charge) / h.m.chargeMaxTicks) : 1000;
       const power = 1000 + P.powerDamagePermillePerStat * ((owner?.stats.power ?? P.statBaseline) - P.statBaseline);
-      const amount = roundMul(roundMul(h.m.damageTenths, power), chargeScale);
+      const raw = roundMul(roundMul(h.m.damageTenths, power), chargeScale);
+      const blocked = shieldBlocks(target, h.facing);
+      const amount = blocked ? Math.floor(raw / 2) : raw;
+      if (blocked) event(s, 'shieldBlock', { fighter: target.id, attacker: h.owner });
       damage += amount;
       stun = Math.max(stun, h.m.hitstunTicks);
       stop = Math.max(stop, h.m.hitstopTicks);
@@ -185,7 +197,7 @@ export function combat(ctx: SimContext, s: SimState): void {
       if (raw > bestRaw || (raw === bestRaw && h.instance < best.instance)) { best = h; bestRaw = raw; }
     }
     const guardScale = 1000 + P.guardForcePermillePerStat * (target.stats.guard - P.statBaseline);
-    const force = clamp(roundMul(bestRaw, guardScale), 0, P.knockbackCapQ);
+    const force = clamp(roundMul(shieldBlocks(target, best.facing) ? Math.floor(bestRaw / 2) : bestRaw, guardScale), 0, P.knockbackCapQ);
     const dir = P.directionLookup[String(best.m.launchAngle)] || P.directionLookup['22'];
     target.kx = roundMul(force, dir[0], 1024) * best.facing;
     target.vy = roundMul(force, dir[1], 1024);

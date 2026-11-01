@@ -9,6 +9,18 @@ import { eligibleItem } from './moveResolver.ts';
 
 const HISTORY = 64;
 
+/**
+ * Enemy catalog tells (11_Story_Campaign/03): ticks of visible preparation before a
+ * light or heavy attack, and how often the heavy is chosen. Same moves, frame data
+ * and stats as any fighter; only the readable windup is added.
+ */
+export const ARCHETYPES: Record<string, { lightTell: number; heavyTell: number; heavyChance: number }> = {
+  road_guard: { lightTell: 18, heavyTell: 26, heavyChance: 30 },
+  shield_guard: { lightTell: 24, heavyTell: 30, heavyChance: 45 },
+  archer: { lightTell: 30, heavyTell: 30, heavyChance: 35 },
+  brute: { lightTell: 30, heavyTell: 42, heavyChance: 60 },
+};
+
 export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && s.trainingBot === 'idle') return input();
   // Scripted bosses act only through their authored pattern (boss.ts).
@@ -30,6 +42,12 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
       f.ai.tell--;
       return f.ai.tell === 0 ? input({ x: f.ai.tellDir, heavy: true }) : input();
     }
+  }
+  // Wave archetypes wind up visibly before every attack (enemy catalog tells).
+  if (f.role && f.ai.tell > 0) {
+    if (f.stun || f.hitstop || f.respawn) { f.ai.tell = 0; return input(); }
+    f.ai.tell--;
+    return f.ai.tell === 0 ? input({ x: f.ai.tellDir, [f.ai.tellButton ?? 'light']: true }) : input();
   }
   // A bot knows its own resources exactly, so recovery is planned every tick rather
   // than on the decision interval used for reading the opponent.
@@ -63,6 +81,13 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
         f.ai.tellDir = sign;
         v.x = 0;
         event(s, 'bossTell', { fighter: f.id, phase: f.ai.phase });
+      } else if (f.role && ARCHETYPES[f.role] && f.ground && !f.action) {
+        const a = ARCHETYPES[f.role], heavy = choose < a.heavyChance;
+        f.ai.tell = heavy ? a.heavyTell : a.lightTell;
+        f.ai.tellButton = heavy ? 'heavy' : 'light';
+        f.ai.tellDir = sign;
+        v.x = 0;
+        event(s, 'enemyTell', { fighter: f.id, role: f.role, button: f.ai.tellButton, ticks: f.ai.tell });
       } else if (choose < 25) v.heavy = true;
       else v.light = true;
       if (s.difficulty !== 'easy' && seen.action === 'attack' && nextRandom(s) % 100 < 45) v.dodge = true;

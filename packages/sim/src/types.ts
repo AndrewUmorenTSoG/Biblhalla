@@ -46,6 +46,8 @@ export interface BotMemory {
   history: { x: number; y: number; action: string; tick: number }[];
   tell: number;
   tellDir: number;
+  /** Button released when the tell ends (wave archetypes use light or heavy). */
+  tellButton?: 'light' | 'heavy';
   phase: number;
 }
 
@@ -92,6 +94,8 @@ export interface Fighter {
   damageDealt: number;
   hits: number;
   carry: boolean;
+  /** Wave archetype from the enemy catalog (road_guard, shield_guard, archer, brute). */
+  role?: string;
 }
 
 export interface Projectile {
