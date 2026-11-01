@@ -135,3 +135,22 @@ test('L056: Ken waits at each ember lane and crosses only in a safe window; embe
   A.step(s, { interact: true });
   assert.notEqual(s.phase, 'complete');
 });
+
+test('L073: stretcher lifts need Ken on the other end', () => {
+  const s = enter('L073');
+  assert.ok(s.coopLift);
+  const f = s.world.fighters[0];
+  const m = s.markers.find(k => k.type === 'building' || k.type === 'carry')!;
+  f.x = m.x; f.y = m.y; f.action = null;
+  s.companion.x = m.x - 600 * Q;
+  A.interact(s);
+  assert.equal(s.carry, null, 'cannot lift alone');
+  assert.match(s.caption, /two-person lift/);
+  s.companion.x = m.x - 80 * Q;
+  A.interact(s);
+  assert.equal(s.carry, m.id);
+  for (let t = 0; t < 60; t++) {
+    A.step(s, { x: 1 });
+    assert.ok(Math.abs(s.companion.x - f.x) <= 60 * Q, 'Ken stays on the stretcher');
+  }
+});

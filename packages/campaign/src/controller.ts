@@ -75,6 +75,8 @@ export interface Scene {
   /** Storm headwind gusts; they stop once the scene's tasks are complete. */
   wind: Wind | null;
   embers: EmberLane[];
+  /** Two-person lifts: Ken must hold the other end to pick up, carry and deliver. */
+  coopLift: boolean;
   /** Route sections held back until the narrated crossing cue. */
   parted?: MapDef['platforms'] | null;
 }
@@ -86,6 +88,8 @@ const RISING_WATER = /water rises/i;
 const LINE_OF_SIGHT = /line-of-sight/i;
 const STORM = /storm ends on the narrative cue/i;
 const EMBER_COURSE = /ember obstacle course/i;
+const COOP_LIFT = /stretcher-model lifts/i;
+export const LIFT_PARTNER_UNITS = 140;
 const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
 const FAR_SHORE_X = 2400;
@@ -144,6 +148,7 @@ export function createCampaign(S: Engine, content: Content) {
       covers: [],
       wind: null,
       embers: [],
+      coopLift: !combat && COOP_LIFT.test(level.objective),
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -279,6 +284,10 @@ export function createCampaign(S: Engine, content: Content) {
     }
     if (!m) return;
     if (m.type === 'carry' || m.type === 'building') {
+      if (s.coopLift && Math.abs(s.companion.x - f.x) > LIFT_PARTNER_UNITS * Q) {
+        say(s, 'This is a two-person lift. Wait for Ken to take the other end.', 160);
+        return;
+      }
       m.carried = true; m.stage = 1; s.carry = m.id; f.carry = true; f.action = null;
       say(s, 'Carry to the outlined station. Interact to set down or deliver.', 240);
       return;
@@ -402,6 +411,8 @@ export function createCampaign(S: Engine, content: Content) {
         }
       }
     }
+    // Lifting together: Ken holds the far end beside the player for the whole carry.
+    if (s.coopLift && s.carry !== null) { s.companion.x = f.x - 60 * Q * f.facing; s.companion.y = f.y; }
     // Following travelers walk behind the player in a short line; they cannot be harmed.
     s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
       const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
