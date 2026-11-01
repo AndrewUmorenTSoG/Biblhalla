@@ -47,6 +47,8 @@ export interface Water { period: number; tell: number; active: number; state: 'c
 export interface Card {
   heading: string; text: string; reference: string; label: string;
   puzzle: boolean; choices: string[]; answer: number; prompt: string;
+  /** Optional help text behind a Show clue button; never scored. */
+  clue: string;
 }
 
 export interface Scene {
@@ -441,6 +443,7 @@ export function createCampaign(S: Engine, content: Content) {
       choices: [labels[index % labels.length], labels[(index + 1) % labels.length], labels[(index + 2) % labels.length]],
       answer: 0,
       prompt: 'Select the panel for step ' + (index + 1) + ': ' + labels[index % labels.length],
+      clue: `Clue: the panel you need is titled "${labels[index % labels.length]}". There is no penalty for trying.`,
     };
   }
 

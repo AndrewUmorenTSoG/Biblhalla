@@ -337,3 +337,15 @@ test('L015: Ken is the post to protect and moves with him', () => {
   assert.equal(s.phase, 'failed');
   assert.match(s.result!.reason!, /reached Ken/);
 });
+
+test('every puzzle card offers an optional clue that names the right panel', () => {
+  for (const id of ['L003', 'L010', 'L014', 'L032', 'L044', 'L045', 'L055', 'L066', 'L068', 'L078']) {
+    const s = A.create(id);
+    const k = s.markers.findIndex(m => m.type === 'puzzle');
+    if (k < 0) continue;
+    const card = A.card(s, k)!;
+    assert.ok(card.puzzle);
+    assert.ok(card.clue.includes(card.choices[card.answer]), `${id}: the clue names the answer`);
+    assert.match(card.clue, /no penalty/);
+  }
+});
