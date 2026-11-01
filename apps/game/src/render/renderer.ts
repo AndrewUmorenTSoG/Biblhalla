@@ -88,7 +88,8 @@ export class Renderer{
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
     c.save();c.translate(640,460);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
-    for(const pl of [map.main,...map.platforms])paintArenaSurface(c,map.id,pl.rectUnits,pl.kind==='solid');
+    // Story routes borrow their chapter arena's surface design.
+    const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
     for(const it of world.items){const x=it.x/Q,y=it.y/Q;c.save();c.translate(x,y+18);c.scale(1,-1);c.fillStyle=it.neutral?'#c7a466':'#9caa93';c.strokeStyle='#493e2e';this.round(-18,-18,36,32,5);c.beginPath();c.moveTo(-12,-12);c.lineTo(12,9);c.moveTo(12,-12);c.lineTo(-12,9);c.stroke();c.restore();}
     if(scene){
       for(const m of scene.markers){if(m.done)continue;if(scene.level.number===1&&m.id>scene.done.length)continue;const x=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x)/Q,y=m.y/Q;
