@@ -4,3 +4,6 @@
 .arena-preview{margin:.65rem 0 1rem;padding:.45rem;border:1px solid rgba(224,202,153,.42);border-radius:12px;background:#263d48;max-width:38rem}
 .arena-preview canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px}
 .arena-preview figcaption{padding:.4rem .2rem .1rem;color:#f3e4c6;font-size:.9rem}
+
+.rotate-hint{display:none}
+@media (orientation:portrait) and (pointer:coarse){html:not(.portrait-ok) .rotate-hint{display:flex;position:absolute;inset:0;z-index:40;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(16,28,33,.88);color:#f3e6c8;font:600 20px system-ui}}

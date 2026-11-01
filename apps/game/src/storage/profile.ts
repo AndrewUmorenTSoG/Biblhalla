@@ -74,7 +74,7 @@ export function createProfiles(content: Content) {
     schema: PROFILE_SCHEMA, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [], seenCards: [],
     settings: {
       input: 'keyboard', difficulty: 'easy', mute: false, reducedMotion: false, leftHanded: false, touchSize: 80, touchOpacity: 0.8,
-      deadzone: 0.2, uiScale: 1, captionSpeed: 1, symbolicFinale: true, bindings: { ...DEFAULT_BINDINGS },
+      deadzone: 0.22, uiScale: 1, captionSpeed: 1, symbolicFinale: true, bindings: { ...DEFAULT_BINDINGS },
     },
     controlChecked: false,
   });

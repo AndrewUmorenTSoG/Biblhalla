@@ -4,6 +4,18 @@
 import type { Settings } from '../storage/profile.ts';
 
 const actions=['jump','light','heavy','dodge','item','interact'];
+/**
+ * Standard-mapping controller -> semantic frame. Stick past the dead zone or D-pad;
+ * opposite D-pad directions cancel to neutral. South Jump, West Light, North Heavy,
+ * East or R2 Dodge, R1 Pickup/Throw, L1 Interact. Presses are rising edges.
+ */
+export function padFrame(values:boolean[],axes:number[],old:boolean[],deadzone:number){
+  const edge=(n:number)=>!!values[n]&&!old[n];
+  let x=Math.abs(axes[0]||0)>deadzone?Math.sign(axes[0]):0,y=Math.abs(axes[1]||0)>deadzone?-Math.sign(axes[1]):0;
+  if(values[14]||values[15])x=(values[15]?1:0)-(values[14]?1:0);
+  if(values[12]||values[13])y=(values[12]?1:0)-(values[13]?1:0);
+  return {x,y,jump:edge(0),jumpHeld:!!values[0],light:edge(2),heavy:edge(3),heavyHeld:!!values[3],dodge:edge(1)||edge(7),item:edge(5),interact:edge(4),interactHeld:!!values[4]};
+}
 export class Inputs{
   held:Set<string>;edges:Set<string>;touch:any;touchEdges:Set<string>;axis:any;settings:Settings;onPause:()=>void;active:boolean;controlActivity:number;padPrevious:any;padSeen:Set<number>;stick:any;stickPointer:number|null;
   constructor(settings:Settings,onPause:()=>void){this.settings=settings;this.onPause=onPause;this.held=new Set();this.edges=new Set();this.touch={};this.touchEdges=new Set();this.axis={x:0,y:0};this.active=false;this.controlActivity=0;this.padPrevious={};this.padSeen=new Set();this.stick=null;this.stickPointer=null;
@@ -15,8 +27,8 @@ export class Inputs{
   clear(){this.held.clear();this.edges.clear();this.touch={};this.touchEdges.clear();this.axis={x:0,y:0};this.padPrevious={};this.stickPointer=null;document.querySelectorAll('[data-action].held').forEach(e=>e.classList.remove('held'));const thumb=document.querySelector('.stick-thumb') as HTMLElement;if(thumb)thumb.style.transform='translate(-50%,-50%)';}
   keyboard(){const b=this.settings.bindings,h=(key:string)=>this.held.has(b[key]),edge=(key:string)=>this.edges.has(b[key]);return {x:Number(h('right')||this.held.has('ArrowRight'))-Number(h('left')||this.held.has('ArrowLeft')),y:Number(h('up')||this.held.has('ArrowUp'))-Number(h('down')||this.held.has('ArrowDown')),jump:edge('jump'),jumpHeld:h('jump'),light:edge('light'),heavy:edge('heavy'),heavyHeld:h('heavy'),dodge:edge('dodge'),item:edge('item'),interact:edge('interact'),interactHeld:h('interact')};}
   pads(){return Array.from(navigator.getGamepads?.()||[]).filter((p:any)=>p&&p.connected) as Gamepad[];}
-  gamepad(index:number){const pad=this.pads().find(p=>p.index===index);if(!pad)return {};const old=this.padPrevious[index]||[];const values=pad.buttons.map(b=>b.pressed);const edge=(n:number)=>values[n]&&!old[n];const dz=this.settings.deadzone;let x=Math.abs(pad.axes[0]||0)>dz?Math.sign(pad.axes[0]):0,y=Math.abs(pad.axes[1]||0)>dz?-Math.sign(pad.axes[1]):0;if(values[14])x=-1;if(values[15])x=1;if(values[12])y=1;if(values[13])y=-1;
-    if(values.some(Boolean)||x||y){this.padSeen.add(index);this.controlActivity++;}if(edge(9)&&this.active)this.onPause();this.padPrevious[index]=values;return {x,y,jump:edge(0),jumpHeld:values[0],light:edge(2),heavy:edge(3),heavyHeld:values[3],dodge:edge(1),item:edge(5),interact:edge(4),interactHeld:values[4]};
+  gamepad(index:number){const pad=this.pads().find(p=>p.index===index);if(!pad)return {};const old=this.padPrevious[index]||[];const values=pad.buttons.map(b=>b.pressed);const frame=padFrame(values,[...pad.axes],old,this.settings.deadzone);
+    if(values.some(Boolean)||frame.x||frame.y){this.padSeen.add(index);this.controlActivity++;}if(values[9]&&!old[9]&&this.active)this.onPause();this.padPrevious[index]=values;return frame;
   }
   readAll(){const frames:any={keyboard:this.keyboard(),touch:{x:Math.sign(this.axis.x),y:Math.sign(this.axis.y),jumpHeld:!!this.touch.jump,heavyHeld:!!this.touch.heavy,interactHeld:!!this.touch.interact}};for(const a of actions)frames.touch[a]=this.touchEdges.has(a);for(const pad of this.pads())frames['pad:'+pad.index]=this.gamepad(pad.index);this.edges.clear();this.touchEdges.clear();return frames;}
   bindTouch(layer:HTMLElement){
