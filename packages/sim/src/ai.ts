@@ -90,6 +90,12 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
         event(s, 'enemyTell', { fighter: f.id, role: f.role, button: f.ai.tellButton, ticks: f.ai.tell });
       } else if (choose < 25) v.heavy = true;
       else v.light = true;
+      // Vary direction so the same attack is not repeated: neutral, side or down.
+      if ((v.light || v.heavy) && !f.ai.tell) {
+        const aim = nextRandom(s) % 3;
+        if (aim === 0) v.x = 0;
+        else if (aim === 1 && f.ground) v.y = -1;
+      }
       if (s.difficulty !== 'easy' && seen.action === 'attack' && nextRandom(s) % 100 < 45) v.dodge = true;
     }
     if (s.difficulty === 'extreme' && dist < 55 && f.ground && nextRandom(s) % 100 < 35) { v.x = -sign; v.dodge = true; }
