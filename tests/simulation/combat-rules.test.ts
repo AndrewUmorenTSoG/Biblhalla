@@ -232,3 +232,35 @@ test('a bot knocked under the stage drifts out past the edge before recovering u
   for (let t = 0; t < 40; t++) { S.step(s); maxX = Math.max(maxX, bot.x); }
   assert.ok(maxX > (mx + mw + 20) * Q, 'moved out from under the right edge');
 });
+
+test('bots rarely fall off on their own (self-KO regression guard)', () => {
+  const roster = S.content.fighters.fighters.map(f => f.id);
+  let kos = 0, selfKos = 0;
+  for (const [n, map] of S.content.maps.maps.entries()) {
+    const s = S.create({ mode: 'local', arena: map.id, difficulty: 'hard', seed: 500 + n, fighters: [
+      { hero: roster[n * 2 % 12], human: false, team: 0 }, { hero: roster[(n * 2 + 5) % 12], human: false, team: 1 },
+    ] });
+    const lastHit = new Map<number, number>();
+    while (s.phase !== 'result' && s.tick < 12000) {
+      S.step(s);
+      for (const e of s.events) {
+        if (e.type === 'hit') lastHit.set(e.fighter as number, s.tick);
+        if (e.type === 'ko') { kos++; if (s.tick - (lastHit.get(e.fighter as number) ?? -1e9) > 180) selfKos++; }
+      }
+    }
+  }
+  assert.ok(kos >= 10, 'matches produced real ring-outs');
+  assert.ok(selfKos / kos < 0.15, `self-KO rate ${(100 * selfKos / kos).toFixed(1)}%`);
+});
+
+test('a bot far from the stage spends its air dodge toward it', () => {
+  const s = S.create({ mode: 'local', fighters: [{ hero: 'david', human: false, team: 0 }, { hero: 'saul', human: false, team: 1 }] });
+  while (s.phase === 'countdown') S.step(s);
+  const [bot, other] = s.fighters;
+  other.x = 0; other.y = 82 * Q;
+  const [mx, my, mw, mh] = s.map.main.rectUnits;
+  bot.x = (mx + mw + 260) * Q; bot.y = (my + mh + 20) * Q; bot.vy = -400; bot.vx = 0; bot.ground = null; bot.dodgeCD = 0;
+  S.step(s);
+  assert.equal(bot.action?.kind, 'dodge');
+  assert.ok((bot.action?.dx ?? 0) < 0, 'dodges toward the stage');
+});

@@ -68,11 +68,13 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
   }
   if (!humans.some(f => f.stocks)) {
     if (s.mode === 'local' || s.mode === 'teams' || s.mode === 'ffa') {
-      if (teamsOf(living).length <= 1) finish(s, false, 'Match complete', living.map(f => f.id));
+      // Remaining fighters (computer seats) play on; the time limit still applies.
+      if (teamsOf(living).length <= 1) { finish(s, false, 'Match complete', living.map(f => f.id)); return; }
+      if (s.remaining > 0) return;
     } else {
       finish(s, false, 'All three lives used');
+      return;
     }
-    return;
   }
   if (s.mode === 'waves' || s.mode === 'story') return;
   const boss = s.fighters.find(f => f.guard !== null);

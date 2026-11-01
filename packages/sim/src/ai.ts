@@ -89,8 +89,19 @@ function recover(f: Fighter, left: number, right: number, top: number): Input {
   const v: Partial<Input> = { x: under ? outward : f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0, jumpHeld: true };
   if (under) return input(v);
   if (f.action || f.stun || f.hitstop) return input(v);
-  const below = f.y < top + 40 * Q;
-  if (f.vy < 0 && below && f.jumps > 0) v.jump = true;
-  else if (f.vy < 0 && f.y < top && f.jumps === 0 && f.recovery > 0) v.heavy = true;
+  // Plan with exact own resources: drift while high, spend jumps late, and use an air
+  // dodge for horizontal reach only when the stage is still far away.
+  const edgeGap = f.x < left ? left - f.x : f.x > right ? f.x - right : 0;
+  const falling = f.vy < 0;
+  if (falling && edgeGap > FAR_RECOVERY_UNITS * Q && f.dodgeCD === 0 && f.y < top + 60 * Q && f.y > top - 160 * Q) {
+    v.dodge = true;
+    return input(v);
+  }
+  const jumpLine = top + (edgeGap > 120 * Q ? 40 : 0) * Q;
+  if (falling && f.y < jumpLine && f.jumps > 0) v.jump = true;
+  else if (falling && f.y < top && f.jumps === 0 && f.recovery > 0) v.heavy = true;
   return input(v);
 }
+
+/** Beyond this horizontal gap a bot spends its air dodge to close distance. */
+const FAR_RECOVERY_UNITS = 180;
