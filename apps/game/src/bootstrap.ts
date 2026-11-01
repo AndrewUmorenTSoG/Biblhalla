@@ -7,6 +7,7 @@ import { createEngine } from '../../../packages/sim/src/index.ts';
 import { createCampaign } from '../../../packages/campaign/src/index.ts';
 import { startApp } from './ui/app.ts';
 import type { RuntimeArt } from './render/renderer.ts';
+import { guardAtlas, guardClips } from './render/art-guard.ts';
 
 function showFatal(message: string): void {
   document.body.replaceChildren();
@@ -33,7 +34,11 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   for (const [id, uri] of Object.entries(raw?.images ?? {})) images[id] = image(uri);
   const arenas: RuntimeArt['arenas'] = {};
   for (const [id, a] of Object.entries(raw?.arenas ?? {})) arenas[id] = { image: image(a.uri), horizon: a.horizon, stone: a.stone };
-  return { images, atlas: (raw?.atlas ?? {}) as Record<string, any>, clips: raw?.clips ?? {}, arenas };
+  const problems: string[] = [];
+  const atlas = guardAtlas(raw?.atlas, problems);
+  const clips = guardClips(raw?.clips, atlas, problems);
+  if (problems.length) console.warn('Biblhalla art skipped:', problems);
+  return { images, atlas, clips, arenas };
 }
 
 try {
