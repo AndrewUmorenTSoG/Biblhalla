@@ -63,6 +63,14 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     c.fillRect(-400, -120, 4600, top + 120);
     label(c, w.state === 'high' ? 'SURGE — stay on a ledge' : 'Water rising', scene.world.fighters[0].x / Q, top + 40);
   }
+  // Archive travelers: simple cloaked figures with a status label (art pending from Codex).
+  for (const t of scene.travelers) {
+    const x = t.x / Q, y = t.y / Q;
+    c.fillStyle = t.state === 'safe' ? '#7d9a7a' : '#b98f5b';
+    c.beginPath(); c.moveTo(x - 14, y); c.lineTo(x + 14, y); c.lineTo(x + 8, y + 46); c.lineTo(x - 8, y + 46); c.closePath(); c.fill();
+    c.beginPath(); c.arc(x, y + 56, 10, 0, Math.PI * 2); c.fillStyle = '#d2a982'; c.fill();
+    label(c, t.state === 'waiting' ? 'Traveler — Interact to regroup' : t.state === 'following' ? 'Following' : 'Safe', x, y + 84);
+  }
   if (scene.sightLines) {
     for (const [a, b] of scene.covers) {
       c.fillStyle = 'rgba(60,92,70,.35)';

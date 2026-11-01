@@ -24,6 +24,8 @@ export const SIGHT_UNITS = 280;
 export type Cover = [number, number];
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
+export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
+export const TRAVELER_REACH_UNITS = 180;
 export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
 /** Rising water: a telegraphed surge that sweeps the floor; ledges and the air stay safe. */
 export interface Water { period: number; tell: number; active: number; state: 'calm' | 'rising' | 'high'; ticksToSurge: number }
@@ -50,6 +52,8 @@ export interface Scene {
   markers: Marker[];
   hazards: Hazard[];
   companion: { x: number; y: number; following: boolean };
+  /** Invulnerable archive travelers: wait in their bay, follow only after Regroup, stay at their gate. */
+  travelers: Traveler[];
   checkpointEvent: Checkpoint | null;
   result: { won: boolean; level?: string; next?: string | null; reason?: string } | null;
   goliath: GoliathState;
@@ -134,7 +138,7 @@ export function createCampaign(S: Engine, content: Content) {
       sightLines: !combat && (level.kind === 'stealth' || LINE_OF_SIGHT.test(level.uniqueRule)),
       covers: [],
       wind: null,
-      markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, checkpointEvent: null, result: null,
+      markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
     if (!combat) {
@@ -163,6 +167,8 @@ export function createCampaign(S: Engine, content: Content) {
         targetX: combat ? (180 + n * 45) * Q : Math.round(Math.min(3600, x + 190)) * Q,
       });
     }
+    // Archive travelers wait in a safe bay at each escort marker (noncombat routes only).
+    if (!combat) for (const m of s.markers) if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
     // The reenactment runs its own stages (goliath.ts); there are no task markers.
     if (level.number === GOLIATH_LEVEL) s.markers = [];
     if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
@@ -269,9 +275,18 @@ export function createCampaign(S: Engine, content: Content) {
       return;
     }
     if (m.type === 'escort') {
-      if (!m.stage) { m.stage = 1; s.companion.following = true; say(s, 'Regroup: Ken will follow to the safe gate.', 200); return; }
-      if (Math.abs(s.companion.x - f.x) < 180 * Q) mark(s, m);
-      else say(s, 'Wait for Ken at the safe gate.', 160);
+      const traveler = s.travelers.find(t => t.markerId === m.id);
+      if (!m.stage) {
+        m.stage = 1;
+        if (traveler) traveler.state = 'following';
+        say(s, traveler ? 'Regroup: the traveler will follow you to the safe gate.' : 'Regroup: Ken will follow to the safe gate.', 200);
+        return;
+      }
+      const escortX = traveler ? traveler.x : s.companion.x;
+      if (Math.abs(escortX - f.x) < TRAVELER_REACH_UNITS * Q) {
+        if (traveler) { traveler.state = 'safe'; traveler.x = m.targetX; traveler.y = m.y; }
+        mark(s, m);
+      } else say(s, traveler ? 'Wait at the safe gate for the traveler to catch up.' : 'Wait for Ken at the safe gate.', 160);
       return;
     }
     if (s.level.number === 80 && m.id === 0) s.satchelClosed = true;
@@ -360,6 +375,12 @@ export function createCampaign(S: Engine, content: Content) {
     s.companion.x += Math.max(-maxSpeed, Math.min(maxSpeed, distance - (distance > 0 ? 100 : -100) * Q));
     s.companion.y = f.ground ? f.y : s.companion.y;
     if (s.kind === 'witness') { s.companion.x = f.x - 80 * Q; s.companion.y = f.y; }
+    // Following travelers walk behind the player in a short line; they cannot be harmed.
+    s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
+      const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
+      t.x += Math.max(-4 * Q, Math.min(4 * Q, gap - spacing));
+      if (f.ground) t.y = f.y;
+    });
     if (s.water) {
       const w = s.water, phase = s.tick % w.period, surgeAt = w.period - w.active;
       w.state = phase >= surgeAt ? 'high' : phase >= surgeAt - w.tell ? 'rising' : 'calm';

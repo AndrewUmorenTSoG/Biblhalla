@@ -84,3 +84,27 @@ test('L016/L042: lookouts see only ahead, and crouching in cover hides you', () 
     assert.equal(f.damage, 0);
   }
 });
+
+test('escort travelers wait in their bay, follow only after Regroup, and stay safe at their gate', () => {
+  const s = enter('L004');
+  assert.equal(s.travelers.length, s.markers.filter(m => m.type === 'escort').length);
+  const f = s.world.fighters[0], m = s.markers[0], t = s.travelers[0];
+  const bay = t.x;
+  for (let k = 0; k < 120; k++) A.step(s, { x: 1 });
+  assert.equal(t.x, bay, 'a waiting traveler does not wander');
+  f.x = m.x; f.y = m.y; f.action = null;
+  A.interact(s);
+  assert.equal(t.state, 'following');
+  // Run ahead to the gate: too far for the traveler, so the gate waits.
+  f.x = m.targetX; f.y = m.y;
+  A.interact(s);
+  assert.ok(!m.done);
+  assert.match(s.caption, /catch up/);
+  for (let k = 0; k < 300 && Math.abs(t.x - f.x) > 150 * Q; k++) A.step(s, {});
+  A.interact(s);
+  assert.ok(m.done);
+  assert.equal(t.state, 'safe');
+  const parked = t.x;
+  for (let k = 0; k < 120; k++) A.step(s, { x: -1 });
+  assert.equal(t.x, parked, 'a delivered traveler stays at its gate');
+});
