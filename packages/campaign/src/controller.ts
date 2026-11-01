@@ -103,6 +103,8 @@ const COOP_LIFT = /stretcher-model lifts/i;
 const STEPPING = /stepping routes/i;
 const PICTOGRAMS = /pictogram signs/i;
 const CAPTIVE_GATES = /captive gates/i;
+/** L012: guide the caravan to the shaded rest; L053: return the model scroll to the reading desk. */
+const SECOND_TASKS: Record<number, [TaskType, string]> = { 12: ['escort', 'Caravan to the shaded rest'], 53: ['carry', 'Model scroll to the reading desk'] };
 /** Shapes, not words: no language is made the puzzle. */
 export const PICTOGRAM_SHAPES = ['●', '▲', '■', '◆'];
 export const LIFT_PARTNER_UNITS = 140;
@@ -245,6 +247,13 @@ export function createCampaign(S: Engine, content: Content) {
         s.markers.push({ id: s.markers.length, x: (2800 + n * 350) * Q, y: (extra === 'route' ? 166 : 80) * Q, type: extra, label, stage: 0, done: false, carried: false, dropped: false, targetX: (3000 + n * 350) * Q });
       }
     }
+    // Second halves of two-part objectives that the shared task list does not cover.
+    const second = SECOND_TASKS[level.number];
+    if (second && !combat) {
+      const [type, label] = second;
+      s.markers.push({ id: s.markers.length, x: 2900 * Q, y: 80 * Q, type, label, stage: 0, done: false, carried: false, dropped: false, targetX: 3350 * Q });
+    }
+    for (const m of s.markers) if (m.type === 'escort' && !s.travelers.some(t => t.markerId === m.id)) s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
     if (level.number === 80) {
       s.satchelClosed = false;
       s.markers[0].label = 'Close weapon satchel';

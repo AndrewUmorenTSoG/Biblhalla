@@ -273,3 +273,14 @@ test('exploration hints name the river only where there is one', () => {
   for (let t = 0; t < 600 && !/river sounds/.test(river.caption); t++) A.step(river, {});
   assert.match(river.caption, /river sounds/);
 });
+
+test('two-part objectives include their second task (L012 caravan, L053 scroll)', () => {
+  const caravan = enter('L012');
+  const last = caravan.markers.at(-1)!;
+  assert.equal(last.type, 'escort');
+  assert.match(last.label, /Caravan/);
+  assert.ok(caravan.travelers.some(t => t.markerId === last.id), 'the caravan is a real escort traveler');
+  const scroll = enter('L053');
+  assert.equal(scroll.markers.at(-1)!.type, 'carry');
+  assert.match(scroll.markers.at(-1)!.label, /scroll/);
+});
