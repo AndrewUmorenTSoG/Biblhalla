@@ -62,6 +62,17 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     c.fillRect(-400, -120, 4600, top + 120);
     label(c, w.state === 'high' ? 'SURGE — stay on a ledge' : 'Water rising', scene.world.fighters[0].x / Q, top + 40);
   }
+  const wind = scene.wind;
+  if (wind && (wind.state === 'warning' || wind.state === 'gust')) {
+    const px = scene.world.fighters[0].x / Q;
+    c.strokeStyle = wind.state === 'gust' ? 'rgba(235,245,250,.75)' : 'rgba(235,245,250,.35)';
+    c.lineWidth = 2;
+    for (let n = 0; n < 14; n++) {
+      const sx = px + 520 - ((n * 97 + scene.tick * (wind.state === 'gust' ? 18 : 6)) % 1040), sy = 100 + (n * 53) % 260;
+      c.beginPath(); c.moveTo(sx, sy); c.lineTo(sx - 60, sy); c.stroke();
+    }
+    label(c, wind.state === 'gust' ? 'GUST — hold Down to brace' : 'Gust coming', px, 300);
+  }
   if (scene.level.number === 41) {
     const g = scene.goliath;
     for (const lane of g.lanes) if (lane.state !== 'safe') zone(c, lane.x / Q - 60, 80, 120, 70, lane.state === 'active', lane.state === 'active' ? 'SPEAR LANE' : 'Spear lane marked');

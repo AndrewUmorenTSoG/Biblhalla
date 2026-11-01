@@ -19,6 +19,8 @@ export interface Marker {
 }
 export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe' }
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
+/** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
+export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
 /** Rising water: a telegraphed surge that sweeps the floor; ledges and the air stay safe. */
 export interface Water { period: number; tell: number; active: number; state: 'calm' | 'rising' | 'high'; ticksToSurge: number }
 export interface Card {
@@ -56,12 +58,21 @@ export interface Scene {
   seen: string[];
   closingLine: string;
   water: Water | null;
+  /** Storm headwind gusts; they stop once the scene's tasks are complete. */
+  wind: Wind | null;
+  /** Route sections held back until the narrated crossing cue. */
+  parted?: MapDef['platforms'] | null;
 }
 
 const GOLIATH_LEVEL = 41;
 const RETURN_ROUTE_LEVELS = [13, 42];
 const PARABLE_LEVELS = [69, 74];
 const RISING_WATER = /water rises/i;
+const STORM = /storm ends on the narrative cue/i;
+const PARTING = /sea opens on the authored narrative cue/i;
+/** Route sections beyond this x wait for the crossing cue. */
+const FAR_SHORE_X = 2400;
+const GUST_PUSH_UNITS = 3;
 const SAFE_X = 80, MIDDLE_X = 1850, ROUTE_END_X = 3650;
 
 const EMPTY_TOMB_CARDS: [string, string][] = [
@@ -112,6 +123,7 @@ export function createCampaign(S: Engine, content: Content) {
       seen: [...(checkpoint?.level === levelId ? checkpoint.seen ?? [] : [])],
       closingLine: script ? `${script.closing.speaker}: ${script.closing.text}` : 'Dru: We can keep going. Stay beside me.',
       water: null,
+      wind: null,
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -122,6 +134,11 @@ export function createCampaign(S: Engine, content: Content) {
       world.fighters[0].y = 82 * Q;
     }
     world.countdown = 60;
+    // The far shore waits for the narrated crossing; the player never causes it.
+    if (!combat && PARTING.test(level.uniqueRule)) {
+      s.parted = world.map.platforms.filter(p => p.rectUnits[0] >= FAR_SHORE_X);
+      world.map.platforms = world.map.platforms.filter(p => p.rectUnits[0] < FAR_SHORE_X);
+    }
     // Level 1: platforms appear only after the narration beat.
     if (level.number === 1) {
       s.waitingPlatforms = world.map.platforms.filter(p => p.kind === 'oneWay');
@@ -163,6 +180,8 @@ export function createCampaign(S: Engine, content: Content) {
         m.x = (ledge.rectUnits[0] + ledge.rectUnits[2] / 2) * Q;
         m.y = (ledge.rectUnits[1] + ledge.rectUnits[3]) * Q;
       });
+    } else if (!combat && STORM.test(level.uniqueRule)) {
+      s.wind = { period: difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220, tell: difficulty === 'easy' ? 135 : 90, gust: 60, state: 'calm' };
     } else if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
       for (let n = 0; n < 4; n++) {
         s.hazards.push({ id: n, x: (700 + n * 740) * Q, y: 80 * Q, period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140, tell: difficulty === 'easy' ? 90 : 60, active: 30 });
@@ -344,7 +363,28 @@ export function createCampaign(S: Engine, content: Content) {
       const next = s.markers.find(m => !m.done);
       if (next) say(s, `Listen: the river sounds are ${next.x > f.x ? 'to the right' : 'to the left'}.`, 150);
     }
-    if (!s.water && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
+    if (s.wind) {
+      const w = s.wind;
+      if (s.done.length === s.markers.length) {
+        if (w.state !== 'over') { w.state = 'over'; say(s, 'The account tells of the storm being stilled. The deck is calm.', 220); }
+      } else {
+        const phase = s.tick % w.period, gustAt = w.period - w.gust;
+        w.state = phase >= gustAt ? 'gust' : phase >= gustAt - w.tell ? 'warning' : 'calm';
+        if (phase === gustAt - w.tell) say(s, 'A gust is coming — hold Down to brace, or keep to the middle of the deck.', w.tell);
+        // A headwind slows grounded walkers but never pushes anyone off their footing.
+        const footing = [s.world.map.main, ...s.world.map.platforms].find(p => p.id === f.ground);
+        if (w.state === 'gust' && footing && i.y >= 0) {
+          const minX = (footing.rectUnits[0] + 30) * Q;
+          if (f.x - GUST_PUSH_UNITS * Q > minX) f.x -= GUST_PUSH_UNITS * Q;
+        }
+      }
+    }
+    if (s.parted && s.done.length >= 1) {
+      s.world.map.platforms.push(...s.parted);
+      s.parted = null;
+      say(s, 'The account describes the sea opening. The far route is now in place.', 240);
+    }
+    if (!s.water && !s.wind && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
       for (const h of s.hazards) {
         const phase = s.tick % h.period;
         h.state = phase < h.tell ? 'tell' : phase < h.tell + h.active ? 'active' : 'safe';
