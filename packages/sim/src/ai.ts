@@ -9,6 +9,30 @@ import { eligibleItem } from './moveResolver.ts';
 
 const HISTORY = 64;
 
+/** Training dummy presets (12_Tutorial_and_Training): fixed, reproducible behaviours. */
+export const DUMMY_BEHAVIOURS = ['stand', 'jump', 'approach', 'attack', 'dodge', 'recover'];
+
+function dummy(ctx: SimContext, s: SimState, f: Fighter): Input {
+  // ai.tell marks the tick hitstun ends (dodge preset only).
+  if (s.trainingBot === 'dodge') f.ai.tell = f.stun === 1 ? 2 : Math.max(0, f.ai.tell - 1);
+  const player = s.fighters.find(p => p.human && p.stocks);
+  const toward = player ? (Math.sign(player.x - f.x) || f.facing) : f.facing;
+  const near = player ? Math.abs(player.x - f.x) < 90 * Q : false;
+  const main = s.map.main.rectUnits;
+  const left = main[0] * Q, right = (main[0] + main[2]) * Q, top = (main[1] + main[3]) * Q;
+  // Every preset still recovers to the stage, so practice is never interrupted by self-KOs.
+  const offStage = !f.ground && (f.x < left - 10 * Q || f.x > right + 10 * Q || f.y < top - 10 * Q);
+  if (offStage || s.trainingBot === 'recover' && !f.ground) return recover(f, left, right, top);
+  switch (s.trainingBot) {
+    case 'jump': return input({ jump: !!f.ground && s.tick % 60 === 0, jumpHeld: true });
+    case 'approach': return input({ x: near ? 0 : toward });
+    case 'attack': return input({ x: near ? 0 : toward, light: near && s.tick % 45 === 0 });
+    // Dodges on its first actionable tick after hitstun: shows the escape window.
+    case 'dodge': return input({ dodge: !f.stun && !f.action && f.ai.tell === 1 });
+    default: return input();
+  }
+}
+
 /**
  * Enemy catalog tells (11_Story_Campaign/03): ticks of visible preparation before a
  * light or heavy attack, and how often the heavy is chosen. Same moves, frame data
@@ -23,6 +47,7 @@ export const ARCHETYPES: Record<string, { lightTell: number; heavyTell: number; 
 
 export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && s.trainingBot === 'idle') return input();
+  if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(ctx, s, f);
   // Scripted bosses act only through their authored pattern (boss.ts).
   if (s.bossScript && f.guard !== null) return input();
   const target = s.fighters
