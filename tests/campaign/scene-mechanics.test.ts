@@ -194,3 +194,38 @@ test('latches and ropes are secured by holding Interact; letting go keeps progre
     assert.ok(m.done, `${id}: secured after holding`);
   }
 });
+
+test('L007: pictogram routes reconnect in the order the signs show, not left to right', () => {
+  const s = enter('L007');
+  const signs = s.markers;
+  assert.deepEqual(signs.map(m => m.shape), ['●', '▲', '■', '◆']);
+  assert.ok(signs[0].x > signs[1].x, 'the first shape is not the nearest sign');
+  assert.match(s.caption, /● → ▲ → ■ → ◆/);
+  const f = s.world.fighters[0];
+  const visit = (k: number) => { f.x = signs[k].x; f.y = signs[k].y; f.action = null; A.interact(s); };
+  visit(1);
+  assert.ok(!signs[1].done, 'out of order is refused without penalty');
+  assert.match(s.caption, /continues at ● first/);
+  for (const k of [0, 1, 2, 3]) { visit(k); assert.ok(signs[k].done, `sign ${signs[k].shape}`); }
+});
+
+test('L008: the supply cart waits in its safe bay while raiders are active', () => {
+  const s = A.create('L008', 'hard');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  const cart = s.travelers[0];
+  assert.ok(cart, 'the cart exists in the combat scene');
+  const f = s.world.fighters[0], m = s.markers.find(k => k.id === cart.markerId)!;
+  f.x = m.x; f.y = m.y; f.action = null;
+  A.interact(s);
+  assert.equal(cart.state, 'following');
+  for (let t = 0; t < 600 && !s.world.fighters.some(o => !o.human && o.stocks); t++) A.step(s, {});
+  const parked = cart.x;
+  f.x = parked + 300 * Q;
+  for (let t = 0; t < 30; t++) A.step(s, {});
+  assert.equal(cart.x, parked, 'no escort movement during combat');
+  for (const o of s.world.fighters) if (!o.human) o.stocks = 0;
+  s.world.wavePending = [];
+  A.step(s, {});
+  assert.notEqual(cart.x, parked, 'it moves again once the raiders are cleared');
+});

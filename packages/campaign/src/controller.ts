@@ -18,6 +18,8 @@ export interface Marker {
   stage: number; done: boolean; carried: boolean; dropped: boolean; targetX: number;
   /** Hold-to-secure progress in ticks (latch and rope tasks); never lost on release. */
   progress?: number;
+  /** Pictogram shown on this route sign (L007); routes reconnect in sign order. */
+  shape?: string;
 }
 export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe'; facing?: number }
 /** Lookout sight lines: a lookout sees this far in the direction it faces. */
@@ -99,6 +101,9 @@ const STORM = /storm ends on the narrative cue/i;
 const EMBER_COURSE = /ember obstacle course/i;
 const COOP_LIFT = /stretcher-model lifts/i;
 const STEPPING = /stepping routes/i;
+const PICTOGRAMS = /pictogram signs/i;
+/** Shapes, not words: no language is made the puzzle. */
+export const PICTOGRAM_SHAPES = ['●', '▲', '■', '◆'];
 export const LIFT_PARTNER_UNITS = 140;
 const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
@@ -214,9 +219,21 @@ export function createCampaign(S: Engine, content: Content) {
       s.markers.forEach((m, n) => { const ch = STONE_CHANNELS[Math.min(n, 2)]; m.x = (ch[1] + 120) * Q; m.y = 80 * Q; m.targetX = m.x; });
     }
     // Archive travelers wait in a safe bay at each escort marker (noncombat routes only).
-    if (!combat) for (const m of s.markers) if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
+    // In combat scenes the same travelers (a supply cart, a flock, refugees) wait in a safe bay while opponents are active.
+    for (const m of s.markers) if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
     // The reenactment runs its own stages (goliath.ts); there are no task markers.
     if (level.number === GOLIATH_LEVEL) s.markers = [];
+    // Pictogram routes: each sign shows a shape; routes reconnect in the order the start
+    // sign shows, which zig-zags across the archive rather than running left to right.
+    if (!combat && PICTOGRAMS.test(level.objective)) {
+      const xs = s.markers.map(m => m.x), order = [1, 0, 3, 2];
+      s.markers.forEach((m, n) => {
+        m.x = xs[order[n] % xs.length]; m.y = 80 * Q; m.targetX = m.x;
+        m.shape = PICTOGRAM_SHAPES[n % PICTOGRAM_SHAPES.length];
+        m.label = `Route sign ${m.shape}`;
+      });
+      s.caption = `Ken: The sign shows ${s.markers.map(m => m.shape).join(' → ')}. Let us follow the shapes.`;
+    }
     if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
     if ([32, 36, 75].includes(level.number)) {
       const extra: TaskType = level.number === 75 ? 'route' : level.number === 36 ? 'escort' : 'building';
@@ -344,6 +361,10 @@ export function createCampaign(S: Engine, content: Content) {
       } else say(s, traveler ? 'Wait at the safe gate for the traveler to catch up.' : 'Wait for Ken at the safe gate.', 160);
       return;
     }
+    if (m.shape) {
+      const next = s.markers.find(k => !k.done);
+      if (next && next.id !== m.id) { say(s, `This sign shows ${m.shape}. The route continues at ${next.shape} first.`, 180); return; }
+    }
     if (s.level.number === 80 && m.id === 0) s.satchelClosed = true;
     if (m.type === 'witness' || m.type === 'puzzle' || (m.type === 'route' && s.level.number === 1)) { s.pendingCard = m.id; return; }
     mark(s, m);
@@ -465,7 +486,9 @@ export function createCampaign(S: Engine, content: Content) {
       }
     }
     // Following travelers walk behind the player in a short line; they cannot be harmed.
-    s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
+    const opponentsActive = s.world.fighters.some(o => !o.human && o.stocks > 0 && !o.respawn);
+    if (opponentsActive && s.travelers.some(t => t.state === 'following') && s.tick % 240 === 0) say(s, 'The escort waits in its safe bay until the opponents are cleared.', 150);
+    if (!opponentsActive) s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
       const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
       t.x += Math.max(-4 * Q, Math.min(4 * Q, gap - spacing));
       if (f.ground) t.y = f.y;
