@@ -63,6 +63,8 @@ export interface Settings {
   uiScale: number;
   captionSpeed: number;
   symbolicFinale: boolean;
+  /** Accessibility: tap Heavy to start a charge and tap again to release it. */
+  chargeToggle: boolean;
   bindings: Bindings;
 }
 
@@ -92,7 +94,7 @@ export function createProfiles(content: Content) {
     schema: PROFILE_SCHEMA, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [], seenCards: [],
     settings: {
       input: 'keyboard', difficulty: 'easy', mute: false, reducedMotion: false, leftHanded: false, touchSize: 80, touchOpacity: 0.8,
-      deadzone: 0.22, uiScale: 1, captionSpeed: 1, symbolicFinale: true, bindings: { ...DEFAULT_BINDINGS },
+      deadzone: 0.22, uiScale: 1, captionSpeed: 1, symbolicFinale: true, chargeToggle: false, bindings: { ...DEFAULT_BINDINGS },
     },
     controlChecked: false,
   });
@@ -116,7 +118,7 @@ export function createProfiles(content: Content) {
     }
     const s = raw.settings;
     if (s && typeof s === 'object') {
-      for (const k of ['mute', 'reducedMotion', 'leftHanded', 'symbolicFinale'] as const) if (typeof s[k] === 'boolean') d.settings[k] = s[k];
+      for (const k of ['mute', 'reducedMotion', 'leftHanded', 'symbolicFinale', 'chargeToggle'] as const) if (typeof s[k] === 'boolean') d.settings[k] = s[k];
       if (['keyboard', 'touch', 'controller'].includes(s.input)) d.settings.input = s.input;
       if (DIFFICULTIES.includes(s.difficulty)) d.settings.difficulty = s.difficulty;
       for (const [k, min, max] of RANGES) if (typeof s[k] === 'number' && Number.isFinite(s[k])) (d.settings as any)[k] = Math.min(max, Math.max(min, s[k]));

@@ -16,8 +16,20 @@ export function padFrame(values:boolean[],axes:number[],old:boolean[],deadzone:n
   if(values[12]||values[13])y=(values[12]?1:0)-(values[13]?1:0);
   return {x,y,jump:edge(0),jumpHeld:!!values[0],light:edge(2),heavy:edge(3),heavyHeld:!!values[3],dodge:edge(1)||edge(7),item:edge(5),interact:edge(4),interactHeld:!!values[4]};
 }
+/**
+ * Charge toggle (accessibility): a Heavy press starts holding the charge and the next
+ * Heavy press releases it, instead of holding the button. It only changes heavyHeld,
+ * which is the same legal input as holding, and never automates timing.
+ */
+export function applyChargeToggle(frame:any,latch:Set<string>,id:string){
+  if(!frame)return frame;
+  const out={...frame};
+  if(frame.heavy){if(latch.has(id)){latch.delete(id);out.heavy=false;}else latch.add(id);}
+  out.heavyHeld=latch.has(id);
+  return out;
+}
 export class Inputs{
-  held:Set<string>;edges:Set<string>;touch:any;touchEdges:Set<string>;axis:any;settings:Settings;onPause:()=>void;active:boolean;controlActivity:number;padPrevious:any;padSeen:Set<number>;stick:any;stickPointer:number|null;
+  held:Set<string>;edges:Set<string>;touch:any;touchEdges:Set<string>;axis:any;settings:Settings;onPause:()=>void;active:boolean;controlActivity:number;padPrevious:any;padSeen:Set<number>;stick:any;stickPointer:number|null;chargeLatch:Set<string>=new Set();
   constructor(settings:Settings,onPause:()=>void){this.settings=settings;this.onPause=onPause;this.held=new Set();this.edges=new Set();this.touch={};this.touchEdges=new Set();this.axis={x:0,y:0};this.active=false;this.controlActivity=0;this.padPrevious={};this.padSeen=new Set();this.stick=null;this.stickPointer=null;
     window.addEventListener('keydown',(e:KeyboardEvent)=>{if(e.target instanceof HTMLInputElement||e.target instanceof HTMLSelectElement||e.target instanceof HTMLTextAreaElement)return;
       if(e.code===this.settings.bindings.pause||e.code==='KeyP'){if(this.active){e.preventDefault();this.onPause();}return;}
@@ -30,7 +42,7 @@ export class Inputs{
   gamepad(index:number){const pad=this.pads().find(p=>p.index===index);if(!pad)return {};const old=this.padPrevious[index]||[];const values=pad.buttons.map(b=>b.pressed);const frame=padFrame(values,[...pad.axes],old,this.settings.deadzone);
     if(values.some(Boolean)||frame.x||frame.y){this.padSeen.add(index);this.controlActivity++;}if(values[9]&&!old[9]&&this.active)this.onPause();this.padPrevious[index]=values;return frame;
   }
-  readAll(){const frames:any={keyboard:this.keyboard(),touch:{x:Math.sign(this.axis.x),y:Math.sign(this.axis.y),jumpHeld:!!this.touch.jump,heavyHeld:!!this.touch.heavy,interactHeld:!!this.touch.interact}};for(const a of actions)frames.touch[a]=this.touchEdges.has(a);for(const pad of this.pads())frames['pad:'+pad.index]=this.gamepad(pad.index);this.edges.clear();this.touchEdges.clear();return frames;}
+  readAll(){const frames:any={keyboard:this.keyboard(),touch:{x:Math.sign(this.axis.x),y:Math.sign(this.axis.y),jumpHeld:!!this.touch.jump,heavyHeld:!!this.touch.heavy,interactHeld:!!this.touch.interact}};for(const a of actions)frames.touch[a]=this.touchEdges.has(a);for(const pad of this.pads())frames['pad:'+pad.index]=this.gamepad(pad.index);if(this.settings.chargeToggle)for(const id of Object.keys(frames))frames[id]=applyChargeToggle(frames[id],this.chargeLatch,id);this.edges.clear();this.touchEdges.clear();return frames;}
   bindTouch(layer:HTMLElement){
     const ownership=new Map<number,string>();
     const release=(id:number)=>{const a=ownership.get(id);if(!a)return;ownership.delete(id);this.touch[a]=[...ownership.values()].includes(a);if(!this.touch[a])layer.querySelector('[data-action='+a+']')?.classList.remove('held');};
