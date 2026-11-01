@@ -349,3 +349,21 @@ test('every puzzle card offers an optional clue that names the right panel', () 
     assert.match(card.clue, /no penalty/);
   }
 });
+
+test('a hit while carrying sets the delivery down safely where you stand', () => {
+  const s = A.create('L046', 'hard');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  const f = s.world.fighters[0];
+  const m = s.markers.find(k => k.type === 'carry' || k.type === 'building')!;
+  f.x = m.x; f.y = m.y; f.action = null;
+  A.interact(s);
+  assert.equal(s.carry, m.id);
+  f.x = 100 * Q; f.y = 82 * Q;
+  f.stun = 10;
+  A.step(s, {});
+  assert.equal(s.carry, null);
+  assert.ok(m.dropped && !m.done);
+  assert.ok(Math.abs(m.x - f.x) < 40 * Q, 'dropped where the carrier stands');
+  assert.match(s.caption, /safe on the ground/);
+});

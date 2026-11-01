@@ -490,6 +490,13 @@ export function createCampaign(S: Engine, content: Content) {
       if (e.type === 'arrivalCue') say(s, `Arrival marked: ${String(e.role).replace(/_/g, ' ')}.`, 90);
     }
     if (priorRespawn === 1 && !s.level.combatEnabled) { f.x = safeX(s); f.y = 82 * Q; f.vx = f.vy = 0; }
+    // Taking a hit while carrying sets the load down where you stand; nothing is lost.
+    if (f.stun > 0 && !f.respawn && s.carry !== null && !s.coopLift) {
+      const m = s.markers[s.carry];
+      m.carried = false; m.dropped = true; m.x = f.x; m.y = Math.max(80 * Q, f.y);
+      s.carry = null; f.carry = false;
+      say(s, `${m.label} was knocked from your hands — it is safe on the ground. Interact to pick it up again.`, 200);
+    }
     if (f.respawn && s.carry !== null) {
       const m = s.markers[s.carry];
       m.carried = false; m.dropped = true; m.x = safeX(s); m.y = 80 * Q;
