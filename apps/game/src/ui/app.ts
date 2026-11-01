@@ -177,6 +177,8 @@ document.querySelectorAll('[data-close]').forEach((b:any)=>b.addEventListener('c
 $('info-dialog').addEventListener('close',()=>{if(infoResume)resume();else if(world&&world.phase==='paused'&&!$('pause-dialog').open)open($('pause-dialog'));});
 $('pause-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();resume();});$('story-dialog').addEventListener('cancel',(e:Event)=>e.preventDefault());$('result-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();screen(scene?'chapters':'modes');});
 window.addEventListener('blur',()=>pause('Window lost focus'));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause('Game backgrounded');});window.addEventListener('orientationchange',()=>pause('Screen rotated — ready when you are'));
+// The renderer keeps no GPU-side caches, so a restored context just paints the next frame.
+$('arena').addEventListener('contextlost',(e:Event)=>{e.preventDefault();pause('Graphics were reset — ready when you are');});
 for(const id of ['arena-select','local-arena']){
   const select=$(id) as HTMLSelectElement;
   for(const m of C.maps.maps){const opt=el('option',m.name) as HTMLOptionElement;opt.value=m.id;select.append(opt);}
