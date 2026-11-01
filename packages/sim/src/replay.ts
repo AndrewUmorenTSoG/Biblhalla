@@ -3,7 +3,7 @@
 
 import type { SimContext } from './context.ts';
 import type { InputFrames, MatchOptions, SimState } from './types.ts';
-import { create, pause } from './state.ts';
+import { RANDOM_HERO, create, pause } from './state.ts';
 import { step } from './step.ts';
 import { hash, snapshot } from './fixed.ts';
 
@@ -24,11 +24,12 @@ function fail(msg: string): never { throw new Error(msg); }
 function checkOptions(ctx: SimContext, opts: MatchOptions): void {
   const { content, defs } = ctx;
   if (!REPLAY_MODES.includes(opts.mode || 'duel')) fail('Invalid replay mode');
-  if ((opts.hero && !defs[opts.hero]) || (opts.opponent && !defs[opts.opponent]) || (opts.arena && !content.maps.maps.some(m => m.id === opts.arena))) fail('Invalid replay content');
+  const known = (h: string | undefined) => !h || h === RANDOM_HERO || !!defs[h];
+  if (!known(opts.hero) || !known(opts.opponent) || (opts.arena && !content.maps.maps.some(m => m.id === opts.arena))) fail('Invalid replay content');
   if (opts.fighters) {
     if (!Array.isArray(opts.fighters) || opts.fighters.length < 2 || opts.fighters.length > 4) fail('Invalid replay players');
     for (const f of opts.fighters) {
-      const ok = f && content.fighters.fighters.some(d => d.id === f.hero) && typeof f.human === 'boolean'
+      const ok = f && (f.hero === RANDOM_HERO || content.fighters.fighters.some(d => d.id === f.hero)) && typeof f.human === 'boolean'
         && Number.isInteger(f.team) && f.team! >= 0 && f.team! <= 3 && typeof f.inputId === 'string' && f.inputId.length <= 24
         && (f.stocks === undefined || (Number.isInteger(f.stocks) && f.stocks >= 1 && f.stocks <= 9))
         && (f.name === undefined || (typeof f.name === 'string' && f.name.length <= 40));

@@ -2,7 +2,7 @@
 
 import type { SimContext } from './context.ts';
 import type { Fighter, FighterConfig, Input, InputFrame, MatchOptions, Mode, SimEvent, SimState } from './types.ts';
-import { Q, snapshot } from './fixed.ts';
+import { Q, hash, snapshot } from './fixed.ts';
 import type { Difficulty } from '../../content/src/index.ts';
 
 export const MODES: Mode[] = ['duel', 'waves', 'boss', 'training', 'local', 'teams', 'ffa', 'story'];
@@ -57,6 +57,19 @@ function ruleInt(value: unknown, lo: number, hi: number): number | null {
   return value !== undefined && value !== '' && Number.isInteger(n) && n >= lo && n <= hi ? n : null;
 }
 
+export const RANDOM_HERO = 'random';
+
+/**
+ * "Random" fighter picks resolve from the match seed and seat, before loading, so a
+ * replay or rematch with the same seed shows the same fighters. The simulation RNG
+ * stream is not consumed.
+ */
+export function resolveHero(ctx: SimContext, hero: string | undefined, seed: number, slot: number): string | undefined {
+  if (hero !== RANDOM_HERO) return hero;
+  const roster = ctx.content.fighters.fighters.map(f => f.id);
+  return roster[parseInt(hash(`${seed}:${slot}`), 16) % roster.length];
+}
+
 export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
   const { content, R } = ctx;
   const map = content.maps.maps.find(m => m.id === options.arena) || content.maps.maps[0];
@@ -81,14 +94,15 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
     options: snapshot(options),
   };
   if (options.fighters) {
-    s.fighters = options.fighters.map((f, i) => createFighter(ctx, s, f, i));
+    s.fighters = options.fighters.map((f, i) => createFighter(ctx, s, { ...f, hero: resolveHero(ctx, f.hero, s.rng, i)! }, i));
   } else {
-    s.fighters.push(createFighter(ctx, s, { hero: options.hero || 'david', human: true, team: 0, inputId: options.inputId || 'keyboard' }, 0));
+    const hero = resolveHero(ctx, options.hero, s.rng, 0) || 'david';
+    s.fighters.push(createFighter(ctx, s, { hero, human: true, team: 0, inputId: options.inputId || 'keyboard' }, 0));
     if (mode === 'waves' || mode === 'story') scheduleWave(s);
     else {
       const boss = mode === 'boss';
       s.fighters.push(createFighter(ctx, s, {
-        hero: options.opponent || (options.hero === 'samson' ? 'david' : 'samson'), team: 1,
+        hero: resolveHero(ctx, options.opponent, s.rng, 1) || (hero === 'samson' ? 'david' : 'samson'), team: 1,
         stocks: boss ? 1 : s.stocksRule, guard: boss ? BOSS_GUARD : null, scale: boss ? 1.45 : 1,
         name: boss ? s.bossName : undefined,
       }, 1));
