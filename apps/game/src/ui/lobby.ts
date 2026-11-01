@@ -30,3 +30,33 @@ export function buildRoster(mode: string, slots: LobbySlot[], ready: (inputId: s
   }
   return { ok: true, fighters };
 }
+
+/**
+ * Ready tracking for the local lobby. Every human seat must ready up after seeing the
+ * final rules; any rule or seat change cancels every Ready.
+ */
+export class ReadyBoard {
+  private ready = new Set<number>();
+  private rulesKey = '';
+
+  /** Record the current rules; returns true if they changed (and Ready was cleared). */
+  setRules(rules: unknown): boolean {
+    const key = JSON.stringify(rules);
+    if (key === this.rulesKey) return false;
+    this.rulesKey = key;
+    this.ready.clear();
+    return true;
+  }
+
+  toggle(seat: number): boolean {
+    if (this.ready.has(seat)) this.ready.delete(seat); else this.ready.add(seat);
+    return this.ready.has(seat);
+  }
+
+  isReady(seat: number): boolean { return this.ready.has(seat); }
+
+  /** Start is allowed only when every human seat is Ready. */
+  allReady(slots: LobbySlot[]): boolean {
+    return slots.every((s, n) => s.input === CPU_INPUT || this.ready.has(n));
+  }
+}

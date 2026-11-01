@@ -40,3 +40,21 @@ test('several computer seats never collide on input ids', () => {
   assert.ok(r.ok);
   if (r.ok) assert.equal(new Set(r.fighters.map(f => f.inputId)).size, 3);
 });
+
+test('everyone readies after the final rules; any rule change cancels every Ready', async () => {
+  const { ReadyBoard } = await import('../../apps/game/src/ui/lobby.ts');
+  const board = new ReadyBoard();
+  const slots = [{ hero: 'david', input: 'keyboard' }, { hero: 'saul', input: 'pad:0' }, { hero: 'caleb', input: CPU_INPUT }];
+  board.setRules({ stocks: 3, slots });
+  assert.equal(board.allReady(slots), false);
+  board.toggle(0);
+  assert.equal(board.allReady(slots), false, 'one human still not ready');
+  board.toggle(1);
+  assert.equal(board.allReady(slots), true, 'computer seats never need Ready');
+  assert.equal(board.setRules({ stocks: 3, slots }), false, 'same rules keep Ready');
+  assert.equal(board.allReady(slots), true);
+  assert.equal(board.setRules({ stocks: 4, slots }), true);
+  assert.equal(board.allReady(slots), false, 'a rule change cancels Ready');
+  board.toggle(0); board.toggle(0);
+  assert.equal(board.isReady(0), false, 'Ready toggles off again');
+});
