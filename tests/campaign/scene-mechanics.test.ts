@@ -248,3 +248,28 @@ test('L009: captive gates open by holding Interact and the released stay safe', 
   }
   assert.equal(s.travelers.filter(t => t.state === 'safe').length, 2);
 });
+
+test('L033: each lit lantern signal opens a raised safe route', () => {
+  const s = A.create('L033', 'easy');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  const f = s.world.fighters[0];
+  const before = s.world.map.platforms.length;
+  for (const m of s.markers.filter(k => k.type === 'signals')) {
+    f.x = m.x; f.y = m.y; f.action = null; f.stun = 0; f.hitstop = 0;
+    A.interact(s);
+    assert.ok(m.done);
+  }
+  const routes = s.world.map.platforms.filter(p => p.id.startsWith('signal_route_'));
+  assert.equal(routes.length, 3);
+  assert.equal(s.world.map.platforms.length, before + 3);
+});
+
+test('exploration hints name the river only where there is one', () => {
+  const river = enter('L049'), archive = enter('L053');
+  for (let t = 0; t < 600 && !/marker|river/.test(river.caption + archive.caption); t++) { A.step(river, {}); A.step(archive, {}); }
+  for (let t = 0; t < 600 && !/context marker is/.test(archive.caption); t++) A.step(archive, {});
+  assert.match(archive.caption, /next context marker is to the (right|left)/);
+  for (let t = 0; t < 600 && !/river sounds/.test(river.caption); t++) A.step(river, {});
+  assert.match(river.caption, /river sounds/);
+});

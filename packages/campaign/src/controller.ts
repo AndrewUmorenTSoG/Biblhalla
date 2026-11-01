@@ -315,6 +315,12 @@ export function createCampaign(S: Engine, content: Content) {
 
   function mark(s: Scene, m: Marker): void {
     if (m.done) return;
+    if (m.type === 'signals') {
+      // A lit camp signal opens a raised safe route above it (never an attack).
+      const x = Math.round(m.x / Q);
+      s.world.map.platforms.push({ id: `signal_route_${m.id}`, kind: 'oneWay', rectUnits: [x - 90, 190, 180, 16] });
+      say(s, 'Signal lit: a raised safe route is open above it.', 180);
+    }
     if (CAPTIVE_GATES.test(s.level.objective)) {
       // Released people wait in an invulnerable safe zone beside their gate.
       s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'safe' });
@@ -513,7 +519,8 @@ export function createCampaign(S: Engine, content: Content) {
     }
     if (s.kind === 'exploration' && s.tick % 240 === 1 && s.tick > s.captionUntil) {
       const next = s.markers.find(m => !m.done);
-      if (next) say(s, `Listen: the river sounds are ${next.x > f.x ? 'to the right' : 'to the left'}.`, 150);
+      const side = next && (next.x > f.x ? 'to the right' : 'to the left');
+      if (next) say(s, /river/i.test(s.level.objective + s.level.uniqueRule + s.level.location) ? `Listen: the river sounds are ${side}.` : `The next context marker is ${side}.`, 150);
     }
     if (s.wind) {
       const w = s.wind;
