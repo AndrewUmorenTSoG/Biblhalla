@@ -20,6 +20,7 @@ npm run validate:content   # check production-pack/09_Data
 npm run typecheck
 npm test
 npm run serve              # preview dist/ at http://127.0.0.1:4173
+npm run release            # checks everything, then writes dist/release with evidence
 ```
 
 Requires Node 24 or newer. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the code is organised and [docs/IMPLEMENTATION_MATRIX.md](docs/IMPLEMENTATION_MATRIX.md) for what is done.

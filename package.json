@@ -17,7 +17,8 @@
     "serve": "node tools/serve.ts",
     "bots": "node tools/bot-harness.ts",
     "art:check": "node tools/art/validate-art.ts",
-    "verify": "npm run typecheck && npm run build && npm test"
+    "verify": "npm run typecheck && npm run build && npm test",
+    "release": "node tools/release.ts"
   },
   "devDependencies": {
     "@types/node": "24.19.2",

@@ -29,3 +29,4 @@ Last updated: 2026-11-01 (bosses, Goliath reenactment, arena surfaces, training 
 | iPad wrapper | yes | partial | no | no | no | Unsigned source; needs Mac/Xcode and a device |
 | Device and installed offline QA | yes | no | no | no | no | |
 | Training instrumentation | yes | yes | partial | yes | no | Details overlay: combo hits/damage, escape gap before each hit (0 = true link), rolling input history (`training/combo.ts`) |
+| Release packaging and evidence | yes | yes | n/a | yes | no | `npm run release` refuses to package unless typecheck, tests and the art contract pass, then writes dist/release: PLAY.html, build manifest with content and page hashes, test output, asset readiness, known limits, iPad signing notes and SHA256SUMS |
