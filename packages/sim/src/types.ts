@@ -96,6 +96,8 @@ export interface Fighter {
   damageDealt: number;
   hits: number;
   carry: boolean;
+  /** Hits taken while already in hitstun during the current combo. */
+  comboLinks?: number;
   /** Tick this fighter lost their last stock; later means a better placement. */
   eliminatedAt?: number;
   /** Wave archetype from the enemy catalog (road_guard, shield_guard, archer, brute). */

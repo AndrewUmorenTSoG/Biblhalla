@@ -81,6 +81,17 @@ export function shieldBlocks(target: Fighter, hitFacing: number): boolean {
   return target.role === 'shield_guard' && !target.action && !target.stun && hitFacing === -target.facing;
 }
 
+/** Extra hitstun ticks from launch force: +1 per half unit/tick of launch, at most 16. */
+/** Chase follow-ups allowed within one combo before the string must end. */
+export const MAX_CHASE_LINKS = 2;
+export const LAUNCH_STUN_Q = 128;
+/** Bonus hitstun lost per hit already in the current combo. */
+export const COMBO_STUN_DECAY = 4;
+export const LAUNCH_STUN_CAP = 16;
+export function launchStunBonus(forceQ: number): number {
+  return Math.min(LAUNCH_STUN_CAP, Math.floor(forceQ / LAUNCH_STUN_Q));
+}
+
 function throwSpec(ctx: SimContext): HitSpec {
   return { ...ctx.R.throw, hitstopTicks: 3, launchAngle: 22, chargeMaxTicks: 0, chargeMaxDamagePermille: 1000 };
 }
@@ -163,6 +174,8 @@ export function combat(ctx: SimContext, s: SimState): void {
   hits.sort((a, b) => a.target - b.target || a.owner - b.owner || a.instance - b.instance);
   for (const target of s.fighters) {
     const group = hits.filter(h => h.target === target.id);
+    // A hit on someone already in hitstun extends a combo; a fresh hit starts one.
+    if (group.length) target.comboLinks = target.stun > 0 ? (target.comboLinks ?? 0) + 1 : 0;
     if (!group.length) continue;
     let damage = 0, stun = 0, stop = 0;
     for (const h of group) {
@@ -183,7 +196,8 @@ export function combat(ctx: SimContext, s: SimState): void {
         // Hitstop freezes melee participants only; a distant thrower keeps moving.
         if (h.melee) {
           owner.hitstop = Math.max(owner.hitstop, h.m.hitstopTicks);
-          owner.chase = P.chase.tokenTicks;
+          // Chase links are limited per combo, so strings always end.
+          if ((target.comboLinks ?? 0) < MAX_CHASE_LINKS) owner.chase = P.chase.tokenTicks;
         }
       }
       event(s, 'hit', { fighter: target.id, attacker: h.owner, x: target.x, y: target.y + 40 * Q, damage: amount });
@@ -202,7 +216,10 @@ export function combat(ctx: SimContext, s: SimState): void {
     target.kx = roundMul(force, dir[0], 1024) * best.facing;
     target.vy = roundMul(force, dir[1], 1024);
     target.vx = 0;
-    target.stun = stun;
+    // Harder launches keep the target in hitstun a little longer, so confirmed follow-ups
+    // (chase dashes, gravity cancels) can link into combos. Capped: no infinite stun.
+    // Each extra link in a combo shrinks the bonus, so every string ends with an escape window.
+    target.stun = stun + Math.max(0, launchStunBonus(force) - COMBO_STUN_DECAY * (target.comboLinks ?? 0));
     target.hitstop = Math.max(target.hitstop, stop);
     target.action = null;
     target.buffer = null;
