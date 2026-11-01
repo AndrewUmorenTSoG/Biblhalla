@@ -37,7 +37,8 @@ function zone(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: n
   label(c, text, x + w / 2, y + h + 16);
 }
 
-export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scene: Scene | null): void {
+/** `reducedMotion` keeps every warning but drops animation: no flashing, no moving streaks. */
+export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scene: Scene | null, reducedMotion = false): void {
   const hz = world.bossHazard;
   if (hz) {
     const [x, y, w, h] = hz.box.map(v => v / Q);
@@ -90,7 +91,7 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     for (const [a, b] of STONE_CHANNELS) { c.fillStyle = 'rgba(70,128,170,.5)'; c.fillRect(a, -120, b - a, 180); }
     for (const st of scene.stones) {
       if (st.state === 'down') continue;
-      const flash = st.state === 'sinking' && scene.tick % 10 < 5;
+      const flash = st.state === 'sinking' && (reducedMotion || scene.tick % 10 < 5);
       c.fillStyle = flash ? '#e0b35a' : '#8f8a7a';
       c.fillRect(st.x, 64, st.w, 16);
       if (st.state === 'sinking') label(c, 'sinking', st.x + st.w / 2, 96);
@@ -120,7 +121,8 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     c.strokeStyle = wind.state === 'gust' ? 'rgba(235,245,250,.75)' : 'rgba(235,245,250,.35)';
     c.lineWidth = 2;
     for (let n = 0; n < 14; n++) {
-      const sx = px + 520 - ((n * 97 + scene.tick * (wind.state === 'gust' ? 18 : 6)) % 1040), sy = 100 + (n * 53) % 260;
+      const drift = reducedMotion ? 0 : scene.tick * (wind.state === 'gust' ? 18 : 6);
+      const sx = px + 520 - ((n * 97 + drift) % 1040), sy = 100 + (n * 53) % 260;
       c.beginPath(); c.moveTo(sx, sy); c.lineTo(sx - 60, sy); c.stroke();
     }
     label(c, wind.state === 'gust' ? 'GUST — hold Down to brace' : 'Gust coming', px, 300);
