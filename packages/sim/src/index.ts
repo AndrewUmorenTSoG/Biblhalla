@@ -12,7 +12,7 @@ import { capsuleRect, rectFor, segmentBox } from './combat.ts';
 import type { Box } from './combat.ts';
 import { knockOut } from './rules.ts';
 import { step } from './step.ts';
-import { newReplay, simulateReplay, validateReplay } from './replay.ts';
+import { maybeCheckpoint, newReplay, simulateReplay, validateReplay } from './replay.ts';
 
 export * from './types.ts';
 export type { Replay, ReplayEntry } from './replay.ts';
@@ -50,6 +50,7 @@ export function createEngine(content: Content) {
     newReplay: (initial: SimState) => newReplay(ctx, initial),
     validateReplay: (raw: unknown) => validateReplay(ctx, raw),
     simulateReplay: (raw: unknown) => simulateReplay(ctx, raw),
+    maybeCheckpoint,
   };
 }
 

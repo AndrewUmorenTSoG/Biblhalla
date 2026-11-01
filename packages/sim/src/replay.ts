@@ -13,7 +13,10 @@ const REPLAY_MODES = ['duel', 'waves', 'boss', 'local', 'teams', 'ffa'];
 const INPUT_KEYS = ['x', 'y', 'jump', 'jumpHeld', 'light', 'heavy', 'heavyHeld', 'dodge', 'item', 'interact', 'interactHeld'];
 
 export type ReplayEntry = { kind: 'input'; frames: InputFrames } | { kind: 'pause'; on: boolean };
-export interface Replay { schema: number; contentHash: string; initial: SimState; entries: ReplayEntry[]; finalHash: string | null }
+/** A state hash taken after `entry` entries had run; lets playback find where a mismatch began. */
+export interface ReplayCheckpoint { entry: number; hash: string }
+export const CHECKPOINT_EVERY = 600;
+export interface Replay { schema: number; contentHash: string; initial: SimState; entries: ReplayEntry[]; finalHash: string | null; checkpoints?: ReplayCheckpoint[] }
 
 export function newReplay(ctx: SimContext, initial: SimState): Replay {
   return { schema: REPLAY_SCHEMA, contentHash: ctx.content.hash, initial: snapshot(initial), entries: [], finalHash: null };
@@ -70,16 +73,28 @@ export function validateReplay(ctx: SimContext, raw: any): Replay & { finalHash:
   if (hash(raw.initial) !== hash(canonical)) fail('Replay initial state is not a canonical match start');
   for (const entry of raw.entries) checkEntry(entry);
   if (typeof raw.finalHash !== 'string' || !/^[a-f0-9]{8}$/.test(raw.finalHash)) fail('Invalid checksum');
-  return { schema: REPLAY_SCHEMA, contentHash: raw.contentHash, initial: canonical, entries: raw.entries, finalHash: raw.finalHash };
+  const checkpoints = raw.checkpoints ?? [];
+  if (!Array.isArray(checkpoints) || checkpoints.length > MAX_REPLAY_ENTRIES / CHECKPOINT_EVERY + 1
+    || checkpoints.some((c: any) => !c || !Number.isInteger(c.entry) || c.entry < 1 || c.entry > raw.entries.length || typeof c.hash !== 'string' || !/^[a-f0-9]{8}$/.test(c.hash))) fail('Invalid replay checkpoints');
+  return { schema: REPLAY_SCHEMA, contentHash: raw.contentHash, initial: canonical, entries: raw.entries, finalHash: raw.finalHash, checkpoints };
 }
 
-export function simulateReplay(ctx: SimContext, record: unknown): { state: SimState; hash: string; verified: boolean } {
+export function simulateReplay(ctx: SimContext, record: unknown): { state: SimState; hash: string; verified: boolean; firstMismatch: number | null } {
   const r = validateReplay(ctx, record);
   const s = snapshot(r.initial);
-  for (const e of r.entries) {
+  const marks = new Map((r.checkpoints ?? []).map(c => [c.entry, c.hash]));
+  let firstMismatch: number | null = null;
+  r.entries.forEach((e, i) => {
     if (e.kind === 'pause') pause(s, e.on);
     else step(ctx, s, e.frames);
-  }
+    const want = marks.get(i + 1);
+    if (want !== undefined && firstMismatch === null && hash(s) !== want) firstMismatch = i + 1;
+  });
   const h = hash(s);
-  return { state: s, hash: h, verified: h === r.finalHash };
+  return { state: s, hash: h, verified: h === r.finalHash && firstMismatch === null, firstMismatch };
+}
+
+/** Record a periodic checkpoint after the entry just added (call once per entry). */
+export function maybeCheckpoint(replay: Replay, s: SimState): void {
+  if (replay.entries.length % CHECKPOINT_EVERY === 0) (replay.checkpoints ??= []).push({ entry: replay.entries.length, hash: hash(s) });
 }
