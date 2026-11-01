@@ -33,3 +33,30 @@ test('checkpoints add their seen cards to the profile once', () => {
   store.checkpoint('L003', 'middle_or_phase_two', [0, 1], false, 1, ['L003:1', 'L003:2']);
   assert.deepEqual(store.data.seenCards, ['L003:0', 'L003:1', 'L003:2']);
 });
+
+test('a corrupted primary record fails its checksum and the backup is used', async () => {
+  const { seal } = await import('../../apps/game/src/storage/profile.ts');
+  const storage = memory();
+  const store = new P.Store(storage);
+  store.complete('L001', 'easy');
+  store.complete('L002', 'easy');
+  const good = storage.map.get(SAVE_KEY)!;
+  assert.ok(JSON.parse(good).checksum, 'saves carry a checksum');
+  // Flip a value without updating the checksum, as a disk error might.
+  storage.map.set(SAVE_KEY, good.replace('"L002"', '"L003"'));
+  const reloaded = new P.Store(storage);
+  assert.equal(reloaded.status, 'Recovered previous valid save');
+  assert.deepEqual(reloaded.data.completed, ['L001']);
+  assert.equal(JSON.parse(seal({ a: 1 })).a, 1);
+});
+
+test('deleting progress keeps settings and leaves the old record as backup', () => {
+  const storage = memory();
+  const store = new P.Store(storage);
+  store.data.settings.mute = true;
+  store.complete('L001', 'hard');
+  store.resetProgress();
+  assert.deepEqual(store.data.completed, []);
+  assert.equal(store.data.settings.mute, true);
+  assert.ok(storage.map.get(SAVE_KEY + '-backup')!.includes('L001'));
+});

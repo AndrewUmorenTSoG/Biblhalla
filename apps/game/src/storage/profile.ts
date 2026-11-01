@@ -2,6 +2,7 @@
 // storage is denied, and strict validation of imported saves.
 
 import type { Content } from '../../../../packages/content/src/index.ts';
+import { hash } from '../../../../packages/sim/src/fixed.ts';
 
 export interface KeyValueStorage { getItem(key: string): string | null; setItem(key: string, value: string): void }
 
@@ -15,6 +16,23 @@ export const PROFILE_SCHEMA = 2 as const;
  * Upgrade an older save to the current schema without losing progress.
  *   1 -> 2: adds `seenCards`, collected from the checkpoint's seen list.
  */
+/** Stored record: the profile plus a checksum that detects accidental corruption (not cheating). */
+export function seal(data: object): string {
+  const { checksum: _drop, ...payload } = data as Record<string, unknown>;
+  return JSON.stringify({ ...payload, checksum: hash(payload) });
+}
+
+/** Parse a stored record, rejecting it if its checksum no longer matches. */
+export function unseal(text: string): any {
+  const raw = JSON.parse(text);
+  if (raw && typeof raw === 'object' && 'checksum' in raw) {
+    const { checksum, ...payload } = raw;
+    if (checksum !== hash(payload)) throw new Error('Save checksum mismatch');
+    return payload;
+  }
+  return raw;
+}
+
 export function migrate(raw: any): any {
   if (!raw || typeof raw !== 'object') return raw;
   if (typeof raw.schema === 'number' && raw.schema > PROFILE_SCHEMA) throw new Error('This save comes from a newer version of Biblhalla');
@@ -131,11 +149,11 @@ export function createProfiles(content: Content) {
         }
         if (raw) {
           try {
-            this.data = validate(JSON.parse(raw));
+            this.data = validate(unseal(raw));
           } catch (err) {
             const backup = this.storage.getItem(BACKUP_KEY);
             if (!backup) throw err;
-            this.data = validate(JSON.parse(backup));
+            this.data = validate(unseal(backup));
             this.status = 'Recovered previous valid save';
           }
         }
@@ -151,9 +169,9 @@ export function createProfiles(content: Content) {
         if (!this.storage) throw new Error('No storage');
         const previous = this.storage.getItem(SAVE_KEY);
         if (previous) {
-          try { validate(JSON.parse(previous)); this.storage.setItem(BACKUP_KEY, previous); } catch { /* never back up a corrupt record */ }
+          try { validate(unseal(previous)); this.storage.setItem(BACKUP_KEY, previous); } catch { /* never back up a corrupt record */ }
         }
-        this.storage.setItem(SAVE_KEY, JSON.stringify(this.data));
+        this.storage.setItem(SAVE_KEY, seal(this.data));
         this.durable = true;
         this.status = 'Saved on this device';
       } catch {
@@ -185,9 +203,16 @@ export function createProfiles(content: Content) {
 
     export(): string { return JSON.stringify(this.data, null, 2); }
 
+    /** Delete local progress, keeping settings. The previous record stays as the backup. */
+    resetProgress(): void {
+      const settings = this.data.settings, controlChecked = this.data.controlChecked;
+      this.data = { ...defaults(), settings, controlChecked };
+      this.save();
+    }
+
     import(text: string): void {
       if (text.length > MAX_SAVE_BYTES) throw new Error('Save is too large');
-      this.data = validate(JSON.parse(text));
+      this.data = validate(unseal(text));
       this.save();
     }
   }
