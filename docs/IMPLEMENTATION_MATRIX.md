@@ -21,7 +21,7 @@ Last updated: 2026-11-01 (bosses, Goliath reenactment, arena surfaces, training 
 | Layered arenas (6) | yes | partial | yes | yes | no | Painted far layer from concept paintings; six distinct collision-clipped platform designs (`render/arena-scenes.ts`); tests prove nothing paints above a standing surface |
 | VFX and audio feedback | yes | partial | partial | no | no | Minimal hit rings and synth cues |
 | Menus, input selection, pause, results | yes | partial | partial | partial | no | Legacy UI ported as-is; Phase 4 rewrite planned |
-| Touch, controller, remapping, accessibility | yes | partial | partial | no | no | |
+| Touch, controller, remapping, accessibility | yes | partial | partial | partial | no | Menus and dialogs navigable by controller (D-pad/stick, South activate, East back) and arrow keys (`input/menu-nav.ts`); touch, remap and accessibility settings from the legacy UI; device testing pending |
 | Profile saves, backup, import/export | yes | yes | partial | yes | no | |
 | Replay export/import and checksum | yes | yes | partial | yes | no | |
 | Campaign controllers (84 levels) | yes | partial | partial | yes | no | Briefs drive companion lines and wave gates; 90-tick arrival cues; ten scripted three-phase bosses (`sim/boss.ts`); Goliath one-stone reenactment; L002 river hints, L005 deliveries during waves, L006 rising water. Bespoke mechanics for most other levels pending |

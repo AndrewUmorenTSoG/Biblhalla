@@ -14,6 +14,7 @@ import type { RuntimeArt } from '../render/renderer.ts';
 import { Inputs } from '../input/inputs.ts';
 import { FixedStepRunner } from '../runner.ts';
 import { ComboTracker, InputHistory } from '../training/combo.ts';
+import { MenuNavigator, bindArrowKeys } from '../input/menu-nav.ts';
 
 export function startApp(C: Content, S: Engine, A: CampaignApi, art: RuntimeArt): void {
 const root: any = globalThis;
@@ -93,7 +94,11 @@ function renderLocal(){const mode=$('local-mode').value;if(mode==='teams')$('loc
 function localSubmit(e:Event){e.preventDefault();const mode=$('local-mode').value,slots=Array.from($('local-players').children);const fighters=slots.map((slot:any,n:number)=>({hero:slot.querySelector('.local-hero').value,inputId:slot.querySelector('.local-input').value,human:true,team:mode==='teams'?n%2:n}));const assigned=fighters.map(f=>f.inputId);if(assigned.some(x=>!x)||new Set(assigned).size!==assigned.length){$('local-status').textContent='Assign one different input device to each player.';return;}if(assigned.some(id=>id.startsWith('pad:')&&!inputs.pads().some((p:any)=>'pad:'+p.index===id&&inputs.padSeen.has(p.index)))){$('local-status').textContent='Test each assigned controller with a button press.';return;}startGame({mode,arena:$('local-arena').value,fighters,friendlyFire:$('friendly-fire').checked});}
 function tickReplay(){const entry=replayPlayback.entries[replayIndex++];if(!entry){world.phase='result';world.result={won:true,reason:'Replay finished'+(S.hash(world)===replayPlayback.finalHash?' — checksum verified':''),ticks:world.tick};showResult();return;}if(entry.kind==='pause')S.pause(world,entry.on);else S.step(world,entry.frames);}
 const runner=new FixedStepRunner();
-function frame(now:number){const dt=lastTime?now-lastTime:1000/60;lastTime=now;
+// Controller/arrow-key menu navigation whenever gameplay input is not active.
+const menuNav=new MenuNavigator();
+menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
+bindArrowKeys(()=>!inputs.active);
+function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);const dt=lastTime?now-lastTime:1000/60;lastTime=now;
   if(!world){inputs.readAll();if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}}
   if(world){
     const active=replayPlayback?replayIndex<replayPlayback.entries.length&&world.phase!=='result':scene?scene.phase==='active':world.phase==='playing'||world.phase==='countdown';
