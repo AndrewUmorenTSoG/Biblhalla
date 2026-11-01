@@ -108,3 +108,30 @@ test('escort travelers wait in their bay, follow only after Regroup, and stay sa
   for (let k = 0; k < 120; k++) A.step(s, { x: -1 });
   assert.equal(t.x, parked, 'a delivered traveler stays at its gate');
 });
+
+test('L056: Ken waits at each ember lane and crosses only in a safe window; embers never hurt', () => {
+  const s = enter('L056', 'hard');
+  assert.equal(s.embers.length, 3);
+  const f = s.world.fighters[0], lane = s.embers[0];
+  // Player goes past the first lane; Ken must wait at the edge until it is safe.
+  f.x = lane.x + 150 * Q; f.y = 82 * Q;
+  let crossedDuringDanger = false, crossed = false;
+  for (let t = 0; t < 600 && !crossed; t++) {
+    f.x = lane.x + 150 * Q; f.y = 82 * Q; f.vx = 0;
+    A.step(s, {});
+    if (lane.kenCrossed) { crossed = true; crossedDuringDanger = lane.state !== 'safe'; }
+    else assert.ok(s.companion.x <= lane.x - 55 * Q, 'Ken never stands in the lane');
+  }
+  assert.ok(crossed && !crossedDuringDanger);
+  // Standing in an active lane sends the player back without damage.
+  for (let t = 0; t < 600 && lane.state !== 'active'; t++) A.step(s, {});
+  f.x = lane.x; f.y = 82 * Q;
+  A.step(s, {});
+  assert.ok(f.x < lane.x - 200 * Q);
+  assert.equal(f.damage, 0);
+  // The scene cannot complete while Ken is still behind a lane.
+  for (const m of s.markers) { m.done = true; if (!s.done.includes(m.id)) s.done.push(m.id); }
+  f.x = 3700 * Q; f.y = 82 * Q;
+  A.step(s, { interact: true });
+  assert.notEqual(s.phase, 'complete');
+});

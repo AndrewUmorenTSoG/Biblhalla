@@ -6,7 +6,7 @@ import type { SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { AIM_ZONE, GOLIATH_X, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
-import { SIGHT_UNITS } from '../../../../packages/campaign/src/controller.ts';
+import { EMBER_HALF_WIDTH, SIGHT_UNITS } from '../../../../packages/campaign/src/controller.ts';
 
 const TELL = 'rgba(214,164,72,.32)', TELL_EDGE = '#b5832f';
 const ACTIVE = 'rgba(176,64,48,.45)', ACTIVE_EDGE = '#8e2f22';
@@ -84,6 +84,10 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
       c.beginPath(); c.moveTo(x, 140); c.lineTo(x + reach, 200); c.lineTo(x + reach, 80); c.lineTo(x, 110); c.closePath(); c.fill();
       label(c, h.state === 'active' ? 'WATCHING' : 'Turning…', x, 230);
     }
+  }
+  for (const lane of scene.embers) {
+    if (lane.state !== 'safe') zone(c, lane.x / Q - EMBER_HALF_WIDTH, 80, EMBER_HALF_WIDTH * 2, 60, lane.state === 'active', lane.state === 'active' ? 'EMBERS' : 'Embers gathering');
+    if (!lane.kenCrossed) label(c, 'Ken crosses when clear', lane.x / Q, 170);
   }
   const wind = scene.wind;
   if (wind && (wind.state === 'warning' || wind.state === 'gust')) {

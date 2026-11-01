@@ -24,6 +24,9 @@ export const SIGHT_UNITS = 280;
 export type Cover = [number, number];
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
+/** L056: ember lanes on the floor. Ken crosses only in a safe window; nobody is ever hurt. */
+export interface EmberLane { x: number; period: number; tell: number; active: number; offset: number; state: 'safe' | 'tell' | 'active'; kenCrossed: boolean }
+export const EMBER_HALF_WIDTH = 55;
 export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
 export const TRAVELER_REACH_UNITS = 180;
 export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
@@ -71,6 +74,7 @@ export interface Scene {
   covers: Cover[];
   /** Storm headwind gusts; they stop once the scene's tasks are complete. */
   wind: Wind | null;
+  embers: EmberLane[];
   /** Route sections held back until the narrated crossing cue. */
   parted?: MapDef['platforms'] | null;
 }
@@ -81,6 +85,7 @@ const PARABLE_LEVELS = [69, 74];
 const RISING_WATER = /water rises/i;
 const LINE_OF_SIGHT = /line-of-sight/i;
 const STORM = /storm ends on the narrative cue/i;
+const EMBER_COURSE = /ember obstacle course/i;
 const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
 const FAR_SHORE_X = 2400;
@@ -138,6 +143,7 @@ export function createCampaign(S: Engine, content: Content) {
       sightLines: !combat && (level.kind === 'stealth' || LINE_OF_SIGHT.test(level.uniqueRule)),
       covers: [],
       wind: null,
+      embers: [],
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -196,6 +202,9 @@ export function createCampaign(S: Engine, content: Content) {
         m.x = (ledge.rectUnits[0] + ledge.rectUnits[2] / 2) * Q;
         m.y = (ledge.rectUnits[1] + ledge.rectUnits[3]) * Q;
       });
+    } else if (!combat && EMBER_COURSE.test(level.objective)) {
+      const tell = difficulty === 'easy' ? 135 : 90, period = difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220;
+      s.embers = [1000, 1900, 2800].map((x, n) => ({ x: x * Q, period, tell, active: 50, offset: n * 70, state: 'safe' as const, kenCrossed: false }));
     } else if (!combat && STORM.test(level.uniqueRule)) {
       s.wind = { period: difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220, tell: difficulty === 'easy' ? 135 : 90, gust: 60, state: 'calm' };
     } else if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
@@ -375,6 +384,24 @@ export function createCampaign(S: Engine, content: Content) {
     s.companion.x += Math.max(-maxSpeed, Math.min(maxSpeed, distance - (distance > 0 ? 100 : -100) * Q));
     s.companion.y = f.ground ? f.y : s.companion.y;
     if (s.kind === 'witness') { s.companion.x = f.x - 80 * Q; s.companion.y = f.y; }
+    if (s.embers.length) {
+      for (const lane of s.embers) {
+        const phase = (s.tick + lane.offset) % lane.period;
+        lane.state = phase < lane.tell ? 'tell' : phase < lane.tell + lane.active ? 'active' : 'safe';
+        if (lane.state === 'tell' && phase === 0 && Math.abs(f.x - lane.x) < 400 * Q) say(s, 'Embers are gathering in the marked lane.', 90);
+        if (lane.state === 'active' && Math.abs(f.x - lane.x) < EMBER_HALF_WIDTH * Q && f.y < 140 * Q) {
+          f.x = Math.max(80 * Q, lane.x - 250 * Q); f.y = 82 * Q; f.vx = f.vy = 0;
+          say(s, 'Too close to the embers. Step back and wait for the lane to clear.', 160);
+        }
+        // Ken waits at the lane edge and crosses only with a full safe window ahead.
+        const before = lane.x - (EMBER_HALF_WIDTH + 40) * Q;
+        if (!lane.kenCrossed && s.companion.x > before) {
+          const safeLeft = lane.state === 'safe' ? lane.period - ((s.tick + lane.offset) % lane.period) : 0;
+          if (f.x > lane.x && safeLeft > 40) { lane.kenCrossed = true; s.companion.x = lane.x + (EMBER_HALF_WIDTH + 30) * Q; say(s, 'Ken: Thanks for waiting — I am across.', 120); }
+          else s.companion.x = before;
+        }
+      }
+    }
     // Following travelers walk behind the player in a short line; they cannot be harmed.
     s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
       const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
@@ -417,7 +444,7 @@ export function createCampaign(S: Engine, content: Content) {
       s.parted = null;
       say(s, 'The account describes the sea opening. The far route is now in place.', 240);
     }
-    if (!s.water && !s.wind && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
+    if (!s.water && !s.wind && !s.embers.length && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
       for (const h of s.hazards) {
         const phase = s.tick % h.period;
         h.state = phase < h.tell ? 'tell' : phase < h.tell + h.active ? 'active' : 'safe';
@@ -445,7 +472,8 @@ export function createCampaign(S: Engine, content: Content) {
     if (i.interact) interact(s);
     if (!s.level.combatEnabled) s.combatCleared = true;
     if (s.level.number === GOLIATH_LEVEL) s.combatCleared = false;
-    if (s.done.length === s.markers.length && s.combatCleared) {
+    // The ember course is complete only when Ken is safely across every lane.
+    if (s.done.length === s.markers.length && s.combatCleared && s.embers.every(l => l.kenCrossed)) {
       const returnRoute = RETURN_ROUTE_LEVELS.includes(s.level.number);
       const exit = returnRoute ? 120 * Q : s.level.combatEnabled ? 350 * Q : ROUTE_END_X * Q;
       if (returnRoute ? f.x <= exit : f.x >= exit) {
