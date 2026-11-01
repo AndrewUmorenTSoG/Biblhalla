@@ -12,6 +12,8 @@ export interface Input {
   dodge: boolean;
   item: boolean;
   interact: boolean;
+  /** Interact held down (hold-to-secure tasks); `interact` is the press edge. */
+  interactHeld: boolean;
 }
 export type InputFrame = Partial<Input>;
 /** Inputs for a tick keyed by fighter id or input device id. */

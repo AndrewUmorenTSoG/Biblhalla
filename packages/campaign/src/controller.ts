@@ -16,6 +16,8 @@ export type ScenePhase = 'intro' | 'active' | 'paused' | 'complete' | 'failed';
 export interface Marker {
   id: number; x: number; y: number; type: TaskType; label: string;
   stage: number; done: boolean; carried: boolean; dropped: boolean; targetX: number;
+  /** Hold-to-secure progress in ticks (latch and rope tasks); never lost on release. */
+  progress?: number;
 }
 export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe'; facing?: number }
 /** Lookout sight lines: a lookout sees this far in the direction it faces. */
@@ -103,6 +105,8 @@ const PARTING = /sea opens on the authored narrative cue/i;
 const FAR_SHORE_X = 2400;
 const GUST_PUSH_UNITS = 3;
 const SAFE_X = 80, MIDDLE_X = 1850, ROUTE_END_X = 3650;
+/** Ticks of held Interact needed to secure a latch or rope. */
+export const LATCH_HOLD_TICKS = 40;
 /** Stepping routes keep their middle checkpoint on a bank, not over a channel. */
 const STEPPING_MIDDLE_X = 1400;
 /** Where a restored middle checkpoint places the player on ordinary routes. */
@@ -323,6 +327,8 @@ export function createCampaign(S: Engine, content: Content) {
       say(s, 'Carry to the outlined station. Interact to set down or deliver.', 240);
       return;
     }
+    // Latches and ropes are secured by holding Interact (handled each tick in step).
+    if (m.type === 'latches') return;
     if (m.type === 'escort') {
       const traveler = s.travelers.find(t => t.markerId === m.id);
       if (!m.stage) {
@@ -524,6 +530,12 @@ export function createCampaign(S: Engine, content: Content) {
     if (s.level.number === GOLIATH_LEVEL) {
       stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, { say: (text, ticks) => say(s, text, ticks), complete: () => { s.combatCleared = true; complete(s); } });
       return;
+    }
+    const latch = nearest(s);
+    if (latch?.type === 'latches' && i.interactHeld && !f.action && s.carry === null) {
+      latch.progress = (latch.progress ?? 0) + 1;
+      if (latch.progress >= LATCH_HOLD_TICKS) mark(s, latch);
+      else if (latch.progress % 10 === 1) say(s, `Securing ${latch.label}… keep holding Interact.`, 30);
     }
     if (i.interact) interact(s);
     if (!s.level.combatEnabled) s.combatCleared = true;

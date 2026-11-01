@@ -174,3 +174,23 @@ test('L072: stepping stones rise, warn and sink; slipping returns you to the ban
   assert.equal(f.x, 540 * Q);
   assert.equal(f.damage, 0);
 });
+
+test('latches and ropes are secured by holding Interact; letting go keeps progress', async () => {
+  const { LATCH_HOLD_TICKS } = await import('../../packages/campaign/src/controller.ts');
+  for (const id of ['L050', 'L070']) {
+    const s = enter(id);
+    const m = s.markers.find(k => k.type === 'latches')!;
+    const f = s.world.fighters[0];
+    const stand = () => { f.x = m.x; f.y = m.y; f.vx = f.vy = 0; f.action = null; };
+    stand();
+    A.interact(s);
+    assert.ok(!m.done, `${id}: a single press does not secure it`);
+    for (let t = 0; t < 15; t++) { stand(); A.step(s, { interactHeld: true }); }
+    const partial = m.progress ?? 0;
+    assert.ok(partial > 0 && !m.done);
+    for (let t = 0; t < 20; t++) { stand(); A.step(s, {}); }
+    assert.equal(m.progress, partial, `${id}: progress is kept while released`);
+    for (let t = 0; t < LATCH_HOLD_TICKS; t++) { stand(); A.step(s, { interactHeld: true }); }
+    assert.ok(m.done, `${id}: secured after holding`);
+  }
+});

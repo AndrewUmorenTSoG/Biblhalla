@@ -16,7 +16,7 @@ export function input(i: InputFrame = {}): Input {
     x: Math.sign(i.x || 0), y: Math.sign(i.y || 0),
     jump: !!i.jump, jumpHeld: !!i.jumpHeld,
     light: !!i.light, heavy: !!i.heavy, heavyHeld: !!i.heavyHeld,
-    dodge: !!i.dodge, item: !!i.item, interact: !!i.interact,
+    dodge: !!i.dodge, item: !!i.item, interact: !!i.interact, interactHeld: !!(i.interactHeld || i.interact),
   };
 }
 

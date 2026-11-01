@@ -10,7 +10,7 @@ import { hash, snapshot } from './fixed.ts';
 export const REPLAY_SCHEMA = 1;
 export const MAX_REPLAY_ENTRIES = 24000;
 const REPLAY_MODES = ['duel', 'waves', 'boss', 'local', 'teams', 'ffa'];
-const INPUT_KEYS = ['x', 'y', 'jump', 'jumpHeld', 'light', 'heavy', 'heavyHeld', 'dodge', 'item', 'interact'];
+const INPUT_KEYS = ['x', 'y', 'jump', 'jumpHeld', 'light', 'heavy', 'heavyHeld', 'dodge', 'item', 'interact', 'interactHeld'];
 
 export type ReplayEntry = { kind: 'input'; frames: InputFrames } | { kind: 'pause'; on: boolean };
 export interface Replay { schema: number; contentHash: string; initial: SimState; entries: ReplayEntry[]; finalHash: string | null }
