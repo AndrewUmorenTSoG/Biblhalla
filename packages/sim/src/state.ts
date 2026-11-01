@@ -9,6 +9,8 @@ export const MODES: Mode[] = ['duel', 'waves', 'boss', 'training', 'local', 'tea
 export const DEFAULT_SEED = 613891;
 export const DEFAULT_WAVES = [['road_guard', 'road_guard'], ['archer', 'brute'], ['shield_guard', 'road_guard', 'archer']];
 export const BOSS_GUARD = 1700;
+/** Ticks of countdown after resuming from pause. */
+export const RESUME_COUNTDOWN_TICKS = 90;
 
 /** Normalize any partial frame into a complete semantic input. */
 export function input(i: InputFrame = {}): Input {
@@ -118,7 +120,10 @@ export function pause(s: SimState, on = true): void {
     s.phase = 'paused';
     for (const f of s.fighters) f.buffer = null;
   } else if (!on && s.phase === 'paused') {
-    s.phase = s.resumePhase || 'playing';
+    // Resuming active play runs a short countdown (no match time spent) so nobody is
+    // hit in the first frame back. Recorded pauses replay the same way.
+    s.phase = s.resumePhase === 'playing' ? 'countdown' : s.resumePhase || 'playing';
+    if (s.phase === 'countdown') s.countdown = Math.max(s.countdown, RESUME_COUNTDOWN_TICKS);
     s.resumePhase = null;
   }
 }

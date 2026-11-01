@@ -264,3 +264,17 @@ test('a bot far from the stage spends its air dodge toward it', () => {
   assert.equal(bot.action?.kind, 'dodge');
   assert.ok((bot.action?.dx ?? 0) < 0, 'dodges toward the stage');
 });
+
+test('resuming from pause runs a short countdown that spends no match time and replays identically', () => {
+  const s = arena({ hero: 'david', opponent: 'samson' });
+  const tick = s.tick, remaining = s.remaining;
+  S.pause(s, true);
+  S.pause(s, false);
+  assert.equal(s.phase, 'countdown');
+  for (let t = 0; t < 89; t++) S.step(s, { [s.fighters[0].id]: { light: true, x: 1 } });
+  assert.equal(s.tick, tick, 'no simulation ticks during the countdown');
+  assert.equal(s.remaining, remaining);
+  assert.equal(s.fighters[0].action, null, 'inputs do nothing during the countdown');
+  S.step(s); S.step(s);
+  assert.equal(s.phase, 'playing');
+});

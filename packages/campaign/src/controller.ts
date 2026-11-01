@@ -472,6 +472,8 @@ export function createCampaign(S: Engine, content: Content) {
 
   function step(s: Scene, frame: InputFrame = {}): void {
     if (s.phase !== 'active' || s.pendingCard !== null) return;
+    // While the world counts down (scene start or resuming from pause), the scene waits too.
+    if (s.world.phase === 'countdown') { S.step(s.world, {}); return; }
     s.tick++;
     s.checkpointEvent = null;
     const f = s.world.fighters[0];
