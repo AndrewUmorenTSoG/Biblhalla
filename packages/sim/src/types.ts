@@ -222,6 +222,8 @@ export interface SimState {
   waveArrivals: number;
   waveResting: boolean;
   cue: WaveCue | null;
+  /** Story defend objectives: x positions (Q) raiders head for when not engaging a player. */
+  guardPoints?: number[];
   bossScript: BossScript | null;
   bossRun: BossRun | null;
   bossHazard: BossHazard | null;

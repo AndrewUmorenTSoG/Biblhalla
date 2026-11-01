@@ -35,6 +35,10 @@ export const EMBER_HALF_WIDTH = 55;
 export interface Stone { id: string; x: number; w: number; channel: number; offset: number; state: 'up' | 'sinking' | 'down' }
 export const STONE_CHANNELS: [number, number][] = [[600, 1120], [1600, 2120], [2600, 3120]];
 export const STONE_CYCLE = { up: 160, sinking: 40, down: 80 };
+/** A defendable post: raiders standing on it wear it down; standing on it yourself restores it. */
+export interface Post { id: number; x: number; label: string; integrity: number }
+export const POST_INTEGRITY = 240;
+export const POST_RADIUS_UNITS = 70;
 export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
 export const TRAVELER_REACH_UNITS = 180;
 export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
@@ -86,6 +90,7 @@ export interface Scene {
   /** Two-person lifts: Ken must hold the other end to pick up, carry and deliver. */
   coopLift: boolean;
   stones: Stone[];
+  posts: Post[];
   /** Solid footing that never changes; stones are added on top each tick. */
   baseFloors?: MapDef['platforms'];
   /** Route sections held back until the narrated crossing cue. */
@@ -103,6 +108,7 @@ const COOP_LIFT = /stretcher-model lifts/i;
 const STEPPING = /stepping routes/i;
 const PICTOGRAMS = /pictogram signs/i;
 const CAPTIVE_GATES = /captive gates/i;
+const DEFEND_POSTS = /^(?:protect|defend) (two|three) (regroup points|rally standards|exits|supply bays|builders’ bays)/i;
 /** Second halves of two-part objectives: [task type, label, count]. */
 const SECOND_TASKS: Record<number, [TaskType, string, number]> = {
   12: ['escort', 'Caravan to the shaded rest', 1],
@@ -182,6 +188,7 @@ export function createCampaign(S: Engine, content: Content) {
       embers: [],
       coopLift: !combat && COOP_LIFT.test(level.objective),
       stones: [],
+      posts: [],
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -245,6 +252,16 @@ export function createCampaign(S: Engine, content: Content) {
     }
     // Captive gates are opened by holding Interact; the people released stay in a safe zone.
     if (CAPTIVE_GATES.test(level.objective)) for (const m of s.markers) { m.type = 'latches'; m.label = `Captive gate ${m.id + 1}`; }
+    // Defend scenes: the named points become posts the raiders try to wear down.
+    const defend = combat ? DEFEND_POSTS.exec(level.objective) : null;
+    if (defend) {
+      const n = defend[1].toLowerCase() === 'two' ? 2 : 3;
+      const label = defend[2].replace(/s$/, '').replace(/’ bay$/, '’ bay');
+      for (let k = 0; k < n; k++) s.posts.push({ id: k, x: Math.round(-300 + (600 * k) / Math.max(1, n - 1)) * Q, label: `${label[0].toUpperCase()}${label.slice(1)} ${k + 1}`, integrity: POST_INTEGRITY });
+      s.markers = s.markers.filter(m => m.type !== 'route');
+      s.markers.forEach((m, i) => (m.id = i));
+      world.guardPoints = s.posts.map(p => p.x);
+    }
     if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
     if ([32, 36, 75].includes(level.number)) {
       const extra: TaskType = level.number === 75 ? 'route' : level.number === 36 ? 'escort' : 'building';
@@ -515,6 +532,20 @@ export function createCampaign(S: Engine, content: Content) {
       if (ch && f.y < 20 * Q) {
         f.x = (ch[0] - 60) * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0;
         say(s, 'Back to the bank. Step only on stones that are up; a flashing stone is about to sink.', 180);
+      }
+    }
+    if (s.posts.length && !s.combatCleared) {
+      for (const p of s.posts) {
+        const near = (o: typeof f) => o.stocks > 0 && !o.respawn && Math.abs(o.x - p.x) < POST_RADIUS_UNITS * Q && o.y < 200 * Q;
+        const raiders = s.world.fighters.filter(o => !o.human && near(o)).length;
+        if (raiders) p.integrity = Math.max(0, p.integrity - raiders);
+        else if (near(f)) p.integrity = Math.min(POST_INTEGRITY, p.integrity + 2);
+        if (raiders && p.integrity % 60 === 0 && p.integrity > 0) say(s, `${p.label} is under pressure — get there!`, 90);
+        if (p.integrity === 0) {
+          s.phase = 'failed';
+          s.result = { won: false, reason: `${p.label} was overrun. Retry from your checkpoint — nothing else is lost.` };
+          return;
+        }
       }
     }
     // Following travelers walk behind the player in a short line; they cannot be harmed.

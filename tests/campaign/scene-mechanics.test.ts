@@ -291,3 +291,29 @@ test('objective counts in the briefs match the scene tasks', () => {
   for (const [id, type, n] of checks) assert.equal(A.create(id).markers.filter(m => m.type === type).length, n, `${id} ${type}`);
   assert.equal(words.three, 3);
 });
+
+test('defend scenes: raiders wear posts down, the player restores them, an overrun only fails to the checkpoint', async () => {
+  const { POST_INTEGRITY } = await import('../../packages/campaign/src/controller.ts');
+  for (const [id, n] of [['L031', 2], ['L038', 2], ['L047', 2], ['L024', 3], ['L060', 3]] as const) {
+    const s = A.create(id, 'hard');
+    assert.equal(s.posts.length, n, `${id} posts`);
+    assert.deepEqual(s.world.guardPoints, s.posts.map(p => p.x));
+  }
+  const s = A.create('L031', 'hard');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  for (let t = 0; t < 600 && !s.world.fighters.some(o => !o.human && o.stocks); t++) A.step(s, {});
+  const raider = s.world.fighters.find(o => !o.human)!;
+  const post = s.posts[0], f = s.world.fighters[0];
+  f.x = 900 * Q; f.y = 82 * Q;
+  for (let t = 0; t < 30; t++) { raider.x = post.x; raider.y = 82 * Q; raider.invulnerable = 0; A.step(s, {}); }
+  assert.ok(post.integrity < POST_INTEGRITY, 'raider on the post wears it down');
+  const worn = post.integrity;
+  raider.x = 400 * Q; f.x = post.x;
+  for (let t = 0; t < 20; t++) { raider.x = 400 * Q; A.step(s, {}); }
+  assert.ok(post.integrity > worn, 'standing on it restores it');
+  post.integrity = 1; f.x = 900 * Q; raider.x = post.x;
+  A.step(s, {});
+  assert.equal(s.phase, 'failed');
+  assert.match(s.result!.reason!, /overrun/);
+});

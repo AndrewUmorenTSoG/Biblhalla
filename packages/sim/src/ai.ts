@@ -94,6 +94,12 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
     }
     if (s.difficulty === 'extreme' && dist < 55 && f.ground && nextRandom(s) % 100 < 35) { v.x = -sign; v.dodge = true; }
   }
+  // Raiders in defend scenes go for the nearest post when no player is close.
+  if (f.role && s.guardPoints?.length && dist > 200) {
+    const post = [...s.guardPoints].sort((a, b) => Math.abs(a - f.x) - Math.abs(b - f.x))[0];
+    v.x = Math.abs(post - f.x) < 30 * Q ? 0 : Math.sign(post - f.x);
+    v.light = v.heavy = false;
+  }
   // Never walk off the main stage while chasing something beyond it.
   if (f.ground && f.ground === s.map.main.id && v.x && !v.jump) {
     const ahead = f.x + v.x * EDGE_MARGIN_UNITS * Q;

@@ -6,7 +6,7 @@ import type { SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { AIM_ZONE, GOLIATH_X, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
-import { EMBER_HALF_WIDTH, LATCH_HOLD_TICKS, SIGHT_UNITS, STONE_CHANNELS } from '../../../../packages/campaign/src/controller.ts';
+import { EMBER_HALF_WIDTH, LATCH_HOLD_TICKS, POST_INTEGRITY, POST_RADIUS_UNITS, SIGHT_UNITS, STONE_CHANNELS } from '../../../../packages/campaign/src/controller.ts';
 
 const TELL = 'rgba(214,164,72,.32)', TELL_EDGE = '#b5832f';
 const ACTIVE = 'rgba(176,64,48,.45)', ACTIVE_EDGE = '#8e2f22';
@@ -101,6 +101,14 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     const x = m.x / Q, y = m.y / Q + 70;
     c.fillStyle = 'rgba(20,32,38,.6)'; c.fillRect(x - 30, y, 60, 8);
     c.fillStyle = '#e0b35a'; c.fillRect(x - 30, y, 60 * Math.min(1, m.progress / LATCH_HOLD_TICKS), 8);
+  }
+  for (const post of scene.posts) {
+    const x = post.x / Q, share = post.integrity / POST_INTEGRITY;
+    c.fillStyle = 'rgba(214,164,72,.18)'; c.fillRect(x - POST_RADIUS_UNITS, 80, POST_RADIUS_UNITS * 2, 6);
+    c.fillStyle = '#5b4a33'; c.fillRect(x - 3, 80, 6, 90);
+    c.fillStyle = 'rgba(20,32,38,.6)'; c.fillRect(x - 40, 180, 80, 8);
+    c.fillStyle = share > 0.5 ? '#6aa36f' : share > 0.25 ? '#d6a548' : '#c0503c'; c.fillRect(x - 40, 180, 80 * share, 8);
+    label(c, post.label, x, 210);
   }
   for (const lane of scene.embers) {
     if (lane.state !== 'safe') zone(c, lane.x / Q - EMBER_HALF_WIDTH, 80, EMBER_HALF_WIDTH * 2, 60, lane.state === 'active', lane.state === 'active' ? 'EMBERS' : 'Embers gathering');
