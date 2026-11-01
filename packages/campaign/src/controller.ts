@@ -27,6 +27,10 @@ export interface Checkpoint { level: string; stage: Stage; progress: number[]; c
 /** L056: ember lanes on the floor. Ken crosses only in a safe window; nobody is ever hurt. */
 export interface EmberLane { x: number; period: number; tell: number; active: number; offset: number; state: 'safe' | 'tell' | 'active'; kenCrossed: boolean }
 export const EMBER_HALF_WIDTH = 55;
+/** L072 stepping stones: rise, warn, then sink, in a staggered cycle. Units, not Q. */
+export interface Stone { id: string; x: number; w: number; channel: number; offset: number; state: 'up' | 'sinking' | 'down' }
+export const STONE_CHANNELS: [number, number][] = [[600, 1120], [1600, 2120], [2600, 3120]];
+export const STONE_CYCLE = { up: 160, sinking: 40, down: 80 };
 export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
 export const TRAVELER_REACH_UNITS = 180;
 export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
@@ -77,6 +81,9 @@ export interface Scene {
   embers: EmberLane[];
   /** Two-person lifts: Ken must hold the other end to pick up, carry and deliver. */
   coopLift: boolean;
+  stones: Stone[];
+  /** Solid footing that never changes; stones are added on top each tick. */
+  baseFloors?: MapDef['platforms'];
   /** Route sections held back until the narrated crossing cue. */
   parted?: MapDef['platforms'] | null;
 }
@@ -89,12 +96,17 @@ const LINE_OF_SIGHT = /line-of-sight/i;
 const STORM = /storm ends on the narrative cue/i;
 const EMBER_COURSE = /ember obstacle course/i;
 const COOP_LIFT = /stretcher-model lifts/i;
+const STEPPING = /stepping routes/i;
 export const LIFT_PARTNER_UNITS = 140;
 const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
 const FAR_SHORE_X = 2400;
 const GUST_PUSH_UNITS = 3;
 const SAFE_X = 80, MIDDLE_X = 1850, ROUTE_END_X = 3650;
+/** Stepping routes keep their middle checkpoint on a bank, not over a channel. */
+const STEPPING_MIDDLE_X = 1400;
+/** Where a restored middle checkpoint places the player on ordinary routes. */
+const MIDDLE_RESTORE_X = 1900;
 
 const EMPTY_TOMB_CARDS: [string, string][] = [
   ['Matthew 28', 'Matthew describes the opened tomb, the announcement to the women and the message about meeting in Galilee.'],
@@ -109,6 +121,8 @@ export function createCampaign(S: Engine, content: Content) {
   const spec = (level: Level): LevelSpec => LEVEL_SPECS[level.number - 1];
 
   /** Long side-scrolling archive route used by noncombat scenes. */
+  function middleX(s: Scene): number { return s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_X; }
+
   function routeMap(level: Level): MapDef {
     const quiet = level.kind === 'witness';
     const base = {
@@ -149,6 +163,7 @@ export function createCampaign(S: Engine, content: Content) {
       wind: null,
       embers: [],
       coopLift: !combat && COOP_LIFT.test(level.objective),
+      stones: [],
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
       goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
@@ -177,6 +192,22 @@ export function createCampaign(S: Engine, content: Content) {
         id: n, x: Math.round(x) * Q, y: y * Q, type: cfg.type, label: cfg.label + ' ' + (n + 1), stage: 0, done: false, carried: false, dropped: false,
         targetX: combat ? (180 + n * 45) * Q : Math.round(Math.min(3600, x + 190)) * Q,
       });
+    }
+    // Stepping routes: three open channels crossed only on rising and sinking stones.
+    if (!combat && STEPPING.test(level.objective)) {
+      const floors: MapDef['platforms'] = [];
+      let from = -120;
+      STONE_CHANNELS.forEach(([a, b], n) => {
+        floors.push({ id: 'shore' + n, kind: 'solid', rectUnits: [from, -120, a - from, 200], wallRecoverable: true });
+        for (let k = 0; k < 3; k++) s.stones.push({ id: `stone${n}_${k}`, x: a + 60 + k * 160, w: 80, channel: n, offset: k * 40 + n * 25, state: 'up' });
+        from = b;
+      });
+      floors.push({ id: 'shore3', kind: 'solid', rectUnits: [from, -120, 3800 - from, 200], wallRecoverable: true });
+      world.map.main = floors[0];
+      s.baseFloors = floors.slice(1);
+      world.map.platforms = [...s.baseFloors];
+      // Each marked route ends on the far bank of its channel.
+      s.markers.forEach((m, n) => { const ch = STONE_CHANNELS[Math.min(n, 2)]; m.x = (ch[1] + 120) * Q; m.y = 80 * Q; m.targetX = m.x; });
     }
     // Archive travelers wait in a safe bay at each escort marker (noncombat routes only).
     if (!combat) for (const m of s.markers) if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
@@ -224,7 +255,7 @@ export function createCampaign(S: Engine, content: Content) {
       s.combatCleared = !!checkpoint.combatCleared;
       s.stage = checkpoint.stage;
       if (s.combatCleared) { world.phase = 'playing'; world.fighters = world.fighters.slice(0, 1); world.mode = 'training'; }
-      if (!combat && s.stage === 'middle_or_phase_two') { world.fighters[0].x = 1900 * Q; s.companion.x = 1780 * Q; }
+      if (!combat && s.stage === 'middle_or_phase_two') { world.fighters[0].x = (s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_RESTORE_X) * Q; s.companion.x = (s.stones.length ? STEPPING_MIDDLE_X - 120 : 1780) * Q; }
     }
     return s;
   }
@@ -353,7 +384,7 @@ export function createCampaign(S: Engine, content: Content) {
     s.stage = 'exit';
   }
 
-  const safeX = (s: Scene) => (s.stage === 'middle_or_phase_two' ? MIDDLE_X : SAFE_X) * Q;
+  const safeX = (s: Scene) => (s.stage === 'middle_or_phase_two' ? middleX(s) : SAFE_X) * Q;
 
   function step(s: Scene, frame: InputFrame = {}): void {
     if (s.phase !== 'active' || s.pendingCard !== null) return;
@@ -374,7 +405,7 @@ export function createCampaign(S: Engine, content: Content) {
       if (e.type === 'bossOpening') say(s, 'Opening! The boss is recovering.', Number(e.ticks) || 30);
       if (e.type === 'arrivalCue') say(s, `Arrival marked: ${String(e.role).replace(/_/g, ' ')}.`, 90);
     }
-    if (priorRespawn === 1 && !s.level.combatEnabled) { f.x = (s.stage === 'middle_or_phase_two' ? 1850 : 80) * Q; f.y = 82 * Q; f.vx = f.vy = 0; }
+    if (priorRespawn === 1 && !s.level.combatEnabled) { f.x = safeX(s); f.y = 82 * Q; f.vx = f.vy = 0; }
     if (f.respawn && s.carry !== null) {
       const m = s.markers[s.carry];
       m.carried = false; m.dropped = true; m.x = safeX(s); m.y = 80 * Q;
@@ -413,6 +444,20 @@ export function createCampaign(S: Engine, content: Content) {
     }
     // Lifting together: Ken holds the far end beside the player for the whole carry.
     if (s.coopLift && s.carry !== null) { s.companion.x = f.x - 60 * Q * f.facing; s.companion.y = f.y; }
+    if (s.stones.length) {
+      const period = STONE_CYCLE.up + STONE_CYCLE.sinking + STONE_CYCLE.down;
+      for (const st of s.stones) {
+        const p = (s.tick + st.offset) % period;
+        st.state = p < STONE_CYCLE.up ? 'up' : p < STONE_CYCLE.up + STONE_CYCLE.sinking ? 'sinking' : 'down';
+      }
+      s.world.map.platforms = [...(s.baseFloors ?? []), ...s.stones.filter(st => st.state !== 'down').map(st => ({ id: st.id, kind: 'oneWay' as const, rectUnits: [st.x, 64, st.w, 16] as [number, number, number, number] }))];
+      // Slipping into a channel returns you to its near bank; nobody is harmed.
+      const ch = STONE_CHANNELS.find(([a, b]) => f.x > a * Q && f.x < b * Q);
+      if (ch && f.y < 20 * Q) {
+        f.x = (ch[0] - 60) * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0;
+        say(s, 'Back to the bank. Step only on stones that are up; a flashing stone is about to sink.', 180);
+      }
+    }
     // Following travelers walk behind the player in a short line; they cannot be harmed.
     s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
       const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);

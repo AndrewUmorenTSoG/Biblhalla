@@ -154,3 +154,23 @@ test('L073: stretcher lifts need Ken on the other end', () => {
     assert.ok(Math.abs(s.companion.x - f.x) <= 60 * Q, 'Ken stays on the stretcher');
   }
 });
+
+test('L072: stepping stones rise, warn and sink; slipping returns you to the bank unharmed', () => {
+  const s = enter('L072');
+  assert.equal(s.stones.length, 9);
+  const states = new Set<string>();
+  const st = s.stones[0];
+  for (let t = 0; t < 300; t++) { A.step(s, {}); states.add(st.state); }
+  assert.deepEqual([...states].sort(), ['down', 'sinking', 'up']);
+  // A sunk stone is not standable.
+  for (let t = 0; t < 300 && st.state !== 'down'; t++) A.step(s, {});
+  assert.ok(!s.world.map.platforms.some(p => p.id === st.id));
+  // Markers sit on the far banks, never over water.
+  for (const m of s.markers) assert.ok(!s.stones.some(z => m.x / Q > z.x - 30 && m.x / Q < z.x + z.w + 30));
+  // Falling into the channel puts you back on the near bank with no damage.
+  const f = s.world.fighters[0];
+  f.x = (st.x + 40) * Q; f.y = 10 * Q; f.vx = f.vy = 0; f.ground = null;
+  A.step(s, {});
+  assert.equal(f.x, 540 * Q);
+  assert.equal(f.damage, 0);
+});

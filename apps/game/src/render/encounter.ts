@@ -6,7 +6,7 @@ import type { SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { AIM_ZONE, GOLIATH_X, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
-import { EMBER_HALF_WIDTH, SIGHT_UNITS } from '../../../../packages/campaign/src/controller.ts';
+import { EMBER_HALF_WIDTH, SIGHT_UNITS, STONE_CHANNELS } from '../../../../packages/campaign/src/controller.ts';
 
 const TELL = 'rgba(214,164,72,.32)', TELL_EDGE = '#b5832f';
 const ACTIVE = 'rgba(176,64,48,.45)', ACTIVE_EDGE = '#8e2f22';
@@ -83,6 +83,17 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
       c.fillStyle = h.state === 'active' ? 'rgba(214,164,72,.35)' : 'rgba(214,164,72,.14)';
       c.beginPath(); c.moveTo(x, 140); c.lineTo(x + reach, 200); c.lineTo(x + reach, 80); c.lineTo(x, 110); c.closePath(); c.fill();
       label(c, h.state === 'active' ? 'WATCHING' : 'Turning…', x, 230);
+    }
+  }
+  // Stepping routes: water in each channel, stones that flash before they sink.
+  if (scene.stones.length) {
+    for (const [a, b] of STONE_CHANNELS) { c.fillStyle = 'rgba(70,128,170,.5)'; c.fillRect(a, -120, b - a, 180); }
+    for (const st of scene.stones) {
+      if (st.state === 'down') continue;
+      const flash = st.state === 'sinking' && scene.tick % 10 < 5;
+      c.fillStyle = flash ? '#e0b35a' : '#8f8a7a';
+      c.fillRect(st.x, 64, st.w, 16);
+      if (st.state === 'sinking') label(c, 'sinking', st.x + st.w / 2, 96);
     }
   }
   for (const lane of scene.embers) {
