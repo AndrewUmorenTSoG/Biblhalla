@@ -36,7 +36,7 @@ export interface Stone { id: string; x: number; w: number; channel: number; offs
 export const STONE_CHANNELS: [number, number][] = [[600, 1120], [1600, 2120], [2600, 3120]];
 export const STONE_CYCLE = { up: 160, sinking: 40, down: 80 };
 /** A defendable post: raiders standing on it wear it down; standing on it yourself restores it. */
-export interface Post { id: number; x: number; label: string; integrity: number }
+export interface Post { id: number; x: number; label: string; integrity: number; /** This post is Ken himself and moves with him. */ ken?: boolean }
 export const POST_INTEGRITY = 240;
 export const POST_RADIUS_UNITS = 70;
 export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
@@ -253,6 +253,11 @@ export function createCampaign(S: Engine, content: Content) {
     // Captive gates are opened by holding Interact; the people released stay in a safe zone.
     if (CAPTIVE_GATES.test(level.objective)) for (const m of s.markers) { m.type = 'latches'; m.label = `Captive gate ${m.id + 1}`; }
     // Defend scenes: the named points become posts the raiders try to wear down.
+    // L015: Ken is the post. Raiders press toward him; nobody is ever harmed.
+    if (combat && /^protect ken/i.test(level.objective)) {
+      s.posts.push({ id: 0, x: s.companion.x, label: 'Ken', integrity: POST_INTEGRITY, ken: true });
+      world.guardPoints = [s.companion.x];
+    }
     const defend = combat ? DEFEND_POSTS.exec(level.objective) : null;
     if (defend) {
       const n = defend[1].toLowerCase() === 'two' ? 2 : 3;
@@ -536,6 +541,7 @@ export function createCampaign(S: Engine, content: Content) {
     }
     if (s.posts.length && !s.combatCleared) {
       for (const p of s.posts) {
+        if (p.ken) { p.x = s.companion.x; s.world.guardPoints = [p.x]; }
         const near = (o: typeof f) => o.stocks > 0 && !o.respawn && Math.abs(o.x - p.x) < POST_RADIUS_UNITS * Q && o.y < 200 * Q;
         const raiders = s.world.fighters.filter(o => !o.human && near(o)).length;
         if (raiders) p.integrity = Math.max(0, p.integrity - raiders);
@@ -543,7 +549,7 @@ export function createCampaign(S: Engine, content: Content) {
         if (raiders && p.integrity % 60 === 0 && p.integrity > 0) say(s, `${p.label} is under pressure — get there!`, 90);
         if (p.integrity === 0) {
           s.phase = 'failed';
-          s.result = { won: false, reason: `${p.label} was overrun. Retry from your checkpoint — nothing else is lost.` };
+          s.result = { won: false, reason: p.ken ? 'The raiders reached Ken. Regroup at the checkpoint and stay close to him.' : `${p.label} was overrun. Retry from your checkpoint — nothing else is lost.` };
           return;
         }
       }

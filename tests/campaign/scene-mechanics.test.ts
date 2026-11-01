@@ -317,3 +317,23 @@ test('defend scenes: raiders wear posts down, the player restores them, an overr
   assert.equal(s.phase, 'failed');
   assert.match(s.result!.reason!, /overrun/);
 });
+
+test('L015: Ken is the post to protect and moves with him', () => {
+  const s = A.create('L015', 'hard');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  const ken = s.posts.find(p => p.ken)!;
+  assert.ok(ken, 'Ken is a protected post');
+  s.companion.x = 200 * Q;
+  A.step(s, {});
+  assert.equal(ken.x, s.companion.x);
+  assert.deepEqual(s.world.guardPoints, [s.companion.x]);
+  ken.integrity = 1;
+  for (let t = 0; t < 600 && !s.world.fighters.some(o => !o.human && o.stocks); t++) A.step(s, {});
+  const raider = s.world.fighters.find(o => !o.human)!;
+  raider.x = s.companion.x; raider.y = 82 * Q;
+  s.world.fighters[0].x = -400 * Q;
+  A.step(s, {});
+  assert.equal(s.phase, 'failed');
+  assert.match(s.result!.reason!, /reached Ken/);
+});
