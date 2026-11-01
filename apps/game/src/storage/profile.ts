@@ -8,6 +8,20 @@ export interface KeyValueStorage { getItem(key: string): string | null; setItem(
 export const SAVE_KEY = 'biblhalla-profile-v1';
 export const BACKUP_KEY = SAVE_KEY + '-backup';
 export const MAX_SAVE_BYTES = 1048576;
+/** Current profile schema. Older saves are migrated forward; newer ones are refused. */
+export const PROFILE_SCHEMA = 2 as const;
+
+/**
+ * Upgrade an older save to the current schema without losing progress.
+ *   1 -> 2: adds `seenCards`, collected from the checkpoint's seen list.
+ */
+export function migrate(raw: any): any {
+  if (!raw || typeof raw !== 'object') return raw;
+  if (typeof raw.schema === 'number' && raw.schema > PROFILE_SCHEMA) throw new Error('This save comes from a newer version of Biblhalla');
+  let out = raw;
+  if (out.schema === 1) out = { ...out, schema: 2, seenCards: Array.isArray(out.checkpoint?.seen) ? [...out.checkpoint.seen] : [] };
+  return out;
+}
 const STAGES = ['entry', 'middle_or_phase_two', 'exit'];
 const DIFFICULTIES = ['easy', 'hard', 'extreme'];
 const SEEN_CARD = /^L\d{3}:\d{1,2}$/;
@@ -37,7 +51,9 @@ export interface Settings {
 export interface SavedCheckpoint { level: string; stage: string; seed: number; progress: number[]; combatCleared: boolean; seen: string[] }
 
 export interface Profile {
-  schema: 1;
+  schema: typeof PROFILE_SCHEMA;
+  /** Story cards seen in any level (journal context), kept across retries and content updates. */
+  seenCards: string[];
   contentVersion: string;
   completed: string[];
   medals: Record<string, string>;
@@ -55,7 +71,7 @@ export function createProfiles(content: Content) {
   const ids = new Set(content.campaign.levels.map(l => l.id));
 
   const defaults = (): Profile => ({
-    schema: 1, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [],
+    schema: PROFILE_SCHEMA, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [], seenCards: [],
     settings: {
       input: 'keyboard', difficulty: 'easy', mute: false, reducedMotion: false, leftHanded: false, touchSize: 80, touchOpacity: 0.8,
       deadzone: 0.2, uiScale: 1, captionSpeed: 1, symbolicFinale: true, bindings: { ...DEFAULT_BINDINGS },
@@ -65,7 +81,8 @@ export function createProfiles(content: Content) {
 
   /** Rebuild a profile from untrusted JSON, keeping only known, in-range values. */
   function validate(raw: any): Profile {
-    if (!raw || raw.schema !== 1 || !Array.isArray(raw.completed) || raw.completed.length > ids.size) throw new Error('Unsupported or invalid save');
+    raw = migrate(raw);
+    if (!raw || raw.schema !== PROFILE_SCHEMA || !Array.isArray(raw.completed) || raw.completed.length > ids.size) throw new Error('Unsupported or invalid save');
     const d = defaults();
     d.completed = [...new Set<string>(raw.completed.filter((id: unknown) => typeof id === 'string' && ids.has(id)))].sort();
     if (Array.isArray(raw.journal)) d.journal = [...new Set<string>(raw.journal.filter((id: unknown) => typeof id === 'string' && ids.has(id)))].slice(0, ids.size);
@@ -89,6 +106,7 @@ export function createProfiles(content: Content) {
         for (const k of Object.keys(d.settings.bindings) as (keyof Bindings)[]) if (typeof s.bindings[k] === 'string' && BINDABLE.test(s.bindings[k])) d.settings.bindings[k] = s.bindings[k];
       }
     }
+    if (Array.isArray(raw.seenCards)) d.seenCards = [...new Set<string>(raw.seenCards.filter((v: unknown) => typeof v === 'string' && SEEN_CARD.test(v)))].slice(0, 512);
     d.controlChecked = !!raw.controlChecked;
     return d;
   }
@@ -147,6 +165,7 @@ export function createProfiles(content: Content) {
 
     checkpoint(level: string, stage: string, progress: number[] = [], combatCleared = false, seed = 613891, seen: string[] = []): void {
       this.data.checkpoint = { level, stage, progress: [...progress], combatCleared, seed, seen: [...seen] };
+      for (const id of seen) if (!this.data.seenCards.includes(id)) this.data.seenCards.push(id);
       this.save();
     }
 

@@ -113,7 +113,7 @@ function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);con
         const frames=inputs.readAll();
         renderer.capture(world);
         if(replayPlayback)tickReplay();
-        else if(scene){const f=world.fighters[0];A.step(scene,frames[f.inputId]||{});if(scene.checkpointEvent){const cp=scene.checkpointEvent;store.checkpoint(cp.level,cp.stage,cp.progress,cp.combatCleared,cp.seed);}}
+        else if(scene){const f=world.fighters[0];A.step(scene,frames[f.inputId]||{});if(scene.checkpointEvent){const cp=scene.checkpointEvent;store.checkpoint(cp.level,cp.stage,cp.progress,cp.combatCleared,cp.seed,cp.seen||[]);}}
         else {S.step(world,frames);if(replayRecord&&replayRecord.entries.length<24000)replayRecord.entries.push({kind:'input',frames});checkTutorial(frames);observeTraining(frames);}
         audio.play(world.events);
         if(scene&&scene.pendingCard!==null){showCard();return false;}
