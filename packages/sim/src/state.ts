@@ -32,7 +32,7 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
     id: ++s.entityId, hero, name: cfg.name || def.name, human: !!cfg.human,
     inputId: cfg.inputId || 'keyboard', team: cfg.team ?? slot,
     x: pt[0] * Q, y: pt[1] * Q, vx: 0, vy: 0, kx: 0, facing: slot % 2 ? -1 : 1, ground: null,
-    stocks: cfg.stocks ?? ctx.R.stockDefault, damage: 0, weapon: 'unarmed', nextWeapon: 0,
+    stocks: cfg.stocks ?? s.stocksRule ?? ctx.R.stockDefault, damage: 0, weapon: 'unarmed', nextWeapon: 0,
     jumps: ctx.P.airJumps, recovery: ctx.P.recoveryUses, dodgeCD: 0, dashCD: 0,
     wallTicks: 0, wallRefresh: 1, wallUsed: 0, wallSide: 0, groundedTicks: 0,
     coyote: 0, drop: 0, invulnerable: 0, respawn: 0, stun: 0, hitstop: 0, chase: 0, jumpTick: -1,
@@ -51,17 +51,25 @@ export function scheduleWave(s: SimState): void {
   event(s, 'wave', { wave: s.wave });
 }
 
+/** Whole-number rule value inside [lo, hi], or null when absent or invalid. */
+function ruleInt(value: unknown, lo: number, hi: number): number | null {
+  const n = Number(value);
+  return value !== undefined && value !== '' && Number.isInteger(n) && n >= lo && n <= hi ? n : null;
+}
+
 export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
   const { content, R } = ctx;
   const map = content.maps.maps.find(m => m.id === options.arena) || content.maps.maps[0];
   const difficulty = (R.difficulty as Record<string, unknown>)[options.difficulty as string] ? options.difficulty as Difficulty : 'easy';
   const mode = MODES.includes(options.mode as Mode) ? options.mode as Mode : 'duel';
+  const minutes = ruleInt(options.matchMinutes, 1, 10);
   const s: SimState = {
     version: 1, contentHash: content.hash || 'development', tick: 0,
     rng: (Number(options.seed) >>> 0) || DEFAULT_SEED, entityId: 0, eventId: 0,
     phase: 'countdown', countdown: 150, resumePhase: null, mode, difficulty,
     map: snapshot(map), fighters: [], projectiles: [], items: [], events: [],
-    remaining: R.matchTicks, result: null,
+    remaining: minutes ? minutes * 60 * 60 : R.matchTicks, result: null,
+    stocksRule: ruleInt(options.stocks, 1, 9) ?? R.stockDefault,
     wave: 0, waveWait: 0, wavePending: [], waves: options.waves || DEFAULT_WAVES,
     waveEntries: options.waveEntries ? snapshot(options.waveEntries) : null, waveArrivals: 0, waveResting: false, cue: null,
     bossScript: options.bossScript ? snapshot(options.bossScript) : null,
@@ -81,7 +89,7 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
       const boss = mode === 'boss';
       s.fighters.push(createFighter(ctx, s, {
         hero: options.opponent || (options.hero === 'samson' ? 'david' : 'samson'), team: 1,
-        stocks: boss ? 1 : R.stockDefault, guard: boss ? BOSS_GUARD : null, scale: boss ? 1.45 : 1,
+        stocks: boss ? 1 : s.stocksRule, guard: boss ? BOSS_GUARD : null, scale: boss ? 1.45 : 1,
         name: boss ? s.bossName : undefined,
       }, 1));
     }

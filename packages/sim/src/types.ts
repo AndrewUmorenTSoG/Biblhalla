@@ -150,6 +150,9 @@ export interface MatchOptions {
   /** Authored boss pattern for Story Archive boss levels. */
   bossScript?: BossScript;
   friendlyFire?: boolean;
+  /** Custom rules: lives per fighter (1-9) and match length in minutes (1-10). */
+  stocks?: number | string;
+  matchMinutes?: number | string;
   trainingBot?: string;
   bossName?: string;
 }
@@ -217,5 +220,7 @@ export interface SimState {
   bossName: string;
   suddenDeath: boolean;
   totalEnemies: number;
+  /** Lives each fighter starts with under this match's rules. */
+  stocksRule: number;
   options: MatchOptions;
 }

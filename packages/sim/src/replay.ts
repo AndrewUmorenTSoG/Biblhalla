@@ -30,9 +30,13 @@ function checkOptions(ctx: SimContext, opts: MatchOptions): void {
     for (const f of opts.fighters) {
       const ok = f && content.fighters.fighters.some(d => d.id === f.hero) && typeof f.human === 'boolean'
         && Number.isInteger(f.team) && f.team! >= 0 && f.team! <= 3 && typeof f.inputId === 'string' && f.inputId.length <= 24
-        && (f.stocks === undefined || (Number.isInteger(f.stocks) && f.stocks >= 1 && f.stocks <= 3));
+        && (f.stocks === undefined || (Number.isInteger(f.stocks) && f.stocks >= 1 && f.stocks <= 9));
       if (!ok) fail('Invalid replay fighter');
     }
+  }
+  for (const [key, lo, hi] of [['stocks', 1, 9], ['matchMinutes', 1, 10]] as const) {
+    const v = opts[key];
+    if (v !== undefined && !(Number.isInteger(Number(v)) && Number(v) >= lo && Number(v) <= hi)) fail('Invalid match rules');
   }
   if (opts.waves && (!Array.isArray(opts.waves) || opts.waves.length > 4
     || opts.waves.some(w => !Array.isArray(w) || w.length > 8 || w.some(id => typeof id !== 'string' || id.length > 32)))) fail('Invalid wave list');
