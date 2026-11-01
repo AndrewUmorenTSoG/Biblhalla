@@ -30,7 +30,8 @@ function checkOptions(ctx: SimContext, opts: MatchOptions): void {
     for (const f of opts.fighters) {
       const ok = f && content.fighters.fighters.some(d => d.id === f.hero) && typeof f.human === 'boolean'
         && Number.isInteger(f.team) && f.team! >= 0 && f.team! <= 3 && typeof f.inputId === 'string' && f.inputId.length <= 24
-        && (f.stocks === undefined || (Number.isInteger(f.stocks) && f.stocks >= 1 && f.stocks <= 9));
+        && (f.stocks === undefined || (Number.isInteger(f.stocks) && f.stocks >= 1 && f.stocks <= 9))
+        && (f.name === undefined || (typeof f.name === 'string' && f.name.length <= 40));
       if (!ok) fail('Invalid replay fighter');
     }
   }
