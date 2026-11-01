@@ -284,3 +284,10 @@ test('two-part objectives include their second task (L012 caravan, L053 scroll)'
   assert.equal(scroll.markers.at(-1)!.type, 'carry');
   assert.match(scroll.markers.at(-1)!.label, /scroll/);
 });
+
+test('objective counts in the briefs match the scene tasks', () => {
+  const words: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7 };
+  const checks: [string, string, number][] = [['L026', 'route', 3], ['L026', 'building', 4], ['L060', 'carry', 1], ['L071', 'route', 2], ['L071', 'carry', 7], ['L012', 'escort', 1]];
+  for (const [id, type, n] of checks) assert.equal(A.create(id).markers.filter(m => m.type === type).length, n, `${id} ${type}`);
+  assert.equal(words.three, 3);
+});
