@@ -220,3 +220,15 @@ test('bots finish real matches at every difficulty without leaving the rules', (
     assert.equal(s.phase, 'result', `${difficulty} bots reached a result`);
   }
 });
+
+test('a bot knocked under the stage drifts out past the edge before recovering upward', () => {
+  const s = S.create({ mode: 'local', fighters: [{ hero: 'david', human: false, team: 0 }, { hero: 'saul', human: false, team: 1 }] });
+  while (s.phase === 'countdown') S.step(s);
+  const [bot, other] = s.fighters;
+  other.x = -400 * Q; other.y = 82 * Q;
+  const [mx, my, mw] = s.map.main.rectUnits;
+  bot.x = (mx + mw - 80) * Q; bot.y = (my - 60) * Q; bot.vx = bot.vy = 0; bot.ground = null; bot.jumps = 2; bot.recovery = 1;
+  let maxX = bot.x;
+  for (let t = 0; t < 40; t++) { S.step(s); maxX = Math.max(maxX, bot.x); }
+  assert.ok(maxX > (mx + mw + 20) * Q, 'moved out from under the right edge');
+});

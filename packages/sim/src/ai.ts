@@ -82,7 +82,12 @@ const EDGE_MARGIN_UNITS = 30;
 
 /** Head for the stage: spend air jumps while falling, then the recovery move. */
 function recover(f: Fighter, left: number, right: number, top: number): Input {
-  const v: Partial<Input> = { x: f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0, jumpHeld: true };
+  // Beneath the stage, a straight-up recovery hits the underside: first drift out past
+  // the nearest edge, then come back up and in.
+  const under = f.y < top && f.x > left - 20 * Q && f.x < right + 20 * Q && (f.jumps > 0 || f.recovery > 0);
+  const outward = f.x < (left + right) / 2 ? -1 : 1;
+  const v: Partial<Input> = { x: under ? outward : f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0, jumpHeld: true };
+  if (under) return input(v);
   if (f.action || f.stun || f.hitstop) return input(v);
   const below = f.y < top + 40 * Q;
   if (f.vy < 0 && below && f.jumps > 0) v.jump = true;
