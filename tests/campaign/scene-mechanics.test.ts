@@ -229,3 +229,22 @@ test('L008: the supply cart waits in its safe bay while raiders are active', () 
   A.step(s, {});
   assert.notEqual(cart.x, parked, 'it moves again once the raiders are cleared');
 });
+
+test('L009: captive gates open by holding Interact and the released stay safe', async () => {
+  const { LATCH_HOLD_TICKS } = await import('../../packages/campaign/src/controller.ts');
+  const s = A.create('L009', 'easy');
+  A.begin(s);
+  while (s.world.phase === 'countdown') A.step(s, {});
+  const gates = s.markers;
+  assert.equal(gates.length, 2);
+  assert.ok(gates.every(g => g.type === 'latches' && /Captive gate/.test(g.label)));
+  const f = s.world.fighters[0];
+  for (const g of gates) {
+    for (let t = 0; t <= LATCH_HOLD_TICKS && !g.done; t++) {
+      f.x = g.x; f.y = g.y; f.vx = f.vy = 0; f.action = null; f.stun = 0; f.hitstop = 0;
+      A.step(s, { interactHeld: true });
+    }
+    assert.ok(g.done);
+  }
+  assert.equal(s.travelers.filter(t => t.state === 'safe').length, 2);
+});

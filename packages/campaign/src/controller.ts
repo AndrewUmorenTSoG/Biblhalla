@@ -102,6 +102,7 @@ const EMBER_COURSE = /ember obstacle course/i;
 const COOP_LIFT = /stretcher-model lifts/i;
 const STEPPING = /stepping routes/i;
 const PICTOGRAMS = /pictogram signs/i;
+const CAPTIVE_GATES = /captive gates/i;
 /** Shapes, not words: no language is made the puzzle. */
 export const PICTOGRAM_SHAPES = ['●', '▲', '■', '◆'];
 export const LIFT_PARTNER_UNITS = 140;
@@ -234,6 +235,8 @@ export function createCampaign(S: Engine, content: Content) {
       });
       s.caption = `Ken: The sign shows ${s.markers.map(m => m.shape).join(' → ')}. Let us follow the shapes.`;
     }
+    // Captive gates are opened by holding Interact; the people released stay in a safe zone.
+    if (CAPTIVE_GATES.test(level.objective)) for (const m of s.markers) { m.type = 'latches'; m.label = `Captive gate ${m.id + 1}`; }
     if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
     if ([32, 36, 75].includes(level.number)) {
       const extra: TaskType = level.number === 75 ? 'route' : level.number === 36 ? 'escort' : 'building';
@@ -312,6 +315,10 @@ export function createCampaign(S: Engine, content: Content) {
 
   function mark(s: Scene, m: Marker): void {
     if (m.done) return;
+    if (CAPTIVE_GATES.test(s.level.objective)) {
+      // Released people wait in an invulnerable safe zone beside their gate.
+      s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'safe' });
+    }
     m.done = true;
     m.carried = false;
     s.done.push(m.id);
