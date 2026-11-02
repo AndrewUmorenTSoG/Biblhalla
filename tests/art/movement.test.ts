@@ -23,7 +23,7 @@ test('movement additions do not replace a signature with a running frame',()=>{
   const moves=JSON.parse(readFileSync(new URL('../../production-pack/09_Data/attacks.json',import.meta.url),'utf8')).attacks;
   for(const [hero,weapon,id] of [['david','sling','david_sling_nsig'],['samson','hammer','samson_hammer_ssig']]){
     const move=moves.find((m:any)=>m.id===id);
-    const expected=hero==='david'?/^element_0_2$/:new RegExp(`^attack_${weapon}_[3-5]$`);
+    const expected=hero==='david'?/^slinger_cast_2$/:new RegExp(`^attack_${weapon}_[3-5]$`);
     assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup,5),expected);
     assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup+move.active-1,5),expected);
   }
@@ -31,8 +31,8 @@ test('movement additions do not replace a signature with a running frame',()=>{
 test('the roster rests in the closed-hand sprite with either carried weapon',()=>{
   for(const [hero,entry] of Object.entries(meta) as [string,any][]){
     for(const weapon of ['unarmed',...JSON.parse(readFileSync(new URL('../../production-pack/09_Data/fighters.json',import.meta.url),'utf8')).fighters.find((f:any)=>f.id===hero).weaponPair]){
-      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,0),'motion_idle');
-      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,120),'motion_idle');
+      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,0),weapon==='sling'&&entry.frames.slinger_idle_0?'slinger_idle_0':'motion_idle');
+      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,120),weapon==='sling'&&entry.frames.slinger_idle_0?'slinger_idle_3':'motion_idle');
     }
     assert.ok(entry.frames.motion_idle);
   }

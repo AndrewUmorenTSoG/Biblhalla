@@ -1,6 +1,8 @@
 import {drawWeaponSprite} from './weapon-art.ts';
 export function drawFlyingWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:number,angle:number,phase:number){
- if(!drawWeaponSprite(c,kind,x,y,angle,true,phase))drawWeapon(c,kind,x,y,angle);
+ // The weapon is a rigid object: rotate its equipped artwork in flight,
+ // rather than swapping to a differently shaped perspective drawing.
+ if(!drawWeaponSprite(c,kind,x,y,angle+phase*.35,false,0,true)&&typeof Image==='undefined')drawWeapon(c,kind,x,y,angle);
 }
 /** Blue fire marks collectible weapons; the hilt rests above the item's floor. */
 export function drawFlamingSwordPickup(c:CanvasRenderingContext2D,tick:number,reduced=false){

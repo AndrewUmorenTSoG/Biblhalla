@@ -24,7 +24,7 @@ test('all slingers release into a visible stone, and thrown objects show short w
   const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
   for(const hero of ['david','moses','miriam']){
     const clip=meta[hero].clips.sling_nlight;
-    assert.ok(clip.frames.includes(`element_${hero==='david'?0:1}_2`),hero);
+    assert.ok(clip.frames.includes('slinger_cast_2'),hero);
     const {ctx,calls}=context();assert.equal(drawElementProjectile(ctx,{move:'sling_nlight',facing:1} as any,{hero} as any,0,0,1,10),true);
     assert.ok(calls.some(c=>c.name==='arc'));
     calls.length=0;drawThrowWind(ctx,{vx:1200,vy:0} as any,0,0,1);assert.equal(calls.filter(c=>c.name==='lineTo').length,3);

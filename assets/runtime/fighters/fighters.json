@@ -1442,8 +1442,8 @@
     "releaseOrigins": {}
   },
   "david": {
-    "image": "assets/runtime/fighters/david-elemental-packed.png",
-    "sha256": "c53b6d67a67aefaadfe29c7429cfd8426b09066d1a2f97a0252983413ff67f3c",
+    "image": "assets/runtime/fighters/david-drawn-sling.png",
+    "sha256": "59d719c94361405ced600c8b643c6cf68ab650c2135548cf50fba0230218b010",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/01_david_move_sheet.png",
     "sourceSha256": "7fb4eff4652224b197097200a466a7ede487a1305accc20384082704a3cf9d6a",
@@ -1966,12 +1966,12 @@
         "pivotY": 192
       },
       "down_david_sling_dsig": {
-        "x": 4,
-        "y": 2295,
-        "w": 394,
-        "h": 192,
-        "pivotX": 9,
-        "pivotY": 192
+        "x": 644,
+        "y": 4547,
+        "w": 307,
+        "h": 189,
+        "pivotX": 147,
+        "pivotY": 189
       },
       "down_sword_dlight": {
         "x": 406,
@@ -2164,6 +2164,134 @@
         "h": 179,
         "pivotX": 134,
         "pivotY": 179
+      },
+      "slinger_idle_0": {
+        "x": 4,
+        "y": 3896,
+        "w": 153,
+        "h": 191,
+        "pivotX": 73,
+        "pivotY": 191
+      },
+      "slinger_idle_1": {
+        "x": 324,
+        "y": 3896,
+        "w": 141,
+        "h": 191,
+        "pivotX": 68,
+        "pivotY": 191
+      },
+      "slinger_idle_2": {
+        "x": 644,
+        "y": 3896,
+        "w": 167,
+        "h": 192,
+        "pivotX": 80,
+        "pivotY": 192
+      },
+      "slinger_idle_3": {
+        "x": 964,
+        "y": 3896,
+        "w": 161,
+        "h": 191,
+        "pivotX": 77,
+        "pivotY": 191
+      },
+      "slinger_run_0": {
+        "x": 4,
+        "y": 4113,
+        "w": 241,
+        "h": 205,
+        "pivotX": 116,
+        "pivotY": 205
+      },
+      "slinger_run_1": {
+        "x": 324,
+        "y": 4113,
+        "w": 218,
+        "h": 205,
+        "pivotX": 105,
+        "pivotY": 205
+      },
+      "slinger_run_2": {
+        "x": 644,
+        "y": 4113,
+        "w": 226,
+        "h": 205,
+        "pivotX": 108,
+        "pivotY": 205
+      },
+      "slinger_run_3": {
+        "x": 964,
+        "y": 4113,
+        "w": 260,
+        "h": 205,
+        "pivotX": 125,
+        "pivotY": 205
+      },
+      "slinger_air_0": {
+        "x": 4,
+        "y": 4330,
+        "w": 231,
+        "h": 205,
+        "pivotX": 111,
+        "pivotY": 205
+      },
+      "slinger_air_1": {
+        "x": 324,
+        "y": 4330,
+        "w": 199,
+        "h": 205,
+        "pivotX": 96,
+        "pivotY": 205
+      },
+      "slinger_air_2": {
+        "x": 644,
+        "y": 4330,
+        "w": 241,
+        "h": 205,
+        "pivotX": 116,
+        "pivotY": 205
+      },
+      "slinger_air_3": {
+        "x": 964,
+        "y": 4330,
+        "w": 249,
+        "h": 196,
+        "pivotX": 120,
+        "pivotY": 196
+      },
+      "slinger_cast_0": {
+        "x": 4,
+        "y": 4547,
+        "w": 250,
+        "h": 194,
+        "pivotX": 120,
+        "pivotY": 194
+      },
+      "slinger_cast_1": {
+        "x": 324,
+        "y": 4547,
+        "w": 261,
+        "h": 194,
+        "pivotX": 125,
+        "pivotY": 194
+      },
+      "slinger_cast_2": {
+        "x": 644,
+        "y": 4547,
+        "w": 307,
+        "h": 189,
+        "pivotX": 147,
+        "pivotY": 189
+      },
+      "slinger_cast_3": {
+        "x": 964,
+        "y": 4547,
+        "w": 287,
+        "h": 178,
+        "pivotX": 138,
+        "pivotY": 178
       }
     },
     "clips": {
@@ -2321,10 +2449,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           4,
@@ -2335,10 +2463,10 @@
       },
       "sling_slight": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -2383,10 +2511,10 @@
       },
       "sling_sair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -2439,10 +2567,10 @@
       },
       "david_sling_nsig": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           9,
@@ -2453,10 +2581,10 @@
       },
       "david_sling_ssig": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           11,
@@ -2467,10 +2595,10 @@
       },
       "david_sling_dsig": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "slinger_cast_0",
+          "slinger_cast_1",
           "down_david_sling_dsig",
-          "element_0_3"
+          "slinger_cast_3"
         ],
         "ticks": [
           12,
@@ -2846,8 +2974,8 @@
     },
     "releaseOrigins": {
       "sling": [
-        177,
-        53
+        72,
+        52
       ]
     }
   },
@@ -10085,8 +10213,8 @@
     }
   },
   "moses": {
-    "image": "assets/runtime/fighters/moses-staff-spin.png",
-    "sha256": "3b9d5cbffbe382dd10d6b75ca56872585751f7bd54fa46102d28ac439f0b400b",
+    "image": "assets/runtime/fighters/moses-drawn-sling.png",
+    "sha256": "1e4ddd6d4c345663a20587bbdc8cd731cafe343dde82d86bc1e13916d84d48f5",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/08_moses_move_sheet.png",
     "sourceSha256": "882db00322ff10f1cbc4b9900a0c0b19069077c5cd000410891a059976919fcc",
@@ -10641,12 +10769,12 @@
         "pivotY": 155
       },
       "down_moses_sling_dsig": {
-        "x": 4,
-        "y": 2451,
-        "w": 369,
-        "h": 155,
-        "pivotX": 37,
-        "pivotY": 155
+        "x": 598,
+        "y": 4510,
+        "w": 284,
+        "h": 162,
+        "pivotX": 136,
+        "pivotY": 162
       },
       "down_unarmed_dlight": {
         "x": 381,
@@ -10847,6 +10975,134 @@
         "h": 135,
         "pivotX": 13,
         "pivotY": 135
+      },
+      "slinger_idle_0": {
+        "x": 4,
+        "y": 3871,
+        "w": 158,
+        "h": 192,
+        "pivotX": 76,
+        "pivotY": 192
+      },
+      "slinger_idle_1": {
+        "x": 301,
+        "y": 3871,
+        "w": 168,
+        "h": 190,
+        "pivotX": 81,
+        "pivotY": 190
+      },
+      "slinger_idle_2": {
+        "x": 598,
+        "y": 3871,
+        "w": 165,
+        "h": 187,
+        "pivotX": 79,
+        "pivotY": 187
+      },
+      "slinger_idle_3": {
+        "x": 895,
+        "y": 3871,
+        "w": 161,
+        "h": 187,
+        "pivotX": 77,
+        "pivotY": 187
+      },
+      "slinger_run_0": {
+        "x": 4,
+        "y": 4084,
+        "w": 244,
+        "h": 201,
+        "pivotX": 117,
+        "pivotY": 201
+      },
+      "slinger_run_1": {
+        "x": 301,
+        "y": 4084,
+        "w": 234,
+        "h": 195,
+        "pivotX": 112,
+        "pivotY": 195
+      },
+      "slinger_run_2": {
+        "x": 598,
+        "y": 4084,
+        "w": 235,
+        "h": 189,
+        "pivotX": 113,
+        "pivotY": 189
+      },
+      "slinger_run_3": {
+        "x": 895,
+        "y": 4084,
+        "w": 249,
+        "h": 197,
+        "pivotX": 120,
+        "pivotY": 197
+      },
+      "slinger_air_0": {
+        "x": 4,
+        "y": 4297,
+        "w": 231,
+        "h": 201,
+        "pivotX": 111,
+        "pivotY": 201
+      },
+      "slinger_air_1": {
+        "x": 301,
+        "y": 4297,
+        "w": 193,
+        "h": 185,
+        "pivotX": 93,
+        "pivotY": 185
+      },
+      "slinger_air_2": {
+        "x": 598,
+        "y": 4297,
+        "w": 263,
+        "h": 147,
+        "pivotX": 126,
+        "pivotY": 147
+      },
+      "slinger_air_3": {
+        "x": 895,
+        "y": 4297,
+        "w": 232,
+        "h": 125,
+        "pivotX": 111,
+        "pivotY": 125
+      },
+      "slinger_cast_0": {
+        "x": 4,
+        "y": 4510,
+        "w": 260,
+        "h": 194,
+        "pivotX": 125,
+        "pivotY": 194
+      },
+      "slinger_cast_1": {
+        "x": 301,
+        "y": 4510,
+        "w": 221,
+        "h": 194,
+        "pivotX": 106,
+        "pivotY": 194
+      },
+      "slinger_cast_2": {
+        "x": 598,
+        "y": 4510,
+        "w": 284,
+        "h": 162,
+        "pivotX": 136,
+        "pivotY": 162
+      },
+      "slinger_cast_3": {
+        "x": 895,
+        "y": 4510,
+        "w": 284,
+        "h": 160,
+        "pivotX": 136,
+        "pivotY": 160
       }
     },
     "clips": {
@@ -10874,10 +11130,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           4,
@@ -10888,10 +11144,10 @@
       },
       "sling_slight": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -10936,10 +11192,10 @@
       },
       "sling_sair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -11176,10 +11432,10 @@
       },
       "moses_sling_nsig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           11,
@@ -11190,10 +11446,10 @@
       },
       "moses_sling_ssig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           13,
@@ -11204,10 +11460,10 @@
       },
       "moses_sling_dsig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "slinger_cast_0",
+          "slinger_cast_1",
           "down_moses_sling_dsig",
-          "element_1_3"
+          "slinger_cast_3"
         ],
         "ticks": [
           14,
@@ -11537,8 +11793,8 @@
     },
     "releaseOrigins": {
       "sling": [
-        151,
-        43
+        67,
+        45
       ]
     }
   },
@@ -12996,8 +13252,8 @@
     "releaseOrigins": {}
   },
   "miriam": {
-    "image": "assets/runtime/fighters/miriam-elemental-packed.png",
-    "sha256": "1a433729c269f1750b6abd93fead31203364005d19aa3949f269311cb4bdc1e6",
+    "image": "assets/runtime/fighters/miriam-drawn-sling.png",
+    "sha256": "a22421ca6bc9e89f56793c51cc61b2a9672b84df246cc5279028fc568ee4f425",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
@@ -13552,12 +13808,12 @@
         "pivotY": 181
       },
       "down_miriam_sling_dsig": {
-        "x": 666,
-        "y": 2223,
-        "w": 323,
-        "h": 181,
-        "pivotX": 14,
-        "pivotY": 181
+        "x": 568,
+        "y": 4086,
+        "w": 241,
+        "h": 174,
+        "pivotX": 116,
+        "pivotY": 174
       },
       "down_unarmed_dlight": {
         "x": 4,
@@ -13718,6 +13974,134 @@
         "h": 178,
         "pivotX": 65,
         "pivotY": 178
+      },
+      "slinger_idle_0": {
+        "x": 4,
+        "y": 3456,
+        "w": 126,
+        "h": 192,
+        "pivotX": 60,
+        "pivotY": 192
+      },
+      "slinger_idle_1": {
+        "x": 286,
+        "y": 3456,
+        "w": 125,
+        "h": 189,
+        "pivotX": 60,
+        "pivotY": 189
+      },
+      "slinger_idle_2": {
+        "x": 568,
+        "y": 3456,
+        "w": 126,
+        "h": 190,
+        "pivotX": 60,
+        "pivotY": 190
+      },
+      "slinger_idle_3": {
+        "x": 850,
+        "y": 3456,
+        "w": 128,
+        "h": 189,
+        "pivotX": 61,
+        "pivotY": 189
+      },
+      "slinger_run_0": {
+        "x": 4,
+        "y": 3666,
+        "w": 230,
+        "h": 197,
+        "pivotX": 110,
+        "pivotY": 197
+      },
+      "slinger_run_1": {
+        "x": 286,
+        "y": 3666,
+        "w": 204,
+        "h": 194,
+        "pivotX": 98,
+        "pivotY": 194
+      },
+      "slinger_run_2": {
+        "x": 568,
+        "y": 3666,
+        "w": 188,
+        "h": 197,
+        "pivotX": 90,
+        "pivotY": 197
+      },
+      "slinger_run_3": {
+        "x": 850,
+        "y": 3666,
+        "w": 194,
+        "h": 197,
+        "pivotX": 93,
+        "pivotY": 197
+      },
+      "slinger_air_0": {
+        "x": 4,
+        "y": 3876,
+        "w": 176,
+        "h": 197,
+        "pivotX": 84,
+        "pivotY": 197
+      },
+      "slinger_air_1": {
+        "x": 286,
+        "y": 3876,
+        "w": 167,
+        "h": 187,
+        "pivotX": 80,
+        "pivotY": 187
+      },
+      "slinger_air_2": {
+        "x": 568,
+        "y": 3876,
+        "w": 224,
+        "h": 187,
+        "pivotX": 108,
+        "pivotY": 187
+      },
+      "slinger_air_3": {
+        "x": 850,
+        "y": 3876,
+        "w": 193,
+        "h": 187,
+        "pivotX": 93,
+        "pivotY": 187
+      },
+      "slinger_cast_0": {
+        "x": 4,
+        "y": 4086,
+        "w": 236,
+        "h": 187,
+        "pivotX": 113,
+        "pivotY": 187
+      },
+      "slinger_cast_1": {
+        "x": 286,
+        "y": 4086,
+        "w": 199,
+        "h": 188,
+        "pivotX": 96,
+        "pivotY": 188
+      },
+      "slinger_cast_2": {
+        "x": 568,
+        "y": 4086,
+        "w": 241,
+        "h": 174,
+        "pivotX": 116,
+        "pivotY": 174
+      },
+      "slinger_cast_3": {
+        "x": 850,
+        "y": 4086,
+        "w": 269,
+        "h": 184,
+        "pivotX": 129,
+        "pivotY": 184
       }
     },
     "clips": {
@@ -13745,10 +14129,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           4,
@@ -13759,10 +14143,10 @@
       },
       "sling_slight": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -13807,10 +14191,10 @@
       },
       "sling_sair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           6,
@@ -14053,10 +14437,10 @@
       },
       "miriam_sling_nsig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           10,
@@ -14067,10 +14451,10 @@
       },
       "miriam_sling_ssig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "slinger_cast_0",
+          "slinger_cast_1",
+          "slinger_cast_2",
+          "slinger_cast_3"
         ],
         "ticks": [
           12,
@@ -14081,10 +14465,10 @@
       },
       "miriam_sling_dsig": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "slinger_cast_0",
+          "slinger_cast_1",
           "down_miriam_sling_dsig",
-          "element_1_3"
+          "slinger_cast_3"
         ],
         "ticks": [
           13,
@@ -14396,8 +14780,8 @@
     },
     "releaseOrigins": {
       "sling": [
-        142,
-        50
+        56,
+        48
       ]
     }
   },
