@@ -6,10 +6,10 @@ import type { Attack, Content } from './types.ts';
 export const EXPECTED = {
   fighters: 12,
   arenas: 6,
-  attacks: 147,
-  sharedAttacks: 75,
+  attacks: 172,
+  sharedAttacks: 93,
   signatureAttacks: 72,
-  weaponFamilies: 8,
+  weaponFamilies: 9,
   levels: 84,
   chapters: 14,
   witnessFinaleFrom: 79,
@@ -56,11 +56,14 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
   if (m.delivery === 'melee' && m.collisionPhases.length === 0) problems.push(`${at}: melee attack has no collision phase`);
   if (m.delivery === 'projectile' && !m.projectile) problems.push(`${at}: projectile attack has no projectile`);
   for (const p of m.collisionPhases) {
+    if(p.damagePermille!==undefined&&(p.damagePermille<1||p.damagePermille>1000))problems.push(`${at}: invalid phase damage multiplier`);
+    if(p.grabTicks!==undefined&&(p.grabTicks<1||p.grabTicks>30))problems.push(`${at}: invalid grab duration`);
     if (p.firstTick < 0 || p.lastTickExclusive <= p.firstTick || p.lastTickExclusive > m.totalTicks) problems.push(`${at}: collision phase timing out of range`);
     if (p.rectUnits.length !== 4 || p.rectUnits[2] <= 0 || p.rectUnits[3] <= 0) problems.push(`${at}: zero or negative hit shape`);
   }
   const pr = m.projectile;
   if (pr) {
+    if(pr.boomerangRangeUnits!==undefined&&(pr.boomerangRangeUnits<1||pr.boomerangRangeUnits>160))problems.push(`${at}: returning shield exceeds four body widths`);
     if (pr.spawnTick < 0 || pr.spawnTick >= m.totalTicks) problems.push(`${at}: projectile spawn outside action`);
     if (pr.lifetimeTicks <= 0 || pr.speedQ <= 0) problems.push(`${at}: projectile has no lifetime or speed`);
     if (pr.collisionUnits[0] <= 0 || pr.collisionUnits[1] <= 0) problems.push(`${at}: projectile has zero size`);
@@ -103,8 +106,8 @@ export function validateContent(c: Content): void {
     ids.set(m.id, m);
     checkAttack(m, angles, problems);
   }
-  need(attacks.filter(m => m.ownerType === 'fighter').length === EXPECTED.signatureAttacks, 'expected 72 fighter signatures');
-  need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 75 shared/unarmed attacks');
+  need(attacks.filter(m => m.ownerType === 'fighter' && /_[nsd]sig$/.test(m.id)).length === EXPECTED.signatureAttacks, 'expected 72 fighter signatures');
+  need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 93 shared/unarmed attacks');
 
   // Weapon grammar: every family has the eight base slots; unarmed also has three grounded heavies.
   const families = weapons.filter(w => w.id !== 'unarmed');

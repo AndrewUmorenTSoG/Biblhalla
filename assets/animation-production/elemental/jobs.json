@@ -1,0 +1,170 @@
+[
+  {
+    "id": "david",
+    "identity": "Young adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.",
+    "weapons": [
+      "sling",
+      "sword"
+    ],
+    "rows": [
+      "AIR sling: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR sword: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "standing sling windup, stretched cord over shoulder, fully extended fiery sling release, follow-through",
+      "second air sword strike: anticipation, airborne slash, extended contact, recovery"
+    ]
+  },
+  {
+    "id": "saul",
+    "identity": "Tall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.",
+    "weapons": [
+      "spear",
+      "sword"
+    ],
+    "rows": [
+      "AIR spear: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR sword: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "ground spear combo jab: brace, windup, jab, recovery",
+      "second aerial sword combo strike: gather, windup, slash, recover"
+    ]
+  },
+  {
+    "id": "samson",
+    "identity": "Broad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.",
+    "weapons": [
+      "gauntlets",
+      "hammer"
+    ],
+    "rows": [
+      "AIR gauntlets: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR hammer: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "gauntlet grab uppercut: reaching open hand, arm lifting an imaginary opponent overhead, hard upward punch, recovery",
+      "two-handed hammer ground slam: gather, overhead windup, crushing low impact, recover"
+    ]
+  },
+  {
+    "id": "joshua",
+    "identity": "Athletic mature adult, bronze-brown complexion, short black curls, trimmed beard, forest-green tunic, sand-colored cloak pinned at shoulder, leather armor and bronze sword; compact balanced silhouette.",
+    "weapons": [
+      "sword",
+      "shield"
+    ],
+    "rows": [
+      "AIR sword: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR shield: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "shield ground pound: crouch, shield overhead, shield slammed onto ground, recover",
+      "shield sun beam: brace, shield angled upward, shield fully raised toward sky, recover"
+    ]
+  },
+  {
+    "id": "deborah",
+    "identity": "Confident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.",
+    "weapons": [
+      "staff",
+      "blades"
+    ],
+    "rows": [
+      "AIR staff: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR blades: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "staff aerial combo followup: gather, windup, slash, recover",
+      "paired blades aerial combo followup: gather, windup, slash, recover"
+    ]
+  },
+  {
+    "id": "gideon",
+    "identity": "Adult man with olive-brown skin, close dark hair and short beard, rust-red mantle over tan tunic, leather vest, unlit torch-shaped belt ornament and a bronze-capped wooden mallet; modest rounded silhouette.",
+    "weapons": [
+      "sword",
+      "shield"
+    ],
+    "rows": [
+      "AIR sword: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR shield: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "round shield boomerang throw: hold shield, windup, forceful outward release empty hand, catch shield",
+      "shield ground slam: crouch, raise shield, smash ground with shield, recover"
+    ]
+  },
+  {
+    "id": "jonathan",
+    "identity": "Lean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.",
+    "weapons": [
+      "bow",
+      "sword"
+    ],
+    "rows": [
+      "AIR bow: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR sword: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "sword forward flip: airborne tuck, upside-down forward somersault with sword, extended sword slash, landing recovery",
+      "bow fire arrow: draw arrow, full draw, release arrow, relax"
+    ]
+  },
+  {
+    "id": "moses",
+    "identity": "Elderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.",
+    "weapons": [
+      "staff",
+      "sling"
+    ],
+    "rows": [
+      "AIR staff: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR sling: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "staff water slam: gather, lift staff, forceful staff planted ground, recover",
+      "staff second air combo: airborne windup, sweeping strike, extended strike, recovery"
+    ]
+  },
+  {
+    "id": "esther",
+    "identity": "Adult woman with warm medium-brown skin and dark braided hair secured in a bun, lilac cropped outer tunic over cream trousers, restrained Persian-inspired gold hairpiece and emerald waist sash; short practice blades and slender wooden staff.",
+    "weapons": [
+      "blades",
+      "staff"
+    ],
+    "rows": [
+      "AIR blades: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR staff: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "dagger wind combo: coil, sweeping paired daggers, fully extended slash, recover",
+      "second aerial dagger combo: gather, windup, scissor slash, recover"
+    ]
+  },
+  {
+    "id": "miriam",
+    "identity": "Adult woman with rich brown complexion, dark coiled hair in a secure high wrap, coral-red tunic, indigo trousers, cream woven waist sash and small tambourine secured at hip; decorated wooden staff and simple sling.",
+    "weapons": [
+      "staff",
+      "sling"
+    ],
+    "rows": [
+      "AIR staff: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR sling: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "staff aerial combo followup: gather, windup, slash, recover",
+      "sling charge release: gather cords, windup, extended release, recover"
+    ]
+  },
+  {
+    "id": "nehemiah",
+    "identity": "Stocky adult man, medium-deep brown skin, cropped dark hair and close beard, slate-blue worker tunic, cream apron panels, leather tool belt, bronze sword and square wooden builder’s mallet; strong blocky silhouette.",
+    "weapons": [
+      "hammer",
+      "shield"
+    ],
+    "rows": [
+      "AIR hammer: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR shield: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "hammer stone wave slam: brace, hammer overhead, crushing ground contact, recover",
+      "round shield boomerang throw: hold shield, windup, forceful outward release empty hand, catch shield"
+    ]
+  },
+  {
+    "id": "caleb",
+    "identity": "Strong older adult with reddish-brown complexion, short silver-black curls, weathered beard, olive tunic, bronze-brown shoulder shawl, sand wraps, simple long spear and leather fist guards; rugged broad silhouette.",
+    "weapons": [
+      "spear",
+      "gauntlets"
+    ],
+    "rows": [
+      "AIR spear: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "AIR gauntlets: airborne compressed anticipation, weapon windup with bent knees, strong midair strike with extended weapon, airborne follow-through",
+      "gauntlet punch-clap combo: fist winds up, forward straight punch, both palms spread wide, thunderclap palms meeting in front",
+      "earth ground pound: airborne tuck, both fists high, both fists smashing ground, rise"
+    ]
+  }
+]

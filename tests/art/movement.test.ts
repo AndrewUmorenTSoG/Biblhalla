@@ -23,8 +23,9 @@ test('movement additions do not replace a signature with a running frame',()=>{
   const moves=JSON.parse(readFileSync(new URL('../../production-pack/09_Data/attacks.json',import.meta.url),'utf8')).attacks;
   for(const [hero,weapon,id] of [['david','sling','david_sling_nsig'],['samson','hammer','samson_hammer_ssig']]){
     const move=moves.find((m:any)=>m.id===id);
-    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup,5),new RegExp(`^attack_${weapon}_[3-5]$`));
-    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup+move.active-1,5),new RegExp(`^attack_${weapon}_[3-5]$`));
+    const expected=hero==='david'?/^element_0_2$/:new RegExp(`^attack_${weapon}_[3-5]$`);
+    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup,5),expected);
+    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup+move.active-1,5),expected);
   }
 });
 test('the roster rests in the closed-hand sprite with either carried weapon',()=>{

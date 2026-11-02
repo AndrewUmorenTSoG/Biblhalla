@@ -20,7 +20,8 @@ export function selectMove(ctx: SimContext, f: Fighter, i: Input, grounded = !!f
     if (f.weapon === 'unarmed') return moves['unarmed_' + SIGNATURE[dir]];
     return moves[`${f.hero}_${f.weapon}_${SIGNATURE[dir]}`] || moves['unarmed_' + SIGNATURE[dir]];
   }
-  return moves[f.weapon + '_' + (grounded ? GROUND_LIGHT : AIR_LIGHT)[dir]];
+  const suffix=(grounded ? GROUND_LIGHT : AIR_LIGHT)[dir];
+  return moves[`${f.hero}_${f.weapon}_${suffix}`] || moves[f.weapon + '_' + suffix];
 }
 
 export function beginAction(s: SimState, f: Fighter, kind: ActionKind, duration: number, extra: Partial<Action> = {}): void {
@@ -28,9 +29,9 @@ export function beginAction(s: SimState, f: Fighter, kind: ActionKind, duration:
   f.buffer = null;
 }
 
-export function startAttack(ctx: SimContext, s: SimState, f: Fighter, i: Input, airCancel = false): boolean {
+export function startAttack(ctx: SimContext, s: SimState, f: Fighter, i: Input, airCancel = false, override?: Attack): boolean {
   if (f.carry) return false;
-  const m = selectMove(ctx, f, i, airCancel || !!f.ground);
+  const m = override ?? selectMove(ctx, f, i, airCancel || !!f.ground);
   if (!m) return false;
   // Recovery is spent when the action starts, never on hit.
   const cost = m.resourceCostOnActionStart.recovery || 0;
@@ -73,6 +74,19 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
   const { P, R, moves } = ctx;
   bufferPress(ctx, f, i);
   const a = f.action;
+
+  // A fresh/buffered Light after an airborne hit links at recovery, at most
+  // twice. Whiffs, grounded attacks and heavy recovery cannot chain for free.
+  if(a?.kind==='attack'&&!f.ground&&a.confirmed&&(a.comboDepth??0)<2&&f.buffer?.type==='light'){
+    const current=moves[a.move!],next=moves[f.weapon+'_air_combo'];
+    if(current.input.button==='light'&&a.tick>=current.startup+current.active&&next){
+      const depth=(a.comboDepth??0)+1;
+      if(startAttack(ctx,s,f,{...i,light:true,heavy:false},false,next)){
+        f.action!.comboDepth=depth;f.vy=Math.max(f.vy,3*Q);f.chase=0;
+        event(s,'airCombo',{fighter:f.id,depth});return;
+      }
+    }
+  }
 
   // Neutral air dodge may cancel into a buffered attack inside the authored window.
   if (a?.kind === 'dodge' && a.airborne && !a.dx && !a.dy && !a.cancelled

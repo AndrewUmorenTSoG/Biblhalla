@@ -6,7 +6,7 @@ import type { Image } from './image.ts';
 import { bounds } from './import-movement.ts';
 
 /** Extract connected figures across the sheet, not fixed cells that clip kicks. */
-function figures(img:Image){
+export function figures(img:Image,columns=4,rows=4){
   const seen=new Uint8Array(img.width*img.height),groups=new Map<number,number[]>();
   for(let start=0;start<seen.length;start++){
     if(seen[start]||img.data[start*4+3]<150)continue;
@@ -16,11 +16,11 @@ function figures(img:Image){
       for(const [nx,ny] of [[x-1,y],[x+1,y],[x,y-1],[x,y+1]]){if(nx<0||ny<0||nx>=img.width||ny>=img.height)continue;const q=ny*img.width+nx;if(!seen[q]&&img.data[q*4+3]>=150){seen[q]=1;queue.push(q);}}
     }
     if(queue.length<1000)continue;
-    const col=Math.max(0,Math.min(3,Math.floor(sx/queue.length/img.width*4))),row=Math.max(0,Math.min(3,Math.floor(sy/queue.length/img.height*4))),key=row*4+col;
+    const col=Math.max(0,Math.min(columns-1,Math.floor(sx/queue.length/img.width*columns))),row=Math.max(0,Math.min(rows-1,Math.floor(sy/queue.length/img.height*rows))),key=row*columns+col;
     if(queue.length>(groups.get(key)?.length??0))groups.set(key,queue);
   }
-  if(groups.size!==16)throw Error(`Expected 16 separated figures, found ${groups.size}`);
-  return Array.from({length:16},(_,index)=>{
+  if(groups.size!==columns*rows)throw Error(`Expected ${columns*rows} separated figures, found ${groups.size}`);
+  return Array.from({length:columns*rows},(_,index)=>{
     const group=groups.get(index)!,xs=group.map(p=>p%img.width),ys=group.map(p=>Math.floor(p/img.width));
     let l=img.width,t=img.height,r=0,b=0;for(let i=0;i<group.length;i++){l=Math.min(l,xs[i]);r=Math.max(r,xs[i]);t=Math.min(t,ys[i]);b=Math.max(b,ys[i]);}
     l=Math.max(0,l-2);t=Math.max(0,t-2);r=Math.min(img.width-1,r+2);b=Math.min(img.height-1,b+2);
@@ -30,6 +30,7 @@ function figures(img:Image){
     return {image:out,pivot:n?sum/n:out.width/2};
   });
 }
+if(import.meta.main){
 const dir=join(ROOT,'assets/runtime/fighters'),manifest=join(dir,'fighters.json'),backup=join(dir,'fighters-before-defence.json');
 if(!existsSync(backup))writeFileSync(backup,readFileSync(manifest));
 const meta=JSON.parse(readFileSync(backup,'utf8')),content=loadContent();
@@ -60,3 +61,5 @@ for(const def of content.fighters.fighters){
   console.log(`${def.id}: idle, defence, hit reaction and eleven unarmed clips added`);
 }
 writeFileSync(manifest,JSON.stringify(meta,null,2)+'\n');
+
+}

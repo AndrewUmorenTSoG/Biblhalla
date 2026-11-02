@@ -1,0 +1,794 @@
+[
+  {
+    "id": "david",
+    "identity": "\n\nYoung adult, warm brown skin, curly dark hair, short russet tunic, cobalt shoulder scarf, tan leather wraps, five-stone pouch, slender bronze sword and woven sling; no crown in this shepherd design.\n\n**Neutral posture:** Relaxed angled stance, sling hanging from right hand, left palm open; quick footwork and modest expression.\n\n",
+    "rows": [
+      {
+        "id": "sling_dlight",
+        "pose": "A low front kick while holding the sling safely back; no projectile.",
+        "reach": "x 20..80, y 0..32"
+      },
+      {
+        "id": "sling_dair",
+        "pose": "A downward heel kick with sling arm safely extended upward.",
+        "reach": "x -12..32, y -55..15"
+      },
+      {
+        "id": "sling_ground_pound",
+        "pose": "A feet-first downward strike with knees braced and clear landing recovery.",
+        "reach": "x -18..18, y -55..30"
+      },
+      {
+        "id": "david_sling_dsig",
+        "pose": "David drops into a crouch and sends a single skipping stone through a short low lane; he remains at the start position.",
+        "reach": "projectile from (28, 12)"
+      },
+      {
+        "id": "sword_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "sword_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "sword_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "david_sword_dsig",
+        "pose": "David shifts weight onto his rear heel and sweeps the blade just above the floor in front, finishing with both feet grounded.",
+        "reach": "x 20..125, y 0..20"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "saul",
+    "identity": "\n\nTall mature man, medium-deep brown complexion, thick dark beard, indigo royal cloak, restrained brass circlet, layered bronze scale armor, long spear and straight sword; heavy angular silhouette.\n\n**Neutral posture:** Upright guarded stance, spear vertical, shoulders square; authority mixed with tension, no demonic possession effects.\n\n",
+    "rows": [
+      {
+        "id": "spear_dlight",
+        "pose": "Crouched spear tip flick forward just above the ground.",
+        "reach": "x 28..148, y 0..30"
+      },
+      {
+        "id": "spear_dair",
+        "pose": "A short downward-diagonal spear poke; torso stays visible above.",
+        "reach": "x 20..75, y -70..15"
+      },
+      {
+        "id": "spear_ground_pound",
+        "pose": "The fighter turns spear downward and commits to a narrow descending strike.",
+        "reach": "x -15..15, y -90..30"
+      },
+      {
+        "id": "saul_spear_dsig",
+        "pose": "Saul bends low and sweeps the spear shaft across the floor in front, with a clearly visible low ending pose.",
+        "reach": "x 20..175, y 0..18"
+      },
+      {
+        "id": "sword_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "sword_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "sword_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "saul_sword_dsig",
+        "pose": "Saul lowers his body and makes one wide front-facing horizontal sword sweep at shin height.",
+        "reach": "x 20..145, y 0..20"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "samson",
+    "identity": "\n\nBroad muscular adult, deep brown skin, long seven-section dark braids tied safely backward, earth-red sleeveless tunic, cream sash, bronze wrist guards and a heavy wooden training mallet; no severed jawbone and no prison chains.\n\n**Neutral posture:** Low broad stance, fists loose, shoulders relaxed, confident smile; substantial but readable weight shifts.\n\n",
+    "rows": [
+      {
+        "id": "gauntlets_dlight",
+        "pose": "Low crouching fist strike that lifts slightly at contact.",
+        "reach": "x 15..70, y 0..32"
+      },
+      {
+        "id": "gauntlets_dair",
+        "pose": "One downward-diagonal guarded fist; body exposed above.",
+        "reach": "x 10..55, y -50..15"
+      },
+      {
+        "id": "gauntlets_ground_pound",
+        "pose": "A committed downward palm/fist strike with a clear landing brace.",
+        "reach": "x -20..20, y -55..30"
+      },
+      {
+        "id": "samson_gauntlets_dsig",
+        "pose": "Samson raises one fist, drops to a knee, and strikes the training floor in front; a short dust fan marks impact.",
+        "reach": "x 20..115, y 0..18"
+      },
+      {
+        "id": "hammer_dlight",
+        "pose": "Low mallet sweep along the front training floor.",
+        "reach": "x 20..115, y 0..35"
+      },
+      {
+        "id": "hammer_dair",
+        "pose": "One downward-diagonal mallet head strike.",
+        "reach": "x 15..85, y -65..20"
+      },
+      {
+        "id": "hammer_ground_pound",
+        "pose": "Mallet head points below and leads a vulnerable vertical descent.",
+        "reach": "x -25..25, y -80..30"
+      },
+      {
+        "id": "samson_hammer_dsig",
+        "pose": "Samson stomps forward, lowers his center of gravity, and drives the mallet into the floor ahead; dust is decorative only.",
+        "reach": "x 20..140, y 0..15"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "joshua",
+    "identity": "\n\nAthletic mature adult, bronze-brown complexion, short black curls, trimmed beard, forest-green tunic, sand-colored cloak pinned at shoulder, leather armor and bronze sword; compact balanced silhouette.\n\n**Neutral posture:** Centered athletic guard, sword angled forward, cloak gathered behind; disciplined efficient movement.\n\n",
+    "rows": [
+      {
+        "id": "sword_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "sword_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "sword_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "joshua_sword_dsig",
+        "pose": "Joshua makes a low controlled slash and returns to guard without an extra follow-up hit.",
+        "reach": "x 20..130, y 0..18"
+      },
+      {
+        "id": "shield_dlight",
+        "pose": "Crouched spear tip flick forward just above the ground.",
+        "reach": "x 28..148, y 0..30"
+      },
+      {
+        "id": "shield_dair",
+        "pose": "A short downward-diagonal spear poke; torso stays visible above.",
+        "reach": "x 20..75, y -70..15"
+      },
+      {
+        "id": "shield_ground_pound",
+        "pose": "The fighter turns spear downward and commits to a narrow descending strike.",
+        "reach": "x -15..15, y -90..30"
+      },
+      {
+        "id": "joshua_shield_dsig",
+        "pose": "Joshua pivots on his back foot and sweeps the spear tip low in front, green cloak wrapping around his hips.",
+        "reach": "x 20..165, y 0..20"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "deborah",
+    "identity": "\n\nConfident mature woman, dark brown complexion, dignified ochre headwrap secured above shoulders, plum tunic, cream trousers, teal waist sash, simple bronze bangles; wooden staff and paired short practice blades.\n\n**Neutral posture:** Staff balanced diagonally, calm alert posture; crisp decisive movement, no magical prophecy projectiles.\n\n",
+    "rows": [
+      {
+        "id": "staff_dlight",
+        "pose": "One low front staff sweep, fighter lowers center of gravity.",
+        "reach": "x 20..145, y 0..30"
+      },
+      {
+        "id": "staff_dair",
+        "pose": "One downward-diagonal staff tip strike with torso above.",
+        "reach": "x 18..78, y -65..15"
+      },
+      {
+        "id": "staff_ground_pound",
+        "pose": "The staff is aligned downward and the fighter descends with exposed sides.",
+        "reach": "x -18..18, y -85..30"
+      },
+      {
+        "id": "deborah_staff_dsig",
+        "pose": "Deborah lowers to a side stance and sweeps the far end of the staff along a low front arc.",
+        "reach": "x 20..165, y 0..18"
+      },
+      {
+        "id": "blades_dlight",
+        "pose": "A low controlled front blade cut from a knee bend.",
+        "reach": "x 15..75, y 0..30"
+      },
+      {
+        "id": "blades_dair",
+        "pose": "One downward-diagonal crossing strike, body remains vulnerable.",
+        "reach": "x 12..60, y -52..18"
+      },
+      {
+        "id": "blades_ground_pound",
+        "pose": "A committed downward narrow blade strike with clear anticipation.",
+        "reach": "x -20..20, y -65..30"
+      },
+      {
+        "id": "deborah_blades_dsig",
+        "pose": "Deborah slips backward during anticipation, then turns a blade through a low front sweep.",
+        "reach": "x 20..115, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "gideon",
+    "identity": "\n\nAdult man with olive-brown skin, close dark hair and short beard, rust-red mantle over tan tunic, leather vest, unlit torch-shaped belt ornament and a bronze-capped wooden mallet; modest rounded silhouette.\n\n**Neutral posture:** Compact guard, eyes watchful, weight on back foot; measured attacks with bold finishing poses.\n\n",
+    "rows": [
+      {
+        "id": "sword_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "sword_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "sword_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "gideon_sword_dsig",
+        "pose": "Gideon braces his back knee and makes one low front-facing sword sweep.",
+        "reach": "x 20..135, y 0..18"
+      },
+      {
+        "id": "shield_dlight",
+        "pose": "Low mallet sweep along the front training floor.",
+        "reach": "x 20..115, y 0..35"
+      },
+      {
+        "id": "shield_dair",
+        "pose": "One downward-diagonal mallet head strike.",
+        "reach": "x 15..85, y -65..20"
+      },
+      {
+        "id": "shield_ground_pound",
+        "pose": "Mallet head points below and leads a vulnerable vertical descent.",
+        "reach": "x -25..25, y -80..30"
+      },
+      {
+        "id": "gideon_shield_dsig",
+        "pose": "Gideon drives the mallet head across the ground in a compact frontward sweep.",
+        "reach": "x 20..135, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "jonathan",
+    "identity": "\n\nLean young adult with medium brown skin, short wavy dark hair, turquoise tunic, brown leather chest straps, sand cape, small bronze shoulder plate, curved wooden bow and light sword; quick narrow silhouette.\n\n**Neutral posture:** Bow low and relaxed, knees springy; alert friendly expression and agile clean poses.\n\n",
+    "rows": [
+      {
+        "id": "bow_dlight",
+        "pose": "A crouched low bow draw releases one arrow above floor level.",
+        "reach": "projectile from (30, 12)"
+      },
+      {
+        "id": "bow_dair",
+        "pose": "A downward close bow-body strike with the bow safely braced.",
+        "reach": "x 12..67, y -55..17"
+      },
+      {
+        "id": "bow_ground_pound",
+        "pose": "A feet-first descending strike with bow held clear of the feet.",
+        "reach": "x -18..18, y -55..30"
+      },
+      {
+        "id": "jonathan_bow_dsig",
+        "pose": "Jonathan bends into a low archer stance and releases an arrow just above ground height.",
+        "reach": "projectile from (28, 12)"
+      },
+      {
+        "id": "sword_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "sword_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "sword_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "jonathan_sword_dsig",
+        "pose": "Jonathan crouches and cuts low ahead, keeping his body silhouette narrow.",
+        "reach": "x 20..125, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "moses",
+    "identity": "\n\nElderly adult with deep warm-brown complexion, thick silver beard, sturdy build, sandstone robe split for safe movement, brick-red waist wrap, plain headcloth and worn wooden shepherd staff; woven practice sling.\n\n**Neutral posture:** Staff planted beside his foot, upright composed posture; deliberate grounded motion without frailty caricature.\n\n",
+    "rows": [
+      {
+        "id": "staff_dlight",
+        "pose": "One low front staff sweep, fighter lowers center of gravity.",
+        "reach": "x 20..145, y 0..30"
+      },
+      {
+        "id": "staff_dair",
+        "pose": "One downward-diagonal staff tip strike with torso above.",
+        "reach": "x 18..78, y -65..15"
+      },
+      {
+        "id": "staff_ground_pound",
+        "pose": "The staff is aligned downward and the fighter descends with exposed sides.",
+        "reach": "x -18..18, y -85..30"
+      },
+      {
+        "id": "moses_staff_dsig",
+        "pose": "Moses lowers into a braced stance and sweeps the staff across a low frontward lane, with ordinary sand dust.",
+        "reach": "x 20..165, y 0..18"
+      },
+      {
+        "id": "sling_dlight",
+        "pose": "A low front kick while holding the sling safely back; no projectile.",
+        "reach": "x 20..80, y 0..32"
+      },
+      {
+        "id": "sling_dair",
+        "pose": "A downward heel kick with sling arm safely extended upward.",
+        "reach": "x -12..32, y -55..15"
+      },
+      {
+        "id": "sling_ground_pound",
+        "pose": "A feet-first downward strike with knees braced and clear landing recovery.",
+        "reach": "x -18..18, y -55..30"
+      },
+      {
+        "id": "moses_sling_dsig",
+        "pose": "Moses bends at the knee and releases a low stone across the training floor.",
+        "reach": "projectile from (28, 12)"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "esther",
+    "identity": "\n\nAdult woman with warm medium-brown skin and dark braided hair secured in a bun, lilac cropped outer tunic over cream trousers, restrained Persian-inspired gold hairpiece and emerald waist sash; short practice blades and slender wooden staff.\n\n**Neutral posture:** Poised side stance, blades lowered, balanced feet; graceful athletic rather than sexualized design.\n\n",
+    "rows": [
+      {
+        "id": "blades_dlight",
+        "pose": "A low controlled front blade cut from a knee bend.",
+        "reach": "x 15..75, y 0..30"
+      },
+      {
+        "id": "blades_dair",
+        "pose": "One downward-diagonal crossing strike, body remains vulnerable.",
+        "reach": "x 12..60, y -52..18"
+      },
+      {
+        "id": "blades_ground_pound",
+        "pose": "A committed downward narrow blade strike with clear anticipation.",
+        "reach": "x -20..20, y -65..30"
+      },
+      {
+        "id": "esther_blades_dsig",
+        "pose": "Esther shifts backward during the windup, then sweeps one blade low in front while the other guards her body.",
+        "reach": "x 20..120, y 0..18"
+      },
+      {
+        "id": "staff_dlight",
+        "pose": "One low front staff sweep, fighter lowers center of gravity.",
+        "reach": "x 20..145, y 0..30"
+      },
+      {
+        "id": "staff_dair",
+        "pose": "One downward-diagonal staff tip strike with torso above.",
+        "reach": "x 18..78, y -65..15"
+      },
+      {
+        "id": "staff_ground_pound",
+        "pose": "The staff is aligned downward and the fighter descends with exposed sides.",
+        "reach": "x -18..18, y -85..30"
+      },
+      {
+        "id": "esther_staff_dsig",
+        "pose": "Esther bends to a low stable stance and draws the staff’s far end across the front ground lane.",
+        "reach": "x 20..160, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "miriam",
+    "identity": "\n\nAdult woman with rich brown complexion, dark coiled hair in a secure high wrap, coral-red tunic, indigo trousers, cream woven waist sash and small tambourine secured at hip; decorated wooden staff and simple sling.\n\n**Neutral posture:** Light rhythmic foot stance and bright alert expression; tambourine remains decorative, no musical shockwaves.\n\n",
+    "rows": [
+      {
+        "id": "staff_dlight",
+        "pose": "One low front staff sweep, fighter lowers center of gravity.",
+        "reach": "x 20..145, y 0..30"
+      },
+      {
+        "id": "staff_dair",
+        "pose": "One downward-diagonal staff tip strike with torso above.",
+        "reach": "x 18..78, y -65..15"
+      },
+      {
+        "id": "staff_ground_pound",
+        "pose": "The staff is aligned downward and the fighter descends with exposed sides.",
+        "reach": "x -18..18, y -85..30"
+      },
+      {
+        "id": "miriam_staff_dsig",
+        "pose": "Miriam bends one knee and sweeps the staff low across the front floor lane.",
+        "reach": "x 20..160, y 0..18"
+      },
+      {
+        "id": "sling_dlight",
+        "pose": "A low front kick while holding the sling safely back; no projectile.",
+        "reach": "x 20..80, y 0..32"
+      },
+      {
+        "id": "sling_dair",
+        "pose": "A downward heel kick with sling arm safely extended upward.",
+        "reach": "x -12..32, y -55..15"
+      },
+      {
+        "id": "sling_ground_pound",
+        "pose": "A feet-first downward strike with knees braced and clear landing recovery.",
+        "reach": "x -18..18, y -55..30"
+      },
+      {
+        "id": "miriam_sling_dsig",
+        "pose": "Miriam crouches and sends one stone along a low frontward path; no water effects or miracles.",
+        "reach": "projectile from (28, 12)"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "nehemiah",
+    "identity": "\n\nStocky adult man, medium-deep brown skin, cropped dark hair and close beard, slate-blue worker tunic, cream apron panels, leather tool belt, bronze sword and square wooden builder’s mallet; strong blocky silhouette.\n\n**Neutral posture:** Mallet across shoulder, sword secured, firm workman stance; grounded efficient weight transfers.\n\n",
+    "rows": [
+      {
+        "id": "hammer_dlight",
+        "pose": "Low mallet sweep along the front training floor.",
+        "reach": "x 20..115, y 0..35"
+      },
+      {
+        "id": "hammer_dair",
+        "pose": "One downward-diagonal mallet head strike.",
+        "reach": "x 15..85, y -65..20"
+      },
+      {
+        "id": "hammer_ground_pound",
+        "pose": "Mallet head points below and leads a vulnerable vertical descent.",
+        "reach": "x -25..25, y -80..30"
+      },
+      {
+        "id": "nehemiah_hammer_dsig",
+        "pose": "Nehemiah drops into a wide braced stance and strikes the floor ahead with the mallet; dust only.",
+        "reach": "x 20..140, y 0..18"
+      },
+      {
+        "id": "shield_dlight",
+        "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+        "reach": "x 18..98, y 0..40"
+      },
+      {
+        "id": "shield_dair",
+        "pose": "Blade angles downward in front as the body remains vulnerable above.",
+        "reach": "x 15..80, y -55..15"
+      },
+      {
+        "id": "shield_ground_pound",
+        "pose": "A downward committed sword point with a visible overhead preparation.",
+        "reach": "x -18..18, y -65..30"
+      },
+      {
+        "id": "nehemiah_shield_dsig",
+        "pose": "Nehemiah lowers one knee and makes a low front-facing sword sweep with a clear ending pose.",
+        "reach": "x 20..135, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  },
+  {
+    "id": "caleb",
+    "identity": "\n\nStrong older adult with reddish-brown complexion, short silver-black curls, weathered beard, olive tunic, bronze-brown shoulder shawl, sand wraps, simple long spear and leather fist guards; rugged broad silhouette.\n\n**Neutral posture:** Spear forward and low, free hand alert, grounded scout stance; economical confident movement.\n\n",
+    "rows": [
+      {
+        "id": "spear_dlight",
+        "pose": "Crouched spear tip flick forward just above the ground.",
+        "reach": "x 28..148, y 0..30"
+      },
+      {
+        "id": "spear_dair",
+        "pose": "A short downward-diagonal spear poke; torso stays visible above.",
+        "reach": "x 20..75, y -70..15"
+      },
+      {
+        "id": "spear_ground_pound",
+        "pose": "The fighter turns spear downward and commits to a narrow descending strike.",
+        "reach": "x -15..15, y -90..30"
+      },
+      {
+        "id": "caleb_spear_dsig",
+        "pose": "Caleb pivots low and sweeps the spear shaft across the front ground lane.",
+        "reach": "x 20..170, y 0..18"
+      },
+      {
+        "id": "gauntlets_dlight",
+        "pose": "Low crouching fist strike that lifts slightly at contact.",
+        "reach": "x 15..70, y 0..32"
+      },
+      {
+        "id": "gauntlets_dair",
+        "pose": "One downward-diagonal guarded fist; body exposed above.",
+        "reach": "x 10..55, y -50..15"
+      },
+      {
+        "id": "gauntlets_ground_pound",
+        "pose": "A committed downward palm/fist strike with a clear landing brace.",
+        "reach": "x -20..20, y -55..30"
+      },
+      {
+        "id": "caleb_gauntlets_dsig",
+        "pose": "Caleb crouches and sweeps a guarded fist low in front while keeping his other hand at his chest.",
+        "reach": "x 20..110, y 0..18"
+      },
+      {
+        "id": "unarmed_dlight",
+        "pose": "A controlled low front kick.",
+        "reach": "x 15..65, y 0..30"
+      },
+      {
+        "id": "unarmed_dair",
+        "pose": "A downward-diagonal heel strike.",
+        "reach": "x 8..48, y -50..15"
+      },
+      {
+        "id": "unarmed_ground_pound",
+        "pose": "A downward feet-first strike with guarded arms.",
+        "reach": "x -18..18, y -50..30"
+      },
+      {
+        "id": "unarmed_dsig",
+        "pose": "A low guarded hand/leg sweep in front with slow recovery.",
+        "reach": "x 15..95, y 0..28"
+      }
+    ]
+  }
+]

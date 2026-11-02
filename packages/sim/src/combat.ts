@@ -1,7 +1,7 @@
 // Hit detection and resolution. Contacts are collected from pre-hit state, then
 // applied per target in stable id order, so simultaneous hits trade.
 
-import type { Attack, Rect } from '../../content/src/index.ts';
+import type { Attack, Rect, CollisionPhase } from '../../content/src/index.ts';
 import type { SimContext } from './context.ts';
 import type { Action, Fighter, SimState } from './types.ts';
 import { Q, clamp, roundMul } from './fixed.ts';
@@ -10,7 +10,7 @@ import { invincible, outside, platforms } from './physics.ts';
 
 export type Box = [number, number, number, number];
 type HitSpec = Pick<Attack, 'damageTenths' | 'hitstunTicks' | 'hitstopTicks' | 'baseForceQ' | 'growthQPerDamage' | 'launchAngle' | 'chargeMaxTicks' | 'chargeMaxDamagePermille'>;
-interface HitRecord { target: number; owner: number; instance: number; m: HitSpec; facing: number; charge: number; melee: boolean }
+interface HitRecord { target: number; owner: number; instance: number; m: HitSpec; facing: number; charge: number; melee: boolean; grabTicks?:number }
 
 /** Attack rect [leftX, bottomY, w, h] in units -> world box, mirrored by facing. */
 export function rectFor(f: Fighter, rect: Rect, facing = f.facing): Box {
@@ -63,6 +63,7 @@ export function startProjectile(ctx: SimContext, s: SimState, f: Fighter, m: Att
     vx: roundMul(p.speedQ, dir[0], 1024) * a.facing, vy: roundMul(p.speedQ, dir[1], 1024),
     gravity: p.gravityQ, life: p.lifetimeTicks, size: [p.collisionUnits[0], p.collisionUnits[1]],
     capClass: p.capClass, charge: a.charge, weapon: null,
+    effect:p.effect,originX:f.x,rangeQ:p.boomerangRangeUnits?p.boomerangRangeUnits*Q:undefined,returning:false,hit:[],
   });
   event(s, 'projectile', { fighter: f.id });
 }
@@ -99,7 +100,7 @@ function throwSpec(ctx: SimContext): HitSpec {
 export function combat(ctx: SimContext, s: SimState): void {
   const { P, R, moves } = ctx;
   const hits: HitRecord[] = [];
-  const zones: { f: Fighter; a: Action; m: Attack; box: Box }[] = [];
+  const zones: { f: Fighter; a: Action; m: Attack; ph:CollisionPhase; box: Box }[] = [];
   const hittable = (target: Fighter, ownerId: number, team: number) =>
     target.id !== ownerId && target.stocks > 0 && !target.respawn && !invincible(ctx, target) && (s.friendlyFire || target.team !== team);
 
@@ -109,27 +110,46 @@ export function combat(ctx: SimContext, s: SimState): void {
     const m = moves[a.move!];
     const localTick = a.tick - 1;
     for (const ph of m.collisionPhases) {
-      if (localTick >= ph.firstTick && localTick < ph.lastTickExclusive) zones.push({ f, a, m, box: rectFor(f, ph.rectUnits, a.facing) });
+      if (localTick >= ph.firstTick && localTick < ph.lastTickExclusive){
+        zones.push({ f, a, m, ph, box: rectFor(f, f.hero==='joshua'&&m.id==='shield_nlight'?[-15,20,50,155]:ph.rectUnits, a.facing) });
+        // A compact splash around Samson's gauntlets and Caleb's earth pound.
+        if((f.hero==='samson'&&f.weapon==='gauntlets'&&!ph.grabTicks)||(f.hero==='caleb'&&m.id.endsWith('_ground_pound')))
+          zones.push({f,a,m,ph,box:rectFor(f,[-55,0,110,60],a.facing)});
+      }
+    }
+    if(a.impactTick===s.tick&&['caleb','samson'].includes(f.hero)){
+      const ph=m.collisionPhases[0];zones.push({f,a,m,ph,box:rectFor(f,[-90,0,180,65],a.facing)});
     }
   }
-  for (const { f, a, m, box } of zones) {
+  for (const { f, a, m, ph, box } of zones) {
+    const ledger=m.oneHitPerTarget?a.hit:((a.hitGroups??={})[ph.hitGroup]??=[]);
     for (const target of s.fighters) {
-      if (!hittable(target, f.id, f.team) || a.hit.includes(target.id)) continue;
+      if(ph.grabTicks&&ledger.length)break;
+      if (!hittable(target, f.id, f.team) || ledger.includes(target.id)) continue;
       if (capsuleRect(ctx, target, box)) {
-        a.hit.push(target.id);
+        ledger.push(target.id);
+        if(!a.hit.includes(target.id))a.hit.push(target.id);
         a.confirmed = true;
-        hits.push({ target: target.id, owner: f.id, instance: a.instance, m, facing: a.facing, charge: a.charge, melee: true });
+        const spec=ph.damagePermille?{...m,damageTenths:Math.max(1,roundMul(m.damageTenths,ph.damagePermille))}:m;
+        const facing=m.effect==='water'?(Math.sign(target.x-f.x)||a.facing):a.facing;
+        hits.push({ target: target.id, owner: f.id, instance: a.instance, m:spec, facing, charge: a.charge, melee: true,grabTicks:ph.grabTicks });
       }
     }
   }
 
   const removed = new Set<number>();
   for (const p of s.projectiles) {
+    if(p.rangeQ){
+      const owner=s.fighters.find(f=>f.id===p.owner);
+      if(!owner?.stocks||owner.respawn){removed.add(p.id);continue;}
+      if(!p.returning&&Math.abs(p.x-(p.originX??p.x))>=p.rangeQ){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});}
+      if(p.returning){const dx=owner.x-p.x,dy=owner.y+44*Q-p.y,span=Math.max(Math.abs(dx),Math.abs(dy),1);if(span<12*Q){removed.add(p.id);event(s,'shieldCatch',{fighter:p.owner});continue;}p.vx=Math.trunc(dx*2048/span);p.vy=Math.trunc(dy*2048/span);}
+    }
     const nx = p.x + p.vx, ny = p.y + p.vy;
     const hw = (p.size[0] * Q) / 2, hh = (p.size[1] * Q) / 2;
     // Active enemy melee deflects projectiles.
     for (const z of zones) {
-      if (z.f.team !== p.team && segmentBox(p.x, p.y, nx, ny, [z.box[0] - hw, z.box[1] - hh, z.box[2] + 2 * hw, z.box[3] + 2 * hh])) {
+      if (!p.rangeQ&&z.f.team !== p.team && segmentBox(p.x, p.y, nx, ny, [z.box[0] - hw, z.box[1] - hh, z.box[2] + 2 * hw, z.box[3] + 2 * hh])) {
         removed.add(p.id);
         event(s, 'deflect', { x: p.x, y: p.y });
         break;
@@ -141,6 +161,7 @@ export function combat(ctx: SimContext, s: SimState): void {
       const hitSolid = pl.kind === 'solid' && segmentBox(p.x, p.y, nx, ny, [x * Q - hw, y * Q - hh, w * Q + 2 * hw, h * Q + 2 * hh]);
       const hitTop = pl.kind === 'oneWay' && p.vy <= 0 && p.y >= (y + h) * Q && ny <= (y + h) * Q && nx > x * Q && nx < (x + w) * Q;
       if (hitSolid || hitTop) {
+        if(p.rangeQ){p.returning=true;break;}
         removed.add(p.id);
         // A thrown weapon lands as a recoverable item of the same family.
         if (p.weapon) s.items.push({ id: ++s.entityId, x: p.x, y: p.y, vy: 512, life: R.drop.lifetimeTicks, neutral: false, weapon: p.weapon, claim: null });
@@ -149,7 +170,7 @@ export function combat(ctx: SimContext, s: SimState): void {
     }
     if (removed.has(p.id)) continue;
     for (const target of s.fighters) {
-      if (!hittable(target, p.owner, p.team)) continue;
+      if (!hittable(target, p.owner, p.team)||(p.hit??[]).includes(target.id)) continue;
       // Swept finite-step capsule contact; authored projectile speed is bounded.
       const samples = Math.max(1, Math.ceil(Math.max(Math.abs(p.vx), Math.abs(p.vy)) / (8 * Q)));
       let contact = false;
@@ -160,7 +181,7 @@ export function combat(ctx: SimContext, s: SimState): void {
       if (contact) {
         const m = p.move === 'throw' ? throwSpec(ctx) : moves[p.move];
         hits.push({ target: target.id, owner: p.owner, instance: p.instance, m, facing: p.facing, charge: p.charge, melee: false });
-        removed.add(p.id);
+        if(p.rangeQ){(p.hit??=[]).push(target.id);}else removed.add(p.id);
         // A thrown weapon's one hit spends it; it drops as a non-damaging item of the same family.
         if (p.weapon) s.items.push({ id: ++s.entityId, x: p.x, y: p.y, vy: 512, life: R.drop.lifetimeTicks, neutral: false, weapon: p.weapon, claim: null });
         break;
@@ -183,7 +204,9 @@ export function combat(ctx: SimContext, s: SimState): void {
       // Charge scales damage linearly up to the authored permille; never size, time or angle.
       const chargeScale = h.m.chargeMaxTicks ? 1000 + Math.floor(((h.m.chargeMaxDamagePermille - 1000) * h.charge) / h.m.chargeMaxTicks) : 1000;
       const power = 1000 + P.powerDamagePermillePerStat * ((owner?.stats.power ?? P.statBaseline) - P.statBaseline);
-      const raw = roundMul(roundMul(h.m.damageTenths, power), chargeScale);
+      const powered=roundMul(roundMul(h.m.damageTenths, power), chargeScale);
+      const boosted=owner?.hero==='samson'?roundMul(powered,1100):powered;
+      const raw=target.hero==='samson'?roundMul(boosted,950):boosted;
       const blocked = shieldBlocks(target, h.facing);
       const amount = blocked ? Math.floor(raw / 2) : raw;
       if (blocked) event(s, 'shieldBlock', { fighter: target.id, attacker: h.owner });
@@ -224,6 +247,9 @@ export function combat(ctx: SimContext, s: SimState): void {
     target.action = null;
     target.buffer = null;
     target.ground = null;
+    const grab=group.find(h=>h.grabTicks);
+    if(grab){target.grabbed={owner:grab.owner,instance:grab.instance,until:s.tick+grab.grabTicks!+stop};target.kx=target.vy=0;}
+    else delete target.grabbed;
     for (const it of s.items) if (it.claim === target.id) it.claim = null;
   }
 }

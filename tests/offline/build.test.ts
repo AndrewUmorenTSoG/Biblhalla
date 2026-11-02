@@ -18,7 +18,7 @@ test('standalone page embeds everything and makes no network requests', () => {
 test('embedded content is the validated canonical content', () => {
   assert.equal(manifest.contentHash, content.hash);
   assert.ok(html.includes(`"hash":"${content.hash}"`));
-  assert.equal(manifest.attacks, 147);
+  assert.equal(manifest.attacks, 172);
   assert.equal(manifest.levels, 84);
 });
 
