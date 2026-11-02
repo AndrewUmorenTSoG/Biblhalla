@@ -40,7 +40,8 @@ export interface Action {
   landed?: boolean;
 }
 
-export interface Buffered { type: 'jump' | 'light' | 'heavy'; ticks: number; x: number; y: number }
+/** A press held briefly until it becomes legal. `chase` is Dodge + direction after a confirmed hit. */
+export interface Buffered { type: 'jump' | 'light' | 'heavy' | 'chase'; ticks: number; x: number; y: number }
 
 export interface BotMemory {
   next: number;
