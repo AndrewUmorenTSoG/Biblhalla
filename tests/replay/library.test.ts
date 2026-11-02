@@ -26,11 +26,13 @@ test('the library keeps the 20 newest replays plus pinned ones, and survives rel
 test('replays carry periodic state hashes that locate where a mismatch began', () => {
   const s = S.create({ mode: 'duel', hero: 'david', seed: 21 });
   const r: any = S.newReplay(s);
+  let alive = -1; // an input that the player's fighter is actually alive to act on
   for (let n = 0; n < 1300; n++) {
     const frames = { keyboard: { x: n % 200 < 100 ? 1 : -1, light: n % 37 === 0 } };
     S.step(s, frames);
     r.entries.push({ kind: 'input', frames });
     S.maybeCheckpoint(r, s);
+    if (n >= 620 && n < 1150 && alive < 0 && s.fighters[0].stocks && !s.fighters[0].respawn && s.fighters[0].ground) alive = n;
   }
   r.finalHash = S.hash(s);
   assert.equal(r.checkpoints.length, 2);
@@ -38,8 +40,9 @@ test('replays carry periodic state hashes that locate where a mismatch began', (
   assert.ok(ok.verified);
   assert.equal(ok.firstMismatch, null);
   const tampered = JSON.parse(JSON.stringify(r));
-  tampered.entries[700].frames.keyboard.x = -tampered.entries[700].frames.keyboard.x;
+  assert.ok(alive > 0);
+  tampered.entries[alive].frames.keyboard = { x: 0, jump: true };
   const bad = S.simulateReplay(tampered);
   assert.equal(bad.verified, false);
-  assert.equal(bad.firstMismatch, 1200, 'the first checkpoint after the change catches it');
+  assert.equal(bad.firstMismatch, alive < 600 ? 600 : 1200, 'the first checkpoint after the change catches it');
 });

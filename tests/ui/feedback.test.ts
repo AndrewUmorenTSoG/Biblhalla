@@ -42,7 +42,7 @@ test('puffs stay bounded through a long real match', () => {
     fighters: [{ hero: 'samson', human: false, team: 0 }, { hero: 'deborah', human: false, team: 1 }] });
   const fb = new Feedback();
   let maxPuffs = 0, kos = 0;
-  for (let t = 0; t < 6000 && s.phase !== 'result'; t++) {
+  for (let t = 0; t < 15000 && s.phase !== 'result' && !(kos && t > 3000); t++) {
     S.step(s); fb.update(s); maxPuffs = Math.max(maxPuffs, fb.puffs.length);
     kos += s.events.filter(e => e.type === 'ko').length;
     assert.ok(Number.isFinite(fb.shake));
