@@ -21,9 +21,40 @@ test('all twelve fighters cycle through eight run drawings and keep airborne pha
 });
 test('movement additions do not replace a signature with a running frame',()=>{
   const moves=JSON.parse(readFileSync(new URL('../../production-pack/09_Data/attacks.json',import.meta.url),'utf8')).attacks;
-  for(const [hero,weapon,id,expected] of [['david','sling','david_sling_nsig','sig_sling_n'],['samson','hammer','samson_hammer_ssig','sig_hammer_s']]){
+  for(const [hero,weapon,id] of [['david','sling','david_sling_nsig'],['samson','hammer','samson_hammer_ssig']]){
     const move=moves.find((m:any)=>m.id===id);
-    assert.equal(renderer.frameFor(hero,'active',weapon,id,move.startup,5),expected);
-    assert.equal(renderer.frameFor(hero,'active',weapon,id,move.startup+move.active-1,5),expected);
+    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup,5),new RegExp(`^attack_${weapon}_[3-5]$`));
+    assert.match(renderer.frameFor(hero,'active',weapon,id,move.startup+move.active-1,5),new RegExp(`^attack_${weapon}_[3-5]$`));
+  }
+});
+test('the roster rests in the closed-hand sprite with either carried weapon',()=>{
+  for(const [hero,entry] of Object.entries(meta) as [string,any][]){
+    for(const weapon of ['unarmed',...JSON.parse(readFileSync(new URL('../../production-pack/09_Data/fighters.json',import.meta.url),'utf8')).fighters.find((f:any)=>f.id===hero).weaponPair]){
+      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,0),'motion_idle');
+      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,120),'motion_idle');
+    }
+    assert.ok(entry.frames.motion_idle);
+  }
+});
+test('attack playback never selects a legacy cutout key pose',()=>{
+  const fighters=JSON.parse(readFileSync(new URL('../../production-pack/09_Data/fighters.json',import.meta.url),'utf8')).fighters;
+  for(const [hero,entry] of Object.entries(meta) as [string,any][]){
+    const weapons=fighters.find((f:any)=>f.id===hero).weaponPair;
+    for(const [move,clip] of Object.entries(entry.clips) as [string,any][]){
+      if(!move.includes('_'))continue;
+      const weapon=['unarmed',...weapons].find(w=>move===w||move.startsWith(w+'_')||move.includes('_'+w+'_'))??'unarmed';
+      const total=clip.ticks.reduce((a:number,b:number)=>a+b,0);
+      for(let tick=0;tick<total;tick++){
+        const frame=renderer.frameFor(hero,'active',weapon,move,tick,0);
+        assert.ok(!['idle','light','turnaround'].includes(frame)&&!frame.startsWith('sig_'),`${hero} ${move} tick ${tick}: ${frame}`);
+      }
+    }
+  }
+});
+test('backflip uses the airborne sprite sequence instead of a cutout pose',()=>{
+  for(const hero of Object.keys(meta)){
+    assert.deepEqual([0,5,10,16].map(t=>renderer.frameFor(hero,'backflip','unarmed','',0,t)),
+      ['air_rise','air_apex','air_fall','land'],hero);
+    assert.equal(renderer.frameFor(hero,'happy','unarmed','',0,0),'motion_idle');
   }
 });

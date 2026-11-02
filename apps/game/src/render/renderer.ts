@@ -8,6 +8,7 @@ import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
 import { drawWeapon } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
+import { Feedback } from './feedback.ts';
 
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
 export interface ArenaArt { image: HTMLImageElement; horizon: string; stone: string }
@@ -23,9 +24,10 @@ const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','
 export class Renderer{
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.lastWorld=world;}for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
+  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;}for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number}>();
-  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
+  cheerUntil=new Map<number,number>();lastCheerEvent=0;
+  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
   round(x:number,y:number,w:number,h:number,r=5){const c=this.ctx;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();c.stroke();}
   /** Loaded painted backdrop for an arena palette slot, if one shipped. */
@@ -44,27 +46,82 @@ export class Renderer{
   weapon(weapon:string,x:number,y:number,angle:number,palette:string){drawWeapon(this.ctx,weapon,x,y,angle,palette);}
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
+    if(!move&&pose==='backflip')return time<4?'air_rise':time<9?'air_apex':time<14?'air_fall':'land';
+    if(!move&&pose==='happy'&&this.atlas[hero]?.motion_idle)return 'motion_idle';
     if(!move&&this.atlas[hero]?.[pose]&&['air_rise','air_apex','air_fall','land'].includes(pose))return pose;
-    if(!move&&pose==='idle'&&weapon!=='unarmed')return 'idle';
-    if(!move&&pose==='idle'&&weapon==='unarmed'&&!this.clips[hero]?.idle&&this.atlas[hero]?.motion_idle)return 'motion_idle';
+    // The original idle is a concept cutout with an open, disconnected hand.
+    // The movement sheet has the same fighter in a closed, usable rest stance.
+    if(!move&&pose==='idle'&&this.atlas[hero]?.motion_idle)return 'motion_idle';
     // Authored clips (docs/ART_INTEGRATION.md): attacks advance with the action tick, loops with world time.
     const clips=this.clips[hero];
     const name=move||POSE_CLIPS[pose]||'idle';
     const clip=clips?.[name];
-    if(clip&&clip.frames.length){const total=clip.ticks.reduce((a:number,b:number)=>a+b,0);let t=move?Math.min(attackTick,total-1):clip.loop===false?Math.min(time,total-1):time%Math.max(1,total);for(let k=0;k<clip.frames.length;k++){if(t<clip.ticks[k])return clip.frames[k];t-=clip.ticks[k];}return clip.frames[clip.frames.length-1];}
+    if(clip&&clip.frames.length){const total=clip.ticks.reduce((a:number,b:number)=>a+b,0);let t=move?Math.min(attackTick,total-1):clip.loop===false?Math.min(time,total-1):time%Math.max(1,total);for(let k=0;k<clip.frames.length;k++){if(t<clip.ticks[k]){
+      const key=clip.frames[k];
+      if(key==='idle'&&this.atlas[hero]?.motion_idle)return 'motion_idle';
+      // The old key poses have a painted floor and a separate paper-cutout
+      // outline. Use the weapon's authored action frames in their place.
+      if(move&&(key==='light'||key.startsWith('sig_'))){
+        if(weapon==='unarmed'){
+          const strike=move.endsWith('_dlight')||move.endsWith('_dair')||move.endsWith('_dsig')?'defence_8':move.endsWith('_slight')||move.endsWith('_sair')||move.endsWith('_ssig')?'defence_6':'defence_2';
+          if(this.atlas[hero]?.[strike])return strike;
+        }else{
+          const action=`attack_${weapon}_${3+Math.floor(attackTick/3)%3}`;
+          if(this.atlas[hero]?.[action])return action;
+        }
+      }
+      return key;
+    }t-=clip.ticks[k];}return clip.frames[clip.frames.length-1];}
     // Concept-cut fallback: one key pose per signature, the light pose for other attacks.
     if(move&&(pose==='startup'||pose==='active')){const m=/_(n|s|d)sig$/.exec(move);return m&&move.startsWith(hero+'_')?'sig_'+weapon+'_'+m[1]:'light';}
     return pose==='dodge'?'turnaround':'idle';
   }
 
-  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move=''){const c=this.ctx,p=colors[hero]||colors.dru;
+  /** Draw a carried weapon at the leading hand of a movement sprite. */
+  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string){
+    if(weapon==='unarmed')return;
+    const c=this.ctx;
+    const running=frameName.startsWith('run_');
+    const airborne=frameName.startsWith('air_');
+    const handX=frame.w*(running?.76:airborne?.78:.74)-frame.pivotX;
+    const handY=frame.h*(running?.48:airborne?.48:.56)-frame.pivotY;
+    c.save();c.translate(handX,handY);
+    if(weapon==='sling'){
+      // Both cords share the fist; the pouch revolves even when David is still.
+      const phase=time*(running?.32:.22)-1.3;
+      const px=Math.cos(phase)*39,py=-29+Math.sin(phase)*28;
+      c.strokeStyle='#66472e';c.lineWidth=2.4;c.lineCap='round';
+      c.beginPath();c.moveTo(-2,0);c.quadraticCurveTo(px*.45,py*.55,px-5,py);c.moveTo(2,0);c.quadraticCurveTo(px*.55,py*.55,px+5,py);c.stroke();
+      c.fillStyle='#8e603b';c.beginPath();c.ellipse(px,py,8,5,phase*.5,0,Math.PI*2);c.fill();
+      c.strokeStyle='#3d3027';c.lineWidth=1.5;c.stroke();
+    }else{
+      const angle=weapon==='bow'?.26:weapon==='hammer'?.24:weapon==='gauntlets'?0:running?.28:airborne?-.2:.12;
+      c.scale(.78,.78);drawWeapon(c,weapon,0,0,angle,accent);
+    }
+    c.restore();
+  }
+
+  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frame=frames[this.frameFor(hero,pose,weapon,move,attackTick,time)]||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frameName=this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Concept-cut stand-ins: scale so the idle pose spans the shared 74-unit hurtbox plus head room.
-      const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:0;
-      c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;if(pose==='recovery'&&!move&&!this.clips[hero]?.hitstun)c.rotate(-.12);
-      c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);c.restore();
-      if(!move&&weapon!=='unarmed'&&(pose==='run'||pose.startsWith('air_')||pose==='land'||pose==='dodge'||pose==='recovery')){c.save();c.translate(x,y);c.scale(scale*facing,scale);this.weapon(weapon,22,-frame.h/frames.idle.h*FIGURE_PX*.62,-.4,p[1]);c.restore();}
+      const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
+      c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
+      if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.translate(Math.sin(time*.07+phase)*1.2,0);c.scale(1,1+Math.sin(time*.1+phase)*.006);}
+      if(pose==='backflip'&&!this.reduced){const t=Math.max(0,Math.min(1,time/17));const smooth=t*t*(3-2*t);c.translate(0,-frame.pivotY*.48);c.rotate(-Math.PI*2*smooth);c.translate(0,frame.pivotY*.48);}
+      else if(recoil){c.translate(0,-frame.pivotY*.45);c.rotate(recoil);c.translate(0,frame.pivotY*.45);}
+      else if(pose==='recovery'&&!move&&!this.clips[hero]?.hitstun)c.rotate(-.12);
+      // The weapon sits behind the near fist in the same local coordinates as
+      // the sprite. It follows each run and jump frame instead of floating at
+      // a fixed screen position. Attack art already includes its own weapon.
+      if(weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,time,p[1]);
+      c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);
+      if(weapon==='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,time,p[1]);
+      if(pose==='happy'){
+        c.fillStyle='#f6d584';
+        for(const [dx,dy] of [[.12,.16],[.8,.2],[.95,.42]]){c.beginPath();c.arc(frame.w*dx-frame.pivotX,frame.h*dy-frame.pivotY,2.5,0,Math.PI*2);c.fill();}
+      }
+      c.restore();
       if(label){c.save();c.textAlign='center';c.font='bold 14px system-ui';c.fillStyle='#162b33';c.fillText(label,x,y-(FIGURE_PX+18)*scale);c.restore();}return;}}
     c.save();c.translate(x,y);c.scale(scale*facing,scale);if(ghost)c.globalAlpha=.35;
     c.lineCap='round';c.lineJoin='round';const step=pose==='run'?Math.sin(time*.22)*13:0;const lift=pose==='jump'?9:0;let arm=pose==='startup'?-1.1:pose==='active'?1.05:pose==='recovery'?.4:pose==='dodge'?.9:-.2;
@@ -87,7 +144,8 @@ export class Renderer{
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
-    c.save();c.translate(640,460);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
+    this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const shake=this.feedback.offset(world.tick);
+    c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
     for(const it of world.items){const x=it.x/Q,y=it.y/Q;c.save();c.translate(x,y+18);c.scale(1,-1);c.fillStyle=it.neutral?'#c7a466':'#9caa93';c.strokeStyle='#493e2e';this.round(-18,-18,36,32,5);c.beginPath();c.moveTo(-12,-12);c.lineTo(12,9);c.moveTo(12,-12);c.lineTo(-12,9);c.stroke();c.restore();}
@@ -99,15 +157,19 @@ export class Renderer{
     }
     drawEncounter(c,world,scene,this.reduced);
     c.restore();
-    const screen=(x:number,y:number)=>({x:640+(x/Q-this.camera.x)*this.camera.zoom,y:460-(y/Q-this.camera.y)*this.camera.zoom});
+    const screen=(x:number,y:number)=>({x:640+shake.x+(x/Q-this.camera.x)*this.camera.zoom,y:460+shake.y-(y/Q-this.camera.y)*this.camera.zoom});
+    this.feedback.draw(c,screen,this.camera.zoom);
+    for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge'||f.action?.kind==='dash')pose='dodge';
+    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';
+      if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
       let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;
       if((pose==='idle'||pose==='run')&&world.tick<motion.landUntil)pose='land';
       if(motion.pose!==pose){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'');
+      const recoil=f.stun&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
