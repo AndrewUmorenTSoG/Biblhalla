@@ -6,7 +6,7 @@ import type { SimContext } from './context.ts';
 import type { Fighter, Input, SimState } from './types.ts';
 import { Q, approach } from './fixed.ts';
 import { event } from './state.ts';
-import { resolveAction } from './moveResolver.ts';
+import { resolveAction, bufferPress } from './moveResolver.ts';
 import { startProjectile } from './combat.ts';
 import { releaseItem } from './items.ts';
 
@@ -133,15 +133,16 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   if (f.invulnerable > 0) f.invulnerable--;
   if (f.coyote > 0) f.coyote--;
   if (f.drop > 0) f.drop--;
-  if (f.chase > 0) f.chase--;
-  if (f.buffer && --f.buffer.ticks < 0) f.buffer = null;
   if (!f.stocks) return;
   if (f.respawn) {
     if (--f.respawn === 0) respawn(ctx, s, f);
     return;
   }
-  // Entity-local hitstop: this fighter freezes, cooldowns above keep running.
-  if (f.hitstop) { f.hitstop--; return; }
+  // Entity-local hitstop: this fighter freezes, cooldowns above keep running. Presses made
+  // during the freeze are kept (as in a hit pause) and the buffer and chase window wait for it.
+  if (f.hitstop) { f.hitstop--; bufferPress(ctx, f, i); return; }
+  if (f.chase > 0) f.chase--;
+  if (f.buffer && --f.buffer.ticks < 0) f.buffer = null;
   if (f.stun) f.stun--; else resolveAction(ctx, s, f, i);
 
   const a = f.action;

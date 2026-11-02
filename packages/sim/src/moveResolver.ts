@@ -58,9 +58,20 @@ function jump(s: SimState, f: Fighter, fromWall = false): void {
   event(s, 'jump', { fighter: f.id });
 }
 
+/**
+ * Remember this tick's press for up to `inputBufferTicks`. Dodge + direction while a chase
+ * is earned is kept as a chase, so pressing it in the hit pause or the last active frames
+ * still chases at the first legal recovery tick.
+ */
+export function bufferPress(ctx: SimContext, f: Fighter, i: Input): void {
+  const ticks = ctx.P.inputBufferTicks;
+  if (i.jump || i.heavy || i.light) f.buffer = { type: i.jump ? 'jump' : i.heavy ? 'heavy' : 'light', ticks, x: i.x, y: i.y };
+  else if (i.dodge && (i.x || i.y) && f.chase > 0 && f.action?.kind === 'attack' && f.action.confirmed) f.buffer = { type: 'chase', ticks, x: i.x, y: i.y };
+}
+
 export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input): void {
   const { P, R, moves } = ctx;
-  if (i.jump || i.heavy || i.light) f.buffer = { type: i.jump ? 'jump' : i.heavy ? 'heavy' : 'light', ticks: P.inputBufferTicks, x: i.x, y: i.y };
+  bufferPress(ctx, f, i);
   const a = f.action;
 
   // Neutral air dodge may cancel into a buffered attack inside the authored window.
@@ -72,10 +83,11 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
     }
   }
   // Chase cancel out of a confirmed melee hit's recovery.
-  if (a?.kind === 'attack' && i.dodge && i.x && f.chase > 0) {
+  const chaseIn = i.dodge && (i.x || i.y) ? { x: i.x, y: i.y } : f.buffer?.type === 'chase' ? f.buffer : null;
+  if (a?.kind === 'attack' && chaseIn && chaseIn.x && f.chase > 0) {
     const m = moves[a.move!];
     if (m.chaseCancelOnConfirmedHit && a.confirmed && a.tick >= m.startup + m.active) {
-      beginAction(s, f, 'chase', P.chase.durationTicks, { dx: i.x * P.chase.speedQ, dy: i.y * P.chase.speedQ });
+      beginAction(s, f, 'chase', P.chase.durationTicks, { dx: chaseIn.x * P.chase.speedQ, dy: chaseIn.y * P.chase.speedQ });
       f.chase = 0;
       return;
     }
