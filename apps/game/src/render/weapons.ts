@@ -1,3 +1,21 @@
+/** Blue fire marks collectible weapons; the hilt rests above the item's floor. */
+export function drawFlamingSwordPickup(c:CanvasRenderingContext2D,tick:number,reduced=false){
+  c.save();c.translate(0,-18);
+  const phase=reduced?0:tick*.12;
+  c.shadowColor='#209dff';c.shadowBlur=18;
+  for(let layer=0;layer<3;layer++){
+    c.fillStyle=['#1269edaa','#24c9ffcc','#c9faff'][layer];
+    const width=18-layer*5;
+    c.beginPath();c.moveTo(-width,-8);
+    c.bezierCurveTo(-width-8,-28,-width+Math.sin(phase)*5,-46,-7,-81-layer*3);
+    c.quadraticCurveTo(-2,-57,4+Math.sin(phase+1)*4,-70);
+    c.quadraticCurveTo(12,-48,width+4,-32);
+    c.quadraticCurveTo(width+8,-14,width,-8);c.closePath();c.fill();
+  }
+  c.shadowBlur=0;drawWeapon(c,'sword',0,0,0,'#42cfff');
+  c.restore();
+}
+
 // Original weapon silhouettes. Origin is the grip; local -Y points to the tip.
 export function drawWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:number,angle:number,accent='#54748b'){
   if(kind==='unarmed')return;

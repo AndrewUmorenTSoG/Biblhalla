@@ -6,7 +6,7 @@ import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
-import { drawWeapon } from './weapons.ts';
+import { drawWeapon, drawFlamingSwordPickup } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
 import { Feedback } from './feedback.ts';
 
@@ -59,22 +59,10 @@ export class Renderer{
     if(clip&&clip.frames.length){const total=clip.ticks.reduce((a:number,b:number)=>a+b,0);let t=move?Math.min(attackTick,total-1):clip.loop===false?Math.min(time,total-1):time%Math.max(1,total);for(let k=0;k<clip.frames.length;k++){if(t<clip.ticks[k]){
       const key=clip.frames[k];
       if(key==='idle'&&this.atlas[hero]?.motion_idle)return 'motion_idle';
-      // The old key poses have a painted floor and a separate paper-cutout
-      // outline. Use the weapon's authored action frames in their place.
-      if(move&&(key==='light'||key.startsWith('sig_'))){
-        if(weapon==='unarmed'){
-          const strike=move.endsWith('_dlight')||move.endsWith('_dair')||move.endsWith('_dsig')?'defence_8':move.endsWith('_slight')||move.endsWith('_sair')||move.endsWith('_ssig')?'defence_6':'defence_2';
-          if(this.atlas[hero]?.[strike])return strike;
-        }else{
-          const action=`attack_${weapon}_${3+Math.floor(attackTick/3)%3}`;
-          if(this.atlas[hero]?.[action])return action;
-        }
-      }
       return key;
     }t-=clip.ticks[k];}return clip.frames[clip.frames.length-1];}
-    // Concept-cut fallback: one key pose per signature, the light pose for other attacks.
-    if(move&&(pose==='startup'||pose==='active')){const m=/_(n|s|d)sig$/.exec(move);return m&&move.startsWith(hero+'_')?'sig_'+weapon+'_'+m[1]:'light';}
-    return pose==='dodge'?'turnaround':'idle';
+    // An absent clip must never reintroduce a legacy concept cutout.
+    return this.atlas[hero]?.motion_idle?'motion_idle':'defence_0';
   }
 
   /** Draw a carried weapon at the leading hand of a movement sprite. */
@@ -104,7 +92,7 @@ export class Renderer{
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
     if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frameName=this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
-      // Concept-cut stand-ins: scale so the idle pose spans the shared 74-unit hurtbox plus head room.
+      // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
       if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.translate(Math.sin(time*.07+phase)*1.2,0);c.scale(1,1+Math.sin(time*.1+phase)*.006);}
@@ -148,7 +136,7 @@ export class Renderer{
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
-    for(const it of world.items){const x=it.x/Q,y=it.y/Q;c.save();c.translate(x,y+18);c.scale(1,-1);c.fillStyle=it.neutral?'#c7a466':'#9caa93';c.strokeStyle='#493e2e';this.round(-18,-18,36,32,5);c.beginPath();c.moveTo(-12,-12);c.lineTo(12,9);c.moveTo(12,-12);c.lineTo(-12,9);c.stroke();c.restore();}
+    for(const it of world.items){c.save();c.translate(it.x/Q,it.y/Q);c.scale(.65,-.65);drawFlamingSwordPickup(c,world.tick,this.reduced);c.restore();}
     if(scene){
       for(const m of scene.markers){if(m.done)continue;if(scene.level.number===1&&m.id>scene.done.length)continue;const x=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x)/Q,y=m.y/Q;
         c.save();c.translate(x,y+32);c.scale(1,-1);c.fillStyle=m.carried?'rgba(232,208,155,.3)':'#e5c17f';c.strokeStyle='#5c4a30';c.lineWidth=2;c.beginPath();c.moveTo(0,-22);c.lineTo(21,0);c.lineTo(0,22);c.lineTo(-21,0);c.closePath();c.fill();c.stroke();c.fillStyle='#4b4134';c.textAlign='center';c.font='bold 14px system-ui';c.fillText(String(m.id+1),0,5);c.font='12px system-ui';c.fillStyle='#233a40';c.fillText(m.carried?'Deliver here':m.type==='escort'&&m.stage?'Safe gate':m.label,0,-32);c.restore();
@@ -168,7 +156,7 @@ export class Renderer{
       if((pose==='idle'||pose==='run')&&world.tick<motion.landUntil)pose='land';
       if(motion.pose!==pose){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
-      const recoil=f.stun&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
+      const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}

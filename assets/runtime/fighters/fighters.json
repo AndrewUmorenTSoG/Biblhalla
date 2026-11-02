@@ -1,7 +1,7 @@
 {
   "samson": {
-    "image": "assets/runtime/fighters/samson-packed.png",
-    "sha256": "ba4e60045cf02e90d70577adabad6cb59a1454e4e203c34411461b47f87b201c",
+    "image": "assets/runtime/fighters/samson-down-packed.png",
+    "sha256": "c954666b1627a582c3bd5d6a329fa0e4e4103777dd45ae5c9b4b3e2c723a1a91",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/03_samson_move_sheet.png",
     "sourceSha256": "e98fbb30588fd33a85e7cd7a94a6e6ab9929f104408ef0618a8ed6c328e5b8f4",
@@ -440,6 +440,102 @@
         "h": 191,
         "pivotX": 79,
         "pivotY": 191
+      },
+      "down_gauntlets_dlight": {
+        "x": 536,
+        "y": 1822,
+        "w": 236,
+        "h": 168,
+        "pivotX": 108,
+        "pivotY": 168
+      },
+      "down_gauntlets_dair": {
+        "x": 780,
+        "y": 1822,
+        "w": 182,
+        "h": 197,
+        "pivotX": 87,
+        "pivotY": 197
+      },
+      "down_gauntlets_ground_pound": {
+        "x": 4,
+        "y": 2027,
+        "w": 180,
+        "h": 182,
+        "pivotX": 86,
+        "pivotY": 182
+      },
+      "down_samson_gauntlets_dsig": {
+        "x": 192,
+        "y": 2027,
+        "w": 208,
+        "h": 225,
+        "pivotX": 108,
+        "pivotY": 225
+      },
+      "down_hammer_dlight": {
+        "x": 408,
+        "y": 2027,
+        "w": 286,
+        "h": 173,
+        "pivotX": 166,
+        "pivotY": 173
+      },
+      "down_hammer_dair": {
+        "x": 702,
+        "y": 2027,
+        "w": 202,
+        "h": 229,
+        "pivotX": 97,
+        "pivotY": 229
+      },
+      "down_hammer_ground_pound": {
+        "x": 912,
+        "y": 2027,
+        "w": 107,
+        "h": 241,
+        "pivotX": 51,
+        "pivotY": 241
+      },
+      "down_samson_hammer_dsig": {
+        "x": 4,
+        "y": 2276,
+        "w": 255,
+        "h": 176,
+        "pivotX": 152,
+        "pivotY": 176
+      },
+      "down_unarmed_dlight": {
+        "x": 267,
+        "y": 2276,
+        "w": 241,
+        "h": 151,
+        "pivotX": 76,
+        "pivotY": 151
+      },
+      "down_unarmed_dair": {
+        "x": 516,
+        "y": 2276,
+        "w": 193,
+        "h": 154,
+        "pivotX": 93,
+        "pivotY": 154
+      },
+      "down_unarmed_ground_pound": {
+        "x": 717,
+        "y": 2276,
+        "w": 139,
+        "h": 202,
+        "pivotX": 67,
+        "pivotY": 202
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2486,
+        "w": 219,
+        "h": 142,
+        "pivotX": 84,
+        "pivotY": 142
       }
     },
     "clips": {
@@ -470,8 +566,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -490,8 +586,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -510,8 +606,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_dlight",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -530,8 +626,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -550,8 +646,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -570,8 +666,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_dair",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -590,8 +686,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -610,8 +706,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_ground_pound",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -629,10 +725,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -649,10 +745,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -669,10 +765,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "down_hammer_dlight",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -689,10 +785,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -709,10 +805,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -729,10 +825,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "down_hammer_dair",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -749,10 +845,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -769,10 +865,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
-          "light",
-          "idle",
+          "motion_idle",
+          "down_hammer_ground_pound",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -790,8 +886,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_n",
-          "sig_gauntlets_n",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -810,8 +906,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_s",
-          "sig_gauntlets_s",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -830,8 +926,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_d",
-          "sig_gauntlets_d",
+          "down_samson_gauntlets_dsig",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -849,10 +945,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_n",
-          "sig_hammer_n",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -869,10 +965,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_s",
-          "sig_hammer_s",
-          "idle",
+          "motion_idle",
+          "attack_hammer_3",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -889,10 +985,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_d",
-          "sig_hammer_d",
-          "idle",
+          "motion_idle",
+          "down_samson_hammer_dsig",
+          "attack_hammer_3",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -988,7 +1084,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -1036,7 +1132,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -1068,7 +1164,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -1116,7 +1212,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -1133,7 +1229,7 @@
       "source": "assets/animation-production/samson-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -1146,7 +1242,7 @@
         "attack_hammer_5",
         "attack_hammer_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -1154,14 +1250,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2017,
+      "height": 2632,
       "bodyPixels": 192,
-      "bytes": 2180521
+      "bytes": 2775148
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "david": {
-    "image": "assets/runtime/fighters/david-packed.png",
-    "sha256": "5796d1bdea72b080a6ff149ce4e702de5dd37e99898c5ab501c6a87ff95e2856",
+    "image": "assets/runtime/fighters/david-down-packed.png",
+    "sha256": "4ba0173d7d5e51a2d3ac10a1bcfad30871d04ac557ab08bbe88728cf0636960c",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/01_david_move_sheet.png",
     "sourceSha256": "7fb4eff4652224b197097200a466a7ede487a1305accc20384082704a3cf9d6a",
@@ -1600,6 +1702,102 @@
         "h": 191,
         "pivotX": 67,
         "pivotY": 191
+      },
+      "down_sling_dlight": {
+        "x": 734,
+        "y": 1896,
+        "w": 225,
+        "h": 173,
+        "pivotX": 94,
+        "pivotY": 173
+      },
+      "down_sling_dair": {
+        "x": 4,
+        "y": 2095,
+        "w": 190,
+        "h": 200,
+        "pivotX": 91,
+        "pivotY": 200
+      },
+      "down_sling_ground_pound": {
+        "x": 202,
+        "y": 2095,
+        "w": 149,
+        "h": 207,
+        "pivotX": 72,
+        "pivotY": 207
+      },
+      "down_david_sling_dsig": {
+        "x": 359,
+        "y": 2095,
+        "w": 238,
+        "h": 120,
+        "pivotX": 57,
+        "pivotY": 120
+      },
+      "down_sword_dlight": {
+        "x": 605,
+        "y": 2095,
+        "w": 216,
+        "h": 149,
+        "pivotX": 66,
+        "pivotY": 149
+      },
+      "down_sword_dair": {
+        "x": 829,
+        "y": 2095,
+        "w": 187,
+        "h": 185,
+        "pivotX": 90,
+        "pivotY": 185
+      },
+      "down_sword_ground_pound": {
+        "x": 4,
+        "y": 2310,
+        "w": 107,
+        "h": 213,
+        "pivotX": 51,
+        "pivotY": 213
+      },
+      "down_david_sword_dsig": {
+        "x": 119,
+        "y": 2310,
+        "w": 240,
+        "h": 139,
+        "pivotX": 100,
+        "pivotY": 139
+      },
+      "down_unarmed_dlight": {
+        "x": 367,
+        "y": 2310,
+        "w": 188,
+        "h": 171,
+        "pivotX": 57,
+        "pivotY": 171
+      },
+      "down_unarmed_dair": {
+        "x": 563,
+        "y": 2310,
+        "w": 162,
+        "h": 195,
+        "pivotX": 78,
+        "pivotY": 195
+      },
+      "down_unarmed_ground_pound": {
+        "x": 733,
+        "y": 2310,
+        "w": 130,
+        "h": 185,
+        "pivotX": 62,
+        "pivotY": 185
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2531,
+        "w": 223,
+        "h": 124,
+        "pivotX": 66,
+        "pivotY": 124
       }
     },
     "clips": {
@@ -1630,8 +1828,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1650,8 +1848,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1670,8 +1868,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dlight",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1690,8 +1888,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1710,8 +1908,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1730,8 +1928,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dair",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1750,8 +1948,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1770,8 +1968,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_ground_pound",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -1788,11 +1986,11 @@
       "sling_nlight": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1808,11 +2006,11 @@
       "sling_slight": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
           "attack_sling_4",
-          "light",
-          "idle",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1828,11 +2026,11 @@
       "sling_dlight": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "down_sling_dlight",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1848,11 +2046,11 @@
       "sling_nair": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1868,11 +2066,11 @@
       "sling_sair": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1888,11 +2086,11 @@
       "sling_dair": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "down_sling_dair",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1908,11 +2106,11 @@
       "sling_recovery": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1928,11 +2126,11 @@
       "sling_ground_pound": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "light",
-          "light",
-          "idle",
+          "down_sling_ground_pound",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1948,11 +2146,11 @@
       "david_sling_nsig": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "sig_sling_n",
-          "sig_sling_n",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1968,11 +2166,11 @@
       "david_sling_ssig": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "sig_sling_s",
-          "sig_sling_s",
-          "idle",
+          "attack_sling_3",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -1988,11 +2186,11 @@
       "david_sling_dsig": {
         "frames": [
           "attack_sling_0",
-          "idle",
+          "motion_idle",
           "attack_sling_2",
-          "sig_sling_d",
-          "sig_sling_d",
-          "idle",
+          "down_david_sling_dsig",
+          "attack_sling_4",
+          "motion_idle",
           "attack_sling_7"
         ],
         "ticks": [
@@ -2010,8 +2208,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
-          "sig_sword_n",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2030,8 +2228,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
-          "sig_sword_s",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2050,8 +2248,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
-          "sig_sword_d",
+          "down_david_sword_dsig",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2148,7 +2346,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -2196,7 +2394,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -2228,7 +2426,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -2276,7 +2474,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -2293,7 +2491,7 @@
       "source": "assets/animation-production/david-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -2305,7 +2503,7 @@
         "attack_sling_5",
         "attack_sling_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -2313,14 +2511,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2091,
+      "height": 2659,
       "bodyPixels": 192,
-      "bytes": 1957402
+      "bytes": 2400273
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "saul": {
-    "image": "assets/runtime/fighters/saul-packed.png",
-    "sha256": "5eda2055ea889968c34111b5559cb0608ae8f99ef8f2c492748fe2a4188ff00d",
+    "image": "assets/runtime/fighters/saul-down-packed.png",
+    "sha256": "9b22509bfe4bb8feb35fad3eff247d80d062c0340d8d394f2721a4bccf6eb6f0",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/02_saul_move_sheet.png",
     "sourceSha256": "ddafceec80c6d6cbb2db61ae2100888fec5b47636ce0f8d9302990f1ceb35b98",
@@ -2759,6 +2963,102 @@
         "h": 189,
         "pivotX": 80,
         "pivotY": 189
+      },
+      "down_spear_dlight": {
+        "x": 165,
+        "y": 1993,
+        "w": 260,
+        "h": 119,
+        "pivotX": 133,
+        "pivotY": 119
+      },
+      "down_spear_dair": {
+        "x": 433,
+        "y": 1993,
+        "w": 182,
+        "h": 182,
+        "pivotX": 87,
+        "pivotY": 182
+      },
+      "down_spear_ground_pound": {
+        "x": 623,
+        "y": 1993,
+        "w": 149,
+        "h": 222,
+        "pivotX": 72,
+        "pivotY": 222
+      },
+      "down_saul_spear_dsig": {
+        "x": 4,
+        "y": 2223,
+        "w": 251,
+        "h": 107,
+        "pivotX": 90,
+        "pivotY": 107
+      },
+      "down_sword_dlight": {
+        "x": 263,
+        "y": 2223,
+        "w": 256,
+        "h": 130,
+        "pivotX": 101,
+        "pivotY": 130
+      },
+      "down_sword_dair": {
+        "x": 527,
+        "y": 2223,
+        "w": 177,
+        "h": 177,
+        "pivotX": 85,
+        "pivotY": 177
+      },
+      "down_sword_ground_pound": {
+        "x": 712,
+        "y": 2223,
+        "w": 170,
+        "h": 208,
+        "pivotX": 82,
+        "pivotY": 208
+      },
+      "down_saul_sword_dsig": {
+        "x": 4,
+        "y": 2439,
+        "w": 268,
+        "h": 115,
+        "pivotX": 104,
+        "pivotY": 115
+      },
+      "down_unarmed_dlight": {
+        "x": 280,
+        "y": 2439,
+        "w": 215,
+        "h": 165,
+        "pivotX": 43,
+        "pivotY": 165
+      },
+      "down_unarmed_dair": {
+        "x": 503,
+        "y": 2439,
+        "w": 190,
+        "h": 170,
+        "pivotX": 91,
+        "pivotY": 170
+      },
+      "down_unarmed_ground_pound": {
+        "x": 701,
+        "y": 2439,
+        "w": 137,
+        "h": 205,
+        "pivotX": 66,
+        "pivotY": 205
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2652,
+        "w": 231,
+        "h": 120,
+        "pivotX": 47,
+        "pivotY": 120
       }
     },
     "clips": {
@@ -2789,8 +3089,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2809,8 +3109,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2829,8 +3129,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dlight",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2849,8 +3149,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2869,8 +3169,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2889,8 +3189,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dair",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2909,8 +3209,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2929,8 +3229,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_ground_pound",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -2949,9 +3249,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -2969,9 +3269,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -2989,9 +3289,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dlight",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3009,9 +3309,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3029,9 +3329,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3049,9 +3349,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dair",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3069,9 +3369,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3089,9 +3389,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_ground_pound",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3109,9 +3409,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_n",
-          "sig_spear_n",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3129,9 +3429,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_s",
-          "sig_spear_s",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3149,9 +3449,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_d",
-          "sig_spear_d",
-          "idle",
+          "down_saul_spear_dsig",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -3169,8 +3469,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
-          "sig_sword_n",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -3189,8 +3489,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
-          "sig_sword_s",
+          "attack_sword_2",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -3209,8 +3509,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
-          "sig_sword_d",
+          "down_saul_sword_dsig",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -3307,7 +3607,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -3355,7 +3655,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -3387,7 +3687,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -3435,7 +3735,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -3452,7 +3752,7 @@
       "source": "assets/animation-production/saul-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -3466,7 +3766,7 @@
         "attack_sword_4",
         "attack_sword_5"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -3474,14 +3774,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2186,
+      "height": 2776,
       "bodyPixels": 192,
-      "bytes": 2202887
+      "bytes": 2699153
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "joshua": {
-    "image": "assets/runtime/fighters/joshua-packed.png",
-    "sha256": "6245a7fa0d461516e3314a154be3aba8571b555d0e69d26dd52bd1f846758c82",
+    "image": "assets/runtime/fighters/joshua-down-packed.png",
+    "sha256": "f265634ed77230d14a931b7efcf17e0e71bed0833f438e6fb502b8f0a4ea5a15",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
     "sourceSha256": "653dbd20e984453897a03cbe7e700ea5e32dda95ddae05036dd153e972d5241d",
@@ -3920,6 +4226,102 @@
         "h": 187,
         "pivotX": 79,
         "pivotY": 187
+      },
+      "down_sword_dlight": {
+        "x": 4,
+        "y": 1987,
+        "w": 225,
+        "h": 120,
+        "pivotX": 109,
+        "pivotY": 120
+      },
+      "down_sword_dair": {
+        "x": 237,
+        "y": 1987,
+        "w": 197,
+        "h": 221,
+        "pivotX": 95,
+        "pivotY": 221
+      },
+      "down_sword_ground_pound": {
+        "x": 442,
+        "y": 1987,
+        "w": 142,
+        "h": 236,
+        "pivotX": 68,
+        "pivotY": 236
+      },
+      "down_joshua_sword_dsig": {
+        "x": 592,
+        "y": 1987,
+        "w": 241,
+        "h": 122,
+        "pivotX": 149,
+        "pivotY": 122
+      },
+      "down_spear_dlight": {
+        "x": 4,
+        "y": 2231,
+        "w": 290,
+        "h": 108,
+        "pivotX": 114,
+        "pivotY": 108
+      },
+      "down_spear_dair": {
+        "x": 302,
+        "y": 2231,
+        "w": 179,
+        "h": 203,
+        "pivotX": 86,
+        "pivotY": 203
+      },
+      "down_spear_ground_pound": {
+        "x": 489,
+        "y": 2231,
+        "w": 129,
+        "h": 218,
+        "pivotX": 62,
+        "pivotY": 218
+      },
+      "down_joshua_spear_dsig": {
+        "x": 626,
+        "y": 2231,
+        "w": 249,
+        "h": 128,
+        "pivotX": 117,
+        "pivotY": 128
+      },
+      "down_unarmed_dlight": {
+        "x": 4,
+        "y": 2457,
+        "w": 222,
+        "h": 134,
+        "pivotX": 62,
+        "pivotY": 134
+      },
+      "down_unarmed_dair": {
+        "x": 234,
+        "y": 2457,
+        "w": 177,
+        "h": 186,
+        "pivotX": 85,
+        "pivotY": 186
+      },
+      "down_unarmed_ground_pound": {
+        "x": 419,
+        "y": 2457,
+        "w": 155,
+        "h": 202,
+        "pivotX": 74,
+        "pivotY": 202
+      },
+      "down_unarmed_dsig": {
+        "x": 582,
+        "y": 2457,
+        "w": 213,
+        "h": 118,
+        "pivotX": 126,
+        "pivotY": 118
       }
     },
     "clips": {
@@ -3950,7 +4352,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -3970,7 +4372,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -3990,7 +4392,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_dlight",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4010,7 +4412,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4030,7 +4432,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4050,7 +4452,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_dair",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4070,7 +4472,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4090,7 +4492,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_ground_pound",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4110,9 +4512,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4130,9 +4532,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4150,9 +4552,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dlight",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4170,9 +4572,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4190,9 +4592,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4210,9 +4612,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dair",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4230,9 +4632,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4250,9 +4652,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_ground_pound",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4270,7 +4672,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4290,7 +4692,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
+          "attack_sword_3",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4310,7 +4712,7 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
+          "down_joshua_sword_dsig",
           "attack_sword_5",
           "attack_sword_6",
           "attack_sword_7"
@@ -4330,9 +4732,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_n",
-          "sig_spear_n",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4350,9 +4752,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_s",
-          "sig_spear_s",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4370,9 +4772,9 @@
           "attack_spear_0",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_d",
-          "sig_spear_d",
-          "idle",
+          "down_joshua_spear_dsig",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -4468,7 +4870,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -4516,7 +4918,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -4548,7 +4950,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -4596,7 +4998,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -4613,7 +5015,7 @@
       "source": "assets/animation-production/joshua-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -4625,7 +5027,7 @@
         "attack_spear_5",
         "attack_spear_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -4633,14 +5035,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 1983,
+      "height": 2663,
       "bodyPixels": 192,
-      "bytes": 1983806
+      "bytes": 2480440
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "deborah": {
-    "image": "assets/runtime/fighters/deborah-packed.png",
-    "sha256": "62f2e5289f25e31a8a1e27c0cdac88a507052de1031f866da471a01849116162",
+    "image": "assets/runtime/fighters/deborah-down-packed.png",
+    "sha256": "a4d4de8243f48310637b83a0eceac3e10500cfc8bc3339591d25d9ba99d8127f",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
     "sourceSha256": "abfd154eda09646e8e8f628ac36ff03da398d18cbdacc34867d1328c76efe716",
@@ -5079,6 +5487,102 @@
         "h": 192,
         "pivotX": 71,
         "pivotY": 192
+      },
+      "down_staff_dlight": {
+        "x": 498,
+        "y": 1811,
+        "w": 283,
+        "h": 150,
+        "pivotX": 165,
+        "pivotY": 150
+      },
+      "down_staff_dair": {
+        "x": 789,
+        "y": 1811,
+        "w": 208,
+        "h": 207,
+        "pivotX": 100,
+        "pivotY": 207
+      },
+      "down_staff_ground_pound": {
+        "x": 4,
+        "y": 2026,
+        "w": 126,
+        "h": 228,
+        "pivotX": 60,
+        "pivotY": 228
+      },
+      "down_deborah_staff_dsig": {
+        "x": 138,
+        "y": 2026,
+        "w": 223,
+        "h": 152,
+        "pivotX": 111,
+        "pivotY": 152
+      },
+      "down_blades_dlight": {
+        "x": 369,
+        "y": 2026,
+        "w": 270,
+        "h": 157,
+        "pivotX": 153,
+        "pivotY": 157
+      },
+      "down_blades_dair": {
+        "x": 647,
+        "y": 2026,
+        "w": 154,
+        "h": 227,
+        "pivotX": 74,
+        "pivotY": 227
+      },
+      "down_blades_ground_pound": {
+        "x": 809,
+        "y": 2026,
+        "w": 126,
+        "h": 225,
+        "pivotX": 60,
+        "pivotY": 225
+      },
+      "down_deborah_blades_dsig": {
+        "x": 4,
+        "y": 2262,
+        "w": 230,
+        "h": 160,
+        "pivotX": 142,
+        "pivotY": 160
+      },
+      "down_unarmed_dlight": {
+        "x": 242,
+        "y": 2262,
+        "w": 196,
+        "h": 166,
+        "pivotX": 59,
+        "pivotY": 166
+      },
+      "down_unarmed_dair": {
+        "x": 446,
+        "y": 2262,
+        "w": 198,
+        "h": 192,
+        "pivotX": 95,
+        "pivotY": 192
+      },
+      "down_unarmed_ground_pound": {
+        "x": 652,
+        "y": 2262,
+        "w": 114,
+        "h": 187,
+        "pivotX": 55,
+        "pivotY": 187
+      },
+      "down_unarmed_dsig": {
+        "x": 774,
+        "y": 2262,
+        "w": 198,
+        "h": 150,
+        "pivotX": 69,
+        "pivotY": 150
       }
     },
     "clips": {
@@ -5109,9 +5613,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5130,8 +5634,8 @@
           "attack_staff_1",
           "attack_staff_2",
           "attack_staff_4",
-          "light",
-          "idle",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5149,9 +5653,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "down_staff_dlight",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5169,9 +5673,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5189,9 +5693,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5209,9 +5713,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "down_staff_dair",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5229,9 +5733,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5249,9 +5753,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
-          "idle",
+          "down_staff_ground_pound",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5269,9 +5773,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5290,8 +5794,8 @@
           "attack_blades_1",
           "attack_blades_2",
           "attack_blades_4",
-          "light",
-          "idle",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5309,9 +5813,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_dlight",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5329,9 +5833,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5349,9 +5853,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5369,9 +5873,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_dair",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5389,9 +5893,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5409,9 +5913,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_ground_pound",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5429,9 +5933,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_n",
-          "sig_staff_n",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5449,9 +5953,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_s",
-          "sig_staff_s",
-          "idle",
+          "attack_staff_3",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5469,9 +5973,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_d",
-          "sig_staff_d",
-          "idle",
+          "down_deborah_staff_dsig",
+          "attack_staff_4",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -5489,9 +5993,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_n",
-          "sig_blades_n",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5509,9 +6013,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_s",
-          "sig_blades_s",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5529,9 +6033,9 @@
           "attack_blades_0",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_d",
-          "sig_blades_d",
-          "idle",
+          "down_deborah_blades_dsig",
+          "attack_blades_4",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -5627,7 +6131,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -5675,7 +6179,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -5707,7 +6211,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -5755,7 +6259,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -5772,7 +6276,7 @@
       "source": "assets/animation-production/deborah-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -5784,7 +6288,7 @@
         "attack_blades_5",
         "attack_blades_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -5792,14 +6296,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2007,
+      "height": 2458,
       "bodyPixels": 192,
-      "bytes": 1914263
+      "bytes": 2416709
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "gideon": {
-    "image": "assets/runtime/fighters/gideon-packed.png",
-    "sha256": "2a19311b509bafea4ade5cb2d699b7d2c15b862dcae6405905dde571c5d06663",
+    "image": "assets/runtime/fighters/gideon-down-packed.png",
+    "sha256": "d6eaa1d3b89d3ae16208550a245833c72edcbfeed0dd125aea83920f0d0bb883",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
     "sourceSha256": "4e6803c3a5e5214e92fe4ae42e250bf522054b204b3d992863e41f94a5300896",
@@ -6238,6 +6748,102 @@
         "h": 194,
         "pivotX": 78,
         "pivotY": 194
+      },
+      "down_sword_dlight": {
+        "x": 163,
+        "y": 2067,
+        "w": 275,
+        "h": 130,
+        "pivotX": 149,
+        "pivotY": 130
+      },
+      "down_sword_dair": {
+        "x": 446,
+        "y": 2067,
+        "w": 183,
+        "h": 190,
+        "pivotX": 88,
+        "pivotY": 190
+      },
+      "down_sword_ground_pound": {
+        "x": 637,
+        "y": 2067,
+        "w": 157,
+        "h": 237,
+        "pivotX": 75,
+        "pivotY": 237
+      },
+      "down_gideon_sword_dsig": {
+        "x": 4,
+        "y": 2312,
+        "w": 241,
+        "h": 119,
+        "pivotX": 119,
+        "pivotY": 119
+      },
+      "down_hammer_dlight": {
+        "x": 253,
+        "y": 2312,
+        "w": 266,
+        "h": 129,
+        "pivotX": 165,
+        "pivotY": 129
+      },
+      "down_hammer_dair": {
+        "x": 527,
+        "y": 2312,
+        "w": 173,
+        "h": 185,
+        "pivotX": 83,
+        "pivotY": 185
+      },
+      "down_hammer_ground_pound": {
+        "x": 708,
+        "y": 2312,
+        "w": 132,
+        "h": 211,
+        "pivotX": 63,
+        "pivotY": 211
+      },
+      "down_gideon_hammer_dsig": {
+        "x": 4,
+        "y": 2531,
+        "w": 248,
+        "h": 128,
+        "pivotX": 131,
+        "pivotY": 128
+      },
+      "down_unarmed_dlight": {
+        "x": 260,
+        "y": 2531,
+        "w": 204,
+        "h": 145,
+        "pivotX": 83,
+        "pivotY": 145
+      },
+      "down_unarmed_dair": {
+        "x": 472,
+        "y": 2531,
+        "w": 180,
+        "h": 160,
+        "pivotX": 86,
+        "pivotY": 160
+      },
+      "down_unarmed_ground_pound": {
+        "x": 660,
+        "y": 2531,
+        "w": 137,
+        "h": 193,
+        "pivotX": 66,
+        "pivotY": 193
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2732,
+        "w": 219,
+        "h": 132,
+        "pivotX": 149,
+        "pivotY": 132
       }
     },
     "clips": {
@@ -6268,9 +6874,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6288,9 +6894,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6308,9 +6914,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_dlight",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6328,9 +6934,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6348,9 +6954,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6368,9 +6974,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_dair",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6388,9 +6994,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6408,9 +7014,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
+          "down_sword_ground_pound",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6427,10 +7033,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6447,10 +7053,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6467,10 +7073,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "down_hammer_dlight",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6487,10 +7093,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6507,10 +7113,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6527,10 +7133,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "down_hammer_dair",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6547,10 +7153,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6567,10 +7173,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "light",
+          "motion_idle",
+          "down_hammer_ground_pound",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6588,9 +7194,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6608,9 +7214,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
+          "attack_sword_3",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6628,9 +7234,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
+          "down_gideon_sword_dsig",
           "attack_sword_5",
-          "idle",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -6647,10 +7253,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_n",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6667,10 +7273,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_s",
+          "motion_idle",
+          "attack_hammer_3",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6687,10 +7293,10 @@
         "frames": [
           "attack_hammer_0",
           "attack_hammer_1",
-          "idle",
-          "sig_hammer_d",
+          "motion_idle",
+          "down_gideon_hammer_dsig",
           "attack_hammer_5",
-          "idle",
+          "motion_idle",
           "attack_hammer_7"
         ],
         "ticks": [
@@ -6786,7 +7392,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -6834,7 +7440,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -6866,7 +7472,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -6914,7 +7520,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -6931,7 +7537,7 @@
       "source": "assets/animation-production/gideon-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -6943,7 +7549,7 @@
         "attack_hammer_4",
         "attack_hammer_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -6951,14 +7557,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2265,
+      "height": 2868,
       "bodyPixels": 192,
-      "bytes": 1988467
+      "bytes": 2448891
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "jonathan": {
-    "image": "assets/runtime/fighters/jonathan-packed.png",
-    "sha256": "a9040586db41694d72ac72e6418e0b84d60be11b4f88752454e699480191f484",
+    "image": "assets/runtime/fighters/jonathan-down-packed.png",
+    "sha256": "8b4826f129b3a13f7f37bf7a34eab225a515558b7166d7744cbc12949368c884",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
     "sourceSha256": "41ba1e05d8aabfafa6445a8225c99cea05d2506fd7490b32ccb77718e3c31994",
@@ -7397,6 +8009,102 @@
         "h": 193,
         "pivotX": 79,
         "pivotY": 193
+      },
+      "down_bow_dlight": {
+        "x": 4,
+        "y": 2029,
+        "w": 243,
+        "h": 188,
+        "pivotX": 89,
+        "pivotY": 188
+      },
+      "down_bow_dair": {
+        "x": 255,
+        "y": 2029,
+        "w": 158,
+        "h": 197,
+        "pivotX": 76,
+        "pivotY": 197
+      },
+      "down_bow_ground_pound": {
+        "x": 421,
+        "y": 2029,
+        "w": 192,
+        "h": 214,
+        "pivotX": 92,
+        "pivotY": 214
+      },
+      "down_jonathan_bow_dsig": {
+        "x": 621,
+        "y": 2029,
+        "w": 241,
+        "h": 144,
+        "pivotX": 99,
+        "pivotY": 144
+      },
+      "down_sword_dlight": {
+        "x": 4,
+        "y": 2251,
+        "w": 260,
+        "h": 139,
+        "pivotX": 144,
+        "pivotY": 139
+      },
+      "down_sword_dair": {
+        "x": 272,
+        "y": 2251,
+        "w": 192,
+        "h": 195,
+        "pivotX": 92,
+        "pivotY": 195
+      },
+      "down_sword_ground_pound": {
+        "x": 472,
+        "y": 2251,
+        "w": 155,
+        "h": 214,
+        "pivotX": 74,
+        "pivotY": 214
+      },
+      "down_jonathan_sword_dsig": {
+        "x": 635,
+        "y": 2251,
+        "w": 252,
+        "h": 134,
+        "pivotX": 150,
+        "pivotY": 134
+      },
+      "down_unarmed_dlight": {
+        "x": 4,
+        "y": 2473,
+        "w": 229,
+        "h": 164,
+        "pivotX": 39,
+        "pivotY": 164
+      },
+      "down_unarmed_dair": {
+        "x": 241,
+        "y": 2473,
+        "w": 191,
+        "h": 199,
+        "pivotX": 92,
+        "pivotY": 199
+      },
+      "down_unarmed_ground_pound": {
+        "x": 440,
+        "y": 2473,
+        "w": 150,
+        "h": 208,
+        "pivotX": 72,
+        "pivotY": 208
+      },
+      "down_unarmed_dsig": {
+        "x": 598,
+        "y": 2473,
+        "w": 235,
+        "h": 135,
+        "pivotX": 103,
+        "pivotY": 135
       }
     },
     "clips": {
@@ -7427,9 +8135,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7447,9 +8155,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7467,9 +8175,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "down_sword_dlight",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7487,9 +8195,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7507,9 +8215,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7527,9 +8235,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "down_sword_dair",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7547,9 +8255,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7567,9 +8275,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
-          "idle",
+          "down_sword_ground_pound",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7587,7 +8295,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7627,7 +8335,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "down_bow_dlight",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7647,7 +8355,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7667,7 +8375,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7687,7 +8395,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "down_bow_dair",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7707,7 +8415,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7727,7 +8435,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "light",
+          "down_bow_ground_pound",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7747,7 +8455,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "sig_bow_n",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7767,7 +8475,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "sig_bow_s",
+          "attack_bow_3",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7787,7 +8495,7 @@
           "attack_bow_0",
           "attack_bow_1",
           "attack_bow_2",
-          "sig_bow_d",
+          "down_jonathan_bow_dsig",
           "attack_bow_5",
           "attack_bow_6",
           "attack_bow_7"
@@ -7807,9 +8515,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
-          "sig_sword_n",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7827,9 +8535,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
-          "sig_sword_s",
-          "idle",
+          "attack_sword_3",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7847,9 +8555,9 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
-          "sig_sword_d",
-          "idle",
+          "down_jonathan_sword_dsig",
+          "attack_sword_3",
+          "motion_idle",
           "attack_sword_7"
         ],
         "ticks": [
@@ -7945,7 +8653,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -7993,7 +8701,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -8025,7 +8733,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -8073,7 +8781,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -8090,7 +8798,7 @@
       "source": "assets/animation-production/jonathan-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -8100,7 +8808,7 @@
         "attack_sword_5",
         "attack_sword_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -8108,14 +8816,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2025,
+      "height": 2685,
       "bodyPixels": 192,
-      "bytes": 2011462
+      "bytes": 2538310
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "moses": {
-    "image": "assets/runtime/fighters/moses-packed.png",
-    "sha256": "3728bac82abba20411a2c82b663b61c988f744b0771d59fffca94ba6cf415635",
+    "image": "assets/runtime/fighters/moses-down-packed.png",
+    "sha256": "0b309faec5490816b57f9517efca56f24a546162f5891f255aaa42c13024fdc6",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/08_moses_move_sheet.png",
     "sourceSha256": "882db00322ff10f1cbc4b9900a0c0b19069077c5cd000410891a059976919fcc",
@@ -8554,6 +9268,102 @@
         "h": 194,
         "pivotX": 82,
         "pivotY": 194
+      },
+      "down_staff_dlight": {
+        "x": 697,
+        "y": 1847,
+        "w": 262,
+        "h": 139,
+        "pivotX": 134,
+        "pivotY": 139
+      },
+      "down_staff_dair": {
+        "x": 4,
+        "y": 2051,
+        "w": 175,
+        "h": 221,
+        "pivotX": 84,
+        "pivotY": 221
+      },
+      "down_staff_ground_pound": {
+        "x": 187,
+        "y": 2051,
+        "w": 142,
+        "h": 227,
+        "pivotX": 68,
+        "pivotY": 227
+      },
+      "down_moses_staff_dsig": {
+        "x": 337,
+        "y": 2051,
+        "w": 249,
+        "h": 155,
+        "pivotX": 153,
+        "pivotY": 155
+      },
+      "down_sling_dlight": {
+        "x": 594,
+        "y": 2051,
+        "w": 238,
+        "h": 192,
+        "pivotX": 85,
+        "pivotY": 192
+      },
+      "down_sling_dair": {
+        "x": 4,
+        "y": 2286,
+        "w": 188,
+        "h": 220,
+        "pivotX": 90,
+        "pivotY": 220
+      },
+      "down_sling_ground_pound": {
+        "x": 200,
+        "y": 2286,
+        "w": 144,
+        "h": 206,
+        "pivotX": 69,
+        "pivotY": 206
+      },
+      "down_moses_sling_dsig": {
+        "x": 352,
+        "y": 2286,
+        "w": 242,
+        "h": 135,
+        "pivotX": 78,
+        "pivotY": 135
+      },
+      "down_unarmed_dlight": {
+        "x": 602,
+        "y": 2286,
+        "w": 210,
+        "h": 187,
+        "pivotX": 58,
+        "pivotY": 187
+      },
+      "down_unarmed_dair": {
+        "x": 820,
+        "y": 2286,
+        "w": 182,
+        "h": 195,
+        "pivotX": 87,
+        "pivotY": 195
+      },
+      "down_unarmed_ground_pound": {
+        "x": 4,
+        "y": 2514,
+        "w": 140,
+        "h": 207,
+        "pivotX": 67,
+        "pivotY": 207
+      },
+      "down_unarmed_dsig": {
+        "x": 152,
+        "y": 2514,
+        "w": 239,
+        "h": 132,
+        "pivotX": 77,
+        "pivotY": 132
       }
     },
     "clips": {
@@ -8584,8 +9394,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8605,7 +9415,7 @@
           "attack_sling_1",
           "attack_sling_2",
           "attack_sling_4",
-          "light",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8624,8 +9434,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "down_sling_dlight",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8644,8 +9454,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8664,8 +9474,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8684,8 +9494,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "down_sling_dair",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8704,8 +9514,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8724,8 +9534,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
-          "light",
+          "down_sling_ground_pound",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8744,7 +9554,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8764,7 +9574,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8784,7 +9594,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_dlight",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8804,7 +9614,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8824,7 +9634,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8844,7 +9654,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_dair",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8864,7 +9674,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8884,7 +9694,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_ground_pound",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8904,7 +9714,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_n",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8924,7 +9734,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_s",
+          "attack_staff_2",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8944,7 +9754,7 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_d",
+          "down_moses_staff_dsig",
           "attack_staff_5",
           "attack_staff_6",
           "attack_staff_7"
@@ -8964,8 +9774,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_n",
-          "sig_sling_n",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -8984,8 +9794,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_s",
-          "sig_sling_s",
+          "attack_sling_3",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -9004,8 +9814,8 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_d",
-          "sig_sling_d",
+          "down_moses_sling_dsig",
+          "attack_sling_4",
           "attack_sling_6",
           "attack_sling_7"
         ],
@@ -9102,7 +9912,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -9150,7 +9960,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -9182,7 +9992,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -9230,7 +10040,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -9247,7 +10057,7 @@
       "source": "assets/animation-production/moses-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -9257,7 +10067,7 @@
         "attack_staff_4",
         "attack_sling_5"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -9265,14 +10075,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2047,
+      "height": 2725,
       "bodyPixels": 192,
-      "bytes": 2126453
+      "bytes": 2696867
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "esther": {
-    "image": "assets/runtime/fighters/esther-packed.png",
-    "sha256": "eded41fe2188c31f29f2f09e6ab61f54eeb4a7d8bacb98817e3baf513f219d84",
+    "image": "assets/runtime/fighters/esther-down-packed.png",
+    "sha256": "bf57c216b10ecf0bf9cc9d7555b87d73c2b4592cadcd868ed8955ed98f683bf1",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/09_esther_move_sheet.png",
     "sourceSha256": "8c838d757b396d6f952c2ad85b3eee8a8944022551d50e33e4078a0d0c2d53e9",
@@ -9711,6 +10527,102 @@
         "h": 181,
         "pivotX": 72,
         "pivotY": 181
+      },
+      "down_blades_dlight": {
+        "x": 457,
+        "y": 1802,
+        "w": 266,
+        "h": 155,
+        "pivotX": 97,
+        "pivotY": 155
+      },
+      "down_blades_dair": {
+        "x": 731,
+        "y": 1802,
+        "w": 145,
+        "h": 208,
+        "pivotX": 70,
+        "pivotY": 208
+      },
+      "down_blades_ground_pound": {
+        "x": 4,
+        "y": 2018,
+        "w": 155,
+        "h": 177,
+        "pivotX": 74,
+        "pivotY": 177
+      },
+      "down_esther_blades_dsig": {
+        "x": 167,
+        "y": 2018,
+        "w": 217,
+        "h": 160,
+        "pivotX": 111,
+        "pivotY": 160
+      },
+      "down_staff_dlight": {
+        "x": 392,
+        "y": 2018,
+        "w": 306,
+        "h": 158,
+        "pivotX": 85,
+        "pivotY": 158
+      },
+      "down_staff_dair": {
+        "x": 706,
+        "y": 2018,
+        "w": 200,
+        "h": 230,
+        "pivotX": 96,
+        "pivotY": 230
+      },
+      "down_staff_ground_pound": {
+        "x": 4,
+        "y": 2256,
+        "w": 119,
+        "h": 236,
+        "pivotX": 57,
+        "pivotY": 236
+      },
+      "down_esther_staff_dsig": {
+        "x": 131,
+        "y": 2256,
+        "w": 253,
+        "h": 152,
+        "pivotX": 140,
+        "pivotY": 152
+      },
+      "down_unarmed_dlight": {
+        "x": 392,
+        "y": 2256,
+        "w": 235,
+        "h": 157,
+        "pivotX": 64,
+        "pivotY": 157
+      },
+      "down_unarmed_dair": {
+        "x": 635,
+        "y": 2256,
+        "w": 188,
+        "h": 216,
+        "pivotX": 90,
+        "pivotY": 216
+      },
+      "down_unarmed_ground_pound": {
+        "x": 831,
+        "y": 2256,
+        "w": 122,
+        "h": 215,
+        "pivotX": 59,
+        "pivotY": 215
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2500,
+        "w": 215,
+        "h": 157,
+        "pivotX": 104,
+        "pivotY": 157
       }
     },
     "clips": {
@@ -9738,13 +10650,13 @@
       },
       "staff_nlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           3,
@@ -9758,13 +10670,13 @@
       },
       "staff_slight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
           "attack_staff_4",
-          "light",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           4,
@@ -9778,13 +10690,13 @@
       },
       "staff_dlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "down_staff_dlight",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           4,
@@ -9798,13 +10710,13 @@
       },
       "staff_nair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           4,
@@ -9818,13 +10730,13 @@
       },
       "staff_sair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           4,
@@ -9838,13 +10750,13 @@
       },
       "staff_dair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "down_staff_dair",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           4,
@@ -9858,13 +10770,13 @@
       },
       "staff_recovery": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           5,
@@ -9878,13 +10790,13 @@
       },
       "staff_ground_pound": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
-          "light",
+          "down_staff_ground_pound",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           6,
@@ -9898,12 +10810,12 @@
       },
       "blades_nlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -9918,12 +10830,12 @@
       },
       "blades_slight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -9938,12 +10850,12 @@
       },
       "blades_dlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_dlight",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -9958,12 +10870,12 @@
       },
       "blades_nair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -9978,12 +10890,12 @@
       },
       "blades_sair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -9998,12 +10910,12 @@
       },
       "blades_dair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_dair",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10018,12 +10930,12 @@
       },
       "blades_recovery": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10038,12 +10950,12 @@
       },
       "blades_ground_pound": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "light",
-          "light",
-          "idle",
+          "down_blades_ground_pound",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10058,12 +10970,12 @@
       },
       "esther_blades_nsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_n",
-          "sig_blades_n",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10078,12 +10990,12 @@
       },
       "esther_blades_ssig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_s",
-          "sig_blades_s",
-          "idle",
+          "attack_blades_2",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10098,12 +11010,12 @@
       },
       "esther_blades_dsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_blades_1",
           "attack_blades_2",
-          "sig_blades_d",
-          "sig_blades_d",
-          "idle",
+          "down_esther_blades_dsig",
+          "attack_blades_7",
+          "motion_idle",
           "attack_blades_7"
         ],
         "ticks": [
@@ -10118,13 +11030,13 @@
       },
       "esther_staff_nsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_n",
-          "sig_staff_n",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           7,
@@ -10138,13 +11050,13 @@
       },
       "esther_staff_ssig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_s",
-          "sig_staff_s",
+          "attack_staff_2",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           8,
@@ -10158,13 +11070,13 @@
       },
       "esther_staff_dsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_d",
-          "sig_staff_d",
+          "down_esther_staff_dsig",
+          "attack_staff_4",
           "attack_staff_6",
-          "idle"
+          "motion_idle"
         ],
         "ticks": [
           9,
@@ -10259,7 +11171,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -10307,7 +11219,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -10339,7 +11251,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -10387,7 +11299,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -10404,7 +11316,7 @@
       "source": "assets/animation-production/esther-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -10420,7 +11332,7 @@
         "attack_staff_5",
         "attack_staff_7"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -10428,14 +11340,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 1987,
+      "height": 2661,
       "bodyPixels": 192,
-      "bytes": 1937885
+      "bytes": 2465581
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "miriam": {
-    "image": "assets/runtime/fighters/miriam-packed.png",
-    "sha256": "63c20b93c2291b5447acba6b94180ee7165bfca06057d979f509a7a13962ca54",
+    "image": "assets/runtime/fighters/miriam-down-packed.png",
+    "sha256": "e5efc52135117076aeb88c788dbef2ff0c1b564be381f75b1841cbfc551b84f6",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
@@ -10874,6 +11792,102 @@
         "h": 184,
         "pivotX": 64,
         "pivotY": 184
+      },
+      "down_staff_dlight": {
+        "x": 138,
+        "y": 1813,
+        "w": 270,
+        "h": 161,
+        "pivotX": 160,
+        "pivotY": 161
+      },
+      "down_staff_dair": {
+        "x": 416,
+        "y": 1813,
+        "w": 200,
+        "h": 227,
+        "pivotX": 96,
+        "pivotY": 227
+      },
+      "down_staff_ground_pound": {
+        "x": 624,
+        "y": 1813,
+        "w": 128,
+        "h": 234,
+        "pivotX": 61,
+        "pivotY": 234
+      },
+      "down_miriam_staff_dsig": {
+        "x": 760,
+        "y": 1813,
+        "w": 233,
+        "h": 160,
+        "pivotX": 105,
+        "pivotY": 160
+      },
+      "down_sling_dlight": {
+        "x": 4,
+        "y": 2055,
+        "w": 217,
+        "h": 208,
+        "pivotX": 101,
+        "pivotY": 208
+      },
+      "down_sling_dair": {
+        "x": 229,
+        "y": 2055,
+        "w": 163,
+        "h": 193,
+        "pivotX": 78,
+        "pivotY": 193
+      },
+      "down_sling_ground_pound": {
+        "x": 400,
+        "y": 2055,
+        "w": 137,
+        "h": 213,
+        "pivotX": 66,
+        "pivotY": 213
+      },
+      "down_miriam_sling_dsig": {
+        "x": 545,
+        "y": 2055,
+        "w": 258,
+        "h": 144,
+        "pivotX": 67,
+        "pivotY": 144
+      },
+      "down_unarmed_dlight": {
+        "x": 811,
+        "y": 2055,
+        "w": 187,
+        "h": 210,
+        "pivotX": 90,
+        "pivotY": 210
+      },
+      "down_unarmed_dair": {
+        "x": 4,
+        "y": 2276,
+        "w": 155,
+        "h": 182,
+        "pivotX": 74,
+        "pivotY": 182
+      },
+      "down_unarmed_ground_pound": {
+        "x": 167,
+        "y": 2276,
+        "w": 112,
+        "h": 191,
+        "pivotX": 54,
+        "pivotY": 191
+      },
+      "down_unarmed_dsig": {
+        "x": 287,
+        "y": 2276,
+        "w": 220,
+        "h": 149,
+        "pivotX": 68,
+        "pivotY": 149
       }
     },
     "clips": {
@@ -10904,7 +11918,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -10944,7 +11958,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "down_sling_dlight",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -10964,7 +11978,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -10984,7 +11998,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11004,7 +12018,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "down_sling_dair",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11024,7 +12038,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11044,7 +12058,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "light",
+          "down_sling_ground_pound",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11064,9 +12078,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11086,7 +12100,7 @@
           "attack_staff_2",
           "attack_staff_4",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11104,9 +12118,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_dlight",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11124,9 +12138,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11144,9 +12158,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11164,9 +12178,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_dair",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11184,9 +12198,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11204,9 +12218,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "light",
+          "down_staff_ground_pound",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11224,9 +12238,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_n",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11244,9 +12258,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_s",
+          "attack_staff_3",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11264,9 +12278,9 @@
           "attack_staff_0",
           "attack_staff_1",
           "attack_staff_2",
-          "sig_staff_d",
+          "down_miriam_staff_dsig",
           "attack_staff_5",
-          "idle",
+          "motion_idle",
           "attack_staff_7"
         ],
         "ticks": [
@@ -11284,7 +12298,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_n",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11304,7 +12318,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_s",
+          "attack_sling_3",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11324,7 +12338,7 @@
           "attack_sling_0",
           "attack_sling_1",
           "attack_sling_2",
-          "sig_sling_d",
+          "down_miriam_sling_dsig",
           "attack_sling_5",
           "attack_sling_6",
           "attack_sling_7"
@@ -11422,7 +12436,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -11470,7 +12484,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -11502,7 +12516,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -11550,7 +12564,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -11567,7 +12581,7 @@
       "source": "assets/animation-production/miriam-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -11575,7 +12589,7 @@
       "unsafeFrames": [
         "attack_staff_6"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -11583,14 +12597,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2001,
+      "height": 2471,
       "bodyPixels": 192,
-      "bytes": 1779886
+      "bytes": 2284720
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "nehemiah": {
-    "image": "assets/runtime/fighters/nehemiah-packed.png",
-    "sha256": "34d54f636fbea736b3eb1dda6c7f1a7352638540b456e7a23a3bd5000e501419",
+    "image": "assets/runtime/fighters/nehemiah-down-packed.png",
+    "sha256": "fbb8d5340c0a10a83a3204366e554c22ef1029a715c56a340005423842f8d866",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
@@ -12029,6 +13049,102 @@
         "h": 200,
         "pivotX": 81,
         "pivotY": 200
+      },
+      "down_hammer_dlight": {
+        "x": 533,
+        "y": 1847,
+        "w": 240,
+        "h": 132,
+        "pivotX": 133,
+        "pivotY": 132
+      },
+      "down_hammer_dair": {
+        "x": 781,
+        "y": 1847,
+        "w": 195,
+        "h": 200,
+        "pivotX": 94,
+        "pivotY": 200
+      },
+      "down_hammer_ground_pound": {
+        "x": 4,
+        "y": 2055,
+        "w": 110,
+        "h": 243,
+        "pivotX": 53,
+        "pivotY": 243
+      },
+      "down_nehemiah_hammer_dsig": {
+        "x": 122,
+        "y": 2055,
+        "w": 242,
+        "h": 163,
+        "pivotX": 151,
+        "pivotY": 163
+      },
+      "down_sword_dlight": {
+        "x": 372,
+        "y": 2055,
+        "w": 235,
+        "h": 136,
+        "pivotX": 100,
+        "pivotY": 136
+      },
+      "down_sword_dair": {
+        "x": 615,
+        "y": 2055,
+        "w": 181,
+        "h": 190,
+        "pivotX": 87,
+        "pivotY": 190
+      },
+      "down_sword_ground_pound": {
+        "x": 804,
+        "y": 2055,
+        "w": 109,
+        "h": 225,
+        "pivotX": 52,
+        "pivotY": 225
+      },
+      "down_nehemiah_sword_dsig": {
+        "x": 4,
+        "y": 2306,
+        "w": 258,
+        "h": 119,
+        "pivotX": 92,
+        "pivotY": 119
+      },
+      "down_unarmed_dlight": {
+        "x": 270,
+        "y": 2306,
+        "w": 199,
+        "h": 160,
+        "pivotX": 72,
+        "pivotY": 160
+      },
+      "down_unarmed_dair": {
+        "x": 477,
+        "y": 2306,
+        "w": 145,
+        "h": 187,
+        "pivotX": 70,
+        "pivotY": 187
+      },
+      "down_unarmed_ground_pound": {
+        "x": 630,
+        "y": 2306,
+        "w": 112,
+        "h": 159,
+        "pivotX": 54,
+        "pivotY": 159
+      },
+      "down_unarmed_dsig": {
+        "x": 750,
+        "y": 2306,
+        "w": 220,
+        "h": 119,
+        "pivotX": 93,
+        "pivotY": 119
       }
     },
     "clips": {
@@ -12059,8 +13175,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12079,8 +13195,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12099,8 +13215,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dlight",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12119,8 +13235,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12139,8 +13255,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12159,8 +13275,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_dair",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12179,8 +13295,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12199,8 +13315,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "light",
-          "light",
+          "down_sword_ground_pound",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12219,7 +13335,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12259,7 +13375,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "down_hammer_dlight",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12279,7 +13395,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12299,7 +13415,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12319,7 +13435,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "down_hammer_dair",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12339,7 +13455,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12359,7 +13475,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "light",
+          "down_hammer_ground_pound",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12379,7 +13495,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "sig_hammer_n",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12399,7 +13515,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "sig_hammer_s",
+          "attack_hammer_2",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12419,7 +13535,7 @@
           "attack_hammer_0",
           "attack_hammer_1",
           "attack_hammer_2",
-          "sig_hammer_d",
+          "down_nehemiah_hammer_dsig",
           "attack_hammer_5",
           "attack_hammer_6",
           "attack_hammer_7"
@@ -12439,8 +13555,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_n",
-          "sig_sword_n",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12459,8 +13575,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_s",
-          "sig_sword_s",
+          "attack_sword_3",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12479,8 +13595,8 @@
           "attack_sword_0",
           "attack_sword_1",
           "attack_sword_2",
-          "sig_sword_d",
-          "sig_sword_d",
+          "down_nehemiah_sword_dsig",
+          "attack_sword_6",
           "attack_sword_6",
           "attack_sword_7"
         ],
@@ -12577,7 +13693,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -12625,7 +13741,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -12657,7 +13773,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -12705,7 +13821,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -12722,7 +13838,7 @@
       "source": "assets/animation-production/nehemiah-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -12732,7 +13848,7 @@
         "attack_sword_4",
         "attack_sword_5"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -12740,14 +13856,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2051,
+      "height": 2497,
       "bodyPixels": 192,
-      "bytes": 1897174
+      "bytes": 2408763
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   },
   "caleb": {
-    "image": "assets/runtime/fighters/caleb-packed.png",
-    "sha256": "4398ba72638a9b3d74cd0f2a75725cc505e1fd80555270bc7866e55d9d470010",
+    "image": "assets/runtime/fighters/caleb-down-packed.png",
+    "sha256": "176be9a1f97503af0f0567b783d7ac8069aa6122a3b173f392388ef7bdc86b00",
     "readiness": "concept_cut",
     "source": "production-pack/10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
     "sourceSha256": "66583e5f9fe76f7151e7d1c47b89a4e4645905f995e4567dfdbc075c9105e341",
@@ -13186,6 +14308,102 @@
         "h": 192,
         "pivotX": 85,
         "pivotY": 192
+      },
+      "down_spear_dlight": {
+        "x": 173,
+        "y": 1957,
+        "w": 283,
+        "h": 129,
+        "pivotX": 154,
+        "pivotY": 129
+      },
+      "down_spear_dair": {
+        "x": 464,
+        "y": 1957,
+        "w": 201,
+        "h": 207,
+        "pivotX": 96,
+        "pivotY": 207
+      },
+      "down_spear_ground_pound": {
+        "x": 673,
+        "y": 1957,
+        "w": 168,
+        "h": 218,
+        "pivotX": 81,
+        "pivotY": 218
+      },
+      "down_caleb_spear_dsig": {
+        "x": 4,
+        "y": 2183,
+        "w": 243,
+        "h": 132,
+        "pivotX": 132,
+        "pivotY": 132
+      },
+      "down_gauntlets_dlight": {
+        "x": 255,
+        "y": 2183,
+        "w": 216,
+        "h": 134,
+        "pivotX": 116,
+        "pivotY": 134
+      },
+      "down_gauntlets_dair": {
+        "x": 479,
+        "y": 2183,
+        "w": 165,
+        "h": 208,
+        "pivotX": 79,
+        "pivotY": 208
+      },
+      "down_gauntlets_ground_pound": {
+        "x": 652,
+        "y": 2183,
+        "w": 186,
+        "h": 148,
+        "pivotX": 89,
+        "pivotY": 148
+      },
+      "down_caleb_gauntlets_dsig": {
+        "x": 4,
+        "y": 2399,
+        "w": 241,
+        "h": 129,
+        "pivotX": 119,
+        "pivotY": 129
+      },
+      "down_unarmed_dlight": {
+        "x": 253,
+        "y": 2399,
+        "w": 231,
+        "h": 157,
+        "pivotX": 23,
+        "pivotY": 157
+      },
+      "down_unarmed_dair": {
+        "x": 492,
+        "y": 2399,
+        "w": 183,
+        "h": 222,
+        "pivotX": 88,
+        "pivotY": 222
+      },
+      "down_unarmed_ground_pound": {
+        "x": 683,
+        "y": 2399,
+        "w": 120,
+        "h": 200,
+        "pivotX": 58,
+        "pivotY": 200
+      },
+      "down_unarmed_dsig": {
+        "x": 4,
+        "y": 2629,
+        "w": 225,
+        "h": 126,
+        "pivotX": 51,
+        "pivotY": 126
       }
     },
     "clips": {
@@ -13213,12 +14431,12 @@
       },
       "spear_nlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13233,12 +14451,12 @@
       },
       "spear_slight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13253,12 +14471,12 @@
       },
       "spear_dlight": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dlight",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13273,12 +14491,12 @@
       },
       "spear_nair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13293,12 +14511,12 @@
       },
       "spear_sair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13313,12 +14531,12 @@
       },
       "spear_dair": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_dair",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13333,12 +14551,12 @@
       },
       "spear_recovery": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13353,12 +14571,12 @@
       },
       "spear_ground_pound": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "light",
-          "light",
-          "idle",
+          "down_spear_ground_pound",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13376,8 +14594,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13396,8 +14614,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13416,8 +14634,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_dlight",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13436,8 +14654,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13456,8 +14674,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13476,8 +14694,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_dair",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13496,8 +14714,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13516,8 +14734,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "light",
-          "light",
+          "down_gauntlets_ground_pound",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13533,12 +14751,12 @@
       },
       "caleb_spear_nsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_n",
-          "sig_spear_n",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13553,12 +14771,12 @@
       },
       "caleb_spear_ssig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_s",
-          "sig_spear_s",
-          "idle",
+          "attack_spear_2",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13573,12 +14791,12 @@
       },
       "caleb_spear_dsig": {
         "frames": [
-          "idle",
+          "motion_idle",
           "attack_spear_1",
           "attack_spear_2",
-          "sig_spear_d",
-          "sig_spear_d",
-          "idle",
+          "down_caleb_spear_dsig",
+          "attack_spear_7",
+          "motion_idle",
           "attack_spear_7"
         ],
         "ticks": [
@@ -13596,8 +14814,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_n",
-          "sig_gauntlets_n",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13616,8 +14834,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_s",
-          "sig_gauntlets_s",
+          "attack_gauntlets_3",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13636,8 +14854,8 @@
           "attack_gauntlets_0",
           "attack_gauntlets_1",
           "attack_gauntlets_2",
-          "sig_gauntlets_d",
-          "sig_gauntlets_d",
+          "down_caleb_gauntlets_dsig",
+          "attack_gauntlets_6",
           "attack_gauntlets_6",
           "attack_gauntlets_7"
         ],
@@ -13734,7 +14952,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dlight",
           "defence_7",
           "defence_0"
         ],
@@ -13782,7 +15000,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dair",
           "defence_7",
           "defence_0"
         ],
@@ -13814,7 +15032,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_ground_pound",
           "defence_7",
           "defence_0"
         ],
@@ -13862,7 +15080,7 @@
         "frames": [
           "defence_4",
           "defence_5",
-          "defence_6",
+          "down_unarmed_dsig",
           "defence_7",
           "defence_0"
         ],
@@ -13879,7 +15097,7 @@
       "source": "assets/animation-production/caleb-animation-draft.png",
       "readiness": "animation_alpha",
       "frames": 13,
-      "notes": "Run cycle and velocity-selected airborne poses; attack poses remain concept cuts."
+      "notes": "Sprite run and airborne poses with consistent bottom registration."
     },
     "attackAnimation": {
       "readiness": "animation_alpha",
@@ -13893,7 +15111,7 @@
         "attack_gauntlets_4",
         "attack_gauntlets_5"
       ],
-      "notes": "Shared weapon anticipation/recovery. Directional and signature contacts retain authored concept poses. Unarmed attacks await separate drawings."
+      "notes": "Sprite-only clips; shared weapon windup and follow-through; edge-clipped source frames excluded."
     },
     "defenceAnimation": {
       "readiness": "animation_alpha",
@@ -13901,9 +15119,15 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2153,
+      "height": 2759,
       "bodyPixels": 192,
-      "bytes": 2103337
+      "bytes": 2619704
+    },
+    "downwardArt": {
+      "readiness": "animation_alpha",
+      "source": "docs/art/DOWN_ATTACKS.md",
+      "contacts": 12,
+      "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     }
   }
 }

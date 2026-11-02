@@ -15,7 +15,7 @@ test('every roster entry has the required movement and attack clip slots',()=>{
 });
 test('unarmed contacts use unarmed drawings for the whole active window',()=>{
   for(const id of Object.keys(meta))for(const move of moves.filter((m:any)=>m.ownerId==='unarmed')){
-    const expected=['side','down'].includes(move.input.direction)?'defence_6':'defence_2';
+    const expected=move.input.direction==='down'?'down_'+move.id:move.input.direction==='side'?'defence_6':'defence_2';
     assert.equal(renderer.frameFor(id,'active','unarmed',move.id,move.startup,0),expected);
     assert.equal(renderer.frameFor(id,'active','unarmed',move.id,move.startup+move.active-1,0),expected);
   }
