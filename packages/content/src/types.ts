@@ -10,6 +10,8 @@ export type Button = 'light' | 'heavy';
 export type InputContext = 'ground' | 'air' | 'groundOrAirCancel';
 
 export interface CollisionPhase {
+  damagePermille?: number;
+  grabTicks?: number;
   firstTick: number;
   lastTickExclusive: number;
   shape: 'rect';
@@ -19,6 +21,8 @@ export interface CollisionPhase {
 }
 
 export interface ProjectileSpec {
+  boomerangRangeUnits?: number;
+  effect?: string;
   spawnTick: number;
   originUnits: Point;
   travelAngle: number;
@@ -37,6 +41,8 @@ export type MotionEvent =
   | { kind: 'setVelocity'; atTick: number; vxQ: number; vyQ: number };
 
 export interface Attack {
+  effect?: string;
+  comboOnly?: boolean;
   id: string;
   ownerType: 'weapon' | 'fighter';
   ownerId: string;

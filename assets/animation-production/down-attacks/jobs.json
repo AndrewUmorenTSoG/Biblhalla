@@ -222,22 +222,22 @@
         "reach": "x 20..130, y 0..18"
       },
       {
-        "id": "spear_dlight",
+        "id": "shield_dlight",
         "pose": "Crouched spear tip flick forward just above the ground.",
         "reach": "x 28..148, y 0..30"
       },
       {
-        "id": "spear_dair",
+        "id": "shield_dair",
         "pose": "A short downward-diagonal spear poke; torso stays visible above.",
         "reach": "x 20..75, y -70..15"
       },
       {
-        "id": "spear_ground_pound",
+        "id": "shield_ground_pound",
         "pose": "The fighter turns spear downward and commits to a narrow descending strike.",
         "reach": "x -15..15, y -90..30"
       },
       {
-        "id": "joshua_spear_dsig",
+        "id": "joshua_shield_dsig",
         "pose": "Joshua pivots on his back foot and sweeps the spear tip low in front, green cloak wrapping around his hips.",
         "reach": "x 20..165, y 0..20"
       },
@@ -354,22 +354,22 @@
         "reach": "x 20..135, y 0..18"
       },
       {
-        "id": "hammer_dlight",
+        "id": "shield_dlight",
         "pose": "Low mallet sweep along the front training floor.",
         "reach": "x 20..115, y 0..35"
       },
       {
-        "id": "hammer_dair",
+        "id": "shield_dair",
         "pose": "One downward-diagonal mallet head strike.",
         "reach": "x 15..85, y -65..20"
       },
       {
-        "id": "hammer_ground_pound",
+        "id": "shield_ground_pound",
         "pose": "Mallet head points below and leads a vulnerable vertical descent.",
         "reach": "x -25..25, y -80..30"
       },
       {
-        "id": "gideon_hammer_dsig",
+        "id": "gideon_shield_dsig",
         "pose": "Gideon drives the mallet head across the ground in a compact frontward sweep.",
         "reach": "x 20..135, y 0..18"
       },
@@ -684,22 +684,22 @@
         "reach": "x 20..140, y 0..18"
       },
       {
-        "id": "sword_dlight",
+        "id": "shield_dlight",
         "pose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
         "reach": "x 18..98, y 0..40"
       },
       {
-        "id": "sword_dair",
+        "id": "shield_dair",
         "pose": "Blade angles downward in front as the body remains vulnerable above.",
         "reach": "x 15..80, y -55..15"
       },
       {
-        "id": "sword_ground_pound",
+        "id": "shield_ground_pound",
         "pose": "A downward committed sword point with a visible overhead preparation.",
         "reach": "x -18..18, y -65..30"
       },
       {
-        "id": "nehemiah_sword_dsig",
+        "id": "nehemiah_shield_dsig",
         "pose": "Nehemiah lowers one knee and makes a low front-facing sword sweep with a clear ending pose.",
         "reach": "x 20..135, y 0..18"
       },

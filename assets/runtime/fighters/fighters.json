@@ -1,8 +1,8 @@
 {
   "samson": {
-    "image": "assets/runtime/fighters/samson-down-packed.png",
-    "sha256": "c954666b1627a582c3bd5d6a329fa0e4e4103777dd45ae5c9b4b3e2c723a1a91",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/samson-elemental-packed.png",
+    "sha256": "1807a81731bd22aae587aa67ff4035e26123fb70100fa0522b2996f189ddb7a3",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/03_samson_move_sheet.png",
     "sourceSha256": "e98fbb30588fd33a85e7cd7a94a6e6ab9929f104408ef0618a8ed6c328e5b8f4",
     "tool": "tools/art/cut-fighters.ts",
@@ -450,80 +450,80 @@
         "pivotY": 168
       },
       "down_gauntlets_dair": {
-        "x": 780,
-        "y": 1822,
-        "w": 182,
-        "h": 197,
-        "pivotX": 87,
-        "pivotY": 197
+        "x": 4,
+        "y": 2021,
+        "w": 268,
+        "h": 169,
+        "pivotX": 49,
+        "pivotY": 169
       },
       "down_gauntlets_ground_pound": {
-        "x": 4,
-        "y": 2027,
-        "w": 180,
-        "h": 182,
-        "pivotX": 86,
-        "pivotY": 182
+        "x": 280,
+        "y": 2021,
+        "w": 268,
+        "h": 169,
+        "pivotX": 49,
+        "pivotY": 169
       },
       "down_samson_gauntlets_dsig": {
-        "x": 192,
-        "y": 2027,
+        "x": 556,
+        "y": 2021,
         "w": 208,
         "h": 225,
         "pivotX": 108,
         "pivotY": 225
       },
       "down_hammer_dlight": {
-        "x": 408,
-        "y": 2027,
+        "x": 4,
+        "y": 2254,
         "w": 286,
         "h": 173,
         "pivotX": 166,
         "pivotY": 173
       },
       "down_hammer_dair": {
-        "x": 702,
-        "y": 2027,
-        "w": 202,
-        "h": 229,
-        "pivotX": 97,
-        "pivotY": 229
+        "x": 298,
+        "y": 2254,
+        "w": 315,
+        "h": 173,
+        "pivotX": 26,
+        "pivotY": 173
       },
       "down_hammer_ground_pound": {
-        "x": 912,
-        "y": 2027,
-        "w": 107,
-        "h": 241,
-        "pivotX": 51,
-        "pivotY": 241
+        "x": 621,
+        "y": 2254,
+        "w": 292,
+        "h": 158,
+        "pivotX": 184,
+        "pivotY": 158
       },
       "down_samson_hammer_dsig": {
         "x": 4,
-        "y": 2276,
-        "w": 255,
-        "h": 176,
-        "pivotX": 152,
-        "pivotY": 176
+        "y": 2435,
+        "w": 292,
+        "h": 158,
+        "pivotX": 184,
+        "pivotY": 158
       },
       "down_unarmed_dlight": {
-        "x": 267,
-        "y": 2276,
+        "x": 304,
+        "y": 2435,
         "w": 241,
         "h": 151,
         "pivotX": 76,
         "pivotY": 151
       },
       "down_unarmed_dair": {
-        "x": 516,
-        "y": 2276,
+        "x": 553,
+        "y": 2435,
         "w": 193,
         "h": 154,
         "pivotX": 93,
         "pivotY": 154
       },
       "down_unarmed_ground_pound": {
-        "x": 717,
-        "y": 2276,
+        "x": 754,
+        "y": 2435,
         "w": 139,
         "h": 202,
         "pivotX": 67,
@@ -531,11 +531,139 @@
       },
       "down_unarmed_dsig": {
         "x": 4,
-        "y": 2486,
+        "y": 2645,
         "w": 219,
         "h": 142,
         "pivotX": 84,
         "pivotY": 142
+      },
+      "element_0_0": {
+        "x": 231,
+        "y": 2645,
+        "w": 167,
+        "h": 159,
+        "pivotX": 62,
+        "pivotY": 159
+      },
+      "element_0_1": {
+        "x": 406,
+        "y": 2645,
+        "w": 186,
+        "h": 183,
+        "pivotX": 59,
+        "pivotY": 183
+      },
+      "element_0_2": {
+        "x": 600,
+        "y": 2645,
+        "w": 268,
+        "h": 169,
+        "pivotX": 49,
+        "pivotY": 169
+      },
+      "element_0_3": {
+        "x": 4,
+        "y": 2836,
+        "w": 196,
+        "h": 179,
+        "pivotX": 30,
+        "pivotY": 179
+      },
+      "element_1_0": {
+        "x": 208,
+        "y": 2836,
+        "w": 219,
+        "h": 165,
+        "pivotX": 103,
+        "pivotY": 165
+      },
+      "element_1_1": {
+        "x": 435,
+        "y": 2836,
+        "w": 184,
+        "h": 210,
+        "pivotX": 108,
+        "pivotY": 210
+      },
+      "element_1_2": {
+        "x": 627,
+        "y": 2836,
+        "w": 315,
+        "h": 173,
+        "pivotX": 26,
+        "pivotY": 173
+      },
+      "element_1_3": {
+        "x": 4,
+        "y": 3054,
+        "w": 218,
+        "h": 176,
+        "pivotX": 76,
+        "pivotY": 176
+      },
+      "element_2_0": {
+        "x": 230,
+        "y": 3054,
+        "w": 258,
+        "h": 156,
+        "pivotX": 90,
+        "pivotY": 156
+      },
+      "element_2_1": {
+        "x": 496,
+        "y": 3054,
+        "w": 191,
+        "h": 192,
+        "pivotX": 94,
+        "pivotY": 192
+      },
+      "element_2_2": {
+        "x": 695,
+        "y": 3054,
+        "w": 195,
+        "h": 216,
+        "pivotX": 100,
+        "pivotY": 216
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3278,
+        "w": 189,
+        "h": 163,
+        "pivotX": 93,
+        "pivotY": 163
+      },
+      "element_3_0": {
+        "x": 201,
+        "y": 3278,
+        "w": 242,
+        "h": 159,
+        "pivotX": 120,
+        "pivotY": 159
+      },
+      "element_3_1": {
+        "x": 451,
+        "y": 3278,
+        "w": 220,
+        "h": 205,
+        "pivotX": 119,
+        "pivotY": 205
+      },
+      "element_3_2": {
+        "x": 679,
+        "y": 3278,
+        "w": 292,
+        "h": 158,
+        "pivotX": 184,
+        "pivotY": 158
+      },
+      "element_3_3": {
+        "x": 4,
+        "y": 3491,
+        "w": 231,
+        "h": 162,
+        "pivotX": 123,
+        "pivotY": 162
       }
     },
     "clips": {
@@ -623,102 +751,72 @@
       },
       "gauntlets_nair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
           3,
-          2,
-          2,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "gauntlets_sair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          6,
-          6
+          5,
+          4,
+          19
         ]
       },
       "gauntlets_dair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
+          "element_0_0",
+          "element_0_1",
           "down_gauntlets_dair",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          7,
-          6
+          5,
+          4,
+          20
         ]
       },
       "gauntlets_recovery": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
+          5,
+          5,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "gauntlets_ground_pound": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
+          "element_0_0",
+          "element_0_1",
           "down_gauntlets_ground_pound",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          5,
-          4,
+          7,
+          7,
           12,
-          9,
-          9,
-          8
+          26
         ]
       },
       "hammer_nlight": {
@@ -783,122 +881,88 @@
       },
       "hammer_nair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "hammer_sair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
+          7,
+          7,
           5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
+          27
         ]
       },
       "hammer_dair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
+          "element_1_0",
+          "element_1_1",
           "down_hammer_dair",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_1_3"
         ],
         "ticks": [
+          7,
+          7,
           5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
+          27
         ]
       },
       "hammer_recovery": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
           7,
-          10,
-          9,
-          9
+          8,
+          7,
+          28
         ]
       },
       "hammer_ground_pound": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
+          "element_3_0",
+          "element_3_1",
           "down_hammer_ground_pound",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_3_3"
         ],
         "ticks": [
-          7,
-          7,
-          6,
+          10,
+          10,
           12,
-          11,
-          11,
-          11
+          33
         ]
       },
       "samson_gauntlets_nsig": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_2_0",
+          "element_2_1",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
         ],
         "ticks": [
-          7,
-          7,
-          6,
           5,
-          11,
+          5,
           10,
-          10
+          7,
+          22
         ]
       },
       "samson_gauntlets_ssig": {
@@ -983,22 +1047,16 @@
       },
       "samson_hammer_dsig": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
+          "element_3_0",
+          "element_3_1",
           "down_samson_hammer_dsig",
-          "attack_hammer_3",
-          "motion_idle",
-          "attack_hammer_7"
+          "element_3_3"
         ],
         "ticks": [
-          10,
-          10,
-          10,
+          15,
+          15,
           7,
-          13,
-          13,
-          13
+          39
         ]
       },
       "idle": {
@@ -1223,6 +1281,64 @@
           19,
           11
         ]
+      },
+      "gauntlets_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "hammer_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "samson_gauntlets_nlight": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          10,
+          7,
+          22
+        ]
       }
     },
     "movement": {
@@ -1250,21 +1366,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2632,
+      "height": 3657,
       "bodyPixels": 192,
-      "bytes": 2775148
+      "bytes": 3599198
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/samson.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "david": {
-    "image": "assets/runtime/fighters/david-down-packed.png",
-    "sha256": "4ba0173d7d5e51a2d3ac10a1bcfad30871d04ac557ab08bbe88728cf0636960c",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/david-elemental-packed.png",
+    "sha256": "c53b6d67a67aefaadfe29c7429cfd8426b09066d1a2f97a0252983413ff67f3c",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/01_david_move_sheet.png",
     "sourceSha256": "7fb4eff4652224b197097200a466a7ede487a1305accc20384082704a3cf9d6a",
     "tool": "tools/art/cut-fighters.ts",
@@ -1714,90 +1835,218 @@
       "down_sling_dair": {
         "x": 4,
         "y": 2095,
-        "w": 190,
-        "h": 200,
-        "pivotX": 91,
-        "pivotY": 200
+        "w": 394,
+        "h": 192,
+        "pivotX": 9,
+        "pivotY": 192
       },
       "down_sling_ground_pound": {
-        "x": 202,
+        "x": 406,
         "y": 2095,
-        "w": 149,
-        "h": 207,
-        "pivotX": 72,
-        "pivotY": 207
+        "w": 394,
+        "h": 192,
+        "pivotX": 9,
+        "pivotY": 192
       },
       "down_david_sling_dsig": {
-        "x": 359,
-        "y": 2095,
-        "w": 238,
-        "h": 120,
-        "pivotX": 57,
-        "pivotY": 120
+        "x": 4,
+        "y": 2295,
+        "w": 394,
+        "h": 192,
+        "pivotX": 9,
+        "pivotY": 192
       },
       "down_sword_dlight": {
-        "x": 605,
-        "y": 2095,
+        "x": 406,
+        "y": 2295,
         "w": 216,
         "h": 149,
         "pivotX": 66,
         "pivotY": 149
       },
       "down_sword_dair": {
-        "x": 829,
-        "y": 2095,
-        "w": 187,
-        "h": 185,
-        "pivotX": 90,
-        "pivotY": 185
+        "x": 630,
+        "y": 2295,
+        "w": 374,
+        "h": 199,
+        "pivotX": 10,
+        "pivotY": 199
       },
       "down_sword_ground_pound": {
         "x": 4,
-        "y": 2310,
-        "w": 107,
-        "h": 213,
-        "pivotX": 51,
-        "pivotY": 213
+        "y": 2502,
+        "w": 374,
+        "h": 199,
+        "pivotX": 10,
+        "pivotY": 199
       },
       "down_david_sword_dsig": {
-        "x": 119,
-        "y": 2310,
+        "x": 386,
+        "y": 2502,
         "w": 240,
         "h": 139,
         "pivotX": 100,
         "pivotY": 139
       },
       "down_unarmed_dlight": {
-        "x": 367,
-        "y": 2310,
+        "x": 634,
+        "y": 2502,
         "w": 188,
         "h": 171,
         "pivotX": 57,
         "pivotY": 171
       },
       "down_unarmed_dair": {
-        "x": 563,
-        "y": 2310,
+        "x": 830,
+        "y": 2502,
         "w": 162,
         "h": 195,
         "pivotX": 78,
         "pivotY": 195
       },
       "down_unarmed_ground_pound": {
-        "x": 733,
-        "y": 2310,
+        "x": 4,
+        "y": 2709,
         "w": 130,
         "h": 185,
         "pivotX": 62,
         "pivotY": 185
       },
       "down_unarmed_dsig": {
-        "x": 4,
-        "y": 2531,
+        "x": 142,
+        "y": 2709,
         "w": 223,
         "h": 124,
         "pivotX": 66,
         "pivotY": 124
+      },
+      "element_0_0": {
+        "x": 373,
+        "y": 2709,
+        "w": 181,
+        "h": 164,
+        "pivotX": 103,
+        "pivotY": 164
+      },
+      "element_0_1": {
+        "x": 562,
+        "y": 2709,
+        "w": 181,
+        "h": 182,
+        "pivotX": 77,
+        "pivotY": 182
+      },
+      "element_0_2": {
+        "x": 4,
+        "y": 2902,
+        "w": 394,
+        "h": 192,
+        "pivotX": 9,
+        "pivotY": 192
+      },
+      "element_0_3": {
+        "x": 406,
+        "y": 2902,
+        "w": 224,
+        "h": 180,
+        "pivotX": 112,
+        "pivotY": 180
+      },
+      "element_1_0": {
+        "x": 638,
+        "y": 2902,
+        "w": 207,
+        "h": 162,
+        "pivotX": 132,
+        "pivotY": 162
+      },
+      "element_1_1": {
+        "x": 4,
+        "y": 3102,
+        "w": 191,
+        "h": 199,
+        "pivotX": 115,
+        "pivotY": 199
+      },
+      "element_1_2": {
+        "x": 203,
+        "y": 3102,
+        "w": 374,
+        "h": 199,
+        "pivotX": 10,
+        "pivotY": 199
+      },
+      "element_1_3": {
+        "x": 585,
+        "y": 3102,
+        "w": 260,
+        "h": 169,
+        "pivotX": 133,
+        "pivotY": 169
+      },
+      "element_2_0": {
+        "x": 4,
+        "y": 3309,
+        "w": 187,
+        "h": 190,
+        "pivotX": 101,
+        "pivotY": 190
+      },
+      "element_2_1": {
+        "x": 199,
+        "y": 3309,
+        "w": 216,
+        "h": 188,
+        "pivotX": 108,
+        "pivotY": 188
+      },
+      "element_2_2": {
+        "x": 423,
+        "y": 3309,
+        "w": 399,
+        "h": 182,
+        "pivotX": 96,
+        "pivotY": 182
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3507,
+        "w": 237,
+        "h": 186,
+        "pivotX": 135,
+        "pivotY": 186
+      },
+      "element_3_0": {
+        "x": 249,
+        "y": 3507,
+        "w": 204,
+        "h": 159,
+        "pivotX": 127,
+        "pivotY": 159
+      },
+      "element_3_1": {
+        "x": 461,
+        "y": 3507,
+        "w": 213,
+        "h": 194,
+        "pivotX": 131,
+        "pivotY": 194
+      },
+      "element_3_2": {
+        "x": 4,
+        "y": 3709,
+        "w": 400,
+        "h": 179,
+        "pivotX": 11,
+        "pivotY": 179
+      },
+      "element_3_3": {
+        "x": 412,
+        "y": 3709,
+        "w": 228,
+        "h": 179,
+        "pivotX": 134,
+        "pivotY": 179
       }
     },
     "clips": {
@@ -1885,142 +2134,100 @@
       },
       "sword_nair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          2,
+          4,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "sword_sair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "sword_dair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_dair",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          7
+          5,
+          5,
+          21
         ]
       },
       "sword_recovery": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
+          5,
+          6,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sword_ground_pound": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_ground_pound",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
+          7,
+          8,
           12,
-          9,
-          9,
-          9
+          27
         ]
       },
       "sling_nlight": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
+          5,
           1,
-          6,
-          6,
-          6
+          18
         ]
       },
       "sling_slight": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_4",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sling_dlight": {
@@ -2045,162 +2252,114 @@
       },
       "sling_nair": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
           5,
-          6,
-          6,
-          6
+          5,
+          18
         ]
       },
       "sling_sair": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          8,
-          7
+          23
         ]
       },
       "sling_dair": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
+          "element_0_0",
+          "element_0_1",
           "down_sling_dair",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "sling_recovery": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          8,
-          8,
-          8
+          7,
+          24
         ]
       },
       "sling_ground_pound": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
+          "element_0_0",
+          "element_0_1",
           "down_sling_ground_pound",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          5,
-          5,
+          8,
+          8,
           12,
-          10,
-          9,
-          9
+          28
         ]
       },
       "david_sling_nsig": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          6,
+          9,
+          9,
           5,
-          8,
-          8,
-          8
+          24
         ]
       },
       "david_sling_ssig": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          8,
-          7,
-          7,
+          11,
+          11,
           6,
-          10,
-          9,
-          9
+          28
         ]
       },
       "david_sling_dsig": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
+          "element_0_0",
+          "element_0_1",
           "down_david_sling_dsig",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "element_0_3"
         ],
         "ticks": [
-          8,
-          8,
-          8,
+          12,
+          12,
           6,
-          10,
-          10,
-          10
+          30
         ]
       },
       "david_sword_nsig": {
@@ -2485,6 +2644,48 @@
           19,
           11
         ]
+      },
+      "sword_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "sling_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -2511,21 +2712,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2659,
+      "height": 3892,
       "bodyPixels": 192,
-      "bytes": 2400273
+      "bytes": 3122493
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/david.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "saul": {
-    "image": "assets/runtime/fighters/saul-down-packed.png",
-    "sha256": "9b22509bfe4bb8feb35fad3eff247d80d062c0340d8d394f2721a4bccf6eb6f0",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/saul-elemental-packed.png",
+    "sha256": "4a587fbd45c2aed62632567692c5ca5e9bd607ef6de9ab7baea6279bc0115d52",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/02_saul_move_sheet.png",
     "sourceSha256": "ddafceec80c6d6cbb2db61ae2100888fec5b47636ce0f8d9302990f1ceb35b98",
     "tool": "tools/art/cut-fighters.ts",
@@ -2975,90 +3181,218 @@
       "down_spear_dair": {
         "x": 433,
         "y": 1993,
-        "w": 182,
-        "h": 182,
-        "pivotX": 87,
-        "pivotY": 182
+        "w": 368,
+        "h": 171,
+        "pivotX": 17,
+        "pivotY": 171
       },
       "down_spear_ground_pound": {
-        "x": 623,
-        "y": 1993,
-        "w": 149,
-        "h": 222,
-        "pivotX": 72,
-        "pivotY": 222
+        "x": 4,
+        "y": 2190,
+        "w": 368,
+        "h": 171,
+        "pivotX": 17,
+        "pivotY": 171
       },
       "down_saul_spear_dsig": {
-        "x": 4,
-        "y": 2223,
+        "x": 380,
+        "y": 2190,
         "w": 251,
         "h": 107,
         "pivotX": 90,
         "pivotY": 107
       },
       "down_sword_dlight": {
-        "x": 263,
-        "y": 2223,
+        "x": 639,
+        "y": 2190,
         "w": 256,
         "h": 130,
         "pivotX": 101,
         "pivotY": 130
       },
       "down_sword_dair": {
-        "x": 527,
-        "y": 2223,
-        "w": 177,
-        "h": 177,
-        "pivotX": 85,
-        "pivotY": 177
+        "x": 4,
+        "y": 2369,
+        "w": 355,
+        "h": 174,
+        "pivotX": 21,
+        "pivotY": 174
       },
       "down_sword_ground_pound": {
-        "x": 712,
-        "y": 2223,
-        "w": 170,
-        "h": 208,
-        "pivotX": 82,
-        "pivotY": 208
+        "x": 367,
+        "y": 2369,
+        "w": 355,
+        "h": 174,
+        "pivotX": 21,
+        "pivotY": 174
       },
       "down_saul_sword_dsig": {
-        "x": 4,
-        "y": 2439,
+        "x": 730,
+        "y": 2369,
         "w": 268,
         "h": 115,
         "pivotX": 104,
         "pivotY": 115
       },
       "down_unarmed_dlight": {
-        "x": 280,
-        "y": 2439,
+        "x": 4,
+        "y": 2551,
         "w": 215,
         "h": 165,
         "pivotX": 43,
         "pivotY": 165
       },
       "down_unarmed_dair": {
-        "x": 503,
-        "y": 2439,
+        "x": 227,
+        "y": 2551,
         "w": 190,
         "h": 170,
         "pivotX": 91,
         "pivotY": 170
       },
       "down_unarmed_ground_pound": {
-        "x": 701,
-        "y": 2439,
+        "x": 425,
+        "y": 2551,
         "w": 137,
         "h": 205,
         "pivotX": 66,
         "pivotY": 205
       },
       "down_unarmed_dsig": {
-        "x": 4,
-        "y": 2652,
+        "x": 570,
+        "y": 2551,
         "w": 231,
         "h": 120,
         "pivotX": 47,
         "pivotY": 120
+      },
+      "element_0_0": {
+        "x": 809,
+        "y": 2551,
+        "w": 203,
+        "h": 154,
+        "pivotX": 113,
+        "pivotY": 154
+      },
+      "element_0_1": {
+        "x": 4,
+        "y": 2764,
+        "w": 261,
+        "h": 217,
+        "pivotX": 115,
+        "pivotY": 217
+      },
+      "element_0_2": {
+        "x": 273,
+        "y": 2764,
+        "w": 368,
+        "h": 171,
+        "pivotX": 17,
+        "pivotY": 171
+      },
+      "element_0_3": {
+        "x": 649,
+        "y": 2764,
+        "w": 213,
+        "h": 192,
+        "pivotX": 69,
+        "pivotY": 192
+      },
+      "element_1_0": {
+        "x": 4,
+        "y": 2989,
+        "w": 214,
+        "h": 153,
+        "pivotX": 125,
+        "pivotY": 153
+      },
+      "element_1_1": {
+        "x": 226,
+        "y": 2989,
+        "w": 180,
+        "h": 229,
+        "pivotX": 100,
+        "pivotY": 229
+      },
+      "element_1_2": {
+        "x": 414,
+        "y": 2989,
+        "w": 355,
+        "h": 174,
+        "pivotX": 21,
+        "pivotY": 174
+      },
+      "element_1_3": {
+        "x": 777,
+        "y": 2989,
+        "w": 218,
+        "h": 190,
+        "pivotX": 91,
+        "pivotY": 190
+      },
+      "element_2_0": {
+        "x": 4,
+        "y": 3226,
+        "w": 282,
+        "h": 184,
+        "pivotX": 108,
+        "pivotY": 184
+      },
+      "element_2_1": {
+        "x": 294,
+        "y": 3226,
+        "w": 231,
+        "h": 177,
+        "pivotX": 126,
+        "pivotY": 177
+      },
+      "element_2_2": {
+        "x": 533,
+        "y": 3226,
+        "w": 367,
+        "h": 157,
+        "pivotX": 105,
+        "pivotY": 157
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3418,
+        "w": 243,
+        "h": 180,
+        "pivotX": 93,
+        "pivotY": 180
+      },
+      "element_3_0": {
+        "x": 255,
+        "y": 3418,
+        "w": 181,
+        "h": 171,
+        "pivotX": 41,
+        "pivotY": 171
+      },
+      "element_3_1": {
+        "x": 444,
+        "y": 3418,
+        "w": 193,
+        "h": 210,
+        "pivotX": 122,
+        "pivotY": 210
+      },
+      "element_3_2": {
+        "x": 645,
+        "y": 3418,
+        "w": 351,
+        "h": 184,
+        "pivotX": 40,
+        "pivotY": 184
+      },
+      "element_3_3": {
+        "x": 4,
+        "y": 3636,
+        "w": 222,
+        "h": 161,
+        "pivotX": 150,
+        "pivotY": 161
       }
     },
     "clips": {
@@ -3146,102 +3480,72 @@
       },
       "sword_nair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_2",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          2,
+          4,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "sword_sair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_2",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "sword_dair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_dair",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          7
+          5,
+          5,
+          21
         ]
       },
       "sword_recovery": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_2",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
+          5,
+          6,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sword_ground_pound": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_ground_pound",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
+          7,
+          8,
           12,
-          9,
-          9,
-          9
+          27
         ]
       },
       "spear_nlight": {
@@ -3306,102 +3610,72 @@
       },
       "spear_nair": {
         "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          6,
-          6,
-          6
+          5,
+          5,
+          18
         ]
       },
       "spear_sair": {
         "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "spear_dair": {
         "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
+          "element_0_0",
+          "element_0_1",
           "down_spear_dair",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "spear_recovery": {
         "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          8,
-          8,
-          8
+          7,
+          24
         ]
       },
       "spear_ground_pound": {
         "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
+          "element_0_0",
+          "element_0_1",
           "down_spear_ground_pound",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "saul_spear_nsig": {
@@ -3746,6 +4020,48 @@
           19,
           11
         ]
+      },
+      "sword_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "spear_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -3774,21 +4090,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2776,
+      "height": 3801,
       "bodyPixels": 192,
-      "bytes": 2699153
+      "bytes": 3464869
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/saul.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "joshua": {
-    "image": "assets/runtime/fighters/joshua-down-packed.png",
-    "sha256": "f265634ed77230d14a931b7efcf17e0e71bed0833f438e6fb502b8f0a4ea5a15",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/joshua-elemental-packed.png",
+    "sha256": "4107d0c15ae2d50ca1fffdb6564b2c5a0ea42412abe5aa79215de7860c8436e8",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
     "sourceSha256": "653dbd20e984453897a03cbe7e700ea5e32dda95ddae05036dd153e972d5241d",
     "tool": "tools/art/cut-fighters.ts",
@@ -4238,90 +4559,250 @@
       "down_sword_dair": {
         "x": 237,
         "y": 1987,
-        "w": 197,
-        "h": 221,
-        "pivotX": 95,
-        "pivotY": 221
+        "w": 360,
+        "h": 157,
+        "pivotX": 29,
+        "pivotY": 157
       },
       "down_sword_ground_pound": {
-        "x": 442,
+        "x": 605,
         "y": 1987,
-        "w": 142,
-        "h": 236,
-        "pivotX": 68,
-        "pivotY": 236
+        "w": 360,
+        "h": 157,
+        "pivotX": 29,
+        "pivotY": 157
       },
       "down_joshua_sword_dsig": {
-        "x": 592,
-        "y": 1987,
+        "x": 4,
+        "y": 2152,
         "w": 241,
         "h": 122,
         "pivotX": 149,
         "pivotY": 122
       },
       "down_spear_dlight": {
-        "x": 4,
-        "y": 2231,
+        "x": 253,
+        "y": 2152,
         "w": 290,
         "h": 108,
         "pivotX": 114,
         "pivotY": 108
       },
       "down_spear_dair": {
-        "x": 302,
-        "y": 2231,
+        "x": 551,
+        "y": 2152,
         "w": 179,
         "h": 203,
         "pivotX": 86,
         "pivotY": 203
       },
       "down_spear_ground_pound": {
-        "x": 489,
-        "y": 2231,
+        "x": 738,
+        "y": 2152,
         "w": 129,
         "h": 218,
         "pivotX": 62,
         "pivotY": 218
       },
       "down_joshua_spear_dsig": {
-        "x": 626,
-        "y": 2231,
+        "x": 4,
+        "y": 2378,
         "w": 249,
         "h": 128,
         "pivotX": 117,
         "pivotY": 128
       },
       "down_unarmed_dlight": {
-        "x": 4,
-        "y": 2457,
+        "x": 261,
+        "y": 2378,
         "w": 222,
         "h": 134,
         "pivotX": 62,
         "pivotY": 134
       },
       "down_unarmed_dair": {
-        "x": 234,
-        "y": 2457,
+        "x": 491,
+        "y": 2378,
         "w": 177,
         "h": 186,
         "pivotX": 85,
         "pivotY": 186
       },
       "down_unarmed_ground_pound": {
-        "x": 419,
-        "y": 2457,
+        "x": 676,
+        "y": 2378,
         "w": 155,
         "h": 202,
         "pivotX": 74,
         "pivotY": 202
       },
       "down_unarmed_dsig": {
-        "x": 582,
-        "y": 2457,
+        "x": 4,
+        "y": 2588,
         "w": 213,
         "h": 118,
         "pivotX": 126,
         "pivotY": 118
+      },
+      "element_0_0": {
+        "x": 225,
+        "y": 2588,
+        "w": 240,
+        "h": 152,
+        "pivotX": 113,
+        "pivotY": 152
+      },
+      "element_0_1": {
+        "x": 473,
+        "y": 2588,
+        "w": 200,
+        "h": 208,
+        "pivotX": 101,
+        "pivotY": 208
+      },
+      "element_0_2": {
+        "x": 4,
+        "y": 2804,
+        "w": 360,
+        "h": 157,
+        "pivotX": 29,
+        "pivotY": 157
+      },
+      "element_0_3": {
+        "x": 372,
+        "y": 2804,
+        "w": 235,
+        "h": 177,
+        "pivotX": 184,
+        "pivotY": 177
+      },
+      "element_1_0": {
+        "x": 615,
+        "y": 2804,
+        "w": 196,
+        "h": 153,
+        "pivotX": 76,
+        "pivotY": 153
+      },
+      "element_1_1": {
+        "x": 819,
+        "y": 2804,
+        "w": 171,
+        "h": 192,
+        "pivotX": 86,
+        "pivotY": 192
+      },
+      "element_1_2": {
+        "x": 4,
+        "y": 3004,
+        "w": 291,
+        "h": 173,
+        "pivotX": 13,
+        "pivotY": 173
+      },
+      "element_1_3": {
+        "x": 303,
+        "y": 3004,
+        "w": 191,
+        "h": 179,
+        "pivotX": 119,
+        "pivotY": 179
+      },
+      "element_2_0": {
+        "x": 502,
+        "y": 3004,
+        "w": 196,
+        "h": 141,
+        "pivotX": 133,
+        "pivotY": 141
+      },
+      "element_2_1": {
+        "x": 706,
+        "y": 3004,
+        "w": 189,
+        "h": 190,
+        "pivotX": 93,
+        "pivotY": 190
+      },
+      "element_2_2": {
+        "x": 4,
+        "y": 3202,
+        "w": 219,
+        "h": 136,
+        "pivotX": 129,
+        "pivotY": 136
+      },
+      "element_2_3": {
+        "x": 231,
+        "y": 3202,
+        "w": 205,
+        "h": 149,
+        "pivotX": 89,
+        "pivotY": 149
+      },
+      "element_3_0": {
+        "x": 444,
+        "y": 3202,
+        "w": 177,
+        "h": 170,
+        "pivotX": 88,
+        "pivotY": 170
+      },
+      "element_3_1": {
+        "x": 629,
+        "y": 3202,
+        "w": 204,
+        "h": 204,
+        "pivotX": 97,
+        "pivotY": 204
+      },
+      "element_3_2": {
+        "x": 4,
+        "y": 3414,
+        "w": 216,
+        "h": 220,
+        "pivotX": 118,
+        "pivotY": 220
+      },
+      "element_3_3": {
+        "x": 228,
+        "y": 3414,
+        "w": 191,
+        "h": 173,
+        "pivotX": 101,
+        "pivotY": 173
+      },
+      "down_joshua_shield_dsig": {
+        "x": 427,
+        "y": 3414,
+        "w": 219,
+        "h": 136,
+        "pivotX": 129,
+        "pivotY": 136
+      },
+      "down_shield_dlight": {
+        "x": 654,
+        "y": 3414,
+        "w": 291,
+        "h": 173,
+        "pivotX": 13,
+        "pivotY": 173
+      },
+      "down_shield_dair": {
+        "x": 4,
+        "y": 3642,
+        "w": 291,
+        "h": 173,
+        "pivotX": 13,
+        "pivotY": 173
+      },
+      "down_shield_ground_pound": {
+        "x": 303,
+        "y": 3642,
+        "w": 219,
+        "h": 136,
+        "pivotX": 129,
+        "pivotY": 136
       }
     },
     "clips": {
@@ -4409,262 +4890,72 @@
       },
       "sword_nair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          2,
+          4,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "sword_sair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "sword_dair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_0_0",
+          "element_0_1",
           "down_sword_dair",
-          "attack_sword_5",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          7
+          5,
+          5,
+          21
         ]
       },
       "sword_recovery": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
+          5,
+          6,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sword_ground_pound": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_0_0",
+          "element_0_1",
           "down_sword_ground_pound",
-          "attack_sword_5",
-          "attack_sword_6",
-          "attack_sword_7"
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
+          7,
+          8,
           12,
-          9,
-          9,
-          9
-        ]
-      },
-      "spear_nlight": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          3,
-          3,
-          2,
-          4,
-          6,
-          6,
-          5
-        ]
-      },
-      "spear_slight": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          3,
-          4,
-          7,
-          7,
-          7
-        ]
-      },
-      "spear_dlight": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "down_spear_dlight",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          3,
-          3,
-          3,
-          4,
-          7,
-          6,
-          6
-        ]
-      },
-      "spear_nair": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          4,
-          3,
-          3,
-          5,
-          6,
-          6,
-          6
-        ]
-      },
-      "spear_sair": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          4,
-          5,
-          8,
-          8,
-          7
-        ]
-      },
-      "spear_dair": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "down_spear_dair",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          3,
-          5,
-          8,
-          7,
-          7
-        ]
-      },
-      "spear_recovery": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          5,
-          4,
-          4,
-          7,
-          8,
-          8,
-          8
-        ]
-      },
-      "spear_ground_pound": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "down_spear_ground_pound",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          6,
-          6,
-          5,
-          12,
-          10,
-          10,
-          9
+          27
         ]
       },
       "joshua_sword_nsig": {
@@ -4724,66 +5015,6 @@
           6,
           11,
           10,
-          10
-        ]
-      },
-      "joshua_spear_nsig": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          7,
-          7,
-          6,
-          5,
-          9,
-          9,
-          9
-        ]
-      },
-      "joshua_spear_ssig": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          8,
-          8,
-          7,
-          5,
-          11,
-          10,
-          10
-        ]
-      },
-      "joshua_spear_dsig": {
-        "frames": [
-          "attack_spear_0",
-          "attack_spear_1",
-          "attack_spear_2",
-          "down_joshua_spear_dsig",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
-        ],
-        "ticks": [
-          9,
-          8,
-          8,
-          6,
-          11,
-          11,
           10
         ]
       },
@@ -5009,6 +5240,202 @@
           19,
           11
         ]
+      },
+      "joshua_shield_nsig": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "joshua_shield_ssig": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "joshua_shield_dsig": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "down_joshua_shield_dsig",
+          "element_2_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "shield_nlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          3,
+          4,
+          4,
+          15
+        ]
+      },
+      "shield_slight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          5,
+          4,
+          18
+        ]
+      },
+      "shield_dlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dlight",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          17
+        ]
+      },
+      "shield_nair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          5,
+          16
+        ]
+      },
+      "shield_sair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          20
+        ]
+      },
+      "shield_dair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dair",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          21
+        ]
+      },
+      "shield_recovery": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          6,
+          7,
+          22
+        ]
+      },
+      "shield_ground_pound": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "down_shield_ground_pound",
+          "element_2_3"
+        ],
+        "ticks": [
+          7,
+          8,
+          12,
+          27
+        ]
+      },
+      "sword_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "shield_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -5035,21 +5462,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2663,
+      "height": 3819,
       "bodyPixels": 192,
-      "bytes": 2480440
+      "bytes": 3498200
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/joshua.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "deborah": {
-    "image": "assets/runtime/fighters/deborah-down-packed.png",
-    "sha256": "a4d4de8243f48310637b83a0eceac3e10500cfc8bc3339591d25d9ba99d8127f",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/deborah-elemental-packed.png",
+    "sha256": "85a9f5db49937dcb743bc0a770e072cb3d8b231568b4824f8f1809c1d0ab108b",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
     "sourceSha256": "abfd154eda09646e8e8f628ac36ff03da398d18cbdacc34867d1328c76efe716",
     "tool": "tools/art/cut-fighters.ts",
@@ -5497,56 +5929,56 @@
         "pivotY": 150
       },
       "down_staff_dair": {
-        "x": 789,
-        "y": 1811,
-        "w": 208,
-        "h": 207,
-        "pivotX": 100,
-        "pivotY": 207
+        "x": 4,
+        "y": 2011,
+        "w": 314,
+        "h": 166,
+        "pivotX": 11,
+        "pivotY": 166
       },
       "down_staff_ground_pound": {
-        "x": 4,
-        "y": 2026,
-        "w": 126,
-        "h": 228,
-        "pivotX": 60,
-        "pivotY": 228
+        "x": 326,
+        "y": 2011,
+        "w": 314,
+        "h": 166,
+        "pivotX": 11,
+        "pivotY": 166
       },
       "down_deborah_staff_dsig": {
-        "x": 138,
-        "y": 2026,
+        "x": 648,
+        "y": 2011,
         "w": 223,
         "h": 152,
         "pivotX": 111,
         "pivotY": 152
       },
       "down_blades_dlight": {
-        "x": 369,
-        "y": 2026,
+        "x": 4,
+        "y": 2185,
         "w": 270,
         "h": 157,
         "pivotX": 153,
         "pivotY": 157
       },
       "down_blades_dair": {
-        "x": 647,
-        "y": 2026,
-        "w": 154,
-        "h": 227,
-        "pivotX": 74,
-        "pivotY": 227
+        "x": 282,
+        "y": 2185,
+        "w": 336,
+        "h": 161,
+        "pivotX": 40,
+        "pivotY": 161
       },
       "down_blades_ground_pound": {
-        "x": 809,
-        "y": 2026,
-        "w": 126,
-        "h": 225,
-        "pivotX": 60,
-        "pivotY": 225
+        "x": 626,
+        "y": 2185,
+        "w": 336,
+        "h": 161,
+        "pivotX": 40,
+        "pivotY": 161
       },
       "down_deborah_blades_dsig": {
         "x": 4,
-        "y": 2262,
+        "y": 2354,
         "w": 230,
         "h": 160,
         "pivotX": 142,
@@ -5554,7 +5986,7 @@
       },
       "down_unarmed_dlight": {
         "x": 242,
-        "y": 2262,
+        "y": 2354,
         "w": 196,
         "h": 166,
         "pivotX": 59,
@@ -5562,7 +5994,7 @@
       },
       "down_unarmed_dair": {
         "x": 446,
-        "y": 2262,
+        "y": 2354,
         "w": 198,
         "h": 192,
         "pivotX": 95,
@@ -5570,7 +6002,7 @@
       },
       "down_unarmed_ground_pound": {
         "x": 652,
-        "y": 2262,
+        "y": 2354,
         "w": 114,
         "h": 187,
         "pivotX": 55,
@@ -5578,11 +6010,139 @@
       },
       "down_unarmed_dsig": {
         "x": 774,
-        "y": 2262,
+        "y": 2354,
         "w": 198,
         "h": 150,
         "pivotX": 69,
         "pivotY": 150
+      },
+      "element_0_0": {
+        "x": 4,
+        "y": 2554,
+        "w": 198,
+        "h": 176,
+        "pivotX": 142,
+        "pivotY": 176
+      },
+      "element_0_1": {
+        "x": 210,
+        "y": 2554,
+        "w": 195,
+        "h": 198,
+        "pivotX": 108,
+        "pivotY": 198
+      },
+      "element_0_2": {
+        "x": 413,
+        "y": 2554,
+        "w": 314,
+        "h": 166,
+        "pivotX": 11,
+        "pivotY": 166
+      },
+      "element_0_3": {
+        "x": 735,
+        "y": 2554,
+        "w": 219,
+        "h": 180,
+        "pivotX": 83,
+        "pivotY": 180
+      },
+      "element_1_0": {
+        "x": 4,
+        "y": 2760,
+        "w": 214,
+        "h": 174,
+        "pivotX": 122,
+        "pivotY": 174
+      },
+      "element_1_1": {
+        "x": 226,
+        "y": 2760,
+        "w": 159,
+        "h": 203,
+        "pivotX": 83,
+        "pivotY": 203
+      },
+      "element_1_2": {
+        "x": 393,
+        "y": 2760,
+        "w": 336,
+        "h": 161,
+        "pivotX": 40,
+        "pivotY": 161
+      },
+      "element_1_3": {
+        "x": 737,
+        "y": 2760,
+        "w": 210,
+        "h": 172,
+        "pivotX": 53,
+        "pivotY": 172
+      },
+      "element_2_0": {
+        "x": 4,
+        "y": 2971,
+        "w": 184,
+        "h": 167,
+        "pivotX": 129,
+        "pivotY": 167
+      },
+      "element_2_1": {
+        "x": 196,
+        "y": 2971,
+        "w": 200,
+        "h": 200,
+        "pivotX": 104,
+        "pivotY": 200
+      },
+      "element_2_2": {
+        "x": 404,
+        "y": 2971,
+        "w": 312,
+        "h": 164,
+        "pivotX": 11,
+        "pivotY": 164
+      },
+      "element_2_3": {
+        "x": 724,
+        "y": 2971,
+        "w": 218,
+        "h": 191,
+        "pivotX": 104,
+        "pivotY": 191
+      },
+      "element_3_0": {
+        "x": 4,
+        "y": 3179,
+        "w": 141,
+        "h": 163,
+        "pivotX": 82,
+        "pivotY": 163
+      },
+      "element_3_1": {
+        "x": 153,
+        "y": 3179,
+        "w": 143,
+        "h": 192,
+        "pivotX": 94,
+        "pivotY": 192
+      },
+      "element_3_2": {
+        "x": 304,
+        "y": 3179,
+        "w": 332,
+        "h": 161,
+        "pivotX": 38,
+        "pivotY": 161
+      },
+      "element_3_3": {
+        "x": 644,
+        "y": 3179,
+        "w": 208,
+        "h": 177,
+        "pivotX": 51,
+        "pivotY": 177
       }
     },
     "clips": {
@@ -5670,102 +6230,72 @@
       },
       "staff_nair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          6,
-          6
+          5,
+          5,
+          19
         ]
       },
       "staff_sair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_dair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_dair",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_recovery": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          9,
-          8,
-          8
+          7,
+          25
         ]
       },
       "staff_ground_pound": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_ground_pound",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "blades_nlight": {
@@ -5830,102 +6360,72 @@
       },
       "blades_nair": {
         "frames": [
-          "attack_blades_0",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_4",
-          "motion_idle",
-          "attack_blades_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
           3,
-          2,
-          2,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "blades_sair": {
         "frames": [
-          "attack_blades_0",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_4",
-          "motion_idle",
-          "attack_blades_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          6,
-          6
+          5,
+          4,
+          19
         ]
       },
       "blades_dair": {
         "frames": [
-          "attack_blades_0",
-          "attack_blades_1",
-          "attack_blades_2",
+          "element_1_0",
+          "element_1_1",
           "down_blades_dair",
-          "attack_blades_4",
-          "motion_idle",
-          "attack_blades_7"
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          7,
-          6
+          5,
+          4,
+          20
         ]
       },
       "blades_recovery": {
         "frames": [
-          "attack_blades_0",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_4",
-          "motion_idle",
-          "attack_blades_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
+          5,
+          5,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "blades_ground_pound": {
         "frames": [
-          "attack_blades_0",
-          "attack_blades_1",
-          "attack_blades_2",
+          "element_1_0",
+          "element_1_1",
           "down_blades_ground_pound",
-          "attack_blades_4",
-          "motion_idle",
-          "attack_blades_7"
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          5,
-          4,
+          7,
+          7,
           12,
-          9,
-          9,
-          9
+          27
         ]
       },
       "deborah_staff_nsig": {
@@ -6270,6 +6770,48 @@
           19,
           11
         ]
+      },
+      "staff_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "blades_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -6296,21 +6838,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2458,
+      "height": 3375,
       "bodyPixels": 192,
-      "bytes": 2416709
+      "bytes": 3010369
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/deborah.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "gideon": {
-    "image": "assets/runtime/fighters/gideon-down-packed.png",
-    "sha256": "d6eaa1d3b89d3ae16208550a245833c72edcbfeed0dd125aea83920f0d0bb883",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/gideon-elemental-packed.png",
+    "sha256": "5261dc280ce82d53f9a7698a08295ba764ce46d1bc72dcd01c8948272cb89975",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
     "sourceSha256": "4e6803c3a5e5214e92fe4ae42e250bf522054b204b3d992863e41f94a5300896",
     "tool": "tools/art/cut-fighters.ts",
@@ -6760,90 +7307,250 @@
       "down_sword_dair": {
         "x": 446,
         "y": 2067,
-        "w": 183,
-        "h": 190,
-        "pivotX": 88,
-        "pivotY": 190
+        "w": 355,
+        "h": 180,
+        "pivotX": 35,
+        "pivotY": 180
       },
       "down_sword_ground_pound": {
-        "x": 637,
-        "y": 2067,
-        "w": 157,
-        "h": 237,
-        "pivotX": 75,
-        "pivotY": 237
+        "x": 4,
+        "y": 2269,
+        "w": 355,
+        "h": 180,
+        "pivotX": 35,
+        "pivotY": 180
       },
       "down_gideon_sword_dsig": {
-        "x": 4,
-        "y": 2312,
+        "x": 367,
+        "y": 2269,
         "w": 241,
         "h": 119,
         "pivotX": 119,
         "pivotY": 119
       },
       "down_hammer_dlight": {
-        "x": 253,
-        "y": 2312,
+        "x": 616,
+        "y": 2269,
         "w": 266,
         "h": 129,
         "pivotX": 165,
         "pivotY": 129
       },
       "down_hammer_dair": {
-        "x": 527,
-        "y": 2312,
+        "x": 4,
+        "y": 2457,
         "w": 173,
         "h": 185,
         "pivotX": 83,
         "pivotY": 185
       },
       "down_hammer_ground_pound": {
-        "x": 708,
-        "y": 2312,
+        "x": 185,
+        "y": 2457,
         "w": 132,
         "h": 211,
         "pivotX": 63,
         "pivotY": 211
       },
       "down_gideon_hammer_dsig": {
-        "x": 4,
-        "y": 2531,
+        "x": 325,
+        "y": 2457,
         "w": 248,
         "h": 128,
         "pivotX": 131,
         "pivotY": 128
       },
       "down_unarmed_dlight": {
-        "x": 260,
-        "y": 2531,
+        "x": 581,
+        "y": 2457,
         "w": 204,
         "h": 145,
         "pivotX": 83,
         "pivotY": 145
       },
       "down_unarmed_dair": {
-        "x": 472,
-        "y": 2531,
+        "x": 793,
+        "y": 2457,
         "w": 180,
         "h": 160,
         "pivotX": 86,
         "pivotY": 160
       },
       "down_unarmed_ground_pound": {
-        "x": 660,
-        "y": 2531,
+        "x": 4,
+        "y": 2676,
         "w": 137,
         "h": 193,
         "pivotX": 66,
         "pivotY": 193
       },
       "down_unarmed_dsig": {
-        "x": 4,
-        "y": 2732,
+        "x": 149,
+        "y": 2676,
         "w": 219,
         "h": 132,
         "pivotX": 149,
         "pivotY": 132
+      },
+      "element_0_0": {
+        "x": 376,
+        "y": 2676,
+        "w": 250,
+        "h": 182,
+        "pivotX": 135,
+        "pivotY": 182
+      },
+      "element_0_1": {
+        "x": 634,
+        "y": 2676,
+        "w": 232,
+        "h": 206,
+        "pivotX": 125,
+        "pivotY": 206
+      },
+      "element_0_2": {
+        "x": 4,
+        "y": 2890,
+        "w": 355,
+        "h": 180,
+        "pivotX": 35,
+        "pivotY": 180
+      },
+      "element_0_3": {
+        "x": 367,
+        "y": 2890,
+        "w": 291,
+        "h": 191,
+        "pivotX": 142,
+        "pivotY": 191
+      },
+      "element_1_0": {
+        "x": 666,
+        "y": 2890,
+        "w": 222,
+        "h": 182,
+        "pivotX": 115,
+        "pivotY": 182
+      },
+      "element_1_1": {
+        "x": 4,
+        "y": 3089,
+        "w": 187,
+        "h": 241,
+        "pivotX": 37,
+        "pivotY": 241
+      },
+      "element_1_2": {
+        "x": 199,
+        "y": 3089,
+        "w": 293,
+        "h": 184,
+        "pivotX": 25,
+        "pivotY": 184
+      },
+      "element_1_3": {
+        "x": 500,
+        "y": 3089,
+        "w": 237,
+        "h": 188,
+        "pivotX": 65,
+        "pivotY": 188
+      },
+      "element_2_0": {
+        "x": 745,
+        "y": 3089,
+        "w": 207,
+        "h": 192,
+        "pivotX": 109,
+        "pivotY": 192
+      },
+      "element_2_1": {
+        "x": 4,
+        "y": 3338,
+        "w": 264,
+        "h": 180,
+        "pivotX": 162,
+        "pivotY": 180
+      },
+      "element_2_2": {
+        "x": 276,
+        "y": 3338,
+        "w": 306,
+        "h": 176,
+        "pivotX": 121,
+        "pivotY": 176
+      },
+      "element_2_3": {
+        "x": 590,
+        "y": 3338,
+        "w": 213,
+        "h": 186,
+        "pivotX": 107,
+        "pivotY": 186
+      },
+      "element_3_0": {
+        "x": 4,
+        "y": 3532,
+        "w": 222,
+        "h": 175,
+        "pivotX": 115,
+        "pivotY": 175
+      },
+      "element_3_1": {
+        "x": 234,
+        "y": 3532,
+        "w": 202,
+        "h": 222,
+        "pivotX": 96,
+        "pivotY": 222
+      },
+      "element_3_2": {
+        "x": 444,
+        "y": 3532,
+        "w": 236,
+        "h": 163,
+        "pivotX": 132,
+        "pivotY": 163
+      },
+      "element_3_3": {
+        "x": 688,
+        "y": 3532,
+        "w": 226,
+        "h": 181,
+        "pivotX": 107,
+        "pivotY": 181
+      },
+      "down_gideon_shield_dsig": {
+        "x": 4,
+        "y": 3762,
+        "w": 236,
+        "h": 163,
+        "pivotX": 132,
+        "pivotY": 163
+      },
+      "down_shield_dlight": {
+        "x": 248,
+        "y": 3762,
+        "w": 293,
+        "h": 184,
+        "pivotX": 25,
+        "pivotY": 184
+      },
+      "down_shield_dair": {
+        "x": 549,
+        "y": 3762,
+        "w": 293,
+        "h": 184,
+        "pivotX": 25,
+        "pivotY": 184
+      },
+      "down_shield_ground_pound": {
+        "x": 4,
+        "y": 3954,
+        "w": 236,
+        "h": 163,
+        "pivotX": 132,
+        "pivotY": 163
       }
     },
     "clips": {
@@ -6931,262 +7638,72 @@
       },
       "sword_nair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "motion_idle",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          2,
+          4,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "sword_sair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "motion_idle",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "sword_dair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_0_0",
+          "element_0_1",
           "down_sword_dair",
-          "attack_sword_5",
-          "motion_idle",
-          "attack_sword_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          7
+          5,
+          5,
+          21
         ]
       },
       "sword_recovery": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_5",
-          "motion_idle",
-          "attack_sword_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
+          5,
+          6,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sword_ground_pound": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_0_0",
+          "element_0_1",
           "down_sword_ground_pound",
-          "attack_sword_5",
-          "motion_idle",
-          "attack_sword_7"
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
+          7,
+          8,
           12,
-          9,
-          9,
-          9
-        ]
-      },
-      "hammer_nlight": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          4,
-          3,
-          3,
-          5,
-          7,
-          7,
-          7
-        ]
-      },
-      "hammer_slight": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          5,
-          4,
-          4,
-          5,
-          9,
-          8,
-          8
-        ]
-      },
-      "hammer_dlight": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "down_hammer_dlight",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          4,
-          5,
-          8,
-          8,
-          7
-        ]
-      },
-      "hammer_nair": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          4,
-          5,
-          8,
-          8,
-          7
-        ]
-      },
-      "hammer_sair": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
-        ]
-      },
-      "hammer_dair": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "down_hammer_dair",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
-        ]
-      },
-      "hammer_recovery": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          5,
-          5,
-          5,
-          7,
-          10,
-          9,
-          9
-        ]
-      },
-      "hammer_ground_pound": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "down_hammer_ground_pound",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          7,
-          7,
-          6,
-          12,
-          11,
-          11,
-          11
+          27
         ]
       },
       "gideon_sword_nsig": {
@@ -7247,66 +7764,6 @@
           11,
           11,
           11
-        ]
-      },
-      "gideon_hammer_nsig": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          8,
-          8,
-          7,
-          6,
-          11,
-          11,
-          10
-        ]
-      },
-      "gideon_hammer_ssig": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "attack_hammer_3",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          9,
-          9,
-          9,
-          6,
-          12,
-          12,
-          12
-        ]
-      },
-      "gideon_hammer_dsig": {
-        "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "motion_idle",
-          "down_gideon_hammer_dsig",
-          "attack_hammer_5",
-          "motion_idle",
-          "attack_hammer_7"
-        ],
-        "ticks": [
-          10,
-          9,
-          9,
-          6,
-          13,
-          12,
-          12
         ]
       },
       "idle": {
@@ -7531,6 +7988,202 @@
           19,
           11
         ]
+      },
+      "gideon_shield_nsig": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "gideon_shield_ssig": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "gideon_shield_dsig": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "down_gideon_shield_dsig",
+          "element_3_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "shield_nlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          3,
+          4,
+          4,
+          15
+        ]
+      },
+      "shield_slight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          5,
+          4,
+          18
+        ]
+      },
+      "shield_dlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dlight",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          17
+        ]
+      },
+      "shield_nair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          5,
+          16
+        ]
+      },
+      "shield_sair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          20
+        ]
+      },
+      "shield_dair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dair",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          21
+        ]
+      },
+      "shield_recovery": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          6,
+          7,
+          22
+        ]
+      },
+      "shield_ground_pound": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "down_shield_ground_pound",
+          "element_3_3"
+        ],
+        "ticks": [
+          7,
+          8,
+          12,
+          27
+        ]
+      },
+      "sword_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "shield_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -7557,21 +8210,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2868,
+      "height": 4121,
       "bodyPixels": 192,
-      "bytes": 2448891
+      "bytes": 3642039
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/gideon.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "jonathan": {
-    "image": "assets/runtime/fighters/jonathan-down-packed.png",
-    "sha256": "8b4826f129b3a13f7f37bf7a34eab225a515558b7166d7744cbc12949368c884",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/jonathan-elemental-packed.png",
+    "sha256": "3f902af83db57c9fbd43e1f2297ce8d52c6f7e1d68379e4e6de005155ce832e6",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
     "sourceSha256": "41ba1e05d8aabfafa6445a8225c99cea05d2506fd7490b32ccb77718e3c31994",
     "tool": "tools/art/cut-fighters.ts",
@@ -8021,21 +8679,21 @@
       "down_bow_dair": {
         "x": 255,
         "y": 2029,
-        "w": 158,
-        "h": 197,
-        "pivotX": 76,
-        "pivotY": 197
+        "w": 247,
+        "h": 179,
+        "pivotX": 217,
+        "pivotY": 179
       },
       "down_bow_ground_pound": {
-        "x": 421,
+        "x": 510,
         "y": 2029,
-        "w": 192,
-        "h": 214,
-        "pivotX": 92,
-        "pivotY": 214
+        "w": 247,
+        "h": 179,
+        "pivotX": 217,
+        "pivotY": 179
       },
       "down_jonathan_bow_dsig": {
-        "x": 621,
+        "x": 765,
         "y": 2029,
         "w": 241,
         "h": 144,
@@ -8044,7 +8702,7 @@
       },
       "down_sword_dlight": {
         "x": 4,
-        "y": 2251,
+        "y": 2225,
         "w": 260,
         "h": 139,
         "pivotX": 144,
@@ -8052,59 +8710,187 @@
       },
       "down_sword_dair": {
         "x": 272,
-        "y": 2251,
-        "w": 192,
-        "h": 195,
-        "pivotX": 92,
-        "pivotY": 195
+        "y": 2225,
+        "w": 319,
+        "h": 170,
+        "pivotX": 17,
+        "pivotY": 170
       },
       "down_sword_ground_pound": {
-        "x": 472,
-        "y": 2251,
-        "w": 155,
-        "h": 214,
-        "pivotX": 74,
-        "pivotY": 214
+        "x": 599,
+        "y": 2225,
+        "w": 319,
+        "h": 170,
+        "pivotX": 17,
+        "pivotY": 170
       },
       "down_jonathan_sword_dsig": {
-        "x": 635,
-        "y": 2251,
+        "x": 4,
+        "y": 2403,
         "w": 252,
         "h": 134,
         "pivotX": 150,
         "pivotY": 134
       },
       "down_unarmed_dlight": {
-        "x": 4,
-        "y": 2473,
+        "x": 264,
+        "y": 2403,
         "w": 229,
         "h": 164,
         "pivotX": 39,
         "pivotY": 164
       },
       "down_unarmed_dair": {
-        "x": 241,
-        "y": 2473,
+        "x": 501,
+        "y": 2403,
         "w": 191,
         "h": 199,
         "pivotX": 92,
         "pivotY": 199
       },
       "down_unarmed_ground_pound": {
-        "x": 440,
-        "y": 2473,
+        "x": 700,
+        "y": 2403,
         "w": 150,
         "h": 208,
         "pivotX": 72,
         "pivotY": 208
       },
       "down_unarmed_dsig": {
-        "x": 598,
-        "y": 2473,
+        "x": 4,
+        "y": 2619,
         "w": 235,
         "h": 135,
         "pivotX": 103,
         "pivotY": 135
+      },
+      "element_0_0": {
+        "x": 247,
+        "y": 2619,
+        "w": 178,
+        "h": 152,
+        "pivotX": 78,
+        "pivotY": 152
+      },
+      "element_0_1": {
+        "x": 433,
+        "y": 2619,
+        "w": 175,
+        "h": 183,
+        "pivotX": 157,
+        "pivotY": 183
+      },
+      "element_0_2": {
+        "x": 616,
+        "y": 2619,
+        "w": 247,
+        "h": 179,
+        "pivotX": 217,
+        "pivotY": 179
+      },
+      "element_0_3": {
+        "x": 4,
+        "y": 2810,
+        "w": 255,
+        "h": 174,
+        "pivotX": 62,
+        "pivotY": 174
+      },
+      "element_1_0": {
+        "x": 267,
+        "y": 2810,
+        "w": 185,
+        "h": 137,
+        "pivotX": 114,
+        "pivotY": 137
+      },
+      "element_1_1": {
+        "x": 460,
+        "y": 2810,
+        "w": 168,
+        "h": 192,
+        "pivotX": 149,
+        "pivotY": 192
+      },
+      "element_1_2": {
+        "x": 636,
+        "y": 2810,
+        "w": 319,
+        "h": 170,
+        "pivotX": 17,
+        "pivotY": 170
+      },
+      "element_1_3": {
+        "x": 4,
+        "y": 3010,
+        "w": 204,
+        "h": 164,
+        "pivotX": 24,
+        "pivotY": 164
+      },
+      "element_2_0": {
+        "x": 216,
+        "y": 3010,
+        "w": 143,
+        "h": 143,
+        "pivotX": 82,
+        "pivotY": 143
+      },
+      "element_2_1": {
+        "x": 367,
+        "y": 3010,
+        "w": 146,
+        "h": 167,
+        "pivotX": 83,
+        "pivotY": 167
+      },
+      "element_2_2": {
+        "x": 521,
+        "y": 3010,
+        "w": 319,
+        "h": 164,
+        "pivotX": 8,
+        "pivotY": 164
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3185,
+        "w": 193,
+        "h": 125,
+        "pivotX": 132,
+        "pivotY": 125
+      },
+      "element_3_0": {
+        "x": 205,
+        "y": 3185,
+        "w": 179,
+        "h": 209,
+        "pivotX": 94,
+        "pivotY": 209
+      },
+      "element_3_1": {
+        "x": 392,
+        "y": 3185,
+        "w": 208,
+        "h": 195,
+        "pivotX": 115,
+        "pivotY": 195
+      },
+      "element_3_2": {
+        "x": 608,
+        "y": 3185,
+        "w": 217,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
+      },
+      "element_3_3": {
+        "x": 833,
+        "y": 3185,
+        "w": 173,
+        "h": 186,
+        "pivotX": 97,
+        "pivotY": 186
       }
     },
     "clips": {
@@ -8192,102 +8978,72 @@
       },
       "sword_nair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_3",
-          "motion_idle",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          2,
+          4,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "sword_sair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_3",
-          "motion_idle",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "sword_dair": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_dair",
-          "attack_sword_3",
-          "motion_idle",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          7
+          5,
+          5,
+          21
         ]
       },
       "sword_recovery": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_3",
-          "motion_idle",
-          "attack_sword_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
+          5,
+          6,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sword_ground_pound": {
         "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
+          "element_1_0",
+          "element_1_1",
           "down_sword_ground_pound",
-          "attack_sword_3",
-          "motion_idle",
-          "attack_sword_7"
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
+          7,
+          8,
           12,
-          9,
-          9,
-          9
+          27
         ]
       },
       "bow_nlight": {
@@ -8352,102 +9108,72 @@
       },
       "bow_nair": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
           5,
-          6,
-          6,
-          6
+          5,
+          18
         ]
       },
       "bow_sair": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
+          7,
           1,
-          8,
-          8,
-          8
+          24
         ]
       },
       "bow_dair": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
+          "element_0_0",
+          "element_0_1",
           "down_bow_dair",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "bow_recovery": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          9,
-          8,
-          8
+          7,
+          25
         ]
       },
       "bow_ground_pound": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
+          "element_0_0",
+          "element_0_1",
           "down_bow_ground_pound",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "jonathan_bow_nsig": {
@@ -8792,6 +9518,76 @@
           19,
           11
         ]
+      },
+      "sword_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "bow_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "jonathan_sword_sair": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          20
+        ]
+      },
+      "jonathan_sword_nair": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -8816,21 +9612,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2685,
+      "height": 3398,
       "bodyPixels": 192,
-      "bytes": 2538310
+      "bytes": 3154093
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/jonathan.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "moses": {
-    "image": "assets/runtime/fighters/moses-down-packed.png",
-    "sha256": "0b309faec5490816b57f9517efca56f24a546162f5891f255aaa42c13024fdc6",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/moses-staff-spin.png",
+    "sha256": "3b9d5cbffbe382dd10d6b75ca56872585751f7bd54fa46102d28ac439f0b400b",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/08_moses_move_sheet.png",
     "sourceSha256": "882db00322ff10f1cbc4b9900a0c0b19069077c5cd000410891a059976919fcc",
     "tool": "tools/art/cut-fighters.ts",
@@ -9280,90 +10081,258 @@
       "down_staff_dair": {
         "x": 4,
         "y": 2051,
-        "w": 175,
-        "h": 221,
-        "pivotX": 84,
-        "pivotY": 221
+        "w": 335,
+        "h": 163,
+        "pivotX": 17,
+        "pivotY": 163
       },
       "down_staff_ground_pound": {
-        "x": 187,
+        "x": 347,
         "y": 2051,
-        "w": 142,
-        "h": 227,
-        "pivotX": 68,
-        "pivotY": 227
+        "w": 335,
+        "h": 163,
+        "pivotX": 17,
+        "pivotY": 163
       },
       "down_moses_staff_dsig": {
-        "x": 337,
+        "x": 690,
         "y": 2051,
-        "w": 249,
-        "h": 155,
-        "pivotX": 153,
-        "pivotY": 155
+        "w": 234,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
       },
       "down_sling_dlight": {
-        "x": 594,
-        "y": 2051,
+        "x": 4,
+        "y": 2251,
         "w": 238,
         "h": 192,
         "pivotX": 85,
         "pivotY": 192
       },
       "down_sling_dair": {
-        "x": 4,
-        "y": 2286,
-        "w": 188,
-        "h": 220,
-        "pivotX": 90,
-        "pivotY": 220
+        "x": 250,
+        "y": 2251,
+        "w": 369,
+        "h": 155,
+        "pivotX": 37,
+        "pivotY": 155
       },
       "down_sling_ground_pound": {
-        "x": 200,
-        "y": 2286,
-        "w": 144,
-        "h": 206,
-        "pivotX": 69,
-        "pivotY": 206
+        "x": 627,
+        "y": 2251,
+        "w": 369,
+        "h": 155,
+        "pivotX": 37,
+        "pivotY": 155
       },
       "down_moses_sling_dsig": {
-        "x": 352,
-        "y": 2286,
-        "w": 242,
-        "h": 135,
-        "pivotX": 78,
-        "pivotY": 135
+        "x": 4,
+        "y": 2451,
+        "w": 369,
+        "h": 155,
+        "pivotX": 37,
+        "pivotY": 155
       },
       "down_unarmed_dlight": {
-        "x": 602,
-        "y": 2286,
+        "x": 381,
+        "y": 2451,
         "w": 210,
         "h": 187,
         "pivotX": 58,
         "pivotY": 187
       },
       "down_unarmed_dair": {
-        "x": 820,
-        "y": 2286,
+        "x": 599,
+        "y": 2451,
         "w": 182,
         "h": 195,
         "pivotX": 87,
         "pivotY": 195
       },
       "down_unarmed_ground_pound": {
-        "x": 4,
-        "y": 2514,
+        "x": 789,
+        "y": 2451,
         "w": 140,
         "h": 207,
         "pivotX": 67,
         "pivotY": 207
       },
       "down_unarmed_dsig": {
-        "x": 152,
-        "y": 2514,
+        "x": 4,
+        "y": 2666,
         "w": 239,
         "h": 132,
         "pivotX": 77,
         "pivotY": 132
+      },
+      "element_0_0": {
+        "x": 251,
+        "y": 2666,
+        "w": 185,
+        "h": 196,
+        "pivotX": 95,
+        "pivotY": 196
+      },
+      "element_0_1": {
+        "x": 444,
+        "y": 2666,
+        "w": 170,
+        "h": 195,
+        "pivotX": 98,
+        "pivotY": 195
+      },
+      "element_0_2": {
+        "x": 622,
+        "y": 2666,
+        "w": 335,
+        "h": 163,
+        "pivotX": 17,
+        "pivotY": 163
+      },
+      "element_0_3": {
+        "x": 4,
+        "y": 2870,
+        "w": 193,
+        "h": 179,
+        "pivotX": 54,
+        "pivotY": 179
+      },
+      "element_1_0": {
+        "x": 205,
+        "y": 2870,
+        "w": 207,
+        "h": 164,
+        "pivotX": 100,
+        "pivotY": 164
+      },
+      "element_1_1": {
+        "x": 420,
+        "y": 2870,
+        "w": 186,
+        "h": 183,
+        "pivotX": 95,
+        "pivotY": 183
+      },
+      "element_1_2": {
+        "x": 614,
+        "y": 2870,
+        "w": 369,
+        "h": 155,
+        "pivotX": 37,
+        "pivotY": 155
+      },
+      "element_1_3": {
+        "x": 4,
+        "y": 3061,
+        "w": 220,
+        "h": 170,
+        "pivotX": 79,
+        "pivotY": 170
+      },
+      "element_2_0": {
+        "x": 232,
+        "y": 3061,
+        "w": 242,
+        "h": 162,
+        "pivotX": 152,
+        "pivotY": 162
+      },
+      "element_2_1": {
+        "x": 482,
+        "y": 3061,
+        "w": 201,
+        "h": 212,
+        "pivotX": 47,
+        "pivotY": 212
+      },
+      "element_2_2": {
+        "x": 691,
+        "y": 3061,
+        "w": 234,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3281,
+        "w": 177,
+        "h": 182,
+        "pivotX": 76,
+        "pivotY": 182
+      },
+      "element_3_0": {
+        "x": 189,
+        "y": 3281,
+        "w": 167,
+        "h": 173,
+        "pivotX": 91,
+        "pivotY": 173
+      },
+      "element_3_1": {
+        "x": 364,
+        "y": 3281,
+        "w": 225,
+        "h": 162,
+        "pivotX": 11,
+        "pivotY": 162
+      },
+      "element_3_2": {
+        "x": 597,
+        "y": 3281,
+        "w": 328,
+        "h": 154,
+        "pivotX": 16,
+        "pivotY": 154
+      },
+      "element_3_3": {
+        "x": 4,
+        "y": 3471,
+        "w": 181,
+        "h": 189,
+        "pivotX": 42,
+        "pivotY": 189
+      },
+      "down_moses_staff_dlight": {
+        "x": 193,
+        "y": 3471,
+        "w": 234,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
+      },
+      "moses_staff_spin_0": {
+        "x": 4,
+        "y": 3671,
+        "w": 141,
+        "h": 183,
+        "pivotX": 58,
+        "pivotY": 183
+      },
+      "moses_staff_spin_1": {
+        "x": 157,
+        "y": 3671,
+        "w": 216,
+        "h": 148,
+        "pivotX": 104,
+        "pivotY": 148
+      },
+      "moses_staff_spin_2": {
+        "x": 385,
+        "y": 3671,
+        "w": 131,
+        "h": 192,
+        "pivotX": 59,
+        "pivotY": 192
+      },
+      "moses_staff_spin_3": {
+        "x": 528,
+        "y": 3671,
+        "w": 231,
+        "h": 135,
+        "pivotX": 13,
+        "pivotY": 135
       }
     },
     "clips": {
@@ -9391,42 +10360,30 @@
       },
       "sling_nlight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
+          5,
           1,
-          6,
-          6,
-          6
+          18
         ]
       },
       "sling_slight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_4",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sling_dlight": {
@@ -9451,102 +10408,72 @@
       },
       "sling_nair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
           5,
-          6,
-          6,
-          6
+          5,
+          18
         ]
       },
       "sling_sair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          8,
-          7
+          23
         ]
       },
       "sling_dair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_sling_dair",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "sling_recovery": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          8,
-          8,
-          8
+          7,
+          24
         ]
       },
       "sling_ground_pound": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_sling_ground_pound",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          6,
-          5,
-          5,
+          8,
+          8,
           12,
-          10,
-          9,
-          9
+          28
         ]
       },
       "staff_nlight": {
@@ -9611,102 +10538,72 @@
       },
       "staff_nair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          6,
-          6
+          5,
+          5,
+          19
         ]
       },
       "staff_sair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_dair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_dair",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_recovery": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          9,
-          8,
-          8
+          7,
+          25
         ]
       },
       "staff_ground_pound": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_ground_pound",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "moses_staff_nsig": {
@@ -9751,82 +10648,58 @@
       },
       "moses_staff_dsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_2_0",
+          "element_2_1",
           "down_moses_staff_dsig",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "element_2_3"
         ],
         "ticks": [
-          9,
-          9,
-          9,
+          13,
+          14,
           6,
-          12,
-          12,
-          11
+          35
         ]
       },
       "moses_sling_nsig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          8,
-          8,
-          7,
+          11,
+          12,
           5,
-          11,
-          11,
-          10
+          32
         ]
       },
       "moses_sling_ssig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          9,
-          9,
-          8,
+          13,
+          13,
           5,
-          12,
-          12,
-          11
+          35
         ]
       },
       "moses_sling_dsig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_moses_sling_dsig",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          10,
-          9,
-          9,
+          14,
+          14,
           5,
-          12,
-          12,
-          12
+          36
         ]
       },
       "idle": {
@@ -10051,6 +10924,64 @@
           19,
           11
         ]
+      },
+      "sling_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "staff_air_combo": {
+        "frames": [
+          "moses_staff_spin_0",
+          "moses_staff_spin_1",
+          "moses_staff_spin_2",
+          "moses_staff_spin_3",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          2,
+          3,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "moses_staff_dlight": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "down_moses_staff_dlight",
+          "element_2_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          20
+        ]
       }
     },
     "movement": {
@@ -10075,21 +11006,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2725,
+      "height": 3667,
       "bodyPixels": 192,
-      "bytes": 2696867
+      "bytes": 3501094
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/moses.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "esther": {
-    "image": "assets/runtime/fighters/esther-down-packed.png",
-    "sha256": "bf57c216b10ecf0bf9cc9d7555b87d73c2b4592cadcd868ed8955ed98f683bf1",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/esther-elemental-packed.png",
+    "sha256": "02ee835f7f49c2e0e80254cfd29c603d823d43cafa9c1135f4c4b72088d64dd3",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/09_esther_move_sheet.png",
     "sourceSha256": "8c838d757b396d6f952c2ad85b3eee8a8944022551d50e33e4078a0d0c2d53e9",
     "tool": "tools/art/cut-fighters.ts",
@@ -10539,90 +11475,218 @@
       "down_blades_dair": {
         "x": 731,
         "y": 1802,
-        "w": 145,
-        "h": 208,
-        "pivotX": 70,
-        "pivotY": 208
+        "w": 204,
+        "h": 175,
+        "pivotX": 188,
+        "pivotY": 175
       },
       "down_blades_ground_pound": {
         "x": 4,
-        "y": 2018,
-        "w": 155,
-        "h": 177,
-        "pivotX": 74,
-        "pivotY": 177
+        "y": 1991,
+        "w": 204,
+        "h": 175,
+        "pivotX": 188,
+        "pivotY": 175
       },
       "down_esther_blades_dsig": {
-        "x": 167,
-        "y": 2018,
+        "x": 216,
+        "y": 1991,
         "w": 217,
         "h": 160,
         "pivotX": 111,
         "pivotY": 160
       },
       "down_staff_dlight": {
-        "x": 392,
-        "y": 2018,
+        "x": 441,
+        "y": 1991,
         "w": 306,
         "h": 158,
         "pivotX": 85,
         "pivotY": 158
       },
       "down_staff_dair": {
-        "x": 706,
-        "y": 2018,
-        "w": 200,
-        "h": 230,
-        "pivotX": 96,
-        "pivotY": 230
+        "x": 4,
+        "y": 2174,
+        "w": 345,
+        "h": 191,
+        "pivotX": 13,
+        "pivotY": 191
       },
       "down_staff_ground_pound": {
-        "x": 4,
-        "y": 2256,
-        "w": 119,
-        "h": 236,
-        "pivotX": 57,
-        "pivotY": 236
+        "x": 357,
+        "y": 2174,
+        "w": 345,
+        "h": 191,
+        "pivotX": 13,
+        "pivotY": 191
       },
       "down_esther_staff_dsig": {
-        "x": 131,
-        "y": 2256,
+        "x": 710,
+        "y": 2174,
         "w": 253,
         "h": 152,
         "pivotX": 140,
         "pivotY": 152
       },
       "down_unarmed_dlight": {
-        "x": 392,
-        "y": 2256,
+        "x": 4,
+        "y": 2373,
         "w": 235,
         "h": 157,
         "pivotX": 64,
         "pivotY": 157
       },
       "down_unarmed_dair": {
-        "x": 635,
-        "y": 2256,
+        "x": 247,
+        "y": 2373,
         "w": 188,
         "h": 216,
         "pivotX": 90,
         "pivotY": 216
       },
       "down_unarmed_ground_pound": {
-        "x": 831,
-        "y": 2256,
+        "x": 443,
+        "y": 2373,
         "w": 122,
         "h": 215,
         "pivotX": 59,
         "pivotY": 215
       },
       "down_unarmed_dsig": {
-        "x": 4,
-        "y": 2500,
+        "x": 573,
+        "y": 2373,
         "w": 215,
         "h": 157,
         "pivotX": 104,
         "pivotY": 157
+      },
+      "element_0_0": {
+        "x": 796,
+        "y": 2373,
+        "w": 192,
+        "h": 187,
+        "pivotX": 78,
+        "pivotY": 187
+      },
+      "element_0_1": {
+        "x": 4,
+        "y": 2597,
+        "w": 192,
+        "h": 187,
+        "pivotX": 60,
+        "pivotY": 187
+      },
+      "element_0_2": {
+        "x": 204,
+        "y": 2597,
+        "w": 204,
+        "h": 175,
+        "pivotX": 188,
+        "pivotY": 175
+      },
+      "element_0_3": {
+        "x": 416,
+        "y": 2597,
+        "w": 193,
+        "h": 183,
+        "pivotX": 98,
+        "pivotY": 183
+      },
+      "element_1_0": {
+        "x": 617,
+        "y": 2597,
+        "w": 213,
+        "h": 192,
+        "pivotX": 62,
+        "pivotY": 192
+      },
+      "element_1_1": {
+        "x": 4,
+        "y": 2797,
+        "w": 200,
+        "h": 203,
+        "pivotX": 138,
+        "pivotY": 203
+      },
+      "element_1_2": {
+        "x": 212,
+        "y": 2797,
+        "w": 345,
+        "h": 191,
+        "pivotX": 13,
+        "pivotY": 191
+      },
+      "element_1_3": {
+        "x": 565,
+        "y": 2797,
+        "w": 163,
+        "h": 211,
+        "pivotX": 9,
+        "pivotY": 211
+      },
+      "element_2_0": {
+        "x": 736,
+        "y": 2797,
+        "w": 214,
+        "h": 147,
+        "pivotX": 98,
+        "pivotY": 147
+      },
+      "element_2_1": {
+        "x": 4,
+        "y": 3016,
+        "w": 277,
+        "h": 177,
+        "pivotX": 166,
+        "pivotY": 177
+      },
+      "element_2_2": {
+        "x": 289,
+        "y": 3016,
+        "w": 257,
+        "h": 185,
+        "pivotX": 117,
+        "pivotY": 185
+      },
+      "element_2_3": {
+        "x": 554,
+        "y": 3016,
+        "w": 193,
+        "h": 157,
+        "pivotX": 65,
+        "pivotY": 157
+      },
+      "element_3_0": {
+        "x": 755,
+        "y": 3016,
+        "w": 148,
+        "h": 182,
+        "pivotX": 76,
+        "pivotY": 182
+      },
+      "element_3_1": {
+        "x": 4,
+        "y": 3209,
+        "w": 206,
+        "h": 202,
+        "pivotX": 97,
+        "pivotY": 202
+      },
+      "element_3_2": {
+        "x": 218,
+        "y": 3209,
+        "w": 316,
+        "h": 181,
+        "pivotX": 11,
+        "pivotY": 181
+      },
+      "element_3_3": {
+        "x": 542,
+        "y": 3209,
+        "w": 178,
+        "h": 187,
+        "pivotX": 73,
+        "pivotY": 187
       }
     },
     "clips": {
@@ -10710,102 +11774,72 @@
       },
       "staff_nair": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          6,
-          6
+          5,
+          5,
+          19
         ]
       },
       "staff_sair": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_dair": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_1_0",
+          "element_1_1",
           "down_staff_dair",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_recovery": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          9,
-          8,
-          8
+          7,
+          25
         ]
       },
       "staff_ground_pound": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_1_0",
+          "element_1_1",
           "down_staff_ground_pound",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "element_1_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "blades_nlight": {
@@ -10870,102 +11904,72 @@
       },
       "blades_nair": {
         "frames": [
-          "motion_idle",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_7",
-          "motion_idle",
-          "attack_blades_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
           3,
-          2,
-          2,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "blades_sair": {
         "frames": [
-          "motion_idle",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_7",
-          "motion_idle",
-          "attack_blades_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          6,
-          6
+          5,
+          4,
+          19
         ]
       },
       "blades_dair": {
         "frames": [
-          "motion_idle",
-          "attack_blades_1",
-          "attack_blades_2",
+          "element_0_0",
+          "element_0_1",
           "down_blades_dair",
-          "attack_blades_7",
-          "motion_idle",
-          "attack_blades_7"
+          "element_0_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          7,
-          6
+          5,
+          4,
+          20
         ]
       },
       "blades_recovery": {
         "frames": [
-          "motion_idle",
-          "attack_blades_1",
-          "attack_blades_2",
-          "attack_blades_2",
-          "attack_blades_7",
-          "motion_idle",
-          "attack_blades_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
+          5,
+          5,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "blades_ground_pound": {
         "frames": [
-          "motion_idle",
-          "attack_blades_1",
-          "attack_blades_2",
+          "element_0_0",
+          "element_0_1",
           "down_blades_ground_pound",
-          "attack_blades_7",
-          "motion_idle",
-          "attack_blades_7"
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          5,
-          4,
+          7,
+          7,
           12,
-          9,
-          9,
-          9
+          27
         ]
       },
       "esther_blades_nsig": {
@@ -11310,6 +12314,62 @@
           19,
           11
         ]
+      },
+      "staff_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "blades_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "esther_blades_slight": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_2",
+          "element_2_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          14,
+          18
+        ]
       }
     },
     "movement": {
@@ -11340,21 +12400,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2661,
+      "height": 3415,
       "bodyPixels": 192,
-      "bytes": 2465581
+      "bytes": 3146469
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/esther.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "miriam": {
-    "image": "assets/runtime/fighters/miriam-down-packed.png",
-    "sha256": "e5efc52135117076aeb88c788dbef2ff0c1b564be381f75b1841cbfc551b84f6",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/miriam-elemental-packed.png",
+    "sha256": "1a433729c269f1750b6abd93fead31203364005d19aa3949f269311cb4bdc1e6",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
     "tool": "tools/art/cut-fighters.ts",
@@ -11804,90 +12869,218 @@
       "down_staff_dair": {
         "x": 416,
         "y": 1813,
-        "w": 200,
-        "h": 227,
-        "pivotX": 96,
-        "pivotY": 227
+        "w": 307,
+        "h": 186,
+        "pivotX": 12,
+        "pivotY": 186
       },
       "down_staff_ground_pound": {
-        "x": 624,
-        "y": 1813,
-        "w": 128,
-        "h": 234,
-        "pivotX": 61,
-        "pivotY": 234
+        "x": 4,
+        "y": 2007,
+        "w": 307,
+        "h": 186,
+        "pivotX": 12,
+        "pivotY": 186
       },
       "down_miriam_staff_dsig": {
-        "x": 760,
-        "y": 1813,
+        "x": 319,
+        "y": 2007,
         "w": 233,
         "h": 160,
         "pivotX": 105,
         "pivotY": 160
       },
       "down_sling_dlight": {
-        "x": 4,
-        "y": 2055,
+        "x": 560,
+        "y": 2007,
         "w": 217,
         "h": 208,
         "pivotX": 101,
         "pivotY": 208
       },
       "down_sling_dair": {
-        "x": 229,
-        "y": 2055,
-        "w": 163,
-        "h": 193,
-        "pivotX": 78,
-        "pivotY": 193
+        "x": 4,
+        "y": 2223,
+        "w": 323,
+        "h": 181,
+        "pivotX": 14,
+        "pivotY": 181
       },
       "down_sling_ground_pound": {
-        "x": 400,
-        "y": 2055,
-        "w": 137,
-        "h": 213,
-        "pivotX": 66,
-        "pivotY": 213
+        "x": 335,
+        "y": 2223,
+        "w": 323,
+        "h": 181,
+        "pivotX": 14,
+        "pivotY": 181
       },
       "down_miriam_sling_dsig": {
-        "x": 545,
-        "y": 2055,
-        "w": 258,
-        "h": 144,
-        "pivotX": 67,
-        "pivotY": 144
+        "x": 666,
+        "y": 2223,
+        "w": 323,
+        "h": 181,
+        "pivotX": 14,
+        "pivotY": 181
       },
       "down_unarmed_dlight": {
-        "x": 811,
-        "y": 2055,
+        "x": 4,
+        "y": 2412,
         "w": 187,
         "h": 210,
         "pivotX": 90,
         "pivotY": 210
       },
       "down_unarmed_dair": {
-        "x": 4,
-        "y": 2276,
+        "x": 199,
+        "y": 2412,
         "w": 155,
         "h": 182,
         "pivotX": 74,
         "pivotY": 182
       },
       "down_unarmed_ground_pound": {
-        "x": 167,
-        "y": 2276,
+        "x": 362,
+        "y": 2412,
         "w": 112,
         "h": 191,
         "pivotX": 54,
         "pivotY": 191
       },
       "down_unarmed_dsig": {
-        "x": 287,
-        "y": 2276,
+        "x": 482,
+        "y": 2412,
         "w": 220,
         "h": 149,
         "pivotX": 68,
         "pivotY": 149
+      },
+      "element_0_0": {
+        "x": 710,
+        "y": 2412,
+        "w": 207,
+        "h": 163,
+        "pivotX": 128,
+        "pivotY": 163
+      },
+      "element_0_1": {
+        "x": 4,
+        "y": 2630,
+        "w": 179,
+        "h": 191,
+        "pivotX": 40,
+        "pivotY": 191
+      },
+      "element_0_2": {
+        "x": 191,
+        "y": 2630,
+        "w": 307,
+        "h": 186,
+        "pivotX": 12,
+        "pivotY": 186
+      },
+      "element_0_3": {
+        "x": 506,
+        "y": 2630,
+        "w": 189,
+        "h": 197,
+        "pivotX": 33,
+        "pivotY": 197
+      },
+      "element_1_0": {
+        "x": 703,
+        "y": 2630,
+        "w": 198,
+        "h": 176,
+        "pivotX": 107,
+        "pivotY": 176
+      },
+      "element_1_1": {
+        "x": 4,
+        "y": 2835,
+        "w": 199,
+        "h": 192,
+        "pivotX": 75,
+        "pivotY": 192
+      },
+      "element_1_2": {
+        "x": 211,
+        "y": 2835,
+        "w": 323,
+        "h": 181,
+        "pivotX": 14,
+        "pivotY": 181
+      },
+      "element_1_3": {
+        "x": 542,
+        "y": 2835,
+        "w": 182,
+        "h": 198,
+        "pivotX": 28,
+        "pivotY": 198
+      },
+      "element_2_0": {
+        "x": 732,
+        "y": 2835,
+        "w": 207,
+        "h": 186,
+        "pivotX": 121,
+        "pivotY": 186
+      },
+      "element_2_1": {
+        "x": 4,
+        "y": 3041,
+        "w": 244,
+        "h": 213,
+        "pivotX": 51,
+        "pivotY": 213
+      },
+      "element_2_2": {
+        "x": 256,
+        "y": 3041,
+        "w": 341,
+        "h": 189,
+        "pivotX": 10,
+        "pivotY": 189
+      },
+      "element_2_3": {
+        "x": 605,
+        "y": 3041,
+        "w": 195,
+        "h": 183,
+        "pivotX": 53,
+        "pivotY": 183
+      },
+      "element_3_0": {
+        "x": 808,
+        "y": 3041,
+        "w": 162,
+        "h": 178,
+        "pivotX": 19,
+        "pivotY": 178
+      },
+      "element_3_1": {
+        "x": 4,
+        "y": 3262,
+        "w": 200,
+        "h": 186,
+        "pivotX": 68,
+        "pivotY": 186
+      },
+      "element_3_2": {
+        "x": 212,
+        "y": 3262,
+        "w": 331,
+        "h": 176,
+        "pivotX": 11,
+        "pivotY": 176
+      },
+      "element_3_3": {
+        "x": 551,
+        "y": 3262,
+        "w": 190,
+        "h": 178,
+        "pivotX": 65,
+        "pivotY": 178
       }
     },
     "clips": {
@@ -11915,42 +13108,30 @@
       },
       "sling_nlight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
+          5,
           1,
-          6,
-          6,
-          6
+          18
         ]
       },
       "sling_slight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_4",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          7,
-          7
+          22
         ]
       },
       "sling_dlight": {
@@ -11975,102 +13156,72 @@
       },
       "sling_nair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
           5,
-          6,
-          6,
-          6
+          5,
+          18
         ]
       },
       "sling_sair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          8,
-          7
+          23
         ]
       },
       "sling_dair": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_sling_dair",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "sling_recovery": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          8,
-          8,
-          8
+          7,
+          24
         ]
       },
       "sling_ground_pound": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_sling_ground_pound",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          6,
-          5,
-          5,
+          8,
+          8,
           12,
-          10,
-          9,
-          9
+          28
         ]
       },
       "staff_nlight": {
@@ -12135,102 +13286,72 @@
       },
       "staff_nair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          6,
-          6
+          5,
+          5,
+          19
         ]
       },
       "staff_sair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_dair": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_dair",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "staff_recovery": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          9,
-          8,
-          8
+          7,
+          25
         ]
       },
       "staff_ground_pound": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "element_0_0",
+          "element_0_1",
           "down_staff_ground_pound",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "element_0_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "miriam_staff_nsig": {
@@ -12295,62 +13416,44 @@
       },
       "miriam_sling_nsig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          7,
-          7,
-          6,
+          10,
+          10,
           5,
-          9,
-          9,
-          9
+          27
         ]
       },
       "miriam_sling_ssig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
-          "attack_sling_3",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          8,
-          8,
-          8,
+          12,
+          12,
           5,
-          11,
-          10,
-          10
+          31
         ]
       },
       "miriam_sling_dsig": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "element_1_0",
+          "element_1_1",
           "down_miriam_sling_dsig",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "element_1_3"
         ],
         "ticks": [
-          9,
-          9,
-          8,
+          13,
+          13,
           5,
-          11,
-          11,
-          11
+          33
         ]
       },
       "idle": {
@@ -12575,6 +13678,48 @@
           19,
           11
         ]
+      },
+      "sling_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "staff_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
       }
     },
     "movement": {
@@ -12597,21 +13742,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2471,
+      "height": 3452,
       "bodyPixels": 192,
-      "bytes": 2284720
+      "bytes": 2931708
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/miriam.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "nehemiah": {
-    "image": "assets/runtime/fighters/nehemiah-down-packed.png",
-    "sha256": "fbb8d5340c0a10a83a3204366e554c22ef1029a715c56a340005423842f8d866",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/nehemiah-elemental-packed.png",
+    "sha256": "74fd102ca09bf460526f75bc262053897ebe0ff660ee8ed0d6ab92e607cf6eb9",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
     "tool": "tools/art/cut-fighters.ts",
@@ -13059,92 +14209,260 @@
         "pivotY": 132
       },
       "down_hammer_dair": {
-        "x": 781,
-        "y": 1847,
-        "w": 195,
-        "h": 200,
-        "pivotX": 94,
-        "pivotY": 200
-      },
-      "down_hammer_ground_pound": {
         "x": 4,
         "y": 2055,
-        "w": 110,
-        "h": 243,
-        "pivotX": 53,
-        "pivotY": 243
+        "w": 281,
+        "h": 153,
+        "pivotX": 28,
+        "pivotY": 153
+      },
+      "down_hammer_ground_pound": {
+        "x": 293,
+        "y": 2055,
+        "w": 281,
+        "h": 153,
+        "pivotX": 28,
+        "pivotY": 153
       },
       "down_nehemiah_hammer_dsig": {
-        "x": 122,
+        "x": 582,
         "y": 2055,
-        "w": 242,
-        "h": 163,
-        "pivotX": 151,
-        "pivotY": 163
+        "w": 227,
+        "h": 131,
+        "pivotX": 137,
+        "pivotY": 131
       },
       "down_sword_dlight": {
-        "x": 372,
-        "y": 2055,
+        "x": 4,
+        "y": 2216,
         "w": 235,
         "h": 136,
         "pivotX": 100,
         "pivotY": 136
       },
       "down_sword_dair": {
-        "x": 615,
-        "y": 2055,
+        "x": 247,
+        "y": 2216,
         "w": 181,
         "h": 190,
         "pivotX": 87,
         "pivotY": 190
       },
       "down_sword_ground_pound": {
-        "x": 804,
-        "y": 2055,
+        "x": 436,
+        "y": 2216,
         "w": 109,
         "h": 225,
         "pivotX": 52,
         "pivotY": 225
       },
       "down_nehemiah_sword_dsig": {
-        "x": 4,
-        "y": 2306,
+        "x": 553,
+        "y": 2216,
         "w": 258,
         "h": 119,
         "pivotX": 92,
         "pivotY": 119
       },
       "down_unarmed_dlight": {
-        "x": 270,
-        "y": 2306,
+        "x": 819,
+        "y": 2216,
         "w": 199,
         "h": 160,
         "pivotX": 72,
         "pivotY": 160
       },
       "down_unarmed_dair": {
-        "x": 477,
-        "y": 2306,
+        "x": 4,
+        "y": 2449,
         "w": 145,
         "h": 187,
         "pivotX": 70,
         "pivotY": 187
       },
       "down_unarmed_ground_pound": {
-        "x": 630,
-        "y": 2306,
+        "x": 157,
+        "y": 2449,
         "w": 112,
         "h": 159,
         "pivotX": 54,
         "pivotY": 159
       },
       "down_unarmed_dsig": {
-        "x": 750,
-        "y": 2306,
+        "x": 277,
+        "y": 2449,
         "w": 220,
         "h": 119,
         "pivotX": 93,
         "pivotY": 119
+      },
+      "element_0_0": {
+        "x": 505,
+        "y": 2449,
+        "w": 172,
+        "h": 189,
+        "pivotX": 69,
+        "pivotY": 189
+      },
+      "element_0_1": {
+        "x": 685,
+        "y": 2449,
+        "w": 134,
+        "h": 226,
+        "pivotX": 63,
+        "pivotY": 226
+      },
+      "element_0_2": {
+        "x": 4,
+        "y": 2683,
+        "w": 281,
+        "h": 153,
+        "pivotX": 28,
+        "pivotY": 153
+      },
+      "element_0_3": {
+        "x": 293,
+        "y": 2683,
+        "w": 226,
+        "h": 161,
+        "pivotX": 45,
+        "pivotY": 161
+      },
+      "element_1_0": {
+        "x": 527,
+        "y": 2683,
+        "w": 151,
+        "h": 159,
+        "pivotX": 38,
+        "pivotY": 159
+      },
+      "element_1_1": {
+        "x": 686,
+        "y": 2683,
+        "w": 152,
+        "h": 199,
+        "pivotX": 68,
+        "pivotY": 199
+      },
+      "element_1_2": {
+        "x": 4,
+        "y": 2890,
+        "w": 247,
+        "h": 149,
+        "pivotX": 50,
+        "pivotY": 149
+      },
+      "element_1_3": {
+        "x": 259,
+        "y": 2890,
+        "w": 198,
+        "h": 192,
+        "pivotX": 38,
+        "pivotY": 192
+      },
+      "element_2_0": {
+        "x": 465,
+        "y": 2890,
+        "w": 200,
+        "h": 164,
+        "pivotX": 105,
+        "pivotY": 164
+      },
+      "element_2_1": {
+        "x": 673,
+        "y": 2890,
+        "w": 189,
+        "h": 220,
+        "pivotX": 95,
+        "pivotY": 220
+      },
+      "element_2_2": {
+        "x": 4,
+        "y": 3118,
+        "w": 227,
+        "h": 131,
+        "pivotX": 137,
+        "pivotY": 131
+      },
+      "element_2_3": {
+        "x": 239,
+        "y": 3118,
+        "w": 216,
+        "h": 148,
+        "pivotX": 94,
+        "pivotY": 148
+      },
+      "element_3_0": {
+        "x": 463,
+        "y": 3118,
+        "w": 181,
+        "h": 159,
+        "pivotX": 88,
+        "pivotY": 159
+      },
+      "element_3_1": {
+        "x": 652,
+        "y": 3118,
+        "w": 238,
+        "h": 159,
+        "pivotX": 102,
+        "pivotY": 159
+      },
+      "element_3_2": {
+        "x": 4,
+        "y": 3285,
+        "w": 242,
+        "h": 155,
+        "pivotX": 96,
+        "pivotY": 155
+      },
+      "element_3_3": {
+        "x": 254,
+        "y": 3285,
+        "w": 191,
+        "h": 150,
+        "pivotX": 89,
+        "pivotY": 150
+      },
+      "down_nehemiah_shield_dsig": {
+        "x": 453,
+        "y": 3285,
+        "w": 247,
+        "h": 149,
+        "pivotX": 50,
+        "pivotY": 149
+      },
+      "down_shield_dlight": {
+        "x": 708,
+        "y": 3285,
+        "w": 247,
+        "h": 149,
+        "pivotX": 50,
+        "pivotY": 149
+      },
+      "down_shield_dair": {
+        "x": 4,
+        "y": 3448,
+        "w": 247,
+        "h": 149,
+        "pivotX": 50,
+        "pivotY": 149
+      },
+      "down_shield_ground_pound": {
+        "x": 259,
+        "y": 3448,
+        "w": 247,
+        "h": 149,
+        "pivotX": 50,
+        "pivotY": 149
+      },
+      "down_nehemiah_hammer_dlight": {
+        "x": 514,
+        "y": 3448,
+        "w": 227,
+        "h": 131,
+        "pivotX": 137,
+        "pivotY": 131
       }
     },
     "clips": {
@@ -13168,166 +14486,6 @@
           4,
           4,
           4
-        ]
-      },
-      "sword_nlight": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          3,
-          2,
-          2,
-          4,
-          5,
-          5,
-          5
-        ]
-      },
-      "sword_slight": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          3,
-          3,
-          3,
-          4,
-          6,
-          6,
-          6
-        ]
-      },
-      "sword_dlight": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "down_sword_dlight",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          3,
-          3,
-          2,
-          4,
-          6,
-          6,
-          5
-        ]
-      },
-      "sword_nair": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          3,
-          3,
-          2,
-          5,
-          6,
-          5,
-          5
-        ]
-      },
-      "sword_sair": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          4,
-          3,
-          3,
-          5,
-          7,
-          7,
-          6
-        ]
-      },
-      "sword_dair": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "down_sword_dair",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          4,
-          3,
-          3,
-          5,
-          7,
-          7,
-          7
-        ]
-      },
-      "sword_recovery": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          4,
-          4,
-          3,
-          7,
-          8,
-          7,
-          7
-        ]
-      },
-      "sword_ground_pound": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "down_sword_ground_pound",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          5,
-          5,
-          5,
-          12,
-          9,
-          9,
-          9
         ]
       },
       "hammer_nlight": {
@@ -13392,102 +14550,72 @@
       },
       "hammer_nair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "hammer_sair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
+          7,
+          7,
           5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
+          27
         ]
       },
       "hammer_dair": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
+          "element_0_0",
+          "element_0_1",
           "down_hammer_dair",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_0_3"
         ],
         "ticks": [
+          7,
+          7,
           5,
-          5,
-          4,
-          5,
-          9,
-          9,
-          9
+          27
         ]
       },
       "hammer_recovery": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          5,
-          5,
           7,
-          10,
-          9,
-          9
+          8,
+          7,
+          28
         ]
       },
       "hammer_ground_pound": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
+          "element_0_0",
+          "element_0_1",
           "down_hammer_ground_pound",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_0_3"
         ],
         "ticks": [
-          7,
-          7,
-          6,
+          10,
+          10,
           12,
-          11,
-          11,
-          11
+          33
         ]
       },
       "nehemiah_hammer_nsig": {
@@ -13532,82 +14660,16 @@
       },
       "nehemiah_hammer_dsig": {
         "frames": [
-          "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
+          "element_2_0",
+          "element_2_1",
           "down_nehemiah_hammer_dsig",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "element_2_3"
         ],
         "ticks": [
-          10,
-          10,
-          10,
+          15,
+          15,
           7,
-          13,
-          13,
-          13
-        ]
-      },
-      "nehemiah_sword_nsig": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          7,
-          7,
-          7,
-          5,
-          10,
-          10,
-          10
-        ]
-      },
-      "nehemiah_sword_ssig": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "attack_sword_3",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          9,
-          8,
-          8,
-          5,
-          12,
-          11,
-          11
-        ]
-      },
-      "nehemiah_sword_dsig": {
-        "frames": [
-          "attack_sword_0",
-          "attack_sword_1",
-          "attack_sword_2",
-          "down_nehemiah_sword_dsig",
-          "attack_sword_6",
-          "attack_sword_6",
-          "attack_sword_7"
-        ],
-        "ticks": [
-          9,
-          9,
-          9,
-          6,
-          12,
-          12,
-          12
+          39
         ]
       },
       "idle": {
@@ -13832,6 +14894,216 @@
           19,
           11
         ]
+      },
+      "nehemiah_shield_nsig": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "nehemiah_shield_ssig": {
+        "frames": [
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "nehemiah_shield_dsig": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_nehemiah_shield_dsig",
+          "element_1_3"
+        ],
+        "ticks": [
+          8,
+          8,
+          8,
+          22
+        ]
+      },
+      "shield_nlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          3,
+          4,
+          4,
+          15
+        ]
+      },
+      "shield_slight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          5,
+          4,
+          18
+        ]
+      },
+      "shield_dlight": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dlight",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          4,
+          17
+        ]
+      },
+      "shield_nair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          5,
+          16
+        ]
+      },
+      "shield_sair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          20
+        ]
+      },
+      "shield_dair": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_dair",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          5,
+          5,
+          21
+        ]
+      },
+      "shield_recovery": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          5,
+          6,
+          7,
+          22
+        ]
+      },
+      "shield_ground_pound": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "down_shield_ground_pound",
+          "element_1_3"
+        ],
+        "ticks": [
+          7,
+          8,
+          12,
+          27
+        ]
+      },
+      "hammer_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "shield_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "nehemiah_hammer_dlight": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "down_nehemiah_hammer_dlight",
+          "element_2_3"
+        ],
+        "ticks": [
+          6,
+          6,
+          5,
+          23
+        ]
       }
     },
     "movement": {
@@ -13856,21 +15128,26 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2497,
+      "height": 3601,
       "bodyPixels": 192,
-      "bytes": 2408763
+      "bytes": 3407491
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/nehemiah.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   },
   "caleb": {
-    "image": "assets/runtime/fighters/caleb-down-packed.png",
-    "sha256": "176be9a1f97503af0f0567b783d7ac8069aa6122a3b173f392388ef7bdc86b00",
-    "readiness": "concept_cut",
+    "image": "assets/runtime/fighters/caleb-elemental-packed.png",
+    "sha256": "f84317229b7c392b23a934a8c3d0cdff269d4f2d25e34fa9eeb2f261469bc98f",
+    "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
     "sourceSha256": "66583e5f9fe76f7151e7d1c47b89a4e4645905f995e4567dfdbc075c9105e341",
     "tool": "tools/art/cut-fighters.ts",
@@ -14320,90 +15597,218 @@
       "down_spear_dair": {
         "x": 464,
         "y": 1957,
-        "w": 201,
-        "h": 207,
-        "pivotX": 96,
-        "pivotY": 207
+        "w": 417,
+        "h": 149,
+        "pivotX": 41,
+        "pivotY": 149
       },
       "down_spear_ground_pound": {
-        "x": 673,
-        "y": 1957,
-        "w": 168,
-        "h": 218,
-        "pivotX": 81,
-        "pivotY": 218
+        "x": 4,
+        "y": 2157,
+        "w": 290,
+        "h": 150,
+        "pivotX": 154,
+        "pivotY": 150
       },
       "down_caleb_spear_dsig": {
-        "x": 4,
-        "y": 2183,
+        "x": 302,
+        "y": 2157,
         "w": 243,
         "h": 132,
         "pivotX": 132,
         "pivotY": 132
       },
       "down_gauntlets_dlight": {
-        "x": 255,
-        "y": 2183,
+        "x": 553,
+        "y": 2157,
         "w": 216,
         "h": 134,
         "pivotX": 116,
         "pivotY": 134
       },
       "down_gauntlets_dair": {
-        "x": 479,
-        "y": 2183,
-        "w": 165,
-        "h": 208,
-        "pivotX": 79,
-        "pivotY": 208
+        "x": 4,
+        "y": 2315,
+        "w": 291,
+        "h": 176,
+        "pivotX": 26,
+        "pivotY": 176
       },
       "down_gauntlets_ground_pound": {
-        "x": 652,
-        "y": 2183,
-        "w": 186,
-        "h": 148,
-        "pivotX": 89,
-        "pivotY": 148
+        "x": 303,
+        "y": 2315,
+        "w": 290,
+        "h": 150,
+        "pivotX": 154,
+        "pivotY": 150
       },
       "down_caleb_gauntlets_dsig": {
-        "x": 4,
-        "y": 2399,
+        "x": 601,
+        "y": 2315,
         "w": 241,
         "h": 129,
         "pivotX": 119,
         "pivotY": 129
       },
       "down_unarmed_dlight": {
-        "x": 253,
-        "y": 2399,
+        "x": 4,
+        "y": 2499,
         "w": 231,
         "h": 157,
         "pivotX": 23,
         "pivotY": 157
       },
       "down_unarmed_dair": {
-        "x": 492,
-        "y": 2399,
+        "x": 243,
+        "y": 2499,
         "w": 183,
         "h": 222,
         "pivotX": 88,
         "pivotY": 222
       },
       "down_unarmed_ground_pound": {
-        "x": 683,
-        "y": 2399,
-        "w": 120,
-        "h": 200,
-        "pivotX": 58,
-        "pivotY": 200
+        "x": 434,
+        "y": 2499,
+        "w": 290,
+        "h": 150,
+        "pivotX": 154,
+        "pivotY": 150
       },
       "down_unarmed_dsig": {
-        "x": 4,
-        "y": 2629,
+        "x": 732,
+        "y": 2499,
         "w": 225,
         "h": 126,
         "pivotX": 51,
         "pivotY": 126
+      },
+      "element_0_0": {
+        "x": 4,
+        "y": 2729,
+        "w": 256,
+        "h": 198,
+        "pivotX": 122,
+        "pivotY": 198
+      },
+      "element_0_1": {
+        "x": 268,
+        "y": 2729,
+        "w": 278,
+        "h": 183,
+        "pivotX": 109,
+        "pivotY": 183
+      },
+      "element_0_2": {
+        "x": 554,
+        "y": 2729,
+        "w": 417,
+        "h": 149,
+        "pivotX": 41,
+        "pivotY": 149
+      },
+      "element_0_3": {
+        "x": 4,
+        "y": 2935,
+        "w": 229,
+        "h": 190,
+        "pivotX": 79,
+        "pivotY": 190
+      },
+      "element_1_0": {
+        "x": 241,
+        "y": 2935,
+        "w": 158,
+        "h": 159,
+        "pivotX": 58,
+        "pivotY": 159
+      },
+      "element_1_1": {
+        "x": 407,
+        "y": 2935,
+        "w": 176,
+        "h": 187,
+        "pivotX": 84,
+        "pivotY": 187
+      },
+      "element_1_2": {
+        "x": 591,
+        "y": 2935,
+        "w": 291,
+        "h": 176,
+        "pivotX": 26,
+        "pivotY": 176
+      },
+      "element_1_3": {
+        "x": 4,
+        "y": 3133,
+        "w": 180,
+        "h": 179,
+        "pivotX": 79,
+        "pivotY": 179
+      },
+      "element_2_0": {
+        "x": 192,
+        "y": 3133,
+        "w": 229,
+        "h": 191,
+        "pivotX": 121,
+        "pivotY": 191
+      },
+      "element_2_1": {
+        "x": 429,
+        "y": 3133,
+        "w": 298,
+        "h": 191,
+        "pivotX": 129,
+        "pivotY": 191
+      },
+      "element_2_2": {
+        "x": 735,
+        "y": 3133,
+        "w": 281,
+        "h": 189,
+        "pivotX": 115,
+        "pivotY": 189
+      },
+      "element_2_3": {
+        "x": 4,
+        "y": 3332,
+        "w": 202,
+        "h": 192,
+        "pivotX": 106,
+        "pivotY": 192
+      },
+      "element_3_0": {
+        "x": 214,
+        "y": 3332,
+        "w": 164,
+        "h": 193,
+        "pivotX": 70,
+        "pivotY": 193
+      },
+      "element_3_1": {
+        "x": 386,
+        "y": 3332,
+        "w": 159,
+        "h": 214,
+        "pivotX": 81,
+        "pivotY": 214
+      },
+      "element_3_2": {
+        "x": 553,
+        "y": 3332,
+        "w": 290,
+        "h": 150,
+        "pivotX": 154,
+        "pivotY": 150
+      },
+      "element_3_3": {
+        "x": 4,
+        "y": 3554,
+        "w": 223,
+        "h": 164,
+        "pivotX": 102,
+        "pivotY": 164
       }
     },
     "clips": {
@@ -14491,102 +15896,72 @@
       },
       "spear_nair": {
         "frames": [
-          "motion_idle",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          6,
-          6,
-          6
+          5,
+          5,
+          18
         ]
       },
       "spear_sair": {
         "frames": [
-          "motion_idle",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           5,
-          8,
-          8,
-          7
+          23
         ]
       },
       "spear_dair": {
         "frames": [
-          "motion_idle",
-          "attack_spear_1",
-          "attack_spear_2",
+          "element_0_0",
+          "element_0_1",
           "down_spear_dair",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_3"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          8,
-          7,
-          7
+          6,
+          5,
+          22
         ]
       },
       "spear_recovery": {
         "frames": [
-          "motion_idle",
-          "attack_spear_1",
-          "attack_spear_2",
-          "attack_spear_2",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
           7,
-          8,
-          8,
-          8
+          7,
+          24
         ]
       },
       "spear_ground_pound": {
         "frames": [
-          "motion_idle",
-          "attack_spear_1",
-          "attack_spear_2",
+          "element_3_0",
+          "element_3_1",
           "down_spear_ground_pound",
-          "attack_spear_7",
-          "motion_idle",
-          "attack_spear_7"
+          "element_3_3"
         ],
         "ticks": [
-          6,
-          6,
-          5,
+          8,
+          9,
           12,
-          10,
-          10,
-          9
+          29
         ]
       },
       "gauntlets_nlight": {
@@ -14651,102 +16026,72 @@
       },
       "gauntlets_nair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
           3,
-          2,
-          2,
+          4,
           5,
-          6,
-          5,
-          5
+          16
         ]
       },
       "gauntlets_sair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          6,
-          6
+          5,
+          4,
+          19
         ]
       },
       "gauntlets_dair": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
+          "element_1_0",
+          "element_1_1",
           "down_gauntlets_dair",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_1_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
           4,
-          7,
-          7,
-          6
+          5,
+          4,
+          20
         ]
       },
       "gauntlets_recovery": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
-          "attack_gauntlets_3",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
         ],
         "ticks": [
-          4,
-          3,
-          3,
+          5,
+          5,
           7,
-          8,
-          7,
-          7
+          22
         ]
       },
       "gauntlets_ground_pound": {
         "frames": [
-          "attack_gauntlets_0",
-          "attack_gauntlets_1",
-          "attack_gauntlets_2",
+          "element_3_0",
+          "element_3_1",
           "down_gauntlets_ground_pound",
-          "attack_gauntlets_6",
-          "attack_gauntlets_6",
-          "attack_gauntlets_7"
+          "element_3_3"
         ],
         "ticks": [
-          5,
-          5,
-          4,
+          7,
+          7,
           12,
-          9,
-          9,
-          8
+          26
         ]
       },
       "caleb_spear_nsig": {
@@ -15030,18 +16375,16 @@
       },
       "unarmed_ground_pound": {
         "frames": [
-          "defence_4",
-          "defence_5",
+          "element_3_0",
+          "element_3_1",
           "down_unarmed_ground_pound",
-          "defence_7",
-          "defence_0"
+          "element_3_3"
         ],
         "ticks": [
-          5,
-          11,
+          8,
+          8,
           12,
-          18,
-          10
+          28
         ]
       },
       "unarmed_nsig": {
@@ -15091,6 +16434,64 @@
           19,
           11
         ]
+      },
+      "spear_air_combo": {
+        "frames": [
+          "element_0_0",
+          "element_0_1",
+          "element_0_2",
+          "element_0_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "gauntlets_air_combo": {
+        "frames": [
+          "element_1_0",
+          "element_1_1",
+          "element_1_2",
+          "element_1_3"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "unarmed_air_combo": {
+        "frames": [
+          "defence_4",
+          "defence_5",
+          "defence_6",
+          "defence_7"
+        ],
+        "ticks": [
+          2,
+          3,
+          5,
+          16
+        ]
+      },
+      "caleb_gauntlets_slight": {
+        "frames": [
+          "element_2_0",
+          "element_2_1",
+          "element_2_1",
+          "element_2_3",
+          "element_2_3"
+        ],
+        "ticks": [
+          4,
+          4,
+          11,
+          5,
+          20
+        ]
       }
     },
     "movement": {
@@ -15119,15 +16520,20 @@
     },
     "packing": {
       "width": 1024,
-      "height": 2759,
+      "height": 3722,
       "bodyPixels": 192,
-      "bytes": 2619704
+      "bytes": 3564661
     },
     "downwardArt": {
       "readiness": "animation_alpha",
       "source": "docs/art/DOWN_ATTACKS.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
+    },
+    "elementalAnimation": {
+      "source": "assets/animation-production/elemental/caleb.png",
+      "frames": 16,
+      "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     }
   }
 }

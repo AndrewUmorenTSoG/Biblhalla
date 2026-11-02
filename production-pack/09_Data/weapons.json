@@ -12,7 +12,8 @@
         "sword_sair",
         "sword_dair",
         "sword_recovery",
-        "sword_ground_pound"
+        "sword_ground_pound",
+        "sword_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -27,7 +28,8 @@
         "spear_sair",
         "spear_dair",
         "spear_recovery",
-        "spear_ground_pound"
+        "spear_ground_pound",
+        "spear_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -42,7 +44,8 @@
         "sling_sair",
         "sling_dair",
         "sling_recovery",
-        "sling_ground_pound"
+        "sling_ground_pound",
+        "sling_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -57,7 +60,8 @@
         "gauntlets_sair",
         "gauntlets_dair",
         "gauntlets_recovery",
-        "gauntlets_ground_pound"
+        "gauntlets_ground_pound",
+        "gauntlets_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -72,7 +76,8 @@
         "staff_sair",
         "staff_dair",
         "staff_recovery",
-        "staff_ground_pound"
+        "staff_ground_pound",
+        "staff_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -87,7 +92,8 @@
         "hammer_sair",
         "hammer_dair",
         "hammer_recovery",
-        "hammer_ground_pound"
+        "hammer_ground_pound",
+        "hammer_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -102,7 +108,8 @@
         "bow_sair",
         "bow_dair",
         "bow_recovery",
-        "bow_ground_pound"
+        "bow_ground_pound",
+        "bow_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -117,7 +124,8 @@
         "blades_sair",
         "blades_dair",
         "blades_recovery",
-        "blades_ground_pound"
+        "blades_ground_pound",
+        "blades_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
     },
@@ -135,9 +143,26 @@
         "unarmed_ground_pound",
         "unarmed_nsig",
         "unarmed_ssig",
-        "unarmed_dsig"
+        "unarmed_dsig",
+        "unarmed_air_combo"
       ],
       "groundedHeavySource": "sharedUnarmed"
+    },
+    {
+      "id": "shield",
+      "identity": "Round shield bashes, short aerial strings and returning throws.",
+      "attackIds": [
+        "shield_nlight",
+        "shield_slight",
+        "shield_dlight",
+        "shield_nair",
+        "shield_sair",
+        "shield_dair",
+        "shield_recovery",
+        "shield_ground_pound",
+        "shield_air_combo"
+      ],
+      "groundedHeavySource": "fighterSignatures"
     }
   ]
 }

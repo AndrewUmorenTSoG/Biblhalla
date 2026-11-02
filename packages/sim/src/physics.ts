@@ -92,6 +92,11 @@ export function moveFighter(ctx: SimContext, s: SimState, f: Fighter, dx: number
   if (contact && f.action?.kind === 'attack') {
     const m = moves[f.action.move!];
     if (m.landingRule === 'endActiveThenRecoveryPlus8' && !f.action.landed && f.action.tick >= m.startup) {
+      if(m.id.endsWith('_ground_pound')){
+        f.action.impactTick=s.tick;
+        event(s,'element',{fighter:f.id,hero:f.hero,weapon:f.weapon,move:m.id,effect:f.hero==='nehemiah'?'rock':m.effect,x:f.x,y:f.y,facing:f.action.facing});
+        if(f.hero==='nehemiah'&&f.weapon==='hammer')startProjectile(ctx,s,f,{...m,projectile:moves.nehemiah_hammer_dsig.projectile},f.action);
+      }
       f.action.tick = m.startup + m.active;
       f.action.duration = m.totalTicks + 8;
       f.action.landed = true;
@@ -141,11 +146,21 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   // Entity-local hitstop: this fighter freezes, cooldowns above keep running. Presses made
   // during the freeze are kept (as in a hit pause) and the buffer and chase window wait for it.
   if (f.hitstop) { f.hitstop--; bufferPress(ctx, f, i); return; }
+  if(f.grabbed){
+    const g=f.grabbed,owner=s.fighters.find(o=>o.id===g.owner);
+    if(owner?.stocks&&!owner.stun&&owner.action?.instance===g.instance&&s.tick<g.until){
+      f.x=owner.x+24*Q*owner.facing;f.y=owner.y+48*Q;f.vx=f.vy=f.kx=0;f.ground=null;return;
+    }
+    delete f.grabbed;
+  }
   if (f.chase > 0) f.chase--;
   if (f.buffer && --f.buffer.ticks < 0) f.buffer = null;
   if (f.stun) f.stun--; else resolveAction(ctx, s, f, i);
 
   const a = f.action;
+  // One extra wall tick per twenty authored ticks: approximately 5% slower.
+  // Gravity still advances, but one-shot attack events must not repeat.
+  const slowHold=a?.kind==='attack'&&f.hero==='samson'&&((a.pace=(a.pace??0)+1)%21===0);
   let dx = 0, freezeY = false, jumpLaunch = f.jumpTick === s.tick;
   if (!a && !f.stun) {
     const cap = P.runMaxQ + P.runSpeedPerStatQ * (f.stats.speed - P.statBaseline);
@@ -159,7 +174,7 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
     f.vx = approach(f.vx, 0, f.ground ? P.groundBrakeQ : AIR_BRAKE_Q);
   }
   if (a?.kind === 'dodge' && a.airborne && a.tick >= P.dodge.air.startup && a.tick < P.dodge.air.startup + P.dodge.air.invulnerable) { f.vx = a.dx || 0; f.vy = a.dy || 0; freezeY = true; }
-  if (a?.kind === 'attack') {
+  if (a?.kind === 'attack'&&!slowHold) {
     const m = moves[a.move!];
     if (a.cancelled && a.tick < m.startup + m.active) freezeY = true;
     for (const ev of m.motionEvents) {
@@ -167,6 +182,8 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
       if (ev.kind === 'translate' && a.tick >= ev.fromTick && a.tick < ev.toTickExclusive) { dx += ev.dxQ * a.facing; f.vy += ev.dyQ; }
     }
     if (m.projectile?.spawnTick === a.tick) startProjectile(ctx, s, f, m, a);
+    const impact=m.effect==='sound'?(m.projectile?.spawnTick??m.startup):m.collisionPhases[0]?.grabTicks?(m.collisionPhases[1]?.firstTick??m.startup):m.startup;
+    if(a.tick===impact&&!m.id.endsWith('_ground_pound'))event(s,'element',{fighter:f.id,hero:f.hero,weapon:f.weapon,move:m.id,effect:f.hero==='joshua'&&m.id==='shield_nlight'?'sun':m.effect,x:f.x,y:f.y,facing:a.facing});
   }
   if (a?.kind === 'throw' && a.tick === R.throw.startup) { a.dx = i.x; a.dy = i.y; }
   if (a && ((a.kind === 'throw' && a.tick === R.throw.startup) || (a.kind === 'drop' && a.tick === R.drop.startup) || (a.kind === 'pickup' && a.tick === a.duration - 1))) {
@@ -188,7 +205,7 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
     const m = a.move ? moves[a.move] : null;
     // Charging holds the last startup tick; it never extends active frames or adds protection.
     if (m?.chargeable && a.tick === m.startup - 1 && i.heavyHeld && a.charge < m.chargeMaxTicks) a.charge++;
-    else a.tick++;
+    else if(!slowHold)a.tick++;
     if (a.tick >= a.duration) f.action = null;
   }
 }

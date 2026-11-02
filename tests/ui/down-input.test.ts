@@ -14,7 +14,7 @@ test('S plus J or K selects all four down attacks for every fighter and weapon',
     const fighter=S.create({mode:'training',hero:def.id}).fighters[0];fighter.weapon=weapon;
     const light=keyboard(['KeyS','KeyJ'],'KeyJ'),heavy=keyboard(['KeyS','KeyK'],'KeyK');
     assert.equal(light.y,-1);
-    assert.equal(S.selectMove(fighter,light,true)?.id,weapon+'_dlight');
+    assert.equal(S.selectMove(fighter,light,true)?.id,(S.moves[def.id+'_'+weapon+'_dlight']?def.id+'_':'')+weapon+'_dlight');
     assert.equal(S.selectMove(fighter,light,false)?.id,weapon+'_dair');
     assert.equal(S.selectMove(fighter,heavy,false)?.id,weapon+'_ground_pound');
     assert.equal(S.selectMove(fighter,heavy,true)?.id,(weapon==='unarmed'?'unarmed':def.id+'_'+weapon)+'_dsig');

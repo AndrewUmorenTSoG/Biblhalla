@@ -11,7 +11,7 @@ renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])
 test('every roster entry has the required movement and attack clip slots',()=>{
   const report=validateArt();assert.deepEqual(report.errors,[]);
   assert.equal(Object.keys(report.coverage).length,12);
-  for(const [id,coverage] of Object.entries(report.coverage))assert.equal(coverage.covered,38,id);
+  for(const [id,coverage] of Object.entries(report.coverage))assert.equal(coverage.covered,coverage.total,id);
 });
 test('unarmed contacts use unarmed drawings for the whole active window',()=>{
   for(const id of Object.keys(meta))for(const move of moves.filter((m:any)=>m.ownerId==='unarmed')){

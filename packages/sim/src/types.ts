@@ -22,6 +22,9 @@ export type InputFrames = Record<string | number, InputFrame>;
 export type ActionKind = 'attack' | 'dodge' | 'dash' | 'chase' | 'pickup' | 'drop' | 'throw';
 
 export interface Action {
+  comboDepth?: number;
+  pace?: number;
+  hitGroups?: Record<number, number[]>;
   kind: ActionKind;
   tick: number;
   duration: number;
@@ -38,6 +41,7 @@ export interface Action {
   weapon?: string;
   confirmed?: boolean;
   landed?: boolean;
+  impactTick?: number;
 }
 
 /** A press held briefly until it becomes legal. `chase` is Dodge + direction after a confirmed hit. */
@@ -57,6 +61,7 @@ export interface BotMemory {
 }
 
 export interface Fighter {
+  grabbed?: { owner: number; instance: number; until: number };
   id: number;
   hero: string;
   name: string;
@@ -108,6 +113,11 @@ export interface Fighter {
 }
 
 export interface Projectile {
+  effect?: string;
+  originX?: number;
+  rangeQ?: number;
+  returning?: boolean;
+  hit?: number[];
   id: number;
   owner: number;
   team: number;

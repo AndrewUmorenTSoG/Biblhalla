@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "designVersion": "prototype-1",
+  "designVersion": "elemental-combos-1",
   "fighters": [
     {
       "id": "david",
@@ -107,7 +107,7 @@
       "title": "The Steadfast Leader",
       "weaponPair": [
         "sword",
-        "spear"
+        "shield"
       ],
       "stats": {
         "power": 5,
@@ -124,9 +124,9 @@
         "joshua_sword_nsig",
         "joshua_sword_ssig",
         "joshua_sword_dsig",
-        "joshua_spear_nsig",
-        "joshua_spear_ssig",
-        "joshua_spear_dsig"
+        "joshua_shield_nsig",
+        "joshua_shield_ssig",
+        "joshua_shield_dsig"
       ],
       "scriptureReferences": "Joshua 1:6–9; 5:13–15; 6:1–20",
       "storyContext": "Led Israel after Moses; courage and obedience anchor the profile. God’s victory at Jericho is not reduced to a magic sword attack.",
@@ -173,7 +173,7 @@
       "title": "The Courageous Few",
       "weaponPair": [
         "sword",
-        "hammer"
+        "shield"
       ],
       "stats": {
         "power": 5,
@@ -190,9 +190,9 @@
         "gideon_sword_nsig",
         "gideon_sword_ssig",
         "gideon_sword_dsig",
-        "gideon_hammer_nsig",
-        "gideon_hammer_ssig",
-        "gideon_hammer_dsig"
+        "gideon_shield_nsig",
+        "gideon_shield_ssig",
+        "gideon_shield_dsig"
       ],
       "scriptureReferences": "Judges 6:11–16; 7:16–22; 8:22–27",
       "storyContext": "Called by God despite fear and associated with the three hundred. Trumpets, jars and torch shapes are visual motifs; they do not become automatic miracles.",
@@ -338,7 +338,7 @@
       "title": "The Watchful Builder",
       "weaponPair": [
         "hammer",
-        "sword"
+        "shield"
       ],
       "stats": {
         "power": 6,
@@ -355,9 +355,9 @@
         "nehemiah_hammer_nsig",
         "nehemiah_hammer_ssig",
         "nehemiah_hammer_dsig",
-        "nehemiah_sword_nsig",
-        "nehemiah_sword_ssig",
-        "nehemiah_sword_dsig"
+        "nehemiah_shield_nsig",
+        "nehemiah_shield_ssig",
+        "nehemiah_shield_dsig"
       ],
       "scriptureReferences": "Nehemiah 2:17–18; 4:16–18; 6:15–16",
       "storyContext": "Organized the rebuilding of Jerusalem’s wall. Nehemiah 4 describes armed work; his mallet and moves are practical fictional arena interpretations.",

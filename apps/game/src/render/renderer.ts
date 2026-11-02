@@ -8,6 +8,7 @@ import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
 import { drawWeapon, drawFlamingSwordPickup } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
+import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
@@ -22,9 +23,11 @@ const FIGURE_PX=96;
 export const colors:any={david:['#e7c57a','#486c82','#654332'],saul:['#776c99','#c09f60','#453932'],samson:['#b8784d','#d1a265','#372721'],joshua:['#7e9f88','#d5ba76','#55372a'],deborah:['#587d8c','#cf9f67','#322a2b'],gideon:['#829469','#b89158','#493a2b'],jonathan:['#729da7','#dac693','#6a4630'],moses:['#b8ad90','#637c89','#d4c6b2'],esther:['#a06886','#dec18c','#33252a'],miriam:['#9bb3b5','#d4a664','#342a25'],nehemiah:['#8c7665','#bcb391','#4f3e32'],caleb:['#a59a63','#98694c','#5a3c2a'],dru:['#ba8559','#456e80','#4e3228'],ken:['#778d75','#d9b27b','#493b31']};
 const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','#b29163','#666d60'],['#bd9d87','#f1d5a1','#be8f61','#5b776e'],['#82a09c','#e7d7a5','#a49f75','#59786f'],['#8a9fb1','#dcc2ac','#baa791','#73687c'],['#91a3aa','#e5d2ad','#bbaa8a','#6c7e76']];
 export class Renderer{
+  elementEvents:SimState['events']=[];
+  collectElements(world:SimState){for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;}for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
+  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
@@ -66,7 +69,7 @@ export class Renderer{
   }
 
   /** Draw a carried weapon at the leading hand of a movement sprite. */
-  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string){
+  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string,fiery=false){
     if(weapon==='unarmed')return;
     const c=this.ctx;
     const running=frameName.startsWith('run_');
@@ -81,7 +84,7 @@ export class Renderer{
       c.strokeStyle='#66472e';c.lineWidth=2.4;c.lineCap='round';
       c.beginPath();c.moveTo(-2,0);c.quadraticCurveTo(px*.45,py*.55,px-5,py);c.moveTo(2,0);c.quadraticCurveTo(px*.55,py*.55,px+5,py);c.stroke();
       c.fillStyle='#8e603b';c.beginPath();c.ellipse(px,py,8,5,phase*.5,0,Math.PI*2);c.fill();
-      c.strokeStyle='#3d3027';c.lineWidth=1.5;c.stroke();
+      c.strokeStyle='#3d3027';c.lineWidth=1.5;c.stroke();if(fiery)flame(c,px,py,7,time);
     }else{
       const angle=weapon==='bow'?.26:weapon==='hammer'?.24:weapon==='gauntlets'?0:running?.28:airborne?-.2:.12;
       c.scale(.78,.78);drawWeapon(c,weapon,0,0,angle,accent);
@@ -89,9 +92,9 @@ export class Renderer{
     c.restore();
   }
 
-  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0){const c=this.ctx,p=colors[hero]||colors.dru;
+  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frameName=this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frameName=charge>0&&weapon==='sling'?'motion_idle':this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
@@ -102,9 +105,12 @@ export class Renderer{
       // The weapon sits behind the near fist in the same local coordinates as
       // the sprite. It follows each run and jump frame instead of floating at
       // a fixed screen position. Attack art already includes its own weapon.
-      if(weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,time,p[1]);
+      if(weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
+      if(charge>0)c.filter='sepia('+Math.min(.7,charge/50)+') saturate(2.2) hue-rotate(325deg)';
       c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);
-      if(weapon==='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,time,p[1]);
+      c.filter='none';
+
+      if(weapon==='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
       if(pose==='happy'){
         c.fillStyle='#f6d584';
         for(const [dx,dy] of [[.12,.16],[.8,.2],[.95,.42]]){c.beginPath();c.arc(frame.w*dx-frame.pivotX,frame.h*dy-frame.pivotY,2.5,0,Math.PI*2);c.fill();}
@@ -157,11 +163,13 @@ export class Renderer{
       if(motion.pose!==pose){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil);
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0);
+      if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
-    for(const projectile of world.projectiles){const p=screen(projectile.x,projectile.y);if(projectile.weapon){c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*.65,this.camera.zoom*.65);this.weapon(projectile.weapon,0,0,this.reduced?0:world.tick*.24,'#527c89');c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
+    this.collectElements(world);drawElements(c,{...world,events:this.elementEvents},screen,this.camera.zoom,this.reduced);
+    for(const projectile of world.projectiles){const p=screen(projectile.x,projectile.y);drawThrowWind(c,projectile,p.x,p.y,this.camera.zoom);if(drawElementProjectile(c,projectile,world.fighters.find(f=>f.id===projectile.owner),p.x,p.y,this.camera.zoom,world.tick))continue;if(projectile.weapon){c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*.65,this.camera.zoom*.65);this.weapon(projectile.weapon,0,0,this.reduced?0:world.tick*.24,'#527c89');c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
     for(const e of world.events){if(e.id<=this.lastEvent)continue;this.lastEvent=e.id;if(e.type==='hit')this.particles.push({x:e.x,y:e.y,time:0,damage:Math.floor((e.damage as number)/10)});}this.particles=this.particles.filter(p=>p.time++<24).slice(-40);
     for(const p of this.particles){const pos=screen(p.x,p.y);c.globalAlpha=1-p.time/25;c.strokeStyle='#ffe9aa';c.lineWidth=3;c.beginPath();c.arc(pos.x,pos.y,p.time*2,0,Math.PI*2);c.stroke();c.fillStyle='#fff4d0';c.textAlign='center';c.font='bold 22px Georgia';c.fillText('+'+p.damage,pos.x,pos.y-p.time*2-10);}c.globalAlpha=1;
     if(world.phase==='countdown'){c.fillStyle='rgba(23,40,47,.4)';c.fillRect(0,0,1280,720);c.fillStyle='#ffe5ad';c.textAlign='center';c.font='bold 100px Georgia';c.fillText(String(Math.max(1,Math.ceil(world.countdown/60))),640,330);}

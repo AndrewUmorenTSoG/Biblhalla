@@ -8,7 +8,7 @@ const tagIndex=process.argv.indexOf('--tag'),tag=tagIndex>=0?process.argv[tagInd
 if(tag&&!/^[a-z0-9-]+$/.test(tag))throw Error('Invalid packing tag');
 const dir=join(ROOT,'assets/runtime/fighters'),manifest=join(dir,'fighters.json'),backup=join(dir,tag?`fighters-before-${tag}-packing.json`:'fighters-before-packing.json');
 if(!existsSync(backup))writeFileSync(backup,readFileSync(manifest));
-const meta=JSON.parse(readFileSync(backup,'utf8'));
+const meta=JSON.parse(readFileSync(process.argv.includes('--current')?manifest:backup,'utf8'));
 for(const [id,raw] of Object.entries(meta)){
   const entry=raw as any,source=readPng(join(ROOT,entry.image)),scale=192/entry.frames.idle.h;
   const packed:any[]=[];let x=4,y=4,rowHeight=0;

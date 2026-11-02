@@ -23,7 +23,9 @@ export function drawWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:num
   const poly=(p:number[],fill:string)=>{c.fillStyle=fill;c.beginPath();c.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)c.lineTo(p[i],p[i+1]);c.closePath();c.fill();c.stroke();};
   const line=(p:number[],color:string,width:number)=>{c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)c.lineTo(p[i],p[i+1]);c.stroke();c.strokeStyle='#302a29';c.lineWidth=2.2;};
   const grip=(top:number,bottom:number)=>{line([0,top,0,bottom],'#302a29',8);line([0,top,0,bottom],'#88573c',5);for(let yy=top+3;yy<bottom;yy+=4)line([-2,yy,2,yy-1],'#d5ae74',1);};
-  if(kind==='sword'||kind==='blades'){
+  if(kind==='shield'){
+    c.fillStyle='#286783';c.strokeStyle='#d8af63';c.lineWidth=4;c.beginPath();c.ellipse(0,-15,25,31,0,0,Math.PI*2);c.fill();c.stroke();c.strokeStyle='#9ed5df';c.lineWidth=2;c.beginPath();c.ellipse(0,-15,18,24,0,0,Math.PI*2);c.stroke();c.fillStyle='#d8af63';c.beginPath();c.arc(0,-15,7,0,Math.PI*2);c.fill();
+  }else if(kind==='sword'||kind==='blades'){
     if(kind==='blades'){c.save();c.translate(-17,9);c.rotate(-.35);poly([-5,-7,-7,-36,0,-52,7,-36,5,-7],'#c4c5b6');grip(-5,10);c.restore();}
     poly([-5,-10,-7,-45,0,-66,7,-45,5,-10],'#dbddcf');poly([0,-64,5,-44,3,-12,0,-12],'#92a2a2');
     poly([-15,-10,-12,-15,-5,-12,5,-12,12,-15,15,-10,8,-6,-8,-6],'#c3a15b');grip(-5,12);poly([-5,12,0,18,5,12,0,9],accent);
