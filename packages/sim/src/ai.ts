@@ -81,6 +81,20 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   const beyondEdge = f.x < left - 10 * Q || f.x > right + 10 * Q;
   if (!f.ground && (beyondEdge || f.y < top - 10 * Q)) return recover(f, left, right, top);
 
+  // Chase-dodge combos (as a player would): on a confirmed hit, Hard and Extreme bots
+  // sometimes press Dodge toward the target, then follow with a light. Champions and wave
+  // archetypes keep their telegraphed patterns instead.
+  const hitNow = f.action?.kind === 'attack' && f.action.confirmed && f.chase > 0 && !f.role && f.guard === null;
+  if (hitNow && f.ai.chaseFor !== f.action!.instance) {
+    f.ai.chaseFor = f.action!.instance;
+    if (nextRandom(s) % 100 < (CHASE_CHANCE[s.difficulty] ?? 0)) {
+      f.ai.next = s.tick + 1;
+      f.ai.intent = input({ x: Math.sign(target.x - f.x) || f.facing, jumpHeld: true });
+      return input({ x: Math.sign(target.x - f.x) || f.facing, y: target.y > f.y + 40 * Q ? 1 : 0, dodge: true });
+    }
+  }
+  if (f.action?.kind === 'chase') return input({ x: Math.sign(target.x - f.x) || f.facing, light: true });
+
   if (s.tick < f.ai.next) return { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false };
   f.ai.next = s.tick + d.decisionTicks;
 
@@ -113,7 +127,7 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
         f.ai.tellDir = sign;
         v.x = 0;
         event(s, 'enemyTell', { fighter: f.id, role: f.role, button: f.ai.tellButton, ticks: f.ai.tell });
-      } else if (choose < 25) v.heavy = true;
+      } else if (choose < killHeavyChance(target.damage)) v.heavy = true;
       else v.light = true;
       // Vary direction so the same attack is not repeated: neutral, side or down.
       if ((v.light || v.heavy) && !f.ai.tell) {
@@ -141,6 +155,12 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
 }
 
 const EDGE_MARGIN_UNITS = 30;
+/** Heavy (signature) chance rises with the target's damage, as players go for the KO. */
+export function killHeavyChance(damageTenths: number): number {
+  return Math.min(65, 25 + Math.max(0, Math.floor((damageTenths - 600) / 25)));
+}
+/** Percent of confirmed hits a bot follows with a chase dodge. */
+const CHASE_CHANCE: Record<string, number> = { easy: 0, hard: 45, extreme: 75 };
 
 /** Head for the stage: spend air jumps while falling, then the recovery move. */
 function recover(f: Fighter, left: number, right: number, top: number): Input {

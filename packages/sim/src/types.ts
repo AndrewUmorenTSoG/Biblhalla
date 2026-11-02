@@ -52,6 +52,8 @@ export interface BotMemory {
   /** Button released when the tell ends (wave archetypes use light or heavy). */
   tellButton?: 'light' | 'heavy';
   phase: number;
+  /** Attack instance whose chase was already decided, so each hit is rolled once. */
+  chaseFor?: number;
 }
 
 export interface Fighter {
