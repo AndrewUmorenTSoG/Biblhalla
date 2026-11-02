@@ -4,11 +4,11 @@
   "tickRate": 60,
   "fixedScale": 256,
   "coordinates": "positive Y upward; feet-centered position",
-  "runMaxQ": 1536,
+  "runMaxQ": 1792,
   "runSpeedPerStatQ": 64,
-  "groundAccelerationQ": 192,
-  "groundBrakeQ": 256,
-  "airAccelerationQ": 96,
+  "groundAccelerationQ": 256,
+  "groundBrakeQ": 384,
+  "airAccelerationQ": 128,
   "gravityQ": 116,
   "groundJumpQ": 3449,
   "airJumpQ": 2978,
@@ -19,7 +19,7 @@
   "airJumps": 2,
   "recoveryUses": 1,
   "dash": {
-    "speedQ": 2816,
+    "speedQ": 3328,
     "durationTicks": 8,
     "repeatLockTicks": 10,
     "invulnerable": false,
@@ -115,5 +115,7 @@
       0,
       -1024
     ]
-  }
+  },
+  "groundTurnAccelerationQ": 768,
+  "attackGroundBrakeQ": 256
 }

@@ -27,7 +27,7 @@ export function figures(img:Image,columns=4,rows=4,minArea=1000,alphaCutoff=150)
     const out=blank(r-l+1,b-t+1);
     for(const p of group){const x=p%img.width,y=Math.floor(p/img.width);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const xx=x+dx,yy=y+dy;if(xx<l||xx>r||yy<t||yy>b)continue;const from=(yy*img.width+xx)*4,to=((yy-t)*out.width+xx-l)*4;if(img.data[from+3]>=32)out.data.set(img.data.subarray(from,from+4),to);}}
     let sum=0,n=0;for(let y=Math.floor(out.height*.88);y<out.height;y++)for(let x=0;x<out.width;x++)if(out.data[(y*out.width+x)*4+3]>150){sum+=x;n++;}
-    return {image:out,pivot:n?sum/n:out.width/2};
+    return {image:out,pivot:n?sum/n:out.width/2,originX:l,originY:t};
   });
 }
 if(import.meta.main){

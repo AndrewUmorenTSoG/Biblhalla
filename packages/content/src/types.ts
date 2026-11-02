@@ -129,7 +129,9 @@ export interface Physics {
   runMaxQ: number;
   runSpeedPerStatQ: number;
   groundAccelerationQ: number;
+  groundTurnAccelerationQ: number;
   groundBrakeQ: number;
+  attackGroundBrakeQ: number;
   airAccelerationQ: number;
   gravityQ: number;
   groundJumpQ: number;

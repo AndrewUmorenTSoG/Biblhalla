@@ -8,7 +8,7 @@ import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
 import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
-import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
+import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 import { EMOTE_TICKS } from '../../../../packages/sim/src/state.ts';
@@ -30,9 +30,10 @@ export class Renderer{
   elementEvents:SimState['events']=[];
   shieldCatchTicks=new Map<number,number>();
   collectElements(world:SimState){this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),world.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
+  runDistance=new RunDistance();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
+  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.runDistance.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
@@ -59,7 +60,7 @@ export class Renderer{
     if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
       const key=(i:number)=>'equipped_'+weapon+'_'+i;
       if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
-      if(pose==='run')return key(4+Math.floor(time/4)%4);
+      if(pose==='run'){if(this.atlas[hero]['gait_'+weapon+'_0'])return 'gait_'+weapon+'_'+Math.floor(time/3)%8;return key(4+Math.floor(time/4)%4);}
       if(pose==='crouch')return key(time<3?2:3);
       const air:{[key:string]:number}={air_rise:8,air_apex:9,air_fall:10,land:11};if(pose in air)return key(air[pose]);
       if(pose==='backflip')return key(time<4?8:time<9?9:time<14?10:11);
@@ -193,7 +194,7 @@ export class Renderer{
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time+(active&&!f.hitstop?alpha*(pose==='run'?runCadence(f.vx/Q):1):0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:32):motion.time+(active&&!f.hitstop?alpha:0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}

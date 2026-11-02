@@ -5,12 +5,14 @@ import { ROOT,sha256 } from '../lib/content.ts';
 import { readPng,blank,crop,resize,blit,writePng } from './image.ts';
 import { spriteOnly } from './sprite-only.ts';
 const tagIndex=process.argv.indexOf('--tag'),tag=tagIndex>=0?process.argv[tagIndex+1]:'';
+const pixelsIndex=process.argv.indexOf('--body-pixels'),bodyPixels=pixelsIndex>=0?Number(process.argv[pixelsIndex+1]):192;
+if(!Number.isInteger(bodyPixels)||bodyPixels<128||bodyPixels>256)throw Error('Body pixels must be an integer from 128 to 256');
 if(tag&&!/^[a-z0-9-]+$/.test(tag))throw Error('Invalid packing tag');
 const dir=join(ROOT,'assets/runtime/fighters'),manifest=join(dir,'fighters.json'),backup=join(dir,tag?`fighters-before-${tag}-packing.json`:'fighters-before-packing.json');
 if(!existsSync(backup))writeFileSync(backup,readFileSync(manifest));
 const meta=JSON.parse(readFileSync(process.argv.includes('--current')?manifest:backup,'utf8'));
 for(const [id,raw] of Object.entries(meta)){
-  const entry=raw as any,source=readPng(join(ROOT,entry.image)),scale=192/entry.frames.idle.h;
+  const entry=raw as any,source=readPng(join(ROOT,entry.image)),scale=bodyPixels/entry.frames.idle.h;
   const packed:any[]=[];let x=4,y=4,rowHeight=0;
   for(const [name,f] of Object.entries(entry.frames) as [string,any][]){
     const w=Math.max(1,Math.round(f.w*scale)),h=Math.max(1,Math.round(f.h*scale));
@@ -20,9 +22,9 @@ for(const [id,raw] of Object.entries(meta)){
     x+=w+8;rowHeight=Math.max(rowHeight,h);
   }
   const atlas=blank(1024,y+rowHeight+4);
-  for(const f of packed){blit(atlas,resize(crop(source,f.old.x,f.old.y,f.old.w,f.old.h),f.w,f.h),f.x,f.y);entry.frames[f.name]={x:f.x,y:f.y,w:f.w,h:f.h,pivotX:f.pivotX,pivotY:f.pivotY};}
+  for(const f of packed){blit(atlas,resize(crop(source,f.old.x,f.old.y,f.old.w,f.old.h),f.w,f.h),f.x,f.y);entry.frames[f.name]={...f.old,x:f.x,y:f.y,w:f.w,h:f.h,pivotX:f.pivotX,pivotY:f.pivotY};if(f.old.gripX!==undefined)entry.frames[f.name].gripX=Math.round(f.old.gripX*scale);if(f.old.gripY!==undefined)entry.frames[f.name].gripY=Math.round(f.old.gripY*scale);}
   entry.image=`assets/runtime/fighters/${id}-${tag?tag+'-':''}packed.png`;const bytes=writePng(join(ROOT,entry.image),atlas);entry.sha256=sha256(bytes);
-  entry.packing={width:atlas.width,height:atlas.height,bodyPixels:192,bytes:bytes.length};
+  entry.packing={width:atlas.width,height:atlas.height,bodyPixels,bytes:bytes.length};
   console.log(`${id}: ${atlas.width}x${atlas.height}, ${(bytes.length/1048576).toFixed(2)} MiB`);
 }
 writeFileSync(manifest,JSON.stringify(tag==='down'?spriteOnly(meta):meta,null,2)+'\n');

@@ -171,14 +171,15 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   let dx = 0, freezeY = false, jumpLaunch = f.jumpTick === s.tick;
   if (!a && !f.stun) {
     const cap = P.runMaxQ + P.runSpeedPerStatQ * (f.stats.speed - P.statBaseline);
-    const accel = i.x ? (f.ground ? P.groundAccelerationQ : P.airAccelerationQ) : f.ground ? P.groundBrakeQ : AIR_BRAKE_Q;
+    const reversing=f.ground&&i.x&&f.vx&&Math.sign(f.vx)!==i.x;
+    const accel = i.x ? (f.ground ? reversing?P.groundTurnAccelerationQ:P.groundAccelerationQ : P.airAccelerationQ) : f.ground ? P.groundBrakeQ : AIR_BRAKE_Q;
     f.vx = approach(f.vx, i.x * cap, accel);
     if (i.x) f.facing = i.x;
   } else if (a?.kind === 'dash' || a?.kind === 'chase') {
     f.vx = a.dx || 0;
     if (a.kind === 'chase' && a.dy) f.vy = a.dy;
   } else {
-    f.vx = approach(f.vx, 0, f.ground ? P.groundBrakeQ : AIR_BRAKE_Q);
+    f.vx = approach(f.vx, 0, f.ground ? a?.kind==='attack'?P.attackGroundBrakeQ:P.groundBrakeQ : AIR_BRAKE_Q);
   }
   if (a?.kind === 'dodge' && a.airborne && a.tick >= P.dodge.air.startup && a.tick < P.dodge.air.startup + P.dodge.air.invulnerable) { f.vx = a.dx || 0; f.vy = a.dy || 0; freezeY = true; }
   if (a?.kind === 'attack'&&!slowHold) {
