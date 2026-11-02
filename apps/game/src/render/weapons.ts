@@ -1,3 +1,7 @@
+import {drawWeaponSprite} from './weapon-art.ts';
+export function drawFlyingWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:number,angle:number,phase:number){
+ if(!drawWeaponSprite(c,kind,x,y,angle,true,phase))drawWeapon(c,kind,x,y,angle);
+}
 /** Blue fire marks collectible weapons; the hilt rests above the item's floor. */
 export function drawFlamingSwordPickup(c:CanvasRenderingContext2D,tick:number,reduced=false){
   c.save();c.translate(0,-18);
@@ -19,6 +23,7 @@ export function drawFlamingSwordPickup(c:CanvasRenderingContext2D,tick:number,re
 // Original weapon silhouettes. Origin is the grip; local -Y points to the tip.
 export function drawWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:number,angle:number,accent='#54748b'){
   if(kind==='unarmed')return;
+  if(drawWeaponSprite(c,kind,x,y,angle))return;
   c.save();c.translate(x,y);c.rotate(angle);c.lineJoin='round';c.lineCap='round';c.lineWidth=2.2;c.strokeStyle='#302a29';
   const poly=(p:number[],fill:string)=>{c.fillStyle=fill;c.beginPath();c.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)c.lineTo(p[i],p[i+1]);c.closePath();c.fill();c.stroke();};
   const line=(p:number[],color:string,width:number)=>{c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(p[0],p[1]);for(let i=2;i<p.length;i+=2)c.lineTo(p[i],p[i+1]);c.stroke();c.strokeStyle='#302a29';c.lineWidth=2.2;};

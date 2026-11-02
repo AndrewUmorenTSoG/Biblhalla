@@ -7,7 +7,7 @@ import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
-import { drawWeapon, drawFlamingSwordPickup } from './weapons.ts';
+import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
@@ -85,7 +85,7 @@ export class Renderer{
     const airborne=frameName.startsWith('air_');
     const {x:handX,y:handY}=handGrip(frame);
     c.save();c.translate(handX,handY);
-    if(weapon==='sling'){
+    if(weapon==='sling'&&charging){
       // Both cords share the fist; the pouch revolves even when David is still.
       const phase=time*(running?.32:.22)-1.3;
       const px=charging?Math.cos(phase)*39:8+Math.sin(time*.12)*5,py=charging?-29+Math.sin(phase)*28:42+Math.sin(time*.12)*3;
@@ -95,7 +95,7 @@ export class Renderer{
       c.strokeStyle='#3d3027';c.lineWidth=1.5;c.stroke();if(fiery)flame(c,px,py,7,time);
     }else{
       const angle=weapon==='bow'?.26:weapon==='hammer'?.24:weapon==='gauntlets'?0:weapon==='sword'&&running?-.85:running?.18:airborne?-.25:-.1;
-      c.scale(1.15,1.15);drawWeapon(c,weapon,0,0,angle,accent);
+      c.scale(1.15,1.15);drawWeapon(c,weapon,0,0,angle,accent);if(fiery&&weapon==='sling')flame(c,0,45,6,time);
     }
     c.restore();
   }
@@ -123,7 +123,7 @@ export class Renderer{
         const gx=Math.max(0,Math.min(frame.w-10,(frame.gripX??frame.w*.74)-5)),gy=Math.max(0,Math.min(frame.h-10,(frame.gripY??frame.h*.56)-5));
         c.drawImage(sheet,frame.x+gx,frame.y+gy,10,10,gx-frame.pivotX,gy-frame.pivotY,10,10);
       }
-      if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const grip=grips[releaseIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;drawWeapon(c,'shield',hx,hy+15,0);}
+      if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const grip=grips[releaseIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;drawWeapon(c,'shield',hx,hy,0);}
 
 
       if(pose==='happy'){
@@ -186,7 +186,7 @@ export class Renderer{
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
     this.collectElements(world);drawElements(c,{...world,events:this.elementEvents},screen,this.camera.zoom,this.reduced);
-    for(const projectile of world.projectiles){const p=screen(projectile.x,projectile.y);drawThrowWind(c,projectile,p.x,p.y,this.camera.zoom);if(drawElementProjectile(c,projectile,world.fighters.find(f=>f.id===projectile.owner),p.x,p.y,this.camera.zoom,world.tick))continue;if(projectile.weapon){c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*.65,this.camera.zoom*.65);this.weapon(projectile.weapon,0,0,this.reduced?0:world.tick*.24,'#527c89');c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
+    for(const projectile of world.projectiles){const p=screen(projectile.x,projectile.y);drawThrowWind(c,projectile,p.x,p.y,this.camera.zoom);if(drawElementProjectile(c,projectile,world.fighters.find(f=>f.id===projectile.owner),p.x,p.y,this.camera.zoom,world.tick))continue;if(projectile.weapon){c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*.65,this.camera.zoom*.65);drawFlyingWeapon(c,projectile.weapon,0,0,this.reduced?0:Math.atan2(-projectile.vy,projectile.vx)+Math.PI/2,this.reduced?0:world.tick*.65);c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
     for(const e of world.events){if(e.id<=this.lastEvent)continue;this.lastEvent=e.id;if(e.type==='hit')this.particles.push({x:e.x,y:e.y,time:0,damage:Math.floor((e.damage as number)/10)});}this.particles=this.particles.filter(p=>p.time++<24).slice(-40);
     for(const p of this.particles){const pos=screen(p.x,p.y);c.globalAlpha=1-p.time/25;c.strokeStyle='#ffe9aa';c.lineWidth=3;c.beginPath();c.arc(pos.x,pos.y,p.time*2,0,Math.PI*2);c.stroke();c.fillStyle='#fff4d0';c.textAlign='center';c.font='bold 22px Georgia';c.fillText('+'+p.damage,pos.x,pos.y-p.time*2-10);}c.globalAlpha=1;
     if(world.phase==='countdown'){c.fillStyle='rgba(23,40,47,.4)';c.fillRect(0,0,1280,720);c.fillStyle='#ffe5ad';c.textAlign='center';c.font='bold 100px Georgia';c.fillText(String(Math.max(1,Math.ceil(world.countdown/60))),640,330);}

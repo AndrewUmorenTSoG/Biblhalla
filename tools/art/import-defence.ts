@@ -6,7 +6,7 @@ import type { Image } from './image.ts';
 import { bounds } from './import-movement.ts';
 
 /** Extract connected figures across the sheet, not fixed cells that clip kicks. */
-export function figures(img:Image,columns=4,rows=4){
+export function figures(img:Image,columns=4,rows=4,minArea=1000){
   const seen=new Uint8Array(img.width*img.height),groups=new Map<number,number[]>();
   for(let start=0;start<seen.length;start++){
     if(seen[start]||img.data[start*4+3]<150)continue;
@@ -15,7 +15,7 @@ export function figures(img:Image,columns=4,rows=4){
       const p=queue[i],x=p%img.width,y=Math.floor(p/img.width);sx+=x;sy+=y;
       for(const [nx,ny] of [[x-1,y],[x+1,y],[x,y-1],[x,y+1]]){if(nx<0||ny<0||nx>=img.width||ny>=img.height)continue;const q=ny*img.width+nx;if(!seen[q]&&img.data[q*4+3]>=150){seen[q]=1;queue.push(q);}}
     }
-    if(queue.length<1000)continue;
+    if(queue.length<minArea)continue;
     const col=Math.max(0,Math.min(columns-1,Math.floor(sx/queue.length/img.width*columns))),row=Math.max(0,Math.min(rows-1,Math.floor(sy/queue.length/img.height*rows))),key=row*columns+col;
     if(queue.length>(groups.get(key)?.length??0))groups.set(key,queue);
   }
