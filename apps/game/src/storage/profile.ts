@@ -152,6 +152,11 @@ export function createProfiles(content: Content) {
         if (!bindingsAreUnique(d.settings.bindings)) d.settings.bindings = { ...DEFAULT_BINDINGS };
         // Never-customised keys from before the 2026-11-02 layout move to the new defaults.
         if (Object.entries(OLD_DEFAULT_BINDINGS).every(([k, v]) => s.bindings[k] === v)) d.settings.bindings = { ...DEFAULT_BINDINGS };
+        // Recognise the retired menu layout shown in older offline builds.
+        if (s.bindings.up === 'KeyW' && s.bindings.down === 'Space' && s.bindings.jump === 'ArrowUp') {
+          d.settings.bindings.up = 'KeyW'; d.settings.bindings.down = 'KeyS'; d.settings.bindings.jump = 'KeyW';
+          if (!bindingsAreUnique(d.settings.bindings)) d.settings.bindings = { ...DEFAULT_BINDINGS };
+        }
       }
     }
     if (Array.isArray(raw.seenCards)) d.seenCards = [...new Set<string>(raw.seenCards.filter((v: unknown) => typeof v === 'string' && SEEN_CARD.test(v)))].slice(0, 512);

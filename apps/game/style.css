@@ -10,3 +10,24 @@
 
 .level-card .medal{align-self:flex-start;font-size:.72rem;letter-spacing:1px;padding:3px 10px;border-radius:12px;border:1px solid currentColor}
 .medal-bronze{color:#d9a46a}.medal-silver{color:#d3dbe0}.medal-gold{color:#f2cf6b}.medal-witness{color:#b9d3c6}
+
+/* Compact controls reference, with a quiet black backdrop and binding columns. */
+#info-dialog.controls-dialog{background:#090a0c;color:#e7e7e7;border:1px solid #36383c;border-radius:2px;width:min(850px,94vw);padding:30px 36px;box-shadow:0 24px 100px #000c}
+.controls-dialog #info-title{font:600 1.5rem system-ui;letter-spacing:.04em;margin:5px 0 22px}
+.controls-dialog .eyebrow{color:#999;font-size:.65rem;letter-spacing:.15em}
+.controls-tabs{display:flex;gap:2px;border-bottom:1px solid #393b3e;margin-bottom:16px}
+.controls-tabs button{border:0;border-radius:0;background:transparent;color:#aaa;min-height:40px;padding:9px 20px;font-size:.8rem}
+.controls-tabs button[aria-selected=true]{background:#e3e4e5;color:#101114}
+.controls-body{max-height:52vh;overflow:auto;scrollbar-color:#555 #161719}
+.controls-table{width:100%;border-collapse:collapse;font:400 .8rem system-ui;text-align:left}
+.controls-table thead th{color:#82868c;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;padding:8px 12px}
+.controls-table tbody th{font-weight:400}
+.controls-table td,.controls-table tbody th{padding:8px 12px;border-bottom:1px solid #222428}
+.controls-table td{width:45%;border-left:1px solid #313337;text-align:center}
+.controls-table .controls-section th{color:#ee594b;text-transform:uppercase;letter-spacing:.12em;font-size:.65rem;padding-top:22px;border-bottom:0;font-weight:700}
+.controls-table kbd{display:inline-block;min-width:44px;padding:4px 9px;border:1px solid #55585e;border-radius:2px;background:#202226;color:#eee;font:600 .7rem system-ui}
+.controls-help{color:#9ea2a8;font-size:.75rem!important;line-height:1.7;margin:20px 0 12px}
+.controls-dialog>button{border-radius:2px;background:#ddd;color:#111;border:0;min-height:40px;font-size:.8rem}
+#bindings button{border-radius:2px;background:#111317;border:1px solid #393c42;color:#ddd}
+#bindings kbd{background:#e0e1e3;color:#141518;border-radius:1px;min-width:50px;text-align:center}
+@media(max-width:600px){#info-dialog.controls-dialog{padding:22px 16px}.controls-tabs button{padding:8px 13px}.controls-table td,.controls-table tbody th{padding:8px}.controls-table td{width:43%}}
