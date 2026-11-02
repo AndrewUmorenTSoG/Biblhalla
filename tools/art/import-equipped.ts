@@ -1,0 +1,15 @@
+import {figures} from './import-defence.ts';
+import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,loadContent,sha256}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';
+const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'assets/runtime/fighters/fighters-before-equipped.json');if(!existsSync(backup))writeFileSync(backup,readFileSync(file));const meta=JSON.parse(readFileSync(backup,'utf8')),content=loadContent();
+const defsFile=join(ROOT,'production-pack/09_Data/fighters.json'),defs=JSON.parse(readFileSync(defsFile,'utf8'));
+for(const def of content.fighters.fighters){const e=meta[def.id],sheet=readPng(join(ROOT,existsSync(join(ROOT,`assets/animation-production/equipped/${def.id}-corrected.png`))?`assets/animation-production/equipped/${def.id}-corrected.png`:`assets/animation-production/equipped/${def.id}.png`)),base=readPng(join(ROOT,e.image)),cells:any[]=[];
+ const poses=figures(sheet,4,8,1000,64);cells.push(...poses.map(p=>p.image));
+ const scale=192/Math.min(cells[0].height,cells[1].height,cells[16].height,cells[17].height),fw=Math.ceil(Math.max(...cells.map(c=>c.width))*scale)+12,fh=Math.ceil(Math.max(...cells.map(c=>c.height))*scale)+12,atlas=blank(Math.max(base.width,fw*4),base.height+fh*8);blit(atlas,base,0,0);
+ for(let i=0;i<32;i++){const img=resize(cells[i],Math.max(1,Math.round(cells[i].width*scale)),Math.max(1,Math.round(cells[i].height*scale))),x=i%4*fw+4,y=base.height+Math.floor(i/4)*fh+4,name=`equipped_${def.weaponPair[Math.floor(i/16)]}_${i%16}`;blit(atlas,img,x,y);e.frames[name]={x,y,w:img.width,h:img.height,pivotX:Math.round(poses[i].pivot*scale),pivotY:img.height};}
+ // Staff anticipation and strike use the same staff as movement. Preserve
+ // Moses's dedicated spin combo, whose staff is already drawn consistently.
+ for(const m of content.attacks.attacks.filter(m=>(['staff','sling'].includes(m.ownerId)&&def.weaponPair.includes(m.ownerId))||m.id.startsWith(def.id+'_staff_')||m.id.startsWith(def.id+'_sling_'))){if(m.id==='staff_air_combo'&&def.id==='moses')continue;const weapon=m.id.includes('sling')?'sling':'staff';const key=(i:number)=>`equipped_${weapon}_${i}`,down=/_d(light|air|sig)$|_ground_pound$/.test(m.id),contact=down?'down_'+m.id:key(14);if(down)e.frames[contact]={...e.frames[key(14)]};e.clips[m.id]={frames:[key(12),key(13),contact,key(15)],ticks:[Math.floor(m.startup/2),Math.ceil(m.startup/2),m.active,m.recovery]};}
+ if(def.weaponPair.includes('sling')){const f=e.frames.equipped_sling_14,origin=[Math.round((f.w*.95-f.pivotX)*96/e.frames.idle.h),Math.round(f.h*.55*96/e.frames.idle.h)];e.releaseOrigins.sling=origin;defs.fighters.find((d:any)=>d.id===def.id).releaseOrigins.sling=origin;}
+ e.equippedAnimation={source:`assets/animation-production/equipped/${def.id}.png`,weapons:def.weaponPair,frames:32};e.image=`assets/runtime/fighters/${def.id}-equipped.png`;e.sha256=sha256(writePng(join(ROOT,e.image),atlas));console.log(def.id+': both weapons, 32 equipped poses');
+}
+writeFileSync(file,JSON.stringify(meta,null,2)+'\n');writeFileSync(defsFile,JSON.stringify(defs,null,2)+'\n');

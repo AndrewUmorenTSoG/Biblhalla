@@ -63,6 +63,7 @@ export interface BotMemory {
 }
 
 export interface Fighter {
+  crouching?: boolean;
   grabbed?: { owner: number; instance: number; until: number };
   id: number;
   hero: string;

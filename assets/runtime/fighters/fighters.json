@@ -1,7 +1,7 @@
 {
   "samson": {
-    "image": "assets/runtime/fighters/samson-elemental-packed.png",
-    "sha256": "1807a81731bd22aae587aa67ff4035e26123fb70100fa0522b2996f189ddb7a3",
+    "image": "assets/runtime/fighters/samson-equipped.png",
+    "sha256": "0f574f496f3f3e9bc17eeff5392a0ec297bcf1c8f52843a55a9ab3bac3453e75",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/03_samson_move_sheet.png",
     "sourceSha256": "e98fbb30588fd33a85e7cd7a94a6e6ab9929f104408ef0618a8ed6c328e5b8f4",
@@ -722,6 +722,262 @@
         "h": 162,
         "pivotX": 123,
         "pivotY": 162
+      },
+      "equipped_gauntlets_0": {
+        "x": 4,
+        "y": 3661,
+        "w": 129,
+        "h": 193,
+        "pivotX": 65,
+        "pivotY": 193
+      },
+      "equipped_gauntlets_1": {
+        "x": 303,
+        "y": 3661,
+        "w": 128,
+        "h": 193,
+        "pivotX": 66,
+        "pivotY": 193
+      },
+      "equipped_gauntlets_2": {
+        "x": 602,
+        "y": 3661,
+        "w": 157,
+        "h": 152,
+        "pivotX": 61,
+        "pivotY": 152
+      },
+      "equipped_gauntlets_3": {
+        "x": 901,
+        "y": 3661,
+        "w": 167,
+        "h": 121,
+        "pivotX": 81,
+        "pivotY": 121
+      },
+      "equipped_gauntlets_4": {
+        "x": 4,
+        "y": 3924,
+        "w": 205,
+        "h": 179,
+        "pivotX": 134,
+        "pivotY": 179
+      },
+      "equipped_gauntlets_5": {
+        "x": 303,
+        "y": 3924,
+        "w": 186,
+        "h": 181,
+        "pivotX": 16,
+        "pivotY": 181
+      },
+      "equipped_gauntlets_6": {
+        "x": 602,
+        "y": 3924,
+        "w": 194,
+        "h": 180,
+        "pivotX": 73,
+        "pivotY": 180
+      },
+      "equipped_gauntlets_7": {
+        "x": 901,
+        "y": 3924,
+        "w": 199,
+        "h": 181,
+        "pivotX": 27,
+        "pivotY": 181
+      },
+      "equipped_gauntlets_8": {
+        "x": 4,
+        "y": 4187,
+        "w": 178,
+        "h": 204,
+        "pivotX": 14,
+        "pivotY": 204
+      },
+      "equipped_gauntlets_9": {
+        "x": 303,
+        "y": 4187,
+        "w": 159,
+        "h": 150,
+        "pivotX": 90,
+        "pivotY": 150
+      },
+      "equipped_gauntlets_10": {
+        "x": 602,
+        "y": 4187,
+        "w": 159,
+        "h": 193,
+        "pivotX": 113,
+        "pivotY": 193
+      },
+      "equipped_gauntlets_11": {
+        "x": 901,
+        "y": 4187,
+        "w": 148,
+        "h": 131,
+        "pivotX": 83,
+        "pivotY": 131
+      },
+      "equipped_gauntlets_12": {
+        "x": 4,
+        "y": 4450,
+        "w": 166,
+        "h": 183,
+        "pivotX": 80,
+        "pivotY": 183
+      },
+      "equipped_gauntlets_13": {
+        "x": 303,
+        "y": 4450,
+        "w": 155,
+        "h": 229,
+        "pivotX": 72,
+        "pivotY": 229
+      },
+      "equipped_gauntlets_14": {
+        "x": 602,
+        "y": 4450,
+        "w": 234,
+        "h": 176,
+        "pivotX": 96,
+        "pivotY": 176
+      },
+      "equipped_gauntlets_15": {
+        "x": 901,
+        "y": 4450,
+        "w": 153,
+        "h": 184,
+        "pivotX": 67,
+        "pivotY": 184
+      },
+      "equipped_hammer_0": {
+        "x": 4,
+        "y": 4713,
+        "w": 146,
+        "h": 192,
+        "pivotX": 83,
+        "pivotY": 192
+      },
+      "equipped_hammer_1": {
+        "x": 303,
+        "y": 4713,
+        "w": 141,
+        "h": 192,
+        "pivotX": 84,
+        "pivotY": 192
+      },
+      "equipped_hammer_2": {
+        "x": 602,
+        "y": 4713,
+        "w": 155,
+        "h": 153,
+        "pivotX": 70,
+        "pivotY": 153
+      },
+      "equipped_hammer_3": {
+        "x": 901,
+        "y": 4713,
+        "w": 175,
+        "h": 124,
+        "pivotX": 102,
+        "pivotY": 124
+      },
+      "equipped_hammer_4": {
+        "x": 4,
+        "y": 4976,
+        "w": 217,
+        "h": 180,
+        "pivotX": 130,
+        "pivotY": 180
+      },
+      "equipped_hammer_5": {
+        "x": 303,
+        "y": 4976,
+        "w": 209,
+        "h": 181,
+        "pivotX": 15,
+        "pivotY": 181
+      },
+      "equipped_hammer_6": {
+        "x": 602,
+        "y": 4976,
+        "w": 226,
+        "h": 183,
+        "pivotX": 70,
+        "pivotY": 183
+      },
+      "equipped_hammer_7": {
+        "x": 901,
+        "y": 4976,
+        "w": 213,
+        "h": 183,
+        "pivotX": 22,
+        "pivotY": 183
+      },
+      "equipped_hammer_8": {
+        "x": 4,
+        "y": 5239,
+        "w": 193,
+        "h": 201,
+        "pivotX": 12,
+        "pivotY": 201
+      },
+      "equipped_hammer_9": {
+        "x": 303,
+        "y": 5239,
+        "w": 191,
+        "h": 152,
+        "pivotX": 108,
+        "pivotY": 152
+      },
+      "equipped_hammer_10": {
+        "x": 602,
+        "y": 5239,
+        "w": 175,
+        "h": 193,
+        "pivotX": 125,
+        "pivotY": 193
+      },
+      "equipped_hammer_11": {
+        "x": 901,
+        "y": 5239,
+        "w": 189,
+        "h": 129,
+        "pivotX": 91,
+        "pivotY": 129
+      },
+      "equipped_hammer_12": {
+        "x": 4,
+        "y": 5502,
+        "w": 168,
+        "h": 181,
+        "pivotX": 94,
+        "pivotY": 181
+      },
+      "equipped_hammer_13": {
+        "x": 303,
+        "y": 5502,
+        "w": 161,
+        "h": 250,
+        "pivotX": 84,
+        "pivotY": 250
+      },
+      "equipped_hammer_14": {
+        "x": 602,
+        "y": 5502,
+        "w": 287,
+        "h": 177,
+        "pivotX": 93,
+        "pivotY": 177
+      },
+      "equipped_hammer_15": {
+        "x": 901,
+        "y": 5502,
+        "w": 149,
+        "h": 180,
+        "pivotX": 83,
+        "pivotY": 180
       }
     },
     "clips": {
@@ -1439,11 +1695,19 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/samson.png",
+      "weapons": [
+        "gauntlets",
+        "hammer"
+      ],
+      "frames": 32
+    }
   },
   "david": {
-    "image": "assets/runtime/fighters/david-drawn-sling.png",
-    "sha256": "59d719c94361405ced600c8b643c6cf68ab650c2135548cf50fba0230218b010",
+    "image": "assets/runtime/fighters/david-equipped.png",
+    "sha256": "b2da3586c02a3d0f7c3e6dff795bd3c58d3b06c6503c0b6a090ce760da7af800",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/01_david_move_sheet.png",
     "sourceSha256": "7fb4eff4652224b197097200a466a7ede487a1305accc20384082704a3cf9d6a",
@@ -1942,36 +2206,36 @@
         "gripY": 129
       },
       "down_sling_dlight": {
-        "x": 734,
-        "y": 1896,
-        "w": 225,
-        "h": 173,
-        "pivotX": 94,
-        "pivotY": 173
+        "x": 650,
+        "y": 5436,
+        "w": 311,
+        "h": 175,
+        "pivotX": 87,
+        "pivotY": 175
       },
       "down_sling_dair": {
-        "x": 4,
-        "y": 2095,
-        "w": 394,
-        "h": 192,
-        "pivotX": 9,
-        "pivotY": 192
+        "x": 650,
+        "y": 5436,
+        "w": 311,
+        "h": 175,
+        "pivotX": 87,
+        "pivotY": 175
       },
       "down_sling_ground_pound": {
-        "x": 406,
-        "y": 2095,
-        "w": 394,
-        "h": 192,
-        "pivotX": 9,
-        "pivotY": 192
+        "x": 650,
+        "y": 5436,
+        "w": 311,
+        "h": 175,
+        "pivotX": 87,
+        "pivotY": 175
       },
       "down_david_sling_dsig": {
-        "x": 644,
-        "y": 4547,
-        "w": 307,
-        "h": 189,
-        "pivotX": 147,
-        "pivotY": 189
+        "x": 650,
+        "y": 5436,
+        "w": 311,
+        "h": 175,
+        "pivotX": 87,
+        "pivotY": 175
       },
       "down_sword_dlight": {
         "x": 406,
@@ -2292,6 +2556,262 @@
         "h": 178,
         "pivotX": 138,
         "pivotY": 178
+      },
+      "equipped_sling_0": {
+        "x": 4,
+        "y": 4764,
+        "w": 114,
+        "h": 192,
+        "pivotX": 54,
+        "pivotY": 192
+      },
+      "equipped_sling_1": {
+        "x": 327,
+        "y": 4764,
+        "w": 125,
+        "h": 192,
+        "pivotX": 65,
+        "pivotY": 192
+      },
+      "equipped_sling_2": {
+        "x": 650,
+        "y": 4764,
+        "w": 135,
+        "h": 163,
+        "pivotX": 53,
+        "pivotY": 163
+      },
+      "equipped_sling_3": {
+        "x": 973,
+        "y": 4764,
+        "w": 149,
+        "h": 133,
+        "pivotX": 75,
+        "pivotY": 133
+      },
+      "equipped_sling_4": {
+        "x": 4,
+        "y": 4988,
+        "w": 170,
+        "h": 190,
+        "pivotX": 67,
+        "pivotY": 190
+      },
+      "equipped_sling_5": {
+        "x": 327,
+        "y": 4988,
+        "w": 176,
+        "h": 192,
+        "pivotX": 29,
+        "pivotY": 192
+      },
+      "equipped_sling_6": {
+        "x": 650,
+        "y": 4988,
+        "w": 191,
+        "h": 190,
+        "pivotX": 118,
+        "pivotY": 190
+      },
+      "equipped_sling_7": {
+        "x": 973,
+        "y": 4988,
+        "w": 202,
+        "h": 186,
+        "pivotX": 104,
+        "pivotY": 186
+      },
+      "equipped_sling_8": {
+        "x": 4,
+        "y": 5212,
+        "w": 187,
+        "h": 203,
+        "pivotX": 35,
+        "pivotY": 203
+      },
+      "equipped_sling_9": {
+        "x": 327,
+        "y": 5212,
+        "w": 207,
+        "h": 166,
+        "pivotX": 100,
+        "pivotY": 166
+      },
+      "equipped_sling_10": {
+        "x": 650,
+        "y": 5212,
+        "w": 176,
+        "h": 178,
+        "pivotX": 107,
+        "pivotY": 178
+      },
+      "equipped_sling_11": {
+        "x": 973,
+        "y": 5212,
+        "w": 204,
+        "h": 128,
+        "pivotX": 90,
+        "pivotY": 128
+      },
+      "equipped_sling_12": {
+        "x": 4,
+        "y": 5436,
+        "w": 155,
+        "h": 185,
+        "pivotX": 80,
+        "pivotY": 185
+      },
+      "equipped_sling_13": {
+        "x": 327,
+        "y": 5436,
+        "w": 188,
+        "h": 193,
+        "pivotX": 111,
+        "pivotY": 193
+      },
+      "equipped_sling_14": {
+        "x": 650,
+        "y": 5436,
+        "w": 311,
+        "h": 175,
+        "pivotX": 87,
+        "pivotY": 175
+      },
+      "equipped_sling_15": {
+        "x": 973,
+        "y": 5436,
+        "w": 157,
+        "h": 183,
+        "pivotX": 85,
+        "pivotY": 183
+      },
+      "equipped_sword_0": {
+        "x": 4,
+        "y": 5660,
+        "w": 136,
+        "h": 196,
+        "pivotX": 69,
+        "pivotY": 196
+      },
+      "equipped_sword_1": {
+        "x": 327,
+        "y": 5660,
+        "w": 148,
+        "h": 195,
+        "pivotX": 75,
+        "pivotY": 195
+      },
+      "equipped_sword_2": {
+        "x": 650,
+        "y": 5660,
+        "w": 214,
+        "h": 163,
+        "pivotX": 67,
+        "pivotY": 163
+      },
+      "equipped_sword_3": {
+        "x": 973,
+        "y": 5660,
+        "w": 190,
+        "h": 135,
+        "pivotX": 60,
+        "pivotY": 135
+      },
+      "equipped_sword_4": {
+        "x": 4,
+        "y": 5884,
+        "w": 199,
+        "h": 191,
+        "pivotX": 61,
+        "pivotY": 191
+      },
+      "equipped_sword_5": {
+        "x": 327,
+        "y": 5884,
+        "w": 199,
+        "h": 193,
+        "pivotX": 53,
+        "pivotY": 193
+      },
+      "equipped_sword_6": {
+        "x": 650,
+        "y": 5884,
+        "w": 204,
+        "h": 191,
+        "pivotX": 127,
+        "pivotY": 191
+      },
+      "equipped_sword_7": {
+        "x": 973,
+        "y": 5884,
+        "w": 218,
+        "h": 185,
+        "pivotX": 150,
+        "pivotY": 185
+      },
+      "equipped_sword_8": {
+        "x": 4,
+        "y": 6108,
+        "w": 203,
+        "h": 206,
+        "pivotX": 49,
+        "pivotY": 206
+      },
+      "equipped_sword_9": {
+        "x": 327,
+        "y": 6108,
+        "w": 169,
+        "h": 182,
+        "pivotX": 60,
+        "pivotY": 182
+      },
+      "equipped_sword_10": {
+        "x": 650,
+        "y": 6108,
+        "w": 174,
+        "h": 178,
+        "pivotX": 112,
+        "pivotY": 178
+      },
+      "equipped_sword_11": {
+        "x": 973,
+        "y": 6108,
+        "w": 214,
+        "h": 131,
+        "pivotX": 67,
+        "pivotY": 131
+      },
+      "equipped_sword_12": {
+        "x": 4,
+        "y": 6332,
+        "w": 140,
+        "h": 187,
+        "pivotX": 63,
+        "pivotY": 187
+      },
+      "equipped_sword_13": {
+        "x": 327,
+        "y": 6332,
+        "w": 166,
+        "h": 211,
+        "pivotX": 83,
+        "pivotY": 211
+      },
+      "equipped_sword_14": {
+        "x": 650,
+        "y": 6332,
+        "w": 311,
+        "h": 175,
+        "pivotX": 92,
+        "pivotY": 175
+      },
+      "equipped_sword_15": {
+        "x": 973,
+        "y": 6332,
+        "w": 143,
+        "h": 186,
+        "pivotX": 67,
+        "pivotY": 186
       }
     },
     "clips": {
@@ -2449,10 +2969,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -2463,10 +2983,10 @@
       },
       "sling_slight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -2477,30 +2997,24 @@
       },
       "sling_dlight": {
         "frames": [
-          "attack_sling_0",
-          "motion_idle",
-          "attack_sling_2",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dlight",
-          "attack_sling_4",
-          "motion_idle",
-          "attack_sling_7"
+          "equipped_sling_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "sling_nair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -2511,10 +3025,10 @@
       },
       "sling_sair": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -2525,10 +3039,10 @@
       },
       "sling_dair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dair",
-          "element_0_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           5,
@@ -2539,10 +3053,10 @@
       },
       "sling_recovery": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -2553,10 +3067,10 @@
       },
       "sling_ground_pound": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_ground_pound",
-          "element_0_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           8,
@@ -2567,10 +3081,10 @@
       },
       "david_sling_nsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           9,
@@ -2581,10 +3095,10 @@
       },
       "david_sling_ssig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           11,
@@ -2595,10 +3109,10 @@
       },
       "david_sling_dsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_david_sling_dsig",
-          "slinger_cast_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           12,
@@ -2906,10 +3420,10 @@
       },
       "sling_air_combo": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           2,
@@ -2974,14 +3488,22 @@
     },
     "releaseOrigins": {
       "sling": [
-        72,
-        52
+        104,
+        48
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/david.png",
+      "weapons": [
+        "sling",
+        "sword"
+      ],
+      "frames": 32
     }
   },
   "saul": {
-    "image": "assets/runtime/fighters/saul-elemental-packed.png",
-    "sha256": "4a587fbd45c2aed62632567692c5ca5e9bd607ef6de9ab7baea6279bc0115d52",
+    "image": "assets/runtime/fighters/saul-equipped.png",
+    "sha256": "71c84c7692b512a842e16890f4b094315647bdb9f224de57facc9521b091cce5",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/02_saul_move_sheet.png",
     "sourceSha256": "ddafceec80c6d6cbb2db61ae2100888fec5b47636ce0f8d9302990f1ceb35b98",
@@ -3702,6 +4224,262 @@
         "h": 161,
         "pivotX": 150,
         "pivotY": 161
+      },
+      "equipped_spear_0": {
+        "x": 4,
+        "y": 3805,
+        "w": 127,
+        "h": 212,
+        "pivotX": 69,
+        "pivotY": 212
+      },
+      "equipped_spear_1": {
+        "x": 344,
+        "y": 3805,
+        "w": 130,
+        "h": 210,
+        "pivotX": 76,
+        "pivotY": 210
+      },
+      "equipped_spear_2": {
+        "x": 684,
+        "y": 3805,
+        "w": 211,
+        "h": 158,
+        "pivotX": 80,
+        "pivotY": 158
+      },
+      "equipped_spear_3": {
+        "x": 1024,
+        "y": 3805,
+        "w": 235,
+        "h": 130,
+        "pivotX": 72,
+        "pivotY": 130
+      },
+      "equipped_spear_4": {
+        "x": 4,
+        "y": 4059,
+        "w": 251,
+        "h": 173,
+        "pivotX": 115,
+        "pivotY": 173
+      },
+      "equipped_spear_5": {
+        "x": 344,
+        "y": 4059,
+        "w": 254,
+        "h": 176,
+        "pivotX": 152,
+        "pivotY": 176
+      },
+      "equipped_spear_6": {
+        "x": 684,
+        "y": 4059,
+        "w": 256,
+        "h": 177,
+        "pivotX": 133,
+        "pivotY": 177
+      },
+      "equipped_spear_7": {
+        "x": 1024,
+        "y": 4059,
+        "w": 236,
+        "h": 176,
+        "pivotX": 137,
+        "pivotY": 176
+      },
+      "equipped_spear_8": {
+        "x": 4,
+        "y": 4313,
+        "w": 225,
+        "h": 242,
+        "pivotX": 42,
+        "pivotY": 242
+      },
+      "equipped_spear_9": {
+        "x": 344,
+        "y": 4313,
+        "w": 269,
+        "h": 152,
+        "pivotX": 81,
+        "pivotY": 152
+      },
+      "equipped_spear_10": {
+        "x": 684,
+        "y": 4313,
+        "w": 274,
+        "h": 192,
+        "pivotX": 139,
+        "pivotY": 192
+      },
+      "equipped_spear_11": {
+        "x": 1024,
+        "y": 4313,
+        "w": 242,
+        "h": 133,
+        "pivotX": 96,
+        "pivotY": 133
+      },
+      "equipped_spear_12": {
+        "x": 4,
+        "y": 4567,
+        "w": 252,
+        "h": 181,
+        "pivotX": 116,
+        "pivotY": 181
+      },
+      "equipped_spear_13": {
+        "x": 344,
+        "y": 4567,
+        "w": 258,
+        "h": 228,
+        "pivotX": 45,
+        "pivotY": 228
+      },
+      "equipped_spear_14": {
+        "x": 684,
+        "y": 4567,
+        "w": 328,
+        "h": 171,
+        "pivotX": 87,
+        "pivotY": 171
+      },
+      "equipped_spear_15": {
+        "x": 1024,
+        "y": 4567,
+        "w": 232,
+        "h": 176,
+        "pivotX": 116,
+        "pivotY": 176
+      },
+      "equipped_sword_0": {
+        "x": 4,
+        "y": 4821,
+        "w": 121,
+        "h": 196,
+        "pivotX": 63,
+        "pivotY": 196
+      },
+      "equipped_sword_1": {
+        "x": 344,
+        "y": 4821,
+        "w": 128,
+        "h": 192,
+        "pivotX": 69,
+        "pivotY": 192
+      },
+      "equipped_sword_2": {
+        "x": 684,
+        "y": 4821,
+        "w": 197,
+        "h": 157,
+        "pivotX": 80,
+        "pivotY": 157
+      },
+      "equipped_sword_3": {
+        "x": 1024,
+        "y": 4821,
+        "w": 202,
+        "h": 131,
+        "pivotX": 78,
+        "pivotY": 131
+      },
+      "equipped_sword_4": {
+        "x": 4,
+        "y": 5075,
+        "w": 227,
+        "h": 166,
+        "pivotX": 111,
+        "pivotY": 166
+      },
+      "equipped_sword_5": {
+        "x": 344,
+        "y": 5075,
+        "w": 237,
+        "h": 177,
+        "pivotX": 148,
+        "pivotY": 177
+      },
+      "equipped_sword_6": {
+        "x": 684,
+        "y": 5075,
+        "w": 241,
+        "h": 172,
+        "pivotX": 134,
+        "pivotY": 172
+      },
+      "equipped_sword_7": {
+        "x": 1024,
+        "y": 5075,
+        "w": 229,
+        "h": 174,
+        "pivotX": 143,
+        "pivotY": 174
+      },
+      "equipped_sword_8": {
+        "x": 4,
+        "y": 5329,
+        "w": 201,
+        "h": 217,
+        "pivotX": 40,
+        "pivotY": 217
+      },
+      "equipped_sword_9": {
+        "x": 344,
+        "y": 5329,
+        "w": 234,
+        "h": 156,
+        "pivotX": 70,
+        "pivotY": 156
+      },
+      "equipped_sword_10": {
+        "x": 684,
+        "y": 5329,
+        "w": 234,
+        "h": 183,
+        "pivotX": 126,
+        "pivotY": 183
+      },
+      "equipped_sword_11": {
+        "x": 1024,
+        "y": 5329,
+        "w": 224,
+        "h": 127,
+        "pivotX": 87,
+        "pivotY": 127
+      },
+      "equipped_sword_12": {
+        "x": 4,
+        "y": 5583,
+        "w": 197,
+        "h": 166,
+        "pivotX": 89,
+        "pivotY": 166
+      },
+      "equipped_sword_13": {
+        "x": 344,
+        "y": 5583,
+        "w": 172,
+        "h": 193,
+        "pivotX": 78,
+        "pivotY": 193
+      },
+      "equipped_sword_14": {
+        "x": 684,
+        "y": 5583,
+        "w": 322,
+        "h": 144,
+        "pivotX": 80,
+        "pivotY": 144
+      },
+      "equipped_sword_15": {
+        "x": 1024,
+        "y": 5583,
+        "w": 189,
+        "h": 150,
+        "pivotX": 84,
+        "pivotY": 150
       }
     },
     "clips": {
@@ -4414,11 +5192,19 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/saul.png",
+      "weapons": [
+        "spear",
+        "sword"
+      ],
+      "frames": 32
+    }
   },
   "joshua": {
-    "image": "assets/runtime/fighters/joshua-elemental-packed.png",
-    "sha256": "4107d0c15ae2d50ca1fffdb6564b2c5a0ea42412abe5aa79215de7860c8436e8",
+    "image": "assets/runtime/fighters/joshua-equipped.png",
+    "sha256": "25ba85e9cf36ed6b35c24212626dde97ba194a45bad0d167ad1545b2e7906b52",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
     "sourceSha256": "653dbd20e984453897a03cbe7e700ea5e32dda95ddae05036dd153e972d5241d",
@@ -5171,6 +5957,262 @@
         "h": 136,
         "pivotX": 129,
         "pivotY": 136
+      },
+      "equipped_sword_0": {
+        "x": 4,
+        "y": 3823,
+        "w": 139,
+        "h": 193,
+        "pivotX": 88,
+        "pivotY": 193
+      },
+      "equipped_sword_1": {
+        "x": 336,
+        "y": 3823,
+        "w": 148,
+        "h": 192,
+        "pivotX": 93,
+        "pivotY": 192
+      },
+      "equipped_sword_2": {
+        "x": 668,
+        "y": 3823,
+        "w": 192,
+        "h": 151,
+        "pivotX": 81,
+        "pivotY": 151
+      },
+      "equipped_sword_3": {
+        "x": 1000,
+        "y": 3823,
+        "w": 178,
+        "h": 118,
+        "pivotX": 80,
+        "pivotY": 118
+      },
+      "equipped_sword_4": {
+        "x": 4,
+        "y": 4050,
+        "w": 151,
+        "h": 173,
+        "pivotX": 119,
+        "pivotY": 173
+      },
+      "equipped_sword_5": {
+        "x": 336,
+        "y": 4050,
+        "w": 199,
+        "h": 178,
+        "pivotX": 21,
+        "pivotY": 178
+      },
+      "equipped_sword_6": {
+        "x": 668,
+        "y": 4050,
+        "w": 183,
+        "h": 174,
+        "pivotX": 132,
+        "pivotY": 174
+      },
+      "equipped_sword_7": {
+        "x": 1000,
+        "y": 4050,
+        "w": 200,
+        "h": 171,
+        "pivotX": 120,
+        "pivotY": 171
+      },
+      "equipped_sword_8": {
+        "x": 4,
+        "y": 4277,
+        "w": 173,
+        "h": 212,
+        "pivotX": 44,
+        "pivotY": 212
+      },
+      "equipped_sword_9": {
+        "x": 336,
+        "y": 4277,
+        "w": 156,
+        "h": 173,
+        "pivotX": 71,
+        "pivotY": 173
+      },
+      "equipped_sword_10": {
+        "x": 668,
+        "y": 4277,
+        "w": 238,
+        "h": 207,
+        "pivotX": 136,
+        "pivotY": 207
+      },
+      "equipped_sword_11": {
+        "x": 1000,
+        "y": 4277,
+        "w": 173,
+        "h": 144,
+        "pivotX": 49,
+        "pivotY": 144
+      },
+      "equipped_sword_12": {
+        "x": 4,
+        "y": 4504,
+        "w": 150,
+        "h": 183,
+        "pivotX": 81,
+        "pivotY": 183
+      },
+      "equipped_sword_13": {
+        "x": 336,
+        "y": 4504,
+        "w": 176,
+        "h": 214,
+        "pivotX": 97,
+        "pivotY": 214
+      },
+      "equipped_sword_14": {
+        "x": 668,
+        "y": 4504,
+        "w": 320,
+        "h": 163,
+        "pivotX": 121,
+        "pivotY": 163
+      },
+      "equipped_sword_15": {
+        "x": 1000,
+        "y": 4504,
+        "w": 182,
+        "h": 171,
+        "pivotX": 92,
+        "pivotY": 171
+      },
+      "equipped_shield_0": {
+        "x": 4,
+        "y": 4731,
+        "w": 133,
+        "h": 194,
+        "pivotX": 75,
+        "pivotY": 194
+      },
+      "equipped_shield_1": {
+        "x": 336,
+        "y": 4731,
+        "w": 147,
+        "h": 193,
+        "pivotX": 86,
+        "pivotY": 193
+      },
+      "equipped_shield_2": {
+        "x": 668,
+        "y": 4731,
+        "w": 167,
+        "h": 157,
+        "pivotX": 79,
+        "pivotY": 157
+      },
+      "equipped_shield_3": {
+        "x": 1000,
+        "y": 4731,
+        "w": 168,
+        "h": 126,
+        "pivotX": 82,
+        "pivotY": 126
+      },
+      "equipped_shield_4": {
+        "x": 4,
+        "y": 4958,
+        "w": 179,
+        "h": 174,
+        "pivotX": 131,
+        "pivotY": 174
+      },
+      "equipped_shield_5": {
+        "x": 336,
+        "y": 4958,
+        "w": 186,
+        "h": 176,
+        "pivotX": 40,
+        "pivotY": 176
+      },
+      "equipped_shield_6": {
+        "x": 668,
+        "y": 4958,
+        "w": 193,
+        "h": 176,
+        "pivotX": 145,
+        "pivotY": 176
+      },
+      "equipped_shield_7": {
+        "x": 1000,
+        "y": 4958,
+        "w": 187,
+        "h": 172,
+        "pivotX": 128,
+        "pivotY": 172
+      },
+      "equipped_shield_8": {
+        "x": 4,
+        "y": 5185,
+        "w": 184,
+        "h": 195,
+        "pivotX": 28,
+        "pivotY": 195
+      },
+      "equipped_shield_9": {
+        "x": 336,
+        "y": 5185,
+        "w": 167,
+        "h": 155,
+        "pivotX": 71,
+        "pivotY": 155
+      },
+      "equipped_shield_10": {
+        "x": 668,
+        "y": 5185,
+        "w": 179,
+        "h": 183,
+        "pivotX": 144,
+        "pivotY": 183
+      },
+      "equipped_shield_11": {
+        "x": 1000,
+        "y": 5185,
+        "w": 170,
+        "h": 137,
+        "pivotX": 79,
+        "pivotY": 137
+      },
+      "equipped_shield_12": {
+        "x": 4,
+        "y": 5412,
+        "w": 157,
+        "h": 194,
+        "pivotX": 75,
+        "pivotY": 194
+      },
+      "equipped_shield_13": {
+        "x": 336,
+        "y": 5412,
+        "w": 172,
+        "h": 200,
+        "pivotX": 88,
+        "pivotY": 200
+      },
+      "equipped_shield_14": {
+        "x": 668,
+        "y": 5412,
+        "w": 245,
+        "h": 166,
+        "pivotX": 103,
+        "pivotY": 166
+      },
+      "equipped_shield_15": {
+        "x": 1000,
+        "y": 5412,
+        "w": 166,
+        "h": 181,
+        "pivotX": 87,
+        "pivotY": 181
       }
     },
     "clips": {
@@ -5845,11 +6887,19 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/joshua.png",
+      "weapons": [
+        "sword",
+        "shield"
+      ],
+      "frames": 32
+    }
   },
   "deborah": {
-    "image": "assets/runtime/fighters/deborah-elemental-packed.png",
-    "sha256": "85a9f5db49937dcb743bc0a770e072cb3d8b231568b4824f8f1809c1d0ab108b",
+    "image": "assets/runtime/fighters/deborah-equipped.png",
+    "sha256": "a4dd0c3e99989165e74cf7f451101ca44a3a91330a3e65d67fb49d1f14cf0817",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
     "sourceSha256": "abfd154eda09646e8e8f628ac36ff03da398d18cbdacc34867d1328c76efe716",
@@ -6348,36 +7398,36 @@
         "gripY": 129
       },
       "down_staff_dlight": {
-        "x": 498,
-        "y": 1811,
-        "w": 283,
-        "h": 150,
-        "pivotX": 165,
-        "pivotY": 150
+        "x": 664,
+        "y": 4069,
+        "w": 318,
+        "h": 164,
+        "pivotX": 107,
+        "pivotY": 164
       },
       "down_staff_dair": {
-        "x": 4,
-        "y": 2011,
-        "w": 314,
-        "h": 166,
-        "pivotX": 11,
-        "pivotY": 166
+        "x": 664,
+        "y": 4069,
+        "w": 318,
+        "h": 164,
+        "pivotX": 107,
+        "pivotY": 164
       },
       "down_staff_ground_pound": {
-        "x": 326,
-        "y": 2011,
-        "w": 314,
-        "h": 166,
-        "pivotX": 11,
-        "pivotY": 166
+        "x": 664,
+        "y": 4069,
+        "w": 318,
+        "h": 164,
+        "pivotX": 107,
+        "pivotY": 164
       },
       "down_deborah_staff_dsig": {
-        "x": 648,
-        "y": 2011,
-        "w": 223,
-        "h": 152,
-        "pivotX": 111,
-        "pivotY": 152
+        "x": 664,
+        "y": 4069,
+        "w": 318,
+        "h": 164,
+        "pivotX": 107,
+        "pivotY": 164
       },
       "down_blades_dlight": {
         "x": 4,
@@ -6570,6 +7620,262 @@
         "h": 177,
         "pivotX": 51,
         "pivotY": 177
+      },
+      "equipped_staff_0": {
+        "x": 4,
+        "y": 3379,
+        "w": 110,
+        "h": 199,
+        "pivotX": 48,
+        "pivotY": 199
+      },
+      "equipped_staff_1": {
+        "x": 334,
+        "y": 3379,
+        "w": 105,
+        "h": 198,
+        "pivotX": 46,
+        "pivotY": 198
+      },
+      "equipped_staff_2": {
+        "x": 664,
+        "y": 3379,
+        "w": 157,
+        "h": 173,
+        "pivotX": 66,
+        "pivotY": 173
+      },
+      "equipped_staff_3": {
+        "x": 994,
+        "y": 3379,
+        "w": 198,
+        "h": 121,
+        "pivotX": 72,
+        "pivotY": 121
+      },
+      "equipped_staff_4": {
+        "x": 4,
+        "y": 3609,
+        "w": 226,
+        "h": 186,
+        "pivotX": 80,
+        "pivotY": 186
+      },
+      "equipped_staff_5": {
+        "x": 334,
+        "y": 3609,
+        "w": 226,
+        "h": 180,
+        "pivotX": 87,
+        "pivotY": 180
+      },
+      "equipped_staff_6": {
+        "x": 664,
+        "y": 3609,
+        "w": 253,
+        "h": 174,
+        "pivotX": 47,
+        "pivotY": 174
+      },
+      "equipped_staff_7": {
+        "x": 994,
+        "y": 3609,
+        "w": 259,
+        "h": 174,
+        "pivotX": 135,
+        "pivotY": 174
+      },
+      "equipped_staff_8": {
+        "x": 4,
+        "y": 3839,
+        "w": 170,
+        "h": 218,
+        "pivotX": 23,
+        "pivotY": 218
+      },
+      "equipped_staff_9": {
+        "x": 334,
+        "y": 3839,
+        "w": 169,
+        "h": 168,
+        "pivotX": 69,
+        "pivotY": 168
+      },
+      "equipped_staff_10": {
+        "x": 664,
+        "y": 3839,
+        "w": 197,
+        "h": 175,
+        "pivotX": 123,
+        "pivotY": 175
+      },
+      "equipped_staff_11": {
+        "x": 994,
+        "y": 3839,
+        "w": 205,
+        "h": 133,
+        "pivotX": 71,
+        "pivotY": 133
+      },
+      "equipped_staff_12": {
+        "x": 4,
+        "y": 4069,
+        "w": 209,
+        "h": 181,
+        "pivotX": 111,
+        "pivotY": 181
+      },
+      "equipped_staff_13": {
+        "x": 334,
+        "y": 4069,
+        "w": 185,
+        "h": 203,
+        "pivotX": 79,
+        "pivotY": 203
+      },
+      "equipped_staff_14": {
+        "x": 664,
+        "y": 4069,
+        "w": 318,
+        "h": 164,
+        "pivotX": 107,
+        "pivotY": 164
+      },
+      "equipped_staff_15": {
+        "x": 994,
+        "y": 4069,
+        "w": 200,
+        "h": 179,
+        "pivotX": 83,
+        "pivotY": 179
+      },
+      "equipped_blades_0": {
+        "x": 4,
+        "y": 4299,
+        "w": 155,
+        "h": 194,
+        "pivotX": 59,
+        "pivotY": 194
+      },
+      "equipped_blades_1": {
+        "x": 334,
+        "y": 4299,
+        "w": 164,
+        "h": 192,
+        "pivotX": 67,
+        "pivotY": 192
+      },
+      "equipped_blades_2": {
+        "x": 664,
+        "y": 4299,
+        "w": 185,
+        "h": 158,
+        "pivotX": 73,
+        "pivotY": 158
+      },
+      "equipped_blades_3": {
+        "x": 994,
+        "y": 4299,
+        "w": 202,
+        "h": 124,
+        "pivotX": 80,
+        "pivotY": 124
+      },
+      "equipped_blades_4": {
+        "x": 4,
+        "y": 4529,
+        "w": 228,
+        "h": 187,
+        "pivotX": 42,
+        "pivotY": 187
+      },
+      "equipped_blades_5": {
+        "x": 334,
+        "y": 4529,
+        "w": 226,
+        "h": 179,
+        "pivotX": 101,
+        "pivotY": 179
+      },
+      "equipped_blades_6": {
+        "x": 664,
+        "y": 4529,
+        "w": 230,
+        "h": 177,
+        "pivotX": 46,
+        "pivotY": 177
+      },
+      "equipped_blades_7": {
+        "x": 994,
+        "y": 4529,
+        "w": 236,
+        "h": 174,
+        "pivotX": 140,
+        "pivotY": 174
+      },
+      "equipped_blades_8": {
+        "x": 4,
+        "y": 4759,
+        "w": 190,
+        "h": 214,
+        "pivotX": 38,
+        "pivotY": 214
+      },
+      "equipped_blades_9": {
+        "x": 334,
+        "y": 4759,
+        "w": 159,
+        "h": 180,
+        "pivotX": 62,
+        "pivotY": 180
+      },
+      "equipped_blades_10": {
+        "x": 664,
+        "y": 4759,
+        "w": 199,
+        "h": 176,
+        "pivotX": 116,
+        "pivotY": 176
+      },
+      "equipped_blades_11": {
+        "x": 994,
+        "y": 4759,
+        "w": 199,
+        "h": 140,
+        "pivotX": 72,
+        "pivotY": 140
+      },
+      "equipped_blades_12": {
+        "x": 4,
+        "y": 4989,
+        "w": 216,
+        "h": 187,
+        "pivotX": 105,
+        "pivotY": 187
+      },
+      "equipped_blades_13": {
+        "x": 334,
+        "y": 4989,
+        "w": 193,
+        "h": 205,
+        "pivotX": 89,
+        "pivotY": 205
+      },
+      "equipped_blades_14": {
+        "x": 664,
+        "y": 4989,
+        "w": 303,
+        "h": 169,
+        "pivotX": 133,
+        "pivotY": 169
+      },
+      "equipped_blades_15": {
+        "x": 994,
+        "y": 4989,
+        "w": 210,
+        "h": 184,
+        "pivotX": 86,
+        "pivotY": 184
       }
     },
     "clips": {
@@ -6597,70 +7903,52 @@
       },
       "staff_nlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "staff_slight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          7,
-          7,
-          7
+          6,
+          5,
+          21
         ]
       },
       "staff_dlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dlight",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "staff_nair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           5,
@@ -6671,10 +7959,10 @@
       },
       "staff_sair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -6685,10 +7973,10 @@
       },
       "staff_dair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dair",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -6699,10 +7987,10 @@
       },
       "staff_recovery": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -6713,10 +8001,10 @@
       },
       "staff_ground_pound": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_ground_pound",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           8,
@@ -6857,62 +8145,44 @@
       },
       "deborah_staff_nsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          6,
-          6,
-          5,
-          5,
-          9,
           8,
-          8
+          9,
+          5,
+          25
         ]
       },
       "deborah_staff_ssig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          7,
-          7,
-          7,
-          5,
           10,
-          9,
-          9
+          11,
+          5,
+          28
         ]
       },
       "deborah_staff_dsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_deborah_staff_dsig",
-          "attack_staff_4",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_15"
         ],
         "ticks": [
-          8,
-          8,
-          7,
+          11,
+          12,
           6,
-          10,
-          10,
-          10
+          30
         ]
       },
       "deborah_blades_nsig": {
@@ -7200,10 +8470,10 @@
       },
       "staff_air_combo": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           2,
@@ -7280,11 +8550,19 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/deborah.png",
+      "weapons": [
+        "staff",
+        "blades"
+      ],
+      "frames": 32
+    }
   },
   "gideon": {
-    "image": "assets/runtime/fighters/gideon-release.png",
-    "sha256": "2e67370b044c8141eeb1ac15b96bda04a6fd2258a10a4789ceacbaaebca76606",
+    "image": "assets/runtime/fighters/gideon-equipped.png",
+    "sha256": "7c0e09e0012b0cda88640389403f9ab1cf4a639a88c25f4cfcfa7b302b5ef3ec",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
     "sourceSha256": "4e6803c3a5e5214e92fe4ae42e250bf522054b204b3d992863e41f94a5300896",
@@ -8101,6 +9379,262 @@
         "h": 189,
         "pivotX": 86,
         "pivotY": 189
+      },
+      "equipped_sword_0": {
+        "x": 4,
+        "y": 4533,
+        "w": 165,
+        "h": 195,
+        "pivotX": 62,
+        "pivotY": 195
+      },
+      "equipped_sword_1": {
+        "x": 343,
+        "y": 4533,
+        "w": 183,
+        "h": 195,
+        "pivotX": 65,
+        "pivotY": 195
+      },
+      "equipped_sword_2": {
+        "x": 682,
+        "y": 4533,
+        "w": 187,
+        "h": 157,
+        "pivotX": 64,
+        "pivotY": 157
+      },
+      "equipped_sword_3": {
+        "x": 1021,
+        "y": 4533,
+        "w": 209,
+        "h": 132,
+        "pivotX": 67,
+        "pivotY": 132
+      },
+      "equipped_sword_4": {
+        "x": 4,
+        "y": 4777,
+        "w": 198,
+        "h": 180,
+        "pivotX": 83,
+        "pivotY": 180
+      },
+      "equipped_sword_5": {
+        "x": 343,
+        "y": 4777,
+        "w": 214,
+        "h": 175,
+        "pivotX": 78,
+        "pivotY": 175
+      },
+      "equipped_sword_6": {
+        "x": 682,
+        "y": 4777,
+        "w": 203,
+        "h": 180,
+        "pivotX": 94,
+        "pivotY": 180
+      },
+      "equipped_sword_7": {
+        "x": 1021,
+        "y": 4777,
+        "w": 211,
+        "h": 182,
+        "pivotX": 146,
+        "pivotY": 182
+      },
+      "equipped_sword_8": {
+        "x": 4,
+        "y": 5021,
+        "w": 182,
+        "h": 207,
+        "pivotX": 14,
+        "pivotY": 207
+      },
+      "equipped_sword_9": {
+        "x": 343,
+        "y": 5021,
+        "w": 186,
+        "h": 181,
+        "pivotX": 82,
+        "pivotY": 181
+      },
+      "equipped_sword_10": {
+        "x": 682,
+        "y": 5021,
+        "w": 240,
+        "h": 167,
+        "pivotX": 67,
+        "pivotY": 167
+      },
+      "equipped_sword_11": {
+        "x": 1021,
+        "y": 5021,
+        "w": 245,
+        "h": 138,
+        "pivotX": 84,
+        "pivotY": 138
+      },
+      "equipped_sword_12": {
+        "x": 4,
+        "y": 5265,
+        "w": 209,
+        "h": 183,
+        "pivotX": 80,
+        "pivotY": 183
+      },
+      "equipped_sword_13": {
+        "x": 343,
+        "y": 5265,
+        "w": 170,
+        "h": 231,
+        "pivotX": 88,
+        "pivotY": 231
+      },
+      "equipped_sword_14": {
+        "x": 682,
+        "y": 5265,
+        "w": 327,
+        "h": 162,
+        "pivotX": 86,
+        "pivotY": 162
+      },
+      "equipped_sword_15": {
+        "x": 1021,
+        "y": 5265,
+        "w": 193,
+        "h": 178,
+        "pivotX": 76,
+        "pivotY": 178
+      },
+      "equipped_shield_0": {
+        "x": 4,
+        "y": 5509,
+        "w": 133,
+        "h": 192,
+        "pivotX": 58,
+        "pivotY": 192
+      },
+      "equipped_shield_1": {
+        "x": 343,
+        "y": 5509,
+        "w": 136,
+        "h": 193,
+        "pivotX": 56,
+        "pivotY": 193
+      },
+      "equipped_shield_2": {
+        "x": 682,
+        "y": 5509,
+        "w": 171,
+        "h": 151,
+        "pivotX": 70,
+        "pivotY": 151
+      },
+      "equipped_shield_3": {
+        "x": 1021,
+        "y": 5509,
+        "w": 175,
+        "h": 136,
+        "pivotX": 72,
+        "pivotY": 136
+      },
+      "equipped_shield_4": {
+        "x": 4,
+        "y": 5753,
+        "w": 194,
+        "h": 178,
+        "pivotX": 85,
+        "pivotY": 178
+      },
+      "equipped_shield_5": {
+        "x": 343,
+        "y": 5753,
+        "w": 190,
+        "h": 172,
+        "pivotX": 88,
+        "pivotY": 172
+      },
+      "equipped_shield_6": {
+        "x": 682,
+        "y": 5753,
+        "w": 197,
+        "h": 176,
+        "pivotX": 113,
+        "pivotY": 176
+      },
+      "equipped_shield_7": {
+        "x": 1021,
+        "y": 5753,
+        "w": 200,
+        "h": 179,
+        "pivotX": 144,
+        "pivotY": 179
+      },
+      "equipped_shield_8": {
+        "x": 4,
+        "y": 5997,
+        "w": 167,
+        "h": 185,
+        "pivotX": 11,
+        "pivotY": 185
+      },
+      "equipped_shield_9": {
+        "x": 343,
+        "y": 5997,
+        "w": 155,
+        "h": 160,
+        "pivotX": 52,
+        "pivotY": 160
+      },
+      "equipped_shield_10": {
+        "x": 682,
+        "y": 5997,
+        "w": 174,
+        "h": 164,
+        "pivotX": 62,
+        "pivotY": 164
+      },
+      "equipped_shield_11": {
+        "x": 1021,
+        "y": 5997,
+        "w": 175,
+        "h": 130,
+        "pivotX": 91,
+        "pivotY": 130
+      },
+      "equipped_shield_12": {
+        "x": 4,
+        "y": 6241,
+        "w": 164,
+        "h": 163,
+        "pivotX": 80,
+        "pivotY": 163
+      },
+      "equipped_shield_13": {
+        "x": 343,
+        "y": 6241,
+        "w": 159,
+        "h": 181,
+        "pivotX": 82,
+        "pivotY": 181
+      },
+      "equipped_shield_14": {
+        "x": 682,
+        "y": 6241,
+        "w": 257,
+        "h": 149,
+        "pivotX": 87,
+        "pivotY": 149
+      },
+      "equipped_shield_15": {
+        "x": 1021,
+        "y": 6241,
+        "w": 163,
+        "h": 162,
+        "pivotX": 71,
+        "pivotY": 162
       }
     },
     "clips": {
@@ -8780,11 +10314,19 @@
         59,
         65
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/gideon.png",
+      "weapons": [
+        "sword",
+        "shield"
+      ],
+      "frames": 32
     }
   },
   "jonathan": {
-    "image": "assets/runtime/fighters/jonathan-elemental-packed.png",
-    "sha256": "3f902af83db57c9fbd43e1f2297ce8d52c6f7e1d68379e4e6de005155ce832e6",
+    "image": "assets/runtime/fighters/jonathan-equipped.png",
+    "sha256": "725437c08ade77c89ee983839486afcd78df335d3be61aa00d2978598fbd1017",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/07_jonathan_move_sheet.png",
     "sourceSha256": "41ba1e05d8aabfafa6445a8225c99cea05d2506fd7490b32ccb77718e3c31994",
@@ -9505,6 +11047,262 @@
         "h": 186,
         "pivotX": 97,
         "pivotY": 186
+      },
+      "equipped_bow_0": {
+        "x": 4,
+        "y": 3402,
+        "w": 191,
+        "h": 193,
+        "pivotX": 89,
+        "pivotY": 193
+      },
+      "equipped_bow_1": {
+        "x": 296,
+        "y": 3402,
+        "w": 190,
+        "h": 192,
+        "pivotX": 80,
+        "pivotY": 192
+      },
+      "equipped_bow_2": {
+        "x": 588,
+        "y": 3402,
+        "w": 209,
+        "h": 155,
+        "pivotX": 84,
+        "pivotY": 155
+      },
+      "equipped_bow_3": {
+        "x": 880,
+        "y": 3402,
+        "w": 208,
+        "h": 126,
+        "pivotX": 79,
+        "pivotY": 126
+      },
+      "equipped_bow_4": {
+        "x": 4,
+        "y": 3631,
+        "w": 221,
+        "h": 192,
+        "pivotX": 138,
+        "pivotY": 192
+      },
+      "equipped_bow_5": {
+        "x": 296,
+        "y": 3631,
+        "w": 218,
+        "h": 193,
+        "pivotX": 165,
+        "pivotY": 193
+      },
+      "equipped_bow_6": {
+        "x": 588,
+        "y": 3631,
+        "w": 225,
+        "h": 192,
+        "pivotX": 172,
+        "pivotY": 192
+      },
+      "equipped_bow_7": {
+        "x": 880,
+        "y": 3631,
+        "w": 229,
+        "h": 185,
+        "pivotX": 169,
+        "pivotY": 185
+      },
+      "equipped_bow_8": {
+        "x": 4,
+        "y": 3860,
+        "w": 208,
+        "h": 200,
+        "pivotX": 21,
+        "pivotY": 200
+      },
+      "equipped_bow_9": {
+        "x": 296,
+        "y": 3860,
+        "w": 223,
+        "h": 159,
+        "pivotX": 80,
+        "pivotY": 159
+      },
+      "equipped_bow_10": {
+        "x": 588,
+        "y": 3860,
+        "w": 224,
+        "h": 199,
+        "pivotX": 151,
+        "pivotY": 199
+      },
+      "equipped_bow_11": {
+        "x": 880,
+        "y": 3860,
+        "w": 229,
+        "h": 117,
+        "pivotX": 75,
+        "pivotY": 117
+      },
+      "equipped_bow_12": {
+        "x": 4,
+        "y": 4089,
+        "w": 202,
+        "h": 193,
+        "pivotX": 91,
+        "pivotY": 193
+      },
+      "equipped_bow_13": {
+        "x": 296,
+        "y": 4089,
+        "w": 203,
+        "h": 217,
+        "pivotX": 93,
+        "pivotY": 217
+      },
+      "equipped_bow_14": {
+        "x": 588,
+        "y": 4089,
+        "w": 239,
+        "h": 203,
+        "pivotX": 118,
+        "pivotY": 203
+      },
+      "equipped_bow_15": {
+        "x": 880,
+        "y": 4089,
+        "w": 212,
+        "h": 188,
+        "pivotX": 93,
+        "pivotY": 188
+      },
+      "equipped_sword_0": {
+        "x": 4,
+        "y": 4318,
+        "w": 216,
+        "h": 194,
+        "pivotX": 92,
+        "pivotY": 194
+      },
+      "equipped_sword_1": {
+        "x": 296,
+        "y": 4318,
+        "w": 209,
+        "h": 192,
+        "pivotX": 80,
+        "pivotY": 192
+      },
+      "equipped_sword_2": {
+        "x": 588,
+        "y": 4318,
+        "w": 221,
+        "h": 159,
+        "pivotX": 82,
+        "pivotY": 159
+      },
+      "equipped_sword_3": {
+        "x": 880,
+        "y": 4318,
+        "w": 227,
+        "h": 128,
+        "pivotX": 75,
+        "pivotY": 128
+      },
+      "equipped_sword_4": {
+        "x": 4,
+        "y": 4547,
+        "w": 247,
+        "h": 194,
+        "pivotX": 141,
+        "pivotY": 194
+      },
+      "equipped_sword_5": {
+        "x": 296,
+        "y": 4547,
+        "w": 235,
+        "h": 195,
+        "pivotX": 168,
+        "pivotY": 195
+      },
+      "equipped_sword_6": {
+        "x": 588,
+        "y": 4547,
+        "w": 238,
+        "h": 194,
+        "pivotX": 170,
+        "pivotY": 194
+      },
+      "equipped_sword_7": {
+        "x": 880,
+        "y": 4547,
+        "w": 231,
+        "h": 187,
+        "pivotX": 170,
+        "pivotY": 187
+      },
+      "equipped_sword_8": {
+        "x": 4,
+        "y": 4776,
+        "w": 221,
+        "h": 194,
+        "pivotX": 17,
+        "pivotY": 194
+      },
+      "equipped_sword_9": {
+        "x": 296,
+        "y": 4776,
+        "w": 221,
+        "h": 155,
+        "pivotX": 75,
+        "pivotY": 155
+      },
+      "equipped_sword_10": {
+        "x": 588,
+        "y": 4776,
+        "w": 223,
+        "h": 199,
+        "pivotX": 155,
+        "pivotY": 199
+      },
+      "equipped_sword_11": {
+        "x": 880,
+        "y": 4776,
+        "w": 237,
+        "h": 117,
+        "pivotX": 74,
+        "pivotY": 117
+      },
+      "equipped_sword_12": {
+        "x": 4,
+        "y": 5005,
+        "w": 195,
+        "h": 174,
+        "pivotX": 81,
+        "pivotY": 174
+      },
+      "equipped_sword_13": {
+        "x": 296,
+        "y": 5005,
+        "w": 172,
+        "h": 184,
+        "pivotX": 83,
+        "pivotY": 184
+      },
+      "equipped_sword_14": {
+        "x": 588,
+        "y": 5005,
+        "w": 279,
+        "h": 155,
+        "pivotX": 108,
+        "pivotY": 155
+      },
+      "equipped_sword_15": {
+        "x": 880,
+        "y": 5005,
+        "w": 198,
+        "h": 160,
+        "pivotX": 75,
+        "pivotY": 160
       }
     },
     "clips": {
@@ -10210,11 +12008,19 @@
         5,
         49
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/jonathan.png",
+      "weapons": [
+        "bow",
+        "sword"
+      ],
+      "frames": 32
     }
   },
   "moses": {
-    "image": "assets/runtime/fighters/moses-drawn-sling.png",
-    "sha256": "1e4ddd6d4c345663a20587bbdc8cd731cafe343dde82d86bc1e13916d84d48f5",
+    "image": "assets/runtime/fighters/moses-equipped.png",
+    "sha256": "e129d9ad474123dc031fe2be1616a52cca1cffe6c22892081ba5464417a524a4",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/08_moses_move_sheet.png",
     "sourceSha256": "882db00322ff10f1cbc4b9900a0c0b19069077c5cd000410891a059976919fcc",
@@ -10713,68 +12519,68 @@
         "gripY": 131
       },
       "down_staff_dlight": {
-        "x": 697,
-        "y": 1847,
-        "w": 262,
-        "h": 139,
-        "pivotX": 134,
-        "pivotY": 139
+        "x": 714,
+        "y": 5404,
+        "w": 343,
+        "h": 163,
+        "pivotX": 100,
+        "pivotY": 163
       },
       "down_staff_dair": {
-        "x": 4,
-        "y": 2051,
-        "w": 335,
+        "x": 714,
+        "y": 5404,
+        "w": 343,
         "h": 163,
-        "pivotX": 17,
+        "pivotX": 100,
         "pivotY": 163
       },
       "down_staff_ground_pound": {
-        "x": 347,
-        "y": 2051,
-        "w": 335,
+        "x": 714,
+        "y": 5404,
+        "w": 343,
         "h": 163,
-        "pivotX": 17,
+        "pivotX": 100,
         "pivotY": 163
       },
       "down_moses_staff_dsig": {
-        "x": 690,
-        "y": 2051,
-        "w": 234,
-        "h": 192,
-        "pivotX": 120,
-        "pivotY": 192
+        "x": 714,
+        "y": 5404,
+        "w": 343,
+        "h": 163,
+        "pivotX": 100,
+        "pivotY": 163
       },
       "down_sling_dlight": {
-        "x": 4,
-        "y": 2251,
-        "w": 238,
-        "h": 192,
+        "x": 714,
+        "y": 6312,
+        "w": 337,
+        "h": 147,
         "pivotX": 85,
-        "pivotY": 192
+        "pivotY": 147
       },
       "down_sling_dair": {
-        "x": 250,
-        "y": 2251,
-        "w": 369,
-        "h": 155,
-        "pivotX": 37,
-        "pivotY": 155
+        "x": 714,
+        "y": 6312,
+        "w": 337,
+        "h": 147,
+        "pivotX": 85,
+        "pivotY": 147
       },
       "down_sling_ground_pound": {
-        "x": 627,
-        "y": 2251,
-        "w": 369,
-        "h": 155,
-        "pivotX": 37,
-        "pivotY": 155
+        "x": 714,
+        "y": 6312,
+        "w": 337,
+        "h": 147,
+        "pivotX": 85,
+        "pivotY": 147
       },
       "down_moses_sling_dsig": {
-        "x": 598,
-        "y": 4510,
-        "w": 284,
-        "h": 162,
-        "pivotX": 136,
-        "pivotY": 162
+        "x": 714,
+        "y": 6312,
+        "w": 337,
+        "h": 147,
+        "pivotX": 85,
+        "pivotY": 147
       },
       "down_unarmed_dlight": {
         "x": 381,
@@ -10937,12 +12743,12 @@
         "pivotY": 189
       },
       "down_moses_staff_dlight": {
-        "x": 193,
-        "y": 3471,
-        "w": 234,
-        "h": 192,
-        "pivotX": 120,
-        "pivotY": 192
+        "x": 714,
+        "y": 5404,
+        "w": 343,
+        "h": 163,
+        "pivotX": 100,
+        "pivotY": 163
       },
       "moses_staff_spin_0": {
         "x": 4,
@@ -11103,6 +12909,262 @@
         "h": 160,
         "pivotX": 136,
         "pivotY": 160
+      },
+      "equipped_staff_0": {
+        "x": 4,
+        "y": 4723,
+        "w": 147,
+        "h": 193,
+        "pivotX": 60,
+        "pivotY": 193
+      },
+      "equipped_staff_1": {
+        "x": 359,
+        "y": 4723,
+        "w": 149,
+        "h": 193,
+        "pivotX": 63,
+        "pivotY": 193
+      },
+      "equipped_staff_2": {
+        "x": 714,
+        "y": 4723,
+        "w": 214,
+        "h": 157,
+        "pivotX": 70,
+        "pivotY": 157
+      },
+      "equipped_staff_3": {
+        "x": 1069,
+        "y": 4723,
+        "w": 201,
+        "h": 140,
+        "pivotX": 65,
+        "pivotY": 140
+      },
+      "equipped_staff_4": {
+        "x": 4,
+        "y": 4950,
+        "w": 225,
+        "h": 181,
+        "pivotX": 111,
+        "pivotY": 181
+      },
+      "equipped_staff_5": {
+        "x": 359,
+        "y": 4950,
+        "w": 220,
+        "h": 177,
+        "pivotX": 152,
+        "pivotY": 177
+      },
+      "equipped_staff_6": {
+        "x": 714,
+        "y": 4950,
+        "w": 234,
+        "h": 185,
+        "pivotX": 159,
+        "pivotY": 185
+      },
+      "equipped_staff_7": {
+        "x": 1069,
+        "y": 4950,
+        "w": 224,
+        "h": 179,
+        "pivotX": 142,
+        "pivotY": 179
+      },
+      "equipped_staff_8": {
+        "x": 4,
+        "y": 5177,
+        "w": 207,
+        "h": 192,
+        "pivotX": 12,
+        "pivotY": 192
+      },
+      "equipped_staff_9": {
+        "x": 359,
+        "y": 5177,
+        "w": 180,
+        "h": 161,
+        "pivotX": 80,
+        "pivotY": 161
+      },
+      "equipped_staff_10": {
+        "x": 714,
+        "y": 5177,
+        "w": 222,
+        "h": 202,
+        "pivotX": 103,
+        "pivotY": 202
+      },
+      "equipped_staff_11": {
+        "x": 1069,
+        "y": 5177,
+        "w": 218,
+        "h": 148,
+        "pivotX": 69,
+        "pivotY": 148
+      },
+      "equipped_staff_12": {
+        "x": 4,
+        "y": 5404,
+        "w": 158,
+        "h": 184,
+        "pivotX": 66,
+        "pivotY": 184
+      },
+      "equipped_staff_13": {
+        "x": 359,
+        "y": 5404,
+        "w": 200,
+        "h": 214,
+        "pivotX": 108,
+        "pivotY": 214
+      },
+      "equipped_staff_14": {
+        "x": 714,
+        "y": 5404,
+        "w": 343,
+        "h": 163,
+        "pivotX": 100,
+        "pivotY": 163
+      },
+      "equipped_staff_15": {
+        "x": 1069,
+        "y": 5404,
+        "w": 158,
+        "h": 184,
+        "pivotX": 66,
+        "pivotY": 184
+      },
+      "equipped_sling_0": {
+        "x": 4,
+        "y": 5631,
+        "w": 121,
+        "h": 192,
+        "pivotX": 58,
+        "pivotY": 192
+      },
+      "equipped_sling_1": {
+        "x": 359,
+        "y": 5631,
+        "w": 129,
+        "h": 192,
+        "pivotX": 60,
+        "pivotY": 192
+      },
+      "equipped_sling_2": {
+        "x": 714,
+        "y": 5631,
+        "w": 160,
+        "h": 161,
+        "pivotX": 75,
+        "pivotY": 161
+      },
+      "equipped_sling_3": {
+        "x": 1069,
+        "y": 5631,
+        "w": 162,
+        "h": 121,
+        "pivotX": 68,
+        "pivotY": 121
+      },
+      "equipped_sling_4": {
+        "x": 4,
+        "y": 5858,
+        "w": 182,
+        "h": 184,
+        "pivotX": 102,
+        "pivotY": 184
+      },
+      "equipped_sling_5": {
+        "x": 359,
+        "y": 5858,
+        "w": 181,
+        "h": 176,
+        "pivotX": 150,
+        "pivotY": 176
+      },
+      "equipped_sling_6": {
+        "x": 714,
+        "y": 5858,
+        "w": 186,
+        "h": 189,
+        "pivotX": 158,
+        "pivotY": 189
+      },
+      "equipped_sling_7": {
+        "x": 1069,
+        "y": 5858,
+        "w": 180,
+        "h": 178,
+        "pivotX": 147,
+        "pivotY": 178
+      },
+      "equipped_sling_8": {
+        "x": 4,
+        "y": 6085,
+        "w": 186,
+        "h": 197,
+        "pivotX": 37,
+        "pivotY": 197
+      },
+      "equipped_sling_9": {
+        "x": 359,
+        "y": 6085,
+        "w": 188,
+        "h": 154,
+        "pivotX": 110,
+        "pivotY": 154
+      },
+      "equipped_sling_10": {
+        "x": 714,
+        "y": 6085,
+        "w": 160,
+        "h": 196,
+        "pivotX": 100,
+        "pivotY": 196
+      },
+      "equipped_sling_11": {
+        "x": 1069,
+        "y": 6085,
+        "w": 180,
+        "h": 129,
+        "pivotX": 71,
+        "pivotY": 129
+      },
+      "equipped_sling_12": {
+        "x": 4,
+        "y": 6312,
+        "w": 128,
+        "h": 174,
+        "pivotX": 63,
+        "pivotY": 174
+      },
+      "equipped_sling_13": {
+        "x": 359,
+        "y": 6312,
+        "w": 200,
+        "h": 187,
+        "pivotX": 117,
+        "pivotY": 187
+      },
+      "equipped_sling_14": {
+        "x": 714,
+        "y": 6312,
+        "w": 337,
+        "h": 147,
+        "pivotX": 85,
+        "pivotY": 147
+      },
+      "equipped_sling_15": {
+        "x": 1069,
+        "y": 6312,
+        "w": 126,
+        "h": 171,
+        "pivotX": 61,
+        "pivotY": 171
       }
     },
     "clips": {
@@ -11130,10 +13192,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -11144,10 +13206,10 @@
       },
       "sling_slight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -11158,30 +13220,24 @@
       },
       "sling_dlight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dlight",
-          "attack_sling_4",
-          "attack_sling_6",
-          "attack_sling_7"
+          "equipped_sling_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "sling_nair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -11192,10 +13248,10 @@
       },
       "sling_sair": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -11206,10 +13262,10 @@
       },
       "sling_dair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dair",
-          "element_1_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           5,
@@ -11220,10 +13276,10 @@
       },
       "sling_recovery": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -11234,10 +13290,10 @@
       },
       "sling_ground_pound": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_ground_pound",
-          "element_1_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           8,
@@ -11248,70 +13304,52 @@
       },
       "staff_nlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "staff_slight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          7,
-          7,
-          7
+          6,
+          5,
+          21
         ]
       },
       "staff_dlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dlight",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "staff_nair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           5,
@@ -11322,10 +13360,10 @@
       },
       "staff_sair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -11336,10 +13374,10 @@
       },
       "staff_dair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dair",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -11350,10 +13388,10 @@
       },
       "staff_recovery": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -11364,10 +13402,10 @@
       },
       "staff_ground_pound": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_ground_pound",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           8,
@@ -11378,50 +13416,38 @@
       },
       "moses_staff_nsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          8,
-          7,
-          7,
-          6,
           11,
-          10,
-          10
+          11,
+          6,
+          31
         ]
       },
       "moses_staff_ssig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_5",
-          "attack_staff_6",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          9,
-          8,
-          8,
-          6,
           12,
-          11,
-          11
+          13,
+          6,
+          34
         ]
       },
       "moses_staff_dsig": {
         "frames": [
-          "element_2_0",
-          "element_2_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_moses_staff_dsig",
-          "element_2_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           13,
@@ -11432,10 +13458,10 @@
       },
       "moses_sling_nsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           11,
@@ -11446,10 +13472,10 @@
       },
       "moses_sling_ssig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           13,
@@ -11460,10 +13486,10 @@
       },
       "moses_sling_dsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_moses_sling_dsig",
-          "slinger_cast_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           14,
@@ -11697,10 +13723,10 @@
       },
       "sling_air_combo": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           2,
@@ -11741,10 +13767,10 @@
       },
       "moses_staff_dlight": {
         "frames": [
-          "element_2_0",
-          "element_2_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_moses_staff_dlight",
-          "element_2_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           5,
@@ -11793,14 +13819,22 @@
     },
     "releaseOrigins": {
       "sling": [
-        67,
-        45
+        118,
+        40
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/moses.png",
+      "weapons": [
+        "staff",
+        "sling"
+      ],
+      "frames": 32
     }
   },
   "esther": {
-    "image": "assets/runtime/fighters/esther-elemental-packed.png",
-    "sha256": "02ee835f7f49c2e0e80254cfd29c603d823d43cafa9c1135f4c4b72088d64dd3",
+    "image": "assets/runtime/fighters/esther-equipped.png",
+    "sha256": "f2ceb2e35a7e70d46e7506637ed8a842f6ccd4cf7e26d934681ae67e23e6e61b",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/09_esther_move_sheet.png",
     "sourceSha256": "8c838d757b396d6f952c2ad85b3eee8a8944022551d50e33e4078a0d0c2d53e9",
@@ -12331,36 +14365,36 @@
         "pivotY": 160
       },
       "down_staff_dlight": {
-        "x": 441,
-        "y": 1991,
-        "w": 306,
-        "h": 158,
-        "pivotX": 85,
-        "pivotY": 158
+        "x": 610,
+        "y": 4959,
+        "w": 291,
+        "h": 166,
+        "pivotX": 104,
+        "pivotY": 166
       },
       "down_staff_dair": {
-        "x": 4,
-        "y": 2174,
-        "w": 345,
-        "h": 191,
-        "pivotX": 13,
-        "pivotY": 191
+        "x": 610,
+        "y": 4959,
+        "w": 291,
+        "h": 166,
+        "pivotX": 104,
+        "pivotY": 166
       },
       "down_staff_ground_pound": {
-        "x": 357,
-        "y": 2174,
-        "w": 345,
-        "h": 191,
-        "pivotX": 13,
-        "pivotY": 191
+        "x": 610,
+        "y": 4959,
+        "w": 291,
+        "h": 166,
+        "pivotX": 104,
+        "pivotY": 166
       },
       "down_esther_staff_dsig": {
-        "x": 710,
-        "y": 2174,
-        "w": 253,
-        "h": 152,
-        "pivotX": 140,
-        "pivotY": 152
+        "x": 610,
+        "y": 4959,
+        "w": 291,
+        "h": 166,
+        "pivotX": 104,
+        "pivotY": 166
       },
       "down_unarmed_dlight": {
         "x": 4,
@@ -12521,6 +14555,262 @@
         "h": 187,
         "pivotX": 73,
         "pivotY": 187
+      },
+      "equipped_blades_0": {
+        "x": 4,
+        "y": 3419,
+        "w": 159,
+        "h": 192,
+        "pivotX": 102,
+        "pivotY": 192
+      },
+      "equipped_blades_1": {
+        "x": 307,
+        "y": 3419,
+        "w": 158,
+        "h": 193,
+        "pivotX": 98,
+        "pivotY": 193
+      },
+      "equipped_blades_2": {
+        "x": 610,
+        "y": 3419,
+        "w": 188,
+        "h": 156,
+        "pivotX": 116,
+        "pivotY": 156
+      },
+      "equipped_blades_3": {
+        "x": 913,
+        "y": 3419,
+        "w": 182,
+        "h": 127,
+        "pivotX": 103,
+        "pivotY": 127
+      },
+      "equipped_blades_4": {
+        "x": 4,
+        "y": 3639,
+        "w": 182,
+        "h": 188,
+        "pivotX": 113,
+        "pivotY": 188
+      },
+      "equipped_blades_5": {
+        "x": 307,
+        "y": 3639,
+        "w": 178,
+        "h": 185,
+        "pivotX": 101,
+        "pivotY": 185
+      },
+      "equipped_blades_6": {
+        "x": 610,
+        "y": 3639,
+        "w": 199,
+        "h": 184,
+        "pivotX": 167,
+        "pivotY": 184
+      },
+      "equipped_blades_7": {
+        "x": 913,
+        "y": 3639,
+        "w": 203,
+        "h": 185,
+        "pivotX": 174,
+        "pivotY": 185
+      },
+      "equipped_blades_8": {
+        "x": 4,
+        "y": 3859,
+        "w": 174,
+        "h": 185,
+        "pivotX": 32,
+        "pivotY": 185
+      },
+      "equipped_blades_9": {
+        "x": 307,
+        "y": 3859,
+        "w": 148,
+        "h": 161,
+        "pivotX": 81,
+        "pivotY": 161
+      },
+      "equipped_blades_10": {
+        "x": 610,
+        "y": 3859,
+        "w": 170,
+        "h": 175,
+        "pivotX": 137,
+        "pivotY": 175
+      },
+      "equipped_blades_11": {
+        "x": 913,
+        "y": 3859,
+        "w": 206,
+        "h": 135,
+        "pivotX": 105,
+        "pivotY": 135
+      },
+      "equipped_blades_12": {
+        "x": 4,
+        "y": 4079,
+        "w": 171,
+        "h": 175,
+        "pivotX": 89,
+        "pivotY": 175
+      },
+      "equipped_blades_13": {
+        "x": 307,
+        "y": 4079,
+        "w": 182,
+        "h": 198,
+        "pivotX": 90,
+        "pivotY": 198
+      },
+      "equipped_blades_14": {
+        "x": 610,
+        "y": 4079,
+        "w": 273,
+        "h": 167,
+        "pivotX": 98,
+        "pivotY": 167
+      },
+      "equipped_blades_15": {
+        "x": 913,
+        "y": 4079,
+        "w": 181,
+        "h": 165,
+        "pivotX": 92,
+        "pivotY": 165
+      },
+      "equipped_staff_0": {
+        "x": 4,
+        "y": 4299,
+        "w": 186,
+        "h": 193,
+        "pivotX": 104,
+        "pivotY": 193
+      },
+      "equipped_staff_1": {
+        "x": 307,
+        "y": 4299,
+        "w": 190,
+        "h": 192,
+        "pivotX": 115,
+        "pivotY": 192
+      },
+      "equipped_staff_2": {
+        "x": 610,
+        "y": 4299,
+        "w": 213,
+        "h": 161,
+        "pivotX": 133,
+        "pivotY": 161
+      },
+      "equipped_staff_3": {
+        "x": 913,
+        "y": 4299,
+        "w": 199,
+        "h": 126,
+        "pivotX": 118,
+        "pivotY": 126
+      },
+      "equipped_staff_4": {
+        "x": 4,
+        "y": 4519,
+        "w": 220,
+        "h": 192,
+        "pivotX": 117,
+        "pivotY": 192
+      },
+      "equipped_staff_5": {
+        "x": 307,
+        "y": 4519,
+        "w": 224,
+        "h": 187,
+        "pivotX": 127,
+        "pivotY": 187
+      },
+      "equipped_staff_6": {
+        "x": 610,
+        "y": 4519,
+        "w": 224,
+        "h": 187,
+        "pivotX": 166,
+        "pivotY": 187
+      },
+      "equipped_staff_7": {
+        "x": 913,
+        "y": 4519,
+        "w": 219,
+        "h": 188,
+        "pivotX": 175,
+        "pivotY": 188
+      },
+      "equipped_staff_8": {
+        "x": 4,
+        "y": 4739,
+        "w": 184,
+        "h": 186,
+        "pivotX": 46,
+        "pivotY": 186
+      },
+      "equipped_staff_9": {
+        "x": 307,
+        "y": 4739,
+        "w": 180,
+        "h": 161,
+        "pivotX": 112,
+        "pivotY": 161
+      },
+      "equipped_staff_10": {
+        "x": 610,
+        "y": 4739,
+        "w": 198,
+        "h": 176,
+        "pivotX": 161,
+        "pivotY": 176
+      },
+      "equipped_staff_11": {
+        "x": 913,
+        "y": 4739,
+        "w": 212,
+        "h": 138,
+        "pivotX": 110,
+        "pivotY": 138
+      },
+      "equipped_staff_12": {
+        "x": 4,
+        "y": 4959,
+        "w": 227,
+        "h": 176,
+        "pivotX": 119,
+        "pivotY": 176
+      },
+      "equipped_staff_13": {
+        "x": 307,
+        "y": 4959,
+        "w": 204,
+        "h": 207,
+        "pivotX": 103,
+        "pivotY": 207
+      },
+      "equipped_staff_14": {
+        "x": 610,
+        "y": 4959,
+        "w": 291,
+        "h": 166,
+        "pivotX": 104,
+        "pivotY": 166
+      },
+      "equipped_staff_15": {
+        "x": 913,
+        "y": 4959,
+        "w": 212,
+        "h": 167,
+        "pivotX": 104,
+        "pivotY": 167
       }
     },
     "clips": {
@@ -12548,70 +14838,52 @@
       },
       "staff_nlight": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "staff_slight": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          7,
-          7,
-          7
+          6,
+          5,
+          21
         ]
       },
       "staff_dlight": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dlight",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "staff_nair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           5,
@@ -12622,10 +14894,10 @@
       },
       "staff_sair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -12636,10 +14908,10 @@
       },
       "staff_dair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dair",
-          "element_1_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -12650,10 +14922,10 @@
       },
       "staff_recovery": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -12664,10 +14936,10 @@
       },
       "staff_ground_pound": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_ground_pound",
-          "element_1_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           8,
@@ -12868,62 +15140,44 @@
       },
       "esther_staff_nsig": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          7,
-          6,
-          6,
+          9,
+          10,
           5,
-          9,
-          9,
-          8
+          26
         ]
       },
       "esther_staff_ssig": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          8,
-          8,
-          7,
+          11,
+          12,
           5,
-          10,
-          10,
-          10
+          30
         ]
       },
       "esther_staff_dsig": {
         "frames": [
-          "motion_idle",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_esther_staff_dsig",
-          "attack_staff_4",
-          "attack_staff_6",
-          "motion_idle"
+          "equipped_staff_15"
         ],
         "ticks": [
-          9,
-          8,
-          8,
+          12,
+          13,
           5,
-          11,
-          11,
-          10
+          32
         ]
       },
       "idle": {
@@ -13151,10 +15405,10 @@
       },
       "staff_air_combo": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           2,
@@ -13249,11 +15503,19 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/esther.png",
+      "weapons": [
+        "blades",
+        "staff"
+      ],
+      "frames": 32
+    }
   },
   "miriam": {
-    "image": "assets/runtime/fighters/miriam-drawn-sling.png",
-    "sha256": "a22421ca6bc9e89f56793c51cc61b2a9672b84df246cc5279028fc568ee4f425",
+    "image": "assets/runtime/fighters/miriam-equipped.png",
+    "sha256": "04547324b973178ba497c0933c0326300fccfa7ffca91215487908f5243351f0",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
@@ -13752,68 +16014,68 @@
         "gripY": 87
       },
       "down_staff_dlight": {
-        "x": 138,
-        "y": 1813,
-        "w": 270,
-        "h": 161,
-        "pivotX": 160,
-        "pivotY": 161
+        "x": 668,
+        "y": 4968,
+        "w": 319,
+        "h": 166,
+        "pivotX": 72,
+        "pivotY": 166
       },
       "down_staff_dair": {
-        "x": 416,
-        "y": 1813,
-        "w": 307,
-        "h": 186,
-        "pivotX": 12,
-        "pivotY": 186
+        "x": 668,
+        "y": 4968,
+        "w": 319,
+        "h": 166,
+        "pivotX": 72,
+        "pivotY": 166
       },
       "down_staff_ground_pound": {
-        "x": 4,
-        "y": 2007,
-        "w": 307,
-        "h": 186,
-        "pivotX": 12,
-        "pivotY": 186
+        "x": 668,
+        "y": 4968,
+        "w": 319,
+        "h": 166,
+        "pivotX": 72,
+        "pivotY": 166
       },
       "down_miriam_staff_dsig": {
-        "x": 319,
-        "y": 2007,
-        "w": 233,
-        "h": 160,
-        "pivotX": 105,
-        "pivotY": 160
+        "x": 668,
+        "y": 4968,
+        "w": 319,
+        "h": 166,
+        "pivotX": 72,
+        "pivotY": 166
       },
       "down_sling_dlight": {
-        "x": 560,
-        "y": 2007,
-        "w": 217,
-        "h": 208,
-        "pivotX": 101,
-        "pivotY": 208
+        "x": 668,
+        "y": 5864,
+        "w": 314,
+        "h": 168,
+        "pivotX": 72,
+        "pivotY": 168
       },
       "down_sling_dair": {
-        "x": 4,
-        "y": 2223,
-        "w": 323,
-        "h": 181,
-        "pivotX": 14,
-        "pivotY": 181
+        "x": 668,
+        "y": 5864,
+        "w": 314,
+        "h": 168,
+        "pivotX": 72,
+        "pivotY": 168
       },
       "down_sling_ground_pound": {
-        "x": 335,
-        "y": 2223,
-        "w": 323,
-        "h": 181,
-        "pivotX": 14,
-        "pivotY": 181
+        "x": 668,
+        "y": 5864,
+        "w": 314,
+        "h": 168,
+        "pivotX": 72,
+        "pivotY": 168
       },
       "down_miriam_sling_dsig": {
-        "x": 568,
-        "y": 4086,
-        "w": 241,
-        "h": 174,
-        "pivotX": 116,
-        "pivotY": 174
+        "x": 668,
+        "y": 5864,
+        "w": 314,
+        "h": 168,
+        "pivotX": 72,
+        "pivotY": 168
       },
       "down_unarmed_dlight": {
         "x": 4,
@@ -14102,6 +16364,262 @@
         "h": 184,
         "pivotX": 129,
         "pivotY": 184
+      },
+      "equipped_staff_0": {
+        "x": 4,
+        "y": 4296,
+        "w": 110,
+        "h": 192,
+        "pivotX": 47,
+        "pivotY": 192
+      },
+      "equipped_staff_1": {
+        "x": 336,
+        "y": 4296,
+        "w": 106,
+        "h": 192,
+        "pivotX": 46,
+        "pivotY": 192
+      },
+      "equipped_staff_2": {
+        "x": 668,
+        "y": 4296,
+        "w": 188,
+        "h": 157,
+        "pivotX": 74,
+        "pivotY": 157
+      },
+      "equipped_staff_3": {
+        "x": 1000,
+        "y": 4296,
+        "w": 210,
+        "h": 144,
+        "pivotX": 59,
+        "pivotY": 144
+      },
+      "equipped_staff_4": {
+        "x": 4,
+        "y": 4520,
+        "w": 220,
+        "h": 191,
+        "pivotX": 99,
+        "pivotY": 191
+      },
+      "equipped_staff_5": {
+        "x": 336,
+        "y": 4520,
+        "w": 224,
+        "h": 192,
+        "pivotX": 77,
+        "pivotY": 192
+      },
+      "equipped_staff_6": {
+        "x": 668,
+        "y": 4520,
+        "w": 225,
+        "h": 193,
+        "pivotX": 141,
+        "pivotY": 193
+      },
+      "equipped_staff_7": {
+        "x": 1000,
+        "y": 4520,
+        "w": 224,
+        "h": 191,
+        "pivotX": 42,
+        "pivotY": 191
+      },
+      "equipped_staff_8": {
+        "x": 4,
+        "y": 4744,
+        "w": 183,
+        "h": 203,
+        "pivotX": 56,
+        "pivotY": 203
+      },
+      "equipped_staff_9": {
+        "x": 336,
+        "y": 4744,
+        "w": 184,
+        "h": 195,
+        "pivotX": 119,
+        "pivotY": 195
+      },
+      "equipped_staff_10": {
+        "x": 668,
+        "y": 4744,
+        "w": 185,
+        "h": 192,
+        "pivotX": 116,
+        "pivotY": 192
+      },
+      "equipped_staff_11": {
+        "x": 1000,
+        "y": 4744,
+        "w": 219,
+        "h": 154,
+        "pivotX": 66,
+        "pivotY": 154
+      },
+      "equipped_staff_12": {
+        "x": 4,
+        "y": 4968,
+        "w": 223,
+        "h": 192,
+        "pivotX": 100,
+        "pivotY": 192
+      },
+      "equipped_staff_13": {
+        "x": 336,
+        "y": 4968,
+        "w": 198,
+        "h": 212,
+        "pivotX": 92,
+        "pivotY": 212
+      },
+      "equipped_staff_14": {
+        "x": 668,
+        "y": 4968,
+        "w": 319,
+        "h": 166,
+        "pivotX": 72,
+        "pivotY": 166
+      },
+      "equipped_staff_15": {
+        "x": 1000,
+        "y": 4968,
+        "w": 223,
+        "h": 185,
+        "pivotX": 97,
+        "pivotY": 185
+      },
+      "equipped_sling_0": {
+        "x": 4,
+        "y": 5192,
+        "w": 116,
+        "h": 198,
+        "pivotX": 41,
+        "pivotY": 198
+      },
+      "equipped_sling_1": {
+        "x": 336,
+        "y": 5192,
+        "w": 117,
+        "h": 198,
+        "pivotX": 45,
+        "pivotY": 198
+      },
+      "equipped_sling_2": {
+        "x": 668,
+        "y": 5192,
+        "w": 165,
+        "h": 160,
+        "pivotX": 80,
+        "pivotY": 160
+      },
+      "equipped_sling_3": {
+        "x": 1000,
+        "y": 5192,
+        "w": 151,
+        "h": 135,
+        "pivotX": 76,
+        "pivotY": 135
+      },
+      "equipped_sling_4": {
+        "x": 4,
+        "y": 5416,
+        "w": 169,
+        "h": 190,
+        "pivotX": 96,
+        "pivotY": 190
+      },
+      "equipped_sling_5": {
+        "x": 336,
+        "y": 5416,
+        "w": 191,
+        "h": 195,
+        "pivotX": 43,
+        "pivotY": 195
+      },
+      "equipped_sling_6": {
+        "x": 668,
+        "y": 5416,
+        "w": 210,
+        "h": 191,
+        "pivotX": 150,
+        "pivotY": 191
+      },
+      "equipped_sling_7": {
+        "x": 1000,
+        "y": 5416,
+        "w": 173,
+        "h": 194,
+        "pivotX": 39,
+        "pivotY": 194
+      },
+      "equipped_sling_8": {
+        "x": 4,
+        "y": 5640,
+        "w": 169,
+        "h": 200,
+        "pivotX": 42,
+        "pivotY": 200
+      },
+      "equipped_sling_9": {
+        "x": 336,
+        "y": 5640,
+        "w": 167,
+        "h": 179,
+        "pivotX": 104,
+        "pivotY": 179
+      },
+      "equipped_sling_10": {
+        "x": 668,
+        "y": 5640,
+        "w": 187,
+        "h": 195,
+        "pivotX": 119,
+        "pivotY": 195
+      },
+      "equipped_sling_11": {
+        "x": 1000,
+        "y": 5640,
+        "w": 200,
+        "h": 147,
+        "pivotX": 62,
+        "pivotY": 147
+      },
+      "equipped_sling_12": {
+        "x": 4,
+        "y": 5864,
+        "w": 144,
+        "h": 188,
+        "pivotX": 60,
+        "pivotY": 188
+      },
+      "equipped_sling_13": {
+        "x": 336,
+        "y": 5864,
+        "w": 164,
+        "h": 209,
+        "pivotX": 69,
+        "pivotY": 209
+      },
+      "equipped_sling_14": {
+        "x": 668,
+        "y": 5864,
+        "w": 314,
+        "h": 168,
+        "pivotX": 72,
+        "pivotY": 168
+      },
+      "equipped_sling_15": {
+        "x": 1000,
+        "y": 5864,
+        "w": 154,
+        "h": 181,
+        "pivotX": 73,
+        "pivotY": 181
       }
     },
     "clips": {
@@ -14129,10 +16647,10 @@
       },
       "sling_nlight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -14143,10 +16661,10 @@
       },
       "sling_slight": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -14157,30 +16675,24 @@
       },
       "sling_dlight": {
         "frames": [
-          "attack_sling_0",
-          "attack_sling_1",
-          "attack_sling_2",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dlight",
-          "attack_sling_5",
-          "attack_sling_6",
-          "attack_sling_7"
+          "equipped_sling_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "sling_nair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           4,
@@ -14191,10 +16703,10 @@
       },
       "sling_sair": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -14205,10 +16717,10 @@
       },
       "sling_dair": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_dair",
-          "element_1_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           5,
@@ -14219,10 +16731,10 @@
       },
       "sling_recovery": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           6,
@@ -14233,10 +16745,10 @@
       },
       "sling_ground_pound": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_sling_ground_pound",
-          "element_1_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           8,
@@ -14247,70 +16759,52 @@
       },
       "staff_nlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          3,
-          3,
-          2,
           4,
-          6,
-          6,
-          5
+          4,
+          4,
+          17
         ]
       },
       "staff_slight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_4",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          4,
-          3,
           5,
-          7,
-          7,
-          7
+          6,
+          5,
+          21
         ]
       },
       "staff_dlight": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dlight",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_15"
         ],
         "ticks": [
-          4,
-          3,
-          3,
           5,
-          7,
-          7,
-          6
+          5,
+          5,
+          20
         ]
       },
       "staff_nair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           5,
@@ -14321,10 +16815,10 @@
       },
       "staff_sair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -14335,10 +16829,10 @@
       },
       "staff_dair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_dair",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -14349,10 +16843,10 @@
       },
       "staff_recovery": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           6,
@@ -14363,10 +16857,10 @@
       },
       "staff_ground_pound": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_staff_ground_pound",
-          "element_0_3"
+          "equipped_staff_15"
         ],
         "ticks": [
           8,
@@ -14377,70 +16871,52 @@
       },
       "miriam_staff_nsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          6,
-          6,
-          6,
-          5,
           9,
-          8,
-          8
+          9,
+          5,
+          25
         ]
       },
       "miriam_staff_ssig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
-          "attack_staff_3",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
-          8,
-          7,
-          7,
+          11,
+          11,
           5,
-          10,
-          10,
-          9
+          29
         ]
       },
       "miriam_staff_dsig": {
         "frames": [
-          "attack_staff_0",
-          "attack_staff_1",
-          "attack_staff_2",
+          "equipped_staff_12",
+          "equipped_staff_13",
           "down_miriam_staff_dsig",
-          "attack_staff_5",
-          "motion_idle",
-          "attack_staff_7"
+          "equipped_staff_15"
         ],
         "ticks": [
-          8,
-          8,
-          8,
+          12,
+          12,
           6,
-          11,
-          10,
-          10
+          31
         ]
       },
       "miriam_sling_nsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           10,
@@ -14451,10 +16927,10 @@
       },
       "miriam_sling_ssig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
-          "slinger_cast_2",
-          "slinger_cast_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           12,
@@ -14465,10 +16941,10 @@
       },
       "miriam_sling_dsig": {
         "frames": [
-          "slinger_cast_0",
-          "slinger_cast_1",
+          "equipped_sling_12",
+          "equipped_sling_13",
           "down_miriam_sling_dsig",
-          "slinger_cast_3"
+          "equipped_sling_15"
         ],
         "ticks": [
           13,
@@ -14702,10 +17178,10 @@
       },
       "sling_air_combo": {
         "frames": [
-          "element_1_0",
-          "element_1_1",
-          "element_1_2",
-          "element_1_3"
+          "equipped_sling_12",
+          "equipped_sling_13",
+          "equipped_sling_14",
+          "equipped_sling_15"
         ],
         "ticks": [
           2,
@@ -14716,10 +17192,10 @@
       },
       "staff_air_combo": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "equipped_staff_12",
+          "equipped_staff_13",
+          "equipped_staff_14",
+          "equipped_staff_15"
         ],
         "ticks": [
           2,
@@ -14780,14 +17256,22 @@
     },
     "releaseOrigins": {
       "sling": [
-        56,
-        48
+        113,
+        46
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/miriam.png",
+      "weapons": [
+        "staff",
+        "sling"
+      ],
+      "frames": 32
     }
   },
   "nehemiah": {
-    "image": "assets/runtime/fighters/nehemiah-release.png",
-    "sha256": "a50d5d4179026563f7967d33f51d9ee7c9722eaf3a1f52634ab455370a313ddb",
+    "image": "assets/runtime/fighters/nehemiah-equipped.png",
+    "sha256": "1778a7b8ba24336c62a3b21ddb98af3654a0a34adbe43b719dbcfc14f3209d74",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
@@ -15612,6 +18096,262 @@
         "h": 188,
         "pivotX": 95,
         "pivotY": 188
+      },
+      "equipped_hammer_0": {
+        "x": 4,
+        "y": 4013,
+        "w": 168,
+        "h": 192,
+        "pivotX": 106,
+        "pivotY": 192
+      },
+      "equipped_hammer_1": {
+        "x": 300,
+        "y": 4013,
+        "w": 169,
+        "h": 192,
+        "pivotX": 104,
+        "pivotY": 192
+      },
+      "equipped_hammer_2": {
+        "x": 596,
+        "y": 4013,
+        "w": 171,
+        "h": 161,
+        "pivotX": 87,
+        "pivotY": 161
+      },
+      "equipped_hammer_3": {
+        "x": 892,
+        "y": 4013,
+        "w": 174,
+        "h": 137,
+        "pivotX": 88,
+        "pivotY": 137
+      },
+      "equipped_hammer_4": {
+        "x": 4,
+        "y": 4242,
+        "w": 171,
+        "h": 184,
+        "pivotX": 136,
+        "pivotY": 184
+      },
+      "equipped_hammer_5": {
+        "x": 300,
+        "y": 4242,
+        "w": 173,
+        "h": 191,
+        "pivotX": 142,
+        "pivotY": 191
+      },
+      "equipped_hammer_6": {
+        "x": 596,
+        "y": 4242,
+        "w": 172,
+        "h": 182,
+        "pivotX": 136,
+        "pivotY": 182
+      },
+      "equipped_hammer_7": {
+        "x": 892,
+        "y": 4242,
+        "w": 202,
+        "h": 177,
+        "pivotX": 115,
+        "pivotY": 177
+      },
+      "equipped_hammer_8": {
+        "x": 4,
+        "y": 4471,
+        "w": 195,
+        "h": 210,
+        "pivotX": 47,
+        "pivotY": 210
+      },
+      "equipped_hammer_9": {
+        "x": 300,
+        "y": 4471,
+        "w": 150,
+        "h": 183,
+        "pivotX": 76,
+        "pivotY": 183
+      },
+      "equipped_hammer_10": {
+        "x": 596,
+        "y": 4471,
+        "w": 170,
+        "h": 208,
+        "pivotX": 74,
+        "pivotY": 208
+      },
+      "equipped_hammer_11": {
+        "x": 892,
+        "y": 4471,
+        "w": 210,
+        "h": 129,
+        "pivotX": 131,
+        "pivotY": 129
+      },
+      "equipped_hammer_12": {
+        "x": 4,
+        "y": 4700,
+        "w": 181,
+        "h": 177,
+        "pivotX": 109,
+        "pivotY": 177
+      },
+      "equipped_hammer_13": {
+        "x": 300,
+        "y": 4700,
+        "w": 167,
+        "h": 216,
+        "pivotX": 84,
+        "pivotY": 216
+      },
+      "equipped_hammer_14": {
+        "x": 596,
+        "y": 4700,
+        "w": 283,
+        "h": 162,
+        "pivotX": 93,
+        "pivotY": 162
+      },
+      "equipped_hammer_15": {
+        "x": 892,
+        "y": 4700,
+        "w": 181,
+        "h": 174,
+        "pivotX": 108,
+        "pivotY": 174
+      },
+      "equipped_shield_0": {
+        "x": 4,
+        "y": 4929,
+        "w": 166,
+        "h": 192,
+        "pivotX": 74,
+        "pivotY": 192
+      },
+      "equipped_shield_1": {
+        "x": 300,
+        "y": 4929,
+        "w": 165,
+        "h": 192,
+        "pivotX": 78,
+        "pivotY": 192
+      },
+      "equipped_shield_2": {
+        "x": 596,
+        "y": 4929,
+        "w": 183,
+        "h": 165,
+        "pivotX": 79,
+        "pivotY": 165
+      },
+      "equipped_shield_3": {
+        "x": 892,
+        "y": 4929,
+        "w": 182,
+        "h": 143,
+        "pivotX": 74,
+        "pivotY": 143
+      },
+      "equipped_shield_4": {
+        "x": 4,
+        "y": 5158,
+        "w": 184,
+        "h": 187,
+        "pivotX": 139,
+        "pivotY": 187
+      },
+      "equipped_shield_5": {
+        "x": 300,
+        "y": 5158,
+        "w": 204,
+        "h": 191,
+        "pivotX": 141,
+        "pivotY": 191
+      },
+      "equipped_shield_6": {
+        "x": 596,
+        "y": 5158,
+        "w": 197,
+        "h": 187,
+        "pivotX": 139,
+        "pivotY": 187
+      },
+      "equipped_shield_7": {
+        "x": 892,
+        "y": 5158,
+        "w": 214,
+        "h": 178,
+        "pivotX": 106,
+        "pivotY": 178
+      },
+      "equipped_shield_8": {
+        "x": 4,
+        "y": 5387,
+        "w": 168,
+        "h": 180,
+        "pivotX": 43,
+        "pivotY": 180
+      },
+      "equipped_shield_9": {
+        "x": 300,
+        "y": 5387,
+        "w": 147,
+        "h": 165,
+        "pivotX": 78,
+        "pivotY": 165
+      },
+      "equipped_shield_10": {
+        "x": 596,
+        "y": 5387,
+        "w": 185,
+        "h": 173,
+        "pivotX": 56,
+        "pivotY": 173
+      },
+      "equipped_shield_11": {
+        "x": 892,
+        "y": 5387,
+        "w": 192,
+        "h": 126,
+        "pivotX": 97,
+        "pivotY": 126
+      },
+      "equipped_shield_12": {
+        "x": 4,
+        "y": 5616,
+        "w": 169,
+        "h": 172,
+        "pivotX": 78,
+        "pivotY": 172
+      },
+      "equipped_shield_13": {
+        "x": 300,
+        "y": 5616,
+        "w": 163,
+        "h": 193,
+        "pivotX": 82,
+        "pivotY": 193
+      },
+      "equipped_shield_14": {
+        "x": 596,
+        "y": 5616,
+        "w": 274,
+        "h": 164,
+        "pivotX": 103,
+        "pivotY": 164
+      },
+      "equipped_shield_15": {
+        "x": 892,
+        "y": 5616,
+        "w": 163,
+        "h": 169,
+        "pivotX": 77,
+        "pivotY": 169
       }
     },
     "clips": {
@@ -16297,11 +19037,19 @@
         58,
         68
       ]
+    },
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/nehemiah.png",
+      "weapons": [
+        "hammer",
+        "shield"
+      ],
+      "frames": 32
     }
   },
   "caleb": {
-    "image": "assets/runtime/fighters/caleb-elemental-packed.png",
-    "sha256": "f84317229b7c392b23a934a8c3d0cdff269d4f2d25e34fa9eeb2f261469bc98f",
+    "image": "assets/runtime/fighters/caleb-equipped.png",
+    "sha256": "d435e2ead40e7ff46d11c40628e6847f17a49f7d2c4cbb9799690bddc251e930",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
     "sourceSha256": "66583e5f9fe76f7151e7d1c47b89a4e4645905f995e4567dfdbc075c9105e341",
@@ -17022,6 +19770,262 @@
         "h": 164,
         "pivotX": 102,
         "pivotY": 164
+      },
+      "equipped_spear_0": {
+        "x": 4,
+        "y": 3726,
+        "w": 106,
+        "h": 202,
+        "pivotX": 48,
+        "pivotY": 202
+      },
+      "equipped_spear_1": {
+        "x": 352,
+        "y": 3726,
+        "w": 124,
+        "h": 202,
+        "pivotX": 58,
+        "pivotY": 202
+      },
+      "equipped_spear_2": {
+        "x": 700,
+        "y": 3726,
+        "w": 231,
+        "h": 150,
+        "pivotX": 89,
+        "pivotY": 150
+      },
+      "equipped_spear_3": {
+        "x": 1048,
+        "y": 3726,
+        "w": 236,
+        "h": 119,
+        "pivotX": 110,
+        "pivotY": 119
+      },
+      "equipped_spear_4": {
+        "x": 4,
+        "y": 3965,
+        "w": 249,
+        "h": 179,
+        "pivotX": 78,
+        "pivotY": 179
+      },
+      "equipped_spear_5": {
+        "x": 352,
+        "y": 3965,
+        "w": 251,
+        "h": 181,
+        "pivotX": 60,
+        "pivotY": 181
+      },
+      "equipped_spear_6": {
+        "x": 700,
+        "y": 3965,
+        "w": 237,
+        "h": 179,
+        "pivotX": 93,
+        "pivotY": 179
+      },
+      "equipped_spear_7": {
+        "x": 1048,
+        "y": 3965,
+        "w": 251,
+        "h": 181,
+        "pivotX": 159,
+        "pivotY": 181
+      },
+      "equipped_spear_8": {
+        "x": 4,
+        "y": 4204,
+        "w": 230,
+        "h": 202,
+        "pivotX": 21,
+        "pivotY": 202
+      },
+      "equipped_spear_9": {
+        "x": 352,
+        "y": 4204,
+        "w": 205,
+        "h": 163,
+        "pivotX": 95,
+        "pivotY": 163
+      },
+      "equipped_spear_10": {
+        "x": 700,
+        "y": 4204,
+        "w": 252,
+        "h": 160,
+        "pivotX": 126,
+        "pivotY": 160
+      },
+      "equipped_spear_11": {
+        "x": 1048,
+        "y": 4204,
+        "w": 238,
+        "h": 136,
+        "pivotX": 99,
+        "pivotY": 136
+      },
+      "equipped_spear_12": {
+        "x": 4,
+        "y": 4443,
+        "w": 244,
+        "h": 194,
+        "pivotX": 103,
+        "pivotY": 194
+      },
+      "equipped_spear_13": {
+        "x": 352,
+        "y": 4443,
+        "w": 242,
+        "h": 226,
+        "pivotX": 107,
+        "pivotY": 226
+      },
+      "equipped_spear_14": {
+        "x": 700,
+        "y": 4443,
+        "w": 335,
+        "h": 174,
+        "pivotX": 89,
+        "pivotY": 174
+      },
+      "equipped_spear_15": {
+        "x": 1048,
+        "y": 4443,
+        "w": 229,
+        "h": 192,
+        "pivotX": 98,
+        "pivotY": 192
+      },
+      "equipped_gauntlets_0": {
+        "x": 4,
+        "y": 4682,
+        "w": 107,
+        "h": 200,
+        "pivotX": 50,
+        "pivotY": 200
+      },
+      "equipped_gauntlets_1": {
+        "x": 352,
+        "y": 4682,
+        "w": 114,
+        "h": 192,
+        "pivotX": 53,
+        "pivotY": 192
+      },
+      "equipped_gauntlets_2": {
+        "x": 700,
+        "y": 4682,
+        "w": 165,
+        "h": 158,
+        "pivotX": 82,
+        "pivotY": 158
+      },
+      "equipped_gauntlets_3": {
+        "x": 1048,
+        "y": 4682,
+        "w": 145,
+        "h": 127,
+        "pivotX": 78,
+        "pivotY": 127
+      },
+      "equipped_gauntlets_4": {
+        "x": 4,
+        "y": 4921,
+        "w": 179,
+        "h": 192,
+        "pivotX": 25,
+        "pivotY": 192
+      },
+      "equipped_gauntlets_5": {
+        "x": 352,
+        "y": 4921,
+        "w": 179,
+        "h": 188,
+        "pivotX": 31,
+        "pivotY": 188
+      },
+      "equipped_gauntlets_6": {
+        "x": 700,
+        "y": 4921,
+        "w": 181,
+        "h": 193,
+        "pivotX": 45,
+        "pivotY": 193
+      },
+      "equipped_gauntlets_7": {
+        "x": 1048,
+        "y": 4921,
+        "w": 198,
+        "h": 172,
+        "pivotX": 139,
+        "pivotY": 172
+      },
+      "equipped_gauntlets_8": {
+        "x": 4,
+        "y": 5160,
+        "w": 138,
+        "h": 199,
+        "pivotX": 14,
+        "pivotY": 199
+      },
+      "equipped_gauntlets_9": {
+        "x": 352,
+        "y": 5160,
+        "w": 130,
+        "h": 161,
+        "pivotX": 40,
+        "pivotY": 161
+      },
+      "equipped_gauntlets_10": {
+        "x": 700,
+        "y": 5160,
+        "w": 140,
+        "h": 169,
+        "pivotX": 99,
+        "pivotY": 169
+      },
+      "equipped_gauntlets_11": {
+        "x": 1048,
+        "y": 5160,
+        "w": 162,
+        "h": 135,
+        "pivotX": 72,
+        "pivotY": 135
+      },
+      "equipped_gauntlets_12": {
+        "x": 4,
+        "y": 5399,
+        "w": 154,
+        "h": 194,
+        "pivotX": 79,
+        "pivotY": 194
+      },
+      "equipped_gauntlets_13": {
+        "x": 352,
+        "y": 5399,
+        "w": 169,
+        "h": 194,
+        "pivotX": 87,
+        "pivotY": 194
+      },
+      "equipped_gauntlets_14": {
+        "x": 700,
+        "y": 5399,
+        "w": 249,
+        "h": 185,
+        "pivotX": 91,
+        "pivotY": 185
+      },
+      "equipped_gauntlets_15": {
+        "x": 1048,
+        "y": 5399,
+        "w": 154,
+        "h": 191,
+        "pivotX": 80,
+        "pivotY": 191
       }
     },
     "clips": {
@@ -17748,6 +20752,14 @@
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
     },
-    "releaseOrigins": {}
+    "releaseOrigins": {},
+    "equippedAnimation": {
+      "source": "assets/animation-production/equipped/caleb.png",
+      "weapons": [
+        "spear",
+        "gauntlets"
+      ],
+      "frames": 32
+    }
   }
 }

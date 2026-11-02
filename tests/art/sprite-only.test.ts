@@ -12,7 +12,7 @@ test('raw playback and runtime both use only complete sprites above the registra
       let tick=0;
       for(let i=0;i<clip.frames.length;i++){
         const key=clip.frames[i],frame=entry.frames[key];
-        assert.match(key,/^(motion_|run_|air_|land$|attack_|defence_|down_|element_|moses_staff_spin_|release_|slinger_)/,`${hero}/${move}: ${key}`);
+        assert.match(key,/^(motion_|run_|air_|land$|attack_|defence_|down_|element_|moses_staff_spin_|release_|slinger_|equipped_)/,`${hero}/${move}: ${key}`);
         assert.ok(!entry.attackAnimation.unsafeFrames.includes(key),`${hero}: clipped ${key}`);
         assert.equal(frame.pivotY,frame.h,`${hero}/${key} crosses the origin line`);
         if(move.includes('_'))for(let t=tick;t<tick+clip.ticks[i];t++){

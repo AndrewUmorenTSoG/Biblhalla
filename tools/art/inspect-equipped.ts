@@ -1,0 +1,4 @@
+import{readFileSync}from'node:fs';import{join}from'node:path';import{ROOT,loadContent}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';
+const meta=JSON.parse(readFileSync(join(ROOT,'assets/runtime/fighters/fighters.json'),'utf8')),out=blank(1600,1440);let row=0;
+for(const def of loadContent().fighters.fighters){const e=meta[def.id],sheet=readPng(join(ROOT,e.image));for(let w=0;w<2;w++)[0,3,4,6,8,9,10,11].forEach((i,col)=>{const f=e.frames[`equipped_${def.weaponPair[w]}_${i}`],k=Math.min(95/f.w,112/f.h),img=resize(crop(sheet,f.x,f.y,f.w,f.h),Math.max(1,Math.round(f.w*k)),Math.max(1,Math.round(f.h*k)));blit(out,img,(w*8+col)*100+Math.floor((100-img.width)/2),row*120+112-img.height);});row++;}
+writePng(join(ROOT,'assets/animation-production/equipped/contact.png'),out);

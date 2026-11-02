@@ -133,6 +133,7 @@ function respawn(ctx: SimContext, s: SimState, f: Fighter): void {
 
 export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input): void {
   const { P, R, moves } = ctx;
+  f.crouching=!!f.ground&&i.y<0&&!i.x&&!f.action&&!f.stun&&!f.respawn;
   if (f.dodgeCD > 0) f.dodgeCD--;
   if (f.dashCD > 0) f.dashCD--;
   if (f.invulnerable > 0) f.invulnerable--;

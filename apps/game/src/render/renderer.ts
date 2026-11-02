@@ -56,6 +56,15 @@ export class Renderer{
   weapon(weapon:string,x:number,y:number,angle:number,palette:string){drawWeapon(this.ctx,weapon,x,y,angle,palette);}
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
+    if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
+      const key=(i:number)=>'equipped_'+weapon+'_'+i;
+      if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
+      if(pose==='run')return key(4+Math.floor(time/4)%4);
+      if(pose==='crouch')return key(time<3?2:3);
+      const air:{[key:string]:number}={air_rise:8,air_apex:9,air_fall:10,land:11};if(pose in air)return key(air[pose]);
+      if(pose==='backflip')return key(time<4?8:time<9?9:time<14?10:11);
+      if(pose==='weapon_pickup')return key(time<4?3:0);if(pose==='dodge')return key(3);if(pose==='recovery')return key(15);
+    }
     if(weapon==='sling'&&this.atlas[hero]?.slinger_idle_0&&!move){
       if(pose==='idle'||pose==='happy')return 'slinger_idle_'+Math.floor(time/16)%4;
       if(pose==='run')return 'slinger_run_'+Math.floor(time/4)%4;
@@ -107,7 +116,7 @@ export class Renderer{
 
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0,releaseState=''){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const shieldRelease=weapon==='shield'&&frames.release_0&&(releaseState||!move&&pose==='idle'||move.includes('_shield_')&&!move.endsWith('dsig'));const releaseIndex=releaseState==='return'?5:releaseState==='catch'?6:releaseState==='settle'?7:releaseState==='out'?(attackTick<=17?3:4):pose==='startup'?(charge?2:Math.min(2,Math.floor(attackTick/5))):!move?0:attackTick<=16?3:4;const frameName=shieldRelease?'release_'+releaseIndex:charge>0&&weapon==='sling'?(frames.slinger_cast_1?'slinger_cast_1':'motion_idle'):this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const shieldRelease=weapon==='shield'&&frames.release_0&&(releaseState||!move&&pose==='idle'&&!frames.equipped_shield_0||move.includes('_shield_')&&!move.endsWith('dsig'));const releaseIndex=releaseState==='return'?5:releaseState==='catch'?6:releaseState==='settle'?7:releaseState==='out'?(attackTick<=17?3:4):pose==='startup'?(charge?2:Math.min(2,Math.floor(attackTick/5))):!move?0:attackTick<=16?3:4;const frameName=shieldRelease?'release_'+releaseIndex:charge>0&&weapon==='sling'?(frames.equipped_sling_13?'equipped_sling_13':frames.slinger_cast_1?'slinger_cast_1':'motion_idle'):this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
@@ -175,7 +184,7 @@ export class Renderer{
     this.feedback.draw(c,screen,this.camera.zoom);
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';
+    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
       let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;

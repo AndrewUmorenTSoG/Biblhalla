@@ -13,7 +13,7 @@ test('carried weapons render after the body, then the gripping fingers cover the
  for(const hero of Object.keys(meta))for(const pose of ['idle','run','air_rise','air_fall'])for(const weapon of ['sling','sword','staff']){
   const calls:string[]=[];const ctx=new Proxy({}as any,{get:(_,name)=>(..._args:any[])=>calls.push(String(name)),set:()=>true});
   const r=Object.create(Renderer.prototype)as Renderer;Object.assign(r,{ctx,atlas:{[hero]:meta[hero].frames},clips:{[hero]:meta[hero].clips},art:{[hero]:{complete:true,naturalWidth:1024}},reduced:false});
-  r.rig(hero,0,0,1,1,pose,3,0,weapon);if(weapon==='sling'&&meta[hero].frames.slinger_idle_0){assert.equal(calls.filter(c=>c==='drawImage').length,1);continue;}const body=calls.indexOf('drawImage'),fingers=calls.lastIndexOf('drawImage');assert.ok(fingers>body);assert.ok(calls.slice(body,fingers).includes('stroke'),`${hero}/${pose}/${weapon}`);
+  r.rig(hero,0,0,1,1,pose,3,0,weapon);if(meta[hero].frames['equipped_'+weapon+'_0']){assert.equal(calls.filter(c=>c==='drawImage').length,1);continue;}const body=calls.indexOf('drawImage'),fingers=calls.lastIndexOf('drawImage');assert.ok(fingers>body);assert.ok(calls.slice(body,fingers).includes('stroke'),`${hero}/${pose}/${weapon}`);
  }
 });
 test('throw shows anticipation, extended release, follow-through and recovery',()=>{
