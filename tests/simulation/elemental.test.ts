@@ -5,6 +5,20 @@ import {createContext} from '../../packages/sim/src/context.ts';
 import {combat,startProjectile} from '../../packages/sim/src/combat.ts';
 import {resolveAction} from '../../packages/sim/src/moveResolver.ts';
 const ctx=createContext(content);
+test('release origins are outside the torso and shield return waits 24 to 48 ticks',()=>{
+  for(const hero of ['gideon','nehemiah'])for(const charge of [0,1,36]){
+    const {s,f,t}=scene(hero);f.weapon='shield';t.x=450*Q;S.startAttack(s,f,{heavy:true,x:1});const a=f.action!;a.charge=charge;startProjectile(ctx,s,f,S.moves[a.move!],a);
+    const p=s.projectiles[0],origin=S.defs[hero].releaseOrigins!.shield;
+    assert.equal(p.x,f.x+origin[0]*Q);assert.equal(p.y,f.y+origin[1]*Q);
+    const delay=charge?29+Math.round(charge/36*19):24;assert.equal(p.returnAtTick,s.tick+delay);
+    for(let i=1;i<delay;i++){s.tick++;combat(ctx,s);assert.equal(p.returning,false);}
+    s.tick++;combat(ctx,s);assert.equal(p.returning,true);
+  }
+});
+test('an interrupted shield throw returns immediately and slings launch from their release point',()=>{
+  const {s,f}=scene('gideon');f.weapon='shield';S.startAttack(s,f,{heavy:true});startProjectile(ctx,s,f,S.moves[f.action!.move!],f.action!);const p=s.projectiles[0];p.x+=160*Q;f.stun=5;combat(ctx,s);assert.equal(p.returning,true);
+  for(const hero of ['david','moses','miriam']){const z=scene(hero);z.f.weapon='sling';S.startAttack(z.s,z.f,{light:true});startProjectile(ctx,z.s,z.f,S.moves[z.f.action!.move!],z.f.action!);const stone=z.s.projectiles[0],origin=S.defs[hero].releaseOrigins!.sling;assert.equal(stone.x,z.f.x+origin[0]*Q);assert.equal(stone.y,z.f.y+origin[1]*Q);assert.equal(stone.vx,32*Q);}
+});
 function scene(hero='gideon',opponent='david'){
   const s=S.create({mode:'training',hero,opponent});s.phase='playing';
   const [f,t]=s.fighters;for(const p of s.fighters){p.invulnerable=p.respawn=p.hitstop=0;p.ai.next=1e9;p.ai.intent=S.input();p.y=80*Q;p.ground=s.map.main.id;}
@@ -15,7 +29,7 @@ test('shield replaces the requested weapon families and returns within four body
   const {s,f,t}=scene();f.weapon='shield';t.x=400*Q;
   S.startAttack(s,f,{heavy:true,x:1});const a=f.action!,m=S.moves[a.move!];startProjectile(ctx,s,f,m,a);
   let furthest=0,returned=false;
-  for(let i=0;i<90;i++){combat(ctx,s);for(const p of s.projectiles){furthest=Math.max(furthest,p.x);returned ||= !!p.returning;}}
+  for(let i=0;i<90;i++){s.tick++;combat(ctx,s);for(const p of s.projectiles){furthest=Math.max(furthest,p.x);returned ||= !!p.returning;}}
   assert.equal(furthest,160*Q);assert.ok(returned);assert.equal(s.projectiles.length,0);assert.equal(f.weapon,'shield');
 });
 test('returning shield hits a target at most once per throw',()=>{

@@ -27,7 +27,8 @@ export const colors:any={david:['#e7c57a','#486c82','#654332'],saul:['#776c99','
 const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','#b29163','#666d60'],['#bd9d87','#f1d5a1','#be8f61','#5b776e'],['#82a09c','#e7d7a5','#a49f75','#59786f'],['#8a9fb1','#dcc2ac','#baa791','#73687c'],['#91a3aa','#e5d2ad','#bbaa8a','#6c7e76']];
 export class Renderer{
   elementEvents:SimState['events']=[];
-  collectElements(world:SimState){for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
+  shieldCatchTicks=new Map<number,number>();
+  collectElements(world:SimState){this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),world.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
   capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters)this.previous.set(f.id,{x:f.x,y:f.y});}
@@ -97,9 +98,9 @@ export class Renderer{
     c.restore();
   }
 
-  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0){const c=this.ctx,p=colors[hero]||colors.dru;
+  rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0,releaseState=''){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const frameName=charge>0&&weapon==='sling'?'motion_idle':this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const shieldRelease=weapon==='shield'&&frames.release_0&&(releaseState||!move&&pose==='idle'||move.includes('_shield_')&&!move.endsWith('dsig'));const releaseIndex=releaseState==='return'?5:releaseState==='catch'?6:releaseState==='settle'?7:releaseState==='out'?(attackTick<=17?3:4):pose==='startup'?(charge?2:Math.min(2,Math.floor(attackTick/5))):!move?0:attackTick<=16?3:4;const frameName=shieldRelease?'release_'+releaseIndex:charge>0&&weapon==='sling'?'motion_idle':this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
@@ -110,10 +111,11 @@ export class Renderer{
       // The weapon sits behind the near fist in the same local coordinates as
       // the sprite. It follows each run and jump frame instead of floating at
       // a fixed screen position. Attack art already includes its own weapon.
-      if(weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
+      if(!shieldRelease&&weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
       if(charge>0)c.filter='sepia('+Math.min(.7,charge/50)+') saturate(2.2) hue-rotate(325deg)';
       c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);
       c.filter='none';
+      if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const grip=grips[releaseIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;drawWeapon(c,'shield',hx,hy+15,0);}
 
       if(weapon==='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
       if(pose==='happy'){
@@ -168,7 +170,8 @@ export class Renderer{
       if(motion.pose!==pose){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0);
+      const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}

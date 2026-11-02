@@ -27,6 +27,9 @@ test('a full jump peaks within half a second and still clears about 2.8 body hei
 function sideSig(hero: string, damage: number): boolean {
   const s = fresh(hero), [p, d] = s.fighters;
   p.weapon = S.defs[hero].weaponPair[0]; p.facing = 1; d.damage = damage * 10; d.x = p.x + 60 * Q;
+  // Keep the target at the same centre-stage position and sixty units beyond
+  // the release point, rather than placing it behind the extended sling.
+  p.x-=(S.defs[hero].releaseOrigins?.[p.weapon]?.[0]??0)*Q;
   for (let t = 0; t < 240; t++) {
     S.step(s, { [p.id]: { heavy: t === 0, x: t === 0 ? 1 : 0 } });
     if (s.events.some(e => e.type === 'ko' && e.fighter === d.id)) return true;

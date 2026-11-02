@@ -1,4 +1,5 @@
 import type { SimState, Fighter, Projectile } from '../../../../packages/sim/src/types.ts';
+import {drawWeapon} from './weapons.ts';
 type Screen=(x:number,y:number)=>{x:number;y:number};
 
 export function flame(c:CanvasRenderingContext2D,x:number,y:number,size:number,time:number){
@@ -53,7 +54,7 @@ export function drawElementProjectile(c:CanvasRenderingContext2D,p:Projectile,ow
   c.save();c.translate(x,y);c.scale(zoom*p.facing,zoom);
   let drawn=true;
   if(p.effect==='shield'){
-    c.rotate(tick*.4);c.fillStyle='#347a98';c.strokeStyle='#e4b563';c.lineWidth=4;c.beginPath();c.arc(0,0,16,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#e4b563';c.beginPath();c.arc(0,0,5,0,Math.PI*2);c.fill();
+    c.scale(.5,.5);c.rotate(tick*.55);drawWeapon(c,'shield',0,15,0);
   }else if(p.effect==='rock'){
     c.fillStyle='#91785f';c.beginPath();c.moveTo(-17,17);c.lineTo(-9,-12);c.lineTo(5,-20);c.lineTo(19,12);c.closePath();c.fill();
   }else if(p.effect==='sound'){

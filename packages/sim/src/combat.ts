@@ -57,13 +57,18 @@ export function startProjectile(ctx: SimContext, s: SimState, f: Fighter, m: Att
   if (!p) return;
   if (s.projectiles.some(t => t.owner === f.id && t.capClass === p.capClass)) { event(s, 'fizzle', { fighter: f.id }); return; }
   const dir = ctx.P.directionLookup[String(p.travelAngle)] || ctx.P.directionLookup['0'];
+  const weapon=m.weapon??(m.ownerType==='weapon'?m.ownerId:ctx.defs[f.hero].weaponPair.find(w=>m.id.includes('_'+w+'_'))??m.ownerId);
+  const origin=ctx.defs[f.hero]?.releaseOrigins?.[weapon]??p.originUnits;
+  const speed=p.boomerangRangeUnits?24*Q:weapon==='sling'?32*Q:p.speedQ;
+  if(p.boomerangRangeUnits)a.duration=Math.max(a.duration,a.tick+(a.charge?29+Math.round(Math.min(36,a.charge)/36*19):24)+16);
   s.projectiles.push({
     id: ++s.entityId, owner: f.id, team: f.team, move: m.id, instance: a.instance, facing: a.facing,
-    x: f.x + p.originUnits[0] * Q * a.facing, y: f.y + p.originUnits[1] * Q,
-    vx: roundMul(p.speedQ, dir[0], 1024) * a.facing, vy: roundMul(p.speedQ, dir[1], 1024),
+    x: f.x + origin[0] * Q * a.facing, y: f.y + origin[1] * Q,
+    vx: roundMul(speed, dir[0], 1024) * a.facing, vy: roundMul(speed, dir[1], 1024),
     gravity: p.gravityQ, life: p.lifetimeTicks, size: [p.collisionUnits[0], p.collisionUnits[1]],
     capClass: p.capClass, charge: a.charge, weapon: null,
     effect:p.effect,originX:f.x,rangeQ:p.boomerangRangeUnits?p.boomerangRangeUnits*Q:undefined,returning:false,hit:[],
+    returnAtTick:p.boomerangRangeUnits?s.tick+(a.charge?29+Math.round(Math.min(36,a.charge)/36*19):24):undefined,
   });
   event(s, 'projectile', { fighter: f.id });
 }
@@ -142,8 +147,10 @@ export function combat(ctx: SimContext, s: SimState): void {
     if(p.rangeQ){
       const owner=s.fighters.find(f=>f.id===p.owner);
       if(!owner?.stocks||owner.respawn){removed.add(p.id);continue;}
-      if(!p.returning&&Math.abs(p.x-(p.originX??p.x))>=p.rangeQ){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});}
-      if(p.returning){const dx=owner.x-p.x,dy=owner.y+44*Q-p.y,span=Math.max(Math.abs(dx),Math.abs(dy),1);if(span<12*Q){removed.add(p.id);event(s,'shieldCatch',{fighter:p.owner});continue;}p.vx=Math.trunc(dx*2048/span);p.vy=Math.trunc(dy*2048/span);}
+      const interrupted=owner.stun>0||owner.action?.instance!==p.instance;
+      if(!p.returning&&(interrupted||s.tick>=(p.returnAtTick??0))){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});}
+      if(p.returning){const origin=ctx.defs[owner.hero].releaseOrigins?.shield??[30,44];const dx=owner.x+origin[0]*Q*owner.facing-p.x,dy=owner.y+origin[1]*Q-p.y,span=Math.max(Math.abs(dx),Math.abs(dy),1);const speed=interrupted?64*Q:24*Q;if(span<=speed){removed.add(p.id);event(s,'shieldCatch',{fighter:p.owner});continue;}p.vx=Math.trunc(dx*speed/span);p.vy=Math.trunc(dy*speed/span);}
+      else {const remaining=p.rangeQ-Math.abs(p.x-(p.originX??p.x));p.vx=Math.max(0,Math.min(24*Q,remaining))*p.facing;}
     }
     const nx = p.x + p.vx, ny = p.y + p.vy;
     const hw = (p.size[0] * Q) / 2, hh = (p.size[1] * Q) / 2;

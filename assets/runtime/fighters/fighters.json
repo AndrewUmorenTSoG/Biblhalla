@@ -1380,7 +1380,8 @@
       "source": "assets/animation-production/elemental/samson.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   },
   "david": {
     "image": "assets/runtime/fighters/david-elemental-packed.png",
@@ -2726,6 +2727,12 @@
       "source": "assets/animation-production/elemental/david.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "sling": [
+        177,
+        53
+      ]
     }
   },
   "saul": {
@@ -4104,7 +4111,8 @@
       "source": "assets/animation-production/elemental/saul.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   },
   "joshua": {
     "image": "assets/runtime/fighters/joshua-elemental-packed.png",
@@ -5476,7 +5484,8 @@
       "source": "assets/animation-production/elemental/joshua.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   },
   "deborah": {
     "image": "assets/runtime/fighters/deborah-elemental-packed.png",
@@ -6852,11 +6861,12 @@
       "source": "assets/animation-production/elemental/deborah.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   },
   "gideon": {
-    "image": "assets/runtime/fighters/gideon-elemental-packed.png",
-    "sha256": "5261dc280ce82d53f9a7698a08295ba764ce46d1bc72dcd01c8948272cb89975",
+    "image": "assets/runtime/fighters/gideon-release.png",
+    "sha256": "2e67370b044c8141eeb1ac15b96bda04a6fd2258a10a4789ceacbaaebca76606",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/06_gideon_move_sheet.png",
     "sourceSha256": "4e6803c3a5e5214e92fe4ae42e250bf522054b204b3d992863e41f94a5300896",
@@ -7551,6 +7561,70 @@
         "h": 163,
         "pivotX": 132,
         "pivotY": 163
+      },
+      "release_0": {
+        "x": 4,
+        "y": 4125,
+        "w": 181,
+        "h": 192,
+        "pivotX": 87,
+        "pivotY": 192
+      },
+      "release_1": {
+        "x": 251,
+        "y": 4125,
+        "w": 185,
+        "h": 188,
+        "pivotX": 100,
+        "pivotY": 188
+      },
+      "release_2": {
+        "x": 498,
+        "y": 4125,
+        "w": 208,
+        "h": 188,
+        "pivotX": 117,
+        "pivotY": 188
+      },
+      "release_3": {
+        "x": 745,
+        "y": 4125,
+        "w": 226,
+        "h": 174,
+        "pivotX": 97,
+        "pivotY": 174
+      },
+      "release_4": {
+        "x": 4,
+        "y": 4329,
+        "w": 234,
+        "h": 180,
+        "pivotX": 98,
+        "pivotY": 180
+      },
+      "release_5": {
+        "x": 251,
+        "y": 4329,
+        "w": 231,
+        "h": 178,
+        "pivotX": 97,
+        "pivotY": 178
+      },
+      "release_6": {
+        "x": 498,
+        "y": 4329,
+        "w": 191,
+        "h": 179,
+        "pivotX": 88,
+        "pivotY": 179
+      },
+      "release_7": {
+        "x": 745,
+        "y": 4329,
+        "w": 183,
+        "h": 189,
+        "pivotX": 86,
+        "pivotY": 189
       }
     },
     "clips": {
@@ -7991,10 +8065,10 @@
       },
       "gideon_shield_nsig": {
         "frames": [
-          "element_2_0",
-          "element_2_1",
-          "element_2_2",
-          "element_2_3"
+          "release_0",
+          "release_2",
+          "release_3",
+          "release_4"
         ],
         "ticks": [
           8,
@@ -8005,10 +8079,10 @@
       },
       "gideon_shield_ssig": {
         "frames": [
-          "element_2_0",
-          "element_2_1",
-          "element_2_2",
-          "element_2_3"
+          "release_0",
+          "release_2",
+          "release_3",
+          "release_4"
         ],
         "ticks": [
           8,
@@ -8224,6 +8298,12 @@
       "source": "assets/animation-production/elemental/gideon.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "shield": [
+        59,
+        65
+      ]
     }
   },
   "jonathan": {
@@ -8669,12 +8749,12 @@
         "pivotY": 193
       },
       "down_bow_dlight": {
-        "x": 4,
-        "y": 2029,
-        "w": 243,
-        "h": 188,
-        "pivotX": 89,
-        "pivotY": 188
+        "x": 608,
+        "y": 3185,
+        "w": 217,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
       },
       "down_bow_dair": {
         "x": 255,
@@ -8693,12 +8773,12 @@
         "pivotY": 179
       },
       "down_jonathan_bow_dsig": {
-        "x": 765,
-        "y": 2029,
-        "w": 241,
-        "h": 144,
-        "pivotX": 99,
-        "pivotY": 144
+        "x": 608,
+        "y": 3185,
+        "w": 217,
+        "h": 192,
+        "pivotX": 120,
+        "pivotY": 192
       },
       "down_sword_dlight": {
         "x": 4,
@@ -9048,62 +9128,44 @@
       },
       "bow_nlight": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
         ],
         "ticks": [
-          3,
-          3,
-          3,
+          4,
+          5,
           1,
-          7,
-          6,
-          6
+          19
         ]
       },
       "bow_slight": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_4",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
         ],
         "ticks": [
-          5,
-          4,
-          4,
+          6,
+          7,
           1,
-          8,
-          8,
-          8
+          24
         ]
       },
       "bow_dlight": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
+          "element_3_0",
+          "element_3_1",
           "down_bow_dlight",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_3"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          6,
+          6,
           1,
-          8,
-          8,
-          7
+          23
         ]
       },
       "bow_nair": {
@@ -9122,10 +9184,10 @@
       },
       "bow_sair": {
         "frames": [
-          "element_0_0",
-          "element_0_1",
-          "element_0_2",
-          "element_0_3"
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
         ],
         "ticks": [
           6,
@@ -9178,62 +9240,44 @@
       },
       "jonathan_bow_nsig": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
         ],
         "ticks": [
-          7,
-          6,
-          6,
-          5,
           9,
-          8,
-          8
+          10,
+          5,
+          25
         ]
       },
       "jonathan_bow_ssig": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
-          "attack_bow_3",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_0",
+          "element_3_1",
+          "element_3_2",
+          "element_3_3"
         ],
         "ticks": [
-          8,
-          8,
-          7,
+          11,
+          12,
           5,
-          10,
-          10,
-          9
+          29
         ]
       },
       "jonathan_bow_dsig": {
         "frames": [
-          "attack_bow_0",
-          "attack_bow_1",
-          "attack_bow_2",
+          "element_3_0",
+          "element_3_1",
           "down_jonathan_bow_dsig",
-          "attack_bow_5",
-          "attack_bow_6",
-          "attack_bow_7"
+          "element_3_3"
         ],
         "ticks": [
-          9,
-          8,
-          8,
+          12,
+          13,
           5,
-          11,
-          10,
-          10
+          31
         ]
       },
       "jonathan_sword_nsig": {
@@ -9626,6 +9670,12 @@
       "source": "assets/animation-production/elemental/jonathan.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "bow": [
+        5,
+        49
+      ]
     }
   },
   "moses": {
@@ -11020,6 +11070,12 @@
       "source": "assets/animation-production/elemental/moses.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "sling": [
+        151,
+        43
+      ]
     }
   },
   "esther": {
@@ -12414,7 +12470,8 @@
       "source": "assets/animation-production/elemental/esther.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   },
   "miriam": {
     "image": "assets/runtime/fighters/miriam-elemental-packed.png",
@@ -13756,11 +13813,17 @@
       "source": "assets/animation-production/elemental/miriam.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "sling": [
+        142,
+        50
+      ]
     }
   },
   "nehemiah": {
-    "image": "assets/runtime/fighters/nehemiah-elemental-packed.png",
-    "sha256": "74fd102ca09bf460526f75bc262053897ebe0ff660ee8ed0d6ab92e607cf6eb9",
+    "image": "assets/runtime/fighters/nehemiah-release.png",
+    "sha256": "a50d5d4179026563f7967d33f51d9ee7c9722eaf3a1f52634ab455370a313ddb",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
@@ -14463,6 +14526,70 @@
         "h": 131,
         "pivotX": 137,
         "pivotY": 131
+      },
+      "release_0": {
+        "x": 4,
+        "y": 3605,
+        "w": 177,
+        "h": 192,
+        "pivotX": 91,
+        "pivotY": 192
+      },
+      "release_1": {
+        "x": 258,
+        "y": 3605,
+        "w": 198,
+        "h": 184,
+        "pivotX": 110,
+        "pivotY": 184
+      },
+      "release_2": {
+        "x": 512,
+        "y": 3605,
+        "w": 207,
+        "h": 181,
+        "pivotX": 111,
+        "pivotY": 181
+      },
+      "release_3": {
+        "x": 766,
+        "y": 3605,
+        "w": 223,
+        "h": 182,
+        "pivotX": 96,
+        "pivotY": 182
+      },
+      "release_4": {
+        "x": 4,
+        "y": 3809,
+        "w": 242,
+        "h": 181,
+        "pivotX": 97,
+        "pivotY": 181
+      },
+      "release_5": {
+        "x": 258,
+        "y": 3809,
+        "w": 236,
+        "h": 170,
+        "pivotX": 99,
+        "pivotY": 170
+      },
+      "release_6": {
+        "x": 512,
+        "y": 3809,
+        "w": 183,
+        "h": 184,
+        "pivotX": 93,
+        "pivotY": 184
+      },
+      "release_7": {
+        "x": 766,
+        "y": 3809,
+        "w": 184,
+        "h": 188,
+        "pivotX": 95,
+        "pivotY": 188
       }
     },
     "clips": {
@@ -14897,10 +15024,10 @@
       },
       "nehemiah_shield_nsig": {
         "frames": [
-          "element_3_0",
-          "element_3_1",
-          "element_3_2",
-          "element_3_3"
+          "release_0",
+          "release_2",
+          "release_3",
+          "release_4"
         ],
         "ticks": [
           8,
@@ -14911,10 +15038,10 @@
       },
       "nehemiah_shield_ssig": {
         "frames": [
-          "element_3_0",
-          "element_3_1",
-          "element_3_2",
-          "element_3_3"
+          "release_0",
+          "release_2",
+          "release_3",
+          "release_4"
         ],
         "ticks": [
           8,
@@ -15142,6 +15269,12 @@
       "source": "assets/animation-production/elemental/nehemiah.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
+    },
+    "releaseOrigins": {
+      "shield": [
+        58,
+        68
+      ]
     }
   },
   "caleb": {
@@ -16534,6 +16667,7 @@
       "source": "assets/animation-production/elemental/caleb.png",
       "frames": 16,
       "notes": "Four drawn poses per sequence; shared aerial families, character specials and shield replacements."
-    }
+    },
+    "releaseOrigins": {}
   }
 }

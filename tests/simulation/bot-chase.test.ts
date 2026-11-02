@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { S } from '../helpers/engine.ts';
 import { MatchRecorder } from '../../packages/sim/src/stats.ts';
 
-function chases(difficulty: string, seeds = 6) {
+function chases(difficulty: string, seeds = 12) {
   let chaseUses = 0, hits = 0;
   for (let seed = 0; seed < seeds; seed++) {
     const s = S.create({ mode: 'local', difficulty, seed: 300 + seed,

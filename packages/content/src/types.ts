@@ -78,6 +78,7 @@ export interface Attack {
 export interface Stats { power: number; guard: number; speed: number }
 
 export interface FighterDef {
+  releaseOrigins?: Record<string,Point>;
   id: string;
   name: string;
   title: string;

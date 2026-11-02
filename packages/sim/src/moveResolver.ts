@@ -31,6 +31,7 @@ export function beginAction(s: SimState, f: Fighter, kind: ActionKind, duration:
 
 export function startAttack(ctx: SimContext, s: SimState, f: Fighter, i: Input, airCancel = false, override?: Attack): boolean {
   if (f.carry) return false;
+  if(f.weapon==='shield'&&s.projectiles.some(p=>p.owner===f.id&&p.rangeQ))return false;
   const m = override ?? selectMove(ctx, f, i, airCancel || !!f.ground);
   if (!m) return false;
   // Recovery is spent when the action starts, never on hit.

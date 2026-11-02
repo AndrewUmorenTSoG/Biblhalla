@@ -35,7 +35,7 @@ export function releaseItem(ctx: SimContext, s: SimState, f: Fighter, a: Action)
   const facing = a.dx || a.facing;
   s.projectiles.push({
     id: ++s.entityId, owner: f.id, team: f.team, move: 'throw', instance: a.instance, facing,
-    x: f.x + 24 * Q * a.facing, y: f.y + 40 * Q,
+    x: f.x + (ctx.defs[f.hero].releaseOrigins?.[f.weapon]?.[0]??34) * Q * a.facing, y: f.y + (ctx.defs[f.hero].releaseOrigins?.[f.weapon]?.[1]??54) * Q,
     vx: roundMul(R.throw.speedQ, dir[0], 1024) * facing, vy: roundMul(R.throw.speedQ, dir[1], 1024),
     gravity: R.throw.gravityQ, life: R.throw.lifetimeTicks, size: [18, 18], capClass: 'throw', charge: 0, weapon: f.weapon,
   });
