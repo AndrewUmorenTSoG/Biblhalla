@@ -95,7 +95,7 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   }
   if (f.action?.kind === 'chase') return input({ x: Math.sign(target.x - f.x) || f.facing, light: true });
 
-  if (s.tick < f.ai.next) return { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false };
+  if (s.tick < f.ai.next) { const held: Partial<Input> = { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false }; stayOnside(f, held, left, right); return input(held); }
   f.ai.next = s.tick + d.decisionTicks;
 
   const delta = seen.x - f.x, dist = Math.abs(delta) / Q, sign = Math.sign(delta) || f.facing;
@@ -145,6 +145,7 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
     v.x = Math.abs(post - f.x) < 30 * Q ? 0 : Math.sign(post - f.x);
     v.light = v.heavy = false;
   }
+  stayOnside(f, v, left, right);
   // Never walk off the main stage while chasing something beyond it.
   if (f.ground && f.ground === s.map.main.id && v.x && !v.jump) {
     const ahead = f.x + v.x * EDGE_MARGIN_UNITS * Q;
@@ -155,6 +156,16 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
 }
 
 const EDGE_MARGIN_UNITS = 30;
+
+/**
+ * In the air without a full set of jumps and recovery, never drift or dodge outward past
+ * the edge to chase someone: that is how bots fell to their own decisions.
+ */
+function stayOnside(f: Fighter, v: Partial<Input>, left: number, right: number): void {
+  if (f.ground || f.jumps + f.recovery > 2) return;
+  const out = (f.x > right - 60 * Q && (v.x ?? 0) > 0) || (f.x < left + 60 * Q && (v.x ?? 0) < 0);
+  if (out) { v.x = f.x > (left + right) / 2 ? -1 : 1; v.dodge = false; }
+}
 /** Heavy (signature) chance rises with the target's damage, as players go for the KO. */
 export function killHeavyChance(damageTenths: number): number {
   return Math.min(65, 25 + Math.max(0, Math.floor((damageTenths - 600) / 25)));
@@ -179,9 +190,9 @@ function recover(f: Fighter, left: number, right: number, top: number): Input {
     v.dodge = true;
     return input(v);
   }
-  const jumpLine = top + (edgeGap > 120 * Q ? 40 : 0) * Q;
+  const jumpLine = top + (edgeGap > 120 * Q ? 80 : 30) * Q;
   if (falling && f.y < jumpLine && f.jumps > 0) v.jump = true;
-  else if (falling && f.y < top && f.jumps === 0 && f.recovery > 0) v.heavy = true;
+  else if (falling && f.y < top + 20 * Q && f.jumps === 0 && f.recovery > 0) v.heavy = true;
   return input(v);
 }
 

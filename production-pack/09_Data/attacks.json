@@ -21,7 +21,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -70,7 +70,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -128,7 +128,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -177,7 +177,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -226,7 +226,7 @@
       "damageTenths": 150,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -275,7 +275,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -324,7 +324,7 @@
       "damageTenths": 160,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -348,7 +348,7 @@
           "kind": "setVelocity",
           "atTick": 11,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -382,7 +382,7 @@
       "damageTenths": 190,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -406,7 +406,7 @@
           "kind": "setVelocity",
           "atTick": 15,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -438,7 +438,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -487,7 +487,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -545,7 +545,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -594,7 +594,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -643,7 +643,7 @@
       "damageTenths": 150,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -692,7 +692,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -741,7 +741,7 @@
       "damageTenths": 170,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -765,7 +765,7 @@
           "kind": "setVelocity",
           "atTick": 13,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -799,7 +799,7 @@
       "damageTenths": 200,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -823,7 +823,7 @@
           "kind": "setVelocity",
           "atTick": 17,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -855,7 +855,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -908,7 +908,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -961,7 +961,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1010,7 +1010,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1059,7 +1059,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -1112,7 +1112,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1161,7 +1161,7 @@
       "damageTenths": 160,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1185,7 +1185,7 @@
           "kind": "setVelocity",
           "atTick": 13,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -1219,7 +1219,7 @@
       "damageTenths": 180,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1243,7 +1243,7 @@
           "kind": "setVelocity",
           "atTick": 16,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -1275,7 +1275,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1324,7 +1324,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1382,7 +1382,7 @@
       "damageTenths": 90,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1431,7 +1431,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1480,7 +1480,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1529,7 +1529,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1578,7 +1578,7 @@
       "damageTenths": 150,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1602,7 +1602,7 @@
           "kind": "setVelocity",
           "atTick": 10,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -1636,7 +1636,7 @@
       "damageTenths": 180,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1660,7 +1660,7 @@
           "kind": "setVelocity",
           "atTick": 14,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -1692,7 +1692,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1741,7 +1741,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1799,7 +1799,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1848,7 +1848,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -1897,7 +1897,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -1946,7 +1946,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -1995,7 +1995,7 @@
       "damageTenths": 160,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2019,7 +2019,7 @@
           "kind": "setVelocity",
           "atTick": 13,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -2053,7 +2053,7 @@
       "damageTenths": 190,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2077,7 +2077,7 @@
           "kind": "setVelocity",
           "atTick": 17,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -2109,7 +2109,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -2158,7 +2158,7 @@
       "damageTenths": 160,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -2216,7 +2216,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -2265,7 +2265,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2314,7 +2314,7 @@
       "damageTenths": 180,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -2363,7 +2363,7 @@
       "damageTenths": 160,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -2412,7 +2412,7 @@
       "damageTenths": 180,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2436,7 +2436,7 @@
           "kind": "setVelocity",
           "atTick": 15,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -2470,7 +2470,7 @@
       "damageTenths": 220,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2494,7 +2494,7 @@
           "kind": "setVelocity",
           "atTick": 20,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -2526,7 +2526,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -2579,7 +2579,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -2632,7 +2632,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -2685,7 +2685,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2734,7 +2734,7 @@
       "damageTenths": 150,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -2787,7 +2787,7 @@
       "damageTenths": 130,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -2836,7 +2836,7 @@
       "damageTenths": 160,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2860,7 +2860,7 @@
           "kind": "setVelocity",
           "atTick": 13,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -2894,7 +2894,7 @@
       "damageTenths": 190,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -2918,7 +2918,7 @@
           "kind": "setVelocity",
           "atTick": 17,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -2950,7 +2950,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -2999,7 +2999,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -3057,7 +3057,7 @@
       "damageTenths": 90,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -3106,7 +3106,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3155,7 +3155,7 @@
       "damageTenths": 140,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -3204,7 +3204,7 @@
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -3253,7 +3253,7 @@
       "damageTenths": 150,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3277,7 +3277,7 @@
           "kind": "setVelocity",
           "atTick": 10,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -3311,7 +3311,7 @@
       "damageTenths": 180,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3335,7 +3335,7 @@
           "kind": "setVelocity",
           "atTick": 14,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -3367,7 +3367,7 @@
       "damageTenths": 80,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -3416,7 +3416,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -3474,7 +3474,7 @@
       "damageTenths": 80,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -3523,7 +3523,7 @@
       "damageTenths": 90,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3572,7 +3572,7 @@
       "damageTenths": 110,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
@@ -3621,7 +3621,7 @@
       "damageTenths": 100,
       "hitstunTicks": 13,
       "baseForceQ": 640,
-      "growthQPerDamage": 6,
+      "growthQPerDamage": 12,
       "launchAngle": -67,
       "delivery": "melee",
       "collisionPhases": [
@@ -3670,7 +3670,7 @@
       "damageTenths": 130,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3694,7 +3694,7 @@
           "kind": "setVelocity",
           "atTick": 12,
           "vxQ": 0,
-          "vyQ": 2688
+          "vyQ": 3292
         }
       ],
       "oneHitPerTarget": true,
@@ -3728,7 +3728,7 @@
       "damageTenths": 160,
       "hitstunTicks": 16,
       "baseForceQ": 1024,
-      "growthQPerDamage": 8,
+      "growthQPerDamage": 20,
       "launchAngle": -90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3752,7 +3752,7 @@
           "kind": "setVelocity",
           "atTick": 16,
           "vxQ": 0,
-          "vyQ": -3072
+          "vyQ": -3762
         }
       ],
       "oneHitPerTarget": true,
@@ -3784,7 +3784,7 @@
       "damageTenths": 200,
       "hitstunTicks": 21,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -3833,8 +3833,8 @@
       "damageTenths": 230,
       "hitstunTicks": 21,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -3882,8 +3882,8 @@
       "damageTenths": 220,
       "hitstunTicks": 21,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -3932,7 +3932,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -3986,8 +3986,8 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -4040,8 +4040,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -4094,7 +4094,7 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -4144,8 +4144,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4203,8 +4203,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4253,7 +4253,7 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -4303,8 +4303,8 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4362,8 +4362,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4412,7 +4412,7 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -4462,8 +4462,8 @@
       "damageTenths": 300,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4512,8 +4512,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4562,7 +4562,7 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -4612,8 +4612,8 @@
       "damageTenths": 300,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4671,7 +4671,7 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
@@ -4721,7 +4721,7 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -4771,8 +4771,8 @@
       "damageTenths": 320,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4821,7 +4821,7 @@
       "damageTenths": 300,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
@@ -4871,7 +4871,7 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -4921,8 +4921,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -4980,8 +4980,8 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5030,7 +5030,7 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -5080,8 +5080,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5139,8 +5139,8 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5189,7 +5189,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -5239,8 +5239,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5289,8 +5289,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5339,7 +5339,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -5389,8 +5389,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5448,8 +5448,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5507,7 +5507,7 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -5557,8 +5557,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5616,8 +5616,8 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5666,7 +5666,7 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -5716,8 +5716,8 @@
       "damageTenths": 300,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -5766,7 +5766,7 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
@@ -5816,7 +5816,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -5870,8 +5870,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -5924,8 +5924,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -5978,7 +5978,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -6028,8 +6028,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6087,8 +6087,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6137,7 +6137,7 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -6187,8 +6187,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6237,8 +6237,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6287,7 +6287,7 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -6341,8 +6341,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -6395,8 +6395,8 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -6449,7 +6449,7 @@
       "damageTenths": 220,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -6499,8 +6499,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6558,8 +6558,8 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6617,7 +6617,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -6667,8 +6667,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6717,8 +6717,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6767,7 +6767,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -6817,8 +6817,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6867,8 +6867,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -6917,7 +6917,7 @@
       "damageTenths": 230,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "projectile",
       "collisionPhases": [],
@@ -6971,8 +6971,8 @@
       "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -7025,8 +7025,8 @@
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "projectile",
       "collisionPhases": [],
       "projectile": {
@@ -7079,7 +7079,7 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -7129,8 +7129,8 @@
       "damageTenths": 310,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7179,7 +7179,7 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
@@ -7229,7 +7229,7 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
@@ -7279,8 +7279,8 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7338,8 +7338,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7388,7 +7388,7 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -7438,8 +7438,8 @@
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7497,8 +7497,8 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7547,7 +7547,7 @@
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 90,
       "delivery": "melee",
       "collisionPhases": [
@@ -7597,8 +7597,8 @@
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
-      "launchAngle": 22,
+      "growthQPerDamage": 22,
+      "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [
         {
@@ -7656,7 +7656,7 @@
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
-      "growthQPerDamage": 10,
+      "growthQPerDamage": 22,
       "launchAngle": 45,
       "delivery": "melee",
       "collisionPhases": [

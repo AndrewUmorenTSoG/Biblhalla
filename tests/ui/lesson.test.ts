@@ -42,8 +42,11 @@ test('the seven-step lesson completes through real outcomes', () => {
   run(k => { if (k % 50 === 0) nearDummy(); return { dodge: d.action?.kind === 'attack' }; }, () => lesson.step !== 'dodge');
   // Step off the right edge, then recover.
   p.x = (mx + mw + 30) * Q; p.y = (my + mh + 40) * Q; p.ground = null; p.vy = 0; p.jumps = 2; p.recovery = 1;
-  run(k => ({ x: -1, jump: k % 18 === 0, jumpHeld: true }), () => lesson.step !== 'return', 600);
-  run(k => { if (k % 45 === 0) { nearDummy(); d.damage = Math.max(d.damage, 1500); } return { heavy: k % 45 === 1, x: 1 }; }, () => lesson.step !== 'finish', 2000);
+  // Head back over the stage; drop through a floating platform if one catches the landing.
+  run(k => p.ground && p.ground !== s.map.main.id ? { y: -1, jump: k % 2 === 0 } : { x: p.x > (mx + mw - 80) * Q ? -1 : 0, jump: !p.ground && k % 18 === 0, jumpHeld: true }, () => lesson.step !== 'return', 600);
+  // Re-stage only while the dummy is back on the stage, so a launch can fly out uninterrupted.
+  let swing = -1;
+  run(k => { if (d.ground && !d.stun && !d.respawn && k - swing > 60) { nearDummy(); d.damage = Math.max(d.damage, 1500); swing = k; } return { heavy: k > swing + 2 && k < swing + 20 && !!p.ground && !p.action, x: 1 }; }, () => lesson.step !== 'finish', 2000);
   assert.deepEqual(seen, ['jump', 'attack', 'directional', 'dodge', 'return', 'finish', 'done']);
   assert.equal(lesson.progress, '7 / 7');
 });
