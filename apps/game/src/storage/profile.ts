@@ -3,6 +3,7 @@
 
 import type { Content } from '../../../../packages/content/src/index.ts';
 import { hash } from '../../../../packages/sim/src/fixed.ts';
+import { BINDABLE_KEY, bindingsAreUnique } from '../input/keymap.ts';
 
 export interface KeyValueStorage { getItem(key: string): string | null; setItem(key: string, value: string): void }
 
@@ -43,7 +44,7 @@ export function migrate(raw: any): any {
 const STAGES = ['entry', 'middle_or_phase_two', 'exit'];
 const DIFFICULTIES = ['easy', 'hard', 'extreme'];
 const SEEN_CARD = /^L\d{3}:\d{1,2}$/;
-const BINDABLE = /^(Key[A-Z]|Digit[0-9]|Arrow(Left|Right|Up|Down)|Space|Shift(Left|Right)|Control(Left|Right)|Enter|Escape|Backspace|Tab)$/;
+const BINDABLE = BINDABLE_KEY;
 
 export const DEFAULT_BINDINGS = {
   left: 'KeyA', right: 'KeyD', up: 'KeyW', down: 'KeyS', jump: 'Space', light: 'KeyJ', heavy: 'KeyK',
@@ -124,6 +125,8 @@ export function createProfiles(content: Content) {
       for (const [k, min, max] of RANGES) if (typeof s[k] === 'number' && Number.isFinite(s[k])) (d.settings as any)[k] = Math.min(max, Math.max(min, s[k]));
       if (s.bindings && typeof s.bindings === 'object') {
         for (const k of Object.keys(d.settings.bindings) as (keyof Bindings)[]) if (typeof s.bindings[k] === 'string' && BINDABLE.test(s.bindings[k])) d.settings.bindings[k] = s.bindings[k];
+        // A save that gives one key to two controls is unplayable; use the default layout instead.
+        if (!bindingsAreUnique(d.settings.bindings)) d.settings.bindings = { ...DEFAULT_BINDINGS };
       }
     }
     if (Array.isArray(raw.seenCards)) d.seenCards = [...new Set<string>(raw.seenCards.filter((v: unknown) => typeof v === 'string' && SEEN_CARD.test(v)))].slice(0, 512);

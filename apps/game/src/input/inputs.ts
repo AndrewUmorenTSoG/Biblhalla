@@ -2,6 +2,7 @@
 // consumed once per simulation tick; focus loss clears held state.
 
 import type { Settings } from '../storage/profile.ts';
+import { isGameKey, keyboardFrame } from './keymap.ts';
 
 const actions=['jump','light','heavy','dodge','item','interact'];
 /** Controller slots a human fighter is bound to that are no longer connected; any one pauses the match. */
@@ -36,12 +37,12 @@ export class Inputs{
   held:Set<string>;edges:Set<string>;touch:any;touchEdges:Set<string>;axis:any;settings:Settings;onPause:()=>void;active:boolean;controlActivity:number;padPrevious:any;padSeen:Set<number>;stick:any;stickPointer:number|null;chargeLatch:Set<string>=new Set();
   constructor(settings:Settings,onPause:()=>void){this.settings=settings;this.onPause=onPause;this.held=new Set();this.edges=new Set();this.touch={};this.touchEdges=new Set();this.axis={x:0,y:0};this.active=false;this.controlActivity=0;this.padPrevious={};this.padSeen=new Set();this.stick=null;this.stickPointer=null;
     window.addEventListener('keydown',(e:KeyboardEvent)=>{if(e.target instanceof HTMLInputElement||e.target instanceof HTMLSelectElement||e.target instanceof HTMLTextAreaElement)return;
-      if(e.code===this.settings.bindings.pause||e.code==='KeyP'){if(this.active){e.preventDefault();this.onPause();}return;}
-      if(Object.values(this.settings.bindings).includes(e.code)||e.code.startsWith('Arrow')){if(this.active)e.preventDefault();if(!this.held.has(e.code)){this.edges.add(e.code);this.controlActivity++;}this.held.add(e.code);}
+      if(e.code===this.settings.bindings.pause||e.code==='KeyP'&&!Object.values(this.settings.bindings).includes('KeyP')){if(this.active){e.preventDefault();this.onPause();}return;}
+      if(isGameKey(this.settings.bindings,e.code)){if(this.active)e.preventDefault();if(!this.held.has(e.code)){this.edges.add(e.code);this.controlActivity++;}this.held.add(e.code);}
     });window.addEventListener('keyup',(e:KeyboardEvent)=>{this.held.delete(e.code);});window.addEventListener('blur',()=>this.clear());
   }
   clear(){this.held.clear();this.edges.clear();this.touch={};this.touchEdges.clear();this.axis={x:0,y:0};this.padPrevious={};this.stickPointer=null;document.querySelectorAll('[data-action].held').forEach(e=>e.classList.remove('held'));const thumb=document.querySelector('.stick-thumb') as HTMLElement;if(thumb)thumb.style.transform='translate(-50%,-50%)';}
-  keyboard(){const b=this.settings.bindings,h=(key:string)=>this.held.has(b[key]),edge=(key:string)=>this.edges.has(b[key]);return {x:Number(h('right')||this.held.has('ArrowRight'))-Number(h('left')||this.held.has('ArrowLeft')),y:Number(h('up')||this.held.has('ArrowUp'))-Number(h('down')||this.held.has('ArrowDown')),jump:edge('jump'),jumpHeld:h('jump'),light:edge('light'),heavy:edge('heavy'),heavyHeld:h('heavy'),dodge:edge('dodge'),item:edge('item'),interact:edge('interact'),interactHeld:h('interact')};}
+  keyboard(){return keyboardFrame(this.settings.bindings,this.held,this.edges);}
   pads(){return Array.from(navigator.getGamepads?.()||[]).filter((p:any)=>p&&p.connected) as Gamepad[];}
   gamepad(index:number){const pad=this.pads().find(p=>p.index===index);if(!pad)return {};const old=this.padPrevious[index]||[];const values=pad.buttons.map(b=>b.pressed);const frame=padFrame(values,[...pad.axes],old,this.settings.deadzone);
     if(values.some(Boolean)||frame.x||frame.y){this.padSeen.add(index);this.controlActivity++;}if(values[9]&&!old[9]&&this.active)this.onPause();this.padPrevious[index]=values;return frame;
