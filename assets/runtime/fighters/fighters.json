@@ -87,7 +87,9 @@
         "w": 114,
         "h": 192,
         "pivotX": 69,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 109,
+        "gripY": 110
       },
       "run_0": {
         "x": 419,
@@ -95,7 +97,9 @@
         "w": 180,
         "h": 192,
         "pivotX": 105,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 175,
+        "gripY": 82
       },
       "run_1": {
         "x": 607,
@@ -103,7 +107,9 @@
         "w": 180,
         "h": 192,
         "pivotX": 98,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 176,
+        "gripY": 70
       },
       "run_2": {
         "x": 795,
@@ -111,7 +117,9 @@
         "w": 155,
         "h": 201,
         "pivotX": 86,
-        "pivotY": 201
+        "pivotY": 201,
+        "gripX": 150,
+        "gripY": 79
       },
       "run_3": {
         "x": 4,
@@ -119,7 +127,9 @@
         "w": 161,
         "h": 203,
         "pivotX": 92,
-        "pivotY": 203
+        "pivotY": 203,
+        "gripX": 155,
+        "gripY": 69
       },
       "run_4": {
         "x": 173,
@@ -127,7 +137,9 @@
         "w": 182,
         "h": 190,
         "pivotX": 102,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 174,
+        "gripY": 88
       },
       "run_5": {
         "x": 363,
@@ -135,7 +147,9 @@
         "w": 174,
         "h": 176,
         "pivotX": 90,
-        "pivotY": 176
+        "pivotY": 176,
+        "gripX": 154,
+        "gripY": 90
       },
       "run_6": {
         "x": 545,
@@ -143,7 +157,9 @@
         "w": 137,
         "h": 195,
         "pivotX": 73,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 132,
+        "gripY": 85
       },
       "run_7": {
         "x": 690,
@@ -151,7 +167,9 @@
         "w": 181,
         "h": 189,
         "pivotX": 102,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 174,
+        "gripY": 86
       },
       "air_rise": {
         "x": 879,
@@ -159,7 +177,9 @@
         "w": 129,
         "h": 186,
         "pivotX": 72,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 124,
+        "gripY": 94
       },
       "air_apex": {
         "x": 4,
@@ -167,7 +187,9 @@
         "w": 127,
         "h": 175,
         "pivotX": 74,
-        "pivotY": 175
+        "pivotY": 175,
+        "gripX": 123,
+        "gripY": 96
       },
       "air_fall": {
         "x": 139,
@@ -175,7 +197,9 @@
         "w": 143,
         "h": 174,
         "pivotX": 84,
-        "pivotY": 174
+        "pivotY": 174,
+        "gripX": 139,
+        "gripY": 65
       },
       "land": {
         "x": 290,
@@ -183,7 +207,9 @@
         "w": 143,
         "h": 124,
         "pivotX": 93,
-        "pivotY": 124
+        "pivotY": 124,
+        "gripX": 114,
+        "gripY": 109
       },
       "attack_gauntlets_0": {
         "x": 441,
@@ -319,7 +345,9 @@
         "w": 161,
         "h": 192,
         "pivotX": 81,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 142,
+        "gripY": 82
       },
       "defence_1": {
         "x": 742,
@@ -327,7 +355,9 @@
         "w": 163,
         "h": 190,
         "pivotX": 83,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 154,
+        "gripY": 129
       },
       "defence_2": {
         "x": 4,
@@ -335,7 +365,9 @@
         "w": 234,
         "h": 186,
         "pivotX": 92,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 155,
+        "gripY": 121
       },
       "defence_3": {
         "x": 246,
@@ -343,7 +375,9 @@
         "w": 155,
         "h": 191,
         "pivotX": 79,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 138,
+        "gripY": 84
       },
       "defence_4": {
         "x": 409,
@@ -351,7 +385,9 @@
         "w": 162,
         "h": 195,
         "pivotX": 84,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 138,
+        "gripY": 82
       },
       "defence_5": {
         "x": 579,
@@ -359,7 +395,9 @@
         "w": 144,
         "h": 193,
         "pivotX": 68,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 136,
+        "gripY": 90
       },
       "defence_6": {
         "x": 731,
@@ -367,7 +405,9 @@
         "w": 230,
         "h": 194,
         "pivotX": 60,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 222,
+        "gripY": 88
       },
       "defence_7": {
         "x": 4,
@@ -375,7 +415,9 @@
         "w": 125,
         "h": 194,
         "pivotX": 83,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 120,
+        "gripY": 82
       },
       "defence_8": {
         "x": 137,
@@ -383,7 +425,9 @@
         "w": 162,
         "h": 187,
         "pivotX": 83,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 142,
+        "gripY": 74
       },
       "defence_9": {
         "x": 307,
@@ -391,7 +435,9 @@
         "w": 152,
         "h": 145,
         "pivotX": 73,
-        "pivotY": 145
+        "pivotY": 145,
+        "gripX": 133,
+        "gripY": 84
       },
       "defence_10": {
         "x": 467,
@@ -399,7 +445,9 @@
         "w": 202,
         "h": 155,
         "pivotX": 95,
-        "pivotY": 155
+        "pivotY": 155,
+        "gripX": 197,
+        "gripY": 79
       },
       "defence_11": {
         "x": 677,
@@ -407,7 +455,9 @@
         "w": 154,
         "h": 190,
         "pivotX": 77,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 134,
+        "gripY": 78
       },
       "defence_12": {
         "x": 839,
@@ -415,7 +465,9 @@
         "w": 161,
         "h": 190,
         "pivotX": 83,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 142,
+        "gripY": 79
       },
       "defence_13": {
         "x": 4,
@@ -423,7 +475,9 @@
         "w": 172,
         "h": 186,
         "pivotX": 96,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 155,
+        "gripY": 121
       },
       "defence_14": {
         "x": 184,
@@ -431,7 +485,9 @@
         "w": 182,
         "h": 187,
         "pivotX": 79,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 177,
+        "gripY": 90
       },
       "defence_15": {
         "x": 374,
@@ -439,7 +495,9 @@
         "w": 154,
         "h": 191,
         "pivotX": 79,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 139,
+        "gripY": 77
       },
       "down_gauntlets_dlight": {
         "x": 536,
@@ -1471,7 +1529,9 @@
         "w": 106,
         "h": 192,
         "pivotX": 61,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 100,
+        "gripY": 110
       },
       "run_0": {
         "x": 405,
@@ -1479,7 +1539,9 @@
         "w": 190,
         "h": 209,
         "pivotX": 104,
-        "pivotY": 209
+        "pivotY": 209,
+        "gripX": 186,
+        "gripY": 87
       },
       "run_1": {
         "x": 603,
@@ -1487,7 +1549,9 @@
         "w": 182,
         "h": 207,
         "pivotX": 90,
-        "pivotY": 207
+        "pivotY": 207,
+        "gripX": 177,
+        "gripY": 82
       },
       "run_2": {
         "x": 793,
@@ -1495,7 +1559,9 @@
         "w": 171,
         "h": 210,
         "pivotX": 87,
-        "pivotY": 210
+        "pivotY": 210,
+        "gripX": 167,
+        "gripY": 79
       },
       "run_3": {
         "x": 4,
@@ -1503,7 +1569,9 @@
         "w": 193,
         "h": 208,
         "pivotX": 105,
-        "pivotY": 208
+        "pivotY": 208,
+        "gripX": 184,
+        "gripY": 98
       },
       "run_4": {
         "x": 205,
@@ -1511,7 +1579,9 @@
         "w": 167,
         "h": 207,
         "pivotX": 86,
-        "pivotY": 207
+        "pivotY": 207,
+        "gripX": 162,
+        "gripY": 95
       },
       "run_5": {
         "x": 380,
@@ -1519,7 +1589,9 @@
         "w": 162,
         "h": 209,
         "pivotX": 90,
-        "pivotY": 209
+        "pivotY": 209,
+        "gripX": 144,
+        "gripY": 92
       },
       "run_6": {
         "x": 550,
@@ -1527,7 +1599,9 @@
         "w": 176,
         "h": 207,
         "pivotX": 95,
-        "pivotY": 207
+        "pivotY": 207,
+        "gripX": 171,
+        "gripY": 93
       },
       "run_7": {
         "x": 734,
@@ -1535,7 +1609,9 @@
         "w": 198,
         "h": 208,
         "pivotX": 109,
-        "pivotY": 208
+        "pivotY": 208,
+        "gripX": 182,
+        "gripY": 101
       },
       "air_rise": {
         "x": 4,
@@ -1543,7 +1619,9 @@
         "w": 160,
         "h": 200,
         "pivotX": 93,
-        "pivotY": 200
+        "pivotY": 200,
+        "gripX": 137,
+        "gripY": 102
       },
       "air_apex": {
         "x": 172,
@@ -1551,7 +1629,9 @@
         "w": 161,
         "h": 161,
         "pivotX": 93,
-        "pivotY": 161
+        "pivotY": 161,
+        "gripX": 156,
+        "gripY": 59
       },
       "air_fall": {
         "x": 341,
@@ -1559,7 +1639,9 @@
         "w": 144,
         "h": 174,
         "pivotX": 83,
-        "pivotY": 174
+        "pivotY": 174,
+        "gripX": 140,
+        "gripY": 99
       },
       "land": {
         "x": 493,
@@ -1567,7 +1649,9 @@
         "w": 147,
         "h": 131,
         "pivotX": 81,
-        "pivotY": 131
+        "pivotY": 131,
+        "gripX": 118,
+        "gripY": 115
       },
       "attack_sword_0": {
         "x": 648,
@@ -1703,7 +1787,9 @@
         "w": 133,
         "h": 192,
         "pivotX": 65,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 110,
+        "gripY": 76
       },
       "defence_1": {
         "x": 322,
@@ -1711,7 +1797,9 @@
         "w": 164,
         "h": 189,
         "pivotX": 83,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 137,
+        "gripY": 123
       },
       "defence_2": {
         "x": 494,
@@ -1719,7 +1807,9 @@
         "w": 199,
         "h": 189,
         "pivotX": 74,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 126,
+        "gripY": 127
       },
       "defence_3": {
         "x": 701,
@@ -1727,7 +1817,9 @@
         "w": 133,
         "h": 191,
         "pivotX": 66,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 108,
+        "gripY": 76
       },
       "defence_4": {
         "x": 842,
@@ -1735,7 +1827,9 @@
         "w": 133,
         "h": 196,
         "pivotX": 66,
-        "pivotY": 196
+        "pivotY": 196,
+        "gripX": 108,
+        "gripY": 80
       },
       "defence_5": {
         "x": 4,
@@ -1743,7 +1837,9 @@
         "w": 127,
         "h": 202,
         "pivotX": 50,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 122,
+        "gripY": 84
       },
       "defence_6": {
         "x": 139,
@@ -1751,7 +1847,9 @@
         "w": 186,
         "h": 197,
         "pivotX": 45,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 180,
+        "gripY": 67
       },
       "defence_7": {
         "x": 333,
@@ -1759,7 +1857,9 @@
         "w": 107,
         "h": 202,
         "pivotX": 52,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 102,
+        "gripY": 92
       },
       "defence_8": {
         "x": 448,
@@ -1767,7 +1867,9 @@
         "w": 134,
         "h": 185,
         "pivotX": 67,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 114,
+        "gripY": 64
       },
       "defence_9": {
         "x": 590,
@@ -1775,7 +1877,9 @@
         "w": 147,
         "h": 138,
         "pivotX": 73,
-        "pivotY": 138
+        "pivotY": 138,
+        "gripX": 115,
+        "gripY": 76
       },
       "defence_10": {
         "x": 745,
@@ -1783,7 +1887,9 @@
         "w": 194,
         "h": 154,
         "pivotX": 68,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 189,
+        "gripY": 97
       },
       "defence_11": {
         "x": 4,
@@ -1791,7 +1897,9 @@
         "w": 133,
         "h": 188,
         "pivotX": 67,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 109,
+        "gripY": 126
       },
       "defence_12": {
         "x": 145,
@@ -1799,7 +1907,9 @@
         "w": 133,
         "h": 190,
         "pivotX": 66,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 111,
+        "gripY": 128
       },
       "defence_13": {
         "x": 286,
@@ -1807,7 +1917,9 @@
         "w": 148,
         "h": 188,
         "pivotX": 86,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 138,
+        "gripY": 121
       },
       "defence_14": {
         "x": 442,
@@ -1815,7 +1927,9 @@
         "w": 143,
         "h": 185,
         "pivotX": 63,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 138,
+        "gripY": 68
       },
       "defence_15": {
         "x": 593,
@@ -1823,7 +1937,9 @@
         "w": 133,
         "h": 191,
         "pivotX": 67,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 111,
+        "gripY": 129
       },
       "down_sling_dlight": {
         "x": 734,
@@ -2823,7 +2939,9 @@
         "w": 128,
         "h": 192,
         "pivotX": 78,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 121,
+        "gripY": 100
       },
       "run_0": {
         "x": 437,
@@ -2831,7 +2949,9 @@
         "w": 168,
         "h": 189,
         "pivotX": 98,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 164,
+        "gripY": 83
       },
       "run_1": {
         "x": 613,
@@ -2839,7 +2959,9 @@
         "w": 171,
         "h": 179,
         "pivotX": 98,
-        "pivotY": 179
+        "pivotY": 179,
+        "gripX": 166,
+        "gripY": 81
       },
       "run_2": {
         "x": 792,
@@ -2847,7 +2969,9 @@
         "w": 173,
         "h": 183,
         "pivotX": 99,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 169,
+        "gripY": 72
       },
       "run_3": {
         "x": 4,
@@ -2855,7 +2979,9 @@
         "w": 160,
         "h": 175,
         "pivotX": 90,
-        "pivotY": 175
+        "pivotY": 175,
+        "gripX": 143,
+        "gripY": 78
       },
       "run_4": {
         "x": 172,
@@ -2863,7 +2989,9 @@
         "w": 174,
         "h": 178,
         "pivotX": 93,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 169,
+        "gripY": 69
       },
       "run_5": {
         "x": 354,
@@ -2871,7 +2999,9 @@
         "w": 168,
         "h": 185,
         "pivotX": 93,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 160,
+        "gripY": 81
       },
       "run_6": {
         "x": 530,
@@ -2879,7 +3009,9 @@
         "w": 163,
         "h": 178,
         "pivotX": 98,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 138,
+        "gripY": 85
       },
       "run_7": {
         "x": 701,
@@ -2887,7 +3019,9 @@
         "w": 175,
         "h": 182,
         "pivotX": 100,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 171,
+        "gripY": 79
       },
       "air_rise": {
         "x": 4,
@@ -2895,7 +3029,9 @@
         "w": 172,
         "h": 140,
         "pivotX": 89,
-        "pivotY": 140
+        "pivotY": 140,
+        "gripX": 167,
+        "gripY": 53
       },
       "air_apex": {
         "x": 184,
@@ -2903,7 +3039,9 @@
         "w": 161,
         "h": 126,
         "pivotX": 82,
-        "pivotY": 126
+        "pivotY": 126,
+        "gripX": 156,
+        "gripY": 61
       },
       "air_fall": {
         "x": 353,
@@ -2911,7 +3049,9 @@
         "w": 155,
         "h": 183,
         "pivotX": 99,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 150,
+        "gripY": 85
       },
       "land": {
         "x": 516,
@@ -2919,7 +3059,9 @@
         "w": 165,
         "h": 118,
         "pivotX": 104,
-        "pivotY": 118
+        "pivotY": 118,
+        "gripX": 132,
+        "gripY": 104
       },
       "attack_spear_0": {
         "x": 689,
@@ -3055,7 +3197,9 @@
         "w": 157,
         "h": 192,
         "pivotX": 85,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 133,
+        "gripY": 68
       },
       "defence_1": {
         "x": 169,
@@ -3063,7 +3207,9 @@
         "w": 168,
         "h": 182,
         "pivotX": 93,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 156,
+        "gripY": 66
       },
       "defence_2": {
         "x": 345,
@@ -3071,7 +3217,9 @@
         "w": 236,
         "h": 183,
         "pivotX": 98,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 162,
+        "gripY": 120
       },
       "defence_3": {
         "x": 589,
@@ -3079,7 +3227,9 @@
         "w": 154,
         "h": 191,
         "pivotX": 85,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 133,
+        "gripY": 129
       },
       "defence_4": {
         "x": 751,
@@ -3087,7 +3237,9 @@
         "w": 161,
         "h": 194,
         "pivotX": 90,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 136,
+        "gripY": 68
       },
       "defence_5": {
         "x": 4,
@@ -3095,7 +3247,9 @@
         "w": 135,
         "h": 196,
         "pivotX": 57,
-        "pivotY": 196
+        "pivotY": 196,
+        "gripX": 130,
+        "gripY": 88
       },
       "defence_6": {
         "x": 147,
@@ -3103,7 +3257,9 @@
         "w": 205,
         "h": 191,
         "pivotX": 77,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 192,
+        "gripY": 80
       },
       "defence_7": {
         "x": 360,
@@ -3111,7 +3267,9 @@
         "w": 116,
         "h": 192,
         "pivotX": 91,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 107,
+        "gripY": 97
       },
       "defence_8": {
         "x": 484,
@@ -3119,7 +3277,9 @@
         "w": 160,
         "h": 177,
         "pivotX": 89,
-        "pivotY": 177
+        "pivotY": 177,
+        "gripX": 144,
+        "gripY": 110
       },
       "defence_9": {
         "x": 652,
@@ -3127,7 +3287,9 @@
         "w": 167,
         "h": 143,
         "pivotX": 95,
-        "pivotY": 143
+        "pivotY": 143,
+        "gripX": 154,
+        "gripY": 48
       },
       "defence_10": {
         "x": 4,
@@ -3135,7 +3297,9 @@
         "w": 222,
         "h": 141,
         "pivotX": 105,
-        "pivotY": 141
+        "pivotY": 141,
+        "gripX": 217,
+        "gripY": 82
       },
       "defence_11": {
         "x": 234,
@@ -3143,7 +3307,9 @@
         "w": 142,
         "h": 188,
         "pivotX": 74,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 121,
+        "gripY": 124
       },
       "defence_12": {
         "x": 384,
@@ -3151,7 +3317,9 @@
         "w": 154,
         "h": 189,
         "pivotX": 83,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 135,
+        "gripY": 125
       },
       "defence_13": {
         "x": 546,
@@ -3159,7 +3327,9 @@
         "w": 173,
         "h": 190,
         "pivotX": 96,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 154,
+        "gripY": 125
       },
       "defence_14": {
         "x": 727,
@@ -3167,7 +3337,9 @@
         "w": 185,
         "h": 188,
         "pivotX": 105,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 159,
+        "gripY": 122
       },
       "defence_15": {
         "x": 4,
@@ -3175,7 +3347,9 @@
         "w": 153,
         "h": 189,
         "pivotX": 80,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 130,
+        "gripY": 127
       },
       "down_spear_dlight": {
         "x": 165,
@@ -4202,7 +4376,9 @@
         "w": 121,
         "h": 192,
         "pivotX": 73,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 116,
+        "gripY": 110
       },
       "run_0": {
         "x": 572,
@@ -4210,7 +4386,9 @@
         "w": 183,
         "h": 192,
         "pivotX": 99,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 170,
+        "gripY": 93
       },
       "run_1": {
         "x": 763,
@@ -4218,7 +4396,9 @@
         "w": 168,
         "h": 192,
         "pivotX": 90,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 163,
+        "gripY": 82
       },
       "run_2": {
         "x": 4,
@@ -4226,7 +4406,9 @@
         "w": 141,
         "h": 191,
         "pivotX": 77,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 132,
+        "gripY": 104
       },
       "run_3": {
         "x": 153,
@@ -4234,7 +4416,9 @@
         "w": 183,
         "h": 193,
         "pivotX": 106,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 179,
+        "gripY": 80
       },
       "run_4": {
         "x": 344,
@@ -4242,7 +4426,9 @@
         "w": 185,
         "h": 194,
         "pivotX": 100,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 180,
+        "gripY": 81
       },
       "run_5": {
         "x": 537,
@@ -4250,7 +4436,9 @@
         "w": 160,
         "h": 194,
         "pivotX": 91,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 155,
+        "gripY": 99
       },
       "run_6": {
         "x": 705,
@@ -4258,7 +4446,9 @@
         "w": 172,
         "h": 194,
         "pivotX": 94,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 167,
+        "gripY": 89
       },
       "run_7": {
         "x": 4,
@@ -4266,7 +4456,9 @@
         "w": 172,
         "h": 192,
         "pivotX": 99,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 162,
+        "gripY": 98
       },
       "air_rise": {
         "x": 184,
@@ -4274,7 +4466,9 @@
         "w": 163,
         "h": 198,
         "pivotX": 83,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 111,
+        "gripY": 115
       },
       "air_apex": {
         "x": 355,
@@ -4282,7 +4476,9 @@
         "w": 165,
         "h": 145,
         "pivotX": 88,
-        "pivotY": 145
+        "pivotY": 145,
+        "gripX": 160,
+        "gripY": 64
       },
       "air_fall": {
         "x": 528,
@@ -4290,7 +4486,9 @@
         "w": 184,
         "h": 170,
         "pivotX": 99,
-        "pivotY": 170
+        "pivotY": 170,
+        "gripX": 180,
+        "gripY": 68
       },
       "land": {
         "x": 720,
@@ -4298,7 +4496,9 @@
         "w": 168,
         "h": 121,
         "pivotX": 98,
-        "pivotY": 121
+        "pivotY": 121,
+        "gripX": 134,
+        "gripY": 106
       },
       "attack_sword_0": {
         "x": 4,
@@ -4434,7 +4634,9 @@
         "w": 153,
         "h": 192,
         "pivotX": 81,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 130,
+        "gripY": 75
       },
       "defence_1": {
         "x": 364,
@@ -4442,7 +4644,9 @@
         "w": 161,
         "h": 189,
         "pivotX": 86,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 147,
+        "gripY": 69
       },
       "defence_2": {
         "x": 533,
@@ -4450,7 +4654,9 @@
         "w": 203,
         "h": 184,
         "pivotX": 88,
-        "pivotY": 184
+        "pivotY": 184,
+        "gripX": 125,
+        "gripY": 105
       },
       "defence_3": {
         "x": 744,
@@ -4458,7 +4664,9 @@
         "w": 150,
         "h": 191,
         "pivotX": 78,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 125,
+        "gripY": 76
       },
       "defence_4": {
         "x": 4,
@@ -4466,7 +4674,9 @@
         "w": 148,
         "h": 196,
         "pivotX": 78,
-        "pivotY": 196
+        "pivotY": 196,
+        "gripX": 125,
+        "gripY": 69
       },
       "defence_5": {
         "x": 160,
@@ -4474,7 +4684,9 @@
         "w": 140,
         "h": 194,
         "pivotX": 68,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 131,
+        "gripY": 94
       },
       "defence_6": {
         "x": 308,
@@ -4482,7 +4694,9 @@
         "w": 216,
         "h": 195,
         "pivotX": 28,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 210,
+        "gripY": 66
       },
       "defence_7": {
         "x": 532,
@@ -4490,7 +4704,9 @@
         "w": 119,
         "h": 194,
         "pivotX": 66,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 110,
+        "gripY": 72
       },
       "defence_8": {
         "x": 659,
@@ -4498,7 +4714,9 @@
         "w": 154,
         "h": 186,
         "pivotX": 81,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 128,
+        "gripY": 70
       },
       "defence_9": {
         "x": 821,
@@ -4506,7 +4724,9 @@
         "w": 176,
         "h": 142,
         "pivotX": 105,
-        "pivotY": 142
+        "pivotY": 142,
+        "gripX": 137,
+        "gripY": 96
       },
       "defence_10": {
         "x": 4,
@@ -4514,7 +4734,9 @@
         "w": 182,
         "h": 154,
         "pivotX": 68,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 177,
+        "gripY": 65
       },
       "defence_11": {
         "x": 194,
@@ -4522,7 +4744,9 @@
         "w": 146,
         "h": 190,
         "pivotX": 76,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 123,
+        "gripY": 72
       },
       "defence_12": {
         "x": 348,
@@ -4530,7 +4754,9 @@
         "w": 157,
         "h": 188,
         "pivotX": 82,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 125,
+        "gripY": 69
       },
       "defence_13": {
         "x": 513,
@@ -4538,7 +4764,9 @@
         "w": 165,
         "h": 190,
         "pivotX": 92,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 141,
+        "gripY": 72
       },
       "defence_14": {
         "x": 686,
@@ -4546,7 +4774,9 @@
         "w": 171,
         "h": 183,
         "pivotX": 99,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 141,
+        "gripY": 124
       },
       "defence_15": {
         "x": 865,
@@ -4554,7 +4784,9 @@
         "w": 148,
         "h": 187,
         "pivotX": 79,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 120,
+        "gripY": 74
       },
       "down_sword_dlight": {
         "x": 4,
@@ -5575,7 +5807,9 @@
         "w": 95,
         "h": 192,
         "pivotX": 53,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 84,
+        "gripY": 117
       },
       "run_0": {
         "x": 394,
@@ -5583,7 +5817,9 @@
         "w": 164,
         "h": 193,
         "pivotX": 97,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 160,
+        "gripY": 93
       },
       "run_1": {
         "x": 566,
@@ -5591,7 +5827,9 @@
         "w": 165,
         "h": 192,
         "pivotX": 101,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 161,
+        "gripY": 68
       },
       "run_2": {
         "x": 739,
@@ -5599,7 +5837,9 @@
         "w": 176,
         "h": 193,
         "pivotX": 103,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 172,
+        "gripY": 71
       },
       "run_3": {
         "x": 4,
@@ -5607,7 +5847,9 @@
         "w": 159,
         "h": 195,
         "pivotX": 105,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 154,
+        "gripY": 82
       },
       "run_4": {
         "x": 171,
@@ -5615,7 +5857,9 @@
         "w": 158,
         "h": 178,
         "pivotX": 93,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 134,
+        "gripY": 90
       },
       "run_5": {
         "x": 337,
@@ -5623,7 +5867,9 @@
         "w": 167,
         "h": 193,
         "pivotX": 90,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 157,
+        "gripY": 88
       },
       "run_6": {
         "x": 512,
@@ -5631,7 +5877,9 @@
         "w": 179,
         "h": 193,
         "pivotX": 99,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 161,
+        "gripY": 95
       },
       "run_7": {
         "x": 699,
@@ -5639,7 +5887,9 @@
         "w": 159,
         "h": 193,
         "pivotX": 95,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 154,
+        "gripY": 78
       },
       "air_rise": {
         "x": 866,
@@ -5647,7 +5897,9 @@
         "w": 137,
         "h": 165,
         "pivotX": 76,
-        "pivotY": 165
+        "pivotY": 165,
+        "gripX": 132,
+        "gripY": 60
       },
       "air_apex": {
         "x": 4,
@@ -5655,7 +5907,9 @@
         "w": 134,
         "h": 143,
         "pivotX": 84,
-        "pivotY": 143
+        "pivotY": 143,
+        "gripX": 130,
+        "gripY": 83
       },
       "air_fall": {
         "x": 146,
@@ -5663,7 +5917,9 @@
         "w": 154,
         "h": 152,
         "pivotX": 72,
-        "pivotY": 152
+        "pivotY": 152,
+        "gripX": 128,
+        "gripY": 81
       },
       "land": {
         "x": 308,
@@ -5671,7 +5927,9 @@
         "w": 132,
         "h": 123,
         "pivotX": 81,
-        "pivotY": 123
+        "pivotY": 123,
+        "gripX": 106,
+        "gripY": 108
       },
       "attack_staff_0": {
         "x": 448,
@@ -5807,7 +6065,9 @@
         "w": 134,
         "h": 192,
         "pivotX": 70,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 106,
+        "gripY": 129
       },
       "defence_1": {
         "x": 4,
@@ -5815,7 +6075,9 @@
         "w": 151,
         "h": 189,
         "pivotX": 77,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 124,
+        "gripY": 119
       },
       "defence_2": {
         "x": 163,
@@ -5823,7 +6085,9 @@
         "w": 176,
         "h": 191,
         "pivotX": 74,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 132,
+        "gripY": 127
       },
       "defence_3": {
         "x": 347,
@@ -5831,7 +6095,9 @@
         "w": 134,
         "h": 191,
         "pivotX": 70,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 109,
+        "gripY": 129
       },
       "defence_4": {
         "x": 489,
@@ -5839,7 +6105,9 @@
         "w": 132,
         "h": 194,
         "pivotX": 67,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 101,
+        "gripY": 125
       },
       "defence_5": {
         "x": 629,
@@ -5847,7 +6115,9 @@
         "w": 113,
         "h": 194,
         "pivotX": 47,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 108,
+        "gripY": 80
       },
       "defence_6": {
         "x": 750,
@@ -5855,7 +6125,9 @@
         "w": 179,
         "h": 194,
         "pivotX": 55,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 173,
+        "gripY": 69
       },
       "defence_7": {
         "x": 4,
@@ -5863,7 +6135,9 @@
         "w": 101,
         "h": 193,
         "pivotX": 51,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 96,
+        "gripY": 100
       },
       "defence_8": {
         "x": 113,
@@ -5871,7 +6145,9 @@
         "w": 144,
         "h": 181,
         "pivotX": 75,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 117,
+        "gripY": 121
       },
       "defence_9": {
         "x": 265,
@@ -5879,7 +6155,9 @@
         "w": 132,
         "h": 143,
         "pivotX": 67,
-        "pivotY": 143
+        "pivotY": 143,
+        "gripX": 119,
+        "gripY": 77
       },
       "defence_10": {
         "x": 405,
@@ -5887,7 +6165,9 @@
         "w": 177,
         "h": 138,
         "pivotX": 86,
-        "pivotY": 138
+        "pivotY": 138,
+        "gripX": 172,
+        "gripY": 66
       },
       "defence_11": {
         "x": 590,
@@ -5895,7 +6175,9 @@
         "w": 137,
         "h": 188,
         "pivotX": 71,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 112,
+        "gripY": 125
       },
       "defence_12": {
         "x": 735,
@@ -5903,7 +6185,9 @@
         "w": 148,
         "h": 192,
         "pivotX": 78,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 111,
+        "gripY": 130
       },
       "defence_13": {
         "x": 4,
@@ -5911,7 +6195,9 @@
         "w": 152,
         "h": 189,
         "pivotX": 85,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 131,
+        "gripY": 127
       },
       "defence_14": {
         "x": 164,
@@ -5919,7 +6205,9 @@
         "w": 181,
         "h": 188,
         "pivotX": 109,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 142,
+        "gripY": 127
       },
       "defence_15": {
         "x": 353,
@@ -5927,7 +6215,9 @@
         "w": 137,
         "h": 192,
         "pivotX": 71,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 108,
+        "gripY": 129
       },
       "down_staff_dlight": {
         "x": 498,
@@ -6952,7 +7242,9 @@
         "w": 127,
         "h": 192,
         "pivotX": 83,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 123,
+        "gripY": 117
       },
       "run_0": {
         "x": 594,
@@ -6960,7 +7252,9 @@
         "w": 186,
         "h": 195,
         "pivotX": 101,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 181,
+        "gripY": 92
       },
       "run_1": {
         "x": 788,
@@ -6968,7 +7262,9 @@
         "w": 172,
         "h": 200,
         "pivotX": 103,
-        "pivotY": 200
+        "pivotY": 200,
+        "gripX": 167,
+        "gripY": 89
       },
       "run_2": {
         "x": 4,
@@ -6976,7 +7272,9 @@
         "w": 155,
         "h": 200,
         "pivotX": 91,
-        "pivotY": 200
+        "pivotY": 200,
+        "gripX": 136,
+        "gripY": 102
       },
       "run_3": {
         "x": 167,
@@ -6984,7 +7282,9 @@
         "w": 182,
         "h": 192,
         "pivotX": 100,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 178,
+        "gripY": 91
       },
       "run_4": {
         "x": 357,
@@ -6992,7 +7292,9 @@
         "w": 168,
         "h": 195,
         "pivotX": 95,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 143,
+        "gripY": 99
       },
       "run_5": {
         "x": 533,
@@ -7000,7 +7302,9 @@
         "w": 158,
         "h": 198,
         "pivotX": 92,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 144,
+        "gripY": 93
       },
       "run_6": {
         "x": 699,
@@ -7008,7 +7312,9 @@
         "w": 182,
         "h": 194,
         "pivotX": 102,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 165,
+        "gripY": 96
       },
       "run_7": {
         "x": 4,
@@ -7016,7 +7322,9 @@
         "w": 166,
         "h": 199,
         "pivotX": 93,
-        "pivotY": 199
+        "pivotY": 199,
+        "gripX": 161,
+        "gripY": 100
       },
       "air_rise": {
         "x": 178,
@@ -7024,7 +7332,9 @@
         "w": 154,
         "h": 189,
         "pivotX": 86,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 150,
+        "gripY": 64
       },
       "air_apex": {
         "x": 340,
@@ -7032,7 +7342,9 @@
         "w": 163,
         "h": 166,
         "pivotX": 94,
-        "pivotY": 166
+        "pivotY": 166,
+        "gripX": 159,
+        "gripY": 81
       },
       "air_fall": {
         "x": 511,
@@ -7040,7 +7352,9 @@
         "w": 162,
         "h": 161,
         "pivotX": 91,
-        "pivotY": 161
+        "pivotY": 161,
+        "gripX": 157,
+        "gripY": 98
       },
       "land": {
         "x": 681,
@@ -7048,7 +7362,9 @@
         "w": 155,
         "h": 130,
         "pivotX": 89,
-        "pivotY": 130
+        "pivotY": 130,
+        "gripX": 124,
+        "gripY": 114
       },
       "attack_sword_0": {
         "x": 4,
@@ -7184,7 +7500,9 @@
         "w": 147,
         "h": 192,
         "pivotX": 75,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 130,
+        "gripY": 75
       },
       "defence_1": {
         "x": 527,
@@ -7192,7 +7510,9 @@
         "w": 159,
         "h": 189,
         "pivotX": 77,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 153,
+        "gripY": 91
       },
       "defence_2": {
         "x": 694,
@@ -7200,7 +7520,9 @@
         "w": 210,
         "h": 181,
         "pivotX": 79,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 138,
+        "gripY": 117
       },
       "defence_3": {
         "x": 4,
@@ -7208,7 +7530,9 @@
         "w": 147,
         "h": 192,
         "pivotX": 74,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 130,
+        "gripY": 76
       },
       "defence_4": {
         "x": 159,
@@ -7216,7 +7540,9 @@
         "w": 150,
         "h": 197,
         "pivotX": 78,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 129,
+        "gripY": 72
       },
       "defence_5": {
         "x": 317,
@@ -7224,7 +7550,9 @@
         "w": 141,
         "h": 198,
         "pivotX": 51,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 136,
+        "gripY": 97
       },
       "defence_6": {
         "x": 466,
@@ -7232,7 +7560,9 @@
         "w": 216,
         "h": 189,
         "pivotX": 73,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 210,
+        "gripY": 74
       },
       "defence_7": {
         "x": 690,
@@ -7240,7 +7570,9 @@
         "w": 130,
         "h": 194,
         "pivotX": 63,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 124,
+        "gripY": 99
       },
       "defence_8": {
         "x": 828,
@@ -7248,7 +7580,9 @@
         "w": 153,
         "h": 193,
         "pivotX": 78,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 131,
+        "gripY": 71
       },
       "defence_9": {
         "x": 4,
@@ -7256,7 +7590,9 @@
         "w": 161,
         "h": 144,
         "pivotX": 75,
-        "pivotY": 144
+        "pivotY": 144,
+        "gripX": 155,
+        "gripY": 63
       },
       "defence_10": {
         "x": 173,
@@ -7264,7 +7600,9 @@
         "w": 174,
         "h": 151,
         "pivotX": 67,
-        "pivotY": 151
+        "pivotY": 151,
+        "gripX": 169,
+        "gripY": 59
       },
       "defence_11": {
         "x": 355,
@@ -7272,7 +7610,9 @@
         "w": 147,
         "h": 193,
         "pivotX": 74,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 130,
+        "gripY": 72
       },
       "defence_12": {
         "x": 510,
@@ -7280,7 +7620,9 @@
         "w": 155,
         "h": 196,
         "pivotX": 82,
-        "pivotY": 196
+        "pivotY": 196,
+        "gripX": 132,
+        "gripY": 74
       },
       "defence_13": {
         "x": 673,
@@ -7288,7 +7630,9 @@
         "w": 155,
         "h": 193,
         "pivotX": 86,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 136,
+        "gripY": 124
       },
       "defence_14": {
         "x": 836,
@@ -7296,7 +7640,9 @@
         "w": 166,
         "h": 185,
         "pivotX": 93,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 146,
+        "gripY": 65
       },
       "defence_15": {
         "x": 4,
@@ -7304,7 +7650,9 @@
         "w": 151,
         "h": 194,
         "pivotX": 78,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 128,
+        "gripY": 71
       },
       "down_sword_dlight": {
         "x": 163,
@@ -8394,7 +8742,9 @@
         "w": 124,
         "h": 192,
         "pivotX": 77,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 119,
+        "gripY": 107
       },
       "run_0": {
         "x": 427,
@@ -8402,7 +8752,9 @@
         "w": 175,
         "h": 188,
         "pivotX": 98,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 170,
+        "gripY": 92
       },
       "run_1": {
         "x": 610,
@@ -8410,7 +8762,9 @@
         "w": 155,
         "h": 177,
         "pivotX": 87,
-        "pivotY": 177
+        "pivotY": 177,
+        "gripX": 141,
+        "gripY": 91
       },
       "run_2": {
         "x": 773,
@@ -8418,7 +8772,9 @@
         "w": 160,
         "h": 181,
         "pivotX": 94,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 153,
+        "gripY": 94
       },
       "run_3": {
         "x": 4,
@@ -8426,7 +8782,9 @@
         "w": 173,
         "h": 189,
         "pivotX": 99,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 165,
+        "gripY": 86
       },
       "run_4": {
         "x": 185,
@@ -8434,7 +8792,9 @@
         "w": 169,
         "h": 181,
         "pivotX": 99,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 163,
+        "gripY": 92
       },
       "run_5": {
         "x": 362,
@@ -8442,7 +8802,9 @@
         "w": 162,
         "h": 177,
         "pivotX": 84,
-        "pivotY": 177
+        "pivotY": 177,
+        "gripX": 155,
+        "gripY": 90
       },
       "run_6": {
         "x": 532,
@@ -8450,7 +8812,9 @@
         "w": 165,
         "h": 189,
         "pivotX": 90,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 161,
+        "gripY": 84
       },
       "run_7": {
         "x": 705,
@@ -8458,7 +8822,9 @@
         "w": 161,
         "h": 179,
         "pivotX": 90,
-        "pivotY": 179
+        "pivotY": 179,
+        "gripX": 156,
+        "gripY": 88
       },
       "air_rise": {
         "x": 4,
@@ -8466,7 +8832,9 @@
         "w": 151,
         "h": 182,
         "pivotX": 79,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 119,
+        "gripY": 83
       },
       "air_apex": {
         "x": 163,
@@ -8474,7 +8842,9 @@
         "w": 166,
         "h": 155,
         "pivotX": 87,
-        "pivotY": 155
+        "pivotY": 155,
+        "gripX": 161,
+        "gripY": 54
       },
       "air_fall": {
         "x": 337,
@@ -8482,7 +8852,9 @@
         "w": 157,
         "h": 159,
         "pivotX": 79,
-        "pivotY": 159
+        "pivotY": 159,
+        "gripX": 153,
+        "gripY": 58
       },
       "land": {
         "x": 502,
@@ -8490,7 +8862,9 @@
         "w": 159,
         "h": 124,
         "pivotX": 95,
-        "pivotY": 124
+        "pivotY": 124,
+        "gripX": 127,
+        "gripY": 109
       },
       "attack_bow_0": {
         "x": 669,
@@ -8626,7 +9000,9 @@
         "w": 157,
         "h": 192,
         "pivotX": 82,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 133,
+        "gripY": 66
       },
       "defence_1": {
         "x": 169,
@@ -8634,7 +9010,9 @@
         "w": 154,
         "h": 190,
         "pivotX": 81,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 147,
+        "gripY": 78
       },
       "defence_2": {
         "x": 331,
@@ -8642,7 +9020,9 @@
         "w": 208,
         "h": 188,
         "pivotX": 90,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 141,
+        "gripY": 126
       },
       "defence_3": {
         "x": 547,
@@ -8650,7 +9030,9 @@
         "w": 142,
         "h": 190,
         "pivotX": 72,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 117,
+        "gripY": 81
       },
       "defence_4": {
         "x": 697,
@@ -8658,7 +9040,9 @@
         "w": 153,
         "h": 197,
         "pivotX": 82,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 127,
+        "gripY": 78
       },
       "defence_5": {
         "x": 858,
@@ -8666,7 +9050,9 @@
         "w": 137,
         "h": 198,
         "pivotX": 53,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 132,
+        "gripY": 89
       },
       "defence_6": {
         "x": 4,
@@ -8674,7 +9060,9 @@
         "w": 248,
         "h": 190,
         "pivotX": 92,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 242,
+        "gripY": 65
       },
       "defence_7": {
         "x": 260,
@@ -8682,7 +9070,9 @@
         "w": 120,
         "h": 198,
         "pivotX": 66,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 115,
+        "gripY": 98
       },
       "defence_8": {
         "x": 388,
@@ -8690,7 +9080,9 @@
         "w": 153,
         "h": 188,
         "pivotX": 81,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 130,
+        "gripY": 77
       },
       "defence_9": {
         "x": 549,
@@ -8698,7 +9090,9 @@
         "w": 154,
         "h": 147,
         "pivotX": 76,
-        "pivotY": 147
+        "pivotY": 147,
+        "gripX": 143,
+        "gripY": 53
       },
       "defence_10": {
         "x": 711,
@@ -8706,7 +9100,9 @@
         "w": 199,
         "h": 150,
         "pivotX": 84,
-        "pivotY": 150
+        "pivotY": 150,
+        "gripX": 194,
+        "gripY": 67
       },
       "defence_11": {
         "x": 4,
@@ -8714,7 +9110,9 @@
         "w": 150,
         "h": 188,
         "pivotX": 79,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 126,
+        "gripY": 81
       },
       "defence_12": {
         "x": 162,
@@ -8722,7 +9120,9 @@
         "w": 155,
         "h": 191,
         "pivotX": 82,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 129,
+        "gripY": 79
       },
       "defence_13": {
         "x": 325,
@@ -8730,7 +9130,9 @@
         "w": 182,
         "h": 194,
         "pivotX": 111,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 163,
+        "gripY": 65
       },
       "defence_14": {
         "x": 515,
@@ -8738,7 +9140,9 @@
         "w": 195,
         "h": 183,
         "pivotX": 114,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 157,
+        "gripY": 123
       },
       "defence_15": {
         "x": 718,
@@ -8746,7 +9150,9 @@
         "w": 151,
         "h": 193,
         "pivotX": 79,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 130,
+        "gripY": 76
       },
       "down_bow_dlight": {
         "x": 608,
@@ -9766,7 +10172,9 @@
         "w": 102,
         "h": 192,
         "pivotX": 61,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 98,
+        "gripY": 114
       },
       "run_0": {
         "x": 579,
@@ -9774,7 +10182,9 @@
         "w": 178,
         "h": 195,
         "pivotX": 101,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 174,
+        "gripY": 79
       },
       "run_1": {
         "x": 765,
@@ -9782,7 +10192,9 @@
         "w": 144,
         "h": 193,
         "pivotX": 87,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 140,
+        "gripY": 74
       },
       "run_2": {
         "x": 4,
@@ -9790,7 +10202,9 @@
         "w": 152,
         "h": 195,
         "pivotX": 99,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 148,
+        "gripY": 93
       },
       "run_3": {
         "x": 164,
@@ -9798,7 +10212,9 @@
         "w": 189,
         "h": 187,
         "pivotX": 114,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 184,
+        "gripY": 65
       },
       "run_4": {
         "x": 361,
@@ -9806,7 +10222,9 @@
         "w": 178,
         "h": 191,
         "pivotX": 107,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 172,
+        "gripY": 76
       },
       "run_5": {
         "x": 547,
@@ -9814,7 +10232,9 @@
         "w": 181,
         "h": 193,
         "pivotX": 104,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 177,
+        "gripY": 68
       },
       "run_6": {
         "x": 736,
@@ -9822,7 +10242,9 @@
         "w": 173,
         "h": 193,
         "pivotX": 99,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 167,
+        "gripY": 65
       },
       "run_7": {
         "x": 4,
@@ -9830,7 +10252,9 @@
         "w": 175,
         "h": 195,
         "pivotX": 97,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 171,
+        "gripY": 82
       },
       "air_rise": {
         "x": 187,
@@ -9838,7 +10262,9 @@
         "w": 153,
         "h": 176,
         "pivotX": 89,
-        "pivotY": 176
+        "pivotY": 176,
+        "gripX": 149,
+        "gripY": 65
       },
       "air_apex": {
         "x": 348,
@@ -9846,7 +10272,9 @@
         "w": 156,
         "h": 154,
         "pivotX": 91,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 151,
+        "gripY": 54
       },
       "air_fall": {
         "x": 512,
@@ -9854,7 +10282,9 @@
         "w": 122,
         "h": 154,
         "pivotX": 74,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 118,
+        "gripY": 78
       },
       "land": {
         "x": 642,
@@ -9862,7 +10292,9 @@
         "w": 164,
         "h": 122,
         "pivotX": 99,
-        "pivotY": 122
+        "pivotY": 122,
+        "gripX": 131,
+        "gripY": 107
       },
       "attack_staff_0": {
         "x": 814,
@@ -9998,7 +10430,9 @@
         "w": 154,
         "h": 192,
         "pivotX": 80,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 132,
+        "gripY": 72
       },
       "defence_1": {
         "x": 166,
@@ -10006,7 +10440,9 @@
         "w": 161,
         "h": 191,
         "pivotX": 85,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 138,
+        "gripY": 129
       },
       "defence_2": {
         "x": 335,
@@ -10014,7 +10450,9 @@
         "w": 203,
         "h": 192,
         "pivotX": 90,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 138,
+        "gripY": 129
       },
       "defence_3": {
         "x": 546,
@@ -10022,7 +10460,9 @@
         "w": 150,
         "h": 194,
         "pivotX": 79,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 123,
+        "gripY": 131
       },
       "defence_4": {
         "x": 704,
@@ -10030,7 +10470,9 @@
         "w": 161,
         "h": 202,
         "pivotX": 85,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 132,
+        "gripY": 77
       },
       "defence_5": {
         "x": 873,
@@ -10038,7 +10480,9 @@
         "w": 129,
         "h": 202,
         "pivotX": 43,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 119,
+        "gripY": 91
       },
       "defence_6": {
         "x": 4,
@@ -10046,7 +10490,9 @@
         "w": 191,
         "h": 204,
         "pivotX": 29,
-        "pivotY": 204
+        "pivotY": 204,
+        "gripX": 185,
+        "gripY": 72
       },
       "defence_7": {
         "x": 203,
@@ -10054,7 +10500,9 @@
         "w": 116,
         "h": 202,
         "pivotX": 43,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 111,
+        "gripY": 104
       },
       "defence_8": {
         "x": 327,
@@ -10062,7 +10510,9 @@
         "w": 161,
         "h": 186,
         "pivotX": 84,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 130,
+        "gripY": 125
       },
       "defence_9": {
         "x": 496,
@@ -10070,7 +10520,9 @@
         "w": 139,
         "h": 147,
         "pivotX": 71,
-        "pivotY": 147
+        "pivotY": 147,
+        "gripX": 131,
+        "gripY": 66
       },
       "defence_10": {
         "x": 643,
@@ -10078,7 +10530,9 @@
         "w": 201,
         "h": 154,
         "pivotX": 94,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 196,
+        "gripY": 68
       },
       "defence_11": {
         "x": 852,
@@ -10086,7 +10540,9 @@
         "w": 154,
         "h": 189,
         "pivotX": 80,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 129,
+        "gripY": 128
       },
       "defence_12": {
         "x": 4,
@@ -10094,7 +10550,9 @@
         "w": 161,
         "h": 191,
         "pivotX": 86,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 130,
+        "gripY": 75
       },
       "defence_13": {
         "x": 173,
@@ -10102,7 +10560,9 @@
         "w": 176,
         "h": 192,
         "pivotX": 99,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 153,
+        "gripY": 126
       },
       "defence_14": {
         "x": 357,
@@ -10110,7 +10570,9 @@
         "w": 167,
         "h": 196,
         "pivotX": 88,
-        "pivotY": 196
+        "pivotY": 196,
+        "gripX": 147,
+        "gripY": 117
       },
       "defence_15": {
         "x": 532,
@@ -10118,7 +10580,9 @@
         "w": 157,
         "h": 194,
         "pivotX": 82,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 129,
+        "gripY": 131
       },
       "down_staff_dlight": {
         "x": 697,
@@ -11166,7 +11630,9 @@
         "w": 104,
         "h": 192,
         "pivotX": 48,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 86,
+        "gripY": 112
       },
       "run_0": {
         "x": 401,
@@ -11174,7 +11640,9 @@
         "w": 181,
         "h": 189,
         "pivotX": 96,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 171,
+        "gripY": 92
       },
       "run_1": {
         "x": 590,
@@ -11182,7 +11650,9 @@
         "w": 163,
         "h": 187,
         "pivotX": 94,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 158,
+        "gripY": 89
       },
       "run_2": {
         "x": 761,
@@ -11190,7 +11660,9 @@
         "w": 166,
         "h": 187,
         "pivotX": 90,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 161,
+        "gripY": 82
       },
       "run_3": {
         "x": 4,
@@ -11198,7 +11670,9 @@
         "w": 158,
         "h": 189,
         "pivotX": 80,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 153,
+        "gripY": 87
       },
       "run_4": {
         "x": 170,
@@ -11206,7 +11680,9 @@
         "w": 142,
         "h": 190,
         "pivotX": 86,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 137,
+        "gripY": 90
       },
       "run_5": {
         "x": 320,
@@ -11214,7 +11690,9 @@
         "w": 147,
         "h": 189,
         "pivotX": 86,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 142,
+        "gripY": 92
       },
       "run_6": {
         "x": 475,
@@ -11222,7 +11700,9 @@
         "w": 156,
         "h": 189,
         "pivotX": 92,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 151,
+        "gripY": 92
       },
       "run_7": {
         "x": 639,
@@ -11230,7 +11710,9 @@
         "w": 158,
         "h": 188,
         "pivotX": 90,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 154,
+        "gripY": 86
       },
       "air_rise": {
         "x": 805,
@@ -11238,7 +11720,9 @@
         "w": 127,
         "h": 189,
         "pivotX": 69,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 109,
+        "gripY": 96
       },
       "air_apex": {
         "x": 4,
@@ -11246,7 +11730,9 @@
         "w": 137,
         "h": 155,
         "pivotX": 80,
-        "pivotY": 155
+        "pivotY": 155,
+        "gripX": 132,
+        "gripY": 52
       },
       "air_fall": {
         "x": 149,
@@ -11254,7 +11740,9 @@
         "w": 135,
         "h": 182,
         "pivotX": 68,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 130,
+        "gripY": 87
       },
       "land": {
         "x": 292,
@@ -11262,7 +11750,9 @@
         "w": 136,
         "h": 127,
         "pivotX": 87,
-        "pivotY": 127
+        "pivotY": 127,
+        "gripX": 109,
+        "gripY": 112
       },
       "attack_blades_0": {
         "x": 436,
@@ -11398,7 +11888,9 @@
         "w": 138,
         "h": 192,
         "pivotX": 72,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 106,
+        "gripY": 91
       },
       "defence_1": {
         "x": 4,
@@ -11406,7 +11898,9 @@
         "w": 154,
         "h": 191,
         "pivotX": 80,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 132,
+        "gripY": 129
       },
       "defence_2": {
         "x": 166,
@@ -11414,7 +11908,9 @@
         "w": 188,
         "h": 181,
         "pivotX": 84,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 128,
+        "gripY": 123
       },
       "defence_3": {
         "x": 362,
@@ -11422,7 +11918,9 @@
         "w": 137,
         "h": 192,
         "pivotX": 72,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 106,
+        "gripY": 86
       },
       "defence_4": {
         "x": 507,
@@ -11430,7 +11928,9 @@
         "w": 140,
         "h": 195,
         "pivotX": 74,
-        "pivotY": 195
+        "pivotY": 195,
+        "gripX": 104,
+        "gripY": 129
       },
       "defence_5": {
         "x": 655,
@@ -11438,7 +11938,9 @@
         "w": 110,
         "h": 194,
         "pivotX": 35,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 104,
+        "gripY": 101
       },
       "defence_6": {
         "x": 773,
@@ -11446,7 +11948,9 @@
         "w": 181,
         "h": 191,
         "pivotX": 44,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 175,
+        "gripY": 67
       },
       "defence_7": {
         "x": 4,
@@ -11454,7 +11958,9 @@
         "w": 95,
         "h": 194,
         "pivotX": 40,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 90,
+        "gripY": 100
       },
       "defence_8": {
         "x": 107,
@@ -11462,7 +11968,9 @@
         "w": 143,
         "h": 173,
         "pivotX": 76,
-        "pivotY": 173
+        "pivotY": 173,
+        "gripX": 116,
+        "gripY": 117
       },
       "defence_9": {
         "x": 258,
@@ -11470,7 +11978,9 @@
         "w": 168,
         "h": 129,
         "pivotX": 91,
-        "pivotY": 129
+        "pivotY": 129,
+        "gripX": 129,
+        "gripY": 87
       },
       "defence_10": {
         "x": 434,
@@ -11478,7 +11988,9 @@
         "w": 156,
         "h": 141,
         "pivotX": 72,
-        "pivotY": 141
+        "pivotY": 141,
+        "gripX": 151,
+        "gripY": 66
       },
       "defence_11": {
         "x": 598,
@@ -11486,7 +11998,9 @@
         "w": 137,
         "h": 175,
         "pivotX": 72,
-        "pivotY": 175
+        "pivotY": 175,
+        "gripX": 110,
+        "gripY": 116
       },
       "defence_12": {
         "x": 743,
@@ -11494,7 +12008,9 @@
         "w": 141,
         "h": 182,
         "pivotX": 74,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 111,
+        "gripY": 122
       },
       "defence_13": {
         "x": 4,
@@ -11502,7 +12018,9 @@
         "w": 139,
         "h": 176,
         "pivotX": 72,
-        "pivotY": 176
+        "pivotY": 176,
+        "gripX": 123,
+        "gripY": 118
       },
       "defence_14": {
         "x": 151,
@@ -11510,7 +12028,9 @@
         "w": 153,
         "h": 175,
         "pivotX": 81,
-        "pivotY": 175
+        "pivotY": 175,
+        "gripX": 136,
+        "gripY": 111
       },
       "defence_15": {
         "x": 312,
@@ -11518,7 +12038,9 @@
         "w": 137,
         "h": 181,
         "pivotX": 72,
-        "pivotY": 181
+        "pivotY": 181,
+        "gripX": 109,
+        "gripY": 122
       },
       "down_blades_dlight": {
         "x": 457,
@@ -12561,7 +13083,9 @@
         "w": 106,
         "h": 192,
         "pivotX": 58,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 91,
+        "gripY": 110
       },
       "run_0": {
         "x": 406,
@@ -12569,7 +13093,9 @@
         "w": 172,
         "h": 193,
         "pivotX": 94,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 157,
+        "gripY": 80
       },
       "run_1": {
         "x": 586,
@@ -12577,7 +13103,9 @@
         "w": 136,
         "h": 182,
         "pivotX": 77,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 125,
+        "gripY": 84
       },
       "run_2": {
         "x": 730,
@@ -12585,7 +13113,9 @@
         "w": 146,
         "h": 192,
         "pivotX": 80,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 142,
+        "gripY": 80
       },
       "run_3": {
         "x": 4,
@@ -12593,7 +13123,9 @@
         "w": 144,
         "h": 194,
         "pivotX": 86,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 139,
+        "gripY": 89
       },
       "run_4": {
         "x": 156,
@@ -12601,7 +13133,9 @@
         "w": 168,
         "h": 187,
         "pivotX": 91,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 153,
+        "gripY": 74
       },
       "run_5": {
         "x": 332,
@@ -12609,7 +13143,9 @@
         "w": 127,
         "h": 178,
         "pivotX": 72,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 121,
+        "gripY": 86
       },
       "run_6": {
         "x": 467,
@@ -12617,7 +13153,9 @@
         "w": 134,
         "h": 188,
         "pivotX": 75,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 128,
+        "gripY": 80
       },
       "run_7": {
         "x": 609,
@@ -12625,7 +13163,9 @@
         "w": 149,
         "h": 190,
         "pivotX": 86,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 144,
+        "gripY": 82
       },
       "air_rise": {
         "x": 766,
@@ -12633,7 +13173,9 @@
         "w": 138,
         "h": 185,
         "pivotX": 70,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 120,
+        "gripY": 63
       },
       "air_apex": {
         "x": 4,
@@ -12641,7 +13183,9 @@
         "w": 153,
         "h": 146,
         "pivotX": 85,
-        "pivotY": 146
+        "pivotY": 146,
+        "gripX": 148,
+        "gripY": 64
       },
       "air_fall": {
         "x": 165,
@@ -12649,7 +13193,9 @@
         "w": 148,
         "h": 159,
         "pivotX": 83,
-        "pivotY": 159
+        "pivotY": 159,
+        "gripX": 143,
+        "gripY": 69
       },
       "land": {
         "x": 321,
@@ -12657,7 +13203,9 @@
         "w": 144,
         "h": 134,
         "pivotX": 99,
-        "pivotY": 134
+        "pivotY": 134,
+        "gripX": 115,
+        "gripY": 118
       },
       "attack_staff_0": {
         "x": 473,
@@ -12793,7 +13341,9 @@
         "w": 128,
         "h": 192,
         "pivotX": 67,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 105,
+        "gripY": 89
       },
       "defence_1": {
         "x": 850,
@@ -12801,7 +13351,9 @@
         "w": 139,
         "h": 191,
         "pivotX": 71,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 127,
+        "gripY": 91
       },
       "defence_2": {
         "x": 4,
@@ -12809,7 +13361,9 @@
         "w": 182,
         "h": 189,
         "pivotX": 72,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 178,
+        "gripY": 66
       },
       "defence_3": {
         "x": 194,
@@ -12817,7 +13371,9 @@
         "w": 125,
         "h": 191,
         "pivotX": 63,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 101,
+        "gripY": 90
       },
       "defence_4": {
         "x": 327,
@@ -12825,7 +13381,9 @@
         "w": 124,
         "h": 191,
         "pivotX": 64,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 100,
+        "gripY": 87
       },
       "defence_5": {
         "x": 459,
@@ -12833,7 +13391,9 @@
         "w": 105,
         "h": 197,
         "pivotX": 32,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 88,
+        "gripY": 115
       },
       "defence_6": {
         "x": 572,
@@ -12841,7 +13401,9 @@
         "w": 178,
         "h": 193,
         "pivotX": 44,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 173,
+        "gripY": 65
       },
       "defence_7": {
         "x": 758,
@@ -12849,7 +13411,9 @@
         "w": 87,
         "h": 193,
         "pivotX": 37,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 70,
+        "gripY": 89
       },
       "defence_8": {
         "x": 853,
@@ -12857,7 +13421,9 @@
         "w": 122,
         "h": 187,
         "pivotX": 62,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 97,
+        "gripY": 91
       },
       "defence_9": {
         "x": 4,
@@ -12865,7 +13431,9 @@
         "w": 124,
         "h": 151,
         "pivotX": 68,
-        "pivotY": 151
+        "pivotY": 151,
+        "gripX": 102,
+        "gripY": 73
       },
       "defence_10": {
         "x": 136,
@@ -12873,7 +13441,9 @@
         "w": 173,
         "h": 144,
         "pivotX": 82,
-        "pivotY": 144
+        "pivotY": 144,
+        "gripX": 168,
+        "gripY": 78
       },
       "defence_11": {
         "x": 317,
@@ -12881,7 +13451,9 @@
         "w": 125,
         "h": 189,
         "pivotX": 63,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 101,
+        "gripY": 86
       },
       "defence_12": {
         "x": 450,
@@ -12889,7 +13461,9 @@
         "w": 124,
         "h": 185,
         "pivotX": 64,
-        "pivotY": 185
+        "pivotY": 185,
+        "gripX": 101,
+        "gripY": 87
       },
       "defence_13": {
         "x": 582,
@@ -12897,7 +13471,9 @@
         "w": 171,
         "h": 182,
         "pivotX": 106,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 147,
+        "gripY": 120
       },
       "defence_14": {
         "x": 761,
@@ -12905,7 +13481,9 @@
         "w": 150,
         "h": 182,
         "pivotX": 75,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 145,
+        "gripY": 74
       },
       "defence_15": {
         "x": 4,
@@ -12913,7 +13491,9 @@
         "w": 126,
         "h": 184,
         "pivotX": 64,
-        "pivotY": 184
+        "pivotY": 184,
+        "gripX": 101,
+        "gripY": 87
       },
       "down_staff_dlight": {
         "x": 138,
@@ -13909,7 +14489,9 @@
         "w": 102,
         "h": 192,
         "pivotX": 59,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 98,
+        "gripY": 111
       },
       "run_0": {
         "x": 405,
@@ -13917,7 +14499,9 @@
         "w": 168,
         "h": 183,
         "pivotX": 92,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 164,
+        "gripY": 73
       },
       "run_1": {
         "x": 581,
@@ -13925,7 +14509,9 @@
         "w": 141,
         "h": 183,
         "pivotX": 78,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 130,
+        "gripY": 93
       },
       "run_2": {
         "x": 730,
@@ -13933,7 +14519,9 @@
         "w": 138,
         "h": 194,
         "pivotX": 73,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 134,
+        "gripY": 89
       },
       "run_3": {
         "x": 4,
@@ -13941,7 +14529,9 @@
         "w": 153,
         "h": 190,
         "pivotX": 81,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 148,
+        "gripY": 79
       },
       "run_4": {
         "x": 165,
@@ -13949,7 +14539,9 @@
         "w": 178,
         "h": 182,
         "pivotX": 99,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 174,
+        "gripY": 71
       },
       "run_5": {
         "x": 351,
@@ -13957,7 +14549,9 @@
         "w": 132,
         "h": 186,
         "pivotX": 75,
-        "pivotY": 186
+        "pivotY": 186,
+        "gripX": 125,
+        "gripY": 88
       },
       "run_6": {
         "x": 491,
@@ -13965,7 +14559,9 @@
         "w": 118,
         "h": 193,
         "pivotX": 66,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 110,
+        "gripY": 98
       },
       "run_7": {
         "x": 617,
@@ -13973,7 +14569,9 @@
         "w": 164,
         "h": 183,
         "pivotX": 88,
-        "pivotY": 183
+        "pivotY": 183,
+        "gripX": 160,
+        "gripY": 77
       },
       "air_rise": {
         "x": 789,
@@ -13981,7 +14579,9 @@
         "w": 140,
         "h": 182,
         "pivotX": 67,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 132,
+        "gripY": 61
       },
       "air_apex": {
         "x": 4,
@@ -13989,7 +14589,9 @@
         "w": 124,
         "h": 131,
         "pivotX": 71,
-        "pivotY": 131
+        "pivotY": 131,
+        "gripX": 119,
+        "gripY": 47
       },
       "air_fall": {
         "x": 136,
@@ -13997,7 +14599,9 @@
         "w": 144,
         "h": 165,
         "pivotX": 69,
-        "pivotY": 165
+        "pivotY": 165,
+        "gripX": 139,
+        "gripY": 71
       },
       "land": {
         "x": 288,
@@ -14005,7 +14609,9 @@
         "w": 161,
         "h": 129,
         "pivotX": 99,
-        "pivotY": 129
+        "pivotY": 129,
+        "gripX": 129,
+        "gripY": 114
       },
       "attack_hammer_0": {
         "x": 457,
@@ -14141,7 +14747,9 @@
         "w": 149,
         "h": 192,
         "pivotX": 79,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 132,
+        "gripY": 83
       },
       "defence_1": {
         "x": 722,
@@ -14149,7 +14757,9 @@
         "w": 168,
         "h": 191,
         "pivotX": 89,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 139,
+        "gripY": 81
       },
       "defence_2": {
         "x": 4,
@@ -14157,7 +14767,9 @@
         "w": 215,
         "h": 190,
         "pivotX": 91,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 138,
+        "gripY": 119
       },
       "defence_3": {
         "x": 227,
@@ -14165,7 +14777,9 @@
         "w": 153,
         "h": 190,
         "pivotX": 80,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 130,
+        "gripY": 80
       },
       "defence_4": {
         "x": 388,
@@ -14173,7 +14787,9 @@
         "w": 154,
         "h": 202,
         "pivotX": 80,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 131,
+        "gripY": 83
       },
       "defence_5": {
         "x": 550,
@@ -14181,7 +14797,9 @@
         "w": 132,
         "h": 206,
         "pivotX": 44,
-        "pivotY": 206
+        "pivotY": 206,
+        "gripX": 118,
+        "gripY": 78
       },
       "defence_6": {
         "x": 690,
@@ -14189,7 +14807,9 @@
         "w": 202,
         "h": 201,
         "pivotX": 58,
-        "pivotY": 201
+        "pivotY": 201,
+        "gripX": 194,
+        "gripY": 69
       },
       "defence_7": {
         "x": 900,
@@ -14197,7 +14817,9 @@
         "w": 115,
         "h": 202,
         "pivotX": 44,
-        "pivotY": 202
+        "pivotY": 202,
+        "gripX": 103,
+        "gripY": 103
       },
       "defence_8": {
         "x": 4,
@@ -14205,7 +14827,9 @@
         "w": 153,
         "h": 199,
         "pivotX": 80,
-        "pivotY": 199
+        "pivotY": 199,
+        "gripX": 130,
+        "gripY": 82
       },
       "defence_9": {
         "x": 165,
@@ -14213,7 +14837,9 @@
         "w": 175,
         "h": 139,
         "pivotX": 96,
-        "pivotY": 139
+        "pivotY": 139,
+        "gripX": 155,
+        "gripY": 52
       },
       "defence_10": {
         "x": 348,
@@ -14221,7 +14847,9 @@
         "w": 199,
         "h": 154,
         "pivotX": 97,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 157,
+        "gripY": 67
       },
       "defence_11": {
         "x": 555,
@@ -14229,7 +14857,9 @@
         "w": 155,
         "h": 198,
         "pivotX": 82,
-        "pivotY": 198
+        "pivotY": 198,
+        "gripX": 131,
+        "gripY": 84
       },
       "defence_12": {
         "x": 718,
@@ -14237,7 +14867,9 @@
         "w": 154,
         "h": 197,
         "pivotX": 80,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 130,
+        "gripY": 80
       },
       "defence_13": {
         "x": 4,
@@ -14245,7 +14877,9 @@
         "w": 168,
         "h": 197,
         "pivotX": 87,
-        "pivotY": 197
+        "pivotY": 197,
+        "gripX": 133,
+        "gripY": 126
       },
       "defence_14": {
         "x": 180,
@@ -14253,7 +14887,9 @@
         "w": 182,
         "h": 193,
         "pivotX": 105,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 141,
+        "gripY": 120
       },
       "defence_15": {
         "x": 370,
@@ -14261,7 +14897,9 @@
         "w": 155,
         "h": 200,
         "pivotX": 81,
-        "pivotY": 200
+        "pivotY": 200,
+        "gripX": 134,
+        "gripY": 80
       },
       "down_hammer_dlight": {
         "x": 533,
@@ -15365,7 +16003,9 @@
         "w": 123,
         "h": 192,
         "pivotX": 79,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 118,
+        "gripY": 112
       },
       "run_0": {
         "x": 578,
@@ -15373,7 +16013,9 @@
         "w": 168,
         "h": 179,
         "pivotX": 100,
-        "pivotY": 179
+        "pivotY": 179,
+        "gripX": 164,
+        "gripY": 88
       },
       "run_1": {
         "x": 754,
@@ -15381,7 +16023,9 @@
         "w": 160,
         "h": 179,
         "pivotX": 95,
-        "pivotY": 179
+        "pivotY": 179,
+        "gripX": 155,
+        "gripY": 83
       },
       "run_2": {
         "x": 4,
@@ -15389,7 +16033,9 @@
         "w": 175,
         "h": 177,
         "pivotX": 102,
-        "pivotY": 177
+        "pivotY": 177,
+        "gripX": 167,
+        "gripY": 76
       },
       "run_3": {
         "x": 187,
@@ -15397,7 +16043,9 @@
         "w": 159,
         "h": 187,
         "pivotX": 88,
-        "pivotY": 187
+        "pivotY": 187,
+        "gripX": 155,
+        "gripY": 77
       },
       "run_4": {
         "x": 354,
@@ -15405,7 +16053,9 @@
         "w": 178,
         "h": 178,
         "pivotX": 103,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 162,
+        "gripY": 91
       },
       "run_5": {
         "x": 540,
@@ -15413,7 +16063,9 @@
         "w": 167,
         "h": 176,
         "pivotX": 99,
-        "pivotY": 176
+        "pivotY": 176,
+        "gripX": 162,
+        "gripY": 90
       },
       "run_6": {
         "x": 715,
@@ -15421,7 +16073,9 @@
         "w": 169,
         "h": 190,
         "pivotX": 100,
-        "pivotY": 190
+        "pivotY": 190,
+        "gripX": 165,
+        "gripY": 65
       },
       "run_7": {
         "x": 4,
@@ -15429,7 +16083,9 @@
         "w": 171,
         "h": 178,
         "pivotX": 96,
-        "pivotY": 178
+        "pivotY": 178,
+        "gripX": 167,
+        "gripY": 82
       },
       "air_rise": {
         "x": 183,
@@ -15437,7 +16093,9 @@
         "w": 135,
         "h": 189,
         "pivotX": 81,
-        "pivotY": 189
+        "pivotY": 189,
+        "gripX": 128,
+        "gripY": 98
       },
       "air_apex": {
         "x": 326,
@@ -15445,7 +16103,9 @@
         "w": 158,
         "h": 157,
         "pivotX": 91,
-        "pivotY": 157
+        "pivotY": 157,
+        "gripX": 154,
+        "gripY": 95
       },
       "air_fall": {
         "x": 492,
@@ -15453,7 +16113,9 @@
         "w": 168,
         "h": 154,
         "pivotX": 89,
-        "pivotY": 154
+        "pivotY": 154,
+        "gripX": 158,
+        "gripY": 64
       },
       "land": {
         "x": 668,
@@ -15461,7 +16123,9 @@
         "w": 159,
         "h": 132,
         "pivotX": 96,
-        "pivotY": 132
+        "pivotY": 132,
+        "gripX": 127,
+        "gripY": 116
       },
       "attack_spear_0": {
         "x": 4,
@@ -15597,7 +16261,9 @@
         "w": 161,
         "h": 192,
         "pivotX": 83,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 135,
+        "gripY": 74
       },
       "defence_1": {
         "x": 340,
@@ -15605,7 +16271,9 @@
         "w": 162,
         "h": 188,
         "pivotX": 83,
-        "pivotY": 188
+        "pivotY": 188,
+        "gripX": 150,
+        "gripY": 72
       },
       "defence_2": {
         "x": 510,
@@ -15613,7 +16281,9 @@
         "w": 222,
         "h": 182,
         "pivotX": 86,
-        "pivotY": 182
+        "pivotY": 182,
+        "gripX": 152,
+        "gripY": 118
       },
       "defence_3": {
         "x": 740,
@@ -15621,7 +16291,9 @@
         "w": 158,
         "h": 193,
         "pivotX": 82,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 133,
+        "gripY": 130
       },
       "defence_4": {
         "x": 4,
@@ -15629,7 +16301,9 @@
         "w": 161,
         "h": 194,
         "pivotX": 83,
-        "pivotY": 194
+        "pivotY": 194,
+        "gripX": 135,
+        "gripY": 75
       },
       "defence_5": {
         "x": 173,
@@ -15637,7 +16311,9 @@
         "w": 129,
         "h": 193,
         "pivotX": 63,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 124,
+        "gripY": 84
       },
       "defence_6": {
         "x": 310,
@@ -15645,7 +16321,9 @@
         "w": 214,
         "h": 191,
         "pivotX": 58,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 208,
+        "gripY": 65
       },
       "defence_7": {
         "x": 532,
@@ -15653,7 +16331,9 @@
         "w": 115,
         "h": 192,
         "pivotX": 55,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 110,
+        "gripY": 93
       },
       "defence_8": {
         "x": 655,
@@ -15661,7 +16341,9 @@
         "w": 161,
         "h": 193,
         "pivotX": 84,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 135,
+        "gripY": 76
       },
       "defence_9": {
         "x": 824,
@@ -15669,7 +16351,9 @@
         "w": 153,
         "h": 143,
         "pivotX": 63,
-        "pivotY": 143
+        "pivotY": 143,
+        "gripX": 147,
+        "gripY": 73
       },
       "defence_10": {
         "x": 4,
@@ -15677,7 +16361,9 @@
         "w": 208,
         "h": 147,
         "pivotX": 92,
-        "pivotY": 147
+        "pivotY": 147,
+        "gripX": 200,
+        "gripY": 98
       },
       "defence_11": {
         "x": 220,
@@ -15685,7 +16371,9 @@
         "w": 161,
         "h": 193,
         "pivotX": 82,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 135,
+        "gripY": 73
       },
       "defence_12": {
         "x": 389,
@@ -15693,7 +16381,9 @@
         "w": 162,
         "h": 192,
         "pivotX": 84,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 136,
+        "gripY": 74
       },
       "defence_13": {
         "x": 559,
@@ -15701,7 +16391,9 @@
         "w": 163,
         "h": 193,
         "pivotX": 86,
-        "pivotY": 193
+        "pivotY": 193,
+        "gripX": 145,
+        "gripY": 120
       },
       "defence_14": {
         "x": 730,
@@ -15709,7 +16401,9 @@
         "w": 168,
         "h": 191,
         "pivotX": 87,
-        "pivotY": 191
+        "pivotY": 191,
+        "gripX": 138,
+        "gripY": 123
       },
       "defence_15": {
         "x": 4,
@@ -15717,7 +16411,9 @@
         "w": 161,
         "h": 192,
         "pivotX": 85,
-        "pivotY": 192
+        "pivotY": 192,
+        "gripX": 136,
+        "gripY": 128
       },
       "down_spear_dlight": {
         "x": 173,

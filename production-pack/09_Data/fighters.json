@@ -39,7 +39,11 @@
           177,
           53
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        26,
+        31
+      ]
     },
     {
       "id": "saul",
@@ -73,7 +77,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/02_saul_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        32,
+        32
+      ]
     },
     {
       "id": "samson",
@@ -107,7 +115,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/03_samson_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        32,
+        33
+      ]
     },
     {
       "id": "joshua",
@@ -141,7 +153,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/04_joshua_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        19,
+        40
+      ]
     },
     {
       "id": "deborah",
@@ -175,7 +191,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/05_deborah_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        29,
+        32
+      ]
     },
     {
       "id": "gideon",
@@ -214,7 +234,11 @@
           59,
           65
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        30,
+        32
+      ]
     },
     {
       "id": "jonathan",
@@ -253,7 +277,11 @@
           5,
           49
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        26,
+        31
+      ]
     },
     {
       "id": "moses",
@@ -292,7 +320,11 @@
           151,
           43
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        24,
+        32
+      ]
     },
     {
       "id": "esther",
@@ -326,7 +358,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/09_esther_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        22,
+        29
+      ]
     },
     {
       "id": "miriam",
@@ -365,7 +401,11 @@
           142,
           50
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        53,
+        62
+      ]
     },
     {
       "id": "nehemiah",
@@ -404,7 +444,11 @@
           58,
           68
         ]
-      }
+      },
+      "itemThrowOrigin": [
+        24,
+        36
+      ]
     },
     {
       "id": "caleb",
@@ -438,7 +482,11 @@
       "conceptImage": "10_Generated_Artwork/Characters/12_caleb_move_sheet.png",
       "animationStatus": "not_created",
       "rosterUnlock": "available",
-      "releaseOrigins": {}
+      "releaseOrigins": {},
+      "itemThrowOrigin": [
+        33,
+        32
+      ]
     }
   ]
 }

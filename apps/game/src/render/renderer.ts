@@ -1,3 +1,4 @@
+import { handGrip, needsCarriedWeapon } from './grip.ts';
 // Canvas 2D renderer. Reads simulation state and events; never mutates them.
 // Floating-point camera and interpolation live here only.
 
@@ -55,6 +56,8 @@ export class Renderer{
   weapon(weapon:string,x:number,y:number,angle:number,palette:string){drawWeapon(this.ctx,weapon,x,y,angle,palette);}
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
+    if(pose==='weapon_throw')return time<6?'defence_1':time<12?'defence_2':time<18?'defence_3':'motion_idle';
+    if(pose==='weapon_pickup')return time<4?'land':'defence_0';
     if(!move&&pose==='backflip')return time<4?'air_rise':time<9?'air_apex':time<14?'air_fall':'land';
     if(!move&&pose==='happy'&&this.atlas[hero]?.motion_idle)return 'motion_idle';
     if(!move&&this.atlas[hero]?.[pose]&&['air_rise','air_apex','air_fall','land'].includes(pose))return pose;
@@ -75,25 +78,24 @@ export class Renderer{
   }
 
   /** Draw a carried weapon at the leading hand of a movement sprite. */
-  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string,fiery=false){
+  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string,fiery=false,charging=false){
     if(weapon==='unarmed')return;
     const c=this.ctx;
     const running=frameName.startsWith('run_');
     const airborne=frameName.startsWith('air_');
-    const handX=frame.w*(running?.76:airborne?.78:.74)-frame.pivotX;
-    const handY=frame.h*(running?.48:airborne?.48:.56)-frame.pivotY;
+    const {x:handX,y:handY}=handGrip(frame);
     c.save();c.translate(handX,handY);
     if(weapon==='sling'){
       // Both cords share the fist; the pouch revolves even when David is still.
       const phase=time*(running?.32:.22)-1.3;
-      const px=Math.cos(phase)*39,py=-29+Math.sin(phase)*28;
+      const px=charging?Math.cos(phase)*39:8+Math.sin(time*.12)*5,py=charging?-29+Math.sin(phase)*28:42+Math.sin(time*.12)*3;
       c.strokeStyle='#66472e';c.lineWidth=2.4;c.lineCap='round';
       c.beginPath();c.moveTo(-2,0);c.quadraticCurveTo(px*.45,py*.55,px-5,py);c.moveTo(2,0);c.quadraticCurveTo(px*.55,py*.55,px+5,py);c.stroke();
       c.fillStyle='#8e603b';c.beginPath();c.ellipse(px,py,8,5,phase*.5,0,Math.PI*2);c.fill();
       c.strokeStyle='#3d3027';c.lineWidth=1.5;c.stroke();if(fiery)flame(c,px,py,7,time);
     }else{
-      const angle=weapon==='bow'?.26:weapon==='hammer'?.24:weapon==='gauntlets'?0:running?.28:airborne?-.2:.12;
-      c.scale(.78,.78);drawWeapon(c,weapon,0,0,angle,accent);
+      const angle=weapon==='bow'?.26:weapon==='hammer'?.24:weapon==='gauntlets'?0:weapon==='sword'&&running?-.85:running?.18:airborne?-.25:-.1;
+      c.scale(1.15,1.15);drawWeapon(c,weapon,0,0,angle,accent);
     }
     c.restore();
   }
@@ -111,13 +113,19 @@ export class Renderer{
       // The weapon sits behind the near fist in the same local coordinates as
       // the sprite. It follows each run and jump frame instead of floating at
       // a fixed screen position. Attack art already includes its own weapon.
-      if(!shieldRelease&&weapon!=='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
       if(charge>0)c.filter='sepia('+Math.min(.7,charge/50)+') saturate(2.2) hue-rotate(325deg)';
       c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);
       c.filter='none';
+      if(!shieldRelease&&needsCarriedWeapon(frameName,weapon)){
+        this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david',charge>0);
+        // Draw the original fingers over the grip, so equipment is held in
+        // the hand rather than pasted behind the body or over the fist.
+        const gx=Math.max(0,Math.min(frame.w-10,(frame.gripX??frame.w*.74)-5)),gy=Math.max(0,Math.min(frame.h-10,(frame.gripY??frame.h*.56)-5));
+        c.drawImage(sheet,frame.x+gx,frame.y+gy,10,10,gx-frame.pivotX,gy-frame.pivotY,10,10);
+      }
       if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const grip=grips[releaseIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;drawWeapon(c,'shield',hx,hy+15,0);}
 
-      if(weapon==='gauntlets'&&(!move||frameName==='motion_idle'))this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david');
+
       if(pose==='happy'){
         c.fillStyle='#f6d584';
         for(const [dx,dy] of [[.12,.16],[.8,.2],[.95,.42]]){c.beginPath();c.arc(frame.w*dx-frame.pivotX,frame.h*dy-frame.pivotY,2.5,0,Math.PI*2);c.fill();}
@@ -162,7 +170,7 @@ export class Renderer{
     this.feedback.draw(c,screen,this.camera.zoom);
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';
+    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
       let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;
@@ -171,7 +179,7 @@ export class Renderer{
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time+(active&&!f.hitstop?alpha*(pose==='run'?runCadence(f.vx/Q):1):0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
