@@ -10,6 +10,9 @@ import { drawWeapon, drawFlamingSwordPickup } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
+import { EMOTE_TICKS } from '../../../../packages/sim/src/state.ts';
+/** Emote keys 0-3: friendly lines only, fitting the game's tone. */
+export const EMOTE_TEXT=['Shalom!','Well fought!','Here I am!','Ha ha!'];
 
 /** Runtime art the renderer may use. Only frames marked runtime-ready are drawn. */
 export interface ArenaArt { image: HTMLImageElement; horizon: string; stone: string }
@@ -32,6 +35,8 @@ export class Renderer{
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
+  /** Speech bubble for an emote; pops in over a few ticks, unless motion is reduced. */
+  emoteBubble(id:number,x:number,y:number,age:number){const c=this.ctx,text=EMOTE_TEXT[id]??'!';const k=this.reduced?1:Math.min(1,.4+age*.15);c.save();c.translate(x,y);c.scale(k,k);c.font='bold 17px Georgia';const w=c.measureText(text).width+22;c.fillStyle='#fff7e3';c.strokeStyle='#3c3326';c.lineWidth=2;c.beginPath();c.roundRect(-w/2,-17,w,32,10);c.moveTo(-6,15);c.lineTo(0,25);c.lineTo(6,15);c.fill();c.stroke();c.fillStyle='#2c2419';c.textAlign='center';c.fillText(text,0,5);c.restore();}
   round(x:number,y:number,w:number,h:number,r=5){const c=this.ctx;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();c.stroke();}
   /** Loaded painted backdrop for an arena palette slot, if one shipped. */
   arenaArt(palette:number):ArenaArt|null{const a=this.arenas[this.S.content.maps.maps[palette%6].id];return a&&a.image.complete&&a.image.naturalWidth?a:null;}
@@ -164,6 +169,7 @@ export class Renderer{
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,motion.time,f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0);
+      if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}

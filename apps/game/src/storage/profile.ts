@@ -47,6 +47,14 @@ const SEEN_CARD = /^L\d{3}:\d{1,2}$/;
 const BINDABLE = BINDABLE_KEY;
 
 export const DEFAULT_BINDINGS = {
+  // Andrew's default layout (2026-11-02): W is Up and Jump, Shift dashes, dodges and
+  // gravity-cancels, and 0-3 are emotes.
+  left: 'KeyA', right: 'KeyD', up: 'KeyW', down: 'KeyS', jump: 'KeyW', light: 'KeyJ', heavy: 'KeyK',
+  dodge: 'ShiftLeft', item: 'KeyL', interact: 'KeyE', pause: 'Escape',
+  emote0: 'Digit0', emote1: 'Digit1', emote2: 'Digit2', emote3: 'Digit3',
+};
+/** The layout shipped before W became Jump; saves still on it untouched get the new one. */
+const OLD_DEFAULT_BINDINGS: Record<string, string> = {
   left: 'KeyA', right: 'KeyD', up: 'KeyW', down: 'KeyS', jump: 'Space', light: 'KeyJ', heavy: 'KeyK',
   dodge: 'ShiftLeft', item: 'KeyL', interact: 'KeyE', pause: 'Escape',
 };
@@ -127,6 +135,8 @@ export function createProfiles(content: Content) {
         for (const k of Object.keys(d.settings.bindings) as (keyof Bindings)[]) if (typeof s.bindings[k] === 'string' && BINDABLE.test(s.bindings[k])) d.settings.bindings[k] = s.bindings[k];
         // A save that gives one key to two controls is unplayable; use the default layout instead.
         if (!bindingsAreUnique(d.settings.bindings)) d.settings.bindings = { ...DEFAULT_BINDINGS };
+        // Never-customised keys from before the 2026-11-02 layout move to the new defaults.
+        if (Object.entries(OLD_DEFAULT_BINDINGS).every(([k, v]) => s.bindings[k] === v)) d.settings.bindings = { ...DEFAULT_BINDINGS };
       }
     }
     if (Array.isArray(raw.seenCards)) d.seenCards = [...new Set<string>(raw.seenCards.filter((v: unknown) => typeof v === 'string' && SEEN_CARD.test(v)))].slice(0, 512);

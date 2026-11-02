@@ -5,7 +5,7 @@ import type { Platform } from '../../content/src/index.ts';
 import type { SimContext } from './context.ts';
 import type { Fighter, Input, SimState } from './types.ts';
 import { Q, approach } from './fixed.ts';
-import { event } from './state.ts';
+import { event, EMOTE_TICKS } from './state.ts';
 import { resolveAction, bufferPress } from './moveResolver.ts';
 import { startProjectile } from './combat.ts';
 import { releaseItem } from './items.ts';
@@ -156,6 +156,12 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   if (f.chase > 0) f.chase--;
   if (f.buffer && --f.buffer.ticks < 0) f.buffer = null;
   if (f.stun) f.stun--; else resolveAction(ctx, s, f, i);
+  // Emotes: only standing still and free; anything else ends them at once.
+  if (f.emote && (f.action || f.stun || !f.ground || s.tick >= f.emote.until)) f.emote = null;
+  if (i.emote >= 0 && !f.emote && f.ground && !f.action && !f.stun && !f.carry) {
+    f.emote = { id: i.emote, until: s.tick + EMOTE_TICKS };
+    event(s, 'emote', { fighter: f.id, emote: i.emote });
+  }
 
   const a = f.action;
   // One extra wall tick per twenty authored ticks: approximately 5% slower.

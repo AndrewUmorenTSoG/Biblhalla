@@ -9,6 +9,10 @@ export const MODES: Mode[] = ['duel', 'waves', 'boss', 'training', 'local', 'tea
 export const DEFAULT_SEED = 613891;
 export const DEFAULT_WAVES = [['road_guard', 'road_guard'], ['archer', 'brute'], ['shield_guard', 'road_guard', 'archer']];
 export const BOSS_GUARD = 1700;
+/** Number of emote slots (keys 0-3 by default). */
+export const EMOTES = 4;
+/** How long an emote stays up, in ticks. */
+export const EMOTE_TICKS = 90;
 /** Ticks of countdown after resuming from pause. */
 export const RESUME_COUNTDOWN_TICKS = 90;
 
@@ -19,6 +23,7 @@ export function input(i: InputFrame = {}): Input {
     jump: !!i.jump, jumpHeld: !!i.jumpHeld,
     light: !!i.light, heavy: !!i.heavy, heavyHeld: !!i.heavyHeld,
     dodge: !!i.dodge, item: !!i.item, interact: !!i.interact, interactHeld: !!(i.interactHeld || i.interact),
+    emote: Number.isInteger(i.emote) && i.emote! >= 0 && i.emote! < EMOTES ? i.emote! : -1,
   };
 }
 
@@ -41,7 +46,7 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
     action: null, buffer: null, jumpCut: false,
     ai: { next: 0, intent: input(), history: [], tell: 0, tellDir: 1, phase: 1 },
     guard: cfg.guard ?? null, maxGuard: cfg.guard ?? null, scale: cfg.scale || 1,
-    stats: { ...def.stats }, score: 0, damageDealt: 0, hits: 0, carry: false,
+    stats: { ...def.stats }, score: 0, damageDealt: 0, hits: 0, carry: false, emote: null,
   };
 }
 

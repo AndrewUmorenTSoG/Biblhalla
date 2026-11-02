@@ -10,7 +10,7 @@ import { hash, snapshot } from './fixed.ts';
 export const REPLAY_SCHEMA = 1;
 export const MAX_REPLAY_ENTRIES = 24000;
 const REPLAY_MODES = ['duel', 'waves', 'boss', 'local', 'teams', 'ffa'];
-const INPUT_KEYS = ['x', 'y', 'jump', 'jumpHeld', 'light', 'heavy', 'heavyHeld', 'dodge', 'item', 'interact', 'interactHeld'];
+const INPUT_KEYS = ['x', 'y', 'jump', 'jumpHeld', 'light', 'heavy', 'heavyHeld', 'dodge', 'item', 'interact', 'interactHeld', 'emote'];
 
 export type ReplayEntry = { kind: 'input'; frames: InputFrames } | { kind: 'pause'; on: boolean };
 /** A state hash taken after `entry` entries had run; lets playback find where a mismatch began. */
@@ -56,6 +56,7 @@ function checkEntry(entry: any): void {
     if (key.length > 24 || !value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).some(k => !INPUT_KEYS.includes(k))) fail('Invalid semantic input');
     for (const [k, v] of Object.entries(value)) {
       if (k === 'x' || k === 'y') { if (v !== -1 && v !== 0 && v !== 1) fail('Invalid axis'); }
+      else if (k === 'emote') { if (!Number.isInteger(v) || (v as number) < -1 || (v as number) > 3) fail('Invalid emote'); }
       else if (typeof v !== 'boolean') fail('Invalid button');
     }
   }

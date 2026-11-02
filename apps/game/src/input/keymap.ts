@@ -1,6 +1,7 @@
 // Keyboard remapping. Every action owns exactly one key; choosing a key that another
-// action already uses swaps the two, so no key ever drives two controls. The arrow
-// keys move only while no action is bound to them.
+// action already uses swaps the two, so no key ever drives two controls. The one
+// deliberate exception is Up and Jump, which may share a key (W by default, as in
+// tap-jump). The arrow keys move only while no action is bound to them.
 
 export type KeyBindings = Record<string, string>;
 
@@ -17,16 +18,25 @@ export function rebind(bindings: KeyBindings, action: string, code: string): Reb
   if (!BINDABLE_KEY.test(code)) return { bindings, swappedWith: null, error: 'That key cannot be used. Try another.' };
   if (action !== 'pause' && code === 'Escape') return { bindings, swappedWith: null, error: 'Escape is kept for cancelling. Try another.' };
   const next = { ...bindings };
-  const other = Object.keys(next).find(k => k !== action && next[k] === code) ?? null;
-  if (other) next[other] = bindings[action];
+  const clashes = Object.keys(next).filter(k => k !== action && next[k] === code && !sharable(action, k));
+  for (const k of clashes) next[k] = bindings[action];
   next[action] = code;
-  return { bindings: next, swappedWith: other, error: null };
+  return { bindings: next, swappedWith: clashes[0] ?? null, error: null };
 }
 
-/** True when no key is shared between two actions. */
+/** Up and Jump may share one key; every other pair must not. */
+const SHARED_PAIR = ['up', 'jump'];
+function sharable(a: string, b: string): boolean { return SHARED_PAIR.includes(a) && SHARED_PAIR.includes(b) && a !== b; }
+
+/** True when no key drives two controls (apart from the Up/Jump pair). */
 export function bindingsAreUnique(bindings: KeyBindings): boolean {
-  const codes = Object.values(bindings);
-  return new Set(codes).size === codes.length;
+  const keys = Object.keys(bindings);
+  return keys.every((a, i) => keys.slice(i + 1).every(b => bindings[a] !== bindings[b] || sharable(a, b)));
+}
+
+/** Controls that share a key with `action` (only ever the Up/Jump pair). */
+export function sharedWith(bindings: KeyBindings, action: string): string[] {
+  return Object.keys(bindings).filter(k => k !== action && bindings[k] === bindings[action]);
 }
 
 /** Whether a key press belongs to the game (so it is captured and not scrolled). */
@@ -49,5 +59,6 @@ export function keyboardFrame(bindings: KeyBindings, held: Set<string>, edges: S
     x: Number(h('right')) - Number(h('left')), y: Number(h('up')) - Number(h('down')),
     jump: e('jump'), jumpHeld: h('jump'), light: e('light'), heavy: e('heavy'), heavyHeld: h('heavy'),
     dodge: e('dodge'), item: e('item'), interact: e('interact'), interactHeld: h('interact'),
+    emote: [0, 1, 2, 3].find(n => e('emote' + n)) ?? -1,
   };
 }

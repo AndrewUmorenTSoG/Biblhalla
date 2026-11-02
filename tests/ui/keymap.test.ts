@@ -18,11 +18,37 @@ test('choosing a key another control uses swaps the two instead of sharing it', 
 });
 
 test('a free key changes only that control', () => {
-  const r = rebind(D, 'jump', 'KeyW');
-  assert.equal(r.swappedWith, 'up');
-  const free = rebind(D, 'jump', 'KeyI');
-  assert.equal(free.swappedWith, null);
-  assert.deepEqual({ ...free.bindings, jump: D.jump }, D);
+  const r = rebind(D, 'light', 'KeyU');
+  assert.equal(r.swappedWith, null);
+  assert.deepEqual({ ...r.bindings, light: D.light }, D);
+});
+
+test('Up and Jump share W by default, and can still be split apart', () => {
+  assert.equal(D.up, 'KeyW');
+  assert.equal(D.jump, 'KeyW');
+  assert.ok(bindingsAreUnique(D), 'the Up/Jump pair is allowed to share');
+  const f = keyboardFrame(D, new Set(['KeyW']), new Set(['KeyW']));
+  assert.equal(f.y, 1);
+  assert.equal(f.jump, true);
+  const split = rebind(D, 'jump', 'Space');
+  assert.equal(split.swappedWith, null);
+  assert.equal(split.bindings.up, 'KeyW');
+  assert.equal(split.bindings.jump, 'Space');
+  // Giving W to another control moves both Up and Jump off it, so W drives one thing.
+  const taken = rebind(D, 'light', 'KeyW');
+  assert.equal(taken.bindings.light, 'KeyW');
+  assert.equal(taken.bindings.up, 'KeyJ');
+  assert.equal(taken.bindings.jump, 'KeyJ');
+  assert.ok(bindingsAreUnique(taken.bindings));
+});
+
+test('default layout: A/S/D move, Shift dodges, 0-3 are emotes', () => {
+  assert.deepEqual([D.left, D.down, D.right, D.dodge], ['KeyA', 'KeyS', 'KeyD', 'ShiftLeft']);
+  for (const n of [0, 1, 2, 3]) {
+    const f = keyboardFrame(D, new Set([`Digit${n}`]), new Set([`Digit${n}`]));
+    assert.equal(f.emote, n);
+  }
+  assert.equal(keyboardFrame(D, new Set(), new Set()).emote, -1);
 });
 
 test('rejected keys leave bindings untouched', () => {
@@ -45,10 +71,10 @@ test('arrow keys bound to an action no longer also move the fighter', () => {
 });
 
 test('each key press drives exactly one control', () => {
-  for (const code of Object.values(D)) {
-    if (code === D.pause) continue;
+  for (const code of new Set(Object.values(D))) {
+    if (code === D.pause || code === D.jump) continue; // W is the deliberate Up + Jump pair
     const f = keyboardFrame(D, new Set([code]), new Set([code]));
-    const on = Object.entries(f).filter(([k, v]) => v && !k.endsWith('Held')).length;
+    const on = Object.entries(f).filter(([k, v]) => (k === 'emote' ? v !== -1 : v) && !k.endsWith('Held')).length;
     assert.equal(on, 1, `${code} triggered ${on} controls`);
   }
 });

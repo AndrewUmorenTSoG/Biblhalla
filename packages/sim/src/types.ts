@@ -14,6 +14,8 @@ export interface Input {
   interact: boolean;
   /** Interact held down (hold-to-secure tasks); `interact` is the press edge. */
   interactHeld: boolean;
+  /** Emote pressed this tick (0-3), or -1. Cosmetic, but simulated so replays and every screen agree. */
+  emote: number;
 }
 export type InputFrame = Partial<Input>;
 /** Inputs for a tick keyed by fighter id or input device id. */
@@ -104,6 +106,8 @@ export interface Fighter {
   damageDealt: number;
   hits: number;
   carry: boolean;
+  /** Emote on show until `until`; any action, hit or leaving the ground ends it. */
+  emote: { id: number; until: number } | null;
   /** Hits taken while already in hitstun during the current combo. */
   comboLinks?: number;
   /** Tick this fighter lost their last stock; later means a better placement. */
@@ -113,6 +117,7 @@ export interface Fighter {
 }
 
 export interface Projectile {
+  returnAtTick?: number;
   effect?: string;
   originX?: number;
   rangeQ?: number;
