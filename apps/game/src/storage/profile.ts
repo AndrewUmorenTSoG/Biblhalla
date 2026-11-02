@@ -43,6 +43,21 @@ export function migrate(raw: any): any {
 }
 const STAGES = ['entry', 'middle_or_phase_two', 'exit'];
 const DIFFICULTIES = ['easy', 'hard', 'extreme'];
+
+/** Local medals (07_Quests): they record the hardest difficulty a level was finished on,
+ * so replaying on an easier setting never takes a medal away. Cosmetic only. */
+export function bestDifficulty(previous: string | undefined, now: string): string {
+  const rank = (d: string | undefined) => (d ? DIFFICULTIES.indexOf(d) : -1);
+  return rank(now) > rank(previous) ? now : previous ?? now;
+}
+
+/** Medal label for a finished level. Witness levels (79-84) ignore difficulty entirely. */
+export function medalFor(level: { kind: string; combatEnabled: boolean }, difficulty: string | undefined): { tier: 'witness' | 'bronze' | 'silver' | 'gold'; label: string } | null {
+  if (!difficulty) return null;
+  if (level.kind === 'witness') return { tier: 'witness', label: 'Witnessed' };
+  return difficulty === 'extreme' ? { tier: 'gold', label: 'Gold · Extremely Hard' }
+    : difficulty === 'hard' ? { tier: 'silver', label: 'Silver · Hard' } : { tier: 'bronze', label: 'Bronze · Easy' };
+}
 const SEEN_CARD = /^L\d{3}:\d{1,2}$/;
 const BINDABLE = BINDABLE_KEY;
 
@@ -205,7 +220,7 @@ export function createProfiles(content: Content) {
     complete(level: string, difficulty: string): boolean {
       if (!ids.has(level)) return false;
       if (!this.data.completed.includes(level)) this.data.completed.push(level);
-      this.data.medals[level] = difficulty;
+      this.data.medals[level] = bestDifficulty(this.data.medals[level], difficulty);
       this.data.checkpoint = { level, stage: 'exit', progress: [], combatCleared: true, seed: 613891, seen: [] };
       if (!this.data.journal.includes(level)) this.data.journal.push(level);
       this.save();
