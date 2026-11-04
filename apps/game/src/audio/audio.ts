@@ -4,6 +4,7 @@
 // development sounds: a composer's pass can replace the recipes without touching callers.
 
 import type { SimEvent } from '../../../../packages/sim/src/index.ts';
+import { MusicPlayer } from './music.ts';
 
 /** One layer of a sound: a pitched tone or a band of noise, with a quick envelope. */
 export interface Layer {
@@ -78,6 +79,10 @@ export class GameAudio {
   /** Effects volume, 0..1. */
   volume = 1;
   last = 0;
+  /** Music toggles independently of effects. */
+  musicOn = true;
+  readonly music = new MusicPlayer();
+  private arena = -1;
   private voices: { end: number; priority: number; stop: () => void }[] = [];
   private noise: AudioBuffer | null = null;
 
@@ -87,6 +92,8 @@ export class GameAudio {
       if (AC) this.context = new AC();
     }
     this.context?.resume().catch(() => {});
+    // Music asked for before the first gesture starts now.
+    if (this.arena >= 0 && this.musicOn && this.context && !this.music.playing) this.music.start(this.context, this.arena);
   }
 
   suspend(): void {
@@ -102,8 +109,24 @@ export class GameAudio {
     return out;
   }
 
+  /** Start the arrangement for an arena (once audio is unlocked); restarting the same arena keeps playing. */
+  startMusic(arena: number): void {
+    this.arena = arena;
+    if (!this.musicOn || !this.context) { this.music.stop(); return; }
+    this.music.start(this.context, arena);
+  }
+
+  stopMusic(): void { this.arena = -1; this.music.stop(); }
+
+  setMusic(on: boolean): void {
+    this.musicOn = on;
+    if (!on) this.music.stop();
+    else if (this.arena >= 0 && this.context && !this.music.playing) this.music.start(this.context, this.arena);
+  }
+
   play(events: SimEvent[]): void {
     const heard = this.fresh(events);
+    if (heard.some(e => e.type === 'result')) this.music.duck(true);
     const ctx = this.context;
     if (this.mute || this.volume <= 0 || !ctx || ctx.state !== 'running') return;
     // Louder, more important cues first when many arrive in one frame.
