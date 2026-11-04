@@ -79,3 +79,18 @@ test('gravity cancel makes one short lived cloud below the fighter', () => {
   for(let tick=12;tick<31;tick++)fb.update({ tick, events: [], fighters: [fighter()] });
   assert.equal(fb.puffs.filter(p => p.kind === 'gravity').length, 0);
 });
+
+test('screen shake and bright flashes each have their own off switch', () => {
+  const ko = [{ id: 1, type: 'ko', fighter: 1, x: 0, y: 0 }];
+  const noShake = new Feedback(); noShake.shakeOn = false;
+  noShake.update({ tick: 1, events: ko, fighters: [fighter()] });
+  assert.equal(noShake.shake, 0);
+  assert.ok(noShake.puffs.some(p => p.kind === 'burst'), 'the ring-out mark still shows');
+  const noFlash = new Feedback(); noFlash.flashOn = false;
+  noFlash.update({ tick: 1, events: ko, fighters: [fighter()] });
+  assert.equal(noFlash.shake, KO_SHAKE, 'shake is independent of flashes');
+  const alphas: number[] = [];
+  const c: any = new Proxy({}, { get: (_t, k) => k === 'createRadialGradient' ? () => ({ addColorStop() {} }) : () => {}, set: (_t, k, v) => { if (k === 'globalAlpha') alphas.push(v); return true; } });
+  noFlash.draw(c, () => ({ x: 0, y: 0 }), 1);
+  assert.ok(Math.max(...alphas) <= 0.3, 'flashes off keeps the burst dim');
+});

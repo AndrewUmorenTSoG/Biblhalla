@@ -33,6 +33,9 @@ export class Feedback {
   private wasGround = new Map<number, boolean>();
   private gravityActions = new Map<number, number>();
   reduced = false;
+  /** Separate accessibility switches (17_Performance): shake and bright flashes can be turned off on their own. */
+  shakeOn = true;
+  flashOn = true;
 
   reset(): void { this.shake = 0; this.puffs = []; this.lastEvent = 0; this.wasGround.clear(); this.gravityActions.clear(); }
 
@@ -40,7 +43,7 @@ export class Feedback {
   update(world: { tick: number; events: any[]; fighters: any[] }, frameTicks = 1): void {
     // Display time can stall or jump backwards (tab switches, test drivers); never let it amplify.
     frameTicks = Number.isFinite(frameTicks) ? Math.max(0, Math.min(6, frameTicks)) : 0;
-    this.shake = this.reduced ? 0 : Math.max(0, this.shake * Math.pow(0.82, frameTicks) - 0.05 * frameTicks);
+    this.shake = this.reduced || !this.shakeOn ? 0 : Math.max(0, this.shake * Math.pow(0.82, frameTicks) - 0.05 * frameTicks);
     if (world.events.length && world.events[world.events.length - 1].id < this.lastEvent) this.lastEvent = 0;
     for (const e of world.events) {
       if (e.id <= this.lastEvent) continue;
@@ -73,7 +76,7 @@ export class Feedback {
     return { x: Math.sin(tick * 2.9) * this.shake, y: Math.cos(tick * 3.7) * this.shake * 0.7 };
   }
 
-  private kick(amount: number): void { if (!this.reduced) this.shake = Math.max(this.shake, amount); }
+  private kick(amount: number): void { if (!this.reduced && this.shakeOn) this.shake = Math.max(this.shake, amount); }
   private dust(x: number, y: number, n: number): void {
     for (let k = 0; k < n; k++) this.add({ x: x + (k - (n - 1) / 2) * 9 * Q, y: y + 2 * Q, size: 6 + k % 2 * 3, life: 16, kind: 'dust' });
   }
@@ -92,7 +95,8 @@ export class Feedback {
           c.beginPath(); c.ellipse(pos.x + dx * spread, pos.y + (dx === 0 ? -3 : 1) * zoom, radius * (dx === 0 ? 1 : 0.8), radius * 0.47, 0, 0, Math.PI * 2); c.fill();
         }
       } else if (p.kind === 'burst') {
-        c.globalAlpha = (1 - t) * 0.85;
+        // With flashes off the ring-out mark is a soft, dim ring rather than a bright burst.
+        c.globalAlpha = (1 - t) * (this.flashOn ? 0.85 : 0.3);
         const r = (p.size + t * (this.reduced ? 0 : 140)) * zoom;
         const g = c.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, r);
         g.addColorStop(0, '#fff8e0'); g.addColorStop(0.4, '#ffd27a'); g.addColorStop(1, 'rgba(255,170,80,0)');
