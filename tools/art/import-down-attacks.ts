@@ -36,7 +36,7 @@ for(const job of jobs){
     if(cursor!==move.totalTicks)throw Error('Timing mismatch '+spec.id);
     entry.clips[spec.id]={frames,ticks};
   }
-  entry.downwardArt={readiness:'animation_alpha',source:'docs/art/DOWN_ATTACKS.md',contacts:12,notes:'Dedicated down-contact drawings; existing anticipation/recovery retained. Airborne origin registration is provisional and requires visual hitbox review.'};
+  entry.downwardArt={readiness:'animation_alpha',source:'docs/art/DOWN_ATTACKS_IMPLEMENTED.md',contacts:12,notes:'Dedicated down-contact drawings; existing anticipation/recovery retained. Airborne origin registration is provisional and requires visual hitbox review.'};
   entry.image=`assets/runtime/fighters/${job.id}-down.png`;entry.sha256=sha256(writePng(join(ROOT,entry.image),atlas));
   console.log(`${job.id}: twelve downward contact poses, exact active timing`);
 }

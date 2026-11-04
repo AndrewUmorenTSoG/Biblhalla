@@ -1814,7 +1814,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -3738,7 +3738,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -5577,7 +5577,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -7405,7 +7405,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -9201,7 +9201,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -11093,7 +11093,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -12920,7 +12920,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -14867,7 +14867,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -16686,7 +16686,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -18570,7 +18570,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -20481,7 +20481,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },
@@ -22334,7 +22334,7 @@
     },
     "downwardArt": {
       "readiness": "animation_alpha",
-      "source": "docs/art/DOWN_ATTACKS.md",
+      "source": "docs/art/DOWN_ATTACKS_IMPLEMENTED.md",
       "contacts": 12,
       "notes": "Dedicated downward contact sprites with consistent bottom registration; existing sprite windup and recovery retained."
     },

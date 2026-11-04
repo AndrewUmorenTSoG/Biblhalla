@@ -220,6 +220,18 @@ export function createCampaign(S: Engine, content: Content) {
         targetX: combat ? (180 + n * 45) * Q : Math.round(Math.min(3600, x + 190)) * Q,
       });
     }
+    if (level.number === 1) {
+      // Two panels on each safe terrace. The generic route spread placed some
+      // panels beyond ledges, where the required height could not be reached.
+      const panelXs = [420, 850, 1450, 2050, 2650, 3250];
+      const panelNames = ['Light', 'Sky', 'Land and plants', 'Lights in the sky', 'Living creatures', 'Humanity and rest'];
+      s.markers.forEach((m, n) => {
+        m.x = panelXs[n] * Q;
+        m.y = 80 * Q;
+        m.targetX = m.x;
+        m.label = `Panel ${n + 1}: ${panelNames[n]}`;
+      });
+    }
     // Stepping routes: three open channels crossed only on rising and sinking stones.
     if (!combat && STEPPING.test(level.objective)) {
       const floors: MapDef['platforms'] = [];
@@ -650,7 +662,7 @@ export function createCampaign(S: Engine, content: Content) {
       const returnRoute = RETURN_ROUTE_LEVELS.includes(s.level.number);
       const exit = returnRoute ? 120 * Q : s.level.combatEnabled ? 350 * Q : ROUTE_END_X * Q;
       if (returnRoute ? f.x <= exit : f.x >= exit) {
-        if (s.kind === 'witness' || s.level.number >= 79) complete(s);
+        if (s.kind === 'witness' || s.level.number === 1 || s.level.number >= 79) complete(s);
         else if (i.interact) complete(s);
       }
     }

@@ -7,6 +7,18 @@ function enter(id,cp=null){const s=A.create(id,'easy',cp);A.begin(s);for(let i=0
 function visit(s,m){const f=s.world.fighters[0];f.x=m.x;f.y=m.y;f.action=null;f.stun=f.respawn=0;s.companion.x=f.x;s.companion.y=f.y;for(const t of s.travelers)if(t.state==='following')t.x=f.x;A.interact(s);if(m.type==='latches'){for(let k=0;k<80&&!m.done;k++){f.x=m.x;f.y=m.y;f.vx=f.vy=0;f.action=null;A.step(s,{interactHeld:true});}}if(s.pendingCard!==null){assert(A.card(s,s.pendingCard));assert(A.resolveCard(s,0));}if(m.carried){f.x=m.targetX;f.y=m.y;A.interact(s);}if(m.type==='escort'&&!m.done){f.x=m.targetX;s.companion.x=f.x;for(const t of s.travelers)if(t.state==='following')t.x=f.x;A.interact(s);}}
 test('all 84 authored scene controllers initialize from clean state',()=>{for(const level of C.campaign.levels){const s=A.create(level.id);assert.equal(s.phase,'intro');assert(s.markers.length>0||s.posts.length>0||level.number===41);assert.equal(s.sourceSummary,SUMMARIES[level.number-1]);assert(s.world.map.main);for(const marker of s.markers){assert(Number.isInteger(marker.x));assert(Number.isInteger(marker.y));assert(Number.isInteger(marker.targetX));}}});
 test('first chapter has real objectives and safe completion through interaction controllers',()=>{for(const id of ['L001','L002','L003','L004','L005','L006']){const s=enter(id);if(s.level.combatEnabled){s.combatCleared=true;s.world.mode='training';s.world.fighters=s.world.fighters.slice(0,1);}for(const m of s.markers)visit(s,m);const f=s.world.fighters[0];f.x=3700*Q;f.y=80*Q;A.step(s,{interact:true});assert.equal(s.phase,'complete',id);assert.equal(s.done.length,s.markers.length);}});
+test('level one can be played from start to exit without teleporting',()=>{
+  const s=A.create('L001');A.begin(s);
+  for(let tick=0;tick<1200&&s.phase==='active';tick++){
+    const f=s.world.fighters[0],x=f.x/Q,next=s.markers.find(m=>!m.done);
+    const atPanel=!!next&&Math.abs(x-next.x/Q)<25&&Math.abs(f.y-next.y)<35*Q;
+    A.step(s,{x:atPanel?0:1,jump:(x>1040&&x<1230)||(x>2300&&x<2490),interact:atPanel});
+    if(s.pendingCard!==null)A.resolveCard(s);
+  }
+  assert.deepEqual(s.done,[0,1,2,3,4,5]);
+  assert.equal(s.phase,'complete');
+  assert(s.world.fighters[0].x>=3650*Q);
+});
 test('carrying disables attacks and allows recover after safe set-down',()=>{const s=enter('L012'),m=s.markers[0],f=s.world.fighters[0];f.x=m.x;f.y=m.y;A.interact(s);assert(f.carry);A.step(s,{light:true,heavy:true});assert.equal(f.action,null);A.interact(s);assert(!f.carry);assert(m.dropped);A.interact(s);assert(f.carry);f.x=m.targetX;A.interact(s);assert(m.done);});
 test('puzzle retries keep the fixed outcome and do not penalize progress',()=>{const s=enter('L003'),m=s.markers[0];s.world.fighters[0].x=m.x;s.world.fighters[0].y=m.y;A.interact(s);assert.equal(A.resolveCard(s,1),false);assert.equal(s.done.length,0);assert.equal(A.resolveCard(s,0),true);assert.equal(s.done.length,1);});
 test('checkpoint restore preserves completed tasks and safe section',()=>{const s=enter('L001');visit(s,s.markers[0]);visit(s,s.markers[1]);visit(s,s.markers[2]);const cp=s.checkpointEvent;assert(cp);const restored=A.create(s.levelId,'easy',cp);assert.equal(restored.done.length,3);assert.equal(restored.stage,'middle_or_phase_two');assert.equal(restored.world.fighters[0].x,1900*Q);});
