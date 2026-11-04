@@ -12,6 +12,7 @@ import { GameAudio } from '../audio/audio.ts';
 import { Renderer } from '../render/renderer.ts';
 import { paintArenaPreview } from '../render/arena-scenes.ts';
 import { damageColor } from '../render/feedback.ts';
+import { playerGlyph } from '../render/player-marks.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
 import { Inputs, missingControllers } from '../input/inputs.ts';
 import { rebind } from '../input/keymap.ts';
@@ -67,7 +68,7 @@ function pause(reason='Take a breath.'){
 }
 function resume(){if(!world)return;const required=world.fighters.filter((f:any)=>f.human&&f.inputId.startsWith('pad:'));if(required.some((f:any)=>!inputs.pads().some((p:any)=>'pad:'+p.index===f.inputId))){$('pause-title').textContent='Reconnect the assigned controller';return;}closeDialogs();if(scene)A.pause(scene,false);else {S.pause(world,false);replayRecord?.entries.push({kind:'pause',on:false});}inputs.clear();inputs.active=true;audio.unlock();runner.reset();$('arena').focus();}
 function retry(){if(scene){startScene(scene.levelId,true);return;}if(tutorial){startTutorial(inputNext);return;}const opts=world.options;startGame(opts);}
-function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?'P'+f.id+' · ':'')+f.name),el('small',f.guard!==null?'Guard':f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor((f.guard!==null?f.guard:f.damage)/10)),'damage');if(f.guard===null)d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,3-f.stocks))+' · '+f.stocks+' lives','life'));box.append(card);}
+function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?playerGlyph(f.id)+' P'+f.id+' · ':'')+f.name),el('small',f.guard!==null?'Guard':f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor((f.guard!==null?f.guard:f.damage)/10)),'damage');if(f.guard===null)d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,3-f.stocks))+' · '+f.stocks+' lives','life'));box.append(card);}
   const seconds=Math.max(0,Math.ceil(world.remaining/60));const timer=el('div',Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),'timer');box.append(timer);
   if(scene){const boss=world.fighters.find((f:any)=>f.guard!==null);if(boss?.ai.tell>0){scene.caption='Boss phase '+boss.ai.phase+' — '+(scene.level.boss?.phases[boss.ai.phase-1]||'Watch the windup, then punish recovery.');scene.captionUntil=scene.tick+2;}
     if(scene.level.number===1){

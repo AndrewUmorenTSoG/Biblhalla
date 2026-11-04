@@ -12,6 +12,7 @@ import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.
 import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
+import { drawPlayerMark } from './player-marks.ts';
 import { EMOTE_TICKS } from '../../../../packages/sim/src/state.ts';
 /** Emote keys 0-3: friendly lines only, fitting the game's tone. */
 export const EMOTE_TEXT=['Shalom!','Well fought!','Here I am!','Ha ha!'];
@@ -202,9 +203,10 @@ export class Renderer{
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
       this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
-      if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
+      if(f.human&&!f.respawn)drawPlayerMark(c,f.id,p.x,p.y-(FIGURE_PX+34)*this.camera.zoom*f.scale,7);
+      if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+(f.human?66:46))*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
-      if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}
+      if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);if(f.human)drawPlayerMark(c,f.id,px,py-26,6);}
       if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
     this.collectElements(world);drawElements(c,{...world,events:this.elementEvents},screen,this.camera.zoom,this.reduced);
