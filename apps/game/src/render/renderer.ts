@@ -12,6 +12,7 @@ import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.
 import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
+import { QualityGovernor, particleCap } from './quality.ts';
 import { drawPlayerMark } from './player-marks.ts';
 import { EMOTE_TICKS } from '../../../../packages/sim/src/state.ts';
 /** Emote keys 0-3: friendly lines only, fitting the game's tone. */
@@ -38,7 +39,7 @@ export class Renderer{
   capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.runDistance.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
-  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
+  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
   /** Speech bubble for an emote; pops in over a few ticks, unless motion is reduced. */
   emoteBubble(id:number,x:number,y:number,age:number){const c=this.ctx,text=EMOTE_TEXT[id]??'!';const k=this.reduced?1:Math.min(1,.4+age*.15);c.save();c.translate(x,y);c.scale(k,k);c.font='bold 17px Georgia';const w=c.measureText(text).width+22;c.fillStyle='#fff7e3';c.strokeStyle='#3c3326';c.lineWidth=2;c.beginPath();c.roundRect(-w/2,-17,w,32,10);c.moveTo(-6,15);c.lineTo(0,25);c.lineTo(6,15);c.fill();c.stroke();c.fillStyle='#2c2419';c.textAlign='center';c.fillText(text,0,5);c.restore();}
@@ -48,7 +49,7 @@ export class Renderer{
   background(tick:number,palette:number,story:any=null){const c=this.ctx;const p=palettes[palette%6];const sky=c.createLinearGradient(0,0,0,650);sky.addColorStop(0,p[0]);sky.addColorStop(.72,p[1]);sky.addColorStop(1,p[2]);c.fillStyle=sky;c.fillRect(0,0,1280,720);
     // Painted far layer: sky and distant land only. Platforms come from collision data, never the painting.
     const art=this.arenaArt(palette);let painted=false;
-    if(art){const h=330,w=h*art.image.naturalWidth/art.image.naturalHeight,off=this.reduced?0:Math.max(-(w-1280)/2,Math.min((w-1280)/2,-this.camera.x*.05));c.drawImage(art.image,640-w/2+off,0,w,h);const fade=c.createLinearGradient(0,h-70,0,h+50);fade.addColorStop(0,art.horizon+'00');fade.addColorStop(1,art.horizon);c.fillStyle=fade;c.fillRect(0,h-70,1280,120);c.fillStyle=art.horizon;c.fillRect(0,h+50,1280,720-h-50);painted=true;}
+    if(art){const h=330,w=h*art.image.naturalWidth/art.image.naturalHeight,off=this.reduced||this.quality.low?0:Math.max(-(w-1280)/2,Math.min((w-1280)/2,-this.camera.x*.05));c.drawImage(art.image,640-w/2+off,0,w,h);const fade=c.createLinearGradient(0,h-70,0,h+50);fade.addColorStop(0,art.horizon+'00');fade.addColorStop(1,art.horizon);c.fillStyle=fade;c.fillRect(0,h-70,1280,120);c.fillStyle=art.horizon;c.fillRect(0,h+50,1280,720-h-50);painted=true;}
     if(!painted){c.fillStyle='#ffefca';c.globalAlpha=.7;c.beginPath();c.arc(story?.level.chapter===14?210:1020,story?.level.chapter===14?280:115,58,0,Math.PI*2);c.fill();c.globalAlpha=1;}
     if(!painted){for(let layer=0;layer<3;layer++){c.fillStyle=layer===0?p[2]:layer===1?p[3]:'#384f53';c.globalAlpha=.18+layer*.11;c.beginPath();c.moveTo(0,600);for(let x=-100;x<=1400;x+=100){const y=390+layer*65+Math.sin((x+palette*131-this.camera.x*.08)/(230-layer*30))*55;c.lineTo(x,y);}c.lineTo(1280,720);c.lineTo(0,720);c.closePath();c.fill();}c.globalAlpha=1;}
     paintArenaScenery(c,this.S.content.maps.maps[palette%6].id,this.camera.x,this.reduced);
@@ -170,7 +171,7 @@ export class Renderer{
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
-    this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
+    if(this.quality.frame(elapsedMs))this.feedback.maxPuffs=particleCap(this.quality.low);this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');

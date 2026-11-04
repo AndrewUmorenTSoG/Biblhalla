@@ -26,6 +26,7 @@ export const KO_SHAKE = HEAVY_SHAKE_MAX;
 export const TRAIL_SPEED = 7;
 const MAX_PUFFS = 90;
 
+
 export class Feedback {
   shake = 0;
   puffs: Puff[] = [];
@@ -35,6 +36,8 @@ export class Feedback {
   reduced = false;
   /** Separate accessibility switches (17_Performance): shake and bright flashes can be turned off on their own. */
   shakeOn = true;
+  /** Particle budget; the quality governor lowers it on slow devices. */
+  maxPuffs = MAX_PUFFS;
   flashOn = true;
 
   reset(): void { this.shake = 0; this.puffs = []; this.lastEvent = 0; this.wasGround.clear(); this.gravityActions.clear(); }
@@ -80,7 +83,7 @@ export class Feedback {
   private dust(x: number, y: number, n: number): void {
     for (let k = 0; k < n; k++) this.add({ x: x + (k - (n - 1) / 2) * 9 * Q, y: y + 2 * Q, size: 6 + k % 2 * 3, life: 16, kind: 'dust' });
   }
-  private add(p: Omit<Puff, 'age'>): void { this.puffs.push({ ...p, age: 0 }); if (this.puffs.length > MAX_PUFFS) this.puffs.splice(0, this.puffs.length - MAX_PUFFS); }
+  private add(p: Omit<Puff, 'age'>): void { this.puffs.push({ ...p, age: 0 }); if (this.puffs.length > this.maxPuffs) this.puffs.splice(0, this.puffs.length - this.maxPuffs); }
 
   /** Draw puffs; `screen` maps sim Q coordinates to canvas pixels. */
   draw(c: CanvasRenderingContext2D, screen: (x: number, y: number) => { x: number; y: number }, zoom: number): void {
