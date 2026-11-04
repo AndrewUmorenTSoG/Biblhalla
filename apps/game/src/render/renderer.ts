@@ -61,7 +61,7 @@ export class Renderer{
     if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
       const key=(i:number)=>'equipped_'+weapon+'_'+i;
       if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
-      if(pose==='run'){if(this.atlas[hero]['gait_'+weapon+'_0'])return 'gait_'+weapon+'_'+Math.floor(time/3)%8;return key(4+Math.floor(time/4)%4);}
+      if(pose==='run'){if(this.atlas[hero]['gait_'+weapon+'_0']){const count=this.atlas[hero]['gait_'+weapon+'_11']?12:8;return 'gait_'+weapon+'_'+Math.floor(time/(24/count))%count;}return key(4+Math.floor(time/4)%4);}
       if(pose==='crouch')return key(time<3?2:3);
       const air:{[key:string]:number}={air_rise:8,air_apex:9,air_fall:10,land:11};if(pose in air)return key(air[pose]);
       if(pose==='backflip')return key(time<4?8:time<9?9:time<14?10:11);
@@ -169,7 +169,7 @@ export class Renderer{
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
-    this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const shake=this.feedback.offset(world.tick);
+    this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
@@ -201,7 +201,7 @@ export class Renderer{
       motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
       const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:32):motion.time+(active&&!f.hitstop?alpha:0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+46)*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);}

@@ -17,5 +17,5 @@ export class RunDistance {
     if(old&&tick>old.tick&&active&&old.active&&Math.abs(x-old.x)<100)distance+=Math.abs(x-old.x);
     this.samples.set(id,{x,tick,distance,active});
   }
-  phase(id:number,visualX:number,ticksPerCycle=24){const s=this.samples.get(id);if(!s)return 0;const delta=s.active&&Math.abs(visualX-s.x)<100?Math.abs(visualX-s.x):0;return (s.distance+delta)*ticksPerCycle/120;}
+  phase(id:number,visualX:number,ticksPerCycle=24,cycleUnits=168){const s=this.samples.get(id);if(!s)return 0;const delta=s.active&&Math.abs(visualX-s.x)<100?Math.abs(visualX-s.x):0;return (s.distance+delta)*ticksPerCycle/cycleUnits;}
 }

@@ -15,3 +15,5 @@ Reproduce: `node tools/art/import-run-cycles.ts`; `node tools/art/pack-fighters.
 Tests cover full loop order, phase continuity, teleport rejection, render-rate invariance, acceleration/braking/reversal, and existing combos. The equipped preview demonstrates both weapons for every fighter. This is a closer movement reference implementation; sustained FPS on the user's hardware has not been measured.
 
 Final validation: TypeScript, offline build, preview smoke checks and all 262 tests passed. The offline page decreased from approximately 92 MB to 77 MB after repacking the expanded animation set.
+
+The 4 November follow-up supersedes this eight-pose pipeline. See FLUID_RUNNING.md for the twelve-pose weapon and unarmed loops and current-manifest importer.

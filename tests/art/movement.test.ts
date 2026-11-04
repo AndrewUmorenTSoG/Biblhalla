@@ -6,12 +6,12 @@ const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighte
 const renderer=Object.create(Renderer.prototype) as Renderer;
 renderer.atlas=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.frames]));
 renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.clips]));
-test('all twelve fighters cycle through eight run drawings and keep airborne phases stable',()=>{
+test('all twelve fighters cycle through twelve run drawings and keep airborne phases stable',()=>{
   assert.equal(Object.keys(meta).length,12);
   for(const id of Object.keys(meta)){
-    const selected=new Set(Array.from({length:32},(_,tick)=>renderer.frameFor(id,'run','unarmed','',0,tick)));
-    assert.equal(selected.size,8,id);
-    assert.equal(renderer.frameFor(id,'run','unarmed','',0,32),'run_0');
+    const selected=new Set(Array.from({length:24},(_,tick)=>renderer.frameFor(id,'run','unarmed','',0,tick)));
+    assert.equal(selected.size,12,id);
+    assert.equal(renderer.frameFor(id,'run','unarmed','',0,24),'run_0');
     for(const pose of ['air_rise','air_apex','air_fall','land']){
       assert.equal(renderer.frameFor(id,pose,'unarmed','',0,1),pose);
       assert.equal(renderer.frameFor(id,pose,'unarmed','',0,999),pose);
