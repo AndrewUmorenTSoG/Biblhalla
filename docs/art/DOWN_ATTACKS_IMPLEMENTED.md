@@ -1,6 +1,6 @@
 # Downward attack artwork integration
 
-Implemented 2026-11-02 from DOWN_ATTACKS.md.
+Implemented 2026-11-02 from the generated down-attack drawing brief. The completed brief was removed after integration; `npm run art:down-attacks` can regenerate it if needed.
 
 All 12 fighters have 12 dedicated contact drawings each (144 total): down-light, down-air, ground-pound and down-signature for both weapons and unarmed. Existing anticipation and recovery frames remain. This is a contact-art pass, not 144 newly drawn full animation sequences.
 

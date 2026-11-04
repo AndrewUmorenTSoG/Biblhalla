@@ -175,6 +175,12 @@ export class Renderer{
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
     for(const it of world.items){c.save();c.translate(it.x/Q,it.y/Q);c.scale(.575,-.575);if(it.neutral||!it.weapon)drawFlamingSwordPickup(c,world.tick,this.reduced);else drawWeapon(c,it.weapon,0,-20,Math.PI/3);c.restore();}
     if(scene){
+      if(scene.level.number===1){
+        const ready=scene.done.length===scene.markers.length;
+        c.save();c.translate(3650,80);c.strokeStyle=ready?'#f4d58c':'#8da9a5';c.fillStyle=ready?'rgba(244,213,140,.22)':'rgba(141,169,165,.12)';c.lineWidth=5;
+        c.beginPath();c.moveTo(-34,0);c.lineTo(-34,104);c.quadraticCurveTo(0,145,34,104);c.lineTo(34,0);c.closePath();c.fill();c.stroke();
+        c.scale(1,-1);c.fillStyle=ready?'#f4d58c':'#c4d4c9';c.textAlign='center';c.font='bold 17px system-ui';c.fillText(ready?'EXIT · walk here':'EXIT · collect all 6 panels',0,-151);c.restore();
+      }
       for(const m of scene.markers){if(m.done)continue;if(scene.level.number===1&&m.id>scene.done.length)continue;const x=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x)/Q,y=m.y/Q;
         c.save();c.translate(x,y+32);c.scale(1,-1);c.fillStyle=m.carried?'rgba(232,208,155,.3)':'#e5c17f';c.strokeStyle='#5c4a30';c.lineWidth=2;c.beginPath();c.moveTo(0,-22);c.lineTo(21,0);c.lineTo(0,22);c.lineTo(-21,0);c.closePath();c.fill();c.stroke();c.fillStyle='#4b4134';c.textAlign='center';c.font='bold 14px system-ui';c.fillText(String(m.id+1),0,5);c.font='12px system-ui';c.fillStyle='#233a40';c.fillText(m.carried?'Deliver here':m.type==='escort'&&m.stage?'Safe gate':m.label,0,-32);c.restore();
       }
