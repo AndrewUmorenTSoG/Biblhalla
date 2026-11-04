@@ -8,6 +8,7 @@ import { createCampaign } from '../../../packages/campaign/src/index.ts';
 import { startApp } from './ui/app.ts';
 import type { RuntimeArt } from './render/renderer.ts';
 import { guardAtlas, guardClips } from './render/art-guard.ts';
+import { lazyMap } from './render/lazy-map.ts';
 
 function showFatal(message: string): void {
   document.body.replaceChildren();
@@ -30,10 +31,10 @@ function image(uri: string): HTMLImageElement {
 }
 
 function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
-  const images: Record<string, HTMLImageElement> = {};
-  for (const [id, uri] of Object.entries(raw?.images ?? {})) images[id] = image(uri);
-  const arenas: RuntimeArt['arenas'] = {};
-  for (const [id, a] of Object.entries(raw?.arenas ?? {})) arenas[id] = { image: image(a.uri), horizon: a.horizon, stone: a.stone };
+  // Sheets decode on first use (17_Performance texture budget): a match decodes only its
+  // own fighters and arena, and the 2.5 s countdown covers the decode.
+  const images = lazyMap(raw?.images ?? {}, uri => image(uri));
+  const arenas = lazyMap(raw?.arenas ?? {}, a => ({ image: image(a.uri), horizon: a.horizon, stone: a.stone })) as NonNullable<RuntimeArt['arenas']>;
   const problems: string[] = [];
   const atlas = guardAtlas(raw?.atlas, problems);
   const clips = guardClips(raw?.clips, atlas, problems);
