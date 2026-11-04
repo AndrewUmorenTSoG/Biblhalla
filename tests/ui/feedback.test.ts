@@ -5,10 +5,12 @@ import { S, Q } from '../helpers/engine.ts';
 
 const fighter = (o: any = {}) => ({ id: 1, x: 0, y: 0, vx: 0, vy: 0, ground: { id: 0 }, stun: 0, stocks: 3, respawn: 0, ...o });
 
-test('harder launches shake the screen more, capped below the KO shake', () => {
+test('shake stays within the spec: 2 px for light impacts, 6 px for heavy ones and ring-outs', () => {
   assert.equal(shakeFor(0, 0), 0);
   assert.ok(shakeFor(12 * Q, 80) > shakeFor(6 * Q, 80));
-  assert.ok(shakeFor(40 * Q, 400) <= 14 && 14 < KO_SHAKE);
+  for (const speed of [0, 3, 6, 8.9]) for (const dmg of [0, 80, 400]) assert.ok(shakeFor(speed * Q, dmg) <= 2, `light ${speed}`);
+  for (const speed of [9, 15, 40]) for (const dmg of [0, 80, 400]) assert.ok(shakeFor(speed * Q, dmg) <= 6, `heavy ${speed}`);
+  assert.equal(KO_SHAKE, 6);
 });
 
 test('a KO makes a burst and the strongest shake, which then settles to nothing', () => {

@@ -7,13 +7,21 @@ const Q = 256;
 
 export interface Puff { x: number; y: number; age: number; life: number; size: number; kind: 'smoke' | 'dust' | 'burst' | 'gravity' }
 
-/** Shake in screen pixels for a hit that leaves the target moving at `speedQ`. */
+/** Spec limits (13_Audio_VFX): at most 2 CSS px for a light impact, 6 for a heavy one. */
+export const LIGHT_SHAKE_MAX = 2;
+export const HEAVY_SHAKE_MAX = 6;
+/** Launch speed (units per tick) from which a hit counts as heavy for shake. */
+export const HEAVY_LAUNCH = 9;
+
+/** Shake in CSS pixels for a hit that leaves the target moving at `speedQ`. */
 export function shakeFor(speedQ: number, damageTenths: number): number {
-  const launch = Math.max(0, speedQ / Q - 4);
-  return Math.min(14, launch * 0.9 + damageTenths / 60);
+  const speed = speedQ / Q, launch = Math.max(0, speed - 4);
+  const raw = launch * 0.45 + damageTenths / 120;
+  return Math.min(speed >= HEAVY_LAUNCH ? HEAVY_SHAKE_MAX : LIGHT_SHAKE_MAX, raw);
 }
 
-export const KO_SHAKE = 18;
+/** A ring-out is the heaviest impact, still within the heavy limit. */
+export const KO_SHAKE = HEAVY_SHAKE_MAX;
 /** Launch speed (units per tick) above which a stunned fighter leaves smoke. */
 export const TRAIL_SPEED = 7;
 const MAX_PUFFS = 90;
