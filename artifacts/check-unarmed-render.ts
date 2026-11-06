@@ -1,0 +1,6 @@
+import{createCanvas,loadImage}from'@napi-rs/canvas';import{readFileSync,writeFileSync}from'node:fs';import{Renderer}from'../apps/game/src/render/renderer.ts';
+const defs=JSON.parse(readFileSync('production-pack/09_Data/fighters.json','utf8')).fighters,meta=JSON.parse(readFileSync('assets/runtime/fighters/fighters.json','utf8')),c=createCanvas(1440,1440),ctx=c.getContext('2d');ctx.fillStyle='#354653';ctx.fillRect(0,0,c.width,c.height);
+const r=Object.create(Renderer.prototype);Object.assign(r,{ctx,atlas:Object.fromEntries(Object.entries(meta).map(([id,e])=>[id,e.frames])),clips:Object.fromEntries(Object.entries(meta).map(([id,e])=>[id,e.clips])),art:{},S:{moves:{}},reduced:false});
+for(const def of defs){const image=await loadImage(meta[def.id].image);Object.defineProperty(image,'naturalWidth',{value:image.width});Object.defineProperty(image,'complete',{value:true});r.art[def.id]=image;}
+for(let n=0;n<12;n++){const def=defs[n],weapon='unarmed';ctx.fillStyle='#f7dfb4';ctx.font='10px sans-serif';ctx.fillText(def.id+' / '+weapon,3,n*120+12);ctx.strokeStyle='#c8d5cc66';ctx.beginPath();ctx.moveTo(0,n*120+116);ctx.lineTo(1440,n*120+116);ctx.stroke();for(let i=0;i<12;i++)r.rig(def.id,i*120+60,n*120+116,1,1,'run',i*2,0,weapon);}
+writeFileSync('artifacts/registered-unarmed-poses.png',c.toBuffer('image/png'));
