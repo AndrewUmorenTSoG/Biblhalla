@@ -10,3 +10,13 @@ dist/
 .DS_Store
 Thumbs.db
 build/
+
+# Art working files: drafts, pre-packing backups and scratch output stay local.
+# The packed sheets the game ships (assets/runtime/fighters/*-packed.png and fighters.json) stay tracked.
+artifacts/
+assets/runtime/fighters/*-complete.png
+assets/runtime/fighters/*-down.png
+assets/runtime/fighters/*-elemental.png
+assets/runtime/fighters/*-fluid-run.png
+assets/runtime/fighters/*-run-cycle.png
+assets/runtime/fighters/fighters-before-*.json
