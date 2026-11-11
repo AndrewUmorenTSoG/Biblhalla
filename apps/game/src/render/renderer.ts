@@ -13,6 +13,7 @@ import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.
 import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
+import { Callouts } from './callouts.ts';
 import { edgePointer, nextTask, drawPointer } from './waypoint.ts';
 import { QualityGovernor, particleCap } from './quality.ts';
 import { drawPlayerMark } from './player-marks.ts';
@@ -40,10 +41,10 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
+  capture(world:SimState){if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
-  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
+  canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();callouts=new Callouts();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
   /** Speech bubble for an emote; pops in over a few ticks, unless motion is reduced. */
   emoteBubble(id:number,x:number,y:number,age:number){const c=this.ctx,text=EMOTE_TEXT[id]??'!';const k=this.reduced?1:Math.min(1,.4+age*.15);c.save();c.translate(x,y);c.scale(k,k);c.font='bold 17px Georgia';const w=c.measureText(text).width+22;c.fillStyle='#fff7e3';c.strokeStyle='#3c3326';c.lineWidth=2;c.beginPath();c.roundRect(-w/2,-17,w,32,10);c.moveTo(-6,15);c.lineTo(0,25);c.lineTo(6,15);c.fill();c.stroke();c.fillStyle='#2c2419';c.textAlign='center';c.fillText(text,0,5);c.restore();}
@@ -185,7 +186,7 @@ export class Renderer{
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}
     if(this.reduced){this.camera={x:cx,y:cy,zoom:isRoute?.95:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette,scene);
-    if(this.quality.frame(elapsedMs))this.feedback.maxPuffs=particleCap(this.quality.low);this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
+    if(this.quality.frame(elapsedMs))this.feedback.maxPuffs=particleCap(this.quality.low);this.callouts.update(world);this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])this.surfaces.draw(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
@@ -206,6 +207,8 @@ export class Renderer{
     c.restore();
     const screen=(x:number,y:number)=>({x:640+shake.x+(x/Q-this.camera.x)*this.camera.zoom,y:460+shake.y-(y/Q-this.camera.y)*this.camera.zoom});
     this.feedback.draw(c,screen,this.camera.zoom);
+    // Story walking routes have no combat to call out.
+    if(!isRoute)this.callouts.draw(c,screen,this.camera.zoom,world.tick,this.reduced);
     // Story guidance: point to the next unfinished task (witness scenes included; never in arena matches).
     if(scene&&scene.phase==='active'){const m=nextTask(scene.markers);if(m){const tx=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x),pos=screen(tx,m.y+32*Q);drawPointer(c,edgePointer(pos),m.label,Math.abs(tx-player.x)/Q/40,world.tick,this.reduced);}}
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
