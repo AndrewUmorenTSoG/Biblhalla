@@ -50,11 +50,12 @@ export function drawCharge(c:CanvasRenderingContext2D,f:Fighter,x:number,y:numbe
   c.restore();
 }
 
-export function drawElementProjectile(c:CanvasRenderingContext2D,p:Projectile,owner:Fighter|undefined,x:number,y:number,zoom:number,tick:number):boolean{
+export function drawElementProjectile(c:CanvasRenderingContext2D,p:Projectile,owner:Fighter|undefined,x:number,y:number,zoom:number,tick:number,reduced=false,standingHeight=192):boolean{
   c.save();c.translate(x,y);c.scale(zoom*p.facing,zoom);
   let drawn=true;
   if(p.effect==='shield'){
-    c.scale(.5,.5);drawFlyingWeapon(c,'shield',0,0,0,tick*.65);
+    const scale=96*(owner?.scale??1)/standingHeight;
+    c.scale(scale,scale);drawFlyingWeapon(c,'shield',0,0,0,reduced?0:tick*.65);
   }else if(p.effect==='rock'){
     c.fillStyle='#91785f';c.beginPath();c.moveTo(-17,17);c.lineTo(-9,-12);c.lineTo(5,-20);c.lineTo(19,12);c.closePath();c.fill();
   }else if(p.effect==='sound'){
