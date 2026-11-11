@@ -31,3 +31,8 @@
 #bindings button{border-radius:2px;background:#111317;border:1px solid #393c42;color:#ddd}
 #bindings kbd{background:#e0e1e3;color:#141518;border-radius:1px;min-width:50px;text-align:center}
 @media(max-width:600px){#info-dialog.controls-dialog{padding:22px 16px}.controls-tabs button{padding:8px 13px}.controls-table td,.controls-table tbody th{padding:8px}.controls-table td{width:43%}}
+
+/* Stock-loss cues: a brief red flash when a life is lost, a steady marker on the last life. */
+.hud-card.stock-lost{border-color:#e0715a;box-shadow:0 0 0 2px #e0715a99}
+.hud-card.last-life .life{color:#ff9b7a;font-weight:700}
+.hud-card.eliminated{opacity:.45}
