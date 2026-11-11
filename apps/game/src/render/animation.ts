@@ -14,7 +14,9 @@ export class RunDistance {
   clear(){this.samples.clear();}
   capture(id:number,x:number,tick:number,active:boolean){
     const old=this.samples.get(id);let distance=old?.distance??0;
-    if(old&&tick>old.tick&&active&&old.active&&Math.abs(x-old.x)<100)distance+=Math.abs(x-old.x);
+    // Count the first moving tick after a stop too, so the footfall does not
+    // lag behind the fighter each time they change direction or resume running.
+    if(old&&tick>old.tick&&active&&Math.abs(x-old.x)<100)distance+=Math.abs(x-old.x);
     this.samples.set(id,{x,tick,distance,active});
   }
   phase(id:number,visualX:number,ticksPerCycle=24,cycleUnits=168){const s=this.samples.get(id);if(!s)return 0;const delta=s.active&&Math.abs(visualX-s.x)<100?Math.abs(visualX-s.x):0;return (s.distance+delta)*ticksPerCycle/cycleUnits;}

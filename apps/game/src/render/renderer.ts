@@ -7,7 +7,8 @@ import { drawEncounter } from './encounter.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
-import { paintArenaScenery, paintArenaSurface } from './arena-scenes.ts';
+import { paintArenaScenery } from './arena-scenes.ts';
+import { SurfaceCache } from './surface-cache.ts';
 import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
@@ -34,9 +35,10 @@ export class Renderer{
   shieldCatchTicks=new Map<number,number>();
   collectElements(world:SimState){this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),world.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
   runDistance=new RunDistance();
+  surfaces=new SurfaceCache();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.runDistance.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
+  capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
@@ -68,7 +70,7 @@ export class Renderer{
       if(pose==='crouch')return key(time<3?2:3);
       const air:{[key:string]:number}={air_rise:8,air_apex:9,air_fall:10,land:11};if(pose in air)return key(air[pose]);
       if(pose==='backflip')return key(time<4?8:time<9?9:time<14?10:11);
-      if(pose==='weapon_pickup')return key(time<4?3:0);if(pose==='dodge')return key(3);if(pose==='recovery')return key(15);
+      if(pose==='weapon_pickup')return key(time<4?3:0);if(pose==='dodge')return key(time<3?2:time<11?3:11);if(pose==='recovery')return key(15);
     }
     if(weapon==='sling'&&this.atlas[hero]?.slinger_idle_0&&!move){
       if(pose==='idle'||pose==='happy')return 'slinger_idle_'+Math.floor(time/16)%4;
@@ -127,6 +129,7 @@ export class Renderer{
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
       if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
       if(pose==='land'&&!this.reduced){const settle=Math.max(0,1-time/5);c.scale(1+settle*.025,1-settle*.035);}
+      if(pose==='dodge'&&!this.reduced){const burst=Math.min(1,time/3)*Math.min(1,Math.max(0,17-time)/6);c.translate(0,-frame.pivotY*.45);c.rotate(-.1*burst);c.translate(0,frame.pivotY*.45);}
       if(pose==='backflip'&&!this.reduced){const t=Math.max(0,Math.min(1,time/17));const smooth=t*t*(3-2*t);c.translate(0,-frame.pivotY*.48);c.rotate(-Math.PI*2*smooth);c.translate(0,frame.pivotY*.48);}
       else if(recoil){c.translate(0,-frame.pivotY*.45);c.rotate(recoil);c.translate(0,frame.pivotY*.45);}
       else if(pose==='recovery'&&!move&&!this.clips[hero]?.hitstun)c.rotate(-.12);
@@ -176,7 +179,7 @@ export class Renderer{
     if(this.quality.frame(elapsedMs))this.feedback.maxPuffs=particleCap(this.quality.low);this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     // Story routes borrow their chapter arena's surface design.
-    const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])paintArenaSurface(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
+    const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])this.surfaces.draw(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
     for(const it of world.items){c.save();c.translate(it.x/Q,it.y/Q);c.scale(.575,-.575);if(it.neutral||!it.weapon)drawFlamingSwordPickup(c,world.tick,this.reduced);else drawWeapon(c,it.weapon,0,-20,Math.PI/3);c.restore();}
     if(scene){
       if(scene.level.number===1){
