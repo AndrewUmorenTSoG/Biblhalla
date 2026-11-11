@@ -5,6 +5,19 @@ test('gait follows travelled distance and does not reset when painting or briefl
  r.capture(1,120,21,false);assert.equal(r.phase(1,120),120*24/168);r.capture(1,120,22,true);r.capture(1,126,23,true);assert.equal(r.phase(1,126),126*24/168);
  r.capture(1,1000,24,true);assert.equal(r.phase(1,1000),126*24/168);
 });
+test('the first moving tick after a stop advances the planted foot',()=>{
+ const r=new RunDistance();r.capture(1,0,0,false);r.capture(1,7,1,true);
+ assert.equal(r.phase(1,7),1);
+ r.capture(1,7,2,false);r.capture(1,14,3,true);
+ assert.equal(r.phase(1,14),2);
+});
+test('equipped dodges show preparation, burst, and landing poses',()=>{
+ const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+ const r=Object.create(Renderer.prototype) as Renderer;
+ r.atlas=Object.fromEntries(Object.entries(meta).map(([id,e]:[string,any])=>[id,e.frames]));
+ for(const def of S.content.fighters.fighters)for(const weapon of def.weaponPair)
+  assert.deepEqual([0,6,14].map(t=>r.frameFor(def.id,'dodge',weapon,'',0,t)),[2,3,11].map(i=>`equipped_${weapon}_${i}`));
+});
 test('render batching at 30, 60 and 120 Hz produces the same gait phase at the same position',()=>{
  const phases=(hz:number)=>{const r=new RunDistance();r.capture(1,0,0,true);let tick=0;const samples:number[]=[];for(let frame=1;frame<=hz;frame++){const t=frame*60/hz;while(tick<Math.floor(t)){tick++;r.capture(1,tick*7,tick,true);}const phase=r.phase(1,t*7);if(frame%(hz/10)===0)samples.push(phase);}return samples;};
  assert.deepEqual(phases(30),phases(60));assert.deepEqual(phases(60),phases(120));
