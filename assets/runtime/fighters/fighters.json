@@ -45296,7 +45296,7 @@
   },
   "nehemiah": {
     "image": "assets/runtime/fighters/nehemiah-fluid-packed.png",
-    "sha256": "22008309a746bf20faa1981eb459bfb374bb26e73bf394b7b6a5c1a9c04af303",
+    "sha256": "ee450bd4761746397d9a83ff00351b41cd38d23516f0f6e3d3d3235f7dcfcdd6",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/11_nehemiah_move_sheet.png",
     "sourceSha256": "62489d433cda80e1856e699c2a6d0bdf4a1e4a0161b5cef51a438680dbefd8af",
@@ -45305,1310 +45305,3276 @@
     "approval": "pending",
     "frames": {
       "idle": {
-        "x": 4,
-        "y": 4,
-        "w": 94,
-        "h": 160,
-        "pivotX": 62,
-        "pivotY": 160
+        "x": 233,
+        "y": 365,
+        "w": 64,
+        "h": 109,
+        "pivotX": 42,
+        "pivotY": 109
       },
       "turnaround": {
-        "x": 106,
-        "y": 4,
-        "w": 85,
-        "h": 158,
-        "pivotX": 44,
-        "pivotY": 158
-      },
-      "light": {
-        "x": 199,
-        "y": 4,
-        "w": 118,
-        "h": 138,
-        "pivotX": 35,
-        "pivotY": 138
-      },
-      "sig_hammer_n": {
-        "x": 325,
-        "y": 4,
-        "w": 115,
-        "h": 168,
-        "pivotX": 54,
-        "pivotY": 168
-      },
-      "sig_hammer_s": {
-        "x": 448,
-        "y": 4,
-        "w": 115,
-        "h": 133,
-        "pivotX": 85,
-        "pivotY": 133
-      },
-      "sig_hammer_d": {
-        "x": 571,
-        "y": 4,
-        "w": 118,
-        "h": 125,
-        "pivotX": 75,
-        "pivotY": 125
-      },
-      "sig_sword_n": {
-        "x": 697,
-        "y": 4,
-        "w": 116,
-        "h": 157,
-        "pivotX": 42,
-        "pivotY": 157
-      },
-      "sig_sword_s": {
-        "x": 821,
-        "y": 4,
-        "w": 112,
-        "h": 147,
-        "pivotX": 52,
-        "pivotY": 147
-      },
-      "sig_sword_d": {
-        "x": 4,
-        "y": 180,
-        "w": 118,
-        "h": 118,
-        "pivotX": 96,
-        "pivotY": 118
-      },
-      "motion_idle": {
-        "x": 130,
-        "y": 180,
-        "w": 85,
-        "h": 160,
-        "pivotX": 49,
-        "pivotY": 160,
-        "gripX": 82,
-        "gripY": 93
-      },
-      "run_0": {
-        "x": 223,
-        "y": 180,
-        "w": 114,
-        "h": 152,
-        "pivotX": 64,
-        "pivotY": 152,
-        "gripX": 107,
-        "gripY": 71
-      },
-      "run_1": {
-        "x": 345,
-        "y": 180,
-        "w": 91,
-        "h": 151,
-        "pivotX": 47,
-        "pivotY": 151,
-        "gripX": 85,
-        "gripY": 73
-      },
-      "run_2": {
-        "x": 444,
-        "y": 180,
-        "w": 91,
-        "h": 152,
-        "pivotX": 48,
-        "pivotY": 152,
-        "gripX": 85,
-        "gripY": 72
-      },
-      "run_3": {
-        "x": 543,
-        "y": 180,
-        "w": 110,
-        "h": 145,
-        "pivotX": 64,
-        "pivotY": 146,
-        "gripX": 104,
-        "gripY": 68
-      },
-      "run_4": {
-        "x": 661,
-        "y": 180,
-        "w": 117,
-        "h": 149,
-        "pivotX": 69,
-        "pivotY": 153,
-        "gripX": 111,
-        "gripY": 67
-      },
-      "run_5": {
-        "x": 786,
-        "y": 180,
-        "w": 113,
-        "h": 151,
-        "pivotX": 66,
-        "pivotY": 153,
-        "gripX": 107,
-        "gripY": 64
-      },
-      "run_6": {
-        "x": 907,
-        "y": 180,
-        "w": 94,
-        "h": 152,
-        "pivotX": 55,
-        "pivotY": 152,
-        "gripX": 88,
-        "gripY": 70
-      },
-      "run_7": {
-        "x": 4,
-        "y": 348,
-        "w": 88,
-        "h": 152,
-        "pivotX": 51,
-        "pivotY": 152,
-        "gripX": 82,
-        "gripY": 69
-      },
-      "air_rise": {
-        "x": 100,
-        "y": 348,
-        "w": 117,
-        "h": 152,
-        "pivotX": 56,
-        "pivotY": 152,
-        "gripX": 110,
-        "gripY": 51
-      },
-      "air_apex": {
-        "x": 225,
-        "y": 348,
-        "w": 103,
-        "h": 109,
-        "pivotX": 59,
-        "pivotY": 109,
-        "gripX": 99,
-        "gripY": 39
-      },
-      "air_fall": {
-        "x": 336,
-        "y": 348,
-        "w": 120,
-        "h": 138,
-        "pivotX": 58,
-        "pivotY": 138,
-        "gripX": 116,
-        "gripY": 59
-      },
-      "land": {
-        "x": 464,
-        "y": 348,
-        "w": 134,
+        "x": 1289,
+        "y": 478,
+        "w": 58,
         "h": 108,
-        "pivotX": 83,
-        "pivotY": 108,
-        "gripX": 108,
-        "gripY": 95
-      },
-      "attack_hammer_0": {
-        "x": 606,
-        "y": 348,
-        "w": 143,
-        "h": 152,
-        "pivotX": 73,
-        "pivotY": 152
-      },
-      "attack_hammer_1": {
-        "x": 757,
-        "y": 348,
-        "w": 152,
-        "h": 151,
-        "pivotX": 85,
-        "pivotY": 151
-      },
-      "attack_hammer_2": {
-        "x": 4,
-        "y": 508,
-        "w": 132,
-        "h": 168,
-        "pivotX": 77,
-        "pivotY": 168
-      },
-      "attack_hammer_3": {
-        "x": 144,
-        "y": 508,
-        "w": 158,
-        "h": 133,
-        "pivotX": 78,
-        "pivotY": 133
-      },
-      "attack_hammer_4": {
-        "x": 310,
-        "y": 508,
-        "w": 163,
-        "h": 127,
-        "pivotX": 82,
-        "pivotY": 127
-      },
-      "attack_hammer_5": {
-        "x": 481,
-        "y": 508,
-        "w": 151,
-        "h": 121,
-        "pivotX": 70,
-        "pivotY": 121
-      },
-      "attack_hammer_6": {
-        "x": 640,
-        "y": 508,
-        "w": 151,
-        "h": 125,
-        "pivotX": 84,
-        "pivotY": 125
-      },
-      "attack_hammer_7": {
-        "x": 799,
-        "y": 508,
-        "w": 143,
-        "h": 152,
-        "pivotX": 73,
-        "pivotY": 152
-      },
-      "attack_sword_0": {
-        "x": 4,
-        "y": 684,
-        "w": 144,
-        "h": 128,
-        "pivotX": 72,
-        "pivotY": 128
-      },
-      "attack_sword_1": {
-        "x": 156,
-        "y": 684,
-        "w": 128,
-        "h": 168,
-        "pivotX": 64,
-        "pivotY": 168
-      },
-      "attack_sword_2": {
-        "x": 292,
-        "y": 684,
-        "w": 122,
-        "h": 168,
-        "pivotX": 63,
-        "pivotY": 168
-      },
-      "attack_sword_3": {
-        "x": 422,
-        "y": 684,
-        "w": 125,
-        "h": 159,
-        "pivotX": 71,
-        "pivotY": 159
-      },
-      "attack_sword_4": {
-        "x": 555,
-        "y": 684,
-        "w": 168,
-        "h": 118,
-        "pivotX": 88,
-        "pivotY": 118
-      },
-      "attack_sword_5": {
-        "x": 731,
-        "y": 684,
-        "w": 148,
-        "h": 128,
-        "pivotX": 67,
-        "pivotY": 128
-      },
-      "attack_sword_6": {
-        "x": 4,
-        "y": 860,
-        "w": 155,
-        "h": 118,
-        "pivotX": 75,
-        "pivotY": 118
-      },
-      "attack_sword_7": {
-        "x": 167,
-        "y": 860,
-        "w": 144,
-        "h": 128,
-        "pivotX": 72,
-        "pivotY": 128
-      },
-      "defence_0": {
-        "x": 319,
-        "y": 860,
-        "w": 124,
-        "h": 160,
-        "pivotX": 66,
-        "pivotY": 160,
-        "gripX": 110,
-        "gripY": 69
-      },
-      "defence_1": {
-        "x": 451,
-        "y": 860,
-        "w": 140,
-        "h": 159,
-        "pivotX": 74,
-        "pivotY": 159,
-        "gripX": 116,
-        "gripY": 68
-      },
-      "defence_2": {
-        "x": 599,
-        "y": 860,
-        "w": 179,
-        "h": 158,
-        "pivotX": 76,
-        "pivotY": 158,
-        "gripX": 115,
-        "gripY": 99
-      },
-      "defence_3": {
-        "x": 786,
-        "y": 860,
-        "w": 128,
-        "h": 158,
-        "pivotX": 67,
-        "pivotY": 158,
-        "gripX": 108,
-        "gripY": 67
-      },
-      "defence_4": {
-        "x": 4,
-        "y": 1028,
-        "w": 128,
-        "h": 168,
-        "pivotX": 67,
-        "pivotY": 168,
-        "gripX": 109,
-        "gripY": 69
-      },
-      "defence_5": {
-        "x": 140,
-        "y": 1028,
-        "w": 110,
-        "h": 172,
-        "pivotX": 37,
-        "pivotY": 172,
-        "gripX": 98,
-        "gripY": 65
-      },
-      "defence_6": {
-        "x": 258,
-        "y": 1028,
-        "w": 168,
-        "h": 168,
-        "pivotX": 48,
-        "pivotY": 168,
-        "gripX": 162,
-        "gripY": 58
-      },
-      "defence_7": {
-        "x": 434,
-        "y": 1028,
-        "w": 96,
-        "h": 168,
-        "pivotX": 37,
-        "pivotY": 168,
-        "gripX": 86,
-        "gripY": 86
-      },
-      "defence_8": {
-        "x": 538,
-        "y": 1028,
-        "w": 128,
-        "h": 166,
-        "pivotX": 67,
-        "pivotY": 166,
-        "gripX": 108,
-        "gripY": 68
-      },
-      "defence_9": {
-        "x": 674,
-        "y": 1028,
-        "w": 146,
-        "h": 116,
-        "pivotX": 80,
-        "pivotY": 116,
-        "gripX": 129,
-        "gripY": 43
-      },
-      "defence_10": {
-        "x": 828,
-        "y": 1028,
-        "w": 166,
-        "h": 128,
-        "pivotX": 81,
-        "pivotY": 128,
-        "gripX": 131,
-        "gripY": 56
-      },
-      "defence_11": {
-        "x": 4,
-        "y": 1208,
-        "w": 129,
-        "h": 165,
-        "pivotX": 68,
-        "pivotY": 165,
-        "gripX": 109,
-        "gripY": 70
-      },
-      "defence_12": {
-        "x": 141,
-        "y": 1208,
-        "w": 128,
-        "h": 164,
-        "pivotX": 67,
-        "pivotY": 164,
-        "gripX": 108,
-        "gripY": 67
-      },
-      "defence_13": {
-        "x": 277,
-        "y": 1208,
-        "w": 140,
-        "h": 164,
-        "pivotX": 73,
-        "pivotY": 164,
-        "gripX": 111,
-        "gripY": 105
-      },
-      "defence_14": {
-        "x": 425,
-        "y": 1208,
-        "w": 152,
-        "h": 161,
-        "pivotX": 88,
-        "pivotY": 161,
-        "gripX": 118,
-        "gripY": 100
-      },
-      "defence_15": {
-        "x": 585,
-        "y": 1208,
-        "w": 129,
-        "h": 167,
-        "pivotX": 68,
-        "pivotY": 167,
-        "gripX": 112,
-        "gripY": 67
-      },
-      "down_hammer_dlight": {
-        "x": 722,
-        "y": 1208,
-        "w": 200,
-        "h": 110,
-        "pivotX": 111,
-        "pivotY": 110
-      },
-      "down_hammer_dair": {
-        "x": 4,
-        "y": 1383,
-        "w": 234,
-        "h": 128,
-        "pivotX": 23,
-        "pivotY": 128
-      },
-      "down_hammer_ground_pound": {
-        "x": 246,
-        "y": 1383,
-        "w": 234,
-        "h": 128,
-        "pivotX": 23,
-        "pivotY": 128
-      },
-      "down_nehemiah_hammer_dsig": {
-        "x": 488,
-        "y": 1383,
-        "w": 189,
-        "h": 109,
-        "pivotX": 114,
-        "pivotY": 109
-      },
-      "down_sword_dlight": {
-        "x": 685,
-        "y": 1383,
-        "w": 196,
-        "h": 113,
-        "pivotX": 83,
-        "pivotY": 113
-      },
-      "down_sword_dair": {
-        "x": 4,
-        "y": 1519,
-        "w": 151,
-        "h": 158,
-        "pivotX": 73,
-        "pivotY": 158
-      },
-      "down_sword_ground_pound": {
-        "x": 163,
-        "y": 1519,
-        "w": 91,
-        "h": 188,
-        "pivotX": 43,
-        "pivotY": 188
-      },
-      "down_nehemiah_sword_dsig": {
-        "x": 262,
-        "y": 1519,
-        "w": 215,
-        "h": 99,
-        "pivotX": 77,
-        "pivotY": 99
-      },
-      "down_unarmed_dlight": {
-        "x": 485,
-        "y": 1519,
-        "w": 166,
-        "h": 133,
-        "pivotX": 60,
-        "pivotY": 133
-      },
-      "down_unarmed_dair": {
-        "x": 659,
-        "y": 1519,
-        "w": 121,
-        "h": 156,
-        "pivotX": 58,
-        "pivotY": 156
-      },
-      "down_unarmed_ground_pound": {
-        "x": 788,
-        "y": 1519,
-        "w": 93,
-        "h": 133,
-        "pivotX": 45,
-        "pivotY": 133
-      },
-      "down_unarmed_dsig": {
-        "x": 4,
-        "y": 1715,
-        "w": 183,
-        "h": 99,
-        "pivotX": 78,
-        "pivotY": 99
-      },
-      "element_0_0": {
-        "x": 195,
-        "y": 1715,
-        "w": 143,
-        "h": 158,
-        "pivotX": 58,
-        "pivotY": 158
-      },
-      "element_0_1": {
-        "x": 346,
-        "y": 1715,
-        "w": 112,
-        "h": 188,
-        "pivotX": 53,
-        "pivotY": 188
-      },
-      "element_0_2": {
-        "x": 466,
-        "y": 1715,
-        "w": 234,
-        "h": 128,
-        "pivotX": 23,
-        "pivotY": 128
-      },
-      "element_0_3": {
-        "x": 708,
-        "y": 1715,
-        "w": 188,
-        "h": 134,
-        "pivotX": 38,
-        "pivotY": 134
-      },
-      "element_1_0": {
-        "x": 4,
-        "y": 1911,
-        "w": 126,
-        "h": 133,
-        "pivotX": 32,
-        "pivotY": 133
-      },
-      "element_1_1": {
-        "x": 138,
-        "y": 1911,
-        "w": 127,
-        "h": 166,
-        "pivotX": 57,
-        "pivotY": 166
-      },
-      "element_1_2": {
-        "x": 273,
-        "y": 1911,
-        "w": 206,
-        "h": 124,
-        "pivotX": 42,
-        "pivotY": 124
-      },
-      "element_1_3": {
-        "x": 487,
-        "y": 1911,
-        "w": 165,
-        "h": 160,
-        "pivotX": 32,
-        "pivotY": 160
-      },
-      "element_2_0": {
-        "x": 660,
-        "y": 1911,
-        "w": 167,
-        "h": 137,
-        "pivotX": 88,
-        "pivotY": 137
-      },
-      "element_2_1": {
-        "x": 835,
-        "y": 1911,
-        "w": 158,
-        "h": 183,
-        "pivotX": 79,
-        "pivotY": 183
-      },
-      "element_2_2": {
-        "x": 4,
-        "y": 2102,
-        "w": 189,
-        "h": 109,
-        "pivotX": 114,
-        "pivotY": 109
-      },
-      "element_2_3": {
-        "x": 201,
-        "y": 2102,
-        "w": 180,
-        "h": 123,
-        "pivotX": 78,
-        "pivotY": 123
-      },
-      "element_3_0": {
-        "x": 389,
-        "y": 2102,
-        "w": 151,
-        "h": 133,
-        "pivotX": 73,
-        "pivotY": 133
-      },
-      "element_3_1": {
-        "x": 548,
-        "y": 2102,
-        "w": 198,
-        "h": 133,
-        "pivotX": 85,
-        "pivotY": 133
-      },
-      "element_3_2": {
-        "x": 754,
-        "y": 2102,
-        "w": 202,
-        "h": 129,
-        "pivotX": 80,
-        "pivotY": 129
-      },
-      "element_3_3": {
-        "x": 4,
-        "y": 2243,
-        "w": 159,
-        "h": 125,
-        "pivotX": 74,
-        "pivotY": 125
-      },
-      "down_nehemiah_shield_dsig": {
-        "x": 171,
-        "y": 2243,
-        "w": 206,
-        "h": 124,
-        "pivotX": 42,
-        "pivotY": 124
-      },
-      "down_shield_dlight": {
-        "x": 385,
-        "y": 2243,
-        "w": 206,
-        "h": 124,
-        "pivotX": 42,
-        "pivotY": 124
-      },
-      "down_shield_dair": {
-        "x": 599,
-        "y": 2243,
-        "w": 206,
-        "h": 124,
-        "pivotX": 42,
-        "pivotY": 124
-      },
-      "down_shield_ground_pound": {
-        "x": 813,
-        "y": 2243,
-        "w": 206,
-        "h": 124,
-        "pivotX": 42,
-        "pivotY": 124
-      },
-      "down_nehemiah_hammer_dlight": {
-        "x": 4,
-        "y": 2376,
-        "w": 189,
-        "h": 109,
-        "pivotX": 114,
-        "pivotY": 109
-      },
-      "release_0": {
-        "x": 201,
-        "y": 2376,
-        "w": 148,
-        "h": 160,
-        "pivotX": 76,
-        "pivotY": 160
-      },
-      "release_1": {
-        "x": 357,
-        "y": 2376,
-        "w": 165,
-        "h": 153,
-        "pivotX": 92,
-        "pivotY": 153
-      },
-      "release_2": {
-        "x": 530,
-        "y": 2376,
-        "w": 173,
-        "h": 151,
-        "pivotX": 93,
-        "pivotY": 151
-      },
-      "release_3": {
-        "x": 711,
-        "y": 2376,
-        "w": 186,
-        "h": 152,
-        "pivotX": 80,
-        "pivotY": 152
-      },
-      "release_4": {
-        "x": 4,
-        "y": 2544,
-        "w": 202,
-        "h": 151,
-        "pivotX": 81,
-        "pivotY": 151
-      },
-      "release_5": {
-        "x": 214,
-        "y": 2544,
-        "w": 197,
-        "h": 142,
-        "pivotX": 83,
-        "pivotY": 142
-      },
-      "release_6": {
-        "x": 419,
-        "y": 2544,
-        "w": 153,
-        "h": 153,
-        "pivotX": 78,
-        "pivotY": 153
-      },
-      "release_7": {
-        "x": 580,
-        "y": 2544,
-        "w": 153,
-        "h": 157,
-        "pivotX": 79,
-        "pivotY": 157
-      },
-      "equipped_hammer_0": {
-        "x": 741,
-        "y": 2544,
-        "w": 140,
-        "h": 160,
-        "pivotX": 88,
-        "pivotY": 160
-      },
-      "equipped_hammer_1": {
-        "x": 4,
-        "y": 2712,
-        "w": 141,
-        "h": 160,
-        "pivotX": 87,
-        "pivotY": 160
-      },
-      "equipped_hammer_2": {
-        "x": 153,
-        "y": 2712,
-        "w": 143,
-        "h": 134,
-        "pivotX": 73,
-        "pivotY": 134
-      },
-      "equipped_hammer_3": {
-        "x": 304,
-        "y": 2712,
-        "w": 145,
-        "h": 114,
-        "pivotX": 73,
-        "pivotY": 114
-      },
-      "equipped_hammer_4": {
-        "x": 457,
-        "y": 2712,
-        "w": 143,
-        "h": 153,
-        "pivotX": 113,
-        "pivotY": 153
-      },
-      "equipped_hammer_5": {
-        "x": 608,
-        "y": 2712,
-        "w": 144,
-        "h": 159,
-        "pivotX": 118,
-        "pivotY": 159
-      },
-      "equipped_hammer_6": {
-        "x": 760,
-        "y": 2712,
-        "w": 143,
-        "h": 152,
-        "pivotX": 113,
-        "pivotY": 152
-      },
-      "equipped_hammer_7": {
-        "x": 4,
-        "y": 2880,
-        "w": 168,
-        "h": 148,
-        "pivotX": 96,
-        "pivotY": 148
-      },
-      "equipped_hammer_8": {
-        "x": 180,
-        "y": 2880,
-        "w": 163,
-        "h": 175,
-        "pivotX": 39,
-        "pivotY": 175
-      },
-      "equipped_hammer_9": {
-        "x": 351,
-        "y": 2880,
-        "w": 125,
-        "h": 153,
-        "pivotX": 63,
-        "pivotY": 153
-      },
-      "equipped_hammer_10": {
-        "x": 484,
-        "y": 2880,
-        "w": 142,
-        "h": 173,
-        "pivotX": 62,
-        "pivotY": 173
-      },
-      "equipped_hammer_11": {
-        "x": 634,
-        "y": 2880,
-        "w": 175,
-        "h": 108,
-        "pivotX": 109,
+        "pivotX": 30,
         "pivotY": 108
       },
-      "equipped_hammer_12": {
-        "x": 817,
-        "y": 2880,
-        "w": 151,
-        "h": 148,
-        "pivotX": 91,
-        "pivotY": 148
+      "light": {
+        "x": 1606,
+        "y": 1240,
+        "w": 80,
+        "h": 94,
+        "pivotX": 24,
+        "pivotY": 94
       },
-      "equipped_hammer_13": {
-        "x": 4,
-        "y": 3063,
-        "w": 139,
-        "h": 180,
-        "pivotX": 70,
-        "pivotY": 180
+      "sig_hammer_n": {
+        "x": 1964,
+        "y": 2,
+        "w": 78,
+        "h": 114,
+        "pivotX": 37,
+        "pivotY": 114
       },
-      "equipped_hammer_14": {
-        "x": 151,
-        "y": 3063,
-        "w": 236,
-        "h": 135,
-        "pivotX": 78,
-        "pivotY": 135
+      "sig_hammer_s": {
+        "x": 1573,
+        "y": 1344,
+        "w": 78,
+        "h": 91,
+        "pivotX": 58,
+        "pivotY": 91
       },
-      "equipped_hammer_15": {
-        "x": 395,
-        "y": 3063,
-        "w": 151,
-        "h": 145,
-        "pivotX": 90,
-        "pivotY": 145
+      "sig_hammer_d": {
+        "x": 2,
+        "y": 1626,
+        "w": 80,
+        "h": 85,
+        "pivotX": 51,
+        "pivotY": 85
       },
-      "equipped_shield_0": {
-        "x": 554,
-        "y": 3063,
-        "w": 138,
-        "h": 160,
-        "pivotX": 62,
-        "pivotY": 160
+      "sig_sword_n": {
+        "x": 851,
+        "y": 589,
+        "w": 79,
+        "h": 107,
+        "pivotX": 29,
+        "pivotY": 107
       },
-      "equipped_shield_1": {
-        "x": 700,
-        "y": 3063,
-        "w": 138,
-        "h": 160,
+      "sig_sword_s": {
+        "x": 398,
+        "y": 1240,
+        "w": 76,
+        "h": 100,
+        "pivotX": 35,
+        "pivotY": 100
+      },
+      "sig_sword_d": {
+        "x": 1958,
+        "y": 1714,
+        "w": 80,
+        "h": 80,
         "pivotX": 65,
-        "pivotY": 160
+        "pivotY": 80
       },
-      "equipped_shield_2": {
-        "x": 846,
-        "y": 3063,
-        "w": 153,
-        "h": 138,
-        "pivotX": 66,
-        "pivotY": 138
+      "motion_idle": {
+        "x": 300,
+        "y": 365,
+        "w": 58,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 109,
+        "gripX": 56,
+        "gripY": 63
       },
-      "equipped_shield_3": {
-        "x": 4,
-        "y": 3251,
-        "w": 152,
-        "h": 119,
+      "run_0": {
+        "x": 98,
+        "y": 1027,
+        "w": 78,
+        "h": 104,
+        "pivotX": 44,
+        "pivotY": 104,
+        "gripX": 73,
+        "gripY": 49
+      },
+      "run_1": {
+        "x": 1531,
+        "y": 1027,
+        "w": 62,
+        "h": 103,
+        "pivotX": 32,
+        "pivotY": 103,
+        "gripX": 58,
+        "gripY": 50
+      },
+      "run_2": {
+        "x": 179,
+        "y": 1027,
+        "w": 62,
+        "h": 104,
+        "pivotX": 33,
+        "pivotY": 104,
+        "gripX": 58,
+        "gripY": 49
+      },
+      "run_3": {
+        "x": 722,
+        "y": 1240,
+        "w": 75,
+        "h": 99,
+        "pivotX": 44,
+        "pivotY": 100,
+        "gripX": 71,
+        "gripY": 46
+      },
+      "run_4": {
+        "x": 943,
+        "y": 1134,
+        "w": 80,
+        "h": 102,
+        "pivotX": 47,
+        "pivotY": 105,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "run_5": {
+        "x": 1596,
+        "y": 1027,
+        "w": 77,
+        "h": 103,
+        "pivotX": 45,
+        "pivotY": 104,
+        "gripX": 73,
+        "gripY": 44
+      },
+      "run_6": {
+        "x": 244,
+        "y": 1027,
+        "w": 64,
+        "h": 104,
+        "pivotX": 37,
+        "pivotY": 104,
+        "gripX": 60,
+        "gripY": 48
+      },
+      "run_7": {
+        "x": 311,
+        "y": 1027,
+        "w": 60,
+        "h": 104,
+        "pivotX": 35,
+        "pivotY": 104,
+        "gripX": 56,
+        "gripY": 47
+      },
+      "air_rise": {
+        "x": 374,
+        "y": 1027,
+        "w": 80,
+        "h": 104,
+        "pivotX": 38,
+        "pivotY": 104,
+        "gripX": 75,
+        "gripY": 35
+      },
+      "air_apex": {
+        "x": 1140,
+        "y": 1799,
+        "w": 70,
+        "h": 74,
+        "pivotX": 40,
+        "pivotY": 74,
+        "gripX": 67,
+        "gripY": 26
+      },
+      "air_fall": {
+        "x": 1689,
+        "y": 1240,
+        "w": 82,
+        "h": 94,
+        "pivotX": 40,
+        "pivotY": 94,
+        "gripX": 79,
+        "gripY": 40
+      },
+      "land": {
+        "x": 1822,
+        "y": 1799,
+        "w": 91,
+        "h": 74,
+        "pivotX": 56,
+        "pivotY": 74,
+        "gripX": 73,
+        "gripY": 65
+      },
+      "attack_hammer_0": {
+        "x": 457,
+        "y": 1027,
+        "w": 97,
+        "h": 104,
+        "pivotX": 50,
+        "pivotY": 104
+      },
+      "attack_hammer_1": {
+        "x": 1676,
+        "y": 1027,
+        "w": 104,
+        "h": 103,
+        "pivotX": 58,
+        "pivotY": 103
+      },
+      "attack_hammer_2": {
+        "x": 2,
+        "y": 133,
+        "w": 90,
+        "h": 114,
+        "pivotX": 52,
+        "pivotY": 114
+      },
+      "attack_hammer_3": {
+        "x": 1654,
+        "y": 1344,
+        "w": 108,
+        "h": 91,
+        "pivotX": 53,
+        "pivotY": 91
+      },
+      "attack_hammer_4": {
+        "x": 1282,
+        "y": 1534,
+        "w": 111,
+        "h": 87,
+        "pivotX": 56,
+        "pivotY": 87
+      },
+      "attack_hammer_5": {
+        "x": 1398,
+        "y": 1626,
+        "w": 103,
+        "h": 82,
+        "pivotX": 48,
+        "pivotY": 82
+      },
+      "attack_hammer_6": {
+        "x": 85,
+        "y": 1626,
+        "w": 103,
+        "h": 85,
+        "pivotX": 57,
+        "pivotY": 85
+      },
+      "attack_hammer_7": {
+        "x": 557,
+        "y": 1027,
+        "w": 97,
+        "h": 104,
+        "pivotX": 50,
+        "pivotY": 104
+      },
+      "attack_sword_0": {
+        "x": 275,
+        "y": 1534,
+        "w": 98,
+        "h": 87,
+        "pivotX": 49,
+        "pivotY": 87
+      },
+      "attack_sword_1": {
+        "x": 95,
+        "y": 133,
+        "w": 87,
+        "h": 114,
+        "pivotX": 44,
+        "pivotY": 114
+      },
+      "attack_sword_2": {
+        "x": 185,
+        "y": 133,
+        "w": 83,
+        "h": 114,
+        "pivotX": 43,
+        "pivotY": 114
+      },
+      "attack_sword_3": {
+        "x": 1645,
+        "y": 365,
+        "w": 85,
+        "h": 108,
+        "pivotX": 48,
+        "pivotY": 108
+      },
+      "attack_sword_4": {
+        "x": 2,
+        "y": 1799,
+        "w": 114,
+        "h": 80,
+        "pivotX": 60,
+        "pivotY": 80
+      },
+      "attack_sword_5": {
+        "x": 376,
+        "y": 1534,
+        "w": 101,
+        "h": 87,
+        "pivotX": 46,
+        "pivotY": 87
+      },
+      "attack_sword_6": {
+        "x": 119,
+        "y": 1799,
+        "w": 106,
+        "h": 80,
+        "pivotX": 51,
+        "pivotY": 80
+      },
+      "attack_sword_7": {
+        "x": 480,
+        "y": 1534,
+        "w": 98,
+        "h": 87,
+        "pivotX": 49,
+        "pivotY": 87
+      },
+      "defence_0": {
+        "x": 361,
+        "y": 365,
+        "w": 84,
+        "h": 109,
+        "pivotX": 45,
+        "pivotY": 109,
+        "gripX": 75,
+        "gripY": 47
+      },
+      "defence_1": {
+        "x": 1733,
+        "y": 365,
+        "w": 95,
+        "h": 108,
+        "pivotX": 50,
+        "pivotY": 108,
+        "gripX": 79,
+        "gripY": 46
+      },
+      "defence_2": {
+        "x": 1350,
+        "y": 478,
+        "w": 122,
+        "h": 108,
+        "pivotX": 52,
+        "pivotY": 108,
+        "gripX": 78,
+        "gripY": 68
+      },
+      "defence_3": {
+        "x": 1475,
+        "y": 478,
+        "w": 87,
+        "h": 108,
+        "pivotX": 46,
+        "pivotY": 108,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "defence_4": {
+        "x": 271,
+        "y": 133,
+        "w": 87,
+        "h": 114,
+        "pivotX": 46,
+        "pivotY": 114,
+        "gripX": 74,
+        "gripY": 47
+      },
+      "defence_5": {
+        "x": 1269,
+        "y": 2,
+        "w": 75,
+        "h": 117,
+        "pivotX": 25,
+        "pivotY": 117,
+        "gripX": 67,
+        "gripY": 44
+      },
+      "defence_6": {
+        "x": 361,
+        "y": 133,
+        "w": 114,
+        "h": 114,
+        "pivotX": 33,
+        "pivotY": 114,
+        "gripX": 110,
+        "gripY": 39
+      },
+      "defence_7": {
+        "x": 478,
+        "y": 133,
+        "w": 65,
+        "h": 114,
+        "pivotX": 25,
+        "pivotY": 114,
+        "gripX": 58,
+        "gripY": 58
+      },
+      "defence_8": {
+        "x": 1114,
+        "y": 133,
+        "w": 87,
+        "h": 113,
+        "pivotX": 46,
+        "pivotY": 113,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "defence_9": {
+        "x": 453,
+        "y": 1799,
+        "w": 99,
+        "h": 79,
+        "pivotX": 54,
+        "pivotY": 79,
+        "gripX": 87,
+        "gripY": 29
+      },
+      "defence_10": {
+        "x": 581,
+        "y": 1534,
+        "w": 113,
+        "h": 87,
+        "pivotX": 55,
+        "pivotY": 87,
+        "gripX": 89,
+        "gripY": 38
+      },
+      "defence_11": {
+        "x": 1776,
+        "y": 133,
+        "w": 88,
+        "h": 112,
+        "pivotX": 46,
+        "pivotY": 112,
+        "gripX": 74,
+        "gripY": 48
+      },
+      "defence_12": {
+        "x": 554,
+        "y": 250,
+        "w": 87,
+        "h": 112,
+        "pivotX": 46,
+        "pivotY": 112,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "defence_13": {
+        "x": 644,
+        "y": 250,
+        "w": 95,
+        "h": 112,
+        "pivotX": 50,
+        "pivotY": 112,
+        "gripX": 75,
+        "gripY": 72
+      },
+      "defence_14": {
+        "x": 1826,
+        "y": 250,
+        "w": 104,
+        "h": 110,
+        "pivotX": 60,
+        "pivotY": 110,
+        "gripX": 81,
+        "gripY": 68
+      },
+      "defence_15": {
+        "x": 650,
+        "y": 133,
+        "w": 88,
+        "h": 114,
+        "pivotX": 46,
+        "pivotY": 114,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "down_hammer_dlight": {
+        "x": 1001,
+        "y": 1799,
+        "w": 136,
+        "h": 75,
+        "pivotX": 75,
+        "pivotY": 75
+      },
+      "down_hammer_dair": {
+        "x": 697,
+        "y": 1534,
+        "w": 159,
+        "h": 87,
+        "pivotX": 16,
+        "pivotY": 87
+      },
+      "down_hammer_ground_pound": {
+        "x": 859,
+        "y": 1534,
+        "w": 159,
+        "h": 87,
+        "pivotX": 16,
+        "pivotY": 87
+      },
+      "down_nehemiah_hammer_dsig": {
+        "x": 1213,
+        "y": 1799,
+        "w": 129,
+        "h": 74,
+        "pivotX": 78,
+        "pivotY": 74
+      },
+      "down_sword_dlight": {
+        "x": 657,
+        "y": 1799,
+        "w": 134,
+        "h": 77,
+        "pivotX": 57,
+        "pivotY": 77
+      },
+      "down_sword_dair": {
+        "x": 1565,
+        "y": 478,
+        "w": 103,
+        "h": 108,
+        "pivotX": 50,
+        "pivotY": 108
+      },
+      "down_sword_ground_pound": {
+        "x": 2,
+        "y": 2,
+        "w": 62,
+        "h": 128,
+        "pivotX": 29,
+        "pivotY": 128
+      },
+      "down_nehemiah_sword_dsig": {
+        "x": 2,
+        "y": 1959,
+        "w": 146,
+        "h": 67,
+        "pivotX": 52,
+        "pivotY": 67
+      },
+      "down_unarmed_dlight": {
+        "x": 1765,
+        "y": 1344,
+        "w": 113,
+        "h": 91,
+        "pivotX": 41,
+        "pivotY": 91
+      },
+      "down_unarmed_dair": {
+        "x": 791,
+        "y": 700,
+        "w": 82,
+        "h": 106,
+        "pivotX": 39,
+        "pivotY": 106
+      },
+      "down_unarmed_ground_pound": {
+        "x": 1881,
+        "y": 1344,
+        "w": 63,
+        "h": 91,
+        "pivotX": 30,
+        "pivotY": 91
+      },
+      "down_unarmed_dsig": {
+        "x": 151,
+        "y": 1959,
+        "w": 125,
+        "h": 67,
+        "pivotX": 53,
+        "pivotY": 67
+      },
+      "element_0_0": {
+        "x": 1671,
+        "y": 478,
+        "w": 97,
+        "h": 108,
+        "pivotX": 39,
+        "pivotY": 108
+      },
+      "element_0_1": {
+        "x": 67,
+        "y": 2,
+        "w": 76,
+        "h": 128,
+        "pivotX": 36,
+        "pivotY": 128
+      },
+      "element_0_2": {
+        "x": 1021,
+        "y": 1534,
+        "w": 159,
+        "h": 87,
+        "pivotX": 16,
+        "pivotY": 87
+      },
+      "element_0_3": {
+        "x": 1185,
+        "y": 1344,
+        "w": 128,
+        "h": 91,
+        "pivotX": 26,
+        "pivotY": 91
+      },
+      "element_1_0": {
+        "x": 1947,
+        "y": 1344,
+        "w": 86,
+        "h": 91,
+        "pivotX": 22,
+        "pivotY": 91
+      },
+      "element_1_1": {
+        "x": 1204,
+        "y": 133,
+        "w": 87,
+        "h": 113,
+        "pivotX": 39,
+        "pivotY": 113
+      },
+      "element_1_2": {
+        "x": 302,
+        "y": 1626,
+        "w": 140,
+        "h": 84,
+        "pivotX": 29,
+        "pivotY": 84
+      },
+      "element_1_3": {
+        "x": 448,
+        "y": 365,
+        "w": 112,
+        "h": 109,
+        "pivotX": 22,
+        "pivotY": 109
+      },
+      "element_2_0": {
+        "x": 2,
+        "y": 1344,
+        "w": 114,
+        "h": 93,
+        "pivotX": 60,
+        "pivotY": 93
+      },
+      "element_2_1": {
+        "x": 390,
+        "y": 2,
+        "w": 108,
+        "h": 125,
+        "pivotX": 54,
+        "pivotY": 125
+      },
+      "element_2_2": {
+        "x": 1345,
+        "y": 1799,
+        "w": 129,
+        "h": 74,
+        "pivotX": 78,
+        "pivotY": 74
+      },
+      "element_2_3": {
+        "x": 1017,
+        "y": 1626,
+        "w": 123,
+        "h": 84,
+        "pivotX": 53,
+        "pivotY": 84
+      },
+      "element_3_0": {
+        "x": 2,
+        "y": 1440,
+        "w": 103,
+        "h": 91,
+        "pivotX": 50,
+        "pivotY": 91
+      },
+      "element_3_1": {
+        "x": 108,
+        "y": 1440,
+        "w": 135,
+        "h": 91,
+        "pivotX": 58,
+        "pivotY": 91
+      },
+      "element_3_2": {
+        "x": 134,
+        "y": 1534,
+        "w": 138,
+        "h": 88,
+        "pivotX": 55,
+        "pivotY": 88
+      },
+      "element_3_3": {
+        "x": 191,
+        "y": 1626,
+        "w": 108,
+        "h": 85,
+        "pivotX": 50,
+        "pivotY": 85
+      },
+      "down_nehemiah_shield_dsig": {
+        "x": 445,
+        "y": 1626,
+        "w": 140,
+        "h": 84,
+        "pivotX": 29,
+        "pivotY": 84
+      },
+      "down_shield_dlight": {
+        "x": 588,
+        "y": 1626,
+        "w": 140,
+        "h": 84,
+        "pivotX": 29,
+        "pivotY": 84
+      },
+      "down_shield_dair": {
+        "x": 731,
+        "y": 1626,
+        "w": 140,
+        "h": 84,
+        "pivotX": 29,
+        "pivotY": 84
+      },
+      "down_shield_ground_pound": {
+        "x": 874,
+        "y": 1626,
+        "w": 140,
+        "h": 84,
+        "pivotX": 29,
+        "pivotY": 84
+      },
+      "down_nehemiah_hammer_dlight": {
+        "x": 1477,
+        "y": 1799,
+        "w": 129,
+        "h": 74,
+        "pivotX": 78,
+        "pivotY": 74
+      },
+      "release_0": {
+        "x": 563,
+        "y": 365,
+        "w": 101,
+        "h": 109,
+        "pivotX": 52,
+        "pivotY": 109
+      },
+      "release_1": {
+        "x": 373,
+        "y": 919,
+        "w": 112,
+        "h": 104,
         "pivotX": 62,
+        "pivotY": 104
+      },
+      "release_2": {
+        "x": 1783,
+        "y": 1027,
+        "w": 118,
+        "h": 103,
+        "pivotX": 63,
+        "pivotY": 103
+      },
+      "release_3": {
+        "x": 657,
+        "y": 1027,
+        "w": 127,
+        "h": 104,
+        "pivotX": 55,
+        "pivotY": 104
+      },
+      "release_4": {
+        "x": 1904,
+        "y": 1027,
+        "w": 138,
+        "h": 103,
+        "pivotX": 55,
+        "pivotY": 103
+      },
+      "release_5": {
+        "x": 1288,
+        "y": 1240,
+        "w": 134,
+        "h": 97,
+        "pivotX": 56,
+        "pivotY": 97
+      },
+      "release_6": {
+        "x": 488,
+        "y": 919,
+        "w": 104,
+        "h": 104,
+        "pivotX": 53,
+        "pivotY": 104
+      },
+      "release_7": {
+        "x": 933,
+        "y": 589,
+        "w": 104,
+        "h": 107,
+        "pivotX": 54,
+        "pivotY": 107
+      },
+      "equipped_hammer_0": {
+        "x": 667,
+        "y": 365,
+        "w": 95,
+        "h": 109,
+        "pivotX": 60,
+        "pivotY": 109
+      },
+      "equipped_hammer_1": {
+        "x": 765,
+        "y": 365,
+        "w": 96,
+        "h": 109,
+        "pivotX": 59,
+        "pivotY": 109
+      },
+      "equipped_hammer_2": {
+        "x": 1316,
+        "y": 1344,
+        "w": 97,
+        "h": 91,
+        "pivotX": 50,
+        "pivotY": 91
+      },
+      "equipped_hammer_3": {
+        "x": 555,
+        "y": 1799,
+        "w": 99,
+        "h": 78,
+        "pivotX": 50,
+        "pivotY": 78
+      },
+      "equipped_hammer_4": {
+        "x": 595,
+        "y": 919,
+        "w": 97,
+        "h": 104,
+        "pivotX": 77,
+        "pivotY": 104
+      },
+      "equipped_hammer_5": {
+        "x": 1831,
+        "y": 365,
+        "w": 98,
+        "h": 108,
+        "pivotX": 80,
+        "pivotY": 108
+      },
+      "equipped_hammer_6": {
+        "x": 787,
+        "y": 1027,
+        "w": 97,
+        "h": 104,
+        "pivotX": 77,
+        "pivotY": 104
+      },
+      "equipped_hammer_7": {
+        "x": 1583,
+        "y": 1134,
+        "w": 114,
+        "h": 101,
+        "pivotX": 65,
+        "pivotY": 101
+      },
+      "equipped_hammer_8": {
+        "x": 1055,
+        "y": 2,
+        "w": 111,
+        "h": 119,
+        "pivotX": 27,
         "pivotY": 119
       },
+      "equipped_hammer_9": {
+        "x": 695,
+        "y": 919,
+        "w": 85,
+        "h": 104,
+        "pivotX": 43,
+        "pivotY": 104
+      },
+      "equipped_hammer_10": {
+        "x": 1169,
+        "y": 2,
+        "w": 97,
+        "h": 118,
+        "pivotX": 42,
+        "pivotY": 118
+      },
+      "equipped_hammer_11": {
+        "x": 1916,
+        "y": 1799,
+        "w": 119,
+        "h": 74,
+        "pivotX": 74,
+        "pivotY": 74
+      },
+      "equipped_hammer_12": {
+        "x": 1700,
+        "y": 1134,
+        "w": 103,
+        "h": 101,
+        "pivotX": 62,
+        "pivotY": 101
+      },
+      "equipped_hammer_13": {
+        "x": 729,
+        "y": 2,
+        "w": 95,
+        "h": 123,
+        "pivotX": 48,
+        "pivotY": 123
+      },
+      "equipped_hammer_14": {
+        "x": 696,
+        "y": 1344,
+        "w": 161,
+        "h": 92,
+        "pivotX": 53,
+        "pivotY": 92
+      },
+      "equipped_hammer_15": {
+        "x": 800,
+        "y": 1240,
+        "w": 103,
+        "h": 99,
+        "pivotX": 61,
+        "pivotY": 99
+      },
+      "equipped_shield_0": {
+        "x": 864,
+        "y": 365,
+        "w": 94,
+        "h": 109,
+        "pivotX": 42,
+        "pivotY": 109
+      },
+      "equipped_shield_1": {
+        "x": 961,
+        "y": 365,
+        "w": 94,
+        "h": 109,
+        "pivotX": 44,
+        "pivotY": 109
+      },
+      "equipped_shield_2": {
+        "x": 1774,
+        "y": 1240,
+        "w": 104,
+        "h": 94,
+        "pivotX": 45,
+        "pivotY": 94
+      },
+      "equipped_shield_3": {
+        "x": 1389,
+        "y": 1714,
+        "w": 104,
+        "h": 81,
+        "pivotX": 42,
+        "pivotY": 81
+      },
       "equipped_shield_4": {
-        "x": 164,
-        "y": 3251,
-        "w": 153,
-        "h": 156,
-        "pivotX": 116,
-        "pivotY": 156
+        "x": 876,
+        "y": 700,
+        "w": 104,
+        "h": 106,
+        "pivotX": 79,
+        "pivotY": 106
       },
       "equipped_shield_5": {
-        "x": 325,
-        "y": 3251,
-        "w": 170,
-        "h": 159,
-        "pivotX": 118,
-        "pivotY": 159
+        "x": 2,
+        "y": 478,
+        "w": 116,
+        "h": 108,
+        "pivotX": 81,
+        "pivotY": 108
       },
       "equipped_shield_6": {
-        "x": 503,
-        "y": 3251,
-        "w": 164,
-        "h": 156,
-        "pivotX": 116,
-        "pivotY": 156
+        "x": 983,
+        "y": 700,
+        "w": 112,
+        "h": 106,
+        "pivotX": 79,
+        "pivotY": 106
       },
       "equipped_shield_7": {
-        "x": 675,
-        "y": 3251,
-        "w": 178,
-        "h": 148,
-        "pivotX": 88,
-        "pivotY": 148
+        "x": 1806,
+        "y": 1134,
+        "w": 121,
+        "h": 101,
+        "pivotX": 60,
+        "pivotY": 101
       },
       "equipped_shield_8": {
-        "x": 861,
-        "y": 3251,
-        "w": 140,
-        "h": 150,
-        "pivotX": 36,
-        "pivotY": 150
+        "x": 461,
+        "y": 1134,
+        "w": 95,
+        "h": 102,
+        "pivotX": 24,
+        "pivotY": 102
       },
       "equipped_shield_9": {
-        "x": 4,
-        "y": 3418,
-        "w": 123,
-        "h": 138,
-        "pivotX": 65,
-        "pivotY": 138
+        "x": 1881,
+        "y": 1240,
+        "w": 84,
+        "h": 94,
+        "pivotX": 44,
+        "pivotY": 94
       },
       "equipped_shield_10": {
-        "x": 135,
-        "y": 3418,
-        "w": 154,
-        "h": 144,
-        "pivotX": 47,
-        "pivotY": 144
+        "x": 1002,
+        "y": 1240,
+        "w": 105,
+        "h": 98,
+        "pivotX": 32,
+        "pivotY": 98
       },
       "equipped_shield_11": {
-        "x": 297,
-        "y": 3418,
-        "w": 160,
-        "h": 105,
-        "pivotX": 81,
-        "pivotY": 105
+        "x": 696,
+        "y": 1882,
+        "w": 109,
+        "h": 72,
+        "pivotX": 55,
+        "pivotY": 72
       },
       "equipped_shield_12": {
-        "x": 465,
-        "y": 3418,
-        "w": 141,
-        "h": 143,
-        "pivotX": 65,
-        "pivotY": 143
+        "x": 1110,
+        "y": 1240,
+        "w": 96,
+        "h": 97,
+        "pivotX": 44,
+        "pivotY": 97
       },
       "equipped_shield_13": {
-        "x": 614,
-        "y": 3418,
-        "w": 136,
-        "h": 161,
-        "pivotX": 68,
-        "pivotY": 161
+        "x": 1933,
+        "y": 250,
+        "w": 93,
+        "h": 110,
+        "pivotX": 46,
+        "pivotY": 110
       },
       "equipped_shield_14": {
-        "x": 758,
-        "y": 3418,
-        "w": 228,
-        "h": 137,
-        "pivotX": 86,
-        "pivotY": 137
+        "x": 119,
+        "y": 1344,
+        "w": 155,
+        "h": 93,
+        "pivotX": 58,
+        "pivotY": 93
       },
       "equipped_shield_15": {
-        "x": 4,
-        "y": 3587,
-        "w": 136,
-        "h": 141,
-        "pivotX": 64,
-        "pivotY": 141
+        "x": 1510,
+        "y": 1240,
+        "w": 93,
+        "h": 96,
+        "pivotX": 44,
+        "pivotY": 96
       },
       "gait_hammer_0": {
-        "x": 148,
-        "y": 3587,
-        "w": 132,
-        "h": 154,
-        "pivotX": 78,
-        "pivotY": 154
+        "x": 1467,
+        "y": 810,
+        "w": 90,
+        "h": 105,
+        "pivotX": 53,
+        "pivotY": 105
       },
       "gait_hammer_1": {
-        "x": 288,
-        "y": 3587,
-        "w": 118,
-        "h": 153,
-        "pivotX": 68,
-        "pivotY": 153
+        "x": 783,
+        "y": 919,
+        "w": 80,
+        "h": 104,
+        "pivotX": 46,
+        "pivotY": 104
       },
       "gait_hammer_2": {
-        "x": 414,
-        "y": 3587,
-        "w": 105,
-        "h": 152,
-        "pivotX": 57,
-        "pivotY": 152
+        "x": 887,
+        "y": 1027,
+        "w": 72,
+        "h": 104,
+        "pivotX": 39,
+        "pivotY": 104
       },
       "gait_hammer_3": {
-        "x": 527,
-        "y": 3587,
-        "w": 104,
-        "h": 134,
-        "pivotX": 60,
-        "pivotY": 135
+        "x": 1416,
+        "y": 1344,
+        "w": 71,
+        "h": 91,
+        "pivotX": 41,
+        "pivotY": 92
       },
       "gait_hammer_4": {
-        "x": 639,
-        "y": 3587,
-        "w": 118,
-        "h": 134,
-        "pivotX": 71,
-        "pivotY": 138
+        "x": 1490,
+        "y": 1344,
+        "w": 80,
+        "h": 91,
+        "pivotX": 48,
+        "pivotY": 94
       },
       "gait_hammer_5": {
-        "x": 765,
-        "y": 3587,
-        "w": 123,
-        "h": 151,
-        "pivotX": 75,
-        "pivotY": 153
+        "x": 2,
+        "y": 1134,
+        "w": 84,
+        "h": 103,
+        "pivotX": 51,
+        "pivotY": 104
       },
       "gait_hammer_6": {
-        "x": 896,
-        "y": 3587,
-        "w": 109,
-        "h": 153,
-        "pivotX": 60,
-        "pivotY": 153
+        "x": 866,
+        "y": 919,
+        "w": 74,
+        "h": 104,
+        "pivotX": 41,
+        "pivotY": 104
       },
       "gait_hammer_7": {
-        "x": 4,
-        "y": 3749,
-        "w": 110,
-        "h": 154,
-        "pivotX": 60,
-        "pivotY": 154
+        "x": 1560,
+        "y": 810,
+        "w": 75,
+        "h": 105,
+        "pivotX": 41,
+        "pivotY": 105
       },
       "gait_shield_0": {
-        "x": 122,
-        "y": 3749,
-        "w": 124,
-        "h": 153,
-        "pivotX": 68,
-        "pivotY": 153
+        "x": 943,
+        "y": 919,
+        "w": 84,
+        "h": 104,
+        "pivotX": 46,
+        "pivotY": 104
       },
       "gait_shield_1": {
-        "x": 254,
-        "y": 3749,
-        "w": 99,
-        "h": 153,
-        "pivotX": 45,
-        "pivotY": 153
+        "x": 1030,
+        "y": 919,
+        "w": 67,
+        "h": 104,
+        "pivotX": 30,
+        "pivotY": 104
       },
       "gait_shield_2": {
-        "x": 361,
-        "y": 3749,
-        "w": 97,
-        "h": 153,
-        "pivotX": 46,
-        "pivotY": 153
+        "x": 1100,
+        "y": 919,
+        "w": 66,
+        "h": 104,
+        "pivotX": 31,
+        "pivotY": 104
       },
       "gait_shield_3": {
-        "x": 466,
-        "y": 3749,
-        "w": 113,
-        "h": 137,
-        "pivotX": 61,
-        "pivotY": 138
+        "x": 277,
+        "y": 1344,
+        "w": 77,
+        "h": 93,
+        "pivotX": 42,
+        "pivotY": 94
       },
       "gait_shield_4": {
-        "x": 587,
-        "y": 3749,
-        "w": 127,
-        "h": 135,
-        "pivotX": 71,
-        "pivotY": 139
+        "x": 860,
+        "y": 1344,
+        "w": 87,
+        "h": 92,
+        "pivotX": 49,
+        "pivotY": 95
       },
       "gait_shield_5": {
-        "x": 722,
-        "y": 3749,
-        "w": 127,
-        "h": 151,
-        "pivotX": 77,
-        "pivotY": 153
+        "x": 89,
+        "y": 1134,
+        "w": 87,
+        "h": 103,
+        "pivotX": 53,
+        "pivotY": 104
       },
       "gait_shield_6": {
-        "x": 857,
-        "y": 3749,
-        "w": 111,
-        "h": 152,
-        "pivotX": 62,
-        "pivotY": 152
+        "x": 962,
+        "y": 1027,
+        "w": 76,
+        "h": 104,
+        "pivotX": 42,
+        "pivotY": 104
       },
       "gait_shield_7": {
-        "x": 4,
-        "y": 3911,
-        "w": 111,
-        "h": 153,
-        "pivotX": 62,
-        "pivotY": 153
+        "x": 1169,
+        "y": 919,
+        "w": 76,
+        "h": 104,
+        "pivotX": 42,
+        "pivotY": 104
       },
       "gait_hammer_8": {
-        "x": 123,
-        "y": 3911,
-        "w": 118,
-        "h": 153,
-        "pivotX": 64,
-        "pivotY": 153
+        "x": 1248,
+        "y": 919,
+        "w": 80,
+        "h": 104,
+        "pivotX": 43,
+        "pivotY": 104
       },
       "gait_hammer_9": {
-        "x": 249,
-        "y": 3911,
-        "w": 104,
-        "h": 152,
-        "pivotX": 54,
-        "pivotY": 153
+        "x": 1041,
+        "y": 1027,
+        "w": 71,
+        "h": 104,
+        "pivotX": 37,
+        "pivotY": 105
       },
       "gait_hammer_10": {
-        "x": 361,
-        "y": 3911,
-        "w": 94,
-        "h": 153,
-        "pivotX": 46,
-        "pivotY": 157
+        "x": 1331,
+        "y": 919,
+        "w": 64,
+        "h": 104,
+        "pivotX": 31,
+        "pivotY": 107
       },
       "gait_hammer_11": {
-        "x": 463,
-        "y": 3911,
-        "w": 112,
-        "h": 143,
-        "pivotX": 63,
-        "pivotY": 145
+        "x": 1209,
+        "y": 1240,
+        "w": 76,
+        "h": 97,
+        "pivotX": 43,
+        "pivotY": 98
       },
       "gait_shield_8": {
-        "x": 583,
-        "y": 3911,
-        "w": 121,
-        "h": 153,
-        "pivotX": 65,
-        "pivotY": 153
+        "x": 1398,
+        "y": 919,
+        "w": 82,
+        "h": 104,
+        "pivotX": 44,
+        "pivotY": 104
       },
       "gait_shield_9": {
-        "x": 712,
-        "y": 3911,
-        "w": 108,
-        "h": 152,
-        "pivotX": 55,
-        "pivotY": 153
+        "x": 1115,
+        "y": 1027,
+        "w": 74,
+        "h": 104,
+        "pivotX": 38,
+        "pivotY": 105
       },
       "gait_shield_10": {
-        "x": 828,
-        "y": 3911,
-        "w": 101,
-        "h": 152,
-        "pivotX": 48,
-        "pivotY": 156
+        "x": 1192,
+        "y": 1027,
+        "w": 69,
+        "h": 104,
+        "pivotX": 33,
+        "pivotY": 107
       },
       "gait_shield_11": {
-        "x": 4,
-        "y": 4072,
-        "w": 121,
-        "h": 142,
-        "pivotX": 63,
-        "pivotY": 144
+        "x": 1425,
+        "y": 1240,
+        "w": 82,
+        "h": 97,
+        "pivotX": 43,
+        "pivotY": 98
       },
       "run_8": {
-        "x": 133,
-        "y": 4072,
-        "w": 89,
-        "h": 154,
-        "pivotX": 51,
-        "pivotY": 154,
-        "gripX": 83,
-        "gripY": 67
+        "x": 1638,
+        "y": 810,
+        "w": 61,
+        "h": 105,
+        "pivotX": 35,
+        "pivotY": 105,
+        "gripX": 57,
+        "gripY": 46
       },
       "run_9": {
-        "x": 230,
-        "y": 4072,
-        "w": 119,
-        "h": 152,
-        "pivotX": 65,
-        "pivotY": 153,
-        "gripX": 98,
-        "gripY": 70
+        "x": 1264,
+        "y": 1027,
+        "w": 81,
+        "h": 104,
+        "pivotX": 44,
+        "pivotY": 105,
+        "gripX": 67,
+        "gripY": 48
       },
       "run_10": {
-        "x": 357,
-        "y": 4072,
-        "w": 96,
-        "h": 156,
-        "pivotX": 55,
-        "pivotY": 160,
-        "gripX": 90,
-        "gripY": 73
+        "x": 1098,
+        "y": 700,
+        "w": 65,
+        "h": 106,
+        "pivotX": 37,
+        "pivotY": 109,
+        "gripX": 61,
+        "gripY": 50
       },
       "run_11": {
-        "x": 461,
-        "y": 4072,
-        "w": 97,
-        "h": 154,
+        "x": 1702,
+        "y": 810,
+        "w": 66,
+        "h": 105,
+        "pivotX": 39,
+        "pivotY": 106,
+        "gripX": 62,
+        "gripY": 49
+      },
+      "equipped_unarmed_idle_0": {
+        "x": 1058,
+        "y": 365,
+        "w": 58,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 109,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_unarmed_idle_1": {
+        "x": 1119,
+        "y": 365,
+        "w": 57,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 109,
+        "gripX": 55,
+        "gripY": 63
+      },
+      "equipped_unarmed_idle_2": {
+        "x": 2,
+        "y": 365,
+        "w": 58,
+        "h": 110,
+        "pivotX": 33,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_3": {
+        "x": 1287,
+        "y": 250,
+        "w": 59,
+        "h": 110,
+        "pivotX": 33,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_4": {
+        "x": 1349,
+        "y": 250,
+        "w": 59,
+        "h": 110,
+        "pivotX": 33,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_5": {
+        "x": 921,
+        "y": 250,
+        "w": 58,
+        "h": 111,
+        "pivotX": 33,
+        "pivotY": 111,
+        "gripX": 55,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_6": {
+        "x": 982,
+        "y": 250,
+        "w": 58,
+        "h": 111,
+        "pivotX": 33,
+        "pivotY": 111,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_7": {
+        "x": 1043,
+        "y": 250,
+        "w": 59,
+        "h": 111,
+        "pivotX": 34,
+        "pivotY": 111,
+        "gripX": 57,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_8": {
+        "x": 1411,
+        "y": 250,
+        "w": 59,
+        "h": 110,
+        "pivotX": 34,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_9": {
+        "x": 1473,
+        "y": 250,
+        "w": 59,
+        "h": 110,
+        "pivotX": 34,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_10": {
+        "x": 63,
+        "y": 365,
+        "w": 59,
+        "h": 110,
+        "pivotX": 34,
+        "pivotY": 110,
+        "gripX": 56,
+        "gripY": 64
+      },
+      "equipped_unarmed_idle_11": {
+        "x": 1179,
+        "y": 365,
+        "w": 59,
+        "h": 109,
+        "pivotX": 34,
+        "pivotY": 109,
+        "gripX": 57,
+        "gripY": 63
+      },
+      "equipped_unarmed_dodge_0": {
+        "x": 1867,
+        "y": 133,
+        "w": 86,
+        "h": 112,
+        "pivotX": 44,
+        "pivotY": 112,
+        "gripX": 72,
+        "gripY": 45
+      },
+      "equipped_unarmed_dodge_1": {
+        "x": 1105,
+        "y": 250,
+        "w": 87,
+        "h": 111,
+        "pivotX": 45,
+        "pivotY": 111,
+        "gripX": 72,
+        "gripY": 46
+      },
+      "equipped_unarmed_dodge_2": {
+        "x": 899,
+        "y": 1799,
+        "w": 99,
+        "h": 76,
+        "pivotX": 54,
+        "pivotY": 76,
+        "gripX": 85,
+        "gripY": 28
+      },
+      "equipped_unarmed_dodge_3": {
+        "x": 573,
+        "y": 1714,
+        "w": 112,
+        "h": 82,
+        "pivotX": 54,
+        "pivotY": 82,
+        "gripX": 90,
+        "gripY": 36
+      },
+      "equipped_unarmed_dodge_4": {
+        "x": 688,
+        "y": 1714,
+        "w": 112,
+        "h": 82,
+        "pivotX": 54,
+        "pivotY": 82,
+        "gripX": 92,
+        "gripY": 36
+      },
+      "equipped_unarmed_dodge_5": {
+        "x": 1241,
+        "y": 365,
+        "w": 87,
+        "h": 109,
+        "pivotX": 46,
+        "pivotY": 109,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "equipped_unarmed_dodge_6": {
+        "x": 1535,
+        "y": 250,
+        "w": 87,
+        "h": 110,
+        "pivotX": 46,
+        "pivotY": 110,
+        "gripX": 75,
+        "gripY": 47
+      },
+      "equipped_unarmed_dodge_7": {
+        "x": 1331,
+        "y": 365,
+        "w": 58,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 109,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_unarmed_land_0": {
+        "x": 808,
+        "y": 1882,
+        "w": 91,
+        "h": 72,
+        "pivotX": 56,
+        "pivotY": 72,
+        "gripX": 73,
+        "gripY": 63
+      },
+      "equipped_unarmed_land_1": {
+        "x": 237,
+        "y": 1882,
+        "w": 91,
+        "h": 73,
+        "pivotX": 56,
+        "pivotY": 73,
+        "gripX": 73,
+        "gripY": 64
+      },
+      "equipped_unarmed_land_2": {
+        "x": 2,
+        "y": 1882,
+        "w": 91,
+        "h": 74,
+        "pivotX": 56,
+        "pivotY": 74,
+        "gripX": 73,
+        "gripY": 65
+      },
+      "equipped_unarmed_air_rise_0": {
+        "x": 1026,
+        "y": 1134,
+        "w": 79,
+        "h": 102,
+        "pivotX": 40,
+        "pivotY": 102,
+        "gripX": 74,
+        "gripY": 35
+      },
+      "equipped_unarmed_air_rise_1": {
+        "x": 179,
+        "y": 1134,
+        "w": 80,
+        "h": 103,
+        "pivotX": 37,
+        "pivotY": 103,
+        "gripX": 75,
+        "gripY": 35
+      },
+      "equipped_unarmed_air_rise_2": {
+        "x": 1348,
+        "y": 1027,
+        "w": 80,
+        "h": 104,
+        "pivotX": 38,
+        "pivotY": 104,
+        "gripX": 75,
+        "gripY": 35
+      },
+      "equipped_unarmed_turn_0": {
+        "x": 1040,
+        "y": 589,
+        "w": 59,
+        "h": 107,
+        "pivotX": 35,
+        "pivotY": 107,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_unarmed_turn_1": {
+        "x": 121,
+        "y": 478,
+        "w": 58,
+        "h": 108,
+        "pivotX": 33,
+        "pivotY": 108,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_unarmed_turn_2": {
+        "x": 1392,
+        "y": 365,
+        "w": 58,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 109,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_hammer_idle_0": {
+        "x": 1166,
+        "y": 700,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "equipped_hammer_idle_1": {
+        "x": 1102,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 58,
+        "pivotY": 108
+      },
+      "equipped_hammer_idle_2": {
+        "x": 1198,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 58,
+        "pivotY": 108
+      },
+      "equipped_hammer_idle_3": {
+        "x": 1771,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_4": {
+        "x": 182,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_5": {
+        "x": 278,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_6": {
+        "x": 1453,
+        "y": 365,
+        "w": 93,
+        "h": 109,
+        "pivotX": 58,
+        "pivotY": 110
+      },
+      "equipped_hammer_idle_7": {
+        "x": 374,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_8": {
+        "x": 470,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_9": {
+        "x": 1867,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 58,
+        "pivotY": 109
+      },
+      "equipped_hammer_idle_10": {
+        "x": 1294,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 58,
+        "pivotY": 108
+      },
+      "equipped_hammer_idle_11": {
+        "x": 1390,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 58,
+        "pivotY": 108
+      },
+      "equipped_hammer_dodge_0": {
+        "x": 1262,
+        "y": 700,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "equipped_hammer_dodge_1": {
+        "x": 1808,
+        "y": 1440,
+        "w": 96,
+        "h": 89,
+        "pivotX": 49,
+        "pivotY": 89
+      },
+      "equipped_hammer_dodge_2": {
+        "x": 1183,
+        "y": 1534,
+        "w": 96,
+        "h": 87,
+        "pivotX": 50,
+        "pivotY": 87
+      },
+      "equipped_hammer_dodge_3": {
+        "x": 902,
+        "y": 1882,
+        "w": 96,
+        "h": 71,
+        "pivotX": 47,
+        "pivotY": 72
+      },
+      "equipped_hammer_dodge_4": {
+        "x": 1001,
+        "y": 1882,
+        "w": 96,
+        "h": 71,
+        "pivotX": 46,
+        "pivotY": 72
+      },
+      "equipped_hammer_dodge_5": {
+        "x": 1799,
+        "y": 1882,
+        "w": 116,
+        "h": 68,
+        "pivotX": 71,
+        "pivotY": 69
+      },
+      "equipped_hammer_dodge_6": {
+        "x": 1339,
+        "y": 1882,
+        "w": 117,
+        "h": 69,
+        "pivotX": 72,
+        "pivotY": 70
+      },
+      "equipped_hammer_dodge_7": {
+        "x": 1358,
+        "y": 700,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "equipped_hammer_land_0": {
+        "x": 741,
+        "y": 133,
+        "w": 95,
+        "h": 114,
+        "pivotX": 42,
+        "pivotY": 115
+      },
+      "equipped_hammer_land_1": {
+        "x": 1219,
+        "y": 1882,
+        "w": 117,
+        "h": 70,
+        "pivotX": 72,
+        "pivotY": 71
+      },
+      "equipped_hammer_land_2": {
+        "x": 1100,
+        "y": 1882,
+        "w": 116,
+        "h": 71,
+        "pivotX": 72,
+        "pivotY": 72
+      },
+      "equipped_hammer_air_rise_0": {
+        "x": 1568,
+        "y": 1882,
+        "w": 118,
+        "h": 69,
+        "pivotX": 74,
+        "pivotY": 70
+      },
+      "equipped_hammer_air_rise_1": {
+        "x": 1459,
+        "y": 2,
+        "w": 109,
+        "h": 116,
+        "pivotX": 24,
+        "pivotY": 117
+      },
+      "equipped_hammer_air_rise_2": {
+        "x": 1347,
+        "y": 2,
+        "w": 109,
+        "h": 116,
+        "pivotX": 25,
+        "pivotY": 117
+      },
+      "equipped_hammer_turn_0": {
+        "x": 331,
+        "y": 1882,
+        "w": 98,
+        "h": 73,
+        "pivotX": 50,
+        "pivotY": 74
+      },
+      "equipped_hammer_turn_1": {
+        "x": 1204,
+        "y": 1440,
+        "w": 95,
+        "h": 89,
+        "pivotX": 48,
+        "pivotY": 89
+      },
+      "equipped_hammer_turn_2": {
+        "x": 1454,
+        "y": 700,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "equipped_shield_idle_0": {
+        "x": 1550,
+        "y": 700,
+        "w": 92,
+        "h": 106,
+        "pivotX": 41,
+        "pivotY": 107
+      },
+      "equipped_shield_idle_1": {
+        "x": 1486,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 41,
+        "pivotY": 108
+      },
+      "equipped_shield_idle_2": {
+        "x": 1582,
+        "y": 589,
+        "w": 93,
+        "h": 107,
+        "pivotX": 41,
+        "pivotY": 108
+      },
+      "equipped_shield_idle_3": {
+        "x": 2,
+        "y": 589,
+        "w": 94,
+        "h": 108,
+        "pivotX": 41,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_4": {
+        "x": 566,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 41,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_5": {
+        "x": 662,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 41,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_6": {
+        "x": 1549,
+        "y": 365,
+        "w": 93,
+        "h": 109,
+        "pivotX": 41,
+        "pivotY": 110
+      },
+      "equipped_shield_idle_7": {
+        "x": 758,
+        "y": 478,
+        "w": 93,
+        "h": 108,
+        "pivotX": 42,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_8": {
+        "x": 854,
+        "y": 478,
+        "w": 92,
+        "h": 108,
+        "pivotX": 42,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_9": {
+        "x": 99,
+        "y": 589,
+        "w": 92,
+        "h": 108,
+        "pivotX": 42,
+        "pivotY": 109
+      },
+      "equipped_shield_idle_10": {
+        "x": 1678,
+        "y": 589,
+        "w": 92,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 108
+      },
+      "equipped_shield_idle_11": {
+        "x": 1773,
+        "y": 589,
+        "w": 92,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 108
+      },
+      "equipped_shield_dodge_0": {
+        "x": 1645,
+        "y": 700,
+        "w": 92,
+        "h": 106,
+        "pivotX": 41,
+        "pivotY": 107
+      },
+      "equipped_shield_dodge_1": {
+        "x": 484,
+        "y": 1440,
+        "w": 101,
+        "h": 90,
+        "pivotX": 43,
+        "pivotY": 91
+      },
+      "equipped_shield_dodge_2": {
+        "x": 1907,
+        "y": 1440,
+        "w": 100,
+        "h": 89,
+        "pivotX": 43,
+        "pivotY": 90
+      },
+      "equipped_shield_dodge_3": {
+        "x": 1609,
+        "y": 1799,
+        "w": 103,
+        "h": 74,
+        "pivotX": 40,
+        "pivotY": 75
+      },
+      "equipped_shield_dodge_4": {
+        "x": 1715,
+        "y": 1799,
+        "w": 104,
+        "h": 74,
+        "pivotX": 40,
+        "pivotY": 75
+      },
+      "equipped_shield_dodge_5": {
+        "x": 389,
+        "y": 1959,
+        "w": 108,
+        "h": 67,
+        "pivotX": 53,
+        "pivotY": 67
+      },
+      "equipped_shield_dodge_6": {
+        "x": 1918,
+        "y": 1882,
+        "w": 107,
+        "h": 68,
+        "pivotX": 53,
+        "pivotY": 68
+      },
+      "equipped_shield_dodge_7": {
+        "x": 1740,
+        "y": 700,
+        "w": 92,
+        "h": 106,
+        "pivotX": 41,
+        "pivotY": 107
+      },
+      "equipped_shield_land_0": {
+        "x": 357,
+        "y": 1344,
+        "w": 102,
+        "h": 93,
+        "pivotX": 31,
+        "pivotY": 94
+      },
+      "equipped_shield_land_1": {
+        "x": 1689,
+        "y": 1882,
+        "w": 107,
+        "h": 69,
+        "pivotX": 53,
+        "pivotY": 69
+      },
+      "equipped_shield_land_2": {
+        "x": 1459,
+        "y": 1882,
+        "w": 106,
+        "h": 69,
+        "pivotX": 53,
+        "pivotY": 69
+      },
+      "equipped_shield_air_rise_0": {
+        "x": 279,
+        "y": 1959,
+        "w": 107,
+        "h": 67,
+        "pivotX": 54,
+        "pivotY": 67
+      },
+      "equipped_shield_air_rise_1": {
+        "x": 906,
+        "y": 1240,
+        "w": 93,
+        "h": 99,
+        "pivotX": 22,
+        "pivotY": 100
+      },
+      "equipped_shield_air_rise_2": {
+        "x": 626,
+        "y": 1240,
+        "w": 93,
+        "h": 99,
+        "pivotX": 22,
+        "pivotY": 100
+      },
+      "equipped_shield_turn_0": {
+        "x": 794,
+        "y": 1799,
+        "w": 102,
+        "h": 76,
+        "pivotX": 41,
+        "pivotY": 77
+      },
+      "equipped_shield_turn_1": {
+        "x": 246,
+        "y": 1440,
+        "w": 103,
+        "h": 91,
+        "pivotX": 43,
+        "pivotY": 92
+      },
+      "equipped_shield_turn_2": {
+        "x": 1835,
+        "y": 700,
+        "w": 92,
+        "h": 106,
+        "pivotX": 41,
+        "pivotY": 107
+      },
+      "defence_hit_1": {
+        "x": 2,
+        "y": 250,
+        "w": 100,
+        "h": 112,
+        "pivotX": 54,
+        "pivotY": 112,
+        "gripX": 78,
+        "gripY": 71
+      },
+      "defence_hit_2": {
+        "x": 839,
+        "y": 133,
+        "w": 103,
+        "h": 114,
         "pivotX": 57,
-        "pivotY": 156,
-        "gripX": 91,
+        "pivotY": 114,
+        "gripX": 80,
         "gripY": 72
+      },
+      "defence_hit_3": {
+        "x": 546,
+        "y": 133,
+        "w": 101,
+        "h": 114,
+        "pivotX": 55,
+        "pivotY": 114,
+        "gripX": 78,
+        "gripY": 73
+      },
+      "defence_hit_4": {
+        "x": 742,
+        "y": 250,
+        "w": 107,
+        "h": 112,
+        "pivotX": 63,
+        "pivotY": 112,
+        "gripX": 82,
+        "gripY": 69
+      },
+      "defence_hit_5": {
+        "x": 1625,
+        "y": 250,
+        "w": 106,
+        "h": 110,
+        "pivotX": 62,
+        "pivotY": 110,
+        "gripX": 81,
+        "gripY": 68
+      },
+      "defence_hit_6": {
+        "x": 125,
+        "y": 365,
+        "w": 105,
+        "h": 110,
+        "pivotX": 61,
+        "pivotY": 110,
+        "gripX": 81,
+        "gripY": 68
+      },
+      "attack_wind_attack_hammer_0_3": {
+        "x": 262,
+        "y": 1134,
+        "w": 96,
+        "h": 103,
+        "pivotX": 50,
+        "pivotY": 103
+      },
+      "attack_wind_attack_hammer_1_5": {
+        "x": 1108,
+        "y": 1134,
+        "w": 107,
+        "h": 102,
+        "pivotX": 61,
+        "pivotY": 102
+      },
+      "attack_smear_attack_hammer_2": {
+        "x": 945,
+        "y": 133,
+        "w": 98,
+        "h": 114,
+        "pivotX": 57,
+        "pivotY": 114
+      },
+      "attack_follow_attack_hammer_5_0": {
+        "x": 228,
+        "y": 1799,
+        "w": 110,
+        "h": 80,
+        "pivotX": 48,
+        "pivotY": 80
+      },
+      "attack_follow_attack_hammer_5_3": {
+        "x": 1496,
+        "y": 1714,
+        "w": 108,
+        "h": 81,
+        "pivotX": 48,
+        "pivotY": 81
+      },
+      "attack_follow_attack_hammer_5_5": {
+        "x": 803,
+        "y": 1714,
+        "w": 106,
+        "h": 82,
+        "pivotX": 48,
+        "pivotY": 82
+      },
+      "equipped_settle_hammer_8": {
+        "x": 1483,
+        "y": 919,
+        "w": 93,
+        "h": 104,
+        "pivotX": 57,
+        "pivotY": 105
+      },
+      "equipped_settle_hammer_11": {
+        "x": 1771,
+        "y": 810,
+        "w": 93,
+        "h": 105,
+        "pivotX": 57,
+        "pivotY": 106
+      },
+      "equipped_settle_hammer_13": {
+        "x": 900,
+        "y": 810,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "attack_wind_attack_hammer_0_2": {
+        "x": 361,
+        "y": 1134,
+        "w": 97,
+        "h": 103,
+        "pivotX": 50,
+        "pivotY": 103
+      },
+      "attack_wind_attack_hammer_1_4": {
+        "x": 1218,
+        "y": 1134,
+        "w": 106,
+        "h": 102,
+        "pivotX": 60,
+        "pivotY": 102
+      },
+      "attack_wind_attack_hammer_1_6": {
+        "x": 1327,
+        "y": 1134,
+        "w": 108,
+        "h": 102,
+        "pivotX": 62,
+        "pivotY": 102
+      },
+      "attack_smear_attack_hammer_4": {
+        "x": 1396,
+        "y": 1534,
+        "w": 114,
+        "h": 86,
+        "pivotX": 57,
+        "pivotY": 86
+      },
+      "attack_follow_attack_hammer_5_2": {
+        "x": 1607,
+        "y": 1714,
+        "w": 108,
+        "h": 81,
+        "pivotX": 48,
+        "pivotY": 81
+      },
+      "attack_follow_attack_hammer_5_4": {
+        "x": 1718,
+        "y": 1714,
+        "w": 107,
+        "h": 81,
+        "pivotX": 48,
+        "pivotY": 81
+      },
+      "attack_follow_attack_hammer_5_6": {
+        "x": 912,
+        "y": 1714,
+        "w": 106,
+        "h": 82,
+        "pivotX": 48,
+        "pivotY": 82
+      },
+      "equipped_settle_hammer_10": {
+        "x": 1579,
+        "y": 919,
+        "w": 93,
+        "h": 104,
+        "pivotX": 57,
+        "pivotY": 105
+      },
+      "equipped_settle_hammer_12": {
+        "x": 1867,
+        "y": 810,
+        "w": 92,
+        "h": 105,
+        "pivotX": 57,
+        "pivotY": 106
+      },
+      "equipped_settle_hammer_14": {
+        "x": 996,
+        "y": 810,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "attack_smear_down_hammer_dlight": {
+        "x": 96,
+        "y": 1882,
+        "w": 138,
+        "h": 74,
+        "pivotX": 76,
+        "pivotY": 74
+      },
+      "attack_follow_attack_hammer_5_7": {
+        "x": 1021,
+        "y": 1714,
+        "w": 105,
+        "h": 82,
+        "pivotX": 48,
+        "pivotY": 82
+      },
+      "equipped_settle_hammer_9": {
+        "x": 1675,
+        "y": 919,
+        "w": 93,
+        "h": 104,
+        "pivotX": 57,
+        "pivotY": 105
+      },
+      "attack_wind_element_0_0_3": {
+        "x": 1930,
+        "y": 700,
+        "w": 98,
+        "h": 106,
+        "pivotX": 41,
+        "pivotY": 106
+      },
+      "attack_wind_element_0_1_5": {
+        "x": 146,
+        "y": 2,
+        "w": 78,
+        "h": 126,
+        "pivotX": 38,
+        "pivotY": 126
+      },
+      "attack_smear_element_0_2": {
+        "x": 1513,
+        "y": 1534,
+        "w": 161,
+        "h": 86,
+        "pivotX": 15,
+        "pivotY": 86
+      },
+      "attack_follow_element_0_3_0": {
+        "x": 2,
+        "y": 1534,
+        "w": 129,
+        "h": 89,
+        "pivotX": 21,
+        "pivotY": 89
+      },
+      "attack_follow_element_0_3_2": {
+        "x": 588,
+        "y": 1440,
+        "w": 129,
+        "h": 90,
+        "pivotX": 22,
+        "pivotY": 90
+      },
+      "attack_follow_element_0_3_5": {
+        "x": 720,
+        "y": 1440,
+        "w": 129,
+        "h": 90,
+        "pivotX": 23,
+        "pivotY": 90
+      },
+      "attack_follow_element_0_3_7": {
+        "x": 352,
+        "y": 1440,
+        "w": 129,
+        "h": 91,
+        "pivotX": 25,
+        "pivotY": 91
+      },
+      "attack_wind_element_0_0_2": {
+        "x": 1868,
+        "y": 589,
+        "w": 98,
+        "h": 107,
+        "pivotX": 40,
+        "pivotY": 107
+      },
+      "attack_wind_element_0_0_4": {
+        "x": 2,
+        "y": 810,
+        "w": 99,
+        "h": 106,
+        "pivotX": 42,
+        "pivotY": 106
+      },
+      "attack_wind_element_0_1_6": {
+        "x": 227,
+        "y": 2,
+        "w": 78,
+        "h": 126,
+        "pivotX": 38,
+        "pivotY": 126
+      },
+      "attack_follow_element_0_3_4": {
+        "x": 852,
+        "y": 1440,
+        "w": 129,
+        "h": 90,
+        "pivotX": 23,
+        "pivotY": 90
+      },
+      "attack_follow_element_0_3_6": {
+        "x": 984,
+        "y": 1440,
+        "w": 129,
+        "h": 90,
+        "pivotX": 24,
+        "pivotY": 90
+      },
+      "attack_smear_down_hammer_dair": {
+        "x": 1677,
+        "y": 1534,
+        "w": 161,
+        "h": 86,
+        "pivotX": 15,
+        "pivotY": 86
+      },
+      "attack_wind_element_0_0_1": {
+        "x": 2,
+        "y": 700,
+        "w": 97,
+        "h": 107,
+        "pivotX": 39,
+        "pivotY": 107
+      },
+      "attack_wind_element_0_1_7": {
+        "x": 308,
+        "y": 2,
+        "w": 79,
+        "h": 126,
+        "pivotX": 39,
+        "pivotY": 126
+      },
+      "attack_smear_down_hammer_ground_pound": {
+        "x": 1841,
+        "y": 1534,
+        "w": 161,
+        "h": 86,
+        "pivotX": 15,
+        "pivotY": 86
+      },
+      "attack_follow_element_0_3_3": {
+        "x": 1302,
+        "y": 1440,
+        "w": 129,
+        "h": 89,
+        "pivotX": 23,
+        "pivotY": 89
+      },
+      "attack_wind_defence_0_3": {
+        "x": 102,
+        "y": 700,
+        "w": 84,
+        "h": 107,
+        "pivotX": 44,
+        "pivotY": 107,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "attack_wind_defence_1_5": {
+        "x": 104,
+        "y": 810,
+        "w": 95,
+        "h": 106,
+        "pivotX": 50,
+        "pivotY": 106,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "attack_smear_defence_2": {
+        "x": 202,
+        "y": 810,
+        "w": 124,
+        "h": 106,
+        "pivotX": 51,
+        "pivotY": 106,
+        "gripX": 76,
+        "gripY": 66
+      },
+      "attack_follow_defence_3_0": {
+        "x": 2,
+        "y": 919,
+        "w": 86,
+        "h": 105,
+        "pivotX": 44,
+        "pivotY": 105,
+        "gripX": 76,
+        "gripY": 44
+      },
+      "attack_follow_defence_3_3": {
+        "x": 1092,
+        "y": 810,
+        "w": 86,
+        "h": 106,
+        "pivotX": 44,
+        "pivotY": 106,
+        "gripX": 75,
+        "gripY": 45
+      },
+      "attack_follow_defence_3_6": {
+        "x": 329,
+        "y": 810,
+        "w": 86,
+        "h": 106,
+        "pivotX": 44,
+        "pivotY": 106,
+        "gripX": 74,
+        "gripY": 45
+      },
+      "equipped_settle_unarmed_10": {
+        "x": 189,
+        "y": 700,
+        "w": 58,
+        "h": 107,
+        "pivotX": 32,
+        "pivotY": 107,
+        "gripX": 56,
+        "gripY": 62
+      },
+      "equipped_settle_unarmed_13": {
+        "x": 949,
+        "y": 478,
+        "w": 58,
+        "h": 108,
+        "pivotX": 33,
+        "pivotY": 108,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "attack_wind_defence_5_3": {
+        "x": 1571,
+        "y": 2,
+        "w": 75,
+        "h": 116,
+        "pivotX": 27,
+        "pivotY": 116,
+        "gripX": 67,
+        "gripY": 44
+      },
+      "attack_wind_defence_5_5": {
+        "x": 1806,
+        "y": 2,
+        "w": 76,
+        "h": 115,
+        "pivotX": 28,
+        "pivotY": 115,
+        "gripX": 67,
+        "gripY": 44
+      },
+      "attack_smear_defence_6": {
+        "x": 105,
+        "y": 250,
+        "w": 121,
+        "h": 112,
+        "pivotX": 36,
+        "pivotY": 112,
+        "gripX": 110,
+        "gripY": 38
+      },
+      "attack_follow_defence_7_0": {
+        "x": 852,
+        "y": 250,
+        "w": 66,
+        "h": 112,
+        "pivotX": 20,
+        "pivotY": 112,
+        "gripX": 57,
+        "gripY": 57
+      },
+      "attack_follow_defence_7_3": {
+        "x": 229,
+        "y": 250,
+        "w": 66,
+        "h": 112,
+        "pivotX": 22,
+        "pivotY": 112,
+        "gripX": 58,
+        "gripY": 57
+      },
+      "attack_follow_defence_7_6": {
+        "x": 1294,
+        "y": 133,
+        "w": 65,
+        "h": 113,
+        "pivotX": 23,
+        "pivotY": 113,
+        "gripX": 57,
+        "gripY": 58
+      },
+      "attack_wind_defence_4_3": {
+        "x": 298,
+        "y": 250,
+        "w": 87,
+        "h": 112,
+        "pivotX": 45,
+        "pivotY": 112,
+        "gripX": 73,
+        "gripY": 45
+      },
+      "attack_smear_down_unarmed_dlight": {
+        "x": 1434,
+        "y": 1440,
+        "w": 120,
+        "h": 89,
+        "pivotX": 45,
+        "pivotY": 89
+      },
+      "attack_wind_defence_1_3": {
+        "x": 250,
+        "y": 700,
+        "w": 95,
+        "h": 107,
+        "pivotX": 50,
+        "pivotY": 107,
+        "gripX": 77,
+        "gripY": 46
+      },
+      "attack_follow_defence_7_5": {
+        "x": 1362,
+        "y": 133,
+        "w": 65,
+        "h": 113,
+        "pivotX": 22,
+        "pivotY": 113,
+        "gripX": 57,
+        "gripY": 58
+      },
+      "equipped_settle_unarmed_8": {
+        "x": 348,
+        "y": 700,
+        "w": 57,
+        "h": 107,
+        "pivotX": 31,
+        "pivotY": 107,
+        "gripX": 55,
+        "gripY": 63
+      },
+      "equipped_settle_unarmed_11": {
+        "x": 194,
+        "y": 589,
+        "w": 57,
+        "h": 108,
+        "pivotX": 32,
+        "pivotY": 108,
+        "gripX": 55,
+        "gripY": 63
+      },
+      "attack_smear_down_unarmed_dair": {
+        "x": 91,
+        "y": 919,
+        "w": 88,
+        "h": 105,
+        "pivotX": 44,
+        "pivotY": 105
+      },
+      "attack_follow_defence_3_2": {
+        "x": 418,
+        "y": 810,
+        "w": 86,
+        "h": 106,
+        "pivotX": 44,
+        "pivotY": 106,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "attack_follow_defence_3_5": {
+        "x": 507,
+        "y": 810,
+        "w": 86,
+        "h": 106,
+        "pivotX": 44,
+        "pivotY": 106,
+        "gripX": 75,
+        "gripY": 45
+      },
+      "attack_follow_defence_3_7": {
+        "x": 408,
+        "y": 700,
+        "w": 86,
+        "h": 107,
+        "pivotX": 44,
+        "pivotY": 107,
+        "gripX": 74,
+        "gripY": 46
+      },
+      "equipped_settle_unarmed_9": {
+        "x": 497,
+        "y": 700,
+        "w": 58,
+        "h": 107,
+        "pivotX": 32,
+        "pivotY": 107,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "equipped_settle_unarmed_14": {
+        "x": 1010,
+        "y": 478,
+        "w": 58,
+        "h": 108,
+        "pivotX": 33,
+        "pivotY": 108,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "attack_wind_defence_4_2": {
+        "x": 1430,
+        "y": 133,
+        "w": 87,
+        "h": 113,
+        "pivotX": 45,
+        "pivotY": 113,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "attack_wind_defence_5_6": {
+        "x": 1649,
+        "y": 2,
+        "w": 76,
+        "h": 116,
+        "pivotX": 29,
+        "pivotY": 116,
+        "gripX": 67,
+        "gripY": 44
+      },
+      "attack_smear_down_unarmed_ground_pound": {
+        "x": 1557,
+        "y": 1440,
+        "w": 71,
+        "h": 89,
+        "pivotX": 35,
+        "pivotY": 89
+      },
+      "attack_follow_defence_7_2": {
+        "x": 388,
+        "y": 250,
+        "w": 65,
+        "h": 112,
+        "pivotX": 20,
+        "pivotY": 112,
+        "gripX": 56,
+        "gripY": 58
+      },
+      "attack_follow_defence_7_4": {
+        "x": 1520,
+        "y": 133,
+        "w": 66,
+        "h": 113,
+        "pivotX": 22,
+        "pivotY": 113,
+        "gripX": 57,
+        "gripY": 58
+      },
+      "attack_follow_defence_7_7": {
+        "x": 1046,
+        "y": 133,
+        "w": 65,
+        "h": 114,
+        "pivotX": 23,
+        "pivotY": 114,
+        "gripX": 58,
+        "gripY": 58
+      },
+      "equipped_settle_unarmed_12": {
+        "x": 254,
+        "y": 589,
+        "w": 58,
+        "h": 108,
+        "pivotX": 33,
+        "pivotY": 108,
+        "gripX": 56,
+        "gripY": 63
+      },
+      "attack_wind_defence_0_2": {
+        "x": 315,
+        "y": 589,
+        "w": 84,
+        "h": 108,
+        "pivotX": 44,
+        "pivotY": 108,
+        "gripX": 74,
+        "gripY": 46
+      },
+      "attack_wind_defence_1_6": {
+        "x": 596,
+        "y": 810,
+        "w": 95,
+        "h": 106,
+        "pivotX": 50,
+        "pivotY": 106,
+        "gripX": 76,
+        "gripY": 46
+      },
+      "attack_follow_defence_3_4": {
+        "x": 694,
+        "y": 810,
+        "w": 86,
+        "h": 106,
+        "pivotX": 44,
+        "pivotY": 106,
+        "gripX": 75,
+        "gripY": 45
+      },
+      "attack_wind_defence_4_1": {
+        "x": 1589,
+        "y": 133,
+        "w": 87,
+        "h": 113,
+        "pivotX": 45,
+        "pivotY": 113,
+        "gripX": 73,
+        "gripY": 46
+      },
+      "attack_wind_defence_5_7": {
+        "x": 1885,
+        "y": 2,
+        "w": 76,
+        "h": 115,
+        "pivotX": 29,
+        "pivotY": 115,
+        "gripX": 66,
+        "gripY": 44
+      },
+      "attack_wind_defence_5_4": {
+        "x": 1728,
+        "y": 2,
+        "w": 75,
+        "h": 116,
+        "pivotX": 27,
+        "pivotY": 116,
+        "gripX": 67,
+        "gripY": 44
+      },
+      "attack_smear_down_unarmed_dsig": {
+        "x": 500,
+        "y": 1959,
+        "w": 125,
+        "h": 66,
+        "pivotX": 53,
+        "pivotY": 66
+      },
+      "attack_wind_attack_hammer_0_1": {
+        "x": 1431,
+        "y": 1027,
+        "w": 97,
+        "h": 104,
+        "pivotX": 50,
+        "pivotY": 104
+      },
+      "attack_wind_attack_hammer_1_3": {
+        "x": 559,
+        "y": 1134,
+        "w": 106,
+        "h": 102,
+        "pivotX": 60,
+        "pivotY": 102
+      },
+      "attack_wind_attack_hammer_2_7": {
+        "x": 456,
+        "y": 250,
+        "w": 95,
+        "h": 112,
+        "pivotX": 57,
+        "pivotY": 112
+      },
+      "attack_wind_attack_hammer_2_6": {
+        "x": 1679,
+        "y": 133,
+        "w": 94,
+        "h": 113,
+        "pivotX": 57,
+        "pivotY": 113
+      },
+      "attack_follow_attack_hammer_5_1": {
+        "x": 341,
+        "y": 1799,
+        "w": 109,
+        "h": 80,
+        "pivotX": 48,
+        "pivotY": 80
+      },
+      "equipped_settle_hammer_15": {
+        "x": 1181,
+        "y": 810,
+        "w": 93,
+        "h": 106,
+        "pivotX": 58,
+        "pivotY": 107
+      },
+      "attack_wind_element_2_0_1": {
+        "x": 462,
+        "y": 1344,
+        "w": 114,
+        "h": 93,
+        "pivotX": 60,
+        "pivotY": 93
+      },
+      "attack_wind_element_2_0_2": {
+        "x": 579,
+        "y": 1344,
+        "w": 114,
+        "h": 93,
+        "pivotX": 60,
+        "pivotY": 93
+      },
+      "attack_wind_element_2_0_3": {
+        "x": 950,
+        "y": 1344,
+        "w": 114,
+        "h": 92,
+        "pivotX": 60,
+        "pivotY": 92
+      },
+      "attack_wind_element_2_0_4": {
+        "x": 1067,
+        "y": 1344,
+        "w": 115,
+        "h": 92,
+        "pivotX": 61,
+        "pivotY": 92
+      },
+      "attack_wind_element_2_1_4": {
+        "x": 501,
+        "y": 2,
+        "w": 110,
+        "h": 123,
+        "pivotX": 56,
+        "pivotY": 123
+      },
+      "attack_wind_element_2_1_5": {
+        "x": 827,
+        "y": 2,
+        "w": 110,
+        "h": 123,
+        "pivotX": 56,
+        "pivotY": 123
+      },
+      "attack_wind_element_2_1_6": {
+        "x": 614,
+        "y": 2,
+        "w": 112,
+        "h": 123,
+        "pivotX": 58,
+        "pivotY": 123
+      },
+      "attack_wind_element_2_1_7": {
+        "x": 940,
+        "y": 2,
+        "w": 112,
+        "h": 123,
+        "pivotX": 58,
+        "pivotY": 123
+      },
+      "attack_smear_down_nehemiah_hammer_dsig": {
+        "x": 432,
+        "y": 1882,
+        "w": 129,
+        "h": 73,
+        "pivotX": 77,
+        "pivotY": 73
+      },
+      "attack_follow_element_2_3_0": {
+        "x": 1828,
+        "y": 1714,
+        "w": 127,
+        "h": 81,
+        "pivotX": 52,
+        "pivotY": 81
+      },
+      "attack_follow_element_2_3_1": {
+        "x": 1129,
+        "y": 1714,
+        "w": 127,
+        "h": 82,
+        "pivotX": 52,
+        "pivotY": 82
+      },
+      "attack_follow_element_2_3_3": {
+        "x": 1259,
+        "y": 1714,
+        "w": 127,
+        "h": 82,
+        "pivotX": 53,
+        "pivotY": 82
+      },
+      "attack_follow_element_2_3_4": {
+        "x": 1504,
+        "y": 1626,
+        "w": 125,
+        "h": 82,
+        "pivotX": 52,
+        "pivotY": 82
+      },
+      "attack_follow_element_2_3_5": {
+        "x": 1143,
+        "y": 1626,
+        "w": 125,
+        "h": 83,
+        "pivotX": 53,
+        "pivotY": 83
+      },
+      "attack_follow_element_2_3_7": {
+        "x": 1271,
+        "y": 1626,
+        "w": 124,
+        "h": 83,
+        "pivotX": 52,
+        "pivotY": 83
+      },
+      "attack_wind_release_0_2": {
+        "x": 1071,
+        "y": 478,
+        "w": 100,
+        "h": 108,
+        "pivotX": 51,
+        "pivotY": 108
+      },
+      "attack_wind_release_0_3": {
+        "x": 402,
+        "y": 589,
+        "w": 100,
+        "h": 108,
+        "pivotX": 51,
+        "pivotY": 108
+      },
+      "attack_wind_release_2_5": {
+        "x": 2,
+        "y": 1240,
+        "w": 121,
+        "h": 101,
+        "pivotX": 66,
+        "pivotY": 101
+      },
+      "attack_wind_release_2_6": {
+        "x": 126,
+        "y": 1240,
+        "w": 122,
+        "h": 101,
+        "pivotX": 67,
+        "pivotY": 101
+      },
+      "attack_smear_release_3": {
+        "x": 668,
+        "y": 1134,
+        "w": 129,
+        "h": 102,
+        "pivotX": 54,
+        "pivotY": 102
+      },
+      "attack_follow_release_4_0": {
+        "x": 477,
+        "y": 1240,
+        "w": 146,
+        "h": 100,
+        "pivotX": 54,
+        "pivotY": 100
+      },
+      "attack_follow_release_4_2": {
+        "x": 251,
+        "y": 1240,
+        "w": 144,
+        "h": 101,
+        "pivotX": 55,
+        "pivotY": 101
+      },
+      "attack_follow_release_4_5": {
+        "x": 1438,
+        "y": 1134,
+        "w": 142,
+        "h": 102,
+        "pivotX": 55,
+        "pivotY": 102
+      },
+      "attack_follow_release_4_7": {
+        "x": 800,
+        "y": 1134,
+        "w": 140,
+        "h": 102,
+        "pivotX": 55,
+        "pivotY": 102
+      },
+      "equipped_settle_shield_9": {
+        "x": 1771,
+        "y": 919,
+        "w": 92,
+        "h": 104,
+        "pivotX": 40,
+        "pivotY": 105
+      },
+      "equipped_settle_shield_11": {
+        "x": 182,
+        "y": 919,
+        "w": 93,
+        "h": 105,
+        "pivotX": 40,
+        "pivotY": 106
+      },
+      "equipped_settle_shield_14": {
+        "x": 1277,
+        "y": 810,
+        "w": 92,
+        "h": 106,
+        "pivotX": 40,
+        "pivotY": 107
+      },
+      "attack_wind_element_1_0_2": {
+        "x": 1116,
+        "y": 1440,
+        "w": 85,
+        "h": 90,
+        "pivotX": 22,
+        "pivotY": 90
+      },
+      "attack_wind_element_1_0_3": {
+        "x": 1631,
+        "y": 1440,
+        "w": 86,
+        "h": 89,
+        "pivotX": 23,
+        "pivotY": 89
+      },
+      "attack_wind_element_1_1_5": {
+        "x": 1734,
+        "y": 250,
+        "w": 89,
+        "h": 110,
+        "pivotX": 42,
+        "pivotY": 110
+      },
+      "attack_wind_element_1_1_6": {
+        "x": 1195,
+        "y": 250,
+        "w": 89,
+        "h": 111,
+        "pivotX": 42,
+        "pivotY": 111
+      },
+      "attack_smear_down_nehemiah_shield_dsig": {
+        "x": 1632,
+        "y": 1626,
+        "w": 144,
+        "h": 82,
+        "pivotX": 30,
+        "pivotY": 82
+      },
+      "attack_follow_element_1_3_0": {
+        "x": 783,
+        "y": 810,
+        "w": 114,
+        "h": 106,
+        "pivotX": 18,
+        "pivotY": 106
+      },
+      "attack_follow_element_1_3_2": {
+        "x": 558,
+        "y": 700,
+        "w": 114,
+        "h": 107,
+        "pivotX": 18,
+        "pivotY": 107
+      },
+      "attack_follow_element_1_3_5": {
+        "x": 505,
+        "y": 589,
+        "w": 112,
+        "h": 108,
+        "pivotX": 19,
+        "pivotY": 108
+      },
+      "attack_follow_element_1_3_7": {
+        "x": 1174,
+        "y": 478,
+        "w": 112,
+        "h": 108,
+        "pivotX": 20,
+        "pivotY": 108
+      },
+      "attack_smear_element_1_2": {
+        "x": 1779,
+        "y": 1626,
+        "w": 144,
+        "h": 82,
+        "pivotX": 30,
+        "pivotY": 82
+      },
+      "attack_follow_element_1_3_3": {
+        "x": 675,
+        "y": 700,
+        "w": 113,
+        "h": 107,
+        "pivotX": 18,
+        "pivotY": 107
+      },
+      "attack_follow_element_1_3_6": {
+        "x": 620,
+        "y": 589,
+        "w": 112,
+        "h": 108,
+        "pivotX": 20,
+        "pivotY": 108
+      },
+      "equipped_settle_shield_10": {
+        "x": 1866,
+        "y": 919,
+        "w": 93,
+        "h": 104,
+        "pivotX": 40,
+        "pivotY": 105
+      },
+      "equipped_settle_shield_13": {
+        "x": 1372,
+        "y": 810,
+        "w": 92,
+        "h": 106,
+        "pivotX": 40,
+        "pivotY": 107
+      },
+      "attack_smear_down_shield_dlight": {
+        "x": 2,
+        "y": 1714,
+        "w": 144,
+        "h": 82,
+        "pivotX": 30,
+        "pivotY": 82
+      },
+      "equipped_settle_shield_8": {
+        "x": 2,
+        "y": 1027,
+        "w": 93,
+        "h": 104,
+        "pivotX": 40,
+        "pivotY": 105
+      },
+      "attack_smear_down_shield_dair": {
+        "x": 149,
+        "y": 1714,
+        "w": 144,
+        "h": 82,
+        "pivotX": 30,
+        "pivotY": 82
+      },
+      "attack_wind_element_1_0_4": {
+        "x": 1720,
+        "y": 1440,
+        "w": 85,
+        "h": 89,
+        "pivotX": 22,
+        "pivotY": 89
+      },
+      "attack_smear_down_shield_ground_pound": {
+        "x": 296,
+        "y": 1714,
+        "w": 144,
+        "h": 82,
+        "pivotX": 30,
+        "pivotY": 82
+      },
+      "attack_follow_element_1_3_4": {
+        "x": 735,
+        "y": 589,
+        "w": 113,
+        "h": 108,
+        "pivotX": 19,
+        "pivotY": 108
+      },
+      "equipped_settle_shield_12": {
+        "x": 278,
+        "y": 919,
+        "w": 92,
+        "h": 105,
+        "pivotX": 40,
+        "pivotY": 106
+      },
+      "attack_smear_down_nehemiah_hammer_dlight": {
+        "x": 564,
+        "y": 1882,
+        "w": 129,
+        "h": 73,
+        "pivotX": 77,
+        "pivotY": 73
+      },
+      "attack_follow_element_2_3_2": {
+        "x": 443,
+        "y": 1714,
+        "w": 127,
+        "h": 82,
+        "pivotX": 53,
+        "pivotY": 82
       }
     },
     "clips": {
@@ -46646,194 +48612,482 @@
       "hammer_nlight": {
         "frames": [
           "attack_hammer_0",
-          "attack_hammer_1",
+          "attack_wind_attack_hammer_0_3",
+          "attack_wind_attack_hammer_1_5",
+          "attack_smear_attack_hammer_2",
           "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "attack_follow_attack_hammer_5_0",
+          "attack_follow_attack_hammer_5_3",
+          "attack_follow_attack_hammer_5_5",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_13",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          4,
+          2,
           3,
+          2,
           3,
           5,
-          7,
-          7,
-          7
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_slight": {
         "frames": [
           "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
+          "attack_wind_attack_hammer_0_2",
+          "attack_wind_attack_hammer_1_4",
+          "attack_wind_attack_hammer_1_6",
+          "attack_smear_attack_hammer_4",
           "attack_hammer_4",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "attack_follow_attack_hammer_5_0",
+          "attack_follow_attack_hammer_5_2",
+          "attack_follow_attack_hammer_5_4",
+          "attack_follow_attack_hammer_5_6",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          2,
+          3,
+          3,
           5,
-          4,
-          4,
-          5,
-          9,
-          8,
-          8
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_dlight": {
         "frames": [
           "attack_hammer_0",
-          "attack_hammer_1",
-          "attack_hammer_2",
+          "attack_wind_attack_hammer_0_3",
+          "attack_wind_attack_hammer_1_5",
+          "attack_smear_down_hammer_dlight",
           "down_hammer_dlight",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "attack_follow_attack_hammer_5_0",
+          "attack_follow_attack_hammer_5_2",
+          "attack_follow_attack_hammer_5_5",
+          "attack_follow_attack_hammer_5_7",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          4,
-          4,
-          4,
+          3,
+          3,
+          3,
+          3,
           5,
-          8,
-          8,
-          7
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_nair": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_3",
+          "attack_wind_element_0_1_5",
+          "attack_smear_element_0_2",
           "element_0_2",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_2",
+          "attack_follow_element_0_3_5",
+          "attack_follow_element_0_3_7",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           5,
-          23
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_sair": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_2",
+          "attack_wind_element_0_0_4",
+          "attack_wind_element_0_1_6",
+          "attack_smear_element_0_2",
           "element_0_2",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_2",
+          "attack_follow_element_0_3_4",
+          "attack_follow_element_0_3_6",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          7,
-          7,
+          2,
+          3,
+          3,
+          3,
+          3,
           5,
-          27
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_dair": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_2",
+          "attack_wind_element_0_0_4",
+          "attack_wind_element_0_1_6",
+          "attack_smear_down_hammer_dair",
           "down_hammer_dair",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_2",
+          "attack_follow_element_0_3_4",
+          "attack_follow_element_0_3_6",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          7,
-          7,
+          2,
+          3,
+          3,
+          3,
+          3,
           5,
-          27
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_recovery": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_2",
+          "attack_wind_element_0_0_4",
+          "attack_wind_element_0_1_6",
+          "attack_smear_element_0_2",
           "element_0_2",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_2",
+          "attack_follow_element_0_3_4",
+          "attack_follow_element_0_3_5",
+          "attack_follow_element_0_3_7",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
+          3,
+          3,
+          3,
+          3,
+          3,
           7,
-          8,
-          7,
-          28
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_ground_pound": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_1",
+          "attack_wind_element_0_0_3",
+          "attack_wind_element_0_0_4",
+          "attack_wind_element_0_1_5",
+          "attack_wind_element_0_1_7",
+          "attack_smear_down_hammer_ground_pound",
           "down_hammer_ground_pound",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_2",
+          "attack_follow_element_0_3_3",
+          "attack_follow_element_0_3_5",
+          "attack_follow_element_0_3_6",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_13",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          10,
-          10,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           12,
-          33
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_hammer_nsig": {
         "frames": [
           "attack_hammer_0",
-          "attack_hammer_1",
+          "attack_wind_attack_hammer_0_1",
+          "attack_wind_attack_hammer_0_2",
+          "attack_wind_attack_hammer_1_3",
+          "attack_wind_attack_hammer_1_5",
+          "attack_wind_attack_hammer_1_6",
+          "attack_wind_attack_hammer_2_7",
+          "attack_smear_attack_hammer_2",
           "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "attack_follow_attack_hammer_5_0",
+          "attack_follow_attack_hammer_5_2",
+          "attack_follow_attack_hammer_5_3",
+          "attack_follow_attack_hammer_5_5",
+          "attack_follow_attack_hammer_5_6",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_13",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          8,
-          8,
-          8,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           6,
-          11,
-          11,
-          11
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_hammer_ssig": {
         "frames": [
           "attack_hammer_0",
-          "attack_hammer_1",
+          "attack_wind_attack_hammer_0_1",
+          "attack_wind_attack_hammer_0_2",
+          "attack_wind_attack_hammer_0_3",
+          "attack_wind_attack_hammer_1_4",
+          "attack_wind_attack_hammer_1_4",
+          "attack_wind_attack_hammer_1_5",
+          "attack_wind_attack_hammer_2_6",
+          "attack_wind_attack_hammer_2_7",
+          "attack_smear_attack_hammer_2",
           "attack_hammer_2",
-          "attack_hammer_2",
-          "attack_hammer_5",
-          "attack_hammer_6",
-          "attack_hammer_7"
+          "attack_follow_attack_hammer_5_0",
+          "attack_follow_attack_hammer_5_1",
+          "attack_follow_attack_hammer_5_3",
+          "attack_follow_attack_hammer_5_4",
+          "attack_follow_attack_hammer_5_5",
+          "attack_follow_attack_hammer_5_7",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_13",
+          "equipped_settle_hammer_15",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          10,
-          9,
-          9,
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
           6,
-          13,
-          12,
-          12
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_hammer_dsig": {
         "frames": [
           "element_2_0",
-          "element_2_1",
+          "attack_wind_element_2_0_1",
+          "attack_wind_element_2_0_2",
+          "attack_wind_element_2_0_3",
+          "attack_wind_element_2_0_4",
+          "attack_wind_element_2_1_4",
+          "attack_wind_element_2_1_5",
+          "attack_wind_element_2_1_6",
+          "attack_wind_element_2_1_7",
+          "attack_smear_down_nehemiah_hammer_dsig",
           "down_nehemiah_hammer_dsig",
-          "element_2_3"
+          "attack_follow_element_2_3_0",
+          "attack_follow_element_2_3_1",
+          "attack_follow_element_2_3_3",
+          "attack_follow_element_2_3_4",
+          "attack_follow_element_2_3_5",
+          "attack_follow_element_2_3_7",
+          "equipped_settle_hammer_8",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_13",
+          "equipped_settle_hammer_15",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          15,
-          15,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           7,
-          39
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "idle": {
         "frames": [
-          "defence_0"
+          "equipped_unarmed_idle_0",
+          "equipped_unarmed_idle_1",
+          "equipped_unarmed_idle_2",
+          "equipped_unarmed_idle_3",
+          "equipped_unarmed_idle_4",
+          "equipped_unarmed_idle_5",
+          "equipped_unarmed_idle_6",
+          "equipped_unarmed_idle_7",
+          "equipped_unarmed_idle_8",
+          "equipped_unarmed_idle_9",
+          "equipped_unarmed_idle_10",
+          "equipped_unarmed_idle_11"
         ],
         "ticks": [
-          60
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": true
       },
       "jump": {
         "frames": [
@@ -46850,415 +49104,911 @@
       },
       "dodge": {
         "frames": [
-          "defence_8",
-          "defence_9",
-          "defence_10",
-          "defence_11"
+          "equipped_unarmed_dodge_0",
+          "equipped_unarmed_dodge_1",
+          "equipped_unarmed_dodge_2",
+          "equipped_unarmed_dodge_3",
+          "equipped_unarmed_dodge_4",
+          "equipped_unarmed_dodge_5",
+          "equipped_unarmed_dodge_6",
+          "equipped_unarmed_dodge_7"
         ],
         "ticks": [
           2,
-          5,
-          5,
-          5
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3
         ],
         "loop": false
       },
       "hitstun": {
         "frames": [
           "defence_13",
+          "defence_hit_1",
+          "defence_hit_2",
+          "defence_hit_3",
+          "defence_hit_4",
+          "defence_hit_5",
+          "defence_hit_6",
           "defence_14"
         ],
         "ticks": [
-          5,
-          7
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
         ],
         "loop": false
       },
       "unarmed_nlight": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_3",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
           2,
-          4,
+          1,
+          2,
           3,
-          9,
-          6
-        ]
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ],
+        "loop": false
       },
       "unarmed_slight": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
           2,
-          6,
+          2,
+          2,
+          2,
           4,
-          11,
-          7
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dlight": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_down_unarmed_dlight",
           "down_unarmed_dlight",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
           2,
-          5,
+          2,
+          2,
           4,
-          11,
-          6
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_nair": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_1_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_3",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
           2,
-          6,
+          2,
+          2,
+          2,
           4,
-          11,
-          6
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_sair": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_5",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          2,
           3,
-          7,
+          2,
+          3,
           4,
-          13,
-          7
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dair": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_down_unarmed_dair",
           "down_unarmed_dair",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_5",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          2,
           3,
-          7,
+          2,
+          3,
           4,
-          13,
-          8
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_recovery": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_2",
+          "attack_follow_defence_3_5",
+          "attack_follow_defence_3_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          4,
-          8,
+          3,
+          3,
+          3,
+          3,
           7,
-          15,
-          9
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_ground_pound": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_smear_down_unarmed_ground_pound",
           "down_unarmed_ground_pound",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          5,
-          11,
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           12,
-          18,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_nsig": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_2",
+          "attack_wind_defence_1_3",
+          "attack_wind_defence_1_5",
+          "attack_wind_defence_1_6",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_2",
+          "attack_follow_defence_3_4",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          6,
-          12,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          16,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_ssig": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_1",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_wind_defence_5_7",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          7,
-          15,
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
           5,
-          18,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dsig": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_1",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_4",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_wind_defence_5_7",
+          "attack_smear_down_unarmed_dsig",
           "down_unarmed_dsig",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          8,
-          17,
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
           5,
-          19,
-          11
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_shield_nsig": {
         "frames": [
           "release_0",
-          "release_2",
+          "attack_wind_release_0_2",
+          "attack_wind_release_0_3",
+          "attack_wind_release_2_5",
+          "attack_wind_release_2_6",
+          "attack_smear_release_3",
           "release_3",
-          "release_4"
+          "attack_follow_release_4_0",
+          "attack_follow_release_4_2",
+          "attack_follow_release_4_5",
+          "attack_follow_release_4_7",
+          "equipped_settle_shield_9",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_14",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           8,
-          8,
-          8,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_shield_ssig": {
         "frames": [
           "release_0",
-          "release_2",
+          "attack_wind_release_0_2",
+          "attack_wind_release_0_3",
+          "attack_wind_release_2_5",
+          "attack_wind_release_2_6",
+          "attack_smear_release_3",
           "release_3",
-          "release_4"
+          "attack_follow_release_4_0",
+          "attack_follow_release_4_2",
+          "attack_follow_release_4_5",
+          "attack_follow_release_4_7",
+          "equipped_settle_shield_9",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_14",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           8,
-          8,
-          8,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_shield_dsig": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_2",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_wind_element_1_1_6",
+          "attack_smear_down_nehemiah_shield_dsig",
           "down_nehemiah_shield_dsig",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_2",
+          "attack_follow_element_1_3_5",
+          "attack_follow_element_1_3_7",
+          "equipped_settle_shield_9",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_14",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           8,
-          8,
-          8,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_nlight": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          1,
+          2,
+          2,
+          2,
+          4,
+          2,
           3,
-          4,
-          4,
-          15
-        ]
+          2,
+          3,
+          2,
+          3
+        ],
+        "loop": false
       },
       "shield_slight": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          2,
+          2,
+          3,
           4,
-          5,
-          4,
-          18
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_dlight": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_down_shield_dlight",
           "down_shield_dlight",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          2,
+          2,
+          2,
           4,
-          4,
-          4,
-          17
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_nair": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
-          4,
-          4,
+          2,
+          2,
+          2,
+          2,
           5,
-          16
-        ]
+          2,
+          3,
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_sair": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_5",
+          "equipped_settle_shield_8",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          2,
+          3,
           5,
-          5,
-          5,
-          20
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_dair": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_down_shield_dair",
           "down_shield_dair",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_5",
+          "equipped_settle_shield_8",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          2,
+          3,
           5,
-          5,
-          5,
-          21
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_recovery": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_2",
+          "attack_follow_element_1_3_5",
+          "attack_follow_element_1_3_7",
+          "equipped_settle_shield_9",
+          "equipped_settle_shield_11",
+          "equipped_settle_shield_14",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
-          5,
-          6,
+          2,
+          3,
+          3,
+          3,
           7,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_ground_pound": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_2",
+          "attack_wind_element_1_0_4",
+          "attack_wind_element_1_1_6",
+          "attack_smear_down_shield_ground_pound",
           "down_shield_ground_pound",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_2",
+          "attack_follow_element_1_3_4",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_8",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_12",
+          "equipped_settle_shield_14",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
-          7,
-          8,
+          3,
+          3,
+          3,
+          3,
+          3,
           12,
-          27
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "hammer_air_combo": {
         "frames": [
           "element_0_0",
-          "element_0_1",
+          "attack_wind_element_0_0_3",
+          "attack_wind_element_0_1_5",
+          "attack_smear_element_0_2",
           "element_0_2",
-          "element_0_3"
+          "attack_follow_element_0_3_0",
+          "attack_follow_element_0_3_3",
+          "attack_follow_element_0_3_6",
+          "equipped_settle_hammer_10",
+          "equipped_settle_hammer_13",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_air_combo": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "shield_air_combo": {
         "frames": [
           "element_1_0",
-          "element_1_1",
+          "attack_wind_element_1_0_3",
+          "attack_wind_element_1_1_5",
+          "attack_smear_element_1_2",
           "element_1_2",
-          "element_1_3"
+          "attack_follow_element_1_3_0",
+          "attack_follow_element_1_3_3",
+          "attack_follow_element_1_3_6",
+          "equipped_settle_shield_10",
+          "equipped_settle_shield_13",
+          "equipped_shield_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "nehemiah_hammer_dlight": {
         "frames": [
           "element_2_0",
-          "element_2_1",
+          "attack_wind_element_2_0_3",
+          "attack_wind_element_2_1_5",
+          "attack_smear_down_nehemiah_hammer_dlight",
           "down_nehemiah_hammer_dlight",
-          "element_2_3"
+          "attack_follow_element_2_3_0",
+          "attack_follow_element_2_3_2",
+          "attack_follow_element_2_3_5",
+          "attack_follow_element_2_3_7",
+          "equipped_settle_hammer_9",
+          "equipped_settle_hammer_11",
+          "equipped_settle_hammer_14",
+          "equipped_hammer_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           5,
-          23
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       }
     },
     "movement": {
@@ -47282,10 +50032,10 @@
       "notes": "New punch, kick, dodge and recoil drawings. Unarmed directional moves share punch/kick poses; no added gameplay displacement."
     },
     "packing": {
-      "width": 1024,
-      "height": 4232,
-      "bodyPixels": 160,
-      "bytes": 4369953
+      "width": 2048,
+      "height": 2028,
+      "bodyPixels": 109,
+      "bytes": 1180409
     },
     "downwardArt": {
       "readiness": "animation_alpha",
@@ -47319,7 +50069,8 @@
       "unarmedSource": "assets/animation-production/fluid-runs/nehemiah-unarmed.png",
       "unarmedFrames": 12,
       "registration": "head silhouette; single model scale; feet at or above ground"
-    }
+    },
+    "smoothAnimation": 1
   },
   "caleb": {
     "image": "assets/runtime/fighters/caleb-fluid-packed.png",
