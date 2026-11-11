@@ -66,6 +66,8 @@ export class Renderer{
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
     if(pose==='hitstun'&&this.atlas?.[hero]?.defence_13)return time<7?'defence_13':'defence_14';
+    const idleFrame = 'equipped_'+weapon+'_idle_'+(Math.floor(time/3)%12);
+    if (!move && pose==='idle' && this.atlas?.[hero]?.[idleFrame]) return idleFrame;
     if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
       const key=(i:number)=>'equipped_'+weapon+'_'+i;
       if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
@@ -130,7 +132,7 @@ export class Renderer{
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
-      if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
+      if((pose==='idle'||pose==='happy')&&!frameName.includes('_idle_')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
       if(attack&&!this.reduced&&!ghost&&pose!=='hitstun'){
         // Shift weight onto the lead foot as the authored contact pose appears.
         const windup=Math.max(1,attack.startup),end=windup+attack.active;

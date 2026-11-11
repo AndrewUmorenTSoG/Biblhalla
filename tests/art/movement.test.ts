@@ -31,6 +31,13 @@ test('movement additions do not replace a signature with a running frame',()=>{
 test('the roster rests in the closed-hand sprite with either carried weapon',()=>{
   for(const [hero,entry] of Object.entries(meta) as [string,any][]){
     for(const weapon of ['unarmed',...JSON.parse(readFileSync(new URL('../../production-pack/09_Data/fighters.json',import.meta.url),'utf8')).fighters.find((f:any)=>f.id===hero).weaponPair]){
+      if(hero==='david'){
+        const names=Array.from({length:12},(_,i)=>renderer.frameFor(hero,'idle',weapon,'',0,i*3));
+        assert.equal(new Set(names).size,12);
+        assert.ok(names.every(name=>entry.frames[name]));
+        assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,36),names[0]);
+        continue;
+      }
       assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,0),entry.frames['equipped_'+weapon+'_0']?'equipped_'+weapon+'_0':'motion_idle');
       assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,120),entry.frames['equipped_'+weapon+'_0']?'equipped_'+weapon+'_1':'motion_idle');
     }
