@@ -37,7 +37,7 @@ export class Renderer{
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
   capture(world:SimState){if(this.lastWorld!==world){this.motion.clear();this.previous.clear();this.runDistance.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.lastWorld=world;this.elementEvents=[];}this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
-  motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number}>();
+  motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
@@ -60,6 +60,7 @@ export class Renderer{
   weapon(weapon:string,x:number,y:number,angle:number,palette:string){drawWeapon(this.ctx,weapon,x,y,angle,palette);}
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
+    if(pose==='hitstun'&&this.atlas?.[hero]?.defence_13)return time<7?'defence_13':'defence_14';
     if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
       const key=(i:number)=>'equipped_'+weapon+'_'+i;
       if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
@@ -124,7 +125,8 @@ export class Renderer{
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
-      if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.translate(Math.sin(time*.07+phase)*1.2,0);c.scale(1,1+Math.sin(time*.1+phase)*.006);}
+      if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
+      if(pose==='land'&&!this.reduced){const settle=Math.max(0,1-time/5);c.scale(1+settle*.025,1-settle*.035);}
       if(pose==='backflip'&&!this.reduced){const t=Math.max(0,Math.min(1,time/17));const smooth=t*t*(3-2*t);c.translate(0,-frame.pivotY*.48);c.rotate(-Math.PI*2*smooth);c.translate(0,frame.pivotY*.48);}
       else if(recoil){c.translate(0,-frame.pivotY*.45);c.rotate(recoil);c.translate(0,frame.pivotY*.45);}
       else if(pose==='recovery'&&!move&&!this.clips[hero]?.hitstun)c.rotate(-.12);
@@ -194,14 +196,15 @@ export class Renderer{
     this.feedback.draw(c,screen,this.camera.zoom);
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'recovery':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';
+    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
-      let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0};
+      let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0,stunned:!!f.stun};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;
       if((pose==='idle'||pose==='run')&&world.tick<motion.landUntil)pose='land';
-      if(motion.pose!==pose){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
-      motion.tick=world.tick;motion.ground=!!f.ground;this.motion.set(f.id,motion);
-      const recoil=f.stun&&!f.ground&&!this.reduced?Math.max(-.11,Math.min(.11,-f.vx/Q*.01)):0;
+      if(motion.pose!==pose||motion.stunned!==!!f.stun){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
+      motion.tick=world.tick;motion.ground=!!f.ground;motion.stunned=!!f.stun;this.motion.set(f.id,motion);
+      const hitEase=Math.max(0,1-motion.time/12);
+      const recoil=f.stun&&!this.reduced?(f.ground?-.16*hitEase:Math.max(-.11,Math.min(.11,-f.vx/Q*.01))):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
       this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),f.action?.tick||0,f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.human&&!f.respawn)drawPlayerMark(c,f.id,p.x,p.y-(FIGURE_PX+34)*this.camera.zoom*f.scale,7);

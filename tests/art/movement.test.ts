@@ -59,3 +59,11 @@ test('backflip uses the airborne sprite sequence instead of a cutout pose',()=>{
     assert.equal(renderer.frameFor(hero,'happy','unarmed','',0,0),'motion_idle');
   }
 });
+test('hitstun uses each fighter’s drawn recoil and settle poses with or without a weapon',()=>{
+  for(const hero of Object.keys(meta))for(const weapon of ['unarmed','sling','sword']){
+    assert.equal(renderer.frameFor(hero,'hitstun',weapon,'',0,0),'defence_13');
+    assert.equal(renderer.frameFor(hero,'hitstun',weapon,'',0,8),'defence_14');
+    assert.ok(meta[hero].frames.defence_13?.gripX);
+    assert.ok(meta[hero].frames.defence_14?.gripX);
+  }
+});
