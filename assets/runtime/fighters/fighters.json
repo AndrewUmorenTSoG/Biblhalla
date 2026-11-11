@@ -40885,7 +40885,7 @@
   },
   "miriam": {
     "image": "assets/runtime/fighters/miriam-fluid-packed.png",
-    "sha256": "be662108d7f5e5b9544b09085752cffc14eccb65ec0af07f34f6f9b62fe98225",
+    "sha256": "2e66ba1e160bb0f06f40871f893fe98300845e4f46a11dfb69859fefdff4079c",
     "readiness": "runtime_alpha",
     "source": "production-pack/10_Generated_Artwork/Characters/10_miriam_move_sheet.png",
     "sourceSha256": "f63c8b83fc45ed67dacb523904f9620a2cca3110c22bd91bf009907dbba1978f",
@@ -40894,1334 +40894,2956 @@
     "approval": "pending",
     "frames": {
       "idle": {
-        "x": 4,
-        "y": 4,
-        "w": 105,
-        "h": 160,
-        "pivotX": 57,
-        "pivotY": 160
+        "x": 1848,
+        "y": 257,
+        "w": 76,
+        "h": 116,
+        "pivotX": 41,
+        "pivotY": 116
       },
       "turnaround": {
-        "x": 117,
-        "y": 4,
-        "w": 100,
-        "h": 161,
-        "pivotX": 57,
-        "pivotY": 161
+        "x": 919,
+        "y": 257,
+        "w": 72,
+        "h": 117,
+        "pivotX": 41,
+        "pivotY": 117
       },
       "light": {
-        "x": 225,
-        "y": 4,
-        "w": 118,
-        "h": 148,
-        "pivotX": 97,
-        "pivotY": 148
+        "x": 386,
+        "y": 1308,
+        "w": 86,
+        "h": 107,
+        "pivotX": 71,
+        "pivotY": 107
       },
       "sig_staff_n": {
-        "x": 351,
-        "y": 4,
-        "w": 109,
-        "h": 171,
-        "pivotX": 47,
-        "pivotY": 171
-      },
-      "sig_staff_s": {
-        "x": 468,
-        "y": 4,
-        "w": 118,
-        "h": 134,
-        "pivotX": 69,
-        "pivotY": 134
-      },
-      "sig_staff_d": {
-        "x": 594,
-        "y": 4,
-        "w": 118,
-        "h": 131,
-        "pivotX": 58,
-        "pivotY": 131
-      },
-      "sig_sling_n": {
-        "x": 720,
-        "y": 4,
-        "w": 117,
-        "h": 166,
-        "pivotX": 22,
-        "pivotY": 166
-      },
-      "sig_sling_s": {
-        "x": 845,
-        "y": 4,
-        "w": 109,
-        "h": 135,
-        "pivotX": 18,
-        "pivotY": 135
-      },
-      "sig_sling_d": {
-        "x": 4,
-        "y": 183,
-        "w": 118,
-        "h": 106,
-        "pivotX": 45,
-        "pivotY": 106
-      },
-      "motion_idle": {
-        "x": 130,
-        "y": 183,
-        "w": 88,
-        "h": 160,
-        "pivotX": 48,
-        "pivotY": 160,
-        "gripX": 76,
-        "gripY": 92
-      },
-      "run_0": {
-        "x": 226,
-        "y": 183,
-        "w": 107,
-        "h": 152,
-        "pivotX": 55,
-        "pivotY": 152,
-        "gripX": 92,
-        "gripY": 69
-      },
-      "run_1": {
-        "x": 341,
-        "y": 183,
-        "w": 76,
-        "h": 152,
-        "pivotX": 35,
-        "pivotY": 152,
-        "gripX": 70,
-        "gripY": 72
-      },
-      "run_2": {
-        "x": 425,
-        "y": 183,
-        "w": 63,
-        "h": 151,
-        "pivotX": 27,
-        "pivotY": 151,
-        "gripX": 57,
-        "gripY": 70
-      },
-      "run_3": {
-        "x": 496,
-        "y": 183,
-        "w": 71,
-        "h": 152,
-        "pivotX": 32,
-        "pivotY": 153,
-        "gripX": 65,
-        "gripY": 64
-      },
-      "run_4": {
-        "x": 575,
-        "y": 183,
-        "w": 86,
-        "h": 152,
-        "pivotX": 45,
-        "pivotY": 156,
-        "gripX": 80,
-        "gripY": 60
-      },
-      "run_5": {
-        "x": 669,
-        "y": 183,
-        "w": 92,
-        "h": 146,
-        "pivotX": 49,
-        "pivotY": 148,
-        "gripX": 86,
-        "gripY": 58
-      },
-      "run_6": {
-        "x": 769,
-        "y": 183,
-        "w": 101,
-        "h": 150,
-        "pivotX": 46,
-        "pivotY": 150,
-        "gripX": 79,
-        "gripY": 66
-      },
-      "run_7": {
-        "x": 878,
-        "y": 183,
-        "w": 80,
-        "h": 153,
-        "pivotX": 36,
-        "pivotY": 153,
-        "gripX": 74,
-        "gripY": 71
-      },
-      "air_rise": {
-        "x": 4,
-        "y": 351,
-        "w": 115,
-        "h": 154,
-        "pivotX": 58,
-        "pivotY": 154,
-        "gripX": 100,
-        "gripY": 53
-      },
-      "air_apex": {
-        "x": 127,
-        "y": 351,
-        "w": 128,
-        "h": 122,
-        "pivotX": 71,
-        "pivotY": 122,
-        "gripX": 123,
-        "gripY": 53
-      },
-      "air_fall": {
-        "x": 263,
-        "y": 351,
-        "w": 123,
-        "h": 133,
-        "pivotX": 69,
-        "pivotY": 133,
-        "gripX": 119,
-        "gripY": 58
-      },
-      "land": {
-        "x": 394,
-        "y": 351,
-        "w": 120,
-        "h": 112,
-        "pivotX": 83,
-        "pivotY": 112,
-        "gripX": 96,
-        "gripY": 98
-      },
-      "attack_staff_0": {
-        "x": 522,
-        "y": 351,
-        "w": 157,
-        "h": 156,
-        "pivotX": 79,
-        "pivotY": 156
-      },
-      "attack_staff_1": {
-        "x": 687,
-        "y": 351,
-        "w": 155,
-        "h": 151,
-        "pivotX": 78,
-        "pivotY": 151
-      },
-      "attack_staff_2": {
-        "x": 850,
-        "y": 351,
-        "w": 146,
-        "h": 158,
-        "pivotX": 78,
-        "pivotY": 158
-      },
-      "attack_staff_3": {
-        "x": 4,
-        "y": 517,
-        "w": 158,
-        "h": 159,
-        "pivotX": 85,
-        "pivotY": 159
-      },
-      "attack_staff_4": {
-        "x": 170,
-        "y": 517,
-        "w": 162,
-        "h": 132,
-        "pivotX": 85,
-        "pivotY": 132
-      },
-      "attack_staff_5": {
-        "x": 340,
-        "y": 517,
-        "w": 145,
-        "h": 148,
-        "pivotX": 83,
-        "pivotY": 148
-      },
-      "attack_staff_6": {
-        "x": 493,
-        "y": 517,
-        "w": 162,
-        "h": 147,
-        "pivotX": 85,
-        "pivotY": 147
-      },
-      "attack_staff_7": {
-        "x": 663,
-        "y": 517,
-        "w": 140,
-        "h": 149,
-        "pivotX": 64,
-        "pivotY": 149
-      },
-      "attack_sling_0": {
-        "x": 811,
-        "y": 517,
-        "w": 113,
-        "h": 152,
-        "pivotX": 76,
-        "pivotY": 152
-      },
-      "attack_sling_1": {
-        "x": 4,
-        "y": 684,
-        "w": 145,
-        "h": 151,
-        "pivotX": 78,
-        "pivotY": 151
-      },
-      "attack_sling_2": {
-        "x": 157,
-        "y": 684,
-        "w": 139,
-        "h": 157,
-        "pivotX": 77,
-        "pivotY": 157
-      },
-      "attack_sling_3": {
-        "x": 304,
-        "y": 684,
-        "w": 148,
-        "h": 158,
-        "pivotX": 78,
-        "pivotY": 158
-      },
-      "attack_sling_4": {
-        "x": 460,
-        "y": 684,
-        "w": 162,
-        "h": 143,
-        "pivotX": 85,
-        "pivotY": 143
-      },
-      "attack_sling_5": {
-        "x": 630,
-        "y": 684,
-        "w": 145,
-        "h": 134,
-        "pivotX": 68,
-        "pivotY": 134
-      },
-      "attack_sling_6": {
-        "x": 783,
-        "y": 684,
-        "w": 146,
-        "h": 140,
-        "pivotX": 77,
-        "pivotY": 140
-      },
-      "attack_sling_7": {
-        "x": 4,
-        "y": 850,
-        "w": 113,
-        "h": 152,
-        "pivotX": 53,
-        "pivotY": 152
-      },
-      "defence_0": {
-        "x": 125,
-        "y": 850,
-        "w": 107,
-        "h": 160,
-        "pivotX": 56,
-        "pivotY": 160,
-        "gripX": 88,
-        "gripY": 74
-      },
-      "defence_1": {
-        "x": 240,
-        "y": 850,
-        "w": 116,
-        "h": 159,
-        "pivotX": 59,
-        "pivotY": 159,
-        "gripX": 106,
-        "gripY": 76
-      },
-      "defence_2": {
-        "x": 364,
-        "y": 850,
-        "w": 152,
-        "h": 158,
-        "pivotX": 60,
-        "pivotY": 158,
-        "gripX": 148,
-        "gripY": 55
-      },
-      "defence_3": {
-        "x": 524,
-        "y": 850,
-        "w": 104,
-        "h": 159,
-        "pivotX": 53,
-        "pivotY": 159,
-        "gripX": 84,
-        "gripY": 75
-      },
-      "defence_4": {
-        "x": 636,
-        "y": 850,
-        "w": 103,
-        "h": 159,
-        "pivotX": 53,
-        "pivotY": 159,
-        "gripX": 83,
-        "gripY": 73
-      },
-      "defence_5": {
-        "x": 747,
-        "y": 850,
-        "w": 88,
-        "h": 164,
-        "pivotX": 27,
-        "pivotY": 164,
-        "gripX": 73,
-        "gripY": 96
-      },
-      "defence_6": {
-        "x": 843,
-        "y": 850,
-        "w": 148,
-        "h": 161,
-        "pivotX": 37,
-        "pivotY": 161,
-        "gripX": 144,
-        "gripY": 54
-      },
-      "defence_7": {
-        "x": 4,
-        "y": 1022,
-        "w": 73,
-        "h": 161,
-        "pivotX": 31,
-        "pivotY": 161,
-        "gripX": 58,
-        "gripY": 74
-      },
-      "defence_8": {
-        "x": 85,
-        "y": 1022,
-        "w": 102,
-        "h": 156,
-        "pivotX": 52,
-        "pivotY": 156,
-        "gripX": 81,
-        "gripY": 76
-      },
-      "defence_9": {
-        "x": 195,
-        "y": 1022,
-        "w": 103,
-        "h": 126,
-        "pivotX": 57,
-        "pivotY": 126,
-        "gripX": 85,
-        "gripY": 61
-      },
-      "defence_10": {
-        "x": 306,
-        "y": 1022,
-        "w": 144,
-        "h": 120,
-        "pivotX": 68,
-        "pivotY": 120,
-        "gripX": 140,
-        "gripY": 65
-      },
-      "defence_11": {
-        "x": 458,
-        "y": 1022,
-        "w": 104,
-        "h": 158,
-        "pivotX": 53,
-        "pivotY": 158,
-        "gripX": 84,
-        "gripY": 72
-      },
-      "defence_12": {
-        "x": 570,
-        "y": 1022,
-        "w": 103,
-        "h": 154,
-        "pivotX": 53,
-        "pivotY": 154,
-        "gripX": 84,
-        "gripY": 73
-      },
-      "defence_13": {
-        "x": 681,
-        "y": 1022,
-        "w": 143,
-        "h": 152,
-        "pivotX": 88,
-        "pivotY": 152,
-        "gripX": 123,
-        "gripY": 100
-      },
-      "defence_14": {
-        "x": 832,
-        "y": 1022,
-        "w": 125,
-        "h": 152,
-        "pivotX": 63,
-        "pivotY": 152,
-        "gripX": 121,
-        "gripY": 62
-      },
-      "defence_15": {
-        "x": 4,
-        "y": 1191,
-        "w": 105,
-        "h": 153,
-        "pivotX": 53,
-        "pivotY": 153,
-        "gripX": 84,
-        "gripY": 73
-      },
-      "down_staff_dlight": {
-        "x": 117,
-        "y": 1191,
-        "w": 266,
-        "h": 138,
-        "pivotX": 60,
-        "pivotY": 138
-      },
-      "down_staff_dair": {
-        "x": 391,
-        "y": 1191,
-        "w": 266,
-        "h": 138,
-        "pivotX": 60,
-        "pivotY": 138
-      },
-      "down_staff_ground_pound": {
-        "x": 665,
-        "y": 1191,
-        "w": 266,
-        "h": 138,
-        "pivotX": 60,
-        "pivotY": 138
-      },
-      "down_miriam_staff_dsig": {
-        "x": 4,
-        "y": 1352,
-        "w": 266,
-        "h": 138,
-        "pivotX": 60,
-        "pivotY": 138
-      },
-      "down_sling_dlight": {
-        "x": 278,
-        "y": 1352,
-        "w": 262,
-        "h": 140,
-        "pivotX": 60,
-        "pivotY": 140
-      },
-      "down_sling_dair": {
-        "x": 548,
-        "y": 1352,
-        "w": 262,
-        "h": 140,
-        "pivotX": 60,
-        "pivotY": 140
-      },
-      "down_sling_ground_pound": {
-        "x": 4,
-        "y": 1500,
-        "w": 262,
-        "h": 140,
-        "pivotX": 60,
-        "pivotY": 140
-      },
-      "down_miriam_sling_dsig": {
-        "x": 274,
-        "y": 1500,
-        "w": 262,
-        "h": 140,
-        "pivotX": 60,
-        "pivotY": 140
-      },
-      "down_unarmed_dlight": {
-        "x": 544,
-        "y": 1500,
-        "w": 156,
-        "h": 175,
-        "pivotX": 75,
-        "pivotY": 175
-      },
-      "down_unarmed_dair": {
-        "x": 708,
-        "y": 1500,
-        "w": 129,
-        "h": 152,
-        "pivotX": 62,
-        "pivotY": 152
-      },
-      "down_unarmed_ground_pound": {
-        "x": 845,
-        "y": 1500,
-        "w": 93,
-        "h": 159,
-        "pivotX": 45,
-        "pivotY": 159
-      },
-      "down_unarmed_dsig": {
-        "x": 4,
-        "y": 1683,
-        "w": 183,
+        "x": 615,
+        "y": 2,
+        "w": 79,
         "h": 124,
-        "pivotX": 57,
+        "pivotX": 34,
         "pivotY": 124
       },
-      "element_0_0": {
-        "x": 195,
-        "y": 1683,
-        "w": 173,
-        "h": 136,
-        "pivotX": 107,
-        "pivotY": 136
-      },
-      "element_0_1": {
-        "x": 376,
-        "y": 1683,
-        "w": 149,
-        "h": 159,
-        "pivotX": 33,
-        "pivotY": 159
-      },
-      "element_0_2": {
-        "x": 533,
-        "y": 1683,
-        "w": 256,
-        "h": 155,
-        "pivotX": 10,
-        "pivotY": 155
-      },
-      "element_0_3": {
-        "x": 797,
-        "y": 1683,
-        "w": 158,
-        "h": 164,
-        "pivotX": 28,
-        "pivotY": 164
-      },
-      "element_1_0": {
-        "x": 4,
-        "y": 1855,
-        "w": 165,
-        "h": 147,
-        "pivotX": 89,
-        "pivotY": 147
-      },
-      "element_1_1": {
-        "x": 177,
-        "y": 1855,
-        "w": 166,
-        "h": 160,
-        "pivotX": 63,
-        "pivotY": 160
-      },
-      "element_1_2": {
-        "x": 351,
-        "y": 1855,
-        "w": 269,
-        "h": 151,
-        "pivotX": 12,
-        "pivotY": 151
-      },
-      "element_1_3": {
-        "x": 628,
-        "y": 1855,
-        "w": 152,
-        "h": 165,
-        "pivotX": 23,
-        "pivotY": 165
-      },
-      "element_2_0": {
-        "x": 788,
-        "y": 1855,
-        "w": 173,
-        "h": 155,
-        "pivotX": 101,
-        "pivotY": 155
-      },
-      "element_2_1": {
-        "x": 4,
-        "y": 2028,
-        "w": 203,
-        "h": 178,
-        "pivotX": 43,
-        "pivotY": 178
-      },
-      "element_2_2": {
-        "x": 215,
-        "y": 2028,
-        "w": 284,
-        "h": 158,
-        "pivotX": 8,
-        "pivotY": 158
-      },
-      "element_2_3": {
-        "x": 507,
-        "y": 2028,
-        "w": 163,
-        "h": 153,
-        "pivotX": 44,
-        "pivotY": 153
-      },
-      "element_3_0": {
-        "x": 678,
-        "y": 2028,
-        "w": 135,
-        "h": 148,
-        "pivotX": 16,
-        "pivotY": 148
-      },
-      "element_3_1": {
-        "x": 821,
-        "y": 2028,
-        "w": 167,
-        "h": 155,
-        "pivotX": 57,
-        "pivotY": 155
-      },
-      "element_3_2": {
-        "x": 4,
-        "y": 2214,
-        "w": 276,
-        "h": 147,
-        "pivotX": 9,
-        "pivotY": 147
-      },
-      "element_3_3": {
-        "x": 288,
-        "y": 2214,
-        "w": 158,
-        "h": 148,
-        "pivotX": 54,
-        "pivotY": 148
-      },
-      "slinger_idle_0": {
-        "x": 454,
-        "y": 2214,
-        "w": 105,
-        "h": 160,
+      "sig_staff_s": {
+        "x": 987,
+        "y": 1631,
+        "w": 86,
+        "h": 97,
         "pivotX": 50,
-        "pivotY": 160
+        "pivotY": 97
       },
-      "slinger_idle_1": {
-        "x": 567,
-        "y": 2214,
-        "w": 104,
-        "h": 158,
-        "pivotX": 50,
-        "pivotY": 158
+      "sig_staff_d": {
+        "x": 1499,
+        "y": 1631,
+        "w": 86,
+        "h": 95,
+        "pivotX": 42,
+        "pivotY": 95
       },
-      "slinger_idle_2": {
-        "x": 679,
-        "y": 2214,
-        "w": 105,
-        "h": 158,
-        "pivotX": 50,
-        "pivotY": 158
-      },
-      "slinger_idle_3": {
-        "x": 792,
-        "y": 2214,
-        "w": 107,
-        "h": 158,
-        "pivotX": 51,
-        "pivotY": 158
-      },
-      "slinger_run_0": {
-        "x": 4,
-        "y": 2382,
-        "w": 192,
-        "h": 164,
-        "pivotX": 92,
-        "pivotY": 164
-      },
-      "slinger_run_1": {
-        "x": 204,
-        "y": 2382,
-        "w": 170,
-        "h": 162,
-        "pivotX": 82,
-        "pivotY": 162
-      },
-      "slinger_run_2": {
-        "x": 382,
-        "y": 2382,
-        "w": 157,
-        "h": 164,
-        "pivotX": 75,
-        "pivotY": 164
-      },
-      "slinger_run_3": {
-        "x": 547,
-        "y": 2382,
-        "w": 162,
-        "h": 164,
-        "pivotX": 78,
-        "pivotY": 164
-      },
-      "slinger_air_0": {
-        "x": 717,
-        "y": 2382,
-        "w": 147,
-        "h": 164,
-        "pivotX": 70,
-        "pivotY": 164
-      },
-      "slinger_air_1": {
-        "x": 872,
-        "y": 2382,
-        "w": 139,
-        "h": 156,
-        "pivotX": 67,
-        "pivotY": 156
-      },
-      "slinger_air_2": {
-        "x": 4,
-        "y": 2554,
-        "w": 187,
-        "h": 156,
-        "pivotX": 90,
-        "pivotY": 156
-      },
-      "slinger_air_3": {
-        "x": 199,
-        "y": 2554,
-        "w": 161,
-        "h": 156,
-        "pivotX": 78,
-        "pivotY": 156
-      },
-      "slinger_cast_0": {
-        "x": 368,
-        "y": 2554,
-        "w": 197,
-        "h": 156,
-        "pivotX": 94,
-        "pivotY": 156
-      },
-      "slinger_cast_1": {
-        "x": 573,
-        "y": 2554,
-        "w": 166,
-        "h": 157,
-        "pivotX": 80,
-        "pivotY": 157
-      },
-      "slinger_cast_2": {
-        "x": 747,
-        "y": 2554,
-        "w": 201,
-        "h": 145,
-        "pivotX": 97,
-        "pivotY": 145
-      },
-      "slinger_cast_3": {
-        "x": 4,
-        "y": 2719,
-        "w": 224,
-        "h": 153,
-        "pivotX": 108,
-        "pivotY": 153
-      },
-      "equipped_staff_0": {
-        "x": 236,
-        "y": 2719,
-        "w": 92,
-        "h": 160,
-        "pivotX": 39,
-        "pivotY": 160
-      },
-      "equipped_staff_1": {
-        "x": 336,
-        "y": 2719,
-        "w": 88,
-        "h": 160,
-        "pivotX": 38,
-        "pivotY": 160
-      },
-      "equipped_staff_2": {
-        "x": 432,
-        "y": 2719,
-        "w": 157,
-        "h": 131,
-        "pivotX": 62,
-        "pivotY": 131
-      },
-      "equipped_staff_3": {
-        "x": 597,
-        "y": 2719,
-        "w": 175,
+      "sig_sling_n": {
+        "x": 1564,
+        "y": 2,
+        "w": 85,
         "h": 120,
-        "pivotX": 49,
+        "pivotX": 16,
         "pivotY": 120
       },
-      "equipped_staff_4": {
-        "x": 780,
-        "y": 2719,
-        "w": 183,
-        "h": 159,
-        "pivotX": 83,
-        "pivotY": 159
+      "sig_sling_s": {
+        "x": 1879,
+        "y": 1528,
+        "w": 79,
+        "h": 98,
+        "pivotX": 13,
+        "pivotY": 98
       },
-      "equipped_staff_5": {
-        "x": 4,
-        "y": 2887,
-        "w": 187,
-        "h": 160,
-        "pivotX": 64,
-        "pivotY": 160
-      },
-      "equipped_staff_6": {
-        "x": 199,
-        "y": 2887,
-        "w": 188,
-        "h": 161,
-        "pivotX": 118,
-        "pivotY": 161
-      },
-      "equipped_staff_7": {
-        "x": 395,
-        "y": 2887,
-        "w": 187,
-        "h": 159,
-        "pivotX": 35,
-        "pivotY": 159
-      },
-      "equipped_staff_8": {
-        "x": 590,
-        "y": 2887,
-        "w": 153,
-        "h": 169,
-        "pivotX": 47,
-        "pivotY": 169
-      },
-      "equipped_staff_9": {
-        "x": 751,
-        "y": 2887,
-        "w": 153,
-        "h": 163,
-        "pivotX": 99,
-        "pivotY": 163
-      },
-      "equipped_staff_10": {
-        "x": 4,
-        "y": 3064,
-        "w": 154,
-        "h": 160,
-        "pivotX": 97,
-        "pivotY": 160
-      },
-      "equipped_staff_11": {
-        "x": 166,
-        "y": 3064,
-        "w": 183,
-        "h": 128,
-        "pivotX": 55,
-        "pivotY": 128
-      },
-      "equipped_staff_12": {
-        "x": 357,
-        "y": 3064,
-        "w": 186,
-        "h": 160,
-        "pivotX": 83,
-        "pivotY": 160
-      },
-      "equipped_staff_13": {
-        "x": 551,
-        "y": 3064,
-        "w": 165,
-        "h": 177,
-        "pivotX": 77,
-        "pivotY": 177
-      },
-      "equipped_staff_14": {
-        "x": 724,
-        "y": 3064,
-        "w": 266,
-        "h": 138,
-        "pivotX": 60,
-        "pivotY": 138
-      },
-      "equipped_staff_15": {
-        "x": 4,
-        "y": 3249,
-        "w": 186,
-        "h": 154,
-        "pivotX": 81,
-        "pivotY": 154
-      },
-      "equipped_sling_0": {
-        "x": 198,
-        "y": 3249,
-        "w": 97,
-        "h": 165,
-        "pivotX": 34,
-        "pivotY": 165
-      },
-      "equipped_sling_1": {
-        "x": 303,
-        "y": 3249,
-        "w": 98,
-        "h": 165,
-        "pivotX": 38,
-        "pivotY": 165
-      },
-      "equipped_sling_2": {
-        "x": 409,
-        "y": 3249,
-        "w": 138,
-        "h": 133,
-        "pivotX": 67,
-        "pivotY": 133
-      },
-      "equipped_sling_3": {
-        "x": 555,
-        "y": 3249,
-        "w": 126,
-        "h": 113,
-        "pivotX": 63,
-        "pivotY": 113
-      },
-      "equipped_sling_4": {
-        "x": 689,
-        "y": 3249,
-        "w": 141,
-        "h": 158,
-        "pivotX": 80,
-        "pivotY": 158
-      },
-      "equipped_sling_5": {
-        "x": 838,
-        "y": 3249,
-        "w": 159,
-        "h": 163,
-        "pivotX": 36,
-        "pivotY": 163
-      },
-      "equipped_sling_6": {
-        "x": 4,
-        "y": 3422,
-        "w": 175,
-        "h": 159,
-        "pivotX": 125,
-        "pivotY": 159
-      },
-      "equipped_sling_7": {
-        "x": 187,
-        "y": 3422,
-        "w": 144,
-        "h": 162,
+      "sig_sling_d": {
+        "x": 1901,
+        "y": 1827,
+        "w": 86,
+        "h": 77,
         "pivotX": 33,
-        "pivotY": 162
+        "pivotY": 77
       },
-      "equipped_sling_8": {
-        "x": 339,
-        "y": 3422,
-        "w": 141,
-        "h": 167,
+      "motion_idle": {
+        "x": 1927,
+        "y": 257,
+        "w": 64,
+        "h": 116,
         "pivotX": 35,
-        "pivotY": 167
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
       },
-      "equipped_sling_9": {
-        "x": 488,
-        "y": 3422,
-        "w": 139,
-        "h": 149,
-        "pivotX": 87,
-        "pivotY": 149
-      },
-      "equipped_sling_10": {
-        "x": 635,
-        "y": 3422,
-        "w": 156,
-        "h": 163,
-        "pivotX": 99,
-        "pivotY": 163
-      },
-      "equipped_sling_11": {
-        "x": 799,
-        "y": 3422,
-        "w": 167,
-        "h": 123,
-        "pivotX": 52,
-        "pivotY": 123
-      },
-      "equipped_sling_12": {
-        "x": 4,
-        "y": 3597,
-        "w": 120,
-        "h": 157,
-        "pivotX": 50,
-        "pivotY": 157
-      },
-      "equipped_sling_13": {
-        "x": 132,
-        "y": 3597,
-        "w": 137,
-        "h": 174,
-        "pivotX": 58,
-        "pivotY": 174
-      },
-      "equipped_sling_14": {
-        "x": 277,
-        "y": 3597,
-        "w": 262,
-        "h": 140,
-        "pivotX": 60,
-        "pivotY": 140
-      },
-      "equipped_sling_15": {
-        "x": 547,
-        "y": 3597,
-        "w": 128,
-        "h": 151,
-        "pivotX": 61,
-        "pivotY": 151
-      },
-      "gait_staff_0": {
-        "x": 683,
-        "y": 3597,
-        "w": 116,
-        "h": 154,
-        "pivotX": 56,
-        "pivotY": 154
-      },
-      "gait_staff_1": {
-        "x": 807,
-        "y": 3597,
-        "w": 93,
-        "h": 152,
-        "pivotX": 33,
-        "pivotY": 152
-      },
-      "gait_staff_2": {
-        "x": 908,
-        "y": 3597,
-        "w": 92,
-        "h": 152,
-        "pivotX": 31,
-        "pivotY": 152
-      },
-      "gait_staff_3": {
-        "x": 4,
-        "y": 3779,
-        "w": 97,
-        "h": 151,
-        "pivotX": 35,
-        "pivotY": 152
-      },
-      "gait_staff_4": {
-        "x": 109,
-        "y": 3779,
-        "w": 115,
-        "h": 142,
-        "pivotX": 52,
-        "pivotY": 146
-      },
-      "gait_staff_5": {
-        "x": 232,
-        "y": 3779,
-        "w": 109,
-        "h": 151,
-        "pivotX": 46,
-        "pivotY": 153
-      },
-      "gait_staff_6": {
-        "x": 349,
-        "y": 3779,
-        "w": 98,
-        "h": 153,
-        "pivotX": 35,
-        "pivotY": 153
-      },
-      "gait_staff_7": {
-        "x": 455,
-        "y": 3779,
-        "w": 109,
-        "h": 156,
-        "pivotX": 47,
-        "pivotY": 156
-      },
-      "gait_sling_0": {
-        "x": 572,
-        "y": 3779,
-        "w": 107,
-        "h": 154,
-        "pivotX": 56,
-        "pivotY": 154
-      },
-      "gait_sling_1": {
-        "x": 687,
-        "y": 3779,
+      "run_0": {
+        "x": 852,
+        "y": 1081,
         "w": 78,
-        "h": 153,
+        "h": 110,
+        "pivotX": 40,
+        "pivotY": 110,
+        "gripX": 67,
+        "gripY": 50
+      },
+      "run_1": {
+        "x": 933,
+        "y": 1081,
+        "w": 55,
+        "h": 110,
+        "pivotX": 25,
+        "pivotY": 110,
+        "gripX": 51,
+        "gripY": 52
+      },
+      "run_2": {
+        "x": 93,
+        "y": 1195,
+        "w": 46,
+        "h": 109,
+        "pivotX": 20,
+        "pivotY": 109,
+        "gripX": 42,
+        "gripY": 51
+      },
+      "run_3": {
+        "x": 991,
+        "y": 1081,
+        "w": 51,
+        "h": 110,
+        "pivotX": 23,
+        "pivotY": 111,
+        "gripX": 47,
+        "gripY": 46
+      },
+      "run_4": {
+        "x": 1045,
+        "y": 1081,
+        "w": 62,
+        "h": 110,
+        "pivotX": 32,
+        "pivotY": 113,
+        "gripX": 58,
+        "gripY": 43
+      },
+      "run_5": {
+        "x": 2,
+        "y": 1419,
+        "w": 67,
+        "h": 106,
+        "pivotX": 36,
+        "pivotY": 107,
+        "gripX": 63,
+        "gripY": 42
+      },
+      "run_6": {
+        "x": 1299,
+        "y": 1195,
+        "w": 73,
+        "h": 109,
         "pivotX": 33,
-        "pivotY": 153
+        "pivotY": 109,
+        "gripX": 57,
+        "gripY": 48
       },
-      "gait_sling_2": {
-        "x": 773,
-        "y": 3779,
-        "w": 76,
-        "h": 153,
-        "pivotX": 31,
-        "pivotY": 153
+      "run_7": {
+        "x": 1109,
+        "y": 966,
+        "w": 58,
+        "h": 111,
+        "pivotX": 26,
+        "pivotY": 111,
+        "gripX": 54,
+        "gripY": 52
       },
-      "gait_sling_3": {
-        "x": 857,
-        "y": 3779,
-        "w": 80,
-        "h": 151,
-        "pivotX": 35,
-        "pivotY": 152
+      "air_rise": {
+        "x": 88,
+        "y": 966,
+        "w": 83,
+        "h": 112,
+        "pivotX": 42,
+        "pivotY": 112,
+        "gripX": 72,
+        "gripY": 39
       },
-      "gait_sling_4": {
-        "x": 4,
-        "y": 3943,
-        "w": 106,
-        "h": 142,
+      "air_apex": {
+        "x": 1151,
+        "y": 1732,
+        "w": 93,
+        "h": 88,
         "pivotX": 52,
-        "pivotY": 146
+        "pivotY": 88,
+        "gripX": 89,
+        "gripY": 38
       },
-      "gait_sling_5": {
-        "x": 118,
-        "y": 3943,
-        "w": 99,
-        "h": 151,
-        "pivotX": 46,
-        "pivotY": 153
+      "air_fall": {
+        "x": 1184,
+        "y": 1631,
+        "w": 89,
+        "h": 96,
+        "pivotX": 50,
+        "pivotY": 96,
+        "gripX": 86,
+        "gripY": 42
       },
-      "gait_sling_6": {
-        "x": 225,
-        "y": 3943,
-        "w": 82,
-        "h": 153,
-        "pivotX": 35,
-        "pivotY": 153
-      },
-      "gait_sling_7": {
-        "x": 315,
-        "y": 3943,
-        "w": 96,
-        "h": 154,
-        "pivotX": 47,
-        "pivotY": 154
-      },
-      "gait_staff_8": {
-        "x": 419,
-        "y": 3943,
-        "w": 116,
-        "h": 153,
-        "pivotX": 55,
-        "pivotY": 153
-      },
-      "gait_staff_9": {
-        "x": 543,
-        "y": 3943,
-        "w": 88,
-        "h": 152,
-        "pivotX": 27,
-        "pivotY": 153
-      },
-      "gait_staff_10": {
-        "x": 639,
-        "y": 3943,
-        "w": 90,
-        "h": 151,
-        "pivotX": 30,
-        "pivotY": 155
-      },
-      "gait_staff_11": {
-        "x": 737,
-        "y": 3943,
-        "w": 95,
-        "h": 148,
-        "pivotX": 33,
-        "pivotY": 150
-      },
-      "gait_sling_8": {
-        "x": 840,
-        "y": 3943,
-        "w": 102,
-        "h": 153,
-        "pivotX": 55,
-        "pivotY": 153
-      },
-      "gait_sling_9": {
-        "x": 4,
-        "y": 4105,
-        "w": 72,
-        "h": 152,
-        "pivotX": 27,
-        "pivotY": 153
-      },
-      "gait_sling_10": {
-        "x": 84,
-        "y": 4105,
-        "w": 76,
-        "h": 152,
-        "pivotX": 30,
-        "pivotY": 156
-      },
-      "gait_sling_11": {
-        "x": 168,
-        "y": 4105,
-        "w": 82,
-        "h": 148,
-        "pivotX": 33,
-        "pivotY": 150
-      },
-      "run_8": {
-        "x": 258,
-        "y": 4105,
-        "w": 71,
-        "h": 153,
-        "pivotX": 27,
-        "pivotY": 153,
-        "gripX": 65,
+      "land": {
+        "x": 1185,
+        "y": 1827,
+        "w": 87,
+        "h": 81,
+        "pivotX": 60,
+        "pivotY": 81,
+        "gripX": 70,
         "gripY": 71
       },
-      "run_9": {
-        "x": 337,
-        "y": 4105,
+      "attack_staff_0": {
+        "x": 693,
+        "y": 733,
+        "w": 114,
+        "h": 113,
+        "pivotX": 57,
+        "pivotY": 113
+      },
+      "attack_staff_1": {
+        "x": 142,
+        "y": 1195,
+        "w": 112,
+        "h": 109,
+        "pivotX": 56,
+        "pivotY": 109
+      },
+      "attack_staff_2": {
+        "x": 1496,
+        "y": 497,
+        "w": 106,
+        "h": 115,
+        "pivotX": 57,
+        "pivotY": 115
+      },
+      "attack_staff_3": {
+        "x": 1684,
+        "y": 378,
+        "w": 115,
+        "h": 115,
+        "pivotX": 62,
+        "pivotY": 115
+      },
+      "attack_staff_4": {
+        "x": 1379,
+        "y": 1631,
+        "w": 117,
+        "h": 96,
+        "pivotX": 61,
+        "pivotY": 96
+      },
+      "attack_staff_5": {
+        "x": 475,
+        "y": 1308,
+        "w": 105,
+        "h": 107,
+        "pivotX": 60,
+        "pivotY": 107
+      },
+      "attack_staff_6": {
+        "x": 1171,
+        "y": 1308,
+        "w": 117,
+        "h": 107,
+        "pivotX": 61,
+        "pivotY": 107
+      },
+      "attack_staff_7": {
+        "x": 1893,
+        "y": 1195,
+        "w": 102,
+        "h": 108,
+        "pivotX": 47,
+        "pivotY": 108
+      },
+      "attack_sling_0": {
+        "x": 1110,
+        "y": 1081,
+        "w": 82,
+        "h": 110,
+        "pivotX": 55,
+        "pivotY": 110
+      },
+      "attack_sling_1": {
+        "x": 257,
+        "y": 1195,
+        "w": 105,
+        "h": 109,
+        "pivotX": 56,
+        "pivotY": 109
+      },
+      "attack_sling_2": {
+        "x": 1452,
+        "y": 615,
+        "w": 101,
+        "h": 114,
+        "pivotX": 56,
+        "pivotY": 114
+      },
+      "attack_sling_3": {
+        "x": 1605,
+        "y": 497,
+        "w": 107,
+        "h": 115,
+        "pivotX": 56,
+        "pivotY": 115
+      },
+      "attack_sling_4": {
+        "x": 410,
+        "y": 1419,
+        "w": 117,
+        "h": 104,
+        "pivotX": 61,
+        "pivotY": 104
+      },
+      "attack_sling_5": {
+        "x": 1076,
+        "y": 1631,
+        "w": 105,
+        "h": 97,
+        "pivotX": 49,
+        "pivotY": 97
+      },
+      "attack_sling_6": {
+        "x": 696,
+        "y": 1419,
+        "w": 106,
+        "h": 102,
+        "pivotX": 56,
+        "pivotY": 102
+      },
+      "attack_sling_7": {
+        "x": 1195,
+        "y": 1081,
+        "w": 82,
+        "h": 110,
+        "pivotX": 38,
+        "pivotY": 110
+      },
+      "defence_0": {
+        "x": 2,
+        "y": 378,
+        "w": 78,
+        "h": 116,
+        "pivotX": 41,
+        "pivotY": 116,
+        "gripX": 64,
+        "gripY": 54
+      },
+      "defence_1": {
+        "x": 1802,
+        "y": 378,
+        "w": 84,
+        "h": 115,
+        "pivotX": 43,
+        "pivotY": 115,
+        "gripX": 77,
+        "gripY": 55
+      },
+      "defence_2": {
+        "x": 1715,
+        "y": 497,
+        "w": 110,
+        "h": 115,
+        "pivotX": 43,
+        "pivotY": 115,
+        "gripX": 107,
+        "gripY": 40
+      },
+      "defence_3": {
+        "x": 1889,
+        "y": 378,
         "w": 75,
-        "h": 151,
+        "h": 115,
+        "pivotX": 38,
+        "pivotY": 115,
+        "gripX": 61,
+        "gripY": 54
+      },
+      "defence_4": {
+        "x": 1967,
+        "y": 378,
+        "w": 75,
+        "h": 115,
         "pivotX": 39,
-        "pivotY": 152,
-        "gripX": 69,
-        "gripY": 75
+        "pivotY": 115,
+        "gripX": 60,
+        "gripY": 53
+      },
+      "defence_5": {
+        "x": 256,
+        "y": 134,
+        "w": 64,
+        "h": 119,
+        "pivotX": 20,
+        "pivotY": 119,
+        "gripX": 53,
+        "gripY": 70
+      },
+      "defence_6": {
+        "x": 994,
+        "y": 257,
+        "w": 107,
+        "h": 117,
+        "pivotX": 27,
+        "pivotY": 117,
+        "gripX": 104,
+        "gripY": 39
+      },
+      "defence_7": {
+        "x": 1104,
+        "y": 257,
+        "w": 53,
+        "h": 117,
+        "pivotX": 23,
+        "pivotY": 117,
+        "gripX": 42,
+        "gripY": 54
+      },
+      "defence_8": {
+        "x": 810,
+        "y": 733,
+        "w": 74,
+        "h": 113,
+        "pivotX": 38,
+        "pivotY": 113,
+        "gripX": 59,
+        "gripY": 55
+      },
+      "defence_9": {
+        "x": 218,
+        "y": 1732,
+        "w": 75,
+        "h": 91,
+        "pivotX": 42,
+        "pivotY": 91,
+        "gripX": 62,
+        "gripY": 44
+      },
+      "defence_10": {
+        "x": 1650,
+        "y": 1732,
+        "w": 104,
+        "h": 87,
+        "pivotX": 49,
+        "pivotY": 87,
+        "gripX": 101,
+        "gripY": 47
+      },
+      "defence_11": {
+        "x": 1828,
+        "y": 497,
+        "w": 75,
+        "h": 115,
+        "pivotX": 38,
+        "pivotY": 115,
+        "gripX": 61,
+        "gripY": 52
+      },
+      "defence_12": {
+        "x": 174,
+        "y": 966,
+        "w": 75,
+        "h": 112,
+        "pivotX": 39,
+        "pivotY": 112,
+        "gripX": 61,
+        "gripY": 53
+      },
+      "defence_13": {
+        "x": 1280,
+        "y": 1081,
+        "w": 104,
+        "h": 110,
+        "pivotX": 64,
+        "pivotY": 110,
+        "gripX": 89,
+        "gripY": 72
+      },
+      "defence_14": {
+        "x": 1387,
+        "y": 1081,
+        "w": 91,
+        "h": 110,
+        "pivotX": 46,
+        "pivotY": 110,
+        "gripX": 88,
+        "gripY": 45
+      },
+      "defence_15": {
+        "x": 1170,
+        "y": 966,
+        "w": 76,
+        "h": 111,
+        "pivotX": 38,
+        "pivotY": 111,
+        "gripX": 61,
+        "gripY": 53
+      },
+      "down_staff_dlight": {
+        "x": 1770,
+        "y": 1419,
+        "w": 193,
+        "h": 100,
+        "pivotX": 44,
+        "pivotY": 100
+      },
+      "down_staff_dair": {
+        "x": 2,
+        "y": 1528,
+        "w": 193,
+        "h": 100,
+        "pivotX": 44,
+        "pivotY": 100
+      },
+      "down_staff_ground_pound": {
+        "x": 198,
+        "y": 1528,
+        "w": 193,
+        "h": 100,
+        "pivotX": 44,
+        "pivotY": 100
+      },
+      "down_miriam_staff_dsig": {
+        "x": 394,
+        "y": 1528,
+        "w": 193,
+        "h": 100,
+        "pivotX": 44,
+        "pivotY": 100
+      },
+      "down_sling_dlight": {
+        "x": 805,
+        "y": 1419,
+        "w": 190,
+        "h": 102,
+        "pivotX": 44,
+        "pivotY": 102
+      },
+      "down_sling_dair": {
+        "x": 998,
+        "y": 1419,
+        "w": 190,
+        "h": 102,
+        "pivotX": 44,
+        "pivotY": 102
+      },
+      "down_sling_ground_pound": {
+        "x": 1191,
+        "y": 1419,
+        "w": 190,
+        "h": 102,
+        "pivotX": 44,
+        "pivotY": 102
+      },
+      "down_miriam_sling_dsig": {
+        "x": 1384,
+        "y": 1419,
+        "w": 190,
+        "h": 102,
+        "pivotX": 44,
+        "pivotY": 102
+      },
+      "down_unarmed_dlight": {
+        "x": 275,
+        "y": 2,
+        "w": 113,
+        "h": 127,
+        "pivotX": 54,
+        "pivotY": 127
+      },
+      "down_unarmed_dair": {
+        "x": 1481,
+        "y": 1081,
+        "w": 94,
+        "h": 110,
+        "pivotX": 45,
+        "pivotY": 110
+      },
+      "down_unarmed_ground_pound": {
+        "x": 2,
+        "y": 497,
+        "w": 67,
+        "h": 115,
+        "pivotX": 32,
+        "pivotY": 115
+      },
+      "down_unarmed_dsig": {
+        "x": 512,
+        "y": 1732,
+        "w": 133,
+        "h": 90,
+        "pivotX": 41,
+        "pivotY": 90
+      },
+      "element_0_0": {
+        "x": 786,
+        "y": 1528,
+        "w": 125,
+        "h": 99,
+        "pivotX": 77,
+        "pivotY": 99
+      },
+      "element_0_1": {
+        "x": 72,
+        "y": 497,
+        "w": 108,
+        "h": 115,
+        "pivotX": 24,
+        "pivotY": 115
+      },
+      "element_0_2": {
+        "x": 844,
+        "y": 850,
+        "w": 186,
+        "h": 112,
+        "pivotX": 7,
+        "pivotY": 112
+      },
+      "element_0_3": {
+        "x": 323,
+        "y": 134,
+        "w": 115,
+        "h": 119,
+        "pivotX": 20,
+        "pivotY": 119
+      },
+      "element_1_0": {
+        "x": 1291,
+        "y": 1308,
+        "w": 120,
+        "h": 107,
+        "pivotX": 65,
+        "pivotY": 107
+      },
+      "element_1_1": {
+        "x": 83,
+        "y": 378,
+        "w": 120,
+        "h": 116,
+        "pivotX": 46,
+        "pivotY": 116
+      },
+      "element_1_2": {
+        "x": 365,
+        "y": 1195,
+        "w": 195,
+        "h": 109,
+        "pivotX": 9,
+        "pivotY": 109
+      },
+      "element_1_3": {
+        "x": 1763,
+        "y": 2,
+        "w": 110,
+        "h": 120,
+        "pivotX": 17,
+        "pivotY": 120
+      },
+      "element_2_0": {
+        "x": 1033,
+        "y": 850,
+        "w": 125,
+        "h": 112,
+        "pivotX": 73,
+        "pivotY": 112
+      },
+      "element_2_1": {
+        "x": 2,
+        "y": 2,
+        "w": 147,
+        "h": 129,
+        "pivotX": 31,
+        "pivotY": 129
+      },
+      "element_2_2": {
+        "x": 2,
+        "y": 615,
+        "w": 206,
+        "h": 115,
+        "pivotX": 6,
+        "pivotY": 115
+      },
+      "element_2_3": {
+        "x": 1249,
+        "y": 966,
+        "w": 118,
+        "h": 111,
+        "pivotX": 32,
+        "pivotY": 111
+      },
+      "element_3_0": {
+        "x": 583,
+        "y": 1308,
+        "w": 98,
+        "h": 107,
+        "pivotX": 12,
+        "pivotY": 107
+      },
+      "element_3_1": {
+        "x": 1161,
+        "y": 850,
+        "w": 121,
+        "h": 112,
+        "pivotX": 41,
+        "pivotY": 112
+      },
+      "element_3_2": {
+        "x": 1414,
+        "y": 1308,
+        "w": 200,
+        "h": 107,
+        "pivotX": 7,
+        "pivotY": 107
+      },
+      "element_3_3": {
+        "x": 684,
+        "y": 1308,
+        "w": 115,
+        "h": 107,
+        "pivotX": 39,
+        "pivotY": 107
+      },
+      "slinger_idle_0": {
+        "x": 206,
+        "y": 378,
+        "w": 76,
+        "h": 116,
+        "pivotX": 36,
+        "pivotY": 116
+      },
+      "slinger_idle_1": {
+        "x": 211,
+        "y": 615,
+        "w": 75,
+        "h": 115,
+        "pivotX": 36,
+        "pivotY": 115
+      },
+      "slinger_idle_2": {
+        "x": 289,
+        "y": 615,
+        "w": 76,
+        "h": 115,
+        "pivotX": 36,
+        "pivotY": 115
+      },
+      "slinger_idle_3": {
+        "x": 368,
+        "y": 615,
+        "w": 78,
+        "h": 115,
+        "pivotX": 37,
+        "pivotY": 115
+      },
+      "slinger_run_0": {
+        "x": 441,
+        "y": 134,
+        "w": 139,
+        "h": 119,
+        "pivotX": 67,
+        "pivotY": 119
+      },
+      "slinger_run_1": {
+        "x": 105,
+        "y": 257,
+        "w": 123,
+        "h": 117,
+        "pivotX": 59,
+        "pivotY": 117
+      },
+      "slinger_run_2": {
+        "x": 583,
+        "y": 134,
+        "w": 114,
+        "h": 119,
+        "pivotX": 54,
+        "pivotY": 119
+      },
+      "slinger_run_3": {
+        "x": 700,
+        "y": 134,
+        "w": 117,
+        "h": 119,
+        "pivotX": 56,
+        "pivotY": 119
+      },
+      "slinger_air_0": {
+        "x": 820,
+        "y": 134,
+        "w": 107,
+        "h": 119,
+        "pivotX": 51,
+        "pivotY": 119
+      },
+      "slinger_air_1": {
+        "x": 887,
+        "y": 733,
+        "w": 101,
+        "h": 113,
+        "pivotX": 49,
+        "pivotY": 113
+      },
+      "slinger_air_2": {
+        "x": 991,
+        "y": 733,
+        "w": 136,
+        "h": 113,
+        "pivotX": 65,
+        "pivotY": 113
+      },
+      "slinger_air_3": {
+        "x": 1130,
+        "y": 733,
+        "w": 117,
+        "h": 113,
+        "pivotX": 57,
+        "pivotY": 113
+      },
+      "slinger_cast_0": {
+        "x": 1250,
+        "y": 733,
+        "w": 143,
+        "h": 113,
+        "pivotX": 68,
+        "pivotY": 113
+      },
+      "slinger_cast_1": {
+        "x": 1556,
+        "y": 615,
+        "w": 120,
+        "h": 114,
+        "pivotX": 58,
+        "pivotY": 114
+      },
+      "slinger_cast_2": {
+        "x": 166,
+        "y": 1419,
+        "w": 146,
+        "h": 105,
+        "pivotX": 70,
+        "pivotY": 105
+      },
+      "slinger_cast_3": {
+        "x": 1370,
+        "y": 966,
+        "w": 162,
+        "h": 111,
+        "pivotX": 78,
+        "pivotY": 111
+      },
+      "equipped_staff_0": {
+        "x": 285,
+        "y": 378,
+        "w": 67,
+        "h": 116,
+        "pivotX": 28,
+        "pivotY": 116
+      },
+      "equipped_staff_1": {
+        "x": 355,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 28,
+        "pivotY": 116
+      },
+      "equipped_staff_2": {
+        "x": 1588,
+        "y": 1631,
+        "w": 114,
+        "h": 95,
+        "pivotX": 45,
+        "pivotY": 95
+      },
+      "equipped_staff_3": {
+        "x": 1757,
+        "y": 1732,
+        "w": 127,
+        "h": 87,
+        "pivotX": 36,
+        "pivotY": 87
+      },
+      "equipped_staff_4": {
+        "x": 183,
+        "y": 497,
+        "w": 133,
+        "h": 115,
+        "pivotX": 60,
+        "pivotY": 115
+      },
+      "equipped_staff_5": {
+        "x": 422,
+        "y": 378,
+        "w": 136,
+        "h": 116,
+        "pivotX": 47,
+        "pivotY": 116
+      },
+      "equipped_staff_6": {
+        "x": 1160,
+        "y": 257,
+        "w": 136,
+        "h": 117,
+        "pivotX": 85,
+        "pivotY": 117
+      },
+      "equipped_staff_7": {
+        "x": 319,
+        "y": 497,
+        "w": 136,
+        "h": 115,
+        "pivotX": 25,
+        "pivotY": 115
+      },
+      "equipped_staff_8": {
+        "x": 1153,
+        "y": 2,
+        "w": 111,
+        "h": 123,
+        "pivotX": 34,
+        "pivotY": 123
+      },
+      "equipped_staff_9": {
+        "x": 1214,
+        "y": 134,
+        "w": 111,
+        "h": 118,
+        "pivotX": 72,
+        "pivotY": 118
+      },
+      "equipped_staff_10": {
+        "x": 561,
+        "y": 378,
+        "w": 112,
+        "h": 116,
+        "pivotX": 71,
+        "pivotY": 116
+      },
+      "equipped_staff_11": {
+        "x": 1705,
+        "y": 1631,
+        "w": 133,
+        "h": 93,
+        "pivotX": 40,
+        "pivotY": 93
+      },
+      "equipped_staff_12": {
+        "x": 676,
+        "y": 378,
+        "w": 135,
+        "h": 116,
+        "pivotX": 60,
+        "pivotY": 116
+      },
+      "equipped_staff_13": {
+        "x": 152,
+        "y": 2,
+        "w": 120,
+        "h": 128,
+        "pivotX": 56,
+        "pivotY": 128
+      },
+      "equipped_staff_14": {
+        "x": 590,
+        "y": 1528,
+        "w": 193,
+        "h": 100,
+        "pivotX": 44,
+        "pivotY": 100
+      },
+      "equipped_staff_15": {
+        "x": 252,
+        "y": 966,
+        "w": 135,
+        "h": 112,
+        "pivotX": 59,
+        "pivotY": 112
+      },
+      "equipped_sling_0": {
+        "x": 1876,
+        "y": 2,
+        "w": 70,
+        "h": 120,
+        "pivotX": 25,
+        "pivotY": 120
+      },
+      "equipped_sling_1": {
+        "x": 1949,
+        "y": 2,
+        "w": 71,
+        "h": 120,
+        "pivotX": 28,
+        "pivotY": 120
+      },
+      "equipped_sling_2": {
+        "x": 1276,
+        "y": 1631,
+        "w": 100,
+        "h": 96,
+        "pivotX": 49,
+        "pivotY": 96
+      },
+      "equipped_sling_3": {
+        "x": 869,
+        "y": 1827,
+        "w": 91,
+        "h": 82,
+        "pivotX": 46,
+        "pivotY": 82
+      },
+      "equipped_sling_4": {
+        "x": 449,
+        "y": 615,
+        "w": 102,
+        "h": 115,
+        "pivotX": 58,
+        "pivotY": 115
+      },
+      "equipped_sling_5": {
+        "x": 1328,
+        "y": 134,
+        "w": 115,
+        "h": 118,
+        "pivotX": 26,
+        "pivotY": 118
+      },
+      "equipped_sling_6": {
+        "x": 458,
+        "y": 497,
+        "w": 127,
+        "h": 115,
+        "pivotX": 91,
+        "pivotY": 115
+      },
+      "equipped_sling_7": {
+        "x": 231,
+        "y": 257,
+        "w": 104,
+        "h": 117,
+        "pivotX": 24,
+        "pivotY": 117
+      },
+      "equipped_sling_8": {
+        "x": 1459,
+        "y": 2,
+        "w": 102,
+        "h": 121,
+        "pivotX": 25,
+        "pivotY": 121
+      },
+      "equipped_sling_9": {
+        "x": 2,
+        "y": 1308,
+        "w": 101,
+        "h": 108,
+        "pivotX": 63,
+        "pivotY": 108
+      },
+      "equipped_sling_10": {
+        "x": 1446,
+        "y": 134,
+        "w": 113,
+        "h": 118,
+        "pivotX": 72,
+        "pivotY": 118
+      },
+      "equipped_sling_11": {
+        "x": 894,
+        "y": 1732,
+        "w": 121,
+        "h": 89,
+        "pivotX": 38,
+        "pivotY": 89
+      },
+      "equipped_sling_12": {
+        "x": 1679,
+        "y": 615,
+        "w": 87,
+        "h": 114,
+        "pivotX": 36,
+        "pivotY": 114
+      },
+      "equipped_sling_13": {
+        "x": 391,
+        "y": 2,
+        "w": 99,
+        "h": 126,
+        "pivotX": 42,
+        "pivotY": 126
+      },
+      "equipped_sling_14": {
+        "x": 1577,
+        "y": 1419,
+        "w": 190,
+        "h": 102,
+        "pivotX": 44,
+        "pivotY": 102
+      },
+      "equipped_sling_15": {
+        "x": 563,
+        "y": 1195,
+        "w": 93,
+        "h": 109,
+        "pivotX": 44,
+        "pivotY": 109
+      },
+      "gait_staff_0": {
+        "x": 390,
+        "y": 966,
+        "w": 84,
+        "h": 112,
+        "pivotX": 41,
+        "pivotY": 112
+      },
+      "gait_staff_1": {
+        "x": 1578,
+        "y": 1081,
+        "w": 67,
+        "h": 110,
+        "pivotX": 24,
+        "pivotY": 110
+      },
+      "gait_staff_2": {
+        "x": 1648,
+        "y": 1081,
+        "w": 67,
+        "h": 110,
+        "pivotX": 23,
+        "pivotY": 110
+      },
+      "gait_staff_3": {
+        "x": 659,
+        "y": 1195,
+        "w": 70,
+        "h": 109,
+        "pivotX": 25,
+        "pivotY": 110
+      },
+      "gait_staff_4": {
+        "x": 530,
+        "y": 1419,
+        "w": 83,
+        "h": 103,
+        "pivotX": 38,
+        "pivotY": 106
+      },
+      "gait_staff_5": {
+        "x": 732,
+        "y": 1195,
+        "w": 79,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 110
+      },
+      "gait_staff_6": {
+        "x": 1535,
+        "y": 966,
+        "w": 71,
+        "h": 111,
+        "pivotX": 25,
+        "pivotY": 111
+      },
+      "gait_staff_7": {
+        "x": 1396,
+        "y": 733,
+        "w": 79,
+        "h": 113,
+        "pivotX": 34,
+        "pivotY": 113
+      },
+      "gait_sling_0": {
+        "x": 477,
+        "y": 966,
+        "w": 78,
+        "h": 112,
+        "pivotX": 41,
+        "pivotY": 112
+      },
+      "gait_sling_1": {
+        "x": 1609,
+        "y": 966,
+        "w": 57,
+        "h": 111,
+        "pivotX": 24,
+        "pivotY": 111
+      },
+      "gait_sling_2": {
+        "x": 1669,
+        "y": 966,
+        "w": 55,
+        "h": 111,
+        "pivotX": 22,
+        "pivotY": 111
+      },
+      "gait_sling_3": {
+        "x": 814,
+        "y": 1195,
+        "w": 58,
+        "h": 109,
+        "pivotX": 25,
+        "pivotY": 110
+      },
+      "gait_sling_4": {
+        "x": 616,
+        "y": 1419,
+        "w": 77,
+        "h": 103,
+        "pivotX": 38,
+        "pivotY": 106
+      },
+      "gait_sling_5": {
+        "x": 875,
+        "y": 1195,
+        "w": 72,
+        "h": 109,
+        "pivotX": 33,
+        "pivotY": 110
+      },
+      "gait_sling_6": {
+        "x": 1727,
+        "y": 966,
+        "w": 59,
+        "h": 111,
+        "pivotX": 25,
+        "pivotY": 111
+      },
+      "gait_sling_7": {
+        "x": 558,
+        "y": 966,
+        "w": 70,
+        "h": 112,
+        "pivotX": 34,
+        "pivotY": 112
+      },
+      "gait_staff_8": {
+        "x": 1789,
+        "y": 966,
+        "w": 84,
+        "h": 111,
+        "pivotX": 40,
+        "pivotY": 111
+      },
+      "gait_staff_9": {
+        "x": 1718,
+        "y": 1081,
+        "w": 64,
+        "h": 110,
+        "pivotX": 20,
+        "pivotY": 111
+      },
+      "gait_staff_10": {
+        "x": 950,
+        "y": 1195,
+        "w": 65,
+        "h": 109,
+        "pivotX": 22,
+        "pivotY": 112
+      },
+      "gait_staff_11": {
+        "x": 802,
+        "y": 1308,
+        "w": 69,
+        "h": 107,
+        "pivotX": 24,
+        "pivotY": 108
+      },
+      "gait_sling_8": {
+        "x": 1876,
+        "y": 966,
+        "w": 74,
+        "h": 111,
+        "pivotX": 40,
+        "pivotY": 111
+      },
+      "gait_sling_9": {
+        "x": 1785,
+        "y": 1081,
+        "w": 52,
+        "h": 110,
+        "pivotX": 20,
+        "pivotY": 111
+      },
+      "gait_sling_10": {
+        "x": 1840,
+        "y": 1081,
+        "w": 55,
+        "h": 110,
+        "pivotX": 22,
+        "pivotY": 113
+      },
+      "gait_sling_11": {
+        "x": 874,
+        "y": 1308,
+        "w": 59,
+        "h": 107,
+        "pivotX": 24,
+        "pivotY": 108
+      },
+      "run_8": {
+        "x": 1953,
+        "y": 966,
+        "w": 51,
+        "h": 111,
+        "pivotX": 19,
+        "pivotY": 111,
+        "gripX": 47,
+        "gripY": 52
+      },
+      "run_9": {
+        "x": 1018,
+        "y": 1195,
+        "w": 54,
+        "h": 109,
+        "pivotX": 28,
+        "pivotY": 110,
+        "gripX": 50,
+        "gripY": 54
       },
       "run_10": {
-        "x": 420,
-        "y": 4105,
-        "w": 80,
-        "h": 152,
-        "pivotX": 39,
-        "pivotY": 156,
-        "gripX": 74,
-        "gripY": 67
+        "x": 1898,
+        "y": 1081,
+        "w": 58,
+        "h": 110,
+        "pivotX": 28,
+        "pivotY": 113,
+        "gripX": 54,
+        "gripY": 48
       },
       "run_11": {
-        "x": 508,
-        "y": 4105,
-        "w": 108,
-        "h": 152,
-        "pivotX": 54,
-        "pivotY": 154,
-        "gripX": 92,
+        "x": 1959,
+        "y": 1081,
+        "w": 78,
+        "h": 110,
+        "pivotX": 39,
+        "pivotY": 111,
+        "gripX": 66,
+        "gripY": 48
+      },
+      "equipped_unarmed_idle_0": {
+        "x": 814,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 35,
+        "pivotY": 116,
+        "gripX": 55,
         "gripY": 67
+      },
+      "equipped_unarmed_idle_1": {
+        "x": 881,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 35,
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_2": {
+        "x": 1299,
+        "y": 257,
+        "w": 64,
+        "h": 117,
+        "pivotX": 35,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 68
+      },
+      "equipped_unarmed_idle_3": {
+        "x": 338,
+        "y": 257,
+        "w": 64,
+        "h": 117,
+        "pivotX": 35,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_4": {
+        "x": 405,
+        "y": 257,
+        "w": 64,
+        "h": 117,
+        "pivotX": 35,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_5": {
+        "x": 1562,
+        "y": 134,
+        "w": 64,
+        "h": 118,
+        "pivotX": 35,
+        "pivotY": 118,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_6": {
+        "x": 1629,
+        "y": 134,
+        "w": 64,
+        "h": 118,
+        "pivotX": 35,
+        "pivotY": 118,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_7": {
+        "x": 1696,
+        "y": 134,
+        "w": 64,
+        "h": 118,
+        "pivotX": 35,
+        "pivotY": 118,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_8": {
+        "x": 472,
+        "y": 257,
+        "w": 65,
+        "h": 117,
+        "pivotX": 36,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_9": {
+        "x": 540,
+        "y": 257,
+        "w": 65,
+        "h": 117,
+        "pivotX": 36,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "equipped_unarmed_idle_10": {
+        "x": 1366,
+        "y": 257,
+        "w": 65,
+        "h": 117,
+        "pivotX": 36,
+        "pivotY": 117,
+        "gripX": 56,
+        "gripY": 68
+      },
+      "equipped_unarmed_idle_11": {
+        "x": 948,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 35,
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_dodge_0": {
+        "x": 1285,
+        "y": 850,
+        "w": 72,
+        "h": 112,
+        "pivotX": 36,
+        "pivotY": 112,
+        "gripX": 57,
+        "gripY": 54
+      },
+      "equipped_unarmed_dodge_1": {
+        "x": 2,
+        "y": 1081,
+        "w": 72,
+        "h": 111,
+        "pivotX": 36,
+        "pivotY": 111,
+        "gripX": 56,
+        "gripY": 54
+      },
+      "equipped_unarmed_dodge_2": {
+        "x": 1887,
+        "y": 1732,
+        "w": 75,
+        "h": 87,
+        "pivotX": 42,
+        "pivotY": 87,
+        "gripX": 60,
+        "gripY": 42
+      },
+      "equipped_unarmed_dodge_3": {
+        "x": 963,
+        "y": 1827,
+        "w": 107,
+        "h": 82,
+        "pivotX": 49,
+        "pivotY": 82,
+        "gripX": 103,
+        "gripY": 44
+      },
+      "equipped_unarmed_dodge_4": {
+        "x": 1073,
+        "y": 1827,
+        "w": 109,
+        "h": 82,
+        "pivotX": 49,
+        "pivotY": 82,
+        "gripX": 104,
+        "gripY": 44
+      },
+      "equipped_unarmed_dodge_5": {
+        "x": 77,
+        "y": 1081,
+        "w": 75,
+        "h": 111,
+        "pivotX": 38,
+        "pivotY": 111,
+        "gripX": 63,
+        "gripY": 51
+      },
+      "equipped_unarmed_dodge_6": {
+        "x": 1360,
+        "y": 850,
+        "w": 75,
+        "h": 112,
+        "pivotX": 38,
+        "pivotY": 112,
+        "gripX": 61,
+        "gripY": 51
+      },
+      "equipped_unarmed_dodge_7": {
+        "x": 1015,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 35,
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_land_0": {
+        "x": 1717,
+        "y": 1827,
+        "w": 88,
+        "h": 79,
+        "pivotX": 62,
+        "pivotY": 79,
+        "gripX": 71,
+        "gripY": 69
+      },
+      "equipped_unarmed_land_1": {
+        "x": 1626,
+        "y": 1827,
+        "w": 88,
+        "h": 80,
+        "pivotX": 60,
+        "pivotY": 80,
+        "gripX": 69,
+        "gripY": 70
+      },
+      "equipped_unarmed_land_2": {
+        "x": 1275,
+        "y": 1827,
+        "w": 87,
+        "h": 81,
+        "pivotX": 60,
+        "pivotY": 81,
+        "gripX": 70,
+        "gripY": 71
+      },
+      "equipped_unarmed_air_rise_0": {
+        "x": 1075,
+        "y": 1195,
+        "w": 83,
+        "h": 109,
+        "pivotX": 44,
+        "pivotY": 109,
+        "gripX": 72,
+        "gripY": 38
+      },
+      "equipped_unarmed_air_rise_1": {
+        "x": 155,
+        "y": 1081,
+        "w": 84,
+        "h": 111,
+        "pivotX": 41,
+        "pivotY": 111,
+        "gripX": 73,
+        "gripY": 38
+      },
+      "equipped_unarmed_air_rise_2": {
+        "x": 631,
+        "y": 966,
+        "w": 83,
+        "h": 112,
+        "pivotX": 42,
+        "pivotY": 112,
+        "gripX": 72,
+        "gripY": 39
+      },
+      "equipped_unarmed_turn_0": {
+        "x": 1769,
+        "y": 615,
+        "w": 65,
+        "h": 114,
+        "pivotX": 36,
+        "pivotY": 114,
+        "gripX": 55,
+        "gripY": 66
+      },
+      "equipped_unarmed_turn_1": {
+        "x": 588,
+        "y": 497,
+        "w": 63,
+        "h": 115,
+        "pivotX": 34,
+        "pivotY": 115,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_unarmed_turn_2": {
+        "x": 1082,
+        "y": 378,
+        "w": 64,
+        "h": 116,
+        "pivotX": 35,
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "equipped_staff_idle_0": {
+        "x": 1478,
+        "y": 733,
+        "w": 64,
+        "h": 113,
+        "pivotX": 26,
+        "pivotY": 114
+      },
+      "equipped_staff_idle_1": {
+        "x": 1837,
+        "y": 615,
+        "w": 65,
+        "h": 114,
+        "pivotX": 26,
+        "pivotY": 115
+      },
+      "equipped_staff_idle_2": {
+        "x": 554,
+        "y": 615,
+        "w": 66,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_3": {
+        "x": 623,
+        "y": 615,
+        "w": 66,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_4": {
+        "x": 1149,
+        "y": 378,
+        "w": 67,
+        "h": 116,
+        "pivotX": 26,
+        "pivotY": 117
+      },
+      "equipped_staff_idle_5": {
+        "x": 654,
+        "y": 497,
+        "w": 66,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_6": {
+        "x": 1219,
+        "y": 378,
+        "w": 65,
+        "h": 116,
+        "pivotX": 26,
+        "pivotY": 117
+      },
+      "equipped_staff_idle_7": {
+        "x": 723,
+        "y": 497,
+        "w": 64,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_8": {
+        "x": 1287,
+        "y": 378,
+        "w": 62,
+        "h": 116,
+        "pivotX": 26,
+        "pivotY": 117
+      },
+      "equipped_staff_idle_9": {
+        "x": 790,
+        "y": 497,
+        "w": 62,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_10": {
+        "x": 692,
+        "y": 615,
+        "w": 62,
+        "h": 115,
+        "pivotX": 26,
+        "pivotY": 116
+      },
+      "equipped_staff_idle_11": {
+        "x": 1905,
+        "y": 615,
+        "w": 63,
+        "h": 114,
+        "pivotX": 26,
+        "pivotY": 115
+      },
+      "equipped_staff_dodge_0": {
+        "x": 1545,
+        "y": 733,
+        "w": 64,
+        "h": 113,
+        "pivotX": 26,
+        "pivotY": 114
+      },
+      "equipped_staff_dodge_1": {
+        "x": 296,
+        "y": 1732,
+        "w": 111,
+        "h": 91,
+        "pivotX": 44,
+        "pivotY": 91
+      },
+      "equipped_staff_dodge_2": {
+        "x": 648,
+        "y": 1732,
+        "w": 110,
+        "h": 90,
+        "pivotX": 44,
+        "pivotY": 90
+      },
+      "equipped_staff_dodge_3": {
+        "x": 1365,
+        "y": 1827,
+        "w": 127,
+        "h": 81,
+        "pivotX": 34,
+        "pivotY": 81
+      },
+      "equipped_staff_dodge_4": {
+        "x": 1495,
+        "y": 1827,
+        "w": 128,
+        "h": 81,
+        "pivotX": 34,
+        "pivotY": 81
+      },
+      "equipped_staff_dodge_5": {
+        "x": 2,
+        "y": 1827,
+        "w": 128,
+        "h": 87,
+        "pivotX": 35,
+        "pivotY": 88
+      },
+      "equipped_staff_dodge_6": {
+        "x": 1247,
+        "y": 1732,
+        "w": 130,
+        "h": 88,
+        "pivotX": 37,
+        "pivotY": 89
+      },
+      "equipped_staff_dodge_7": {
+        "x": 1612,
+        "y": 733,
+        "w": 64,
+        "h": 113,
+        "pivotX": 26,
+        "pivotY": 114
+      },
+      "equipped_staff_land_0": {
+        "x": 242,
+        "y": 1081,
+        "w": 110,
+        "h": 111,
+        "pivotX": 69,
+        "pivotY": 112
+      },
+      "equipped_staff_land_1": {
+        "x": 1018,
+        "y": 1732,
+        "w": 130,
+        "h": 89,
+        "pivotX": 37,
+        "pivotY": 90
+      },
+      "equipped_staff_land_2": {
+        "x": 761,
+        "y": 1732,
+        "w": 130,
+        "h": 90,
+        "pivotX": 38,
+        "pivotY": 91
+      },
+      "equipped_staff_air_rise_0": {
+        "x": 1515,
+        "y": 1732,
+        "w": 132,
+        "h": 88,
+        "pivotX": 39,
+        "pivotY": 89
+      },
+      "equipped_staff_air_rise_1": {
+        "x": 2,
+        "y": 134,
+        "w": 109,
+        "h": 120,
+        "pivotX": 32,
+        "pivotY": 121
+      },
+      "equipped_staff_air_rise_2": {
+        "x": 1652,
+        "y": 2,
+        "w": 108,
+        "h": 120,
+        "pivotX": 32,
+        "pivotY": 121
+      },
+      "equipped_staff_turn_0": {
+        "x": 741,
+        "y": 1827,
+        "w": 125,
+        "h": 83,
+        "pivotX": 34,
+        "pivotY": 83
+      },
+      "equipped_staff_turn_1": {
+        "x": 2,
+        "y": 1732,
+        "w": 112,
+        "h": 92,
+        "pivotX": 43,
+        "pivotY": 92
+      },
+      "equipped_staff_turn_2": {
+        "x": 1679,
+        "y": 733,
+        "w": 64,
+        "h": 113,
+        "pivotX": 26,
+        "pivotY": 114
+      },
+      "equipped_sling_idle_0": {
+        "x": 1434,
+        "y": 257,
+        "w": 67,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "equipped_sling_idle_1": {
+        "x": 608,
+        "y": 257,
+        "w": 68,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "equipped_sling_idle_2": {
+        "x": 1763,
+        "y": 134,
+        "w": 68,
+        "h": 118,
+        "pivotX": 22,
+        "pivotY": 119
+      },
+      "equipped_sling_idle_3": {
+        "x": 1834,
+        "y": 134,
+        "w": 68,
+        "h": 118,
+        "pivotX": 22,
+        "pivotY": 119
+      },
+      "equipped_sling_idle_4": {
+        "x": 930,
+        "y": 134,
+        "w": 68,
+        "h": 119,
+        "pivotX": 22,
+        "pivotY": 120
+      },
+      "equipped_sling_idle_5": {
+        "x": 1001,
+        "y": 134,
+        "w": 68,
+        "h": 119,
+        "pivotX": 22,
+        "pivotY": 120
+      },
+      "equipped_sling_idle_6": {
+        "x": 114,
+        "y": 134,
+        "w": 68,
+        "h": 120,
+        "pivotX": 22,
+        "pivotY": 121
+      },
+      "equipped_sling_idle_7": {
+        "x": 1072,
+        "y": 134,
+        "w": 67,
+        "h": 119,
+        "pivotX": 22,
+        "pivotY": 120
+      },
+      "equipped_sling_idle_8": {
+        "x": 185,
+        "y": 134,
+        "w": 68,
+        "h": 120,
+        "pivotX": 22,
+        "pivotY": 121
+      },
+      "equipped_sling_idle_9": {
+        "x": 1142,
+        "y": 134,
+        "w": 69,
+        "h": 119,
+        "pivotX": 23,
+        "pivotY": 120
+      },
+      "equipped_sling_idle_10": {
+        "x": 1905,
+        "y": 134,
+        "w": 67,
+        "h": 118,
+        "pivotX": 22,
+        "pivotY": 119
+      },
+      "equipped_sling_idle_11": {
+        "x": 679,
+        "y": 257,
+        "w": 67,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "equipped_sling_dodge_0": {
+        "x": 1504,
+        "y": 257,
+        "w": 67,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "equipped_sling_dodge_1": {
+        "x": 117,
+        "y": 1732,
+        "w": 98,
+        "h": 92,
+        "pivotX": 47,
+        "pivotY": 93
+      },
+      "equipped_sling_dodge_2": {
+        "x": 410,
+        "y": 1732,
+        "w": 99,
+        "h": 91,
+        "pivotX": 48,
+        "pivotY": 92
+      },
+      "equipped_sling_dodge_3": {
+        "x": 2,
+        "y": 1917,
+        "w": 89,
+        "h": 75,
+        "pivotX": 43,
+        "pivotY": 76
+      },
+      "equipped_sling_dodge_4": {
+        "x": 94,
+        "y": 1917,
+        "w": 89,
+        "h": 75,
+        "pivotX": 43,
+        "pivotY": 76
+      },
+      "equipped_sling_dodge_5": {
+        "x": 619,
+        "y": 1827,
+        "w": 119,
+        "h": 84,
+        "pivotX": 36,
+        "pivotY": 84
+      },
+      "equipped_sling_dodge_6": {
+        "x": 376,
+        "y": 1827,
+        "w": 119,
+        "h": 86,
+        "pivotX": 36,
+        "pivotY": 86
+      },
+      "equipped_sling_dodge_7": {
+        "x": 1574,
+        "y": 257,
+        "w": 67,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "equipped_sling_land_0": {
+        "x": 2,
+        "y": 733,
+        "w": 112,
+        "h": 114,
+        "pivotX": 72,
+        "pivotY": 114
+      },
+      "equipped_sling_land_1": {
+        "x": 254,
+        "y": 1827,
+        "w": 119,
+        "h": 86,
+        "pivotX": 36,
+        "pivotY": 86
+      },
+      "equipped_sling_land_2": {
+        "x": 133,
+        "y": 1827,
+        "w": 118,
+        "h": 87,
+        "pivotX": 35,
+        "pivotY": 87
+      },
+      "equipped_sling_air_rise_0": {
+        "x": 498,
+        "y": 1827,
+        "w": 118,
+        "h": 85,
+        "pivotX": 35,
+        "pivotY": 85
+      },
+      "equipped_sling_air_rise_1": {
+        "x": 749,
+        "y": 257,
+        "w": 101,
+        "h": 117,
+        "pivotX": 24,
+        "pivotY": 118
+      },
+      "equipped_sling_air_rise_2": {
+        "x": 2,
+        "y": 257,
+        "w": 100,
+        "h": 118,
+        "pivotX": 24,
+        "pivotY": 119
+      },
+      "equipped_sling_turn_0": {
+        "x": 1808,
+        "y": 1827,
+        "w": 90,
+        "h": 78,
+        "pivotX": 44,
+        "pivotY": 79
+      },
+      "equipped_sling_turn_1": {
+        "x": 1841,
+        "y": 1631,
+        "w": 98,
+        "h": 93,
+        "pivotX": 46,
+        "pivotY": 94
+      },
+      "equipped_sling_turn_2": {
+        "x": 1644,
+        "y": 257,
+        "w": 67,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 118
+      },
+      "defence_hit_1": {
+        "x": 355,
+        "y": 1081,
+        "w": 108,
+        "h": 111,
+        "pivotX": 68,
+        "pivotY": 111,
+        "gripX": 91,
+        "gripY": 73
+      },
+      "defence_hit_2": {
+        "x": 1438,
+        "y": 850,
+        "w": 111,
+        "h": 112,
+        "pivotX": 71,
+        "pivotY": 112,
+        "gripX": 93,
+        "gripY": 73
+      },
+      "defence_hit_3": {
+        "x": 1746,
+        "y": 733,
+        "w": 109,
+        "h": 113,
+        "pivotX": 69,
+        "pivotY": 113,
+        "gripX": 92,
+        "gripY": 74
+      },
+      "defence_hit_4": {
+        "x": 1552,
+        "y": 850,
+        "w": 88,
+        "h": 112,
+        "pivotX": 46,
+        "pivotY": 112,
+        "gripX": 84,
+        "gripY": 45
+      },
+      "defence_hit_5": {
+        "x": 466,
+        "y": 1081,
+        "w": 87,
+        "h": 111,
+        "pivotX": 44,
+        "pivotY": 111,
+        "gripX": 84,
+        "gripY": 44
+      },
+      "defence_hit_6": {
+        "x": 2,
+        "y": 1195,
+        "w": 88,
+        "h": 110,
+        "pivotX": 44,
+        "pivotY": 110,
+        "gripX": 85,
+        "gripY": 44
+      },
+      "attack_wind_equipped_sling_12_3": {
+        "x": 717,
+        "y": 966,
+        "w": 86,
+        "h": 112,
+        "pivotX": 35,
+        "pivotY": 112
+      },
+      "attack_wind_equipped_sling_13_5": {
+        "x": 1267,
+        "y": 2,
+        "w": 94,
+        "h": 123,
+        "pivotX": 40,
+        "pivotY": 123
+      },
+      "attack_smear_equipped_sling_14": {
+        "x": 914,
+        "y": 1528,
+        "w": 190,
+        "h": 99,
+        "pivotX": 41,
+        "pivotY": 99
+      },
+      "attack_follow_equipped_sling_15_0": {
+        "x": 315,
+        "y": 1419,
+        "w": 92,
+        "h": 105,
+        "pivotX": 42,
+        "pivotY": 105
+      },
+      "attack_follow_equipped_sling_15_3": {
+        "x": 72,
+        "y": 1419,
+        "w": 91,
+        "h": 106,
+        "pivotX": 42,
+        "pivotY": 106
+      },
+      "attack_follow_equipped_sling_15_6": {
+        "x": 1617,
+        "y": 1308,
+        "w": 91,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 107
+      },
+      "equipped_settle_sling_10": {
+        "x": 757,
+        "y": 615,
+        "w": 68,
+        "h": 115,
+        "pivotX": 22,
+        "pivotY": 116
+      },
+      "equipped_settle_sling_13": {
+        "x": 1352,
+        "y": 378,
+        "w": 67,
+        "h": 116,
+        "pivotX": 22,
+        "pivotY": 117
+      },
+      "attack_follow_equipped_sling_15_2": {
+        "x": 1711,
+        "y": 1308,
+        "w": 91,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 107
+      },
+      "attack_follow_equipped_sling_15_5": {
+        "x": 1805,
+        "y": 1308,
+        "w": 91,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 107
+      },
+      "attack_follow_equipped_sling_15_7": {
+        "x": 936,
+        "y": 1308,
+        "w": 91,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 107
+      },
+      "equipped_settle_sling_9": {
+        "x": 828,
+        "y": 615,
+        "w": 68,
+        "h": 115,
+        "pivotX": 22,
+        "pivotY": 116
+      },
+      "equipped_settle_sling_11": {
+        "x": 855,
+        "y": 497,
+        "w": 67,
+        "h": 115,
+        "pivotX": 22,
+        "pivotY": 116
+      },
+      "equipped_settle_sling_14": {
+        "x": 1422,
+        "y": 378,
+        "w": 67,
+        "h": 116,
+        "pivotX": 22,
+        "pivotY": 117
+      },
+      "attack_smear_down_sling_dlight": {
+        "x": 1107,
+        "y": 1528,
+        "w": 190,
+        "h": 99,
+        "pivotX": 41,
+        "pivotY": 99
+      },
+      "attack_smear_down_sling_dair": {
+        "x": 1300,
+        "y": 1528,
+        "w": 190,
+        "h": 99,
+        "pivotX": 41,
+        "pivotY": 99
+      },
+      "attack_wind_equipped_sling_12_2": {
+        "x": 1643,
+        "y": 850,
+        "w": 85,
+        "h": 112,
+        "pivotX": 35,
+        "pivotY": 112
+      },
+      "attack_wind_equipped_sling_12_4": {
+        "x": 556,
+        "y": 1081,
+        "w": 85,
+        "h": 111,
+        "pivotX": 35,
+        "pivotY": 111
+      },
+      "attack_wind_equipped_sling_13_6": {
+        "x": 1057,
+        "y": 2,
+        "w": 93,
+        "h": 123,
+        "pivotX": 40,
+        "pivotY": 123
+      },
+      "attack_smear_down_sling_ground_pound": {
+        "x": 1493,
+        "y": 1528,
+        "w": 190,
+        "h": 99,
+        "pivotX": 41,
+        "pivotY": 99
+      },
+      "attack_follow_equipped_sling_15_4": {
+        "x": 1899,
+        "y": 1308,
+        "w": 91,
+        "h": 107,
+        "pivotX": 42,
+        "pivotY": 107
+      },
+      "equipped_settle_sling_12": {
+        "x": 925,
+        "y": 497,
+        "w": 67,
+        "h": 115,
+        "pivotX": 22,
+        "pivotY": 116
+      },
+      "attack_wind_equipped_staff_12_3": {
+        "x": 1858,
+        "y": 733,
+        "w": 131,
+        "h": 113,
+        "pivotX": 59,
+        "pivotY": 114
+      },
+      "attack_wind_equipped_staff_13_5": {
+        "x": 697,
+        "y": 2,
+        "w": 117,
+        "h": 124,
+        "pivotX": 57,
+        "pivotY": 125
+      },
+      "attack_smear_equipped_staff_14": {
+        "x": 2,
+        "y": 1631,
+        "w": 194,
+        "h": 98,
+        "pivotX": 41,
+        "pivotY": 98
+      },
+      "attack_follow_equipped_staff_15_0": {
+        "x": 1030,
+        "y": 1308,
+        "w": 138,
+        "h": 107,
+        "pivotX": 55,
+        "pivotY": 108
+      },
+      "attack_follow_equipped_staff_15_3": {
+        "x": 106,
+        "y": 1308,
+        "w": 137,
+        "h": 108,
+        "pivotX": 56,
+        "pivotY": 109
+      },
+      "attack_follow_equipped_staff_15_6": {
+        "x": 1375,
+        "y": 1195,
+        "w": 136,
+        "h": 109,
+        "pivotX": 57,
+        "pivotY": 110
+      },
+      "equipped_settle_staff_10": {
+        "x": 644,
+        "y": 1081,
+        "w": 66,
+        "h": 111,
+        "pivotX": 26,
+        "pivotY": 112
+      },
+      "equipped_settle_staff_13": {
+        "x": 1731,
+        "y": 850,
+        "w": 65,
+        "h": 112,
+        "pivotX": 26,
+        "pivotY": 113
+      },
+      "attack_follow_equipped_staff_15_5": {
+        "x": 1514,
+        "y": 1195,
+        "w": 136,
+        "h": 109,
+        "pivotX": 57,
+        "pivotY": 110
+      },
+      "equipped_settle_staff_8": {
+        "x": 713,
+        "y": 1081,
+        "w": 67,
+        "h": 111,
+        "pivotX": 26,
+        "pivotY": 112
+      },
+      "equipped_settle_staff_11": {
+        "x": 806,
+        "y": 966,
+        "w": 66,
+        "h": 112,
+        "pivotX": 26,
+        "pivotY": 113
+      },
+      "attack_smear_down_staff_dlight": {
+        "x": 199,
+        "y": 1631,
+        "w": 194,
+        "h": 98,
+        "pivotX": 41,
+        "pivotY": 98
+      },
+      "attack_follow_equipped_staff_15_2": {
+        "x": 246,
+        "y": 1308,
+        "w": 137,
+        "h": 108,
+        "pivotX": 56,
+        "pivotY": 109
+      },
+      "attack_follow_equipped_staff_15_7": {
+        "x": 1161,
+        "y": 1195,
+        "w": 135,
+        "h": 109,
+        "pivotX": 57,
+        "pivotY": 110
+      },
+      "equipped_settle_staff_9": {
+        "x": 783,
+        "y": 1081,
+        "w": 66,
+        "h": 111,
+        "pivotX": 26,
+        "pivotY": 112
+      },
+      "equipped_settle_staff_14": {
+        "x": 1799,
+        "y": 850,
+        "w": 65,
+        "h": 112,
+        "pivotX": 26,
+        "pivotY": 113
+      },
+      "attack_smear_down_staff_dair": {
+        "x": 396,
+        "y": 1631,
+        "w": 194,
+        "h": 98,
+        "pivotX": 41,
+        "pivotY": 98
+      },
+      "attack_wind_equipped_staff_12_2": {
+        "x": 2,
+        "y": 850,
+        "w": 133,
+        "h": 113,
+        "pivotX": 59,
+        "pivotY": 114
+      },
+      "attack_wind_equipped_staff_12_4": {
+        "x": 138,
+        "y": 850,
+        "w": 132,
+        "h": 113,
+        "pivotX": 59,
+        "pivotY": 114
+      },
+      "attack_wind_equipped_staff_13_6": {
+        "x": 817,
+        "y": 2,
+        "w": 117,
+        "h": 124,
+        "pivotX": 58,
+        "pivotY": 125
+      },
+      "attack_follow_equipped_staff_15_4": {
+        "x": 1653,
+        "y": 1195,
+        "w": 136,
+        "h": 109,
+        "pivotX": 56,
+        "pivotY": 110
+      },
+      "equipped_settle_staff_12": {
+        "x": 875,
+        "y": 966,
+        "w": 65,
+        "h": 112,
+        "pivotX": 26,
+        "pivotY": 113
+      },
+      "attack_smear_down_staff_ground_pound": {
+        "x": 593,
+        "y": 1631,
+        "w": 194,
+        "h": 98,
+        "pivotX": 41,
+        "pivotY": 98
+      },
+      "attack_wind_defence_0_3": {
+        "x": 899,
+        "y": 615,
+        "w": 77,
+        "h": 115,
+        "pivotX": 40,
+        "pivotY": 115,
+        "gripX": 62,
+        "gripY": 53
+      },
+      "attack_wind_defence_1_5": {
+        "x": 273,
+        "y": 850,
+        "w": 83,
+        "h": 113,
+        "pivotX": 42,
+        "pivotY": 113,
+        "gripX": 74,
+        "gripY": 54
+      },
+      "attack_smear_defence_2": {
+        "x": 359,
+        "y": 850,
+        "w": 112,
+        "h": 113,
+        "pivotX": 43,
+        "pivotY": 113,
+        "gripX": 102,
+        "gripY": 39
+      },
+      "attack_follow_defence_3_0": {
+        "x": 943,
+        "y": 966,
+        "w": 75,
+        "h": 112,
+        "pivotX": 38,
+        "pivotY": 112,
+        "gripX": 65,
+        "gripY": 52
+      },
+      "attack_follow_defence_3_3": {
+        "x": 1867,
+        "y": 850,
+        "w": 75,
+        "h": 112,
+        "pivotX": 38,
+        "pivotY": 112,
+        "gripX": 63,
+        "gripY": 52
+      },
+      "attack_follow_defence_3_6": {
+        "x": 474,
+        "y": 850,
+        "w": 75,
+        "h": 113,
+        "pivotX": 38,
+        "pivotY": 113,
+        "gripX": 62,
+        "gripY": 53
+      },
+      "equipped_settle_unarmed_10": {
+        "x": 117,
+        "y": 733,
+        "w": 63,
+        "h": 114,
+        "pivotX": 34,
+        "pivotY": 114,
+        "gripX": 56,
+        "gripY": 66
+      },
+      "equipped_settle_unarmed_13": {
+        "x": 995,
+        "y": 497,
+        "w": 64,
+        "h": 115,
+        "pivotX": 35,
+        "pivotY": 115,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "attack_wind_defence_5_3": {
+        "x": 853,
+        "y": 257,
+        "w": 63,
+        "h": 117,
+        "pivotX": 20,
+        "pivotY": 117,
+        "gripX": 53,
+        "gripY": 69
+      },
+      "attack_wind_defence_5_5": {
+        "x": 1714,
+        "y": 257,
+        "w": 64,
+        "h": 117,
+        "pivotX": 22,
+        "pivotY": 117,
+        "gripX": 54,
+        "gripY": 68
+      },
+      "attack_smear_defence_6": {
+        "x": 1062,
+        "y": 497,
+        "w": 114,
+        "h": 115,
+        "pivotX": 30,
+        "pivotY": 115,
+        "gripX": 104,
+        "gripY": 38
+      },
+      "attack_follow_defence_7_0": {
+        "x": 183,
+        "y": 733,
+        "w": 56,
+        "h": 114,
+        "pivotX": 19,
+        "pivotY": 114,
+        "gripX": 43,
+        "gripY": 52
+      },
+      "attack_follow_defence_7_3": {
+        "x": 979,
+        "y": 615,
+        "w": 54,
+        "h": 115,
+        "pivotX": 19,
+        "pivotY": 115,
+        "gripX": 42,
+        "gripY": 52
+      },
+      "attack_follow_defence_7_6": {
+        "x": 1179,
+        "y": 497,
+        "w": 53,
+        "h": 115,
+        "pivotX": 20,
+        "pivotY": 115,
+        "gripX": 41,
+        "gripY": 53
+      },
+      "attack_wind_defence_4_3": {
+        "x": 242,
+        "y": 733,
+        "w": 74,
+        "h": 114,
+        "pivotX": 38,
+        "pivotY": 114,
+        "gripX": 58,
+        "gripY": 52
+      },
+      "attack_smear_down_unarmed_dlight": {
+        "x": 493,
+        "y": 2,
+        "w": 119,
+        "h": 125,
+        "pivotX": 58,
+        "pivotY": 125
+      },
+      "attack_wind_defence_1_3": {
+        "x": 319,
+        "y": 733,
+        "w": 83,
+        "h": 114,
+        "pivotX": 42,
+        "pivotY": 114,
+        "gripX": 74,
+        "gripY": 54
+      },
+      "attack_follow_defence_7_5": {
+        "x": 1235,
+        "y": 497,
+        "w": 54,
+        "h": 115,
+        "pivotX": 20,
+        "pivotY": 115,
+        "gripX": 42,
+        "gripY": 53
+      },
+      "equipped_settle_unarmed_8": {
+        "x": 405,
+        "y": 733,
+        "w": 63,
+        "h": 114,
+        "pivotX": 34,
+        "pivotY": 114,
+        "gripX": 56,
+        "gripY": 66
+      },
+      "equipped_settle_unarmed_11": {
+        "x": 1036,
+        "y": 615,
+        "w": 63,
+        "h": 115,
+        "pivotX": 34,
+        "pivotY": 115,
+        "gripX": 55,
+        "gripY": 66
+      },
+      "attack_smear_down_unarmed_dair": {
+        "x": 1792,
+        "y": 1195,
+        "w": 98,
+        "h": 109,
+        "pivotX": 49,
+        "pivotY": 109
+      },
+      "attack_follow_defence_3_2": {
+        "x": 1945,
+        "y": 850,
+        "w": 75,
+        "h": 112,
+        "pivotX": 38,
+        "pivotY": 112,
+        "gripX": 63,
+        "gripY": 53
+      },
+      "attack_follow_defence_3_5": {
+        "x": 552,
+        "y": 850,
+        "w": 75,
+        "h": 113,
+        "pivotX": 38,
+        "pivotY": 113,
+        "gripX": 63,
+        "gripY": 53
+      },
+      "attack_follow_defence_3_7": {
+        "x": 471,
+        "y": 733,
+        "w": 75,
+        "h": 114,
+        "pivotX": 38,
+        "pivotY": 114,
+        "gripX": 62,
+        "gripY": 54
+      },
+      "equipped_settle_unarmed_9": {
+        "x": 549,
+        "y": 733,
+        "w": 63,
+        "h": 114,
+        "pivotX": 34,
+        "pivotY": 114,
+        "gripX": 56,
+        "gripY": 66
+      },
+      "equipped_settle_unarmed_14": {
+        "x": 1292,
+        "y": 497,
+        "w": 64,
+        "h": 115,
+        "pivotX": 35,
+        "pivotY": 115,
+        "gripX": 56,
+        "gripY": 67
+      },
+      "attack_wind_defence_4_2": {
+        "x": 1102,
+        "y": 615,
+        "w": 74,
+        "h": 115,
+        "pivotX": 38,
+        "pivotY": 115,
+        "gripX": 59,
+        "gripY": 53
+      },
+      "attack_wind_defence_5_6": {
+        "x": 1492,
+        "y": 378,
+        "w": 65,
+        "h": 116,
+        "pivotX": 23,
+        "pivotY": 116,
+        "gripX": 54,
+        "gripY": 67
+      },
+      "attack_smear_down_unarmed_ground_pound": {
+        "x": 615,
+        "y": 733,
+        "w": 75,
+        "h": 114,
+        "pivotX": 37,
+        "pivotY": 114
+      },
+      "attack_follow_defence_7_2": {
+        "x": 1179,
+        "y": 615,
+        "w": 55,
+        "h": 115,
+        "pivotX": 20,
+        "pivotY": 115,
+        "gripX": 43,
+        "gripY": 53
+      },
+      "attack_follow_defence_7_4": {
+        "x": 1359,
+        "y": 497,
+        "w": 54,
+        "h": 115,
+        "pivotX": 19,
+        "pivotY": 115,
+        "gripX": 42,
+        "gripY": 53
+      },
+      "attack_follow_defence_7_7": {
+        "x": 1560,
+        "y": 378,
+        "w": 53,
+        "h": 116,
+        "pivotX": 20,
+        "pivotY": 116,
+        "gripX": 41,
+        "gripY": 54
+      },
+      "equipped_settle_unarmed_12": {
+        "x": 1237,
+        "y": 615,
+        "w": 64,
+        "h": 115,
+        "pivotX": 35,
+        "pivotY": 115,
+        "gripX": 56,
+        "gripY": 66
+      },
+      "attack_wind_defence_0_2": {
+        "x": 1416,
+        "y": 497,
+        "w": 77,
+        "h": 115,
+        "pivotX": 40,
+        "pivotY": 115,
+        "gripX": 62,
+        "gripY": 54
+      },
+      "attack_wind_defence_1_6": {
+        "x": 2,
+        "y": 966,
+        "w": 83,
+        "h": 112,
+        "pivotX": 42,
+        "pivotY": 112,
+        "gripX": 73,
+        "gripY": 53
+      },
+      "attack_follow_defence_3_4": {
+        "x": 630,
+        "y": 850,
+        "w": 75,
+        "h": 113,
+        "pivotX": 38,
+        "pivotY": 113,
+        "gripX": 63,
+        "gripY": 53
+      },
+      "attack_wind_defence_4_1": {
+        "x": 1304,
+        "y": 615,
+        "w": 74,
+        "h": 115,
+        "pivotX": 38,
+        "pivotY": 115,
+        "gripX": 59,
+        "gripY": 52
+      },
+      "attack_wind_defence_5_7": {
+        "x": 1616,
+        "y": 378,
+        "w": 65,
+        "h": 116,
+        "pivotX": 23,
+        "pivotY": 116,
+        "gripX": 55,
+        "gripY": 67
+      },
+      "attack_wind_defence_5_4": {
+        "x": 1781,
+        "y": 257,
+        "w": 64,
+        "h": 117,
+        "pivotX": 21,
+        "pivotY": 117,
+        "gripX": 53,
+        "gripY": 68
+      },
+      "attack_smear_down_unarmed_dsig": {
+        "x": 1380,
+        "y": 1732,
+        "w": 132,
+        "h": 88,
+        "pivotX": 41,
+        "pivotY": 88
+      },
+      "attack_wind_equipped_staff_12_1": {
+        "x": 708,
+        "y": 850,
+        "w": 133,
+        "h": 113,
+        "pivotX": 59,
+        "pivotY": 114
+      },
+      "attack_wind_equipped_staff_13_7": {
+        "x": 937,
+        "y": 2,
+        "w": 117,
+        "h": 124,
+        "pivotX": 58,
+        "pivotY": 125
+      },
+      "attack_smear_down_miriam_staff_dsig": {
+        "x": 790,
+        "y": 1631,
+        "w": 194,
+        "h": 98,
+        "pivotX": 41,
+        "pivotY": 98
+      },
+      "attack_wind_equipped_sling_12_1": {
+        "x": 1021,
+        "y": 966,
+        "w": 85,
+        "h": 112,
+        "pivotX": 35,
+        "pivotY": 112
+      },
+      "attack_wind_equipped_sling_13_7": {
+        "x": 1364,
+        "y": 2,
+        "w": 92,
+        "h": 123,
+        "pivotX": 40,
+        "pivotY": 123
+      },
+      "equipped_settle_sling_8": {
+        "x": 1381,
+        "y": 615,
+        "w": 68,
+        "h": 115,
+        "pivotX": 22,
+        "pivotY": 116
+      },
+      "attack_smear_down_miriam_sling_dsig": {
+        "x": 1686,
+        "y": 1528,
+        "w": 190,
+        "h": 99,
+        "pivotX": 41,
+        "pivotY": 99
       }
     },
     "clips": {
@@ -42259,318 +43881,829 @@
       "sling_nlight": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_13",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          4,
-          5,
+          2,
+          2,
+          2,
+          3,
           1,
-          18
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_slight": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_7",
+          "equipped_settle_sling_9",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           1,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_dlight": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_down_sling_dlight",
           "down_sling_dlight",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_13",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
+          2,
+          2,
+          2,
+          2,
           4,
-          4,
-          4,
-          17
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_nair": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_13",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          4,
+          2,
+          2,
+          2,
+          3,
           5,
-          5,
-          18
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_sair": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_7",
+          "equipped_settle_sling_9",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           1,
-          23
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_dair": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_down_sling_dair",
           "down_sling_dair",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_7",
+          "equipped_settle_sling_9",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          3,
+          3,
           5,
-          6,
-          5,
-          22
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_recovery": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_2",
+          "attack_wind_equipped_sling_12_4",
+          "attack_wind_equipped_sling_13_6",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_7",
+          "equipped_settle_sling_9",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          6,
+          2,
+          3,
+          2,
+          3,
+          3,
           7,
-          7,
-          24
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_ground_pound": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_2",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_wind_equipped_sling_13_6",
+          "attack_smear_down_sling_ground_pound",
           "down_sling_ground_pound",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_4",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_7",
+          "equipped_settle_sling_9",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_12",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          8,
-          8,
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           12,
-          28
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_nlight": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_6",
+          "equipped_settle_staff_10",
+          "equipped_settle_staff_13",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
+          2,
+          2,
+          2,
+          2,
           4,
-          4,
-          4,
-          17
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_slight": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_5",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_13",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          3,
+          3,
           5,
-          6,
-          5,
-          21
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_dlight": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_down_staff_dlight",
           "down_staff_dlight",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_5",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_13",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          2,
+          3,
           5,
-          5,
-          5,
-          20
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_nair": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_5",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_13",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
+          2,
+          3,
+          2,
+          3,
           5,
-          5,
-          5,
-          19
-        ]
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_sair": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_5",
+          "attack_follow_equipped_staff_15_7",
+          "equipped_settle_staff_9",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           5,
-          23
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_dair": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_down_staff_dair",
           "down_staff_dair",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_5",
+          "attack_follow_equipped_staff_15_7",
+          "equipped_settle_staff_9",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          6,
-          6,
+          3,
+          3,
+          3,
+          3,
           5,
-          23
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_recovery": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_2",
+          "attack_wind_equipped_staff_12_4",
+          "attack_wind_equipped_staff_13_6",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_4",
+          "attack_follow_equipped_staff_15_6",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_10",
+          "equipped_settle_staff_12",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          6,
+          2,
+          3,
+          2,
+          3,
+          3,
           7,
-          7,
-          25
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_ground_pound": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_2",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_wind_equipped_staff_13_6",
+          "attack_smear_down_staff_ground_pound",
           "down_staff_ground_pound",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_4",
+          "attack_follow_equipped_staff_15_5",
+          "attack_follow_equipped_staff_15_7",
+          "equipped_settle_staff_9",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_12",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          8,
-          9,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
           12,
-          29
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_staff_nsig": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_2",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_wind_equipped_staff_13_6",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_4",
+          "attack_follow_equipped_staff_15_6",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_10",
+          "equipped_settle_staff_12",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          9,
-          9,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          25
-        ]
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_staff_ssig": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_1",
+          "attack_wind_equipped_staff_12_2",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_wind_equipped_staff_13_6",
+          "attack_wind_equipped_staff_13_7",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_4",
+          "attack_follow_equipped_staff_15_5",
+          "attack_follow_equipped_staff_15_7",
+          "equipped_settle_staff_9",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_12",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          11,
-          11,
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
           5,
-          29
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_staff_dsig": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_1",
+          "attack_wind_equipped_staff_12_2",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_wind_equipped_staff_13_6",
+          "attack_wind_equipped_staff_13_7",
+          "attack_smear_down_miriam_staff_dsig",
           "down_miriam_staff_dsig",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_2",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_5",
+          "attack_follow_equipped_staff_15_6",
+          "equipped_settle_staff_8",
+          "equipped_settle_staff_10",
+          "equipped_settle_staff_11",
+          "equipped_settle_staff_13",
+          "equipped_settle_staff_14",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
-          12,
-          12,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           6,
-          31
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_sling_nsig": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_1",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_12_4",
+          "attack_wind_equipped_sling_13_5",
+          "attack_wind_equipped_sling_13_7",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_4",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_8",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_12",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          10,
-          10,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          27
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_sling_ssig": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_1",
+          "attack_wind_equipped_sling_12_2",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_wind_equipped_sling_13_6",
+          "attack_wind_equipped_sling_13_7",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_8",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_13",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          12,
-          12,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          31
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "miriam_sling_dsig": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_1",
+          "attack_wind_equipped_sling_12_2",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_12_4",
+          "attack_wind_equipped_sling_13_5",
+          "attack_wind_equipped_sling_13_6",
+          "attack_wind_equipped_sling_13_7",
+          "attack_smear_down_miriam_sling_dsig",
           "down_miriam_sling_dsig",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_2",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_5",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_8",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_11",
+          "equipped_settle_sling_13",
+          "equipped_settle_sling_14",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
-          13,
-          13,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          33
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "idle": {
         "frames": [
-          "defence_0"
+          "equipped_unarmed_idle_0",
+          "equipped_unarmed_idle_1",
+          "equipped_unarmed_idle_2",
+          "equipped_unarmed_idle_3",
+          "equipped_unarmed_idle_4",
+          "equipped_unarmed_idle_5",
+          "equipped_unarmed_idle_6",
+          "equipped_unarmed_idle_7",
+          "equipped_unarmed_idle_8",
+          "equipped_unarmed_idle_9",
+          "equipped_unarmed_idle_10",
+          "equipped_unarmed_idle_11"
         ],
         "ticks": [
-          60
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": true
       },
       "jump": {
         "frames": [
@@ -42587,247 +44720,519 @@
       },
       "dodge": {
         "frames": [
-          "defence_8",
-          "defence_9",
-          "defence_10",
-          "defence_11"
+          "equipped_unarmed_dodge_0",
+          "equipped_unarmed_dodge_1",
+          "equipped_unarmed_dodge_2",
+          "equipped_unarmed_dodge_3",
+          "equipped_unarmed_dodge_4",
+          "equipped_unarmed_dodge_5",
+          "equipped_unarmed_dodge_6",
+          "equipped_unarmed_dodge_7"
         ],
         "ticks": [
           2,
-          5,
-          5,
-          5
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          3
         ],
         "loop": false
       },
       "hitstun": {
         "frames": [
           "defence_13",
+          "defence_hit_1",
+          "defence_hit_2",
+          "defence_hit_3",
+          "defence_hit_4",
+          "defence_hit_5",
+          "defence_hit_6",
           "defence_14"
         ],
         "ticks": [
-          5,
-          7
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
         ],
         "loop": false
       },
       "unarmed_nlight": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_3",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
           2,
-          4,
+          1,
+          2,
           3,
-          9,
-          6
-        ]
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ],
+        "loop": false
       },
       "unarmed_slight": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
           2,
-          6,
+          2,
+          2,
+          2,
           4,
-          11,
-          7
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dlight": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_down_unarmed_dlight",
           "down_unarmed_dlight",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
           2,
-          5,
+          2,
+          2,
           4,
-          11,
-          6
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_nair": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_1_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_3",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
           2,
-          6,
+          2,
+          2,
+          2,
           4,
-          11,
-          6
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_sair": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_5",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          2,
           3,
-          7,
+          2,
+          3,
           4,
-          13,
-          7
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dair": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_down_unarmed_dair",
           "down_unarmed_dair",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_5",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          2,
           3,
-          7,
+          2,
+          3,
           4,
-          13,
-          8
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_recovery": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_3",
+          "attack_wind_defence_1_5",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_2",
+          "attack_follow_defence_3_5",
+          "attack_follow_defence_3_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          4,
-          8,
+          3,
+          3,
+          3,
+          3,
           7,
-          15,
-          9
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_ground_pound": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_smear_down_unarmed_ground_pound",
           "down_unarmed_ground_pound",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          5,
-          11,
+          2,
+          3,
+          3,
+          2,
+          3,
+          3,
           12,
-          18,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_nsig": {
         "frames": [
           "defence_0",
-          "defence_1",
+          "attack_wind_defence_0_2",
+          "attack_wind_defence_1_3",
+          "attack_wind_defence_1_5",
+          "attack_wind_defence_1_6",
+          "attack_smear_defence_2",
           "defence_2",
-          "defence_3",
-          "defence_0"
+          "attack_follow_defence_3_0",
+          "attack_follow_defence_3_2",
+          "attack_follow_defence_3_4",
+          "attack_follow_defence_3_6",
+          "equipped_settle_unarmed_8",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          6,
-          12,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
           5,
-          16,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_ssig": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_1",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_wind_defence_5_7",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          7,
-          15,
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
           5,
-          18,
-          10
-        ]
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_dsig": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_1",
+          "attack_wind_defence_4_2",
+          "attack_wind_defence_5_3",
+          "attack_wind_defence_5_4",
+          "attack_wind_defence_5_5",
+          "attack_wind_defence_5_6",
+          "attack_wind_defence_5_7",
+          "attack_smear_down_unarmed_dsig",
           "down_unarmed_dsig",
-          "defence_7",
-          "defence_0"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_2",
+          "attack_follow_defence_7_4",
+          "attack_follow_defence_7_5",
+          "attack_follow_defence_7_7",
+          "equipped_settle_unarmed_9",
+          "equipped_settle_unarmed_11",
+          "equipped_settle_unarmed_12",
+          "equipped_settle_unarmed_14",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
-          8,
-          17,
+          2,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          3,
           5,
-          19,
-          11
-        ]
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "loop": false
       },
       "sling_air_combo": {
         "frames": [
           "equipped_sling_12",
-          "equipped_sling_13",
+          "attack_wind_equipped_sling_12_3",
+          "attack_wind_equipped_sling_13_5",
+          "attack_smear_equipped_sling_14",
           "equipped_sling_14",
-          "equipped_sling_15"
+          "attack_follow_equipped_sling_15_0",
+          "attack_follow_equipped_sling_15_3",
+          "attack_follow_equipped_sling_15_6",
+          "equipped_settle_sling_10",
+          "equipped_settle_sling_13",
+          "equipped_sling_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "staff_air_combo": {
         "frames": [
           "equipped_staff_12",
-          "equipped_staff_13",
+          "attack_wind_equipped_staff_12_3",
+          "attack_wind_equipped_staff_13_5",
+          "attack_smear_equipped_staff_14",
           "equipped_staff_14",
-          "equipped_staff_15"
+          "attack_follow_equipped_staff_15_0",
+          "attack_follow_equipped_staff_15_3",
+          "attack_follow_equipped_staff_15_6",
+          "equipped_settle_staff_10",
+          "equipped_settle_staff_13",
+          "equipped_staff_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       },
       "unarmed_air_combo": {
         "frames": [
           "defence_4",
-          "defence_5",
+          "attack_wind_defence_4_3",
+          "attack_wind_defence_5_5",
+          "attack_smear_defence_6",
           "defence_6",
-          "defence_7"
+          "attack_follow_defence_7_0",
+          "attack_follow_defence_7_3",
+          "attack_follow_defence_7_6",
+          "equipped_settle_unarmed_10",
+          "equipped_settle_unarmed_13",
+          "equipped_unarmed_idle_0"
         ],
         "ticks": [
+          1,
+          1,
+          1,
+          2,
+          5,
           2,
           3,
-          5,
-          16
-        ]
+          3,
+          2,
+          3,
+          3
+        ],
+        "loop": false
       }
     },
     "movement": {
@@ -42849,10 +45254,10 @@
       "notes": "New punch, kick, dodge and recoil drawings. Unarmed directional moves share punch/kick poses; no added gameplay displacement."
     },
     "packing": {
-      "width": 1024,
-      "height": 4262,
-      "bodyPixels": 160,
-      "bytes": 3943123
+      "width": 2048,
+      "height": 1994,
+      "bodyPixels": 116,
+      "bytes": 1019290
     },
     "downwardArt": {
       "readiness": "animation_alpha",
@@ -42886,7 +45291,8 @@
       "unarmedSource": "assets/animation-production/fluid-runs/miriam-unarmed.png",
       "unarmedFrames": 12,
       "registration": "head silhouette; single model scale; feet at or above ground"
-    }
+    },
+    "smoothAnimation": 1
   },
   "nehemiah": {
     "image": "assets/runtime/fighters/nehemiah-fluid-packed.png",
