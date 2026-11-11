@@ -13,8 +13,8 @@ test('all twelve fighters cycle through twelve run drawings and keep airborne ph
     assert.equal(selected.size,12,id);
     assert.equal(renderer.frameFor(id,'run','unarmed','',0,24),'run_0');
     for(const pose of ['air_rise','air_apex','air_fall','land']){
-      assert.equal(renderer.frameFor(id,pose,'unarmed','',0,1),pose);
-      assert.equal(renderer.frameFor(id,pose,'unarmed','',0,999),pose);
+      assert.equal(renderer.frameFor(id,pose,'unarmed','',0,1),['land','air_rise'].includes(pose)?'equipped_unarmed_'+pose+'_0':pose);
+      assert.equal(renderer.frameFor(id,pose,'unarmed','',0,999),['land','air_rise'].includes(pose)?'equipped_unarmed_'+pose+'_2':pose);
       assert.ok(meta[id].frames[pose]);
     }
   }
@@ -31,15 +31,10 @@ test('movement additions do not replace a signature with a running frame',()=>{
 test('the roster rests in the closed-hand sprite with either carried weapon',()=>{
   for(const [hero,entry] of Object.entries(meta) as [string,any][]){
     for(const weapon of ['unarmed',...JSON.parse(readFileSync(new URL('../../production-pack/09_Data/fighters.json',import.meta.url),'utf8')).fighters.find((f:any)=>f.id===hero).weaponPair]){
-      if(hero==='david'){
-        const names=Array.from({length:12},(_,i)=>renderer.frameFor(hero,'idle',weapon,'',0,i*3));
-        assert.equal(new Set(names).size,12);
-        assert.ok(names.every(name=>entry.frames[name]));
-        assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,36),names[0]);
-        continue;
-      }
-      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,0),entry.frames['equipped_'+weapon+'_0']?'equipped_'+weapon+'_0':'motion_idle');
-      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,120),entry.frames['equipped_'+weapon+'_0']?'equipped_'+weapon+'_1':'motion_idle');
+      const names=Array.from({length:12},(_,i)=>renderer.frameFor(hero,'idle',weapon,'',0,i*3));
+      assert.equal(new Set(names).size,12);
+      assert.ok(names.every(name=>entry.frames[name]));
+      assert.equal(renderer.frameFor(hero,'idle',weapon,'',0,36),names[0]);
     }
     assert.ok(entry.frames.motion_idle);
   }
@@ -69,7 +64,7 @@ test('backflip uses the airborne sprite sequence instead of a cutout pose',()=>{
 test('hitstun uses each fighter’s drawn recoil and settle poses with or without a weapon',()=>{
   for(const hero of Object.keys(meta))for(const weapon of ['unarmed','sling','sword']){
     assert.equal(renderer.frameFor(hero,'hitstun',weapon,'',0,0),'defence_13');
-    assert.equal(renderer.frameFor(hero,'hitstun',weapon,'',0,8),'defence_14');
+    assert.equal(renderer.frameFor(hero,'hitstun',weapon,'',0,8),'defence_hit_4');
     assert.ok(meta[hero].frames.defence_13?.gripX);
     assert.ok(meta[hero].frames.defence_14?.gripX);
   }

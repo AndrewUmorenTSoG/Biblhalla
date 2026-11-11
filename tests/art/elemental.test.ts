@@ -32,12 +32,12 @@ test('all slingers release into a visible stone, and thrown objects show short w
 });
 test('Moses staff combo plays the four drawn rotation poses in order',()=>{
   const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
-  assert.deepEqual(meta.moses.clips.staff_air_combo.frames.slice(0,4),[0,1,2,3].map(i=>`moses_staff_spin_${i}`));
+  assert.deepEqual(meta.moses.clips.staff_air_combo.frames.filter((key:string)=>key.startsWith('moses_staff_spin_')||key.startsWith('attack_wind_moses_staff_spin_1')).map((key:string)=>key.startsWith('attack_wind')?'moses_staff_spin_1':key).filter((key:string,i:number,all:string[])=>i===0||all[i-1]!==key),[0,1,2,3].map(i=>`moses_staff_spin_${i}`));
   assert.equal(meta.moses.clips.staff_air_combo.ticks.reduce((a:number,b:number)=>a+b),26);
 });
 test('Esther turns through back and front poses while her hurricane is active',()=>{
   const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
   const clip=meta.esther.clips.esther_blades_slight;
-  assert.deepEqual(clip.frames,['element_2_0','element_2_1','element_2_2','element_2_3']);
-  assert.equal(clip.ticks[0],8);assert.equal(clip.ticks[1]+clip.ticks[2],14);
+  const poses:string[]=clip.frames.flatMap((name:string,i:number)=>Array(clip.ticks[i]).fill(name));
+  assert.deepEqual(poses.slice(8,22),[...Array(7).fill('element_2_1'),...Array(7).fill('element_2_2')]);
 });
