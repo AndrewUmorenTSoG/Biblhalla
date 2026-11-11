@@ -164,6 +164,8 @@ function simTick():boolean{
 const menuNav=new MenuNavigator();
 menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
 bindArrowKeys(()=>!inputs.active);
+/** How long the final KO plays out before the results card (ms). */
+const RESULT_OUTRO_MS=1300;let outroWorld:any=null,outroStart=0;
 function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);const dt=lastTime?now-lastTime:1000/60;lastTime=now;
   if(!world){inputs.readAll();if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}}
   if(world){
@@ -174,7 +176,10 @@ function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);con
       const {sustained}=trainingOnly&&trainingFrozen?{sustained:false}:runner.advance(trainingOnly?dt*trainingSpeed:dt,simTick);
       if(sustained)pause('Performance pause');
     }else runner.reset();
-    renderer.paint(world,scene,runner.accumulator/(1000/60),dt,active);if(world.tick-hudTick>=5||scene||world.phase==='result'){updateHud();hudTick=world.tick;}if((scene?.phase==='complete'||scene?.phase==='failed'||!scene&&world.phase==='result')&&!resultShown)showResult();
+    // Arena matches hold on the final KO for a moment (burst, shake, KO callout) before the results card.
+    const finished=scene?.phase==='complete'||scene?.phase==='failed'||!scene&&world.phase==='result';const outro=finished&&!resultShown&&!scene&&!replayPlayback&&world.mode!=='training';
+    if(outro&&outroWorld!==world){outroWorld=world;outroStart=now;}
+    renderer.paint(world,scene,runner.accumulator/(1000/60),dt,active||outro);if(world.tick-hudTick>=5||scene||world.phase==='result'){updateHud();hudTick=world.tick;}if(finished&&!resultShown&&(!outro||now-outroStart>=RESULT_OUTRO_MS))showResult();
     if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}
   }
   // Portrait touch play: suggest rotating, but allow continuing.
