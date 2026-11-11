@@ -16,7 +16,7 @@ test('equipped dodges show preparation, burst, and landing poses',()=>{
  const r=Object.create(Renderer.prototype) as Renderer;
  r.atlas=Object.fromEntries(Object.entries(meta).map(([id,e]:[string,any])=>[id,e.frames]));
  for(const def of S.content.fighters.fighters)for(const weapon of def.weaponPair)
-  assert.deepEqual([0,6,14].map(t=>r.frameFor(def.id,'dodge',weapon,'',0,t)),[2,3,11].map(i=>`equipped_${weapon}_${i}`));
+  assert.deepEqual([0,6,14].map(t=>r.frameFor(def.id,'dodge',weapon,'',0,t)),[0,3,7].map(i=>`equipped_${weapon}_dodge_${i}`));
 });
 test('render batching at 30, 60 and 120 Hz produces the same gait phase at the same position',()=>{
  const phases=(hz:number)=>{const r=new RunDistance();r.capture(1,0,0,true);let tick=0;const samples:number[]=[];for(let frame=1;frame<=hz;frame++){const t=frame*60/hz;while(tick<Math.floor(t)){tick++;r.capture(1,tick*7,tick,true);}const phase=r.phase(1,t*7);if(frame%(hz/10)===0)samples.push(phase);}return samples;};
