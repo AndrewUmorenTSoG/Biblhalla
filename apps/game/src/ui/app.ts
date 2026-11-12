@@ -96,7 +96,19 @@ function renderLevels(chapter:number){currentChapter=chapter;const ch=C.campaign
 function continueStory(){const cp=store.data.checkpoint;const next=cp&&cp.stage!=='exit'?cp.level:C.campaign.levels.find((l:any)=>!store.data.completed.includes(l.id)&&store.unlocked(l))?.id||'L084';startScene(next,true);}
 function startScene(id:string,useCheckpoint=false){
   const l=C.campaign.levels.find((l:any)=>l.id===id);if(!l||!store.unlocked(l))return;if(currentInputId()==='unavailable'){chooseInput(()=>startScene(id,useCheckpoint));return;}
-  closeDialogs();scene=A.create(id,settings.difficulty,useCheckpoint?store.data.checkpoint:null);world=scene.world;if(l.kind==='witness')audio.stopMusic();else audio.startMusic(arenaMusic(world,l.chapter)); // the witness finale stays quietworld.fighters[0].inputId=currentInputId();resultShown=false;tutorial=false;replayRecord=null;replayPlayback=null;renderer.lastEvent=0;renderer.particles=[];audio.last=0;
+  closeDialogs();
+  scene=A.create(id,settings.difficulty,useCheckpoint?store.data.checkpoint:null);
+  world=scene.world;
+  world.fighters[0].inputId=currentInputId();
+  resultShown=false;
+  tutorial=false;
+  replayRecord=null;
+  replayPlayback=null;
+  renderer.lastEvent=0;
+  renderer.particles=[];
+  audio.last=0;
+  if(l.kind==='witness')audio.stopMusic();
+  else audio.startMusic(arenaMusic(world,l.chapter));
   store.checkpoint(id,scene.stage,scene.done,scene.combatCleared,world.options.seed);showGame();inputs.active=false;$('game-title').textContent='L'+String(l.number).padStart(3,'0')+' · '+l.title;$('objective').textContent=l.number===1?'Move right across three terraces. At each glowing panel, press Interact and read the card. After all six, walk into the glowing exit.':l.objective;updateHud();openingStory();
 }
 function openingStory(){if(!scene)return;storyPurpose='intro';$('story-label').textContent='THE STORY ARCHIVE · '+(scene.level.number===69||scene.level.number===74?'PARABLE CONTEXT':'BIBLE ACCOUNT');$('story-title').textContent=scene.level.title;$('story-reference').textContent=scene.level.scripture;const action=settings.input==='keyboard'?'E':settings.input==='touch'?'Interact':'L1';const instructions=scene.level.number===1?`Move right (D or stick). Press ${action} beside each glowing panel, then Continue on its card. Follow panels 1–6 in order; after panel 6, walk right into the glowing exit. Jump (W or Jump) over the two small gaps. `:'';$('story-text').textContent=scene.sourceSummary;$('story-rule').replaceChildren(el('b','INVENTED ARCHIVE CHALLENGE'),el('span',instructions+scene.level.objective+' '+scene.level.uniqueRule));$('story-choices').replaceChildren();$('puzzle-prompt').textContent='';$('story-confirm').hidden=false;$('story-confirm').textContent='Enter the archive →';$('story-skip').hidden=false;open($('story-dialog'));}
