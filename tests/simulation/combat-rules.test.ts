@@ -278,3 +278,36 @@ test('resuming from pause runs a short countdown that spends no match time and r
   S.step(s); S.step(s);
   assert.equal(s.phase, 'playing');
 });
+
+test('a returning shield strikes toward the hand and respects the side a guard protects', () => {
+  for (const facing of [-1, 1] as const) {
+    for (const frontGuard of [false, true]) {
+      const s = arena({ hero: 'gideon', opponent: 'saul' });
+      const [owner, guard] = s.fighters;
+      owner.weapon = 'shield';
+      faceOff(s, owner, guard, facing * 350);
+      owner.facing = facing;
+      S.step(s, { [owner.id]: { x: facing, heavy: true } });
+      for (let t = 0; t < 60 && !s.projectiles.some(p => p.returning); t++) S.step(s);
+      const shield = s.projectiles[0];
+      assert.ok(shield?.returning);
+      assert.equal(Math.sign(shield.vx), -facing);
+
+      // Let the shield get within a single step of the hand, then place the
+      // previously untouched target just inside the far end of that sweep.
+      const [handX] = S.defs.gideon.releaseOrigins!.shield;
+      const catchX = owner.x + handX * Q * facing;
+      while (Math.abs(shield.x - catchX) > 24 * Q && s.projectiles.length) S.step(s);
+      guard.x = catchX - facing * (shield.size[0] / 2 + S.P.hurtboxUnits[0] / 2 - 1) * Q;
+      guard.y = shield.y - 35 * Q;
+      guard.facing = frontGuard ? facing : -facing;
+      guard.role = 'shield_guard';
+      S.step(s);
+      assert.equal(s.projectiles.length, 0);
+      assert.ok(s.events.some(e => e.type === 'shieldCatch'));
+      assert.equal(owner.hits, 1);
+      assert.equal(Math.sign(guard.kx), -facing);
+      assert.equal(s.events.some(e => e.type === 'shieldBlock'), frontGuard);
+    }
+  }
+});
