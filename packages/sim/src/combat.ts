@@ -144,12 +144,22 @@ export function combat(ctx: SimContext, s: SimState): void {
 
   const removed = new Set<number>();
   for (const p of s.projectiles) {
+    let caughtAtEnd = false;
     if(p.rangeQ){
       const owner=s.fighters.find(f=>f.id===p.owner);
       if(!owner?.stocks||owner.respawn){removed.add(p.id);continue;}
       const interrupted=owner.stun>0||owner.action?.instance!==p.instance;
       if(!p.returning&&(interrupted||s.tick>=(p.returnAtTick??0))){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});}
-      if(p.returning){const origin=ctx.defs[owner.hero].releaseOrigins?.shield??[30,44];const dx=owner.x+origin[0]*Q*owner.facing-p.x,dy=owner.y+origin[1]*Q-p.y,span=Math.max(Math.abs(dx),Math.abs(dy),1);const speed=interrupted?64*Q:24*Q;if(span<=speed){removed.add(p.id);event(s,'shieldCatch',{fighter:p.owner});continue;}p.vx=Math.trunc(dx*speed/span);p.vy=Math.trunc(dy*speed/span);}
+      if (p.returning) {
+        const origin = ctx.defs[owner.hero].releaseOrigins?.shield ?? [30, 44];
+        const dx = owner.x + origin[0] * Q * owner.facing - p.x;
+        const dy = owner.y + origin[1] * Q - p.y;
+        const span = Math.max(Math.abs(dx), Math.abs(dy));
+        const speed = (interrupted ? 64 : 24) * Q;
+        caughtAtEnd = span <= speed;
+        p.vx = caughtAtEnd ? dx : Math.trunc(dx * speed / span);
+        p.vy = caughtAtEnd ? dy : Math.trunc(dy * speed / span);
+      }
       else {const remaining=p.rangeQ-Math.abs(p.x-(p.originX??p.x));p.vx=Math.max(0,Math.min(24*Q,remaining))*p.facing;}
     }
     const nx = p.x + p.vx, ny = p.y + p.vy;
@@ -187,7 +197,9 @@ export function combat(ctx: SimContext, s: SimState): void {
       }
       if (contact) {
         const m = p.move === 'throw' ? throwSpec(ctx) : moves[p.move];
-        hits.push({ target: target.id, owner: p.owner, instance: p.instance, m, facing: p.facing, charge: p.charge, melee: false });
+        // Return hits follow the inbound path. Keep the shield art spinning in its launch orientation.
+        const facing = p.returning && p.vx ? Math.sign(p.vx) : p.facing;
+        hits.push({ target: target.id, owner: p.owner, instance: p.instance, m, facing, charge: p.charge, melee: false });
         if(p.rangeQ){(p.hit??=[]).push(target.id);}else removed.add(p.id);
         // A thrown weapon's one hit spends it; it drops as a non-damaging item of the same family.
         if (p.weapon) s.items.push({ id: ++s.entityId, x: p.x, y: p.y, vy: 512, life: R.drop.lifetimeTicks, neutral: false, weapon: p.weapon, claim: null });
@@ -195,6 +207,10 @@ export function combat(ctx: SimContext, s: SimState): void {
       }
     }
     p.x = nx; p.y = ny; p.vy -= p.gravity; p.life--;
+    if (caughtAtEnd) {
+      removed.add(p.id);
+      event(s, 'shieldCatch', { fighter: p.owner });
+    }
     if (p.life <= 0 || outside(s, p.x, p.y)) removed.add(p.id);
   }
   s.projectiles = s.projectiles.filter(p => !removed.has(p.id));
