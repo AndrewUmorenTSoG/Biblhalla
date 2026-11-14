@@ -3,16 +3,20 @@
 //   2 Composure: holding one stone, clear two shield advances until Goliath pauses.
 //   3 Decisive shot: aim from the marked zone while he pauses. A miss returns to
 //     composure; one hit ends the encounter with the narrated outcome.
-// Nothing here damages anyone: contact only returns David to a safe spot.
+// Grabs, throws and knockdowns cost position. The sling opportunity resolves the fight.
 
 import type { Fighter } from '../../sim/src/index.ts';
 import { Q } from '../../sim/src/index.ts';
+
+import { giantStart, giantGrapple, shieldHop, type Giant } from './giant.ts';
 
 export type GoliathStage = 'approach' | 'composure' | 'aim' | 'done';
 
 export interface Lane { x: number; state: 'safe' | 'tell' | 'active' }
 
 export interface GoliathState {
+  giant: Giant;
+  impactX: number;
   stage: GoliathStage;
   /** Kept for the renderer: true while the aim opportunity is open. */
   open: number;
@@ -45,7 +49,7 @@ const timing = (difficulty: string) => ({
 
 export function createGoliath(): GoliathState {
   return {
-    stage: 'approach', open: 0, stone: false,
+    giant: giantStart(), impactX: GOLIATH_X * Q, stage: 'approach', open: 0, stone: false,
     lanes: LANE_XS.map(x => ({ x: x * Q, state: 'safe' })),
     advance: { state: 'idle', x: GOLIATH_X * Q, ticks: 0 },
     advancesCleared: 0, pauseTicks: 0, misses: 0, tell: 0,
@@ -58,8 +62,11 @@ export interface GoliathHooks {
 }
 
 /** One tick of the reenactment. `interact` is this tick's aim/collect press. */
-export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact: boolean, difficulty: string, hooks: GoliathHooks): void {
+export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact: boolean, difficulty: string, hooks: GoliathHooks, runCap: number): void {
   const t = timing(difficulty);
+  if (g.advance.state === 'idle' && g.stage !== 'done') {
+    if (giantGrapple(g.giant, f, runCap, g.stage !== 'aim') || g.giant.move === 'reach') return;
+  }
   const resetTo = (x: number, text: string) => {
     f.x = x * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0; f.action = null;
     hooks.say(text, 150);
@@ -87,9 +94,9 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
   if (g.stage === 'composure') {
     const a = g.advance;
     if (a.state === 'idle') {
-      a.state = 'tell'; a.ticks = t.advanceTell; a.x = GOLIATH_X * Q;
+      a.state = 'tell'; a.ticks = t.advanceTell; a.x = g.giant.x; g.impactX = a.x;
       g.tell = a.ticks;
-      hooks.say('Shield raised: an advance is coming. Jump it when it reaches you.', a.ticks);
+      hooks.say('I see his shield rise. Jump the shockwave when it reaches my feet.', a.ticks);
     } else if (--a.ticks <= 0) {
       if (a.state === 'tell') { a.state = 'active'; a.ticks = ADVANCE_ACTIVE; }
       else {
@@ -101,11 +108,13 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
         }
       }
     }
+    g.giant.height = a.state === 'tell' ? shieldHop(a.ticks) : 0;
     if (a.state === 'active') {
       // The advance sweeps from Goliath toward the stone bay at ankle height.
       const progress = ADVANCE_ACTIVE - a.ticks;
-      a.x = (GOLIATH_X - ((GOLIATH_X - STONE_BAY_X) * progress) / ADVANCE_ACTIVE) * Q;
-      if (Math.abs(f.x - a.x) < 40 * Q && f.y < (82 + ADVANCE_HEIGHT) * Q) {
+      const radius = ((GOLIATH_X - STONE_BAY_X) * progress / ADVANCE_ACTIVE) * Q;
+      a.x = g.impactX - radius;
+      if (Math.abs(Math.abs(f.x - g.impactX) - radius) < 40 * Q && f.y < (82 + ADVANCE_HEIGHT) * Q) {
         a.state = 'idle';
         g.advancesCleared = 0;
         resetTo(STONE_BAY_X - 150, 'Stepped back to the stream. Composure starts again; nothing is lost.');
