@@ -15,6 +15,7 @@ export type GoliathStage = 'approach' | 'composure' | 'aim' | 'done';
 export interface Lane { x: number; state: 'safe' | 'tell' | 'active' }
 
 export interface GoliathState {
+  memory: 'flock' | 'brothers';
   giant: Giant;
   impactX: number;
   stage: GoliathStage;
@@ -49,7 +50,7 @@ const timing = (difficulty: string) => ({
 
 export function createGoliath(): GoliathState {
   return {
-    giant: giantStart(), impactX: GOLIATH_X * Q, stage: 'approach', open: 0, stone: false,
+    memory: 'flock', giant: giantStart(), impactX: GOLIATH_X * Q, stage: 'approach', open: 0, stone: false,
     lanes: LANE_XS.map(x => ({ x: x * Q, state: 'safe' })),
     advance: { state: 'idle', x: GOLIATH_X * Q, ticks: 0 },
     advancesCleared: 0, pauseTicks: 0, misses: 0, tell: 0,
@@ -86,7 +87,7 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
       g.stone = true;
       g.stage = 'composure';
       g.lanes.forEach(l => (l.state = 'safe'));
-      hooks.say('One smooth stone from the stream. Stay composed: watch the shield advance.', 220);
+      hooks.say(g.memory === 'flock' ? 'The stone sits in the old hollow of my palm. My hands remember the pasture. Watch his shield.' : 'Behind me, my brothers are silent. I pocket the stone. I can give them a moment to breathe. Watch his shield.', 220);
     }
     return;
   }
@@ -96,7 +97,9 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     if (a.state === 'idle') {
       a.state = 'tell'; a.ticks = t.advanceTell; a.x = g.giant.x; g.impactX = a.x;
       g.tell = a.ticks;
-      hooks.say('I see his shield rise. Jump the shockwave when it reaches my feet.', a.ticks);
+      hooks.say(g.advancesCleared ? 'His shield is up again. I jump the crack as it reaches my feet.'
+        : g.memory === 'brothers' ? 'I hear my brothers behind me. Shield up! I jump when the crack reaches me.'
+        : 'Steady, as in the pasture. Shield up! I jump when the crack reaches me.', a.ticks);
     } else if (--a.ticks <= 0) {
       if (a.state === 'tell') { a.state = 'active'; a.ticks = ADVANCE_ACTIVE; }
       else {

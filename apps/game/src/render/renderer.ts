@@ -1,4 +1,4 @@
-import { drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
+import { GiantMotion, drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
 import { handGrip, needsCarriedWeapon } from './grip.ts';
 // Canvas 2D renderer. Reads simulation state and events; never mutates them.
@@ -42,7 +42,8 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
+  giantMotion = new GiantMotion();
+  capture(world:SimState,scene?:Scene|null){if(scene?.level.number===41)this.giantMotion.capture(scene.goliath,scene.tick);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();callouts=new Callouts();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
@@ -213,9 +214,15 @@ export class Renderer{
     // Story guidance: point to the next unfinished task (witness scenes included; never in arena matches).
     if(scene&&scene.phase==='active'){const m=nextTask(scene.markers);if(m){const tx=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x),pos=screen(tx,m.y+32*Q);drawPointer(c,edgePointer(pos),m.label,Math.abs(tx-player.x)/Q/40,world.tick,this.reduced);}}
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
-    if(scene?.level.number===41){
-      const giant=scene.goliath.giant, pos=screen(giant.x,(80+giant.height)*Q);
-      drawGoliath(c,pos.x,pos.y,this.camera.zoom,scene.goliath,scene.tick);
+    const giant = scene?.level.number===41 ? this.giantMotion.sample(scene.goliath,scene.tick,active && !this.debug ? alpha : 1) : null;
+    if(scene && giant){
+      const pos=screen(giant.x,(80+giant.height)*Q);
+      // Include the fully extended spear in the margin.
+      const margin=450*this.camera.zoom;
+      if(pos.x>=-margin && pos.x<=this.canvas.width+margin){
+        const clock=scene.tick-(active && !this.debug ? 1-alpha : 0);
+        drawGoliath(c,pos.x,pos.y,this.camera.zoom,scene.goliath,clock,giant);
+      }
     }else if(scene){
       const pos=screen(scene.companion.x,scene.companion.y);
       this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');
@@ -230,7 +237,6 @@ export class Renderer{
       const hitEase=Math.max(0,1-motion.time/12);
       const recoil=f.stun&&!this.reduced?(f.ground?-.16*hitEase:Math.max(-.11,Math.min(.11,-f.vx/Q*.01))):0;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      const giant=scene?.level.number===41?scene.goliath.giant:null;
       const reaction=giant && (giant.move==='throw'||giant.move==='headbutt') ? grapplePose(giant) : null;
       const victimFrame=reaction && this.atlas[f.hero]?.[reaction.frame];
       if(victimFrame && this.art[f.hero]?.naturalWidth){

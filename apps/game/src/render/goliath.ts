@@ -1,8 +1,60 @@
 import type { GoliathState } from '../../../../packages/campaign/src/goliath.ts';
 
+/** Snapshot only the coordinates that change during a tick. Combat always reads the live state. */
+export class GiantMotion {
+  private source?: GoliathState;
+  private tick = -1;
+  private x = 0;
+  private height = 0;
+  private move: GoliathState['giant']['move'] = 'guard';
+  private frame = 0;
+
+  capture(state: GoliathState, tick: number) {
+    this.source = state;
+    this.tick = tick;
+    const g = state.giant;
+    this.x = g.x;
+    this.height = g.height;
+    this.move = g.move;
+    this.frame = g.frame;
+  }
+
+  sample(state: GoliathState, tick: number, alpha: number) {
+    const g = state.giant;
+    if (this.source !== state || this.tick !== tick - 1) return g;
+    const a = Math.max(0, Math.min(1, alpha));
+    return {...g, x: this.x + (g.x - this.x) * a,
+      height: this.height + (g.height - this.height) * a,
+      frame: g.move === this.move ? this.frame + (g.frame - this.frame) * a : g.frame};
+  }
+}
+
+// Paint the rigid shield once at four times its design size, then move that image
+// with the arm. The largest in-game draw is below this resolution.
+let shieldCanvas: HTMLCanvasElement | undefined;
+function goldShield(): HTMLCanvasElement {
+  if (shieldCanvas) return shieldCanvas;
+  const canvas=document.createElement('canvas');
+  canvas.width=160; canvas.height=240;
+  const c=canvas.getContext('2d')!;
+  c.scale(4,4); c.translate(20,30); c.lineJoin='round';
+  const plate=(points:number[][],fill:string)=>{
+    c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));
+    c.closePath();c.fillStyle=fill;c.fill();c.strokeStyle='#29262a';c.lineWidth=1.3;c.stroke();
+  };
+  plate([[-17,-21],[0,-28],[18,-22],[18,6],[12,16],[0,26],[-13,16],[-18,6]],'#d4a239');
+  plate([[-13,-18],[0,-23],[14,-18],[14,6],[0,21],[-14,7]],'#a87422');
+  plate([[0,-19],[4,-4],[13,0],[4,4],[0,17],[-4,4],[-12,0],[-4,-4]],'#ffe19a');
+  for(const [rx,ry] of [[-12,-17],[0,-22],[12,-17],[-12,6],[12,6],[0,19]]){
+    c.beginPath();c.arc(rx,ry,1.1,0,Math.PI*2);c.fillStyle='#ffdf8b';c.fill();
+  }
+  shieldCanvas=canvas;
+  return canvas;
+}
+
 /** Screen-space figure faces right. The boots are the registration point for every pose. */
-export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, zoom: number, state: GoliathState, tick: number) {
-  const g = state.giant, t = g.frame;
+export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, zoom: number, state: GoliathState, tick: number, g = state.giant) {
+  const t = g.frame;
   const lifting = g.move === 'throw' || g.move === 'headbutt';
   const reach = g.move === 'reach' ? Math.sin(t / 18 * Math.PI / 2) : lifting ? Math.max(0, 1 - t / 12) : 0;
   const drive = lifting ? Math.max(0, 1 - Math.abs(t - 16) / 7) : 0;
@@ -51,12 +103,7 @@ export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, z
   plate([[handX-3,handY-3],[handX+1,handY-5],[handX+6,handY-4],[handX+6,handY],[handX+2,handY+2],[handX-3,handY+1]],'#a97953');
   rod(handX,handY,handX+4,handY-1,6,'#936449');
   c.save();c.translate(-12, -15-raised*24+slam*19);c.rotate(-.12+raised*.36);
-  plate([[-17,-21],[0,-28],[18,-22],[18,6],[12,16],[0,26],[-13,16],[-18,6]],'#d4a239');
-  plate([[-13,-18],[0,-23],[14,-18],[14,6],[0,21],[-14,7]],'#a87422');
-  plate([[0,-19],[4,-4],[13,0],[4,4],[0,17],[-4,4],[-12,0],[-4,-4]],'#ffe19a');
-  for(const [rx,ry] of [[-12,-17],[0,-22],[12,-17],[-12,6],[12,6],[0,19]]){
-    c.beginPath();c.arc(rx,ry,1.1,0,Math.PI*2);c.fillStyle='#ffdf8b';c.fill();
-  }
+  c.drawImage(goldShield(),-20,-30,40,60);
   c.restore();c.restore();c.restore();
 }
 

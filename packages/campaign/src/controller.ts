@@ -28,6 +28,12 @@ export const SIGHT_UNITS = 280;
 export type Cover = [number, number];
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
+const VALLEY_JOURNAL: Record<number, string> = {
+  40: 'At dusk I count the flock by touch. A lamb noses my empty hand. Beyond the ridge I hear my brothers’ camp stirring, and I wonder who is keeping watch there.',
+  41: 'I know the weight of my sling. What I had forgotten was the sound of so many men standing still. Down by the stream I can hear one loose stone knock against another.',
+  42: 'In the valley everyone wanted me to strike. Here in the cave, my friends whisper the same thing. Saul is close enough to touch. This time courage asks me to open my hand.',
+};
+
 /** Original journal framing for David as the player's guide through the Archive. */
 const DAVID_JOURNAL = [
   'I enter the Archive with Ken. Before I carry a sling or wear a crown, I want to listen.',
@@ -210,7 +216,7 @@ export function createCampaign(S: Engine, content: Content) {
       stones: [],
       posts: [],
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
-      goliath: createGoliath(), viewpoint: level.number === 41 ? 'I remember the weight of that stone. When the giant lifts his shield, I watch his feet.' : DAVID_JOURNAL[level.chapter-1], sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
+      goliath: createGoliath(), viewpoint: VALLEY_JOURNAL[level.number] ?? DAVID_JOURNAL[level.chapter-1], sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
     if (!combat) {
       world.fighters = world.fighters.slice(0, 1);
@@ -492,7 +498,11 @@ export function createCampaign(S: Engine, content: Content) {
     if (s.phase === 'complete') return;
     s.phase = 'complete';
     s.result = { won: true, level: s.levelId, next: s.level.nextLevel };
-    s.caption = s.closingLine;
+    s.caption = s.level.number === GOLIATH_LEVEL
+      ? (s.goliath.memory === 'brothers'
+        ? 'David: I turn toward the ridge. My brothers are already running down to meet me. For a moment we are boys from Bethlehem again.'
+        : 'David: My sling hangs quiet. The first thing I hear is the stream again, just as it sounded before everyone began to shout.')
+      : s.closingLine;
     checkpoint(s);
     s.checkpointEvent!.stage = 'exit';
     s.stage = 'exit';

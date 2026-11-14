@@ -131,3 +131,18 @@ test('Goliath takes one hop per slam and the wave reaches both sides of his shie
     assert.ok(hit);
   }
 });
+
+test('David carries his chosen memory from the stream to the valley ending', () => {
+  for(const memory of ['flock','brothers'] as const){
+    const s=enter();
+    s.goliath.memory=memory;
+    place(s,STONE_BAY_X);
+    A.step(s,{interact:true});
+    assert.match(s.caption,memory==='flock'?/pasture/:/brothers/);
+    reachAim(s);
+    place(s,(AIM_ZONE[0]+AIM_ZONE[1])/2);
+    A.step(s,{interact:true});
+    assert.equal(s.phase,'complete');
+    assert.match(s.caption,memory==='flock'?/stream again/:/Bethlehem again/);
+  }
+});
