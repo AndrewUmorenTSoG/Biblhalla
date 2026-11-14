@@ -146,3 +146,31 @@ test('David carries his chosen memory from the stream to the valley ending', () 
     assert.match(s.caption,memory==='flock'?/stream again/:/Bethlehem again/);
   }
 });
+
+test('the reach warns David, can be escaped, and lifts from actual contact in either direction', () => {
+  for (const side of [-1, 1]) {
+    const s = enter(), g = s.goliath.giant, david = s.world.fighters[0];
+    place(s, g.x / Q + side * 135);
+    A.step(s, {});
+    assert.match(s.caption, /Dodge/);
+    for (let t = 0; t < 18; t++) A.step(s, {x:side});
+    assert.equal(g.move, 'recover');
+    assert.equal(g.nextGrab, 'throw');
+    for (let t = 0; t < 32; t++) A.step(s, {});
+
+    place(s, g.x / Q + side * 135);
+    A.step(s, {});
+    for (let t = 0; t < 17; t++) A.step(s, {});
+    david.y = 165 * Q;
+    david.ground = null;
+    david.vy = 0;
+    const beforeX = david.x, beforeY = david.y;
+    A.step(s, {});
+    assert.equal(g.move, 'throw');
+    assert.equal(david.x, beforeX);
+    assert.ok(Math.abs(david.y - beforeY) < 3 * Q);
+    A.step(s, {});
+    assert.ok(Math.abs(david.x - beforeX) < 10 * Q);
+    assert.ok(david.y > beforeY);
+  }
+});

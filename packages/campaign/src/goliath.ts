@@ -66,7 +66,11 @@ export interface GoliathHooks {
 export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact: boolean, difficulty: string, hooks: GoliathHooks, runCap: number): void {
   const t = timing(difficulty);
   if (g.advance.state === 'idle' && g.stage !== 'done') {
-    if (giantGrapple(g.giant, f, runCap, g.stage !== 'aim') || g.giant.move === 'reach') return;
+    const held = giantGrapple(g.giant, f, runCap, g.stage !== 'aim');
+    if (g.giant.move === 'reach' && g.giant.frame === 0) {
+      hooks.say('Goliath reaches for me. Dodge or move beyond his hand.', 18);
+    }
+    if (held || g.giant.move === 'reach') return;
   }
   const resetTo = (x: number, text: string) => {
     f.x = x * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0; f.action = null;

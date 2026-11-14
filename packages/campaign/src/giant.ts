@@ -5,6 +5,8 @@ export interface Giant {
   x: number;
   height: number;
   walking: boolean;
+  gripX: number;
+  gripY: number;
   facing: number;
   move: 'guard' | 'reach' | 'throw' | 'headbutt' | 'recover';
   frame: number;
@@ -12,7 +14,7 @@ export interface Giant {
 }
 
 export const GIANT_HOME = 3550;
-export const giantStart = (): Giant => ({ x: GIANT_HOME * Q, height: 0, walking: false, facing: -1, move: 'guard', frame: 0, nextGrab: 'throw' });
+export const giantStart = (): Giant => ({ x: GIANT_HOME * Q, height: 0, walking: false, gripX: 0, gripY: 0, facing: -1, move: 'guard', frame: 0, nextGrab: 'throw' });
 
 /** One ballistic hop during the shield wind-up. A second impulse requires landing. */
 export function shieldHop(remaining: number): number {
@@ -44,7 +46,11 @@ export function giantGrapple(g: Giant, victim: Fighter, runCap: number, mayGrab:
     if (g.frame < 18) return false;
     const contact = dx * g.facing >= -16 * Q && Math.abs(dx) < 155 * Q && victim.y < 245 * Q && victim.action?.kind !== 'dodge';
     g.move = contact ? g.nextGrab : 'recover';
-    if (contact) g.nextGrab = g.nextGrab === 'throw' ? 'headbutt' : 'throw';
+    if (contact) {
+      g.gripX = dx * g.facing / Q;
+      g.gripY = victim.y / Q - 80;
+      g.nextGrab = g.nextGrab === 'throw' ? 'headbutt' : 'throw';
+    }
     g.frame = 0;
     if (!contact) return false;
   }
@@ -53,8 +59,8 @@ export function giantGrapple(g: Giant, victim: Fighter, runCap: number, mayGrab:
   const lift = Math.min(1, t / 11);
   const heldDistance = g.move === 'headbutt' ? 62 : 90;
   const heldHeight = g.move === 'headbutt' ? 161 : 112;
-  let distance = 106 + (heldDistance - 106) * lift;
-  let elevation = heldHeight * lift;
+  let distance = g.gripX + (heldDistance - g.gripX) * lift;
+  let elevation = g.gripY + (heldHeight - g.gripY) * lift;
   if (t >= 15) {
     const flight = Math.min(1, (t - 15) / (g.move === 'throw' ? 24 : 8));
     distance += (g.move === 'throw' ? 260 : 94) * flight;
