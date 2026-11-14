@@ -64,6 +64,33 @@ export function moveFocus(direction: NavDirection): boolean {
   return true;
 }
 
+/** A polled gamepad has no native arrow-key default action on form controls. */
+function navigatePad(direction: NavDirection): void {
+  const control = document.activeElement;
+  const horizontal = direction === 'left' || direction === 'right';
+  if (!horizontal || !control || !scope().contains(control) || control.matches(':disabled')) {
+    moveFocus(direction);
+    return;
+  }
+  const step = direction === 'right' ? 1 : -1;
+  if (control instanceof HTMLSelectElement && !control.multiple) {
+    let index = control.selectedIndex + step;
+    while (index >= 0 && index < control.options.length && control.options[index].matches(':disabled')) index += step;
+    if (index < 0 || index >= control.options.length) return;
+    control.selectedIndex = index;
+  } else if (control instanceof HTMLInputElement && control.type === 'range') {
+    const before = control.value;
+    if (step > 0) control.stepUp();
+    else control.stepDown();
+    if (control.value === before) return;
+  } else {
+    moveFocus(direction);
+    return;
+  }
+  control.dispatchEvent(new Event('input', { bubbles: true }));
+  control.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
 /**
  * Polls connected controllers while menus are active. `onBack` handles East when no
  * dialog is open (e.g. return to the previous screen).
@@ -85,8 +112,8 @@ export class MenuNavigator {
     for (const d of Object.keys(dirs) as NavDirection[]) {
       if (!dirs[d]) { this.held.delete(d); continue; }
       const since = this.held.get(d);
-      if (since === undefined) { this.held.set(d, now); moveFocus(d); }
-      else if (now - since >= REPEAT_DELAY_MS) { this.held.set(d, now - REPEAT_DELAY_MS + REPEAT_RATE_MS); moveFocus(d); }
+      if (since === undefined) { this.held.set(d, now); navigatePad(d); }
+      else if (now - since >= REPEAT_DELAY_MS) { this.held.set(d, now - REPEAT_DELAY_MS + REPEAT_RATE_MS); navigatePad(d); }
     }
     const pressed = (n: number) => b[n] && !this.previous[n];
     if (pressed(0)) (document.activeElement as HTMLElement | null)?.click();
