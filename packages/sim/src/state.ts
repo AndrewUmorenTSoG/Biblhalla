@@ -96,7 +96,7 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
     bossRun: options.bossScript ? { phase: 1, index: 0, stage: 'gap', ticks: 60, lockX: 0, originX: 0, instance: 0, hit: [] } : null,
     bossHazard: null,
     pickupTick: R.pickups.initialTick, pickupCycle: 0, pickupPriority: 0,
-    friendlyFire: !!options.friendlyFire, trainingBot: options.trainingBot || 'idle',
+    friendlyFire: mode === 'waves' || mode === 'story' || !!options.friendlyFire, trainingBot: options.trainingBot || 'idle',
     bossName: options.bossName || 'Training champion', suddenDeath: false, totalEnemies: 0,
     options: snapshot(options),
   };

@@ -90,3 +90,44 @@ test('the opening expires back to composure if no stone is released', () => {
   assert.equal(s.goliath.stage, 'composure');
   assert.equal(s.phase, 'active');
 });
+
+test('Goliath telegraphs and alternates a throw and a grounding headbutt at close range', () => {
+  const s = enter(), g = s.goliath.giant, f = s.world.fighters[0];
+  for (const move of ['throw', 'headbutt']) {
+    place(s, g.x / Q - 95);
+    A.step(s, {});
+    assert.equal(g.move, 'reach');
+    for (let i = 0; i < 18; i++) A.step(s, {});
+    assert.equal(g.move, move);
+    let highest = 0;
+    for (let i = 0; i < 48 && g.move === move; i++) {
+      A.step(s, {jump:true,x:1});
+      highest = Math.max(highest, f.y / Q);
+    }
+    assert.ok(highest >= 190);
+    assert.equal(f.y, 80 * Q);
+    assert.ok(Math.abs(f.x-g.x) >= (move === 'throw' ? 340 : 145)*Q);
+    assert.equal(g.move, 'recover');
+    for (let i = 0; i < 32; i++) A.step(s, {});
+  }
+});
+
+test('Goliath takes one hop per slam and the wave reaches both sides of his shield', () => {
+  for (const side of [-1,1]) {
+    const s=enter();
+    place(s,STONE_BAY_X);
+    A.step(s,{interact:true});
+    let peaks=0, previous=0, rising=false, hit=false;
+    for(let t=0;t<180;t++){
+      const g=s.goliath;
+      if(g.advance.state==='active')place(s,(g.impactX+side*(g.impactX-g.advance.x))/Q);
+      A.step(s,{});
+      if(g.giant.height>previous)rising=true;
+      if(g.giant.height<previous&&rising){peaks++;rising=false;}
+      previous=g.giant.height;
+      if(s.world.fighters[0].x===(STONE_BAY_X-150)*Q){hit=true;break;}
+    }
+    assert.equal(peaks,1);
+    assert.ok(hit);
+  }
+});

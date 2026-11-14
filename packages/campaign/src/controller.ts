@@ -28,6 +28,23 @@ export const SIGHT_UNITS = 280;
 export type Cover = [number, number];
 export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
+/** Original journal framing for David as the player's guide through the Archive. */
+const DAVID_JOURNAL = [
+  'I enter the Archive with Ken. Before I carry a sling or wear a crown, I want to listen.',
+  'I know what it costs to walk away from home. I follow the promise through these rooms.',
+  'As a shepherd I counted every sheep. Here I look for the people who might be left behind.',
+  'I have crossed dry country. I watch for the next safe place to set my feet.',
+  'When the path narrows, I look back to see whether Ken can cross with me.',
+  'Strength once meant winning a fight to me. In these accounts I look for courage of another kind.',
+  'These hills bring back my years with the flock. I remember the sound of a threat before I saw it.',
+  'I once waited for a crown. In the Archive I can stop and ask what a king owes his people.',
+  'I listen for the voice that speaks up when the powerful would rather hear silence.',
+  'I walk beside Ken through the stories of people far from home. I remember my own nights in hiding.',
+  'I follow the builders through the Archive. The first stone means little if the last worker falls.',
+  'These pages reach beyond my lifetime. I set my weapons aside when the account calls me to listen.',
+  'I pause at each teaching. I want to carry its meaning past this room.',
+  'I walk the last rooms as a witness in the Archive. I listen before I move on.',
+];
 /** L056: ember lanes on the floor. Ken crosses only in a safe window; nobody is ever hurt. */
 export interface EmberLane { x: number; period: number; tell: number; active: number; offset: number; state: 'safe' | 'tell' | 'active'; kenCrossed: boolean }
 export const EMBER_HALF_WIDTH = 55;
@@ -74,6 +91,7 @@ export interface Scene {
   checkpointEvent: Checkpoint | null;
   result: { won: boolean; level?: string; next?: string | null; reason?: string } | null;
   goliath: GoliathState;
+  viewpoint: string;
   sourceSummary: string;
   config: LevelSpec;
   world: SimState;
@@ -175,14 +193,14 @@ export function createCampaign(S: Engine, content: Content) {
     const arena = content.maps.maps[(level.chapter - 1) % 6];
     const world = S.create({
       mode: combat ? (level.kind === 'waves' ? 'story' : 'boss') : 'training',
-      hero: level.number === GOLIATH_LEVEL ? 'david' : 'dru', inputId: 'keyboard', arena: arena.id, difficulty,
+      hero: 'david', inputId: 'keyboard', arena: arena.id, difficulty,
       waves: level.waves, waveEntries: script?.waveEntries, bossScript: BOSS_SCRIPTS[level.id], bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
     });
     const s: Scene = {
       version: 1, levelId, level, kind: level.kind, difficulty, phase: 'intro', tick: 0, stage: 'entry', done: [], carry: null,
-      pendingCard: null, combatCleared: false, caption: script ? `${script.opening.speaker}: ${script.opening.text}` : 'Ken: Let’s follow the path together.', captionUntil: 240,
+      pendingCard: null, combatCleared: false, caption: script ? `${script.opening.speaker === 'Dru' ? 'David' : script.opening.speaker}: ${script.opening.text.replace(/\bDru\b/g, 'David')}` : 'Ken: Let’s follow the path together.', captionUntil: 240,
       seen: [...(checkpoint?.level === levelId ? checkpoint.seen ?? [] : [])],
-      closingLine: script ? `${script.closing.speaker}: ${script.closing.text}` : 'Dru: We can keep going. Stay beside me.',
+      closingLine: script ? `${script.closing.speaker === 'Dru' ? 'David' : script.closing.speaker}: ${script.closing.text.replace(/\bDru\b/g, 'David')}` : 'David: We can keep going. Stay beside me.',
       water: null,
       sightLines: !combat && (level.kind === 'stealth' || LINE_OF_SIGHT.test(level.uniqueRule)),
       covers: [],
@@ -192,7 +210,7 @@ export function createCampaign(S: Engine, content: Content) {
       stones: [],
       posts: [],
       markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
-      goliath: createGoliath(), sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
+      goliath: createGoliath(), viewpoint: level.number === 41 ? 'I remember the weight of that stone. When the giant lifts his shield, I watch his feet.' : DAVID_JOURNAL[level.chapter-1], sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
     };
     if (!combat) {
       world.fighters = world.fighters.slice(0, 1);
@@ -645,7 +663,7 @@ export function createCampaign(S: Engine, content: Content) {
       }
     }
     if (s.level.number === GOLIATH_LEVEL) {
-      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, { say: (text, ticks) => say(s, text, ticks), complete: () => { s.combatCleared = true; complete(s); } });
+      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, { say: (text, ticks) => say(s, text, ticks), complete: () => { s.combatCleared = true; complete(s); } }, S.P.runMaxQ);
       return;
     }
     const latch = nearest(s);
