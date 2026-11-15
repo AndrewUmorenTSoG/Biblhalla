@@ -59,6 +59,7 @@ export function createGoliath(): GoliathState {
 
 export interface GoliathHooks {
   say(text: string, ticks: number): void;
+  cue(type: 'bossTell' | 'shieldSlam'): void;
   complete(): void;
 }
 
@@ -101,17 +102,21 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     if (a.state === 'idle') {
       a.state = 'tell'; a.ticks = t.advanceTell; a.x = g.giant.x; g.impactX = a.x;
       g.tell = a.ticks;
+      hooks.cue('bossTell');
       hooks.say(g.advancesCleared ? 'His shield is up again. I jump the crack as it reaches my feet.'
         : g.memory === 'brothers' ? 'I hear my brothers behind me. Shield up! I jump when the crack reaches me.'
         : 'Steady, as in the pasture. Shield up! I jump when the crack reaches me.', a.ticks);
     } else if (--a.ticks <= 0) {
-      if (a.state === 'tell') { a.state = 'active'; a.ticks = ADVANCE_ACTIVE; }
+      if (a.state === 'tell') { a.state = 'active'; a.ticks = ADVANCE_ACTIVE; hooks.cue('shieldSlam'); }
       else {
         a.state = 'idle';
         g.advancesCleared++;
         if (g.advancesCleared >= ADVANCES_NEEDED) {
           g.stage = 'aim'; g.pauseTicks = t.pause; g.open = 1;
-          hooks.say('Goliath pauses. Step into the marked zone and aim.', t.pause);
+          const thought = g.misses ? 'Last time I watched the stone. This time I keep my eyes on him.'
+            : g.memory === 'brothers' ? 'I hear Eliab call my name. For once he sounds like my brother again.'
+            : 'His shield dips. In the hush I can hear the leather of my sling creak.';
+          hooks.say(thought + ' I step into the marked zone and aim.', t.pause);
         }
       }
     }
@@ -143,7 +148,7 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     }
     if (interact || --g.pauseTicks <= 0) {
       g.stage = 'composure'; g.open = 0; g.advancesCleared = 0; g.advance.state = 'idle';
-      hooks.say(interact ? 'The stone went wide. Regain composure and wait for the next pause.' : 'The opening passed. Stay composed for the next one.', 180);
+      hooks.say(interact ? 'My stone skips past his heel. I crouch by the stream and choose another.' : 'His shield closes the gap. I keep the stone in my sling and wait.', 180);
     }
   }
 }

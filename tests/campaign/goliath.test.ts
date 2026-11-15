@@ -76,6 +76,7 @@ test('a miss returns to composure; one aimed stone from the zone completes the a
   assert.equal(s.goliath.misses, 1);
   reachAim(s);
   assert.equal(s.goliath.open, 1);
+  assert.match(s.caption, /Last time I watched the stone/);
   place(s, (AIM_ZONE[0] + AIM_ZONE[1]) / 2);
   A.step(s, { interact: true });
   assert.equal(s.phase, 'complete');
@@ -140,6 +141,7 @@ test('David carries his chosen memory from the stream to the valley ending', () 
     A.step(s,{interact:true});
     assert.match(s.caption,memory==='flock'?/pasture/:/brothers/);
     reachAim(s);
+    assert.match(s.caption, memory === 'brothers' ? /Eliab/ : /leather of my sling/);
     place(s,(AIM_ZONE[0]+AIM_ZONE[1])/2);
     A.step(s,{interact:true});
     assert.equal(s.phase,'complete');
@@ -173,4 +175,23 @@ test('the reach warns David, can be escaped, and lifts from actual contact in ei
     assert.ok(Math.abs(david.x - beforeX) < 10 * Q);
     assert.ok(david.y > beforeY);
   }
+});
+
+test('each shield advance sounds its warning and ground impact on their first ticks', () => {
+  const s = enter();
+  place(s, STONE_BAY_X);
+  A.step(s, { interact: true });
+  const heard: string[] = [];
+  for (let tick = 0; tick < 400 && s.goliath.stage === 'composure'; tick++) {
+    const previous = s.goliath.advance.state;
+    place(s, STONE_BAY_X - 20, previous === 'active');
+    A.step(s, {});
+    const current = s.goliath.advance.state;
+    const cues = s.world.events.filter(e => e.type === 'bossTell' || e.type === 'shieldSlam');
+    const expected = previous === 'idle' && current === 'tell' ? ['bossTell']
+      : previous === 'tell' && current === 'active' ? ['shieldSlam'] : [];
+    assert.deepEqual(cues.map(e => e.type), expected);
+    heard.push(...expected);
+  }
+  assert.deepEqual(heard, ['bossTell', 'shieldSlam', 'bossTell', 'shieldSlam']);
 });

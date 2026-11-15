@@ -3,6 +3,7 @@
 
 import type { Content, Level, MapDef } from '../../content/src/index.ts';
 import type { Engine, InputFrame, SimState } from '../../sim/src/index.ts';
+import { event } from '../../sim/src/state.ts';
 import { Q } from '../../sim/src/index.ts';
 import { LEVEL_SPECS, SUMMARIES } from './specs.ts';
 import { BOSS_SCRIPTS } from './bosses.ts';
@@ -673,7 +674,11 @@ export function createCampaign(S: Engine, content: Content) {
       }
     }
     if (s.level.number === GOLIATH_LEVEL) {
-      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, { say: (text, ticks) => say(s, text, ticks), complete: () => { s.combatCleared = true; complete(s); } }, S.P.runMaxQ);
+      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, {
+        say: (text, ticks) => say(s, text, ticks),
+        cue: type => event(s.world, type, { x: s.goliath.impactX, y: 80 * Q }),
+        complete: () => { s.combatCleared = true; complete(s); },
+      }, S.P.runMaxQ);
       return;
     }
     const latch = nearest(s);

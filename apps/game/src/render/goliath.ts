@@ -29,6 +29,11 @@ export class GiantMotion {
   }
 }
 
+function drawPlate(c: CanvasRenderingContext2D, points: number[][], fill: string) {
+    c.beginPath(); points.forEach(([a,b],i)=>i ? c.lineTo(a,b) : c.moveTo(a,b)); c.closePath();
+    c.fillStyle=fill; c.fill(); c.strokeStyle='#29262a'; c.lineWidth=1.3; c.stroke();
+}
+
 // Paint the rigid shield once at four times its design size, then move that image
 // with the arm. The largest in-game draw is below this resolution.
 let shieldCanvas: HTMLCanvasElement | undefined;
@@ -38,10 +43,7 @@ function goldShield(): HTMLCanvasElement {
   canvas.width=160; canvas.height=240;
   const c=canvas.getContext('2d')!;
   c.scale(4,4); c.translate(20,30); c.lineJoin='round';
-  const plate=(points:number[][],fill:string)=>{
-    c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));
-    c.closePath();c.fillStyle=fill;c.fill();c.strokeStyle='#29262a';c.lineWidth=1.3;c.stroke();
-  };
+  const plate = (points: number[][], fill: string) => drawPlate(c, points, fill);
   plate([[-17,-21],[0,-28],[18,-22],[18,6],[12,16],[0,26],[-13,16],[-18,6]],'#d4a239');
   plate([[-13,-18],[0,-23],[14,-18],[14,6],[0,21],[-14,7]],'#a87422');
   plate([[0,-19],[4,-4],[13,0],[4,4],[0,17],[-4,4],[-12,0],[-4,-4]],'#ffe19a');
@@ -49,6 +51,28 @@ function goldShield(): HTMLCanvasElement {
     c.beginPath();c.arc(rx,ry,1.1,0,Math.PI*2);c.fillStyle='#ffdf8b';c.fill();
   }
   shieldCanvas=canvas;
+  return canvas;
+}
+
+// The seven overlapping metal plates move as one rigid piece with the torso.
+let armourCanvas: HTMLCanvasElement | undefined;
+function bodyArmour(): HTMLCanvasElement {
+  if (armourCanvas) return armourCanvas;
+  const canvas = document.createElement('canvas');
+  canvas.width = 192;
+  canvas.height = 232;
+  const c = canvas.getContext('2d')!;
+  c.scale(4, 4);
+  c.translate(24, 48);
+  c.lineJoin = 'round';
+  const plate = (points: number[][], fill: string) => drawPlate(c, points, fill);
+  plate([[-16,-40],[12,-42],[21,-33],[13,-3],[16,6],[-16,6],[-20,-29]],'#434b54');
+  for(let row=0;row<5;row++){
+    const w=16-row;
+    plate([[-w,-33+row*6],[w,-35+row*6],[w-1,-28+row*6],[0,-25+row*6],[-w,-27+row*6]],row%2?'#787f82':'#9ba1a0');
+  }
+  plate([[-19,-39],[-8,-44],[1,-39],[-4,-29],[-21,-27]],'#adb2ae');
+  armourCanvas = canvas;
   return canvas;
 }
 
@@ -77,10 +101,7 @@ export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, z
   const lean = reach * 6 + drive * 8 + slam * 4;
   c.save(); c.translate(x, y); c.scale(zoom * 3 * g.facing, zoom * 3);
   c.lineJoin = 'round'; c.lineCap = 'round';
-  const plate = (points: number[][], fill: string) => {
-    c.beginPath(); points.forEach(([a,b],i)=>i ? c.lineTo(a,b) : c.moveTo(a,b)); c.closePath();
-    c.fillStyle=fill; c.fill(); c.strokeStyle='#29262a'; c.lineWidth=1.3; c.stroke();
-  };
+  const plate = (points: number[][], fill: string) => drawPlate(c, points, fill);
   const rod = (x1:number,y1:number,x2:number,y2:number,w:number,color:string) => {
     c.beginPath(); c.moveTo(x1,y1); c.lineTo(x2,y2); c.lineWidth=w; c.strokeStyle=color; c.stroke();
   };
@@ -90,12 +111,7 @@ export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, z
     plate([[boot-6,-10],[boot+4,-9],[boot+9,-3],[boot+9,0],[boot-7,0]],'#504b46');
   }
   c.save(); c.translate(0,-35); c.rotate(lean/75);
-  plate([[-16,-40],[12,-42],[21,-33],[13,-3],[16,6],[-16,6],[-20,-29]],'#434b54');
-  for(let row=0;row<5;row++){
-    const w=16-row;
-    plate([[-w,-33+row*6],[w,-35+row*6],[w-1,-28+row*6],[0,-25+row*6],[-w,-27+row*6]],row%2?'#787f82':'#9ba1a0');
-  }
-  plate([[-19,-39],[-8,-44],[1,-39],[-4,-29],[-21,-27]],'#adb2ae');
+  c.drawImage(bodyArmour(), -24, -48, 48, 58);
   const hx=3+(g.move==='headbutt'?13*drive:0),hy=-49+drive*6;
   plate([[hx-9,hy-5],[hx+7,hy-6],[hx+10,hy+2],[hx+8,hy+12],[hx-4,hy+12],[hx-9,hy+5]],'#92684c');
   // Dark cheek guard, hammered brow and rivets keep the helmet readable at match scale.
