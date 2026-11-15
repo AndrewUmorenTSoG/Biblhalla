@@ -216,12 +216,13 @@ export class Renderer{
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     const giant = scene?.level.number===41 ? this.giantMotion.sample(scene.goliath,scene.tick,active && !this.debug ? alpha : 1) : null;
     if(scene && giant){
-      const pos=screen(giant.x,(80+giant.height)*Q);
+      const landing=scene.goliath.advance.state==='active';
+      const pos=screen(giant.x,(80+(landing?0:giant.height))*Q);
       // Include the fully extended spear in the margin.
       const margin=450*this.camera.zoom;
       if(pos.x>=-margin && pos.x<=this.canvas.width+margin){
         const clock=scene.tick-(active && !this.debug ? 1-alpha : 0);
-        drawGoliath(c,pos.x,pos.y,this.camera.zoom,scene.goliath,clock,giant);
+        drawGoliath(c,pos.x,pos.y,this.camera.zoom,scene.goliath,clock,giant,active && !this.debug ? alpha : 1);
       }
     }else if(scene){
       const pos=screen(scene.companion.x,scene.companion.y);

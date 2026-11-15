@@ -52,14 +52,27 @@ function goldShield(): HTMLCanvasElement {
   return canvas;
 }
 
+/** Lift, drop, brief planted contact, then return to guard. The shield tip
+ * sits 26 design units below its pivot and the boots register at y = 0. */
+export function slamPose(state: GoliathState, fraction = 1) {
+  const a = state.advance;
+  const remaining = a.ticks + 1 - fraction;
+  if (a.state === 'tell') {
+    const lift = Math.min(1, Math.max(0, (state.tell - remaining) / 24));
+    const drop = Math.max(0, 1 - remaining / 10);
+    return { lift: lift * (1 - drop * drop), strike: drop * drop };
+  }
+  if (a.state === 'active') return { lift: 0, strike: Math.min(1, remaining / 36) };
+  return { lift: 0, strike: 0 };
+}
+
 /** Screen-space figure faces right. The boots are the registration point for every pose. */
-export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, zoom: number, state: GoliathState, tick: number, g = state.giant) {
+export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, zoom: number, state: GoliathState, tick: number, g = state.giant, fraction = 1) {
   const t = g.frame;
   const lifting = g.move === 'throw' || g.move === 'headbutt';
   const reach = g.move === 'reach' ? Math.sin(t / 18 * Math.PI / 2) : lifting ? Math.max(0, 1 - t / 12) : 0;
   const drive = lifting ? Math.max(0, 1 - Math.abs(t - 16) / 7) : 0;
-  const raised = state.advance.state === 'tell' ? Math.min(1, (90 - state.advance.ticks) / 24) : 0;
-  const slam = state.advance.state === 'active' ? Math.min(1, state.advance.ticks / 24) : 0;
+  const { lift: raised, strike: slam } = slamPose(state, fraction);
   const stride = g.move === 'guard' && !raised && !slam && !state.open && g.walking ? Math.sin(tick / 10) : 0;
   const lean = reach * 6 + drive * 8 + slam * 4;
   c.save(); c.translate(x, y); c.scale(zoom * 3 * g.facing, zoom * 3);
@@ -102,9 +115,10 @@ export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, z
   rod(10,-33,20,-23,9,'#5a6168');rod(20,-23,handX,handY,7,'#a7acac');
   plate([[handX-3,handY-3],[handX+1,handY-5],[handX+6,handY-4],[handX+6,handY],[handX+2,handY+2],[handX-3,handY+1]],'#a97953');
   rod(handX,handY,handX+4,handY-1,6,'#936449');
-  c.save();c.translate(-12, -15-raised*24+slam*19);c.rotate(-.12+raised*.36);
+  c.restore(); // Shield contact is registered to the boots, independent of torso lean.
+  c.save();c.translate(-12*(1-slam), -50-raised*24+slam*24);c.rotate(-.12*(1-slam)+raised*.36);
   c.drawImage(goldShield(),-20,-30,40,60);
-  c.restore();c.restore();c.restore();
+  c.restore();c.restore();
 }
 
 /** Key poses shared by the roster; each is drawn with that fighter's own defensive artwork. */
