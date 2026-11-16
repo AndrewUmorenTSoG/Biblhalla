@@ -78,14 +78,13 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
     }
   }
   if (s.mode === 'waves' || s.mode === 'story') return;
-  const boss = s.fighters.find(f => f.guard !== null);
-  if (boss && boss.guard === 0) { finish(s, true, 'Champion guard broken', humans.map(f => f.id)); return; }
   if (teamsOf(living).length <= 1) {
     const ids = living.map(f => f.id);
     finish(s, ids.includes(humans[0].id), 'Ring-out victory', ids);
     return;
   }
   if (s.remaining <= 0) {
+    if (s.options.storyFight !== undefined) { finish(s, false, 'Time expired before the opponent fell'); return; }
     const ranked = standings(s, living);
     const tied = ranked.length > 1 && ranked[0].stocks === ranked[1].stocks && ranked[0].damage === ranked[1].damage;
     if (tied && !s.suddenDeath) {

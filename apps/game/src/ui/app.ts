@@ -24,6 +24,7 @@ import { DRILLS, DrillRun } from '../training/drills.ts';
 import { buildRoster, CPU_INPUT, ReadyBoard } from './lobby.ts';
 import { moveShowcase } from './move-showcase.ts';
 import { storyResult } from './story-result.ts';
+import { DAVID_FIGHTS, davidFightOptions, withChapterOpponent } from '../../../../packages/campaign/src/david-fights.ts';
 
 export function startApp(C: Content, S: Engine, A: CampaignApi, art: RuntimeArt): void {
 const root: any = globalThis;
@@ -45,8 +46,8 @@ function screen(name:string){const previousScreen=currentScreen;closeDialogs();a
     const choice = previousScreen === 'setup' ? 'quick' : previousScreen === 'local' ? 'local' : 'story';
     $('mode-' + choice).focus({ preventScroll: true });
   }
-  if(name==='chapters')renderChapters();if(name==='settings'){renderSettings();renderReplayLibrary();}announce(name==='home'?'Biblhalla home':name+' screen');}
-function updateHome(){const total=store.data.completed.length;$('home-progress').textContent=total?total+' of 84 levels complete':'';$('home-continue').hidden=!total&&!store.data.checkpoint;$('footer-save').textContent=store.status;}
+  if(name==='story-fights')renderFights();if(name==='chapters')renderChapters();if(name==='settings'){renderSettings();renderReplayLibrary();}announce(name==='home'?'Biblhalla home':name+' screen');}
+function updateHome(){const total=store.data.davidWins;$('home-progress').textContent=total?total+' of 3 fights won · David and Goliath':'';$('home-continue').hidden=!total;$('footer-save').textContent=store.status;}
 function applySettings(){document.documentElement.style.setProperty('--touch-size',settings.touchSize+'px');document.documentElement.style.setProperty('--touch-opacity',settings.touchOpacity);document.documentElement.style.setProperty('--ui-scale',settings.uiScale);document.documentElement.classList.toggle('reduced-motion',settings.reducedMotion);$('touch-layer').classList.toggle('left-handed',settings.leftHanded);renderer.reduced=settings.reducedMotion;renderer.feedback.shakeOn=settings.screenShake;renderer.feedback.flashOn=settings.flashes;renderer.symbolic=settings.symbolicFinale;audio.mute=settings.mute;audio.setMusic(settings.music);}
 function gate(next:any){if(!store.data.controlChecked){chooseInput(()=>startTutorial(next));}else next();}
 function chooseInput(next:any=null){inputNext=next;inputFromGame=!!world;document.querySelectorAll('input[name=input-method]').forEach((r:any)=>r.checked=r.value===settings.input);open($('input-dialog'));updateControllers();}
@@ -61,8 +62,8 @@ function observeTraining(frames:any){if(world?.mode!=='training')return;const p=
 function arenaMusic(w:any,chapter=0){const i=C.maps.maps.findIndex((m:any)=>m.id===w.map?.id);return i>=0?i:(chapter-1+6)%6;}
 function startGame(options:any){
   if(!options.fighters&&currentInputId()==='unavailable'){chooseInput(()=>startGame(options));return;}
-  comboTracker=null;inputHistory=new InputHistory();renderer.training=null;$('tutorial-skip').hidden=true;drill=null;closeDialogs();scene=null;tutorial=false;world=S.create({...options,inputId:options.inputId||currentInputId()});audio.startMusic(arenaMusic(world));resultShown=false;audio.last=0;replayPlayback=null;replayRecord={schema:1,contentHash:C.hash,initial:S.snapshot(world),entries:[],finalHash:null};
-  showGame();updateHud();$('game-title').textContent=options.mode==='training'?'Training ground':options.mode==='waves'?'Wave challenge':options.mode==='boss'?'Champion encounter':'Arena exhibition';$('objective').textContent=options.mode==='training'?'Practice safely. Open Details to inspect timing and resources.':options.mode==='waves'?'Clear three waves. Protect your three lives.':options.mode==='boss'?'Break the champion’s guard or score a ring-out.':'Build damage. Knock opponents out. Stay on the arena.';
+  $('caption').textContent='';comboTracker=null;inputHistory=new InputHistory();renderer.training=null;$('tutorial-skip').hidden=true;drill=null;closeDialogs();scene=null;tutorial=false;world=S.create({...options,inputId:options.inputId||currentInputId()});audio.startMusic(arenaMusic(world));resultShown=false;audio.last=0;replayPlayback=null;replayRecord={schema:1,contentHash:C.hash,initial:S.snapshot(world),entries:[],finalHash:null};
+  showGame();updateHud();$('game-title').textContent=options.mode==='training'?'Training ground':options.mode==='waves'?'Wave challenge':options.mode==='boss'?'Champion encounter':'Arena exhibition';$('objective').textContent=options.mode==='training'?'Practice safely. Open Details to inspect timing and resources.':options.mode==='waves'?'Clear three waves. Protect your three lives.':options.mode==='boss'?'Build damage and launch the champion out of the arena.':'Build damage. Knock opponents out. Stay on the arena.';
 }
 function showGame(){for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!=='game';currentScreen='game';$('header').hidden=$('footer').hidden=true;inputs.clear();inputs.active=true;audio.unlock();runner.reset();hudTick=-1;$('arena').focus({preventScroll:true});const quiet=scene&&(!scene.level.combatEnabled||scene.combatCleared||scene.level.number===41);$('touch-layer').hidden=settings.input!=='touch'&&!world.fighters.some((f:any)=>f.inputId==='touch');$('touch-layer').classList.toggle('quiet-controls',!!quiet);$('touch-layer').classList.toggle('witness-controls',scene?.kind==='witness');$('hud').hidden=scene?.kind==='witness'||!!quiet;$('story-progress').hidden=!scene;$('game-context').hidden=world.mode==='training'&&!scene;$('training-details').hidden=!!scene||world.mode!=='training';$('training-reset').hidden=!!scene||world.mode!=='training';for(const id of ['training-speed-wrap','training-freeze','training-step'])$(id).hidden=!!scene||world.mode!=='training';trainingFrozen=false;trainingSpeed=1;$('training-speed').value='1';$('training-freeze').textContent='Freeze';$('training-step').disabled=true;$('training-bot-wrap').hidden=!!scene||world.mode!=='training';$('retry-checkpoint').hidden=!scene;$('training-bot').value=world.trainingBot||'idle';$('input-hint').textContent=settings.input==='keyboard'?'W Up/Jump · A D Move · S Down · J Light · K Heavy · Shift Dash/Dodge · L Pickup · E Interact · 0-3 Emotes · Esc Pause':settings.input==='touch'?'Move with the stick. Aim while pressing an action.':'Stick Move · South Jump · West Light · North Heavy · East Dodge · R1 Pickup · L1 Interact';}
 function startTutorial(next:any=null){startGame({mode:'training',hero:'david',trainingBot:'stand'});tutorial=true;lesson=new Lesson();inputNext=next;world.fighters[0].x=-80*S.Q;$('game-title').textContent='First lesson';$('objective').textContent='Seven short steps. Each one completes when it actually works in the game.';$('caption').textContent=lesson.text;$('tutorial-skip').hidden=false;}
@@ -74,13 +75,13 @@ function pause(reason='Take a breath.'){
   inputs.active=false;inputs.clear();audio.suspend();$('pause-title').textContent=reason;$('pause-copy').textContent=scene?'Checkpoint progress stays on this device.':'The whole match is paused.';$('pause-difficulty').parentElement.hidden=!scene;$('pause-difficulty').value=scene?.difficulty||world.difficulty;open($('pause-dialog'));announce('Game paused');
 }
 function resume(){if(!world)return;const required=world.fighters.filter((f:any)=>f.human&&f.inputId.startsWith('pad:'));if(required.some((f:any)=>!inputs.pads().some((p:any)=>'pad:'+p.index===f.inputId))){$('pause-title').textContent='Reconnect the assigned controller';return;}closeDialogs();if(scene)A.pause(scene,false);else {S.pause(world,false);replayRecord?.entries.push({kind:'pause',on:false});}inputs.clear();inputs.active=true;audio.unlock();runner.reset();$('arena').focus();}
-function retry(){if(scene){startScene(scene.levelId,true);return;}if(tutorial){startTutorial(inputNext);return;}const opts=world.options;startGame(opts);}
+function retry(){if(world?.options.storyFight!==undefined&&!replayPlayback){startFight(world.options.storyFight);return;}if(scene){startScene(scene.levelId,true);return;}if(tutorial){startTutorial(inputNext);return;}const opts=world.options;startGame(opts);}
 /** Stock-loss cues (13_Audio_VFX): the card flashes for a second when a life is lost; the last life is marked. */
 const hudStocks=new Map<number,{world:any;start:number;last:number;lostAt:number}>();
 function hudEntry(f:any){let e=hudStocks.get(f.id);if(!e||e.world!==world){e={world,start:Math.max(3,f.stocks),last:f.stocks,lostAt:-1e9};hudStocks.set(f.id,e);}if(f.stocks<e.last)e.lostAt=world.tick;e.last=f.stocks;return e;}
 function hudStart(f:any){return hudEntry(f).start;}
 function hudLost(f:any){return world.tick-hudEntry(f).lostAt<60;}
-function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?playerGlyph(f.id)+' P'+f.id+' · ':'')+f.name),el('small',f.guard!==null?'Guard':f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor((f.guard!==null?f.guard:f.damage)/10)),'damage');if(f.guard===null)d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,hudStart(f)-f.stocks))+' · '+(f.stocks?f.stocks+(f.stocks===1?' life':' lives'):'out'),'life'));const lost=hudLost(f);if(lost)card.classList.add('stock-lost');if(f.stocks===1&&hudStart(f)>1)card.classList.add('last-life');if(!f.stocks)card.classList.add('eliminated');box.append(card);}
+function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?playerGlyph(f.id)+' P'+f.id+' · ':'')+f.name),el('small',f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor(f.damage/10)),'damage');d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,hudStart(f)-f.stocks))+' · '+(f.stocks?f.stocks+(f.stocks===1?' life':' lives'):'out'),'life'));const lost=hudLost(f);if(lost)card.classList.add('stock-lost');if(f.stocks===1&&hudStart(f)>1)card.classList.add('last-life');if(!f.stocks)card.classList.add('eliminated');box.append(card);}
   const seconds=Math.max(0,Math.ceil(world.remaining/60));const timer=el('div',Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),'timer');box.append(timer);
   if(scene){const boss=world.fighters.find((f:any)=>f.guard!==null);if(boss?.ai.tell>0){scene.caption='Boss phase '+boss.ai.phase+' — '+(scene.level.boss?.phases[boss.ai.phase-1]||'Watch the windup, then punish recovery.');scene.captionUntil=scene.tick+2;}
     if(scene.level.number===1){
@@ -93,6 +94,15 @@ function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();f
 }
 function showResult(){if(resultShown)return;resultShown=true;inputs.active=false;inputs.clear();(document.querySelector('#result-dialog .eyebrow') as HTMLElement).textContent=scene?(scene.phase==='complete'?'LEVEL COMPLETE':'LEVEL NOT COMPLETE'):replayPlayback?'REPLAY':world.options.mode==='training'?'LESSON':world.result?.won?'VICTORY':'MATCH OVER';if(scene){const previousBest=store.data.medals[scene.levelId];if(scene.phase==='complete')store.complete(scene.levelId,scene.difficulty);const summary=storyResult({level:scene.level,complete:scene.phase==='complete',difficulty:scene.difficulty,ticks:scene.tick,tasksDone:scene.markers.filter((m:any)=>m.done).length,tasksTotal:scene.markers.length,previousBest});$('result-title').textContent=scene.phase==='complete'&&scene.level.number===84?'A new dawn.':summary.title;$('result-reason').textContent=scene.phase==='complete'?scene.caption:scene.result?.reason||'Return to a safe place and try again.';$('next-level').hidden=scene.phase!=='complete'||!scene.level.nextLevel;$('rematch').textContent='Replay / retry level →';$('result-stats').replaceChildren(...summary.lines.map((line:string,k:number)=>el('p',line,k===1&&summary.medal?'medal medal-'+summary.medal:'')));}
   else {$('result-title').textContent=replayPlayback?(S.hash(world)===replayPlayback.finalHash?'Replay verified.':'Replay checksum differs.'):world.result?.won?'Well played!':'The next round awaits.';$('result-reason').textContent=world.result?.reason||'Match complete';$('next-level').hidden=true;$('rematch').textContent=store.data.controlChecked&&tutorialFinished?'Continue →':'Play again →';const player=world.fighters[0];const places=world.result?.placements||[];if(places.length>1){const ord=(n:number)=>n+(n===1?'st':n===2?'nd':n===3?'rd':'th');$('result-stats').replaceChildren(...places.map((p:any)=>el('p',ord(p.place)+' · '+(p.human?'P'+p.fighter+' · ':'')+p.name+' · '+p.stocks+(p.stocks===1?' life':' lives')+' left · '+Math.floor(p.damageDealt/10)+' damage dealt','placement')),el('p',Math.floor(world.tick/60)+' seconds'));}else $('result-stats').textContent='Damage dealt '+Math.floor(player.damageDealt/10)+' · Hits '+player.hits+' · '+Math.floor(world.tick/60)+' seconds';if(replayRecord&&world.options.mode!=='training'){replayRecord.finalHash=S.hash(world);lastReplay=replayRecord;try{replayLibrary.add(replayRecord,(world.mode==='duel'?'Duel':world.mode)+' · '+world.fighters.map((f:any)=>f.name).join(' vs ')+' · '+world.map.name);}catch(e){}}}
+  const fightIndex=world.options.storyFight;
+  if(fightIndex!==undefined&&!replayPlayback){
+    const won=world.result?.won;
+    if(won){store.data.davidWins=Math.max(store.data.davidWins,fightIndex+1);store.save();}
+    $('result-title').textContent=won?(fightIndex===2?'David defeats Goliath':'David defeats '+DAVID_FIGHTS[fightIndex].name):'David fell to '+DAVID_FIGHTS[fightIndex].name;
+    $('next-level').hidden=!won||fightIndex===2;
+    $('next-level').textContent=won&&fightIndex<2?'Fight '+DAVID_FIGHTS[fightIndex+1].name+' →':'Next fight';
+    $('rematch').textContent=won?'Replay fight':'Retry fight';
+  } else $('next-level').textContent='Next level →';
   open($('result-dialog'));announce($('result-title').textContent);
 }
 const portraitOrder = ['samson','david','saul','joshua','deborah','gideon','jonathan','moses','esther','miriam','nehemiah','caleb'];
@@ -130,6 +140,29 @@ function renderRoster(){
 }
 function updateSelected(){if(selectedHero==='random'){$('selected-info').replaceChildren(el('h2','Random fighter'),el('p','Chosen from the match seed and shown before the countdown.'));return;}const f=S.defs[selectedHero],box=$('selected-info');box.replaceChildren(fighterPortrait(f.id),el('h2',f.name),el('p',f.title));const stats=el('div','','stat-line');for(const [key,val] of Object.entries(f.stats))stats.append(el('span',key+' '+val));box.append(stats);}
 function renderChapters(){$('chapter-progress').textContent=store.data.completed.length+' of 84 levels complete · progression stays on this device';$('story-difficulty').value=settings.difficulty;const grid=$('chapter-grid');grid.replaceChildren();C.campaign.chapters.forEach((ch:any,i:number)=>{const button=el('button','','chapter-card');button.style.setProperty('--chapter',CHAPTER_COLORS[i]+'88');const count=ch.levels.filter((id:string)=>store.data.completed.includes(id)).length;button.style.setProperty('--completion',100*count/ch.levels.length+'%');button.append(el('small','CHAPTER '+String(i+1).padStart(2,'0')),el('h2',ch.title),el('span',count+' / 6 complete'+(ch.levels.some((id:string)=>store.data.medals[id]==='extreme')?' · '+ch.levels.filter((id:string)=>store.data.medals[id]==='extreme').length+' gold':'')));button.addEventListener('click',()=>renderLevels(i+1));grid.append(button);});}
+function renderFights(){
+  const wins=store.data.davidWins, grid=$('fight-grid');
+  $('fight-progress').textContent=wins+' of 3 fights won · 1 Samuel 17';
+  $('fight-difficulty').value=settings.difficulty;
+  $('fight-continue').textContent=wins===3?'Replay chapter →':'Fight as David →';
+  grid.replaceChildren();
+  DAVID_FIGHTS.forEach((fight,index)=>{
+    const button=el('button','','level-card') as HTMLButtonElement;
+    button.disabled=index>wins;
+    button.append(el('small','PART '+fight.part+' · '+(index===2?'BOSS':'FIGHT '+(index+1))),el('h2',fight.name),el('p',fight.intro),el('span',index<wins?'Won · replay':button.disabled?'Defeat '+DAVID_FIGHTS[index-1].name+' to unlock':'Enter fight →'));
+    button.addEventListener('click',()=>startFight(index));grid.append(button);
+  });
+}
+function startFight(index:number){
+  if(index>store.data.davidWins||!DAVID_FIGHTS[index])return;
+  if(currentInputId()==='unavailable'){chooseInput(()=>startFight(index));return;}
+  const fight=DAVID_FIGHTS[index];
+  startGame(davidFightOptions(index,settings.difficulty,currentInputId()));
+  $('game-title').textContent='Part '+fight.part+' · David vs '+fight.name;
+  $('objective').textContent='Launch '+fight.name+' beyond the arena boundary.';
+  $('caption').textContent=fight.intro;
+}
+function resumeFights(){startFight(store.data.davidWins===3?0:store.data.davidWins);}
 function renderLevels(chapter:number){currentChapter=chapter;const ch=C.campaign.chapters[chapter-1];screen('levels');$('chapter-number').textContent='CHAPTER '+String(chapter).padStart(2,'0');$('chapter-title').textContent=ch.title;$('chapter-arc').textContent=ch.arc;const grid=$('level-grid');grid.replaceChildren();for(const id of ch.levels){const l=C.campaign.levels.find((l:any)=>l.id===id),done=store.data.completed.includes(id),button=el('button','','level-card');button.disabled=!store.unlocked(l);button.append(el('span',(done?'✓ ':'')+'LEVEL '+String(l.number).padStart(2,'0'),'number'),el('h2',l.title),el('p',l.objective),el('small',l.scripture+' · '+l.kind+(button.disabled?' · Complete previous level':'')));const medal=medalFor(l,store.data.medals[id]);if(medal)button.append(el('span',medal.label,'medal medal-'+medal.tier));button.addEventListener('click',()=>startScene(id));grid.append(button);}}
 function continueStory(){const cp=store.data.checkpoint;const next=cp&&cp.stage!=='exit'?cp.level:C.campaign.levels.find((l:any)=>!store.data.completed.includes(l.id)&&store.unlocked(l))?.id||'L084';startScene(next,true);}
 function startScene(id:string,useCheckpoint=false){
@@ -232,6 +265,12 @@ function simTick():boolean{
         if(replayPlayback)tickReplay();
         else if(scene){const f=world.fighters[0];A.step(scene,frames[f.inputId]||{});if(scene.checkpointEvent){const cp=scene.checkpointEvent;store.checkpoint(cp.level,cp.stage,cp.progress,cp.combatCleared,cp.seed,cp.seen||[]);}}
         else {S.step(world,frames);if(replayRecord&&replayRecord.entries.length<24000){replayRecord.entries.push({kind:'input',frames});S.maybeCheckpoint(replayRecord,world);}checkTutorial(frames);checkDrill();observeTraining(frames);}
+        if((world.options.storyFight ?? world.options.exhibitionOpponent)!==undefined){
+          for(const event of world.events){
+            if(event.type==='bossTell')$('caption').textContent=event.caption;
+            if(event.type==='bossOpening')$('caption').textContent='Opening! Counter now.';
+          }
+        }
         audio.play(world.events);
         if(scene&&scene.pendingCard!==null){showCard();return false;}
         return !(world.phase==='paused'||world.phase==='result'||scene?.phase==='complete'||scene?.phase==='failed');
@@ -239,7 +278,7 @@ function simTick():boolean{
 
 // Controller/arrow-key menu navigation whenever gameplay input is not active.
 const menuNav=new MenuNavigator();
-menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(['setup','local','chapters'].includes(currentScreen))screen('modes');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
+menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(currentScreen==='chapters')screen('story-fights');else if(['setup','local','story-fights'].includes(currentScreen))screen('modes');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
 bindArrowKeys(()=>!inputs.active);
 /** How long the final KO plays out before the results card (ms). */
 const RESULT_OUTRO_MS=1300;let outroWorld:any=null,outroStart=0;
@@ -259,10 +298,9 @@ function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);con
     renderer.paint(world,scene,runner.accumulator/(1000/60),dt,active||outro);if(world.tick-hudTick>=5||scene||world.phase==='result'){updateHud();hudTick=world.tick;}if(finished&&!resultShown&&(!outro||now-outroStart>=RESULT_OUTRO_MS))showResult();
     if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}
   }
-  // Portrait touch play: suggest rotating, but allow continuing.
-$('rotate-continue').addEventListener('click',()=>document.documentElement.classList.add('portrait-ok'));
-requestAnimationFrame(frame);
+  requestAnimationFrame(frame);
 }
+$('rotate-continue').addEventListener('click',()=>document.documentElement.classList.add('portrait-ok'));
 $('brand').addEventListener('click',()=>screen('home'));
 document.querySelectorAll('[data-nav]').forEach((button:any)=>button.addEventListener('click',()=>screen(button.dataset.nav)));
 document.querySelectorAll<HTMLButtonElement>('[data-home-mode]').forEach(button =>
@@ -274,13 +312,16 @@ for (const choice of document.querySelectorAll<HTMLButtonElement>('#modes .mode-
   choice.addEventListener('pointerenter', preview);
   choice.addEventListener('focus', preview);
 }
-$('home-play').addEventListener('click',()=>screen('modes'));$('home-continue').addEventListener('click',()=>gate(continueStory));
-$('mode-story').addEventListener('click',()=>screen('chapters'));$('mode-quick').addEventListener('click',()=>screen('setup'));$('mode-local').addEventListener('click',()=>{screen('local');renderLocal();});
+$('home-play').addEventListener('click',()=>screen('modes'));$('home-continue').addEventListener('click',()=>gate(resumeFights));
+$('mode-story').addEventListener('click',()=>screen('story-fights'));
+$('fight-continue').addEventListener('click',resumeFights);
+$('open-archive').addEventListener('click',()=>screen('chapters'));
+$('fight-difficulty').addEventListener('change',()=>{settings.difficulty=$('fight-difficulty').value;store.save();});$('mode-quick').addEventListener('click',()=>screen('setup'));$('mode-local').addEventListener('click',()=>{screen('local');renderLocal();});
 $('confirm-input').addEventListener('click',()=>{const selected=(document.querySelector('input[name=input-method]:checked') as HTMLInputElement).value;if(selected==='controller'&&!inputs.pads().some((p:any)=>inputs.padSeen.has(p.index)))return;settings.input=selected;store.save();close($('input-dialog'));applySettings();if(inputFromGame&&world){world.fighters.find((f:any)=>f.human).inputId=currentInputId();showGame();inputs.active=false;open($('pause-dialog'));}else if(inputNext){const fn=inputNext;inputNext=null;fn();}});
 document.querySelectorAll('input[name=input-method]').forEach(r=>r.addEventListener('change',updateControllers));
 // Pause at once on unplug rather than at the next 400 ms poll.
 addEventListener('gamepaddisconnected',()=>updateControllers());
-$('battle-form').addEventListener('submit',(e:Event)=>{e.preventDefault();if(currentInputId()==='unavailable'){$('battle-status').textContent='Reconnect your controller or choose another input in Settings.';return;}const values=new FormData($('battle-form'));gate(()=>startGame(Object.fromEntries(values.entries())));});
+$('battle-form').addEventListener('submit',(e:Event)=>{e.preventDefault();if(currentInputId()==='unavailable'){$('battle-status').textContent='Reconnect your controller or choose another input in Settings.';return;}const values=new FormData($('battle-form'));gate(()=>startGame(withChapterOpponent(Object.fromEntries(values.entries()),currentInputId())));});
 $('setup-moves').addEventListener('click',()=>movesInfo());$('back-chapters').addEventListener('click',()=>screen('chapters'));$('story-continue').addEventListener('click',continueStory);$('story-difficulty').addEventListener('change',()=>{settings.difficulty=$('story-difficulty').value;store.save();});$('journal-button').addEventListener('click',journal);$('export-story').addEventListener('click',exportSave);
 $('local-form').addEventListener('change',()=>{if(readyBoard.setRules(lobbyRules()))renderLocal();lobbyStatus();});$('local-mode').addEventListener('change',renderLocal);$('local-count').addEventListener('change',renderLocal);$('refresh-controllers').addEventListener('click',renderLocal);$('local-form').addEventListener('submit',localSubmit);
 $('start-tutorial').addEventListener('click',()=>chooseInput(()=>startTutorial(()=>screen('modes'))));$('start-training').addEventListener('click',()=>gate(()=>startGame({mode:'training',hero:selectedHero})));$('show-controls').addEventListener('click',controls);
@@ -297,7 +338,7 @@ for(const [id,key,isBoolean] of [['mute','mute',true],['reduced-motion','reduced
 $('game-pause').addEventListener('click',()=>pause());$('resume').addEventListener('click',resume);$('restart').addEventListener('click',retry);$('pause-controls').addEventListener('click',controls);$('pause-input').addEventListener('click',()=>chooseInput());// Quitting a match asks once: the first press arms, a second press within 5 s leaves.
 let leaveArmedUntil=0;
 function resetLeave(){leaveArmedUntil=0;$('leave-game').textContent='Return to menu';}
-$('leave-game').addEventListener('click',()=>{const now=performance.now();if(now<leaveArmedUntil){resetLeave();screen(scene?'chapters':'modes');return;}leaveArmedUntil=now+5000;$('leave-game').textContent=scene?'Leave the level? Press again — you will restart from your last checkpoint':'Leave the match? Press again — this match will not be saved';});
+$('leave-game').addEventListener('click',()=>{const now=performance.now();if(now<leaveArmedUntil){resetLeave();screen(scene?'chapters':world?.options.storyFight!==undefined?'story-fights':'modes');return;}leaveArmedUntil=now+5000;$('leave-game').textContent=scene?'Leave the level? Press again — you will restart from your last checkpoint':'Leave the match? Press again — this match will not be saved';});
 $('pause-dialog').addEventListener('close',resetLeave);$('pause-difficulty').addEventListener('change',()=>{settings.difficulty=$('pause-difficulty').value;store.save();retry();});
 $('game-context').addEventListener('click',context);$('training-details').addEventListener('click',()=>{renderer.debug=!renderer.debug;$('training-details').textContent=renderer.debug?'Hide details':'Details';});$('training-speed').addEventListener('change',()=>{trainingSpeed=Number($('training-speed').value)||1;});$('training-freeze').addEventListener('click',()=>{trainingFrozen=!trainingFrozen;$('training-freeze').textContent=trainingFrozen?'Resume':'Freeze';$('training-step').disabled=!trainingFrozen;});$('training-step').addEventListener('click',()=>{if(trainingFrozen&&world)simTick();});// In-match buttons and dropdowns hand focus back to the arena, so Space, Enter and the
 // arrow keys keep driving the fighter instead of re-pressing a button or changing a dropdown.
@@ -305,11 +346,11 @@ $('game').addEventListener('change',e=>{if(!(e.target as HTMLElement).closest('d
 $('game').addEventListener('click',e=>{const el=(e.target as HTMLElement).closest('button');if(el&&!el.closest('dialog'))$('arena').focus();});
 // Reset keeps the chosen dummy and skips the 3-2-1: training restarts instantly.
 $('training-reset').addEventListener('click',()=>{if(!world)return;const bot=$('training-bot').value;if(tutorial||drill){const fresh=S.create(world.options);world.fighters.forEach((f:any,k:number)=>{const g=fresh.fighters[k];if(g)Object.assign(f,{x:g.x,y:g.y,vx:0,vy:0,kx:0,facing:g.facing,action:null,buffer:null,stun:0,hitstop:0,damage:0,ground:null,respawn:0});});renderer.capture(world);return;}startGame({...world.options,trainingBot:bot,...(['easy','hard','extreme'].includes(bot)?{difficulty:bot}:{})});if(world.options.mode==='training'){while(world.phase==='countdown')S.step(world);replayRecord=null;renderer.capture(world);}});$('training-bot').addEventListener('change',()=>{world.trainingBot=$('training-bot').value;if(['easy','hard','extreme'].includes(world.trainingBot))world.difficulty=world.trainingBot;});$('retry-checkpoint').addEventListener('click',retry);
-$('next-level').addEventListener('click',()=>{if(scene?.level.nextLevel)startScene(scene.level.nextLevel);});$('rematch').addEventListener('click',()=>{if(tutorialFinished&&!scene&&world?.options.mode==='training'){const fn=inputNext;inputNext=null;tutorialFinished=false;screen('modes');if(fn)fn();}else retry();});$('result-menu').addEventListener('click',()=>screen(scene?'chapters':'modes'));
+$('next-level').addEventListener('click',()=>{if(world?.options.storyFight!==undefined&&!replayPlayback)startFight(world.options.storyFight+1);else if(scene?.level.nextLevel)startScene(scene.level.nextLevel);});$('rematch').addEventListener('click',()=>{if(tutorialFinished&&!scene&&world?.options.mode==='training'){const fn=inputNext;inputNext=null;tutorialFinished=false;screen('modes');if(fn)fn();}else retry();});$('result-menu').addEventListener('click',()=>screen(scene?'chapters':world?.options.storyFight!==undefined?'story-fights':'modes'));
 $('story-confirm').addEventListener('click',()=>{if(storyPurpose==='intro')activeStory();else {A.resolveCard(scene);close($('story-dialog'));inputs.active=true;inputs.clear();$('arena').focus();}});$('story-skip').addEventListener('click',activeStory);
 document.querySelectorAll('[data-close]').forEach((b:any)=>b.addEventListener('click',()=>close($(b.dataset.close))));
 $('info-dialog').addEventListener('close',()=>{if(infoResume)resume();else if(world&&world.phase==='paused'&&!$('pause-dialog').open)open($('pause-dialog'));});
-$('pause-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();resume();});$('story-dialog').addEventListener('cancel',(e:Event)=>e.preventDefault());$('result-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();screen(scene?'chapters':'modes');});
+$('pause-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();resume();});$('story-dialog').addEventListener('cancel',(e:Event)=>e.preventDefault());$('result-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();screen(scene?'chapters':world?.options.storyFight!==undefined?'story-fights':'modes');});
 window.addEventListener('blur',()=>pause('Window lost focus'));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause('Game backgrounded');});window.addEventListener('orientationchange',()=>pause('Screen rotated — ready when you are'));
 // The renderer keeps no GPU-side caches, so a restored context just paints the next frame.
 $('arena').addEventListener('contextlost',(e:Event)=>{e.preventDefault();pause('Graphics were reset — ready when you are');});
@@ -320,7 +361,8 @@ for(const id of ['arena-select','local-arena']){
   const draw=()=>{const map=C.maps.maps.find((m:any)=>m.id===select.value)??C.maps.maps[0];const backdrop=art.arenas?.[map.id]?.image;caption.textContent=map.name+' · '+map.scriptureContext;paintArenaPreview(canvas,map,backdrop);if(backdrop&&!backdrop.complete)backdrop.addEventListener('load',draw,{once:true});};
   select.addEventListener('change',draw);draw();
 }
-for(const f of C.fighters.fighters){const opt=el('option',f.name) as HTMLOptionElement;opt.value=f.id;$('opponent-select').append(opt);}{const opt=el('option','Random (from match seed)') as HTMLOptionElement;opt.value='random';$('opponent-select').append(opt);}$('opponent-select').value='samson';
+for(const f of C.fighters.fighters){const opt=el('option',f.name) as HTMLOptionElement;opt.value=f.id;$('opponent-select').append(opt);}{const opt=el('option','Random (from match seed)') as HTMLOptionElement;opt.value='random';$('opponent-select').append(opt);}for(const fight of DAVID_FIGHTS) $('opponent-select').add(new Option(fight.name, fight.skin));
+$('opponent-select').value='samson';
 renderRoster();renderLibrary();applySettings();updateHome();
 root.BiblhallaLifecycle={suspend:()=>pause('App backgrounded')};
 // advanceFrame lets automated QA drive the display loop where requestAnimationFrame is throttled.

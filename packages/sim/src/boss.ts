@@ -26,6 +26,10 @@ export function hazardBox(s: SimState, move: BossMove, lockX: number, progress: 
   const floor = (my + mh) * Q;
   const h = move.height * Q, w = move.width * Q;
   switch (move.kind) {
+    case 'melee': {
+      const fighter = s.fighters.find(f => f.guard !== null)!;
+      return [fighter.facing > 0 ? fighter.x : fighter.x - w, fighter.y, w, h];
+    }
     case 'sweep': return [mx * Q, floor, mw * Q, h];
     case 'charge': {
       const x = bossX + Math.trunc(((lockX - bossX) * progress) / Math.max(1, move.active));
@@ -59,8 +63,11 @@ export function updateBoss(ctx: SimContext, s: SimState): void {
   const script = s.bossScript, run = s.bossRun;
   const boss = s.fighters.find(f => f.guard !== null && f.stocks > 0);
   if (!script || !run || !boss || boss.respawn) { s.bossHazard = null; return; }
+  if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && (boss.stun || boss.hitstop)) {
+    run.stage = 'gap'; run.ticks = 20; run.hit = []; s.bossHazard = null; return;
+  }
   const player = s.fighters.find(f => f.human && f.stocks && !f.respawn);
-  if (player) boss.facing = player.x < boss.x ? -1 : 1;
+  if (player && ((s.options.storyFight ?? s.options.exhibitionOpponent) === undefined || run.stage === 'gap')) boss.facing = player.x < boss.x ? -1 : 1;
 
   const phase = bossPhase(boss);
   if (phase !== run.phase) {
@@ -75,13 +82,25 @@ export function updateBoss(ctx: SimContext, s: SimState): void {
   if (--run.ticks > 0) {
     if (run.stage === 'active') {
       const progress = move.active - run.ticks;
+      if (move.advanceUnits) {
+        const [left, , width] = s.map.main.rectUnits;
+        boss.x = clamp(boss.x + boss.facing * Math.round(move.advanceUnits * Q / move.active), (left + 16) * Q, (left + width - 16) * Q);
+      }
       const box = hazardBox(s, move, run.lockX, progress, run.originX);
       s.bossHazard = { name: move.name, kind: move.kind, stage: 'active', box, ticks: run.ticks };
       if (move.kind === 'charge') boss.x = box[0] + box[2] / 2;
       for (const f of s.fighters) {
+        if (move.grab && run.hit.includes(f.id)) {
+          f.x = boss.x + boss.facing * 26 * Q; f.y = boss.y + 25 * Q;
+          f.kx = f.vx = f.vy = 0; f.stun = 3; f.ground = null;
+          if (run.ticks === 1) hitTarget(ctx, s, boss, f, move);
+          continue;
+        }
         if (f.id === boss.id || !f.stocks || f.respawn || f.team === boss.team || run.hit.includes(f.id) || invincible(ctx, f)) continue;
         // A feint has no contact at all.
-        if (move.damageTenths > 0 && capsuleRect(ctx, f, box)) { run.hit.push(f.id); hitTarget(ctx, s, boss, f, move); }
+        if (move.damageTenths > 0 && capsuleRect(ctx, f, box)) { run.hit.push(f.id);
+          if (move.grab && run.ticks > 1) { f.stun = 3; f.action = null; }
+          else hitTarget(ctx, s, boss, f, move); }
       }
     } else if (s.bossHazard) {
       s.bossHazard.ticks = run.ticks;

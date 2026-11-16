@@ -76,6 +76,10 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     charset: 'utf8',
   }).outputFiles[0].text;
   const art = runtimeArt();
+  for (const animal of ['lion', 'bear']) {
+    const bytes = readFileSync(join(ROOT, 'assets', 'runtime', 'story', animal + '.png'));
+    art.images[animal] = 'data:image/png;base64,' + bytes.toString('base64');
+  }
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
     + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, clips: art.clips, readiness: art.readiness, arenas: arenaArt() }) + ';';
   const html = readFileSync(join(APP, 'shell.html'), 'utf8')

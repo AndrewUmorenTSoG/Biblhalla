@@ -73,7 +73,7 @@
 #setup .fighter-choice:has([value=random]) small{padding:0}}
 
 /* The menu controls occupy the shaded side of each full-screen illustration. */
-#story-dialog,#chapters,#levels,#modes{--scene-art:url("menu-art/story.webp")}
+#story-dialog,#story-fights,#chapters,#levels,#modes{--scene-art:url("menu-art/story.webp")}
 #setup,#modes[data-preview=quick]{--scene-art:url("menu-art/battle.webp")}
 #local,#modes[data-preview=local]{--scene-art:url("menu-art/local.webp")}
 #fighters{--scene-art:url("menu-art/fighters.webp")}
@@ -94,10 +94,10 @@
 .mode-desc{display:block;margin-top:5px;font-size:.86rem;line-height:1.45;color:#d1e0e2}
 #modes[data-preview=story] #mode-story,#modes[data-preview=quick] #mode-quick,#modes[data-preview=local] #mode-local{background:linear-gradient(105deg,#ffe5ac,#e5b659);border-color:#fff0c0}
 #modes[data-preview=story] #mode-story span,#modes[data-preview=quick] #mode-quick span,#modes[data-preview=local] #mode-local span{color:#192e37}
-#chapters .story-actions,#chapters .chapter-grid,#levels .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(66vw,1080px);margin-inline:0}
-#chapters .chapter-grid,#levels .level-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-#chapters .chapter-card,#levels .level-card{min-height:0;padding:12px 16px;background:linear-gradient(100deg,#17374bee,#102638f2);border:1px solid #53717e;border-left:4px solid #b89760;border-radius:2px 9px 2px 2px}
-#chapters .chapter-card h2,#levels .level-card h2{margin:4px 0;font:700 1.04rem system-ui}
+#chapters .story-actions,#chapters .chapter-grid,:is(#levels,#story-fights) .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(66vw,1080px);margin-inline:0}
+#chapters .chapter-grid,:is(#levels,#story-fights) .level-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#chapters .chapter-card,:is(#levels,#story-fights) .level-card{min-height:0;padding:12px 16px;background:linear-gradient(100deg,#17374bee,#102638f2);border:1px solid #53717e;border-left:4px solid #b89760;border-radius:2px 9px 2px 2px}
+#chapters .chapter-card h2,:is(#levels,#story-fights) .level-card h2{margin:4px 0;font:700 1.04rem system-ui}
 #chapters .story-actions{flex-wrap:wrap;gap:8px;margin-bottom:16px}
 #chapters .story-actions label{width:115px}
 #setup .battle-layout{grid-template-columns:minmax(0,1.6fr) minmax(210px,1fr);align-items:start;gap:14px}
@@ -112,7 +112,7 @@
 #settings .settings-layout,#local .local-options,#learn .learn-drills{background:#0c2233ee;border-left:3px solid #ac8e5e;padding:18px;gap:18px}
 #local .player-grid{gap:10px}
 @media(max-width:900px){
-  #chapters .story-actions,#chapters .chapter-grid,#levels .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(100%,720px)}
+  #chapters .story-actions,#chapters .chapter-grid,:is(#levels,#story-fights) .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(100%,720px)}
   #screens>.content-screen::before{background-size:cover,auto 100vh}
 }
 @media(max-width:650px){
@@ -169,7 +169,7 @@
 #puzzle-prompt:empty,#story-choices:empty {display:none}
 #chapters .chapter-card {position:relative;padding-bottom:17px;overflow:hidden}
 #chapters .chapter-card::after {content:"";position:absolute;bottom:0;left:0;width:var(--completion);height:3px;background:#ebc77e}
-#chapters .chapter-card:focus-visible,#levels .level-card:focus-visible {outline:3px solid #f4ce84;outline-offset:2px}
+#chapters .chapter-card:focus-visible,:is(#levels,#story-fights) .level-card:focus-visible {outline:3px solid #f4ce84;outline-offset:2px}
 @media(max-width:700px) {
   #story-dialog[open] {background:linear-gradient(0deg,#0a1d2c 65%,#0a1d2cee 74%,#0a1d2c19 100%),var(--scene-art) right top/auto 250px no-repeat,#0a1d2c}
   .story-reading {width:100%;padding:clamp(72px,16vh,125px) 20px 20px}

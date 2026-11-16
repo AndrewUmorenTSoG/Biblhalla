@@ -115,6 +115,10 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
       }, 1));
     }
   }
+  if (options.storyFight !== undefined) {
+    s.fighters[0].weapon = 'sling';
+  }
+  if ((options.storyFight ?? options.exhibitionOpponent) === 2) s.fighters[1].weapon = 'spear';
   return s;
 }
 

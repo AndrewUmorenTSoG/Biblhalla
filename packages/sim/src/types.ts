@@ -167,6 +167,8 @@ export interface FighterConfig {
 }
 
 export interface MatchOptions {
+  storyFight?: number;
+  exhibitionOpponent?: number;
   mode?: Mode | string;
   arena?: string;
   difficulty?: Difficulty | string;
@@ -191,7 +193,10 @@ export interface MatchOptions {
 /** One authored boss move: a locked tell, an active hazard zone, then recovery. */
 export interface BossMove {
   name: string;
-  kind: 'lane' | 'sweep' | 'charge' | 'slam';
+  kind: 'lane' | 'sweep' | 'charge' | 'slam' | 'melee';
+  frame?: number;
+  grab?: boolean;
+  advanceUnits?: number;
   tell: number;
   active: number;
   recovery: number;

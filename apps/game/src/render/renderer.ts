@@ -1,5 +1,6 @@
 import {gideonReboundFrame} from './gideon-rebound.ts';
 import { HitIndicators } from './hit-indicators.ts';
+import { createGoliath } from '../../../../packages/campaign/src/goliath.ts';
 import { GiantMotion, drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
 import { handGrip, needsCarriedWeapon } from './grip.ts';
@@ -44,6 +45,7 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
+  private encounterGiant = createGoliath();
   giantMotion = new GiantMotion();
   capture(world:SimState,scene?:Scene|null){this.hitIndicators.collect(world);if(scene?.level.number===41)this.giantMotion.capture(scene.goliath,scene.tick);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean;facing:number;turnUntil:number}>();
@@ -291,12 +293,39 @@ export class Renderer{
       }
       const ghost = f.action?.kind==='dodge' ? this.S.invincible(f) : !!f.invulnerable && world.tick%8<4;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
+      const encounter = world.options.storyFight ?? world.options.exhibitionOpponent;
+      const run = world.bossRun;
+      const scripted = f.guard !== null && encounter !== undefined && run && world.bossScript;
+      const animal = scripted && encounter < 2 ? this.art[encounter === 0 ? 'lion' : 'bear'] : null;
+      if (scripted && encounter === 2) {
+        const state = this.encounterGiant;
+        state.giant.facing = f.facing;
+        state.giant.walking = Math.abs(f.vx) > 100;
+        const move = scripted.phases[run.phase - 1][run.index % scripted.phases[run.phase - 1].length];
+        state.tell = move.tell;
+        state.advance.state = move.kind === 'sweep' && (run.stage === 'tell' || run.stage === 'active') ? run.stage : 'idle';
+        state.advance.ticks = run.ticks;
+        state.lanes[0].state = run.stage === 'active' && move.kind !== 'sweep' ? 'active' : 'safe';
+        drawGoliath(c,p.x,p.y,this.camera.zoom,state,world.tick);
+      } else if (scripted && animal?.naturalWidth) {
+        const moves = scripted.phases[run.phase - 1];
+        const move = moves[run.index % moves.length];
+        const moving = Math.abs(f.vx) > 100;
+        const frame = run.stage === 'tell' ? move.frame! : run.stage === 'active' ? move.frame! + (move.grab && run.ticks > 3 ? 0 : 1)
+          : run.stage === 'recovery' && run.ticks > move.recovery * .55 ? move.frame! + 1
+          : moving ? 2 + Math.floor(world.tick / 5) % 4 : Math.floor(world.tick / 24) % 2;
+        const size = 106 * this.camera.zoom * f.scale;
+        c.save(); c.translate(p.x, p.y); c.scale(f.facing, 1);
+        c.drawImage(animal, (frame % 4) * 192, Math.floor(frame / 4) * 192, 192, 192, -size / 2, -size, size, size);
+        c.restore();
+      } else {
       const reaction=giant && (giant.move==='throw'||giant.move==='headbutt') ? grapplePose(giant) : null;
       const victimFrame=reaction && this.atlas[f.hero]?.[reaction.frame];
       if(victimFrame && this.art[f.hero]?.naturalWidth){
         const scale=this.camera.zoom*f.scale*FIGURE_PX/this.atlas[f.hero].idle.h;
         drawGrappledFighter(c,this.art[f.hero],victimFrame,giant!,p.x,p.y,scale);
       }else this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),(f.action?.tick??0)+(active&&!f.hitstop?alpha:0),f.weapon,this.showFighterLabels ? (f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':'') : '',ghost,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      }
       if (f.exhaustedJumps && !f.ground) {
         this.drawJumpWarning(p.x + (f.human ? 19 : 0), p.y - (FIGURE_PX + 32) * this.camera.zoom * f.scale, world.tick);
       }

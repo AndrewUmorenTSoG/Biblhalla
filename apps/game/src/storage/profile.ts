@@ -99,6 +99,7 @@ export interface Settings {
 export interface SavedCheckpoint { level: string; stage: string; seed: number; progress: number[]; combatCleared: boolean; seen: string[] }
 
 export interface Profile {
+  davidWins: number;
   schema: typeof PROFILE_SCHEMA;
   /** Story cards seen in any level (journal context), kept across retries and content updates. */
   seenCards: string[];
@@ -119,7 +120,7 @@ export function createProfiles(content: Content) {
   const ids = new Set(content.campaign.levels.map(l => l.id));
 
   const defaults = (): Profile => ({
-    schema: PROFILE_SCHEMA, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [], seenCards: [],
+    schema: PROFILE_SCHEMA, davidWins: 0, contentVersion: content.hash || 'main-1', completed: [], medals: {}, checkpoint: null, journal: [], seenCards: [],
     settings: {
       input: 'keyboard', difficulty: 'easy', mute: false, reducedMotion: false, leftHanded: false, touchSize: 80, touchOpacity: 0.8,
       deadzone: 0.22, uiScale: 1, captionSpeed: 1, symbolicFinale: true, chargeToggle: false, music: true, screenShake: true, flashes: true, bindings: { ...DEFAULT_BINDINGS },
@@ -132,6 +133,7 @@ export function createProfiles(content: Content) {
     raw = migrate(raw);
     if (!raw || raw.schema !== PROFILE_SCHEMA || !Array.isArray(raw.completed) || raw.completed.length > ids.size) throw new Error('Unsupported or invalid save');
     const d = defaults();
+    if (Number.isInteger(raw.davidWins)) d.davidWins = Math.max(0, Math.min(3, raw.davidWins));
     d.completed = [...new Set<string>(raw.completed.filter((id: unknown) => typeof id === 'string' && ids.has(id)))].sort();
     if (Array.isArray(raw.journal)) d.journal = [...new Set<string>(raw.journal.filter((id: unknown) => typeof id === 'string' && ids.has(id)))].slice(0, ids.size);
     if (raw.medals && typeof raw.medals === 'object') for (const id of d.completed) if (DIFFICULTIES.includes(raw.medals[id])) d.medals[id] = raw.medals[id];

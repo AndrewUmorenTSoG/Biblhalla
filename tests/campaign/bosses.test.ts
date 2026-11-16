@@ -71,11 +71,14 @@ test('phase changes at 65% and 30% guard and cancel the move in progress', () =>
   assert.equal(w.bossRun!.phase, 3);
 });
 
-test('breaking the guard clears the boss encounter', () => {
+test('a ring-out clears the boss encounter', () => {
   const s = enter('L017', 'easy');
   const boss = bossOf(s.world);
   for (let t = 0; t < 200; t++) A.step(s, {});
   boss.guard = 0;
+  A.step(s, {});
+  assert.equal(s.combatCleared, false);
+  boss.y = -10000 * S.Q;
   A.step(s, {});
   assert.equal(s.combatCleared, true);
 });

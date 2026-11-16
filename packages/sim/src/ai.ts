@@ -49,7 +49,16 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && s.trainingBot === 'idle') return input();
   if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(ctx, s, f);
   // Scripted bosses act only through their authored pattern (boss.ts).
-  if (s.bossScript && f.guard !== null) return input();
+  if (s.bossScript && f.guard !== null) {
+    const player = s.fighters.find(other => other.human && other.stocks && !other.respawn);
+    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && s.bossRun?.stage === 'gap') {
+      const [left, , width] = s.map.main.rectUnits;
+      const destination = Math.max((left + 48) * Q, Math.min((left + width - 48) * Q, player.x));
+      const distance = destination - f.x;
+      return input({ x: Math.abs(distance) > 42 * Q ? Math.sign(distance) : 0, jump: !!f.ground && player.y > f.y + 55 * Q });
+    }
+    return input();
+  }
   const target = s.fighters
     .filter(t => t.id !== f.id && t.team !== f.team && t.stocks && !t.respawn)
     .sort((a, b) => Math.abs(a.x - f.x) - Math.abs(b.x - f.x) || a.id - b.id)[0];
