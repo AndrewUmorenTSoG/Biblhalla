@@ -3,7 +3,7 @@
 // Hazards use the shared capsule, respect dodge invulnerability and hit once.
 
 import type { SimContext } from './context.ts';
-import type { BossMove, Fighter, SimState } from './types.ts';
+import type { BossMove, BossScript, BossRun, Fighter, SimState } from './types.ts';
 import { Q, clamp, roundMul } from './fixed.ts';
 import { event } from './state.ts';
 import { capsuleRect, launchForceQ } from './combat.ts';
@@ -21,13 +21,13 @@ export function bossPhase(f: Fighter): number {
 }
 
 /** World box for the current move, from the main stage surface and the locked lane. */
-export function hazardBox(s: SimState, move: BossMove, lockX: number, progress: number, bossX: number): Box {
+export function hazardBox(s: SimState, move: BossMove, lockX: number, progress: number, bossX: number, actor?: Fighter): Box {
   const [mx, my, mw, mh] = s.map.main.rectUnits;
   const floor = (my + mh) * Q;
   const h = move.height * Q, w = move.width * Q;
   switch (move.kind) {
     case 'melee': {
-      const fighter = s.fighters.find(f => f.guard !== null)!;
+      const fighter = actor ?? s.fighters.find(f => f.guard !== null)!;
       return [fighter.facing > 0 ? fighter.x : fighter.x - w, fighter.y, w, h];
     }
     case 'sweep': return [mx * Q, floor, mw * Q, h];
@@ -60,20 +60,34 @@ function hitTarget(ctx: SimContext, s: SimState, boss: Fighter, target: Fighter,
 
 /** Advance the scripted boss one tick. Called after fighters move, before combat. */
 export function updateBoss(ctx: SimContext, s: SimState): void {
-  const script = s.bossScript, run = s.bossRun;
-  const boss = s.fighters.find(f => f.guard !== null && f.stocks > 0);
-  if (!script || !run || !boss || boss.respawn) { s.bossHazard = null; return; }
-  if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && (boss.stun || boss.hitstop)) {
-    run.stage = 'gap'; run.ticks = 20; run.hit = []; s.bossHazard = null; return;
+  const boss = s.fighters.find(f => f.guard !== null && !f.partner);
+  if (s.bossScript && s.bossRun && boss) advanceBoss(ctx, s, boss, s.bossScript, s.bossRun);
+  for (const fighter of s.fighters) if (fighter.partner) advanceBoss(ctx, s, fighter, fighter.partner.script, fighter.partner.run);
+}
+
+function advanceBoss(ctx: SimContext, s: SimState, boss: Fighter, script: BossScript, run: BossRun): void {
+  // The shared hazard is an Archive cue. Each chapter fighter owns its own attack clock.
+  const primary = !boss.partner;
+  if (!boss.stocks || boss.respawn) {
+    if (primary) s.bossHazard = null;
+    run.stage = 'gap'; run.hit = []; run.ticks = 36;
+    return;
+  }
+  const [left, bottom, width, height] = s.map.main.rectUnits;
+  const recovering = !boss.ground && (boss.y < (bottom + height - 10) * Q || boss.x < left * Q || boss.x > (left + width) * Q);
+  if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && (boss.stun || boss.hitstop || recovering)) {
+    run.stage = 'gap'; run.ticks = 20; run.hit = []; if (primary) s.bossHazard = null; return;
   }
   const player = s.fighters.find(f => f.human && f.stocks && !f.respawn);
   if (player && ((s.options.storyFight ?? s.options.exhibitionOpponent) === undefined || run.stage === 'gap')) boss.facing = player.x < boss.x ? -1 : 1;
 
+  const chapter = s.options.storyFight !== undefined || s.options.exhibitionOpponent !== undefined;
+  const gap = chapter && s.difficulty === 'easy' ? 40 : BOSS_GAP_TICKS[s.difficulty] ?? 36;
   const phase = bossPhase(boss);
   if (phase !== run.phase) {
     // A phase change ends the current move cleanly: no contact survives a phase exit.
-    run.phase = phase; run.index = 0; run.stage = 'gap'; run.ticks = BOSS_GAP_TICKS[s.difficulty] ?? 36;
-    s.bossHazard = null;
+    run.phase = phase; run.index = 0; run.stage = 'gap'; run.ticks = gap;
+    if (primary) s.bossHazard = null;
     event(s, 'bossPhase', { fighter: boss.id, phase });
   }
   const moves = script.phases[Math.min(phase, script.phases.length) - 1];
@@ -86,11 +100,11 @@ export function updateBoss(ctx: SimContext, s: SimState): void {
         const [left, , width] = s.map.main.rectUnits;
         boss.x = clamp(boss.x + boss.facing * Math.round(move.advanceUnits * Q / move.active), (left + 16) * Q, (left + width - 16) * Q);
       }
-      const box = hazardBox(s, move, run.lockX, progress, run.originX);
-      s.bossHazard = { name: move.name, kind: move.kind, stage: 'active', box, ticks: run.ticks };
+      const box = hazardBox(s, move, run.lockX, progress, run.originX, boss);
+      if (primary) s.bossHazard = { name: move.name, kind: move.kind, stage: 'active', box, ticks: run.ticks };
       if (move.kind === 'charge') boss.x = box[0] + box[2] / 2;
       for (const f of s.fighters) {
-        if (move.grab && run.hit.includes(f.id)) {
+        if (move.grab && f.stocks && !f.respawn && run.hit.includes(f.id)) {
           f.x = boss.x + boss.facing * 26 * Q; f.y = boss.y + 25 * Q;
           f.kx = f.vx = f.vy = 0; f.stun = 3; f.ground = null;
           if (run.ticks === 1) hitTarget(ctx, s, boss, f, move);
@@ -102,27 +116,31 @@ export function updateBoss(ctx: SimContext, s: SimState): void {
           if (move.grab && run.ticks > 1) { f.stun = 3; f.action = null; }
           else hitTarget(ctx, s, boss, f, move); }
       }
-    } else if (s.bossHazard) {
+    } else if (primary && s.bossHazard) {
       s.bossHazard.ticks = run.ticks;
     }
     return;
   }
   // Stage transitions: gap -> tell -> active -> recovery -> gap (next move).
   if (run.stage === 'gap') {
+    if (chapter && move.kind === 'melee' && (!player || Math.abs(player.x - boss.x) > (move.width + (move.advanceUnits ?? 0) + 18) * Q)) {
+      run.ticks = 1;
+      return;
+    }
     run.stage = 'tell'; run.ticks = Math.max(MIN_TELL_TICKS, move.tell);
     // The lane locks when the tell starts and never follows the player afterwards.
     run.lockX = clamp(player ? player.x : boss.x, s.map.main.rectUnits[0] * Q, (s.map.main.rectUnits[0] + s.map.main.rectUnits[2]) * Q);
     run.originX = boss.x;
     run.instance = ++s.entityId; run.hit = [];
-    s.bossHazard = { name: move.name, kind: move.kind, stage: 'tell', box: hazardBox(s, move, run.lockX, 0, boss.x), ticks: run.ticks };
+    if (primary) s.bossHazard = { name: move.name, kind: move.kind, stage: 'tell', box: hazardBox(s, move, run.lockX, 0, boss.x, boss), ticks: run.ticks };
     event(s, 'bossTell', { fighter: boss.id, phase, move: move.name, caption: move.caption });
   } else if (run.stage === 'tell') {
     run.stage = 'active'; run.ticks = move.active + 1;
   } else if (run.stage === 'active') {
     run.stage = 'recovery'; run.ticks = move.recovery;
-    s.bossHazard = null;
+    if (primary) s.bossHazard = null;
     event(s, 'bossOpening', { fighter: boss.id, ticks: move.recovery });
   } else {
-    run.stage = 'gap'; run.ticks = BOSS_GAP_TICKS[s.difficulty] ?? 36; run.index++;
+    run.stage = 'gap'; run.ticks = gap; run.index++;
   }
 }

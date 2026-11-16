@@ -45,6 +45,8 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
     coyote: 0, drop: 0, invulnerable: 0, respawn: 0, stun: 0, hitstop: 0, chase: 0, jumpTick: -1,
     action: null, buffer: null, jumpCut: false,
     ai: { next: 0, intent: input(), history: [], tell: 0, tellDir: 1, phase: 1 },
+    ...(cfg.partnerScript ? { partner: { script: snapshot(cfg.partnerScript), run: {
+      phase: 1, index: 0, stage: 'gap' as const, ticks: 90, lockX: 0, originX: 0, instance: 0, hit: [] } } } : {}),
     guard: cfg.guard ?? null, maxGuard: cfg.guard ?? null, scale: cfg.scale || 1,
     stats: { ...def.stats }, score: 0, damageDealt: 0, hits: 0, carry: false, emote: null,
   };

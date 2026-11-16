@@ -6,9 +6,9 @@ David is the playable fighter for the entire chapter. The flock encounters drama
 
 | Part | Fight | Arena | What changes |
 | --- | --- | --- | --- |
-| 001 · Defend the flock | 1. Lion Man | Wilderness Waystation | David starts with his sling. Learn to recognize a single raised paw, an open mouth, and a two-paw grab. A win unlocks Bear. |
-| 001 · Defend the flock | 2. Bear | Deborah’s Palm Court | David faces a heavier opponent with a longer reach. The overhead crush creates the longest opening in this part. A win unlocks Elah. |
-| 002 · The challenge at Elah | 3. Goliath | Elah Training Terrace | Goliath controls the ground with his spear, then adds a charge. Defeating him completes Chapter One. |
+| 001 · Defend the flock | 1. Lion Man | Wilderness Waystation | David starts with his sling. Learn to recognize a single raised paw, an open mouth, and a two-paw grab. A win unlocks the paired encounter. |
+| 002 · Defend the flock | 2. Lion Man and Bear | Deborah’s Palm Court | Both opponents fight simultaneously, with two stocks apiece and independent attack sequences. The overhead crush creates the longest opening in this part. A win unlocks Elah. |
+| 003 · The challenge at Elah | 3. Goliath | Elah Training Terrace | Goliath controls the ground with his spear, then adds a charge. Defeating him completes Chapter One. |
 
 Each fight begins with a fresh three lives and a sling. Attacks deplete the opponent’s guard and increase their launch damage. Launch the opponent beyond the blast boundary to win. Guard thresholds change attack patterns; damage increases launch distance. Running out of lives or time allows a retry of the current fight. The chapter saves each victory. Continue starts at the next unlocked fight, and completed fights remain selectable for replay.
 
@@ -26,7 +26,7 @@ A lion breaks cover at the edge of the flock. David steps into its path. The lio
 
 **Drawing key.** Read the [Lion Man sheet](../assets/runtime/story/lion.png) left to right. The first row shows two idle poses, a gathered running stride, and an extended stride. The second row completes the run and shows the slash windup and release. The third row shows open jaws, snapping jaws, the catch, and the release.
 
-## Part 001 · Bear
+## Part 002 · Lion Man and Bear
 
 The sheep scatter among the trees. Bear steps into the opening with short ears, broad shoulders, and a much heavier forearm than the lion’s. His opening swat tempts David into close range just before the overhead blow. Land one attack during a short recovery or use a long recovery to set up a sling shot.
 
@@ -40,7 +40,7 @@ The sheep scatter among the trees. Bear steps into the opening with short ears, 
 
 **Drawing key.** The [Bear sheet](../assets/runtime/story/bear.png) uses the same first six cells for idle and running. The next two show the side swat. The bottom row pairs the raised paw with the overhead impact, then the crouch with the extended rake. All attacks use bare claws.
 
-## Part 002 · Goliath at Elah
+## Part 003 · Goliath at Elah
 
 David steps onto the terrace with his sling equipped. Goliath starts with 170 guard and a spear. At range, watch the point of the spear. At close range, keep an escape route above the floor.
 

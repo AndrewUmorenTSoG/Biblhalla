@@ -1,6 +1,5 @@
 import {gideonReboundFrame} from './gideon-rebound.ts';
 import { HitIndicators } from './hit-indicators.ts';
-import { createGoliath } from '../../../../packages/campaign/src/goliath.ts';
 import { GiantMotion, drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
 import { handGrip, needsCarriedWeapon } from './grip.ts';
@@ -45,7 +44,6 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  private encounterGiant = createGoliath();
   giantMotion = new GiantMotion();
   capture(world:SimState,scene?:Scene|null){this.hitIndicators.collect(world);if(scene?.level.number===41)this.giantMotion.capture(scene.goliath,scene.tick);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean;facing:number;turnUntil:number}>();
@@ -274,7 +272,10 @@ export class Renderer{
       const pos=screen(scene.companion.x,scene.companion.y);
       this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');
     }
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dash';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
+    const chapterFight = (world.options.storyFight ?? world.options.exhibitionOpponent) !== undefined;
+    for(let index=0;index<world.fighters.length;index++){
+      const f=world.fighters[chapterFight ? world.fighters.length-1-index : index];
+      if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dash';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
       let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0,stunned:!!f.stun,facing:f.facing,turnUntil:0};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;
@@ -293,31 +294,35 @@ export class Renderer{
       }
       const ghost = f.action?.kind==='dodge' ? this.S.invincible(f) : !!f.invulnerable && world.tick%8<4;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      const encounter = world.options.storyFight ?? world.options.exhibitionOpponent;
-      const run = world.bossRun;
-      const scripted = f.guard !== null && encounter !== undefined && run && world.bossScript;
-      const animal = scripted && encounter < 2 ? this.art[encounter === 0 ? 'lion' : 'bear'] : null;
-      if (scripted && encounter === 2) {
-        const state = this.encounterGiant;
-        state.giant.facing = f.facing;
-        state.giant.walking = Math.abs(f.vx) > 100;
-        const move = scripted.phases[run.phase - 1][run.index % scripted.phases[run.phase - 1].length];
-        state.tell = move.tell;
-        state.advance.state = move.kind === 'sweep' && (run.stage === 'tell' || run.stage === 'active') ? run.stage : 'idle';
-        state.advance.ticks = run.ticks;
-        state.lanes[0].state = run.stage === 'active' && move.kind !== 'sweep' ? 'active' : 'safe';
-        drawGoliath(c,p.x,p.y,this.camera.zoom,state,world.tick);
-      } else if (scripted && animal?.naturalWidth) {
-        const moves = scripted.phases[run.phase - 1];
+      const encounter = f.partner ? 0 : world.options.storyFight ?? world.options.exhibitionOpponent;
+      const run = f.partner?.run ?? world.bossRun;
+      const script = f.partner?.script ?? world.bossScript;
+      if (f.guard !== null && encounter !== undefined && run && script) {
+        const moves = script.phases[run.phase - 1];
         const move = moves[run.index % moves.length];
-        const moving = Math.abs(f.vx) > 100;
-        const frame = run.stage === 'tell' ? move.frame! : run.stage === 'active' ? move.frame! + (move.grab && run.ticks > 3 ? 0 : 1)
-          : run.stage === 'recovery' && run.ticks > move.recovery * .55 ? move.frame! + 1
-          : moving ? 2 + Math.floor(world.tick / 5) % 4 : Math.floor(world.tick / 24) % 2;
-        const size = 106 * this.camera.zoom * f.scale;
-        c.save(); c.translate(p.x, p.y); c.scale(f.facing, 1);
-        c.drawImage(animal, (frame % 4) * 192, Math.floor(frame / 4) * 192, 192, 192, -size / 2, -size, size, size);
-        c.restore();
+        const champion = encounter === 2;
+        const sheet = this.art[champion ? 'goliath' : encounter === 0 ? 'lion' : 'bear'];
+        if (sheet?.naturalWidth) {
+          const walking = Math.abs(f.vx) > 100;
+          let frame = walking ? 2 + Math.floor(world.tick / 5) % 4 : Math.floor(world.tick / 24) % 2;
+          if (champion) {
+            frame = f.stun ? 5 : run.stage === 'tell' ? 2 : run.stage === 'active' ? (move.kind === 'sweep' ? 4 : 3)
+              : walking ? Math.floor(world.tick / 10) % 2 : 0;
+          } else if (!f.ground) {
+            frame = f.vy > 2*Q ? 13 : f.vy < -2*Q ? 15 : 14;
+          } else if (run.stage === 'tell') {
+            frame = run.ticks > move.tell * .75 ? 16 : move.frame!;
+          } else if (run.stage === 'active') {
+            frame = move.grab && run.ticks > 3 ? move.frame! : run.ticks > move.active * .82 ? 17 : move.frame! + 1;
+          } else if (run.stage === 'recovery') {
+            frame = run.ticks > move.recovery * .65 ? 18 : run.ticks > move.recovery * .28 ? 19 : 12;
+          }
+          const cell = champion ? 384 : 192, columns = champion ? 3 : 4;
+          const size = (champion ? 117 : 106) * this.camera.zoom * f.scale;
+          c.save(); c.translate(p.x,p.y); c.scale(f.facing,1);
+          c.drawImage(sheet,frame % columns * cell,Math.floor(frame / columns)*cell,cell,cell,-size/2,-size,size,size);
+          c.restore();
+        }
       } else {
       const reaction=giant && (giant.move==='throw'||giant.move==='headbutt') ? grapplePose(giant) : null;
       const victimFrame=reaction && this.atlas[f.hero]?.[reaction.frame];
@@ -333,7 +338,7 @@ export class Renderer{
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+(f.human?66:46))*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
       if(p.x<20||p.x>1260||p.y<90||p.y>700){c.fillStyle='#f0cf8d';c.strokeStyle='#364a4d';const px=Math.max(30,Math.min(1250,p.x)),py=Math.max(110,Math.min(680,p.y));c.beginPath();c.arc(px,py,18,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#203943';c.textAlign='center';c.font='bold 13px system-ui';c.fillText('P'+f.id,px,py+5);if(f.human)drawPlayerMark(c,f.id,px,py-26,6);}
-      if(this.debug){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.fighterCollisionPhases?.[f.hero]??m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
+      if(this.debug && world.mode==='training'){c.strokeStyle='#e9f5b2';c.strokeRect(p.x-20*this.camera.zoom*f.scale,p.y-74*this.camera.zoom*f.scale,40*this.camera.zoom*f.scale,74*this.camera.zoom*f.scale);if(f.action?.kind==='attack'){const a=f.action,m=this.S.moves[a.move!];for(const ph of m.fighterCollisionPhases?.[f.hero]??m.collisionPhases){const box=this.S.rectFor(f,ph.rectUnits,a.facing);const b=screen(box[0],box[1]+box[3]);c.strokeStyle=a.tick<m.startup?'#81b7de':a.tick<m.startup+m.active?'#ec8870':'#ddc983';c.strokeRect(b.x,b.y,box[2]/Q*this.camera.zoom,box[3]/Q*this.camera.zoom);}}}
     }
     this.collectElements(world);drawElements(c,{...world,events:this.elementEvents},screen,this.camera.zoom,this.reduced);
     for(const projectile of world.projectiles){const prior=this.previousProjectiles.get(projectile.id);

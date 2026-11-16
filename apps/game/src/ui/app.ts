@@ -24,7 +24,7 @@ import { DRILLS, DrillRun } from '../training/drills.ts';
 import { buildRoster, CPU_INPUT, ReadyBoard } from './lobby.ts';
 import { moveShowcase } from './move-showcase.ts';
 import { storyResult } from './story-result.ts';
-import { DAVID_FIGHTS, davidFightOptions, withChapterOpponent } from '../../../../packages/campaign/src/david-fights.ts';
+import { DAVID_CHAPTER, DAVID_FIGHTS, davidFightOptions, withChapterOpponent } from '../../../../packages/campaign/src/david-fights.ts';
 
 export function startApp(C: Content, S: Engine, A: CampaignApi, art: RuntimeArt): void {
 const root: any = globalThis;
@@ -78,7 +78,7 @@ function resume(){if(!world)return;const required=world.fighters.filter((f:any)=
 function retry(){if(world?.options.storyFight!==undefined&&!replayPlayback){startFight(world.options.storyFight);return;}if(scene){startScene(scene.levelId,true);return;}if(tutorial){startTutorial(inputNext);return;}const opts=world.options;startGame(opts);}
 /** Stock-loss cues (13_Audio_VFX): the card flashes for a second when a life is lost; the last life is marked. */
 const hudStocks=new Map<number,{world:any;start:number;last:number;lostAt:number}>();
-function hudEntry(f:any){let e=hudStocks.get(f.id);if(!e||e.world!==world){e={world,start:Math.max(3,f.stocks),last:f.stocks,lostAt:-1e9};hudStocks.set(f.id,e);}if(f.stocks<e.last)e.lostAt=world.tick;e.last=f.stocks;return e;}
+function hudEntry(f:any){let e=hudStocks.get(f.id);if(!e||e.world!==world){e={world,start:f.stocks,last:f.stocks,lostAt:-1e9};hudStocks.set(f.id,e);}if(f.stocks<e.last)e.lostAt=world.tick;e.last=f.stocks;return e;}
 function hudStart(f:any){return hudEntry(f).start;}
 function hudLost(f:any){return world.tick-hudEntry(f).lostAt<60;}
 function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?playerGlyph(f.id)+' P'+f.id+' · ':'')+f.name),el('small',f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor(f.damage/10)),'damage');d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,hudStart(f)-f.stocks))+' · '+(f.stocks?f.stocks+(f.stocks===1?' life':' lives'):'out'),'life'));const lost=hudLost(f);if(lost)card.classList.add('stock-lost');if(f.stocks===1&&hudStart(f)>1)card.classList.add('last-life');if(!f.stocks)card.classList.add('eliminated');box.append(card);}
@@ -98,9 +98,9 @@ function showResult(){if(resultShown)return;resultShown=true;inputs.active=false
   if(fightIndex!==undefined&&!replayPlayback){
     const won=world.result?.won;
     if(won){store.data.davidWins=Math.max(store.data.davidWins,fightIndex+1);store.save();}
-    $('result-title').textContent=won?(fightIndex===2?'David defeats Goliath':'David defeats '+DAVID_FIGHTS[fightIndex].name):'David fell to '+DAVID_FIGHTS[fightIndex].name;
+    $('result-title').textContent=won?(fightIndex===2?'David defeats Goliath':'David defeats '+DAVID_CHAPTER[fightIndex].name):'David fell to '+DAVID_CHAPTER[fightIndex].name;
     $('next-level').hidden=!won||fightIndex===2;
-    $('next-level').textContent=won&&fightIndex<2?'Fight '+DAVID_FIGHTS[fightIndex+1].name+' →':'Next fight';
+    $('next-level').textContent=won&&fightIndex<2?'Fight '+DAVID_CHAPTER[fightIndex+1].name+' →':'Next fight';
     $('rematch').textContent=won?'Replay fight':'Retry fight';
   } else $('next-level').textContent='Next level →';
   open($('result-dialog'));announce($('result-title').textContent);
@@ -146,17 +146,17 @@ function renderFights(){
   $('fight-difficulty').value=settings.difficulty;
   $('fight-continue').textContent=wins===3?'Replay chapter →':'Fight as David →';
   grid.replaceChildren();
-  DAVID_FIGHTS.forEach((fight,index)=>{
+  DAVID_CHAPTER.forEach((fight,index)=>{
     const button=el('button','','level-card') as HTMLButtonElement;
     button.disabled=index>wins;
-    button.append(el('small','PART '+fight.part+' · '+(index===2?'BOSS':'FIGHT '+(index+1))),el('h2',fight.name),el('p',fight.intro),el('span',index<wins?'Won · replay':button.disabled?'Defeat '+DAVID_FIGHTS[index-1].name+' to unlock':'Enter fight →'));
+    button.append(el('small','PART '+fight.part+' · '+(index===2?'BOSS':'FIGHT '+(index+1))),el('h2',fight.name),el('p',fight.intro),el('span',index<wins?'Won · replay':button.disabled?'Defeat '+DAVID_CHAPTER[index-1].name+' to unlock':'Enter fight →'));
     button.addEventListener('click',()=>startFight(index));grid.append(button);
   });
 }
 function startFight(index:number){
-  if(index>store.data.davidWins||!DAVID_FIGHTS[index])return;
+  if(index>store.data.davidWins||!DAVID_CHAPTER[index])return;
   if(currentInputId()==='unavailable'){chooseInput(()=>startFight(index));return;}
-  const fight=DAVID_FIGHTS[index];
+  const fight=DAVID_CHAPTER[index];
   startGame(davidFightOptions(index,settings.difficulty,currentInputId()));
   $('game-title').textContent='Part '+fight.part+' · David vs '+fight.name;
   $('objective').textContent='Launch '+fight.name+' beyond the arena boundary.';
@@ -199,7 +199,11 @@ open($('story-dialog'));}
 function activeStory(){closeDialogs();A.begin(scene);inputs.active=true;inputs.clear();audio.unlock();$('arena').focus();}
 function showCard(){if(!scene||scene.pendingCard===null||$('story-dialog').open)return;inputs.active=false;inputs.clear();const card=A.card(scene,scene.pendingCard);storyPurpose='card';$('story-label').textContent=card.label;$('story-title').textContent=card.heading;$('story-reference').textContent=card.reference;$('story-text').textContent=card.text;$('story-rule').textContent=scene.level.uniqueRule;$('story-skip').hidden=true;$('story-choices').replaceChildren();$('puzzle-prompt').textContent=card.puzzle?card.prompt:'';$('story-confirm').hidden=card.puzzle;$('story-confirm').textContent='Continue →';if(card.puzzle){const rotation=(scene.pendingCard+scene.level.number)%3;for(let k=0;k<3;k++){const n=(k+rotation)%3,button=el('button',card.choices[n]);button.addEventListener('click',()=>{if(A.resolveCard(scene,n)){close($('story-dialog'));inputs.active=true;inputs.clear();audio.unlock();$('arena').focus();}else {$('puzzle-prompt').textContent='Try again. '+card.prompt;}});$('story-choices').append(button);}const clueButton=el('button','Show clue','clue-button') as HTMLButtonElement;clueButton.type='button';clueButton.addEventListener('click',()=>{$('puzzle-prompt').textContent=card.prompt+' '+card.clue;clueButton.disabled=true;});$('story-choices').append(clueButton);}open($('story-dialog'));}
 function info(title:string,label:string,nodes:any[],resumeAfter=false){$('info-dialog').classList.remove('controls-dialog');infoResume=resumeAfter;$('info-title').textContent=title;$('info-label').textContent=label;$('info-content').replaceChildren(...nodes);open($('info-dialog'));}
-function context(){if(!world)return;const wasRunning=scene?scene.phase==='active':world.phase==='playing'||world.phase==='countdown';if(wasRunning)pause('Context');const nodes:any[]=[];if(scene){nodes.push(el('p',scene.level.scripture,'reference'),el('p',scene.sourceSummary,'context-note'),el('h3','Invented archive challenge'),el('p',scene.level.objective+' '+scene.level.uniqueRule));if(scene.level.boss)nodes.push(el('p','Training phases: '+scene.level.boss.phases.join(' '),'context-note'));}else {nodes.push(el('p','This exhibition brings characters from different historical periods together in a fictional sporting setting. Arena meetings and moves are inventions. A victory does not express divine preference.','context-note'));for(const f of world.fighters.slice(0,2)){const def=S.defs[f.hero];nodes.push(el('h3',def.name),el('p',def.scriptureReferences||''),el('p',def.storyContext||''));}}info('Story & context','BACKGROUND AND INVENTION',nodes,false);}
+function context(){if(!world)return;const wasRunning=scene?scene.phase==='active':world.phase==='playing'||world.phase==='countdown';if(wasRunning)pause('Context');const nodes:any[]=[];if(scene){nodes.push(el('p',scene.level.scripture,'reference'),el('p',scene.sourceSummary,'context-note'),el('h3','Invented archive challenge'),el('p',scene.level.objective+' '+scene.level.uniqueRule));if(scene.level.boss)nodes.push(el('p','Training phases: '+scene.level.boss.phases.join(' '),'context-note'));}else if((world.options.storyFight ?? world.options.exhibitionOpponent)!==undefined){
+  const index=world.options.storyFight ?? world.options.exhibitionOpponent;
+  const fight=world.options.storyFight!==undefined?DAVID_CHAPTER[index]:DAVID_FIGHTS[index];
+  nodes.push(el('h3',fight.name),el('p',index===2?'1 Samuel 17:40–50':'1 Samuel 17:34–37','reference'),el('p',fight.intro));
+}else {nodes.push(el('p','This exhibition brings characters from different historical periods together in a fictional sporting setting. Arena meetings and moves are inventions. A victory does not express divine preference.','context-note'));for(const f of world.fighters.slice(0,2)){const def=S.defs[f.hero];nodes.push(el('h3',def.name),el('p',def.scriptureReferences||''),el('p',def.storyContext||''));}}info('Story & context','BACKGROUND AND INVENTION',nodes,false);}
 function controls(){
  const k=(a:string)=>keyLabel(settings.bindings[a]);
  const groups=[['Movement',[
@@ -314,7 +318,7 @@ for (const choice of document.querySelectorAll<HTMLButtonElement>('#modes .mode-
 $('home-play').addEventListener('click',()=>screen('modes'));$('home-continue').addEventListener('click',()=>gate(resumeFights));
 $('mode-story').addEventListener('click',()=>screen('story-fights'));
 $('fight-continue').addEventListener('click',resumeFights);
-$('open-archive').addEventListener('click',()=>screen('chapters'));
+
 $('fight-difficulty').addEventListener('change',()=>{settings.difficulty=$('fight-difficulty').value;store.save();});$('mode-quick').addEventListener('click',()=>screen('setup'));$('mode-local').addEventListener('click',()=>{screen('local');renderLocal();});
 $('confirm-input').addEventListener('click',()=>{const selected=(document.querySelector('input[name=input-method]:checked') as HTMLInputElement).value;if(selected==='controller'&&!inputs.pads().some((p:any)=>inputs.padSeen.has(p.index)))return;settings.input=selected;store.save();close($('input-dialog'));applySettings();if(inputFromGame&&world){world.fighters.find((f:any)=>f.human).inputId=currentInputId();showGame();inputs.active=false;open($('pause-dialog'));}else if(inputNext){const fn=inputNext;inputNext=null;fn();}});
 document.querySelectorAll('input[name=input-method]').forEach(r=>r.addEventListener('change',updateControllers));

@@ -76,7 +76,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     charset: 'utf8',
   }).outputFiles[0].text;
   const art = runtimeArt();
-  for (const animal of ['lion', 'bear']) {
+  for (const animal of ['lion', 'bear', 'goliath']) {
     const bytes = readFileSync(join(ROOT, 'assets', 'runtime', 'story', animal + '.png'));
     art.images[animal] = 'data:image/png;base64,' + bytes.toString('base64');
   }

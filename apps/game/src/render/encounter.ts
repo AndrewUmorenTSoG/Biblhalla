@@ -40,7 +40,7 @@ function zone(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: n
 /** `reducedMotion` keeps every warning but drops animation: no flashing, no moving streaks. */
 export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scene: Scene | null, reducedMotion = false): void {
   const hz = world.bossHazard;
-  if (hz) {
+  if (hz && scene) {
     const [x, y, w, h] = hz.box.map(v => v / Q);
     zone(c, x, y, w, h, hz.stage === 'active', hz.stage === 'active' ? hz.name.toUpperCase() : `${hz.name} · ${Math.ceil(hz.ticks / 60 * 10) / 10}s`);
   }

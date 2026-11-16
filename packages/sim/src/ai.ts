@@ -3,7 +3,7 @@
 
 import type { SimContext } from './context.ts';
 import type { Fighter, Input, SimState } from './types.ts';
-import { Q, nextRandom } from './fixed.ts';
+import { Q, clamp, nextRandom } from './fixed.ts';
 import { event, input } from './state.ts';
 import { eligibleItem } from './moveResolver.ts';
 
@@ -50,12 +50,18 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(ctx, s, f);
   // Scripted bosses act only through their authored pattern (boss.ts).
   if (s.bossScript && f.guard !== null) {
+    const [x,y,w,h] = s.map.main.rectUnits;
+    if (!f.ground && (f.x < x*Q || f.x > (x+w)*Q || f.y < (y+h-10)*Q)) return recover(f,x*Q,(x+w)*Q,(y+h)*Q);
+    const run = f.partner?.run ?? s.bossRun;
     const player = s.fighters.find(other => other.human && other.stocks && !other.respawn);
-    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && s.bossRun?.stage === 'gap') {
+    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && run?.stage === 'gap') {
       const [left, , width] = s.map.main.rectUnits;
-      const destination = Math.max((left + 48) * Q, Math.min((left + width - 48) * Q, player.x));
+      const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
+      const spacing = champion ? 152 : f.partner ? 45 : 60;
+      const flank = s.options.storyFight === 1 ? (f.partner ? -1 : 1) : (Math.sign(f.x - player.x) || 1);
+      const destination = clamp(player.x + flank * spacing * Q, (left + 48) * Q, (left + width - 48) * Q);
       const distance = destination - f.x;
-      return input({ x: Math.abs(distance) > 42 * Q ? Math.sign(distance) : 0, jump: !!f.ground && player.y > f.y + 55 * Q });
+      return input({ x: Math.abs(distance) > 9 * Q ? Math.sign(distance) : 0, jump: !!f.ground && player.y > f.y + 55 * Q });
     }
     return input();
   }

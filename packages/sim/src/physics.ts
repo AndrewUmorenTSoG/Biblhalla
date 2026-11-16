@@ -132,7 +132,7 @@ function respawn(ctx: SimContext, s: SimState, f: Fighter): void {
   delete f.exhaustedJumps;
   if (s.options.storyFight !== undefined && f.human) f.weapon = 'sling';
   if ((s.options.storyFight ?? s.options.exhibitionOpponent) === 2 && !f.human) f.weapon = 'spear';
-  if (s.options.exhibitionOpponent !== undefined && f.maxGuard !== null) f.guard = f.maxGuard;
+  if ((s.options.exhibitionOpponent ?? s.options.storyFight) !== undefined && f.maxGuard !== null) f.guard = f.maxGuard;
   event(s, 'respawn', { fighter: f.id });
 }
 

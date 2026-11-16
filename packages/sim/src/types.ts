@@ -63,6 +63,7 @@ export interface BotMemory {
 }
 
 export interface Fighter {
+  partner?: { script: BossScript; run: BossRun };
   crouching?: boolean;
   grabbed?: { owner: number; instance: number; until: number };
   id: number;
@@ -156,6 +157,7 @@ export type Mode = 'duel' | 'waves' | 'boss' | 'training' | 'local' | 'teams' | 
 export type Phase = 'countdown' | 'playing' | 'paused' | 'result';
 
 export interface FighterConfig {
+  partnerScript?: BossScript;
   hero: string;
   name?: string;
   human?: boolean;

@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { S } from '../helpers/engine.ts';
-import { DAVID_FIGHTS, davidFightOptions } from '../../packages/campaign/src/david-fights.ts';
+import { DAVID_CHAPTER, davidFightOptions } from '../../packages/campaign/src/david-fights.ts';
 
-for (const [index, fight] of DAVID_FIGHTS.entries()) {
+for (const [index, fight] of DAVID_CHAPTER.entries()) {
   test('David fights '+fight.name+' with the chapter loadout and wins only on a ring-out', () => {
     const world=S.create(davidFightOptions(index,'hard','touch'));
     const [david,enemy]=world.fighters;
@@ -12,7 +12,17 @@ for (const [index, fight] of DAVID_FIGHTS.entries()) {
     assert.equal(enemy.weapon,index===2?'spear':'unarmed');
     enemy.guard=0; world.phase='playing'; S.step(world);
     assert.equal(world.phase,'playing');
-    enemy.y = -10000*S.Q; S.step(world);
+    const opponents=world.fighters.slice(1);
+    if(index===1)assert.deepEqual(opponents.map(f=>[f.name,f.stocks]),[['Bear',2],['Lion Man',2]]);
+    for(const beast of opponents){
+      const stocks=beast.stocks;
+      for(let life=0;life<stocks;life++){
+        while(beast.respawn)S.step(world);
+        assert.equal(world.phase,'playing');
+        beast.y = -10000*S.Q; beast.ground=null; S.step(world);
+        assert.equal(beast.stocks,stocks-life-1);
+      }
+    }
     assert.equal(world.result?.won,true);
   });
 }
@@ -35,4 +45,16 @@ test('Lion Man connects with claws, bite, and a single grab and release against 
   }
   assert.equal(held,true);
   assert.deepEqual(hits,['Claw slash','Fang lunge','Mane throw']);
+});
+
+test('both beasts steer and jump back to the platform from a recoverable launch on Easy',()=>{
+  for(const slot of [1,2]){
+    const world=S.create(davidFightOptions(1,'easy','keyboard'));
+    world.phase='playing';
+    const beast=world.fighters[slot], [left,bottom,,height]=world.map.main.rectUnits;
+    beast.ground=null; beast.x=(left-65)*S.Q; beast.y=(bottom+height+6)*S.Q; beast.vy=-S.Q;
+    for(let tick=0;tick<180&&!beast.ground;tick++)S.step(world);
+    assert.ok(beast.ground,beast.name+' should land');
+    assert.equal(beast.stocks,2);
+  }
 });
