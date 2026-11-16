@@ -35,7 +35,7 @@ export function storyResult(r: StoryResultInput): StoryResult {
     [tasks, `Time ${formatTime(r.ticks)}`, r.level.kind === 'witness' ? null : DIFFICULTY_NAMES[r.difficulty] ?? r.difficulty].filter(Boolean).join(' · '),
   ];
   if (medal) lines.push(newBest && r.previousBest ? `${medal.label} — a new best for this level.` : medal.label);
-  if (r.level.number === 84) lines.push('The Story Archive is complete.');
+  if (r.level.number === 84) lines.push('Story Mode is complete.');
   else if (r.level.nextLevel) lines.push('The next level is open.');
   return { title: name, lines, medal: medal?.tier ?? null, newBest };
 }

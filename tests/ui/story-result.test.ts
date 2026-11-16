@@ -23,7 +23,7 @@ test('witness levels never mention difficulty or a new best', () => {
   assert.equal(r.medal, 'witness');
   assert.equal(r.newBest, false);
   assert.ok(!/Hard|Easy/.test(r.lines.join(' ')));
-  assert.ok(r.lines.includes('The Story Archive is complete.'));
+  assert.ok(r.lines.includes('Story Mode is complete.'));
 });
 
 test('an unfinished level reassures the player that checkpoint progress is kept', () => {
