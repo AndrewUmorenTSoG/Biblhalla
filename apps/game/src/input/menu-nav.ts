@@ -5,7 +5,7 @@
 export type NavDirection = 'up' | 'down' | 'left' | 'right';
 export interface NavRect { x: number; y: number; w: number; h: number }
 
-const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]):not([type=hidden]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE = 'button:not([disabled]), summary, [href], input:not([disabled]):not([type=hidden]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 const REPEAT_DELAY_MS = 380, REPEAT_RATE_MS = 140;
 const STICK_THRESHOLD = 0.55;
 
