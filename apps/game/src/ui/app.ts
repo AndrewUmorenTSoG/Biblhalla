@@ -89,7 +89,35 @@ function showResult(){if(resultShown)return;resultShown=true;inputs.active=false
   else {$('result-title').textContent=replayPlayback?(S.hash(world)===replayPlayback.finalHash?'Replay verified.':'Replay checksum differs.'):world.result?.won?'Well played!':'The next round awaits.';$('result-reason').textContent=world.result?.reason||'Match complete';$('next-level').hidden=true;$('rematch').textContent=store.data.controlChecked&&tutorialFinished?'Continue →':'Play again →';const player=world.fighters[0];const places=world.result?.placements||[];if(places.length>1){const ord=(n:number)=>n+(n===1?'st':n===2?'nd':n===3?'rd':'th');$('result-stats').replaceChildren(...places.map((p:any)=>el('p',ord(p.place)+' · '+(p.human?'P'+p.fighter+' · ':'')+p.name+' · '+p.stocks+(p.stocks===1?' life':' lives')+' left · '+Math.floor(p.damageDealt/10)+' damage dealt','placement')),el('p',Math.floor(world.tick/60)+' seconds'));}else $('result-stats').textContent='Damage dealt '+Math.floor(player.damageDealt/10)+' · Hits '+player.hits+' · '+Math.floor(world.tick/60)+' seconds';if(replayRecord&&world.options.mode!=='training'){replayRecord.finalHash=S.hash(world);lastReplay=replayRecord;try{replayLibrary.add(replayRecord,(world.mode==='duel'?'Duel':world.mode)+' · '+world.fighters.map((f:any)=>f.name).join(' vs ')+' · '+world.map.name);}catch(e){}}}
   open($('result-dialog'));announce($('result-title').textContent);
 }
-function renderRoster(){const grid=$('roster-grid');grid.replaceChildren();for(const f of C.fighters.fighters){const label=el('label','','fighter-choice');const radio=el('input') as HTMLInputElement;radio.type='radio';radio.name='hero';radio.value=f.id;radio.checked=f.id===selectedHero;const canvas=el('canvas') as HTMLCanvasElement;canvas.width=150;canvas.height=150;label.append(radio,canvas,el('b',f.name),el('small',f.weaponPair.join(' / ')));grid.append(label);renderer.portrait(canvas,f.id);radio.addEventListener('change',()=>{selectedHero=f.id;{const label=el('label','','fighter-choice');const radio=el('input') as HTMLInputElement;radio.type='radio';radio.name='hero';radio.value='random';radio.checked=selectedHero==='random';label.append(radio,el('b','Random'),el('small','From the match seed'));grid.append(label);radio.addEventListener('change',()=>{selectedHero='random';updateSelected();});}updateSelected();});}updateSelected();}
+function renderRoster(){
+  const grid=$('roster-grid');
+  grid.replaceChildren();
+  function choice(id:string,name:string,description:string,portrait?:HTMLCanvasElement){
+    const label=el('label','','fighter-choice');
+    const radio=el('input') as HTMLInputElement;
+    radio.type='radio';
+    radio.name='hero';
+    radio.value=id;
+    radio.checked=id===selectedHero;
+    radio.addEventListener('change',()=>{
+      selectedHero=id;
+      updateSelected();
+    });
+    label.append(radio);
+    if(portrait)label.append(portrait);
+    label.append(el('b',name),el('small',description));
+    grid.append(label);
+  }
+  for(const fighter of C.fighters.fighters){
+    const canvas=el('canvas') as HTMLCanvasElement;
+    canvas.width=150;
+    canvas.height=150;
+    renderer.portrait(canvas,fighter.id);
+    choice(fighter.id,fighter.name,fighter.weaponPair.join(' / '),canvas);
+  }
+  choice('random','Random','From the match seed');
+  updateSelected();
+}
 function updateSelected(){if(selectedHero==='random'){$('selected-info').replaceChildren(el('h2','Random fighter'),el('p','Chosen from the match seed and shown before the countdown.'));return;}const f=S.defs[selectedHero],box=$('selected-info');box.replaceChildren(el('h2',f.name),el('p',f.title));const stats=el('div','','stat-line');for(const [key,val] of Object.entries(f.stats))stats.append(el('span',key+' '+val));box.append(stats);}
 function renderChapters(){$('chapter-progress').textContent=store.data.completed.length+' of 84 levels complete · progression stays on this device';$('story-difficulty').value=settings.difficulty;const grid=$('chapter-grid');grid.replaceChildren();C.campaign.chapters.forEach((ch:any,i:number)=>{const button=el('button','','chapter-card');button.style.setProperty('--chapter',CHAPTER_COLORS[i]+'88');const count=ch.levels.filter((id:string)=>store.data.completed.includes(id)).length;button.append(el('small','CHAPTER '+String(i+1).padStart(2,'0')),el('h2',ch.title),el('span',count+' / 6 complete'+(ch.levels.some((id:string)=>store.data.medals[id]==='extreme')?' · '+ch.levels.filter((id:string)=>store.data.medals[id]==='extreme').length+' gold':'')));button.addEventListener('click',()=>renderLevels(i+1));grid.append(button);});}
 function renderLevels(chapter:number){currentChapter=chapter;const ch=C.campaign.chapters[chapter-1];screen('levels');$('chapter-number').textContent='CHAPTER '+String(chapter).padStart(2,'0');$('chapter-title').textContent=ch.title;$('chapter-arc').textContent=ch.arc;const grid=$('level-grid');grid.replaceChildren();for(const id of ch.levels){const l=C.campaign.levels.find((l:any)=>l.id===id),done=store.data.completed.includes(id),button=el('button','','level-card');button.disabled=!store.unlocked(l);button.append(el('span',(done?'✓ ':'')+'LEVEL '+String(l.number).padStart(2,'0'),'number'),el('h2',l.title),el('p',l.objective),el('small',l.scripture+' · '+l.kind+(button.disabled?' · Complete previous level':'')));const medal=medalFor(l,store.data.medals[id]);if(medal)button.append(el('span',medal.label,'medal medal-'+medal.tier));button.addEventListener('click',()=>startScene(id));grid.append(button);}}
