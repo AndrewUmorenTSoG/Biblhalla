@@ -24,6 +24,6 @@ test('a sustained hit reaction holds its final pose rather than restarting the r
   for(const id of Object.keys(meta)){
     assert.equal(renderer.frameFor(id,'recovery','unarmed','',0,0),'defence_13');
     assert.equal(renderer.frameFor(id,'recovery','unarmed','',0,1000),'defence_14');
-    assert.equal(renderer.frameFor(id,'dodge','unarmed','',0,1000),'defence_11');
+    assert.equal(renderer.frameFor(id,'dodge','unarmed','',0,1000),'equipped_unarmed_dodge_7');
   }
 });

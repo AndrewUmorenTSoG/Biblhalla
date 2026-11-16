@@ -42,7 +42,7 @@ export class Renderer{
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
   capture(world:SimState){if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
-  motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean}>();
+  motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean;facing:number;turnUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();callouts=new Callouts();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};particles:any[]=[];lastEvent=0;debug=false;reduced=false;
   constructor(canvas:HTMLCanvasElement,S:Engine,art:RuntimeArt={images:{},atlas:{}}){this.canvas=canvas;this.ctx=canvas.getContext('2d')!;this.S=S;this.art=art.images;this.atlas=art.atlas;this.arenas=art.arenas??{};this.clips=art.clips??{};}
@@ -65,7 +65,23 @@ export class Renderer{
   weapon(weapon:string,x:number,y:number,angle:number,palette:string){drawWeapon(this.ctx,weapon,x,y,angle,palette);}
   /** Atlas frame for a pose: signature key poses for signatures, the light pose for other attacks. */
   frameFor(hero:string,pose:string,weapon:string,move:string,attackTick=0,time=0){
-    if(pose==='hitstun'&&this.atlas?.[hero]?.defence_13)return time<7?'defence_13':'defence_14';
+    const frames = this.atlas?.[hero];
+    if (!move && frames?.equipped_unarmed_dodge_0) {
+      if (pose === 'hitstun') {
+        const clip = this.clips[hero].hitstun;
+        return clip.frames[Math.min(clip.frames.length - 1, Math.floor(time / 2))];
+      }
+      let index: number | undefined;
+      if (pose === 'idle') index = Math.floor(time / 3) % 12;
+      if (pose === 'dash') return 'equipped_'+weapon+'_dodge_'+Math.min(7,Math.floor(time));
+      if (pose === 'dodge') index = Math.min(7, Math.floor(time / 2));
+      if (pose === 'turn' || pose === 'land' || pose === 'air_rise') index = Math.min(2, Math.floor(time / 2));
+      if (index !== undefined) {
+        const name = 'equipped_' + weapon + '_' + pose + '_' + index;
+        if (frames[name]) return name;
+      }
+    }
+    if(pose==='hitstun'&&frames?.defence_13)return time<7?'defence_13':'defence_14';
     if(!move&&this.atlas?.[hero]?.['equipped_'+weapon+'_0']){
       const key=(i:number)=>'equipped_'+weapon+'_'+i;
       if(pose==='idle'||pose==='happy'||pose==='startup')return key(Math.floor(time/24)%2);
@@ -102,13 +118,13 @@ export class Renderer{
   }
 
   /** Draw a carried weapon at the leading hand of a movement sprite. */
-  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string,fiery=false,charging=false){
+  heldWeapon(weapon:string,frame:any,frameName:string,time:number,accent:string,fiery=false,charging=false,artScale=1){
     if(weapon==='unarmed')return;
     const c=this.ctx;
     const running=frameName.startsWith('run_');
     const airborne=frameName.startsWith('air_');
     const {x:handX,y:handY}=handGrip(frame);
-    c.save();c.translate(handX,handY);
+    c.save();c.translate(handX,handY);c.scale(artScale,artScale);
     if(weapon==='sling'&&charging){
       // Both cords share the fist; the pouch revolves even when David is still.
       const phase=time*(running?.32:.22)-1.3;
@@ -126,12 +142,16 @@ export class Renderer{
 
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0,releaseState=''){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const attack=this.S?.moves?.[move];const throwingShield=attack?.projectile?.effect==='shield';const shieldRelease=pose!=='hitstun'&&weapon==='shield'&&frames.release_0&&((releaseState&&(!move||throwingShield))||!move&&pose==='idle'&&!frames.equipped_shield_0||throwingShield);const releaseIndex=shieldReleaseFrame(attackTick,this.S?.moves?.[move]?.startup??16,releaseState,charge>0);const frameName=shieldRelease?'release_'+releaseIndex:charge>0&&weapon==='sling'?(frames.equipped_sling_13?'equipped_sling_13':frames.slinger_cast_1?'slinger_cast_1':'motion_idle'):this.frameFor(hero,pose,weapon,move,attackTick,time);const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const attack=this.S?.moves?.[move];const throwingShield=attack?.projectile?.effect==='shield';const shieldRelease=pose!=='hitstun'&&weapon==='shield'&&frames.release_0&&((releaseState&&(!move||throwingShield))||!move&&pose==='idle'&&!frames.equipped_shield_0||throwingShield);const releaseIndex=shieldReleaseFrame(attackTick,this.S?.moves?.[move]?.startup??16,releaseState,charge>0);const authored=this.frameFor(hero,pose,weapon,move,attackTick,time);
+      const useWindup=throwingShield && !releaseState && !charge && attackTick<attack.startup;
+      const frameName=shieldRelease && !useWindup ? 'release_'+releaseIndex :
+        charge>0 && weapon==='sling' ? (frames.equipped_sling_13?'equipped_sling_13':'slinger_cast_1') : authored;
+      const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
-      if((pose==='idle'||pose==='happy')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
-      if(attack&&!this.reduced&&!ghost&&pose!=='hitstun'){
+      if((pose==='idle'||pose==='happy')&&!frameName.includes('_idle_')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
+      if(attack&&!frames.equipped_unarmed_dodge_0&&!this.reduced&&!ghost&&pose!=='hitstun'){
         // Shift weight onto the lead foot as the authored contact pose appears.
         const windup=Math.max(1,attack.startup),end=windup+attack.active;
         const weight=attackTick<windup?-Math.sin(Math.PI*attackTick/windup)*.45:
@@ -150,13 +170,13 @@ export class Renderer{
       c.drawImage(sheet,frame.x,frame.y,frame.w,frame.h,-frame.pivotX,-frame.pivotY,frame.w,frame.h);
       c.filter='none';
       if(!shieldRelease&&needsCarriedWeapon(frameName,weapon)){
-        this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david',charge>0);
+        this.heldWeapon(weapon,frame,frameName,charge>0?time*5+charge*2:time,p[1],hero==='david',charge>0,frames.idle.h/160);
         // Draw the original fingers over the grip, so equipment is held in
         // the hand rather than pasted behind the body or over the fist.
         const gx=Math.max(0,Math.min(frame.w-10,(frame.gripX??frame.w*.74)-5)),gy=Math.max(0,Math.min(frame.h-10,(frame.gripY??frame.h*.56)-5));
         c.drawImage(sheet,frame.x+gx,frame.y+gy,10,10,gx-frame.pivotX,gy-frame.pivotY,10,10);
       }
-      if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const grip=grips[releaseIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;drawWeapon(c,'shield',hx,hy,0);}
+      if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const sourceIndex=useWindup?Number(frameName.match(/release_(\d+)/)?.[1]??releaseIndex):releaseIndex;const grip=grips[sourceIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawWeapon(c,'shield',0,0,0);c.restore();}
 
 
       if(pose==='happy'){
@@ -213,17 +233,26 @@ export class Renderer{
     if(scene&&scene.phase==='active'){const m=nextTask(scene.markers);if(m){const tx=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x),pos=screen(tx,m.y+32*Q);drawPointer(c,edgePointer(pos),m.label,Math.abs(tx-player.x)/Q/40,world.tick,this.reduced);}}
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
     if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
-    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dodge';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
+    for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dash';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
-      let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0,stunned:!!f.stun};
+      let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0,stunned:!!f.stun,facing:f.facing,turnUntil:0};
       if(f.ground&&!motion.ground&&!f.action&&!f.stun)motion.landUntil=world.tick+5;
+      if(f.ground && motion.ground && motion.facing !== f.facing && pose==='run') motion.turnUntil=world.tick+6;
+      motion.facing=f.facing;
+      if(pose==='run' && world.tick<motion.turnUntil) pose='turn';
       if((pose==='idle'||pose==='run')&&world.tick<motion.landUntil)pose='land';
       if(motion.pose!==pose||motion.stunned!==!!f.stun){motion.pose=pose;motion.time=0;}else if(!f.hitstop)motion.time+=Math.max(0,world.tick-motion.tick)*(pose==='run'?runCadence(f.vx/Q):1);
       motion.tick=world.tick;motion.ground=!!f.ground;motion.stunned=!!f.stun;this.motion.set(f.id,motion);
       const hitEase=Math.max(0,1-motion.time/12);
-      const recoil=f.stun&&!this.reduced?(f.ground?-.16*hitEase:Math.max(-.11,Math.min(.11,-f.vx/Q*.01))):0;
+      let recoil=f.stun&&!this.reduced?(f.ground?-.16*hitEase:Math.max(-.11,Math.min(.11,-f.vx/Q*.01))):0;
+      if (f.stun && !f.ground && !this.reduced && motion.time+f.stun>=24) {
+        const age=motion.time+(active&&!f.hitstop?alpha:0);
+        const turn=Math.min(1,Math.max(0,(age-4)/Math.max(12,motion.time+f.stun-4)));
+        recoil+=Math.sign(-f.vx*f.facing||1)*2*Math.PI*turn*turn*(3-2*turn);
+      }
+      const ghost = f.action?.kind==='dodge' ? this.S.invincible(f) : !!f.invulnerable && world.tick%8<4;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),(f.action?.tick??0)+(active&&!f.hitstop?alpha:0),f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),!!f.invulnerable&&world.tick%8<4,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),(f.action?.tick??0)+(active&&!f.hitstop?alpha:0),f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),ghost,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.human&&!f.respawn)drawPlayerMark(c,f.id,p.x,p.y-(FIGURE_PX+34)*this.camera.zoom*f.scale,7);
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+(f.human?66:46))*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);
@@ -239,8 +268,8 @@ export class Renderer{
       const clock=projectile.effect==='shield'&&lifetime!==undefined
         ? Math.max(0,lifetime-projectile.life-1+(active?alpha:1)) : world.tick;
       drawThrowWind(c,projectile,p.x,p.y,this.camera.zoom);
-      if(drawElementProjectile(c,projectile,owner,p.x,p.y,this.camera.zoom,clock,this.reduced,this.atlas[owner?.hero??'']?.idle?.h))continue;
-      if(projectile.weapon){c.save();c.translate(p.x,p.y);const owner=world.fighters.find(f=>f.id===projectile.owner);const bodyScale=owner?.scale??1;const weaponScale=projectile.weapon==='shield'?1:1.15;const k=this.camera.zoom*bodyScale*96/(this.atlas[owner?.hero??'']?.idle.h??192)*weaponScale;c.scale(k,k);drawFlyingWeapon(c,projectile.weapon,0,0,this.reduced?0:Math.atan2(-projectile.vy,projectile.vx)+Math.PI/2,this.reduced?0:world.tick*.65);c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
+      if(drawElementProjectile(c,projectile,owner,p.x,p.y,this.camera.zoom,clock,this.reduced,160))continue;
+      if(projectile.weapon){c.save();c.translate(p.x,p.y);const owner=world.fighters.find(f=>f.id===projectile.owner);const bodyScale=owner?.scale??1;const weaponScale=projectile.weapon==='shield'?1:1.15;const k=this.camera.zoom*bodyScale*96/160*weaponScale;c.scale(k,k);drawFlyingWeapon(c,projectile.weapon,0,0,this.reduced?0:Math.atan2(-projectile.vy,projectile.vx)+Math.PI/2,this.reduced?0:world.tick*.65);c.restore();}else{c.fillStyle='#ebddad';c.strokeStyle='#4b4538';c.lineWidth=2;c.beginPath();c.ellipse(p.x,p.y,projectile.size[0]*this.camera.zoom/2,projectile.size[1]*this.camera.zoom/2,0,0,Math.PI*2);c.fill();c.stroke();}}
     for(const e of world.events){if(e.id<=this.lastEvent)continue;this.lastEvent=e.id;if(e.type==='hit')this.particles.push({x:e.x,y:e.y,time:0,damage:Math.floor((e.damage as number)/10)});}this.particles=this.particles.filter(p=>p.time++<24).slice(-40);
     for(const p of this.particles){const pos=screen(p.x,p.y);c.globalAlpha=1-p.time/25;c.strokeStyle='#ffe9aa';c.lineWidth=3;c.beginPath();c.arc(pos.x,pos.y,p.time*2,0,Math.PI*2);c.stroke();c.fillStyle='#fff4d0';c.textAlign='center';c.font='bold 22px Georgia';c.fillText('+'+p.damage,pos.x,pos.y-p.time*2-10);}c.globalAlpha=1;
     if(world.phase==='countdown'){c.fillStyle='rgba(23,40,47,.4)';c.fillRect(0,0,1280,720);c.fillStyle='#ffe5ad';c.textAlign='center';c.font='bold 100px Georgia';c.fillText(String(Math.max(1,Math.ceil(world.countdown/60))),640,330);}

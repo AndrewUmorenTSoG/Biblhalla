@@ -8,5 +8,5 @@ test('thrown weapons retain the exact equipped texture and frame',()=>{
 });
 test('drawn slingers retain their sling in every movement phase and use the release drawing in attacks',()=>{
  const r=Object.create(Renderer.prototype)as Renderer;r.atlas=Object.fromEntries(Object.entries(meta).map(([id,e]:[string,any])=>[id,e.frames]));r.clips=Object.fromEntries(Object.entries(meta).map(([id,e]:[string,any])=>[id,e.clips]));
- for(const hero of ['david','moses','miriam']){for(const pose of ['idle','run','air_rise','air_apex','air_fall','land'])assert.match(r.frameFor(hero,pose,'sling','',0,8),/^(equipped_sling_|gait_sling_)/);assert.equal(meta[hero].clips.sling_nlight.frames[2],'equipped_sling_14');for(let i=0;i<4;i++)for(const row of ['idle','run','air','cast'])assert.ok(meta[hero].frames[`slinger_${row}_${i}`]);}
+ for(const hero of ['david','moses','miriam']){for(const pose of ['idle','run','air_rise','air_apex','air_fall','land'])assert.match(r.frameFor(hero,pose,'sling','',0,8),/^(equipped_sling_|gait_sling_)/);assert.equal(r.frameFor(hero,'active','sling','sling_nlight',9),'equipped_sling_14');for(let i=0;i<4;i++)for(const row of ['idle','run','air','cast'])assert.ok(meta[hero].frames[`slinger_${row}_${i}`]);}
 });
