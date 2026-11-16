@@ -38,6 +38,9 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   const problems: string[] = [];
   const atlas = guardAtlas(raw?.atlas, problems);
   const clips = guardClips(raw?.clips, atlas, problems);
+  // Extra action pages are small; decode them on the menu so the first attack
+  // cannot show an empty frame while a lazy texture is starting to load.
+  for(const key of Object.keys(raw?.images??{}))if(!atlas[key])void images[key];
   if (problems.length) console.warn('Biblhalla art skipped:', problems);
   return { images, atlas, clips, arenas };
 }

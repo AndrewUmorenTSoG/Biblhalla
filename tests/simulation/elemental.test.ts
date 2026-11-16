@@ -7,8 +7,8 @@ import {resolveAction} from '../../packages/sim/src/moveResolver.ts';
 const ctx=createContext(content);
 test('release origins are outside the torso and shield return waits 24 to 48 ticks',()=>{
   for(const hero of ['gideon','nehemiah'])for(const charge of [0,1,36]){
-    const {s,f,t}=scene(hero);f.weapon='shield';t.x=450*Q;S.startAttack(s,f,{heavy:true,x:1});const a=f.action!;a.charge=charge;startProjectile(ctx,s,f,S.moves[a.move!],a);
-    const p=s.projectiles[0],origin=S.defs[hero].releaseOrigins!.shield;
+    const {s,f,t}=scene(hero);f.weapon='shield';t.x=450*Q;S.startAttack(s,f,{heavy:true,...(hero==='gideon'?{y:-1}:{x:1})});const a=f.action!;a.charge=charge;startProjectile(ctx,s,f,S.moves[a.move!],a);
+    const p=s.projectiles[0],spec=S.moves[a.move!].projectile!,origin=spec.originFromMove?spec.originUnits:S.defs[hero].releaseOrigins!.shield;
     assert.equal(p.x,f.x+origin[0]*Q);assert.equal(p.y,f.y+origin[1]*Q);
     const delay=charge?29+Math.round(charge/36*19):24;assert.equal(p.returnAtTick,s.tick+delay);
     for(let i=1;i<delay;i++){s.tick++;combat(ctx,s);assert.equal(p.returning,false);}
@@ -16,7 +16,7 @@ test('release origins are outside the torso and shield return waits 24 to 48 tic
   }
 });
 test('an interrupted shield throw returns immediately and slings launch from their release point',()=>{
-  const {s,f}=scene('gideon');f.weapon='shield';S.startAttack(s,f,{heavy:true});startProjectile(ctx,s,f,S.moves[f.action!.move!],f.action!);const p=s.projectiles[0];p.x+=160*Q;f.stun=5;combat(ctx,s);assert.equal(p.returning,true);
+  const {s,f}=scene('gideon');f.weapon='shield';S.startAttack(s,f,{heavy:true,y:-1});startProjectile(ctx,s,f,S.moves[f.action!.move!],f.action!);const p=s.projectiles[0];p.x+=160*Q;f.stun=5;combat(ctx,s);assert.equal(p.returning,true);
   for(const hero of ['david','moses','miriam']){const z=scene(hero);z.f.weapon='sling';S.startAttack(z.s,z.f,{light:true});startProjectile(ctx,z.s,z.f,S.moves[z.f.action!.move!],z.f.action!);const stone=z.s.projectiles[0],origin=S.defs[hero].releaseOrigins!.sling;assert.equal(stone.x,z.f.x+origin[0]*Q);assert.equal(stone.y,z.f.y+origin[1]*Q);assert.equal(stone.vx,32*Q);}
 });
 function scene(hero='gideon',opponent='david'){
@@ -26,14 +26,14 @@ function scene(hero='gideon',opponent='david'){
 }
 test('shield replaces the requested weapon families and returns within four body widths',()=>{
   for(const [hero,other] of [['gideon','sword'],['nehemiah','hammer'],['joshua','sword']])assert.deepEqual(new Set(S.defs[hero].weaponPair),new Set([other,'shield']));
-  const {s,f,t}=scene();f.weapon='shield';t.x=400*Q;
+  const {s,f,t}=scene('nehemiah');f.weapon='shield';t.x=400*Q;
   S.startAttack(s,f,{heavy:true,x:1});const a=f.action!,m=S.moves[a.move!];startProjectile(ctx,s,f,m,a);
   let furthest=0,returned=false;
   for(let i=0;i<90;i++){s.tick++;combat(ctx,s);for(const p of s.projectiles){furthest=Math.max(furthest,p.x);returned ||= !!p.returning;}}
   assert.equal(furthest,160*Q);assert.ok(returned);assert.equal(s.projectiles.length,0);assert.equal(f.weapon,'shield');
 });
 test('returning shield hits a target at most once per throw',()=>{
-  const {s,f,t}=scene();f.weapon='shield';S.startAttack(s,f,{heavy:true,x:1});startProjectile(ctx,s,f,S.moves[f.action!.move!],f.action!);
+  const {s,f,t}=scene('nehemiah');f.weapon='shield';S.startAttack(s,f,{heavy:true,x:1});startProjectile(ctx,s,f,S.moves[f.action!.move!],f.action!);
   for(let i=0;i<70;i++)combat(ctx,s);
   assert.equal(f.hits,1);assert.ok(t.damage>0);
 });

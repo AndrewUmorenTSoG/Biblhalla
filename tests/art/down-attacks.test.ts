@@ -16,7 +16,7 @@ test('all 144 down attacks use their authored contact drawings and animated shie
     assert.ok(meta[job.id].frames['down_'+spec.id]);
     for(let tick=0;tick<move.totalTicks;tick++){
       const frame=renderer.frameFor(job.id,'active','unarmed',spec.id,tick,0);
-      if(spec.id==='gideon_shield_dsig'){assert.match(frame,/^release_jump_/);if(tick>=move.startup&&tick<move.startup+move.active)assert.match(frame,/^release_jump_[78]$/);}else assert.equal(frame==='down_'+spec.id,tick>=move.startup&&tick<move.startup+move.active,`${job.id}/${spec.id}/${tick}`);
+      if(spec.id==='gideon_shield_dsig'){assert.match(frame,/^release_jump_/);if(tick>=move.startup&&tick<move.startup+move.active)assert.match(frame,/^release_jump_[78]$/);}else if(job.id==='gideon'&&/^shield_(dlight|dair|ground_pound)$/.test(spec.id)){assert.match(frame,/^(release_(sweep|air)_|equipped_shield_idle_0)/);}else assert.equal(frame==='down_'+spec.id,tick>=move.startup&&tick<move.startup+move.active,`${job.id}/${spec.id}/${tick}`);
     }
     checked++;
   }}assert.equal(checked,144);

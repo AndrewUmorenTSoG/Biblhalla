@@ -3,7 +3,7 @@ const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'
 const meta=JSON.parse(readFileSync(file,'utf8')),e=meta.gideon,base=readPng(join(ROOT,e.image)),source='assets/animation-production/gideon-rebound/body.png',sheet=readPng(join(ROOT,source)),poses=figures(sheet,4,4,500,64),scale=e.frames.idle.h/poses[0].image.height;
 const grips=[[.90,.373],[.887,.443],[.91,.498],[.908,.218],[.858,.10],[.788,.054],[.14,.098],[.902,.608],[.913,.55],[.898,.473],[.911,.508],[.911,.766],[.942,.352],[.933,.24],[.919,.335],[.924,.336]],angles=[0,-.15,-.4,-.5,-.5,-.8,-1.2,-.7,-.5,-.3,0,0,0,0,0,0];
 // Repack this fighter only; preserve every other fighter and all existing clips.
-const parts=Object.entries(e.frames).filter(([name])=>!name.startsWith('release_jump_')).map(([name,f]:[string,any])=>({name,image:crop(base,f.x,f.y,f.w,f.h),meta:f}));
+const parts=Object.entries(e.frames).filter(([name,f]:[string,any])=>!f.sheet&&!name.startsWith('release_jump_')).map(([name,f]:[string,any])=>({name,image:crop(base,f.x,f.y,f.w,f.h),meta:f}));
 for(let i=0;i<16;i++){
  const p=poses[i],image=resize(p.image,Math.round(p.image.width*scale),Math.round(p.image.height*scale));
  parts.push({name:'release_jump_'+i,image,meta:{pivotX:Math.round(((i%4+.5)*sheet.width/4-p.originX)*scale),pivotY:image.height,gripX:Math.round(image.width*grips[i][0]),gripY:Math.round(image.height*grips[i][1]),shieldAngle:angles[i]}});

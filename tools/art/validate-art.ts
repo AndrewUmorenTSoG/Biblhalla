@@ -28,12 +28,22 @@ export function validateArt(metaPath = join(ROOT, 'assets', 'runtime', 'fighters
     const bytes = readFileSync(file);
     if (sha256(bytes) !== entry.sha256) errors.push(`${def.id}: sha256 does not match ${entry.image}`);
     const img = readPng(file);
+    const pages:Record<string,ReturnType<typeof readPng>>={};
+    for(const [key,page] of Object.entries(entry.pages??{}) as [string,any][]){
+      const path=join(ROOT,page.image);
+      if(!existsSync(path)){errors.push(`${def.id}: missing ${page.image}`);continue;}
+      if(sha256(readFileSync(path))!==page.sha256)errors.push(`${def.id}: bad page hash ${key}`);
+      const p=pages[key]=readPng(path);
+      if(p.width>2048||p.height>2048||p.width!==page.width||p.height!==page.height)errors.push(`${def.id}: invalid texture dimensions ${key}`);
+    }
     if (!entry.frames?.idle) errors.push(`${def.id}: needs an idle frame`);
     for (const [name, f] of Object.entries(entry.frames ?? {}) as [string, any][]) {
-      if (f.x < 0 || f.y < 0 || f.w <= 0 || f.h <= 0 || f.x + f.w > img.width || f.y + f.h > img.height) { errors.push(`${def.id}.${name}: outside atlas bounds`); continue; }
+      const sheet=f.sheet?pages[f.sheet]:img;
+      if(!sheet){errors.push(`${def.id}.${name}: unknown atlas page ${f.sheet}`);continue;}
+      if (f.x < 0 || f.y < 0 || f.w <= 0 || f.h <= 0 || f.x + f.w > sheet.width || f.y + f.h > sheet.height) { errors.push(`${def.id}.${name}: outside atlas bounds`); continue; }
       let transparent = 0, opaque = 0;
       for (let y = f.y; y < f.y + f.h; y++) for (let x = f.x; x < f.x + f.w; x++) {
-        const a = img.data[(y * img.width + x) * 4 + 3];
+        const a = sheet.data[(y * sheet.width + x) * 4 + 3];
         if (a === 0) transparent++; else if (a > 200) opaque++;
       }
       if (!opaque) errors.push(`${def.id}.${name}: frame is empty`);

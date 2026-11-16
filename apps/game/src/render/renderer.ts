@@ -163,12 +163,13 @@ export class Renderer{
   }
 
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0,releaseState=''){const c=this.ctx,p=colors[hero]||colors.dru;
-    const sheet=this.art[hero],frames=this.atlas[hero];
+    let sheet=this.art[hero];const frames=this.atlas[hero];
     if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const attack=this.S?.moves?.[move];const throwingShield=attack?.projectile?.effect==='shield';const jumpRelease=pose!=='hitstun'&&hero==='gideon'&&move==='gideon_shield_dsig'&&frames.release_jump_0;const shieldRelease=!jumpRelease&&pose!=='hitstun'&&weapon==='shield'&&frames.release_0&&((releaseState&&(!move||throwingShield))||!move&&pose==='idle'&&!frames.equipped_shield_0||throwingShield);const releaseIndex=shieldReleaseFrame(attackTick,this.S?.moves?.[move]?.startup??16,releaseState,charge>0);const authored=this.frameFor(hero,pose,weapon,move,attackTick,time);
       const useWindup=throwingShield && !releaseState && !charge && attackTick<attack.startup;
-      const frameName=jumpRelease ? 'release_jump_'+gideonReboundFrame(attackTick,releaseState,charge>0) : shieldRelease && !useWindup ? 'release_'+releaseIndex :
+      const shieldKit=hero==='gideon'&&pose!=='hitstun'&&/^release_(rush|lift|sweep|air)_/.test(authored);
+      const frameName=shieldKit&&charge>0?(move==='gideon_shield_nsig'?'release_lift_4':'release_rush_3'):jumpRelease ? 'release_jump_'+gideonReboundFrame(attackTick,releaseState,charge>0) : shieldRelease && !useWindup ? 'release_'+releaseIndex :
         charge>0 && weapon==='sling' ? (frames.equipped_sling_13?'equipped_sling_13':'slinger_cast_1') : authored;
-      const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
+      let frame=frames[frameName]||frames.motion_idle||frames.idle;let kitReady=shieldKit;if(frame?.sheet){const page=this.art[frame.sheet];if(page?.complete&&page.naturalWidth)sheet=page;else{frame=frames.equipped_shield_idle_0??frames.motion_idle;kitReady=false;}}if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
@@ -199,7 +200,7 @@ export class Renderer{
         const gx=Math.max(0,Math.min(frame.w-10,(frame.gripX??frame.w*.74)-5)),gy=Math.max(0,Math.min(frame.h-10,(frame.gripY??frame.h*.56)-5));
         c.drawImage(sheet,frame.x+gx,frame.y+gy,10,10,gx-frame.pivotX,gy-frame.pivotY,10,10);
       }
-      if(jumpRelease&&(!releaseState||releaseState==='catch'||releaseState==='settle')){const hx=frame.gripX-frame.pivotX,hy=frame.gripY-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawFlyingWeapon(c,'shield',0,0,frame.shieldAngle??0,0);c.restore();const gx=frame.gripX-3,gy=frame.gripY-3;c.drawImage(sheet,frame.x+gx,frame.y+gy,6,6,gx-frame.pivotX,gy-frame.pivotY,6,6);}
+      if(kitReady||jumpRelease&&(!releaseState||releaseState==='catch'||releaseState==='settle')){const hx=frame.gripX-frame.pivotX,hy=frame.gripY-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawFlyingWeapon(c,'shield',0,0,frame.shieldAngle??0,0);c.restore();const gx=frame.gripX-3,gy=frame.gripY-3;c.drawImage(sheet,frame.x+gx,frame.y+gy,6,6,gx-frame.pivotX,gy-frame.pivotY,6,6);}
       if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const sourceIndex=useWindup?Number(frameName.match(/release_(\d+)/)?.[1]??releaseIndex):releaseIndex;const grip=grips[sourceIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawWeapon(c,'shield',0,0,0);c.restore();}
 
 

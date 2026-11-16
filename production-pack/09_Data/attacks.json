@@ -5669,45 +5669,46 @@
       "ownerType": "fighter",
       "ownerId": "gideon",
       "weapon": "shield",
-      "displayName": "gideon shield nsig",
+      "displayName": "Rising Shield",
       "input": {
         "button": "heavy",
         "direction": "neutral",
         "context": "groundOrAirCancel"
       },
       "startup": 16,
-      "active": 8,
-      "recovery": 22,
-      "totalTicks": 46,
+      "active": 10,
+      "recovery": 24,
+      "totalTicks": 50,
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
       "launchAngle": 90,
-      "delivery": "projectile",
-      "collisionPhases": [],
-      "projectile": {
-        "spawnTick": 16,
-        "originUnits": [
-          0,
-          44
-        ],
-        "travelAngle": 0,
-        "speedQ": 2048,
-        "gravityQ": 0,
-        "lifetimeTicks": 100,
-        "collisionUnits": [
-          36,
-          36
-        ],
-        "maxHits": 1,
-        "capClass": "signature",
-        "stageCollision": "despawn",
-        "homing": false,
-        "boomerangRangeUnits": 160,
-        "effect": "shield"
-      },
-      "motionEvents": [],
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 26,
+          "shape": "rect",
+          "rectUnits": [
+            -16,
+            38,
+            72,
+            95
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "setVelocity",
+          "atTick": 16,
+          "vxQ": 0,
+          "vyQ": 2048
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 5,
@@ -5717,54 +5718,58 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Gideon swings his bronze-capped wooden mallet upward; small pottery-colored motion flecks are decorative.",
+      "visualPose": "Gideon crouches, sweeps his equipped shield upward and springs into an overhead shield lift before recovering.",
       "resourceCostOnActionStart": {},
-      "effect": "shield"
+      "effect": "shield",
+      "chargeHoldTick": 15
     },
     {
       "id": "gideon_shield_ssig",
       "ownerType": "fighter",
       "ownerId": "gideon",
       "weapon": "shield",
-      "displayName": "gideon shield ssig",
+      "displayName": "Shield Rush",
       "input": {
         "button": "heavy",
         "direction": "side",
         "context": "groundOrAirCancel"
       },
       "startup": 16,
-      "active": 8,
+      "active": 12,
       "recovery": 22,
-      "totalTicks": 46,
+      "totalTicks": 50,
       "damageTenths": 300,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
       "launchAngle": 45,
-      "delivery": "projectile",
-      "collisionPhases": [],
-      "projectile": {
-        "spawnTick": 16,
-        "originUnits": [
-          0,
-          44
-        ],
-        "travelAngle": 0,
-        "speedQ": 2048,
-        "gravityQ": 0,
-        "lifetimeTicks": 100,
-        "collisionUnits": [
-          36,
-          36
-        ],
-        "maxHits": 1,
-        "capClass": "signature",
-        "stageCollision": "despawn",
-        "homing": false,
-        "boomerangRangeUnits": 160,
-        "effect": "shield"
-      },
-      "motionEvents": [],
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            20,
+            20,
+            65,
+            60
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 16,
+          "toTickExclusive": 28,
+          "dxQ": 2048,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 5,
@@ -5774,9 +5779,10 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Gideon turns his shoulders into a side mallet strike with a warm orange painted motion trail, not fire damage.",
+      "visualPose": "Gideon loads his rear leg, rushes forward behind his equipped shield, plants his foot and brakes into guard.",
       "resourceCostOnActionStart": {},
-      "effect": "shield"
+      "effect": "shield",
+      "chargeHoldTick": 15
     },
     {
       "id": "gideon_shield_dsig",

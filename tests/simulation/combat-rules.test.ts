@@ -282,7 +282,7 @@ test('resuming from pause runs a short countdown that spends no match time and r
 test('a returning shield strikes toward the hand and respects the side a guard protects', () => {
   for (const facing of [-1, 1] as const) {
     for (const frontGuard of [false, true]) {
-      const s = arena({ hero: 'gideon', opponent: 'saul' });
+      const s = arena({ hero: 'nehemiah', opponent: 'saul' });
       const [owner, guard] = s.fighters;
       owner.weapon = 'shield';
       faceOff(s, owner, guard, facing * 350);
@@ -295,7 +295,7 @@ test('a returning shield strikes toward the hand and respects the side a guard p
 
       // Let the shield get within a single step of the hand, then place the
       // previously untouched target just inside the far end of that sweep.
-      const [handX] = S.defs.gideon.releaseOrigins!.shield;
+      const [handX] = S.defs.nehemiah.releaseOrigins!.shield;
       const catchX = owner.x + handX * Q * facing;
       while (Math.abs(shield.x - catchX) > 24 * Q && s.projectiles.length) S.step(s);
       guard.x = catchX - facing * (shield.size[0] / 2 + S.P.hurtboxUnits[0] / 2 - 1) * Q;

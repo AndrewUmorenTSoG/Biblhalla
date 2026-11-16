@@ -21,7 +21,7 @@ export const FORBIDDEN_RUNTIME = [
   /url\(\s*["']?https?:\/\//i,
 ];
 
-interface ArtEntry { image: string; sha256: string; readiness: string; frames?: Record<string, unknown>; clips?: Record<string, unknown> }
+interface ArtEntry { image: string; sha256: string; readiness: string; frames?: Record<string, unknown>; clips?: Record<string, unknown>; pages?: Record<string,{image:string;sha256:string}> }
 
 /** Embed fighter atlases whose manifest entry is shippable and whose bytes match their hash. */
 function runtimeArt(): { images: Record<string, string>; atlas: Record<string, unknown>; clips: Record<string, unknown>; readiness: Record<string, string>; skipped: string[] } {
@@ -35,6 +35,12 @@ function runtimeArt(): { images: Record<string, string>; atlas: Record<string, u
     const bytes = readFileSync(join(ROOT, entry.image));
     if (sha256(bytes) !== entry.sha256) throw new Error(`Asset ${entry.image} does not match its manifest hash`);
     images[id] = 'data:image/png;base64,' + bytes.toString('base64');
+    for(const [key,page] of Object.entries(entry.pages??{})){
+      const extra=readFileSync(join(ROOT,page.image));
+      if(sha256(extra)!==page.sha256)throw new Error(`Asset ${page.image} does not match its manifest hash`);
+      if(images[key]||meta[key])throw new Error(`Duplicate fighter texture key ${key}`);
+      images[key]='data:image/png;base64,'+extra.toString('base64');
+    }
     atlas[id] = entry.frames;
     if (entry.clips) clips[id] = entry.clips;
     readiness[id] = entry.readiness;

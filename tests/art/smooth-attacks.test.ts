@@ -18,6 +18,7 @@ test('every playable attack reaches contact on time and settles on the equipped 
       assert.equal(ticks.length,move.totalTicks,label);
       assert.ok(new Set(clip.frames).size>=10,label);
       if(move.id==='gideon_shield_dsig'){assert.equal(ticks[move.startup-1],'release_jump_6');assert.equal(ticks[move.startup],'release_jump_7');assert.equal(ticks.at(-1),'release_jump_15');continue;}
+      if(hero==='gideon'&&clip.frames.some((f:string)=>/^release_(rush|lift|sweep|air)_/.test(f))){assert.match(ticks[move.startup],/^release_(rush|lift|sweep|air)_/);assert.equal(ticks.at(-1),'equipped_shield_idle_0');continue;}
       assert.match(ticks[move.startup-1],/^attack_smear_/,label);
       assert.doesNotMatch(ticks[move.startup],/^attack_smear_/,label);
       assert.match(ticks.at(-1)!,/^equipped_\w+_idle_0$/,label);

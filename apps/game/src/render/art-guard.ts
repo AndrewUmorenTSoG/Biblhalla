@@ -5,13 +5,13 @@
 
 import type { Clip } from './renderer.ts';
 
-export interface Frame { x: number; y: number; w: number; h: number; pivotX: number; pivotY: number }
+export interface Frame { x: number; y: number; w: number; h: number; pivotX: number; pivotY: number; sheet?:string }
 
 const finite = (n: unknown): n is number => typeof n === 'number' && Number.isFinite(n);
 
 export function validFrame(f: any): f is Frame {
   return !!f && typeof f === 'object' && finite(f.x) && finite(f.y) && finite(f.pivotX) && finite(f.pivotY)
-    && finite(f.w) && finite(f.h) && f.w > 0 && f.h > 0;
+    && finite(f.w) && finite(f.h) && f.w > 0 && f.h > 0 && (f.sheet===undefined||typeof f.sheet==='string');
 }
 
 /** Frames per hero; a hero without a usable idle frame is dropped entirely. */
