@@ -300,7 +300,6 @@ function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);con
   }
   requestAnimationFrame(frame);
 }
-$('rotate-continue').addEventListener('click',()=>document.documentElement.classList.add('portrait-ok'));
 $('brand').addEventListener('click',()=>screen('home'));
 document.querySelectorAll('[data-nav]').forEach((button:any)=>button.addEventListener('click',()=>screen(button.dataset.nav)));
 document.querySelectorAll<HTMLButtonElement>('[data-home-mode]').forEach(button =>

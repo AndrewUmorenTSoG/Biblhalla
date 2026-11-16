@@ -36,4 +36,3 @@ test('Lion Man connects with claws, bite, and a single grab and release against 
   assert.equal(held,true);
   assert.deepEqual(hits,['Claw slash','Fang lunge','Mane throw']);
 });
-
