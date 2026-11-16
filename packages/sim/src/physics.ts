@@ -105,11 +105,9 @@ export function moveFighter(ctx: SimContext, s: SimState, f: Fighter, dx: number
   }
 }
 
-const MIN_SPAWN_SEPARATION_UNITS = 180;
-
 /**
- * Safe respawn point: the authored spawn farthest from living enemies, preferring
- * points at least 180 units clear; ties go to the lower spawn index.
+ * Safe respawn point: the authored spawn farthest from living enemies (by distance
+ * along both axes); ties go to the lower spawn index.
  */
 export function chooseSpawn(s: SimState, f: Fighter): [number, number] {
   const points = s.map.spawnFeetUnits;
