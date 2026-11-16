@@ -73,7 +73,7 @@
 #setup .fighter-choice:has([value=random]) small{padding:0}}
 
 /* The menu controls occupy the shaded side of each full-screen illustration. */
-#chapters,#levels,#modes{--scene-art:url("menu-art/story.webp")}
+#story-dialog,#chapters,#levels,#modes{--scene-art:url("menu-art/story.webp")}
 #setup,#modes[data-preview=quick]{--scene-art:url("menu-art/battle.webp")}
 #local,#modes[data-preview=local]{--scene-art:url("menu-art/local.webp")}
 #fighters{--scene-art:url("menu-art/fighters.webp")}
@@ -148,3 +148,33 @@
 #info-dialog.showcase-dialog>button[data-close]{position:absolute;right:clamp(14px,2.4vw,30px);top:16px;width:auto;min-width:64px;min-height:36px;padding:6px 14px}
 .move-transport{flex-wrap:wrap}
 @media(max-width:650px){.move-transport{gap:5px}.move-transport button{min-width:0;padding:5px 8px}.showcase-dialog .move-phase{font-size:.75rem}}
+
+/* Let the illustration carry through from chapter selection into the account. */
+#story-dialog {
+  width:min(1080px,96vw); max-height:92dvh; padding:0;
+  background:#0b2030; color:#fff1d4; border:1px solid #627682; border-radius:3px 18px 3px 3px;
+}
+#story-dialog[open] {
+  background:linear-gradient(90deg,#091b29 8%,#0a1c2af7 44%,#0b1e2edb 60%,transparent 82%),
+    var(--scene-art) 74% center/cover no-repeat;
+}
+.story-reading {width:62%; padding:clamp(22px,4vw,54px); box-sizing:border-box}
+#story-dialog h2 {font:bold italic clamp(2.35rem,4.3vw,4.2rem)/.98 system-ui;letter-spacing:-.055em;margin:.35em 0 .22em;text-wrap:balance}
+#story-reference {margin:.85em 0;color:#edc77f}
+#story-text {font:1.08rem/1.58 Georgia,serif;color:#f6ecd9}
+#story-rule {border-left:3px solid #c8a362;padding:4px 0 4px 14px;color:#cfdbdc;font-size:.87rem;line-height:1.5}
+.story-decisions {display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+.story-decisions button {width:auto;margin:0;min-height:44px;padding-inline:18px}
+#story-skip {background:#102736d9;color:#ebe2cc}
+#puzzle-prompt:empty,#story-choices:empty {display:none}
+#chapters .chapter-card {position:relative;padding-bottom:17px;overflow:hidden}
+#chapters .chapter-card::after {content:"";position:absolute;bottom:0;left:0;width:var(--completion);height:3px;background:#ebc77e}
+#chapters .chapter-card:focus-visible,#levels .level-card:focus-visible {outline:3px solid #f4ce84;outline-offset:2px}
+@media(max-width:700px) {
+  #story-dialog[open] {background:linear-gradient(0deg,#0a1d2c 65%,#0a1d2cee 74%,#0a1d2c19 100%),var(--scene-art) right top/auto 250px no-repeat,#0a1d2c}
+  .story-reading {width:100%;padding:clamp(72px,16vh,125px) 20px 20px}
+}
+.story-notes {margin-top:10px}
+.story-notes summary {cursor:pointer;width:fit-content;padding:7px 0;color:#f1cd89;font-weight:650}
+.story-notes summary:focus-visible {outline:2px solid #f1cd89;outline-offset:3px}
+.story-notes p {margin:.45em 0}
