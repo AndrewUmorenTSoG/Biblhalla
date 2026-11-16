@@ -132,3 +132,19 @@
   #local .local-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   #local .arena-preview{grid-column:1/-1;width:min(100%,300px);order:1;margin:0}
 }
+
+#info-dialog.showcase-dialog{width:min(1000px,96vw);padding:clamp(14px,2.4vw,30px);background:linear-gradient(125deg,#183346,#0a1928);border:1px solid #758c91;border-radius:4px 16px 4px 4px}
+.showcase-dialog #info-label{margin:0;color:#e8bd77}.showcase-dialog #info-title{margin:4px 0 15px;font:bold italic 2.5rem Impact,system-ui;text-transform:uppercase;color:#ffe1a2}
+.move-showcase{display:grid;grid-template-columns:minmax(145px,26%) minmax(0,1fr);gap:18px}.move-picker{min-width:0}.move-picker label{font-weight:700}.move-picker select{text-transform:capitalize}
+.move-list{display:grid;gap:4px;max-height:365px;overflow:auto;padding:4px;margin:8px -4px}
+.move-list button,.move-transport button{margin:0;min-height:38px;padding:6px 11px;border-radius:3px;background:#173547;text-align:left;font-size:.88rem}
+.move-list button[aria-pressed=true],.move-transport button[aria-pressed=true]{color:#182b36;background:#ecc681;border-color:#ffe2a5;font-weight:700}
+.move-stage{min-width:0}.move-stage h3{font:bold 1.6rem Georgia;color:#fff0cc;margin:0}.move-stage .move-input{margin:4px 0 10px;color:#d5e4e6}
+.move-stage canvas{display:block;width:100%;height:auto;background:#1e3440;border:1px solid #65818a;border-radius:4px}
+.move-transport,.move-data{display:flex;gap:8px;margin:8px 0}.move-transport button{width:auto;text-align:center;min-width:64px}.move-data{border-top:1px solid #465966;padding-top:10px}.move-data span{flex:1;color:#bdcfd3;font-size:.78rem}.move-data b{display:block;color:#ffe3a5;font:700 1.15rem system-ui}
+.move-stage .move-link-tip{font-size:.78rem;margin:8px 0 0}
+@media(max-width:650px){.move-showcase{display:flex;flex-direction:column;gap:8px}.move-list{display:flex;overflow:auto;max-height:none}.move-list button{flex:none;width:auto}.move-picker select{width:auto;margin-left:10px;min-height:36px;padding:5px}.showcase-dialog #info-title{font-size:1.65rem;margin-bottom:8px}}
+.showcase-dialog .move-phase{margin-left:auto;align-self:center;color:#f4d799;font:600 .82rem system-ui;font-variant-numeric:tabular-nums}
+#info-dialog.showcase-dialog>button[data-close]{position:absolute;right:clamp(14px,2.4vw,30px);top:16px;width:auto;min-width:64px;min-height:36px;padding:6px 14px}
+.move-transport{flex-wrap:wrap}
+@media(max-width:650px){.move-transport{gap:5px}.move-transport button{min-width:0;padding:5px 8px}.showcase-dialog .move-phase{font-size:.75rem}}

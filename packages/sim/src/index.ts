@@ -1,7 +1,7 @@
 // Public simulation API. createEngine binds content once; every function is
 // deterministic and free of DOM, storage, audio and wall-clock access.
 
-import type { Content, Rect } from '../../content/src/index.ts';
+import type { Attack, Content, Rect } from '../../content/src/index.ts';
 import { createContext } from './context.ts';
 import type { Fighter, FighterConfig, Input, InputFrame, InputFrames, MatchOptions, SimState } from './types.ts';
 import { Q, hash, nextRandom, roundMul, snapshot } from './fixed.ts';
@@ -39,7 +39,7 @@ export function createEngine(content: Content) {
     finish: (s: SimState, won: boolean, reason: string, winners?: number[]) => finish(s, won, reason, winners),
     createFighter: (s: SimState, cfg: FighterConfig, slot: number) => createFighter(ctx, s, cfg, slot),
     selectMove: (f: Fighter, i: InputFrame, grounded?: boolean) => selectMove(ctx, f, input(i), grounded),
-    startAttack: (s: SimState, f: Fighter, i: InputFrame, airCancel?: boolean) => startAttack(ctx, s, f, input(i), airCancel),
+    startAttack: (s: SimState, f: Fighter, i: InputFrame, airCancel?: boolean, move?: Attack) => startAttack(ctx, s, f, input(i), airCancel, move),
     eligibleItem: (s: SimState, f: Fighter) => eligibleItem(ctx, s, f),
     moveFighter: (s: SimState, f: Fighter, dx: number, dy: number) => moveFighter(ctx, s, f, dx, dy),
     knockOut: (s: SimState, f: Fighter) => knockOut(ctx, s, f),
