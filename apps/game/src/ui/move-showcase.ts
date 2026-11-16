@@ -38,8 +38,10 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   let move: Attack, world: SimState;
   let playing = !reduced, slow = false, request = 0, last = 0, remainder = 0;
   let disposed = false;
+  let label = 'Ready';
 
   function reset() {
+    label = 'Ready';
     world = engine.create({ mode: 'training', hero, trainingBot: 'stand', seed: 1 });
     world.phase = 'playing';
     const [fighter, dummy] = world.fighters;
@@ -69,12 +71,23 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     last = remainder = 0;
   }
 
+  function advance() {
+    const fighter = world.fighters[0];
+    const action = fighter.action;
+    renderer.capture(world);
+    engine.step(world, {});
+    if (action?.kind === 'attack') {
+      const tick = action.tick;
+      const phaseName = tick <= move.startup ? 'Startup' : tick <= move.startup + move.active ? 'Active' : 'Recovery';
+      label = phaseName + ' · ' + tick;
+      if (fighter.hitstop > 0) label += ' · Hitstop ' + fighter.hitstop;
+    } else {
+      label = world.projectiles.length ? 'In flight' : 'Ready';
+    }
+  }
+
   function draw() {
     renderer.paint(world, null, 1, 1000 / 60, playing);
-    const action = world.fighters[0].action;
-    const label = action?.kind === 'attack'
-      ? (action.tick < move.startup ? 'Startup' : action.tick < move.startup + move.active ? 'Active' : 'Recovery') + ' · ' + (action.tick + 1)
-      : world.projectiles.length ? 'In flight' : 'Ready';
     if (phase.textContent !== label) phase.textContent = label;
   }
 
@@ -84,8 +97,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     last = now;
     while (remainder >= 1000 / 60) {
       remainder -= 1000 / 60;
-      renderer.capture(world);
-      engine.step(world, {});
+      advance();
       if (world.tick > move.totalTicks + 45 && !world.projectiles.length) { reset(); break; }
     }
     draw();
@@ -137,8 +149,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   panel.querySelector<HTMLButtonElement>('[data-control=step]')!.onclick = () => {
     playing = false;
     if (!world.fighters[0].action && !world.projectiles.length) reset();
-    renderer.capture(world);
-    engine.step(world, {});
+    advance();
     refreshPlayback();
   };
   speed.onclick = () => { slow = !slow; speed.setAttribute('aria-pressed', String(slow)); };
