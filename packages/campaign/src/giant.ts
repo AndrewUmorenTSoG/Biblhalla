@@ -10,11 +10,12 @@ export interface Giant {
   facing: number;
   move: 'guard' | 'reach' | 'throw' | 'headbutt' | 'recover';
   frame: number;
+  recoveredFrom: 'reach' | 'throw' | 'headbutt';
   nextGrab: 'throw' | 'headbutt';
 }
 
 export const GIANT_HOME = 3550;
-export const giantStart = (): Giant => ({ x: GIANT_HOME * Q, height: 0, walking: false, gripX: 0, gripY: 0, facing: -1, move: 'guard', frame: 0, nextGrab: 'throw' });
+export const giantStart = (): Giant => ({ x: GIANT_HOME * Q, height: 0, walking: false, gripX: 0, gripY: 0, facing: -1, move: 'guard', frame: 0, recoveredFrom: 'reach', nextGrab: 'throw' });
 
 /** One ballistic hop during the shield wind-up. A second impulse requires landing. */
 export function shieldHop(remaining: number): number {
@@ -52,7 +53,10 @@ export function giantGrapple(g: Giant, victim: Fighter, runCap: number, mayGrab:
       g.nextGrab = g.nextGrab === 'throw' ? 'headbutt' : 'throw';
     }
     g.frame = 0;
-    if (!contact) return false;
+    if (!contact) {
+      g.recoveredFrom = 'reach';
+      return false;
+    }
   }
   if (g.move !== 'throw' && g.move !== 'headbutt') return false;
   const t = g.frame;
@@ -71,6 +75,10 @@ export function giantGrapple(g: Giant, victim: Fighter, runCap: number, mayGrab:
   victim.vx = victim.vy = victim.kx = 0;
   victim.action = null;
   if (elevation > 0) victim.ground = null;
-  if (t >= (g.move === 'throw' ? 47 : 43)) { g.move = 'recover'; g.frame = 0; }
+  if (t >= (g.move === 'throw' ? 47 : 43)) {
+    g.recoveredFrom = g.move;
+    g.move = 'recover';
+    g.frame = 0;
+  }
   return true;
 }

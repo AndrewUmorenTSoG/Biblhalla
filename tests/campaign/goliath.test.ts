@@ -158,6 +158,8 @@ test('the reach warns David, can be escaped, and lifts from actual contact in ei
     for (let t = 0; t < 18; t++) A.step(s, {x:side});
     assert.equal(g.move, 'recover');
     assert.equal(g.nextGrab, 'throw');
+    assert.equal(g.recoveredFrom, 'reach');
+    assert.match(s.caption, /hand closes on air/);
     for (let t = 0; t < 32; t++) A.step(s, {});
 
     place(s, g.x / Q + side * 135);

@@ -90,11 +90,25 @@ export function slamPose(state: GoliathState, fraction = 1) {
   return { lift: 0, strike: 0 };
 }
 
+/** Pose weights keep the empty hand extended after a miss and raised after a release. */
+export function grappleArm(g: GoliathState['giant']) {
+  const t = g.frame;
+  const lifting = g.move === 'throw' || g.move === 'headbutt';
+  if (g.move === 'recover') {
+    const progress = Math.max(0, Math.min(1, t / 32));
+    const remaining = 1 - progress * progress * (3 - 2 * progress);
+    const missed = g.recoveredFrom === 'reach';
+    return { reach: missed ? remaining : 0, raisedHand: missed ? 0 : remaining, spearBack: remaining };
+  }
+  const reach = g.move === 'reach' ? Math.sin(t / 18 * Math.PI / 2) : lifting ? Math.max(0, 1 - t / 12) : 0;
+  return { reach, raisedHand: lifting ? Math.min(t / 11, 1) : 0, spearBack: lifting ? 1 : reach };
+}
+
 /** Screen-space figure faces right. The boots are the registration point for every pose. */
 export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, zoom: number, state: GoliathState, tick: number, g = state.giant, fraction = 1) {
   const t = g.frame;
   const lifting = g.move === 'throw' || g.move === 'headbutt';
-  const reach = g.move === 'reach' ? Math.sin(t / 18 * Math.PI / 2) : lifting ? Math.max(0, 1 - t / 12) : 0;
+  const { reach, raisedHand, spearBack } = grappleArm(g);
   const drive = lifting ? Math.max(0, 1 - Math.abs(t - 16) / 7) : 0;
   const { lift: raised, strike: slam } = slamPose(state, fraction);
   const stride = g.move === 'guard' && !raised && !slam && !state.open && g.walking ? Math.sin(tick / 10) : 0;
@@ -118,13 +132,13 @@ export function drawGoliath(c: CanvasRenderingContext2D, x: number, y: number, z
   plate([[hx-9,hy+2],[hx-5,hy+2],[hx-2,hy+8],[hx+5,hy+9],[hx+7,hy+7],[hx+6,hy+13],[hx,hy+16],[hx-7,hy+12]],'#503e32');
   plate([[hx-10,hy],[hx-9,hy-9],[hx-2,hy-12],[hx+5,hy-11],[hx+10,hy-5],[hx+11,hy-1],[hx+6,hy],[hx+5,hy+6],[hx+2,hy+6],[hx+1,hy],[hx-5,hy+2],[hx-7,hy+9],[hx-10,hy+7]],'#aa976d');
   rod(hx+5,hy+2,hx+8,hy+1,1.4,'#211e23');
-  const handX=9+reach*30+(g.move==='throw'?drive*25:0), handY=-20-(lifting?Math.min(t/11,1)*17:0);
+  const handX=9+reach*30+(g.move==='throw'?drive*25:0), handY=-20-raisedHand*17;
   // The spear rests against the rear shoulder while the throwing hand opens.
-  c.save();c.translate(-10,-30);c.rotate(lifting || reach ? -.42 : -.17);
-  if(state.stage==='approach' && g.move==='guard'){
+  c.save();c.translate(-10,-30);c.rotate(-.17 - .25*spearBack);
+  if(state.stage==='approach'){
     const thrust=state.lanes.some(l=>l.state==='active');
-    c.rotate(thrust?1.28:.18);
-    if(thrust)c.translate(0,-7);
+    c.rotate((thrust?1.28:.18)*(1-spearBack));
+    if(thrust)c.translate(0,-7*(1-spearBack));
   }
   rod(-2,42,0,-56,2.8,'#67513e');
   plate([[-3,-55],[0,-70],[4,-56],[1,-50]],'#e3bc64');c.restore();

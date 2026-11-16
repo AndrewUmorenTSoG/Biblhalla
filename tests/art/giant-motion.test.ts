@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { GiantMotion, slamPose } from '../../apps/game/src/render/goliath.ts';
+import { GiantMotion, grappleArm, slamPose } from '../../apps/game/src/render/goliath.ts';
 import { createGoliath } from '../../packages/campaign/src/goliath.ts';
 
 test('Goliath moves between ticks at 120 and 144 Hz without advancing grapple contact', () => {
@@ -46,5 +46,26 @@ test('shield rises from guard at every difficulty and descends before the wave s
     assert.deepEqual(slamPose(state),{lift:0,strike:1});
     state.advance.ticks=18;
     assert.equal(slamPose(state).strike,.5);
+  }
+});
+
+test('a missed grab and both releases ease back from their actual ending pose', () => {
+  for (const move of ['reach', 'throw', 'headbutt'] as const) {
+    const g = createGoliath().giant;
+    g.move = move;
+    g.frame = move === 'reach' ? 18 : 43;
+    const endpoint = grappleArm(g);
+    g.recoveredFrom = move;
+    g.move = 'recover';
+    g.frame = 0;
+    assert.deepEqual(grappleArm(g), endpoint);
+    for (const t of [8, 16.5, 24]) {
+      g.frame = t;
+      const pose = grappleArm(g);
+      assert.ok(pose.spearBack > 0 && pose.spearBack < 1);
+      assert.equal(pose.reach + pose.raisedHand, pose.spearBack);
+    }
+    g.frame = 32;
+    assert.deepEqual(grappleArm(g), { reach: 0, raisedHand: 0, spearBack: 0 });
   }
 });

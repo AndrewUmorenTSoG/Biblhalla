@@ -71,6 +71,9 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     if (g.giant.move === 'reach' && g.giant.frame === 0) {
       hooks.say('Goliath reaches for me. Dodge or move beyond his hand.', 18);
     }
+    if (g.giant.move === 'recover' && g.giant.frame === 0 && g.giant.recoveredFrom === 'reach') {
+      hooks.say('His hand closes on air. I slip past.', 120);
+    }
     if (held || g.giant.move === 'reach') return;
   }
   const resetTo = (x: number, text: string) => {
