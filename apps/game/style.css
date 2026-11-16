@@ -72,28 +72,58 @@
 #setup .fighter-choice:has([value=random])::before{font-size:1.2rem}
 #setup .fighter-choice:has([value=random]) small{padding:0}}
 
-/* Destination art is embedded once per scene and shared by its tile and banner. */
-#chapters,#levels,#mode-story{--scene-art:url("menu-art/story.webp")}
-#setup,#mode-quick{--scene-art:url("menu-art/battle.webp")}
-#local,#mode-local{--scene-art:url("menu-art/local.webp")}
+/* The menu controls occupy the shaded side of each full-screen illustration. */
+#chapters,#levels,#modes{--scene-art:url("menu-art/story.webp")}
+#setup,#modes[data-preview=quick]{--scene-art:url("menu-art/battle.webp")}
+#local,#modes[data-preview=local]{--scene-art:url("menu-art/local.webp")}
 #fighters{--scene-art:url("menu-art/fighters.webp")}
 #learn{--scene-art:url("menu-art/training.webp")}
 #settings{--scene-art:url("menu-art/settings.webp")}
-#modes,.content-screen:has(.destination-heading){background:linear-gradient(140deg,#162f40,#0d1e2b 72%);padding-block:clamp(24px,4vw,60px);min-height:70vh}
-#modes .page-heading{margin-bottom:20px}
-#modes h1,.destination-heading h1{font:italic 700 clamp(2.2rem,4.2vw,4.3rem)/1 Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;color:#ffe4a8;margin:0}
-#modes .mode-card{padding:0 0 24px;min-height:0;background:#132b3a;border:1px solid #52727c;border-radius:4px 16px 4px 4px;overflow:hidden;text-align:left;box-shadow:0 12px 24px #020c1660}
-.mode-art{width:100%;aspect-ratio:1.5;background:var(--scene-art) center/cover;border-bottom:3px solid #cb9f56}
-.mode-title,.mode-desc{display:block;padding-inline:clamp(14px,1.7vw,26px)}
-.mode-title{width:100%;font:700 clamp(1.3rem,2.5vw,2.2rem)/1.2 Georgia,serif;color:#ffe5af;margin-top:18px}
-.mode-title span{float:right;font-family:system-ui;font-size:.8em}
-.mode-desc{margin-top:9px;font-size:.92rem;line-height:1.5;color:#c8d7db}
-#modes .mode-card:hover,#modes .mode-card:focus-visible{border-color:#ffd68a;background:#203c49}
-.destination-heading{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(140px,13vw,200px);padding:24px clamp(18px,3vw,46px);margin:0 auto 26px;max-width:1320px;border:1px solid #476271;border-left:4px solid #d3a657;border-radius:3px 14px 3px 3px;background:#142a39}
-.destination-heading::before{content:"";position:absolute;inset:0 0 0 38%;z-index:-1;background:linear-gradient(90deg,#142a39,transparent 24%),var(--scene-art) center 37%/cover no-repeat}
-.destination-heading>div{width:47%}.destination-heading p{margin:8px 0 0;color:#e3e5da;line-height:1.4}.destination-heading #chapter-progress{font-size:.85rem;color:#ffdfa0}
-@media(max-width:720px){.destination-heading{padding:18px 12px;min-height:130px}.destination-heading>div{width:65%}.destination-heading::before{left:35%;background-image:linear-gradient(90deg,#142a39 3%,#142a39aa 40%,transparent),var(--scene-art)}.mode-grid{grid-template-columns:1fr}#modes .mode-card{display:grid;grid-template-columns:35% 1fr;grid-template-rows:auto 1fr;padding:0}.mode-art{grid-row:span 2;height:100%;min-height:110px;aspect-ratio:auto;border:0}.mode-desc{margin:5px 0 12px}.mode-title{margin-top:12px}}
-
+.shell{max-width:none}
+#header,#footer{display:none}
+#home,.arena-menu{min-height:100svh}
+#screens>.content-screen{position:relative;isolation:isolate;min-height:100svh;max-width:none;margin:0;padding:clamp(20px,4vh,40px) 5vw 6vh;background:#091c2a}
+#screens>.content-screen::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#061522 0%,#081d2ff0 26%,#0b2030a6 48%,#06162414 76%),var(--scene-art) right center/auto max(100vh,58vw) no-repeat}
+.scene-back,#back-chapters{display:inline-flex;align-items:center;padding:4px 10px;min-height:34px;margin:0 0 16px;background:#0c2635e8;border:1px solid #7d969c;border-radius:3px;color:#dfebec;font-weight:650}
+.destination-heading,#modes .page-heading,#levels .page-heading{margin:0 0 20px;padding:0;max-width:min(65vw,900px)}
+.destination-heading h1,#modes h1,#levels h1{margin:0;color:#ffde98;font:italic 700 clamp(2.6rem,5vw,5.1rem)/1.08 Impact,"Arial Black",sans-serif;letter-spacing:.01em;text-transform:uppercase;text-shadow:0 3px #734825,0 5px 12px #071321}
+.destination-heading p,#levels .page-heading p{margin:8px 0;color:#e1e6de}
+#modes .mode-grid{display:grid;width:min(425px,100%);grid-template-columns:1fr;gap:10px}
+#modes .mode-card{display:block;text-align:left;min-height:0;border:1px solid #77969d;border-left:5px solid #8bbbc4;border-radius:2px 12px 2px 2px;background:linear-gradient(105deg,#183c50f5,#112b3eee);padding:15px 20px;box-shadow:0 4px 12px #07131c55}
+.mode-title{display:flex;justify-content:space-between;align-items:center;font:750 1.3rem system-ui;color:#fff2da}
+.mode-desc{display:block;margin-top:5px;font-size:.86rem;line-height:1.45;color:#d1e0e2}
+#modes[data-preview=story] #mode-story,#modes[data-preview=quick] #mode-quick,#modes[data-preview=local] #mode-local{background:linear-gradient(105deg,#ffe5ac,#e5b659);border-color:#fff0c0}
+#modes[data-preview=story] #mode-story span,#modes[data-preview=quick] #mode-quick span,#modes[data-preview=local] #mode-local span{color:#192e37}
+#chapters .story-actions,#chapters .chapter-grid,#levels .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(66vw,1080px);margin-inline:0}
+#chapters .chapter-grid,#levels .level-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#chapters .chapter-card,#levels .level-card{min-height:0;padding:12px 16px;background:linear-gradient(100deg,#17374bee,#102638f2);border:1px solid #53717e;border-left:4px solid #b89760;border-radius:2px 9px 2px 2px}
+#chapters .chapter-card h2,#levels .level-card h2{margin:4px 0;font:700 1.04rem system-ui}
+#chapters .story-actions{flex-wrap:wrap;gap:8px;margin-bottom:16px}
+#chapters .story-actions label{width:115px}
+#setup .battle-layout{grid-template-columns:minmax(0,1.6fr) minmax(210px,1fr);align-items:start;gap:14px}
+#setup .roster-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+#setup .battle-options,.player-slot,#learn .learn-grid article,#fighters .fighter-profile{background:#102a3aef;border:1px solid #57717c;border-radius:3px 10px 3px 3px}
+#setup .battle-options{padding:16px;gap:10px}
+#fighters .fighter-library{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#fighters .fighter-profile{padding:12px}#fighters .fighter-profile h2{margin:5px 0}
+#learn .learn-actions{margin:0 0 18px}
+#learn .learn-grid{grid-template-columns:1fr;gap:8px;margin:0 0 18px}
+#learn .learn-grid article{padding:12px 18px}#learn .learn-grid h2{font:700 1.1rem system-ui;margin:0 0 4px}#learn .learn-grid p{margin:0}
+#settings .settings-layout,#local .local-options,#learn .learn-drills{background:#0c2233ee;border-left:3px solid #ac8e5e;padding:18px;gap:18px}
+#local .player-grid{gap:10px}
+@media(max-width:900px){
+  #chapters .story-actions,#chapters .chapter-grid,#levels .level-grid,#learn .learn-actions,#learn .learn-grid,#learn .learn-drills,#fighters .fighter-library,#settings .settings-layout,#local-form,#setup .battle-layout{width:min(100%,720px)}
+  #screens>.content-screen::before{background-size:cover,auto 100vh}
+}
+@media(max-width:650px){
+  #screens>.content-screen{padding:16px 4vw 40px}
+  #screens>.content-screen::before{background-position:center,62% top;background-image:linear-gradient(90deg,#071929e8,#07192955),var(--scene-art)}
+  .destination-heading,#levels .page-heading{max-width:100%}
+  #modes .mode-grid{width:min(82vw,390px)}
+  #setup .battle-layout,#settings .settings-layout{grid-template-columns:1fr}
+  #fighters .fighter-library,#setup .roster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #setup .roster-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media(min-width:880px){
   #local .local-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(190px,1.6fr);gap:12px 18px;align-items:end}
   #local .arena-preview{grid-column:5;grid-row:1/span 2;align-self:center;width:100%;margin:0}

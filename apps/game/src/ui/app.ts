@@ -39,7 +39,12 @@ function announce(text:string){$('announcements').textContent=text;}
 function closeDialogs(){document.querySelectorAll('dialog[open]').forEach((d:any)=>d.close());}
 function open(d:any){returnFocus=document.activeElement;d.showModal();d.querySelector('button,input,select')?.focus();}
 function close(d:any){d.close();if(returnFocus?.isConnected&&!returnFocus.closest('[hidden]'))returnFocus.focus();}
-function screen(name:string){closeDialogs();audio.stopMusic();for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!==name;currentScreen=name;$('header').hidden=name==='game';$('footer').hidden=name==='game';document.querySelectorAll('nav button').forEach((b:any)=>b.classList.toggle('current',b.dataset.nav===name));if(name!=='game'){inputs.active=false;world=null;scene=null;tutorial=false;replayPlayback=null;audio.suspend();}window.scrollTo(0,0);if(name==='home')updateHome();if(name==='chapters')renderChapters();if(name==='settings'){renderSettings();renderReplayLibrary();}announce(name==='home'?'Biblhalla home':name+' screen');}
+function screen(name:string){const previousScreen=currentScreen;closeDialogs();audio.stopMusic();for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!==name;currentScreen=name;$('header').hidden=name==='game';$('footer').hidden=name==='game';document.querySelectorAll('nav button').forEach((b:any)=>b.classList.toggle('current',b.dataset.nav===name));if(name!=='game'){inputs.active=false;world=null;scene=null;tutorial=false;replayPlayback=null;audio.suspend();}window.scrollTo(0,0);if(name==='home')updateHome();
+  if(name==='modes'){
+    const choice = previousScreen === 'setup' ? 'quick' : previousScreen === 'local' ? 'local' : 'story';
+    $('mode-' + choice).focus({ preventScroll: true });
+  }
+  if(name==='chapters')renderChapters();if(name==='settings'){renderSettings();renderReplayLibrary();}announce(name==='home'?'Biblhalla home':name+' screen');}
 function updateHome(){const total=store.data.completed.length;$('home-progress').textContent=total?total+' of 84 levels complete':'';$('home-continue').hidden=!total&&!store.data.checkpoint;$('footer-save').textContent=store.status;}
 function applySettings(){document.documentElement.style.setProperty('--touch-size',settings.touchSize+'px');document.documentElement.style.setProperty('--touch-opacity',settings.touchOpacity);document.documentElement.style.setProperty('--ui-scale',settings.uiScale);document.documentElement.classList.toggle('reduced-motion',settings.reducedMotion);$('touch-layer').classList.toggle('left-handed',settings.leftHanded);renderer.reduced=settings.reducedMotion;renderer.feedback.shakeOn=settings.screenShake;renderer.feedback.flashOn=settings.flashes;renderer.symbolic=settings.symbolicFinale;audio.mute=settings.mute;audio.setMusic(settings.music);}
 function gate(next:any){if(!store.data.controlChecked){chooseInput(()=>startTutorial(next));}else next();}
@@ -222,7 +227,7 @@ function simTick():boolean{
 
 // Controller/arrow-key menu navigation whenever gameplay input is not active.
 const menuNav=new MenuNavigator();
-menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
+menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(['setup','local','chapters'].includes(currentScreen))screen('modes');else if(currentScreen!=='home'&&currentScreen!=='game')screen('home');};
 bindArrowKeys(()=>!inputs.active);
 /** How long the final KO plays out before the results card (ms). */
 const RESULT_OUTRO_MS=1300;let outroWorld:any=null,outroStart=0;
@@ -250,6 +255,13 @@ $('brand').addEventListener('click',()=>screen('home'));
 document.querySelectorAll('[data-nav]').forEach((button:any)=>button.addEventListener('click',()=>screen(button.dataset.nav)));
 document.querySelectorAll<HTMLButtonElement>('[data-home-mode]').forEach(button =>
   button.addEventListener('click', () => $(button.dataset.homeMode!).click()));
+const playMenu = $('modes');
+playMenu.dataset.preview = 'story';
+for (const choice of document.querySelectorAll<HTMLButtonElement>('#modes .mode-card')) {
+  const preview = () => { playMenu.dataset.preview = choice.id.slice('mode-'.length); };
+  choice.addEventListener('pointerenter', preview);
+  choice.addEventListener('focus', preview);
+}
 $('home-play').addEventListener('click',()=>screen('modes'));$('home-continue').addEventListener('click',()=>gate(continueStory));
 $('mode-story').addEventListener('click',()=>screen('chapters'));$('mode-quick').addEventListener('click',()=>screen('setup'));$('mode-local').addEventListener('click',()=>{screen('local');renderLocal();});
 $('confirm-input').addEventListener('click',()=>{const selected=(document.querySelector('input[name=input-method]:checked') as HTMLInputElement).value;if(selected==='controller'&&!inputs.pads().some((p:any)=>inputs.padSeen.has(p.index)))return;settings.input=selected;store.save();close($('input-dialog'));applySettings();if(inputFromGame&&world){world.fighters.find((f:any)=>f.human).inputId=currentInputId();showGame();inputs.active=false;open($('pause-dialog'));}else if(inputNext){const fn=inputNext;inputNext=null;fn();}});
