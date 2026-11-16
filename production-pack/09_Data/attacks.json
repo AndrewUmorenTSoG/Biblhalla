@@ -7932,7 +7932,63 @@
       "landingRule": "continueAuthoredAction",
       "visualPose": "Round shield bash with anticipation, impact and recovery.",
       "resourceCostOnActionStart": {},
-      "weapon": "shield"
+      "weapon": "shield",
+      "fighterCollisionPhases": {
+        "gideon": [
+          {
+            "firstTick": 8,
+            "lastTickExclusive": 9,
+            "shape": "rect",
+            "rectUnits": [
+              52,
+              14,
+              36,
+              36
+            ],
+            "anchor": "fighterFeet",
+            "hitGroup": 0
+          },
+          {
+            "firstTick": 9,
+            "lastTickExclusive": 10,
+            "shape": "rect",
+            "rectUnits": [
+              58,
+              15,
+              36,
+              36
+            ],
+            "anchor": "fighterFeet",
+            "hitGroup": 0
+          },
+          {
+            "firstTick": 10,
+            "lastTickExclusive": 11,
+            "shape": "rect",
+            "rectUnits": [
+              62,
+              13,
+              36,
+              36
+            ],
+            "anchor": "fighterFeet",
+            "hitGroup": 0
+          },
+          {
+            "firstTick": 11,
+            "lastTickExclusive": 12,
+            "shape": "rect",
+            "rectUnits": [
+              64,
+              14,
+              37,
+              36
+            ],
+            "anchor": "fighterFeet",
+            "hitGroup": 0
+          }
+        ]
+      }
     },
     {
       "id": "shield_nair",

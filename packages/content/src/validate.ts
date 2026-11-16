@@ -55,7 +55,8 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
   if (m.damageTenths <= 0 || m.hitstunTicks < 0 || m.baseForceQ < 0) problems.push(`${at}: invalid damage/stun/force`);
   if (m.delivery === 'melee' && m.collisionPhases.length === 0) problems.push(`${at}: melee attack has no collision phase`);
   if (m.delivery === 'projectile' && !m.projectile) problems.push(`${at}: projectile attack has no projectile`);
-  for (const p of m.collisionPhases) {
+  for (const [hero,phases]of Object.entries(m.fighterCollisionPhases??{}))if(!hero||!Array.isArray(phases)||!phases.length)problems.push(`${at}: invalid fighter contact phases`);
+  for (const p of [...m.collisionPhases,...Object.values(m.fighterCollisionPhases??{}).flatMap(p=>Array.isArray(p)?p:[])]) {
     if(p.damagePermille!==undefined&&(p.damagePermille<1||p.damagePermille>1000))problems.push(`${at}: invalid phase damage multiplier`);
     if(p.grabTicks!==undefined&&(p.grabTicks<1||p.grabTicks>30))problems.push(`${at}: invalid grab duration`);
     if (p.firstTick < 0 || p.lastTickExclusive <= p.firstTick || p.lastTickExclusive > m.totalTicks) problems.push(`${at}: collision phase timing out of range`);
@@ -109,6 +110,7 @@ export function validateContent(c: Content): void {
     if (ids.has(m.id)) problems.push(`duplicate attack id ${m.id}`);
     ids.set(m.id, m);
     checkAttack(m, angles, problems);
+    for(const hero of Object.keys(m.fighterCollisionPhases??{}))need(fighters.some(f=>f.id===hero),`attack ${m.id}: unknown fighter contact override ${hero}`);
   }
   need(attacks.filter(m => m.ownerType === 'fighter' && /_[nsd]sig$/.test(m.id)).length === EXPECTED.signatureAttacks, 'expected 72 fighter signatures');
   need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 93 shared/unarmed attacks');

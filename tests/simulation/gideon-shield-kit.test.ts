@@ -3,12 +3,33 @@ import assert from 'node:assert/strict';
 import {S,Q} from '../helpers/engine.ts';
 import {DEFAULT_BINDINGS} from '../../apps/game/src/storage/profile.ts';
 import {keyboardFrame} from '../../apps/game/src/input/keymap.ts';
+import {readFileSync} from 'node:fs';
+import {Renderer} from '../../apps/game/src/render/renderer.ts';
+import {createContext} from '../../packages/sim/src/context.ts';
+import {combat} from '../../packages/sim/src/combat.ts';
+import {content} from '../helpers/engine.ts';
 
 function scene(facing=1){
  const s=S.create({mode:'training',hero:'gideon'});s.phase='playing';
  const [f,t]=s.fighters;for(const p of s.fighters){p.invulnerable=p.respawn=p.hitstop=0;p.ai.next=1e9;p.ai.intent=S.input();p.y=80*Q;p.ground=s.map.main.id;}
  f.weapon='shield';f.x=0;f.facing=facing;t.x=-450*facing*Q;return{s,f,t};
 }
+test('low shield strike visibly reaches the contact dummy when the first hit connects',()=>{
+ const e=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8')).gideon;
+ const r=Object.create(Renderer.prototype);r.atlas={gideon:e.frames};r.clips={gideon:e.clips};
+ for(const facing of [-1,1]){
+  const{s,f,t}=scene(facing);t.x=95*Q*facing;S.startAttack(s,f,{light:true,y:-1});let connected=false;
+  for(let n=0;n<15;n++){S.step(s);if(t.damage){const key=r.frameFor('gideon','active','shield','shield_dlight',f.action!.tick),frame=e.frames[key];assert.match(key,/^release_dlight_[4-7]$/);const x=f.x/Q+(frame.gripX-frame.pivotX)*96/e.frames.idle.h*facing,y=f.y/Q+(frame.pivotY-frame.gripY)*96/e.frames.idle.h;const radius=S.P.hurtboxUnits[0]/2,nearestY=Math.max(t.y/Q+radius,Math.min(y,t.y/Q+S.P.hurtboxUnits[1]-radius));assert.ok(Math.hypot(x-t.x/Q,y-nearestY)<=radius+62*96/160/2,'actual shield reaches dummy capsule');assert.equal(f.hits,1);connected=true;break;}}
+  assert.ok(connected);
+ }
+});
+test('low shield strike does not hit the empty space behind or beyond the impact shield',()=>{
+ const ctx=createContext(content);
+ for(const hero of ['gideon','nehemiah'])for(const distance of [20,116]){
+  const{s,f,t}=scene();f.hero=hero;t.x=distance*Q;S.startAttack(s,f,{light:true,y:-1});f.action!.tick=9;combat(ctx,s);
+  assert.equal(t.damage>0,hero==='nehemiah','Gideon uses authored shield contact; other fighters keep their shared range');
+ }
+});
 test('A/D + K rushes behind the held shield in either direction and brakes',()=>{
  for(const facing of [-1,1]){
   const {s,f}=scene(facing),key=facing===1?'KeyD':'KeyA';

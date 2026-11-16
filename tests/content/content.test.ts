@@ -43,6 +43,9 @@ test('corrupt content fails clearly before any match starts', () => {
   rejects(c => { c.attacks.attacks.pop(); }, /expected 172 attacks/);
   rejects(c => { c.attacks.attacks[0].totalTicks += 1; }, /totalTicks/);
   rejects(c => { c.attacks.attacks[0].collisionPhases[0].rectUnits[2] = 0; }, /zero or negative hit shape/);
+  rejects(c => { c.attacks.attacks.find(m=>m.id==='shield_dlight')!.fighterCollisionPhases!.gideon[0].rectUnits[2]=0; }, /zero or negative hit shape/);
+  rejects(c => { c.attacks.attacks[0].fighterCollisionPhases={missing_fighter:[]}; }, /unknown fighter contact override/);
+  rejects(c => { c.attacks.attacks[0].fighterCollisionPhases={gideon:[]}; }, /invalid fighter contact phases/);
   rejects(c => { c.attacks.attacks[0].input.direction = 'up' as any; }, /unsupported direction/);
   rejects(c => { c.attacks.attacks[0].baseForceQ = 1.5; }, /not a safe integer/);
   rejects(c => { c.fighters.fighters[0].signatureIds.push('missing_move'); }, /unknown signature/);

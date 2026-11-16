@@ -114,7 +114,7 @@ export function combat(ctx: SimContext, s: SimState): void {
     if (!f.stocks || f.respawn || f.hitstop || a?.kind !== 'attack') continue;
     const m = moves[a.move!];
     const localTick = a.tick - 1;
-    for (const ph of m.collisionPhases) {
+    for (const ph of m.fighterCollisionPhases?.[f.hero]??m.collisionPhases) {
       if (localTick >= ph.firstTick && localTick < ph.lastTickExclusive){
         zones.push({ f, a, m, ph, box: rectFor(f, f.hero==='joshua'&&m.id==='shield_nlight'?[-15,20,50,155]:ph.rectUnits, a.facing) });
         // A compact splash around Samson's gauntlets and Caleb's earth pound.

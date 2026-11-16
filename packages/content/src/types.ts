@@ -63,6 +63,8 @@ export interface Attack {
   launchAngle: number;
   delivery: 'melee' | 'projectile';
   collisionPhases: CollisionPhase[];
+  /** A fighter's authored weapon contact may differ from the shared kit art. */
+  fighterCollisionPhases?: Record<string,CollisionPhase[]>;
   projectile: ProjectileSpec | null;
   motionEvents: MotionEvent[];
   oneHitPerTarget: boolean;
