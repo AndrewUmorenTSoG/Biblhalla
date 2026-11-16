@@ -29,58 +29,110 @@ import { DAVID_CHAPTER, DAVID_FIGHTS, davidFightOptions, withChapterOpponent } f
 export function startApp(C: Content, S: Engine, A: CampaignApi, art: RuntimeArt): void {
 const root: any = globalThis;
 const $=(id:string)=>document.getElementById(id) as any;
+
+// ------------------------------------------------------------------------------
+// Shared state: the save profile, replay library, audio, the current match (world) and input.
+// ------------------------------------------------------------------------------
+/** Make an HTML element with optional text and CSS class. */
 const el=(tag:string,text='',cls='')=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
+/** Browser storage, or null when the browser blocks it (the game then plays from memory). */
 let localStorageAdapter:any=null;try{localStorageAdapter=window.localStorage;}catch(e){}
+/** Saved replays (the 20 newest plus pinned ones), the save profile (`store`) and the player's settings. First launch picks sensible defaults from the device. */
 const replayLibrary=new ReplayLibrary(localStorageAdapter);const Profiles=createProfiles(C);const store=new Profiles.Store(localStorageAdapter),settings=store.data.settings;
 if(!store.data.controlChecked){settings.reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;settings.input=matchMedia('(pointer:coarse)').matches?'touch':'keyboard';}
+/** Sound effects and music (generated in code; see audio/audio.ts) and the canvas renderer. */
 const audio=new GameAudio(),renderer=new Renderer($('arena'),S,art);
+/** The match being played (`world`, simulation state) and story level (`scene`), or null on the menus; plus menu and flow flags. */
 let world:any=null,scene:any=null,currentScreen='home',selectedHero='david',tutorial=false,tutorialFinished=false,resultShown=false,inputNext:any=null,inputFromGame=false,infoResume=false,storyPurpose='intro',pendingLevel='',currentChapter=1,lastTime=0,hudTick=-1,lastReplay:any=null,replayRecord:any=null,replayPlayback:any=null,replayIndex=0,returnFocus:any=null,lastControllerUpdate=0;
+/** Keyboard, touch and controller input, turned into game buttons. */
 const inputs=new Inputs(settings,()=>pause('Take a breath.'));
 inputs.bindTouch($('touch-layer'));
+
+// ------------------------------------------------------------------------------
+// Screens and dialogs: switching between menu screens and opening or closing pop-ups.
+// ------------------------------------------------------------------------------
+/** Read a message out to screen readers through the hidden live region. */
 function announce(text:string){$('announcements').textContent=text;}
+/** Close every open pop-up dialog. */
 function closeDialogs(){document.querySelectorAll('dialog[open]').forEach((d:any)=>d.close());}
+/** Open a pop-up dialog and focus its first control; focus returns where it was on close. */
 function open(d:any){returnFocus=document.activeElement;d.showModal();d.querySelector('button,input,select')?.focus();}
+/** Close one dialog and put keyboard focus back where it was. */
 function close(d:any){d.close();if(returnFocus?.isConnected&&!returnFocus.closest('[hidden]'))returnFocus.focus();}
+/** Show one menu screen (by id) and hide the others; also stops arena music. */
 function screen(name:string){const previousScreen=currentScreen;closeDialogs();audio.stopMusic();for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!==name;currentScreen=name;$('header').hidden=name==='game';$('footer').hidden=name==='game';document.querySelectorAll('nav button').forEach((b:any)=>b.classList.toggle('current',b.dataset.nav===name));if(name!=='game'){inputs.active=false;world=null;scene=null;tutorial=false;replayPlayback=null;audio.suspend();}window.scrollTo(0,0);if(name==='home')updateHome();
   if(name==='modes'){
     const choice = previousScreen === 'setup' ? 'quick' : previousScreen === 'local' ? 'local' : 'story';
     $('mode-' + choice).focus({ preventScroll: true });
   }
   if(name==='story-fights')renderFights();if(name==='chapters')renderChapters();if(name==='settings'){renderSettings();renderReplayLibrary();}announce(name==='home'?'Biblhalla home':name+' screen');}
+
+// ------------------------------------------------------------------------------
+// Settings and the first-time control check.
+// ------------------------------------------------------------------------------
+/** Refresh the home screen: progress text and whether Continue is shown. */
 function updateHome(){const total=store.data.davidWins;$('home-progress').textContent=total?total+' of 3 fights won · David and Goliath':'';$('home-continue').hidden=!total;$('footer-save').textContent=store.status;}
+/** Apply saved settings to the page and game: touch size, UI scale, mute, music, reduced motion and more. */
 function applySettings(){document.documentElement.style.setProperty('--touch-size',settings.touchSize+'px');document.documentElement.style.setProperty('--touch-opacity',settings.touchOpacity);document.documentElement.style.setProperty('--ui-scale',settings.uiScale);document.documentElement.classList.toggle('reduced-motion',settings.reducedMotion);$('touch-layer').classList.toggle('left-handed',settings.leftHanded);renderer.reduced=settings.reducedMotion;renderer.feedback.shakeOn=settings.screenShake;renderer.feedback.flashOn=settings.flashes;renderer.symbolic=settings.symbolicFinale;audio.mute=settings.mute;audio.setMusic(settings.music);}
+/** First-time players do the control check and tutorial before `next`; returning players go straight there. */
 function gate(next:any){if(!store.data.controlChecked){chooseInput(()=>startTutorial(next));}else next();}
+/** Open the input-method dialog (keyboard, touch or controller), then run `next`. */
 function chooseInput(next:any=null){inputNext=next;inputFromGame=!!world;document.querySelectorAll('input[name=input-method]').forEach((r:any)=>r.checked=r.value===settings.input);open($('input-dialog'));updateControllers();}
+/** Show controller status in the input dialog, and pause the match if a player's controller is unplugged. */
 function updateControllers(){const pads=inputs.pads(),radio=document.querySelector('input[name=input-method]:checked') as HTMLInputElement;const ready=pads.find((p:any)=>inputs.padSeen.has(p.index));$('controller-status').textContent=radio?.value==='controller'?(ready?'Controller ready: '+ready.id:'Connect a controller and press a button to test it.'):'Ready for '+(radio?.value||'keyboard')+'.';$('confirm-input').disabled=radio?.value==='controller'&&!ready;
   if(world&&missingControllers(world.fighters,pads.map((p:any)=>p.index)).length)pause('Controller disconnected');
 }
+/** The input device id for player 1, based on the chosen input method. */
 function currentInputId(){if(settings.input==='controller'){const p=inputs.pads().find((p:any)=>inputs.padSeen.has(p.index));return p?'pad:'+p.index:'unavailable';}return settings.input;}
 // Training instrumentation: combo/escape-gap tracker and input history (read-only).
+
+// ------------------------------------------------------------------------------
+// Starting and running matches: arena battles, training, the tutorial, pause and resume.
+// ------------------------------------------------------------------------------
+/** Training aids: combo counter and input history for the Details overlay. */
 let comboTracker:ComboTracker|null=null,inputHistory=new InputHistory();
+/** Feed each training tick into the combo counter and input history. */
 function observeTraining(frames:any){if(world?.mode!=='training')return;const p=world.fighters[0],d=world.fighters[1];if(!d)return;if(!comboTracker||comboTracker.defenderId!==d.id)comboTracker=new ComboTracker(p.id,d.id);comboTracker.observe(world);inputHistory.record(world.tick,frames[p.inputId]);renderer.training={combo:comboTracker.report,history:inputHistory.entries};}
 /** Which arena arrangement to play: the arena itself, or the chapter's arena for story routes. */
 function arenaMusic(w:any,chapter=0){const i=C.maps.maps.findIndex((m:any)=>m.id===w.map?.id);return i>=0?i:(chapter-1+6)%6;}
+/** Start an arena match, training session or wave/boss challenge from options. */
 function startGame(options:any){
   if(!options.fighters&&currentInputId()==='unavailable'){chooseInput(()=>startGame(options));return;}
   $('caption').textContent='';comboTracker=null;inputHistory=new InputHistory();renderer.training=null;$('tutorial-skip').hidden=true;drill=null;closeDialogs();scene=null;tutorial=false;world=S.create({...options,inputId:options.inputId||currentInputId()});audio.startMusic(arenaMusic(world));resultShown=false;audio.last=0;replayPlayback=null;replayRecord={schema:1,contentHash:C.hash,initial:S.snapshot(world),entries:[],finalHash:null};
   showGame();updateHud();$('game-title').textContent=options.mode==='training'?'Training ground':options.mode==='waves'?'Wave challenge':options.mode==='boss'?'Champion encounter':'Arena exhibition';$('objective').textContent=options.mode==='training'?'Practice safely. Open Details to inspect timing and resources.':options.mode==='waves'?'Clear three waves. Protect your three lives.':options.mode==='boss'?'Build damage and launch the champion out of the arena.':'Build damage. Knock opponents out. Stay on the arena.';
 }
+/** Show the game screen (canvas, HUD and toolbar) and hide the menus. */
 function showGame(){for(const section of document.querySelectorAll('#screens > .screen'))(section as HTMLElement).hidden=section.id!=='game';currentScreen='game';$('header').hidden=$('footer').hidden=true;inputs.clear();inputs.active=true;audio.unlock();runner.reset();hudTick=-1;$('arena').focus({preventScroll:true});const quiet=scene&&(!scene.level.combatEnabled||scene.combatCleared||scene.level.number===41);$('touch-layer').hidden=settings.input!=='touch'&&!world.fighters.some((f:any)=>f.inputId==='touch');$('touch-layer').classList.toggle('quiet-controls',!!quiet);$('touch-layer').classList.toggle('witness-controls',scene?.kind==='witness');$('hud').hidden=scene?.kind==='witness'||!!quiet;$('story-progress').hidden=!scene;$('game-context').hidden=world.mode==='training'&&!scene;$('training-details').hidden=!!scene||world.mode!=='training';$('training-reset').hidden=!!scene||world.mode!=='training';for(const id of ['training-speed-wrap','training-freeze','training-step'])$(id).hidden=!!scene||world.mode!=='training';trainingFrozen=false;trainingSpeed=1;$('training-speed').value='1';$('training-freeze').textContent='Freeze';$('training-step').disabled=true;$('training-bot-wrap').hidden=!!scene||world.mode!=='training';$('retry-checkpoint').hidden=!scene;$('training-bot').value=world.trainingBot||'idle';$('input-hint').textContent=settings.input==='keyboard'?'W Up/Jump · A D Move · S Down · J Light · K Heavy · Shift Dash/Dodge · L Pickup · E Interact · 0-3 Emotes · Esc Pause':settings.input==='touch'?'Move with the stick. Aim while pressing an action.':'Stick Move · South Jump · West Light · North Heavy · East Dodge · R1 Pickup · L1 Interact';}
+/** Start the seven-step first lesson in training. */
 function startTutorial(next:any=null){startGame({mode:'training',hero:'david',trainingBot:'stand'});tutorial=true;lesson=new Lesson();inputNext=next;world.fighters[0].x=-80*S.Q;$('game-title').textContent='First lesson';$('objective').textContent='Seven short steps. Each one completes when it actually works in the game.';$('caption').textContent=lesson.text;$('tutorial-skip').hidden=false;}
+/** End the first lesson, remember it is done, and show the results card. */
 function finishTutorial(reason:string){tutorialFinished=true;store.data.controlChecked=true;store.save();tutorial=false;$('tutorial-skip').hidden=true;world.phase='result';world.result={won:true,reason,ticks:world.tick};showResult();}
+/** Advance the first lesson when the player has really done the current step. */
 function checkTutorial(frames:any){if(!tutorial||!lesson)return;lesson.observe(world);$('caption').textContent=lesson.progress+' · '+lesson.text;if(lesson.step==='done')finishTutorial('Lesson complete. You know how to move, attack, dodge, recover and ring someone out.');}
+/** Pause the match (or story level): stop the simulation, clear held keys, open the pause menu. */
 function pause(reason='Take a breath.'){
   if(!world||world.phase==='paused'||world.phase==='result'||scene&&scene.phase!=='active')return;
   if(scene)A.pause(scene,true);else {S.pause(world,true);replayRecord?.entries.push({kind:'pause',on:true});}
   inputs.active=false;inputs.clear();audio.suspend();$('pause-title').textContent=reason;$('pause-copy').textContent=scene?'Checkpoint progress stays on this device.':'The whole match is paused.';$('pause-difficulty').parentElement.hidden=!scene;$('pause-difficulty').value=scene?.difficulty||world.difficulty;open($('pause-dialog'));announce('Game paused');
 }
+/** Leave the pause menu and start the short resume countdown. */
 function resume(){if(!world)return;const required=world.fighters.filter((f:any)=>f.human&&f.inputId.startsWith('pad:'));if(required.some((f:any)=>!inputs.pads().some((p:any)=>'pad:'+p.index===f.inputId))){$('pause-title').textContent='Reconnect the assigned controller';return;}closeDialogs();if(scene)A.pause(scene,false);else {S.pause(world,false);replayRecord?.entries.push({kind:'pause',on:false});}inputs.clear();inputs.active=true;audio.unlock();runner.reset();$('arena').focus();}
+/** Restart the current story level from its last checkpoint. */
 function retry(){if(world?.options.storyFight!==undefined&&!replayPlayback){startFight(world.options.storyFight);return;}if(scene){startScene(scene.levelId,true);return;}if(tutorial){startTutorial(inputNext);return;}const opts=world.options;startGame(opts);}
 /** Stock-loss cues (13_Audio_VFX): the card flashes for a second when a life is lost; the last life is marked. */
+
+// ------------------------------------------------------------------------------
+// In-match HUD (the score bar) and the results card.
+// ------------------------------------------------------------------------------
+/** Remembers each fighter's starting lives and when they last lost one, for the HUD flash. */
 const hudStocks=new Map<number,{world:any;start:number;last:number;lostAt:number}>();
+/** Track one fighter's lives for this match (creates the record on first sight). */
 function hudEntry(f:any){let e=hudStocks.get(f.id);if(!e||e.world!==world){e={world,start:f.stocks,last:f.stocks,lostAt:-1e9};hudStocks.set(f.id,e);}if(f.stocks<e.last)e.lostAt=world.tick;e.last=f.stocks;return e;}
+/** How many lives this fighter started the match with (at least 3 dots are shown). */
 function hudStart(f:any){return hudEntry(f).start;}
+/** True for about a second after this fighter lost a life. */
 function hudLost(f:any){return world.tick-hudEntry(f).lostAt<60;}
+/** Rebuild the score bar: name, weapon, damage, lives, last-life and elimination cues. */
 function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();for(const f of world.fighters){if(!f.stocks&&!f.human)continue;const card=el('div','','hud-card');card.append(el('b',(f.human?playerGlyph(f.id)+' P'+f.id+' · ':'')+f.name),el('small',f.weapon==='unarmed'?'Unarmed':f.weapon),(()=>{const d=el('span',String(Math.floor(f.damage/10)),'damage');d.style.color=damageColor(f.damage);return d;})(),el('span','◆'.repeat(f.stocks)+'◇'.repeat(Math.max(0,hudStart(f)-f.stocks))+' · '+(f.stocks?f.stocks+(f.stocks===1?' life':' lives'):'out'),'life'));const lost=hudLost(f);if(lost)card.classList.add('stock-lost');if(f.stocks===1&&hudStart(f)>1)card.classList.add('last-life');if(!f.stocks)card.classList.add('eliminated');box.append(card);}
   const seconds=Math.max(0,Math.ceil(world.remaining/60));const timer=el('div',Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),'timer');box.append(timer);
   if(scene){const boss=world.fighters.find((f:any)=>f.guard!==null);if(boss?.ai.tell>0){scene.caption='Boss phase '+boss.ai.phase+' — '+(scene.level.boss?.phases[boss.ai.phase-1]||'Watch the windup, then punish recovery.');scene.captionUntil=scene.tick+2;}
@@ -92,6 +144,7 @@ function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();f
     $('caption').textContent=scene.tick<scene.captionUntil+Math.round(180*(1/settings.captionSpeed-1))?scene.caption:'';}
   const quiet=scene&&(!scene.level.combatEnabled||scene.combatCleared||scene.level.number===41);$('hud').hidden=!!quiet;$('touch-layer').classList.toggle('quiet-controls',!!quiet);$('touch-layer').querySelector('[data-action=item]').textContent=world.fighters[0].weapon==='unarmed'?'Pickup':'Throw';
 }
+/** Show the results card for a finished match, story level, replay or lesson. */
 function showResult(){if(resultShown)return;resultShown=true;inputs.active=false;inputs.clear();(document.querySelector('#result-dialog .eyebrow') as HTMLElement).textContent=scene?(scene.phase==='complete'?'LEVEL COMPLETE':'LEVEL NOT COMPLETE'):replayPlayback?'REPLAY':world.options.mode==='training'?'LESSON':world.result?.won?'VICTORY':'MATCH OVER';if(scene){const previousBest=store.data.medals[scene.levelId];if(scene.phase==='complete')store.complete(scene.levelId,scene.difficulty);const summary=storyResult({level:scene.level,complete:scene.phase==='complete',difficulty:scene.difficulty,ticks:scene.tick,tasksDone:scene.markers.filter((m:any)=>m.done).length,tasksTotal:scene.markers.length,previousBest});$('result-title').textContent=scene.phase==='complete'&&scene.level.number===84?'A new dawn.':summary.title;$('result-reason').textContent=scene.phase==='complete'?scene.caption:scene.result?.reason||'Return to a safe place and try again.';$('next-level').hidden=scene.phase!=='complete'||!scene.level.nextLevel;$('rematch').textContent='Replay / retry level →';$('result-stats').replaceChildren(...summary.lines.map((line:string,k:number)=>el('p',line,k===1&&summary.medal?'medal medal-'+summary.medal:'')));}
   else {$('result-title').textContent=replayPlayback?(S.hash(world)===replayPlayback.finalHash?'Replay verified.':'Replay checksum differs.'):world.result?.won?'Well played!':'The next round awaits.';$('result-reason').textContent=world.result?.reason||'Match complete';$('next-level').hidden=true;$('rematch').textContent=store.data.controlChecked&&tutorialFinished?'Continue →':'Play again →';const player=world.fighters[0];const places=world.result?.placements||[];if(places.length>1){const ord=(n:number)=>n+(n===1?'st':n===2?'nd':n===3?'rd':'th');$('result-stats').replaceChildren(...places.map((p:any)=>el('p',ord(p.place)+' · '+(p.human?'P'+p.fighter+' · ':'')+p.name+' · '+p.stocks+(p.stocks===1?' life':' lives')+' left · '+Math.floor(p.damageDealt/10)+' damage dealt','placement')),el('p',Math.floor(world.tick/60)+' seconds'));}else $('result-stats').textContent='Damage dealt '+Math.floor(player.damageDealt/10)+' · Hits '+player.hits+' · '+Math.floor(world.tick/60)+' seconds';if(replayRecord&&world.options.mode!=='training'){replayRecord.finalHash=S.hash(world);lastReplay=replayRecord;try{replayLibrary.add(replayRecord,(world.mode==='duel'?'Duel':world.mode)+' · '+world.fighters.map((f:any)=>f.name).join(' vs ')+' · '+world.map.name);}catch(e){}}}
   const fightIndex=world.options.storyFight;
@@ -106,6 +159,11 @@ function showResult(){if(resultShown)return;resultShown=true;inputs.active=false
   open($('result-dialog'));announce($('result-title').textContent);
 }
 const portraitOrder = ['samson','david','saul','joshua','deborah','gideon','jonathan','moses','esther','miriam','nehemiah','caleb'];
+
+// ------------------------------------------------------------------------------
+// Fighter roster and the Fighters page.
+// ------------------------------------------------------------------------------
+/** A fighter's portrait image (or a drawn stand-in) for menus. */
 function fighterPortrait(hero: string) {
   const portrait = el('span', '', 'champion-portrait');
   const index = portraitOrder.indexOf(hero);
@@ -113,6 +171,7 @@ function fighterPortrait(hero: string) {
   portrait.setAttribute('aria-hidden', 'true');
   return portrait;
 }
+/** Build the fighter picker for Quick battle. */
 function renderRoster(){
   const grid=$('roster-grid');
   grid.replaceChildren();
@@ -138,8 +197,15 @@ function renderRoster(){
   choice('random','Random','From the match seed');
   updateSelected();
 }
+/** Show the chosen fighter's details next to the picker. */
 function updateSelected(){if(selectedHero==='random'){$('selected-info').replaceChildren(el('h2','Random fighter'),el('p','Chosen from the match seed and shown before the countdown.'));return;}const f=S.defs[selectedHero],box=$('selected-info');box.replaceChildren(fighterPortrait(f.id),el('h2',f.name),el('p',f.title));const stats=el('div','','stat-line');for(const [key,val] of Object.entries(f.stats))stats.append(el('span',key+' '+val));box.append(stats);}
+
+// ------------------------------------------------------------------------------
+// Story mode: chapters, David's fights, levels, story cards and context panels.
+// ------------------------------------------------------------------------------
+/** Build the story chapter grid with progress and gold-medal counts. */
 function renderChapters(){$('chapter-progress').textContent=store.data.completed.length+' of 84 levels complete · progression stays on this device';$('story-difficulty').value=settings.difficulty;const grid=$('chapter-grid');grid.replaceChildren();C.campaign.chapters.forEach((ch:any,i:number)=>{const button=el('button','','chapter-card');button.style.setProperty('--chapter',CHAPTER_COLORS[i]+'88');const count=ch.levels.filter((id:string)=>store.data.completed.includes(id)).length;button.style.setProperty('--completion',100*count/ch.levels.length+'%');button.append(el('small','CHAPTER '+String(i+1).padStart(2,'0')),el('h2',ch.title),el('span',count+' / 6 complete'+(ch.levels.some((id:string)=>store.data.medals[id]==='extreme')?' · '+ch.levels.filter((id:string)=>store.data.medals[id]==='extreme').length+' gold':'')));button.addEventListener('click',()=>renderLevels(i+1));grid.append(button);});}
+/** Build the list of David's chapter fights. */
 function renderFights(){
   const wins=store.data.davidWins, grid=$('fight-grid');
   $('fight-progress').textContent=wins+' of 3 fights won · 1 Samuel 17';
@@ -153,6 +219,7 @@ function renderFights(){
     button.addEventListener('click',()=>startFight(index));grid.append(button);
   });
 }
+/** Start one of David's chapter fights. */
 function startFight(index:number){
   if(index>store.data.davidWins||!DAVID_CHAPTER[index])return;
   if(currentInputId()==='unavailable'){chooseInput(()=>startFight(index));return;}
@@ -162,9 +229,13 @@ function startFight(index:number){
   $('objective').textContent='Launch '+fight.name+' beyond the arena boundary.';
   $('caption').textContent=fight.intro;
 }
+/** Continue David's fights from the next unbeaten one. */
 function resumeFights(){startFight(store.data.davidWins===3?0:store.data.davidWins);}
+/** Build the level cards for one chapter, with medals and locks. */
 function renderLevels(chapter:number){currentChapter=chapter;const ch=C.campaign.chapters[chapter-1];screen('levels');$('chapter-number').textContent='CHAPTER '+String(chapter).padStart(2,'0');$('chapter-title').textContent=ch.title;$('chapter-arc').textContent=ch.arc;const grid=$('level-grid');grid.replaceChildren();for(const id of ch.levels){const l=C.campaign.levels.find((l:any)=>l.id===id),done=store.data.completed.includes(id),button=el('button','','level-card');button.disabled=!store.unlocked(l);button.append(el('span',(done?'✓ ':'')+'LEVEL '+String(l.number).padStart(2,'0'),'number'),el('h2',l.title),el('p',l.objective),el('small',l.scripture+' · '+l.kind+(button.disabled?' · Complete previous level':'')));const medal=medalFor(l,store.data.medals[id]);if(medal)button.append(el('span',medal.label,'medal medal-'+medal.tier));button.addEventListener('click',()=>startScene(id));grid.append(button);}}
+/** Continue the story from the saved checkpoint, or the next unfinished level. */
 function continueStory(){const cp=store.data.checkpoint;const next=cp&&cp.stage!=='exit'?cp.level:C.campaign.levels.find((l:any)=>!store.data.completed.includes(l.id)&&store.unlocked(l))?.id||'L084';startScene(next,true);}
+/** Start a story level (optionally from its checkpoint) and play its music. */
 function startScene(id:string,useCheckpoint=false){
   const l=C.campaign.levels.find((l:any)=>l.id===id);if(!l||!store.unlocked(l))return;if(currentInputId()==='unavailable'){chooseInput(()=>startScene(id,useCheckpoint));return;}
   closeDialogs();
@@ -180,6 +251,7 @@ function startScene(id:string,useCheckpoint=false){
   else audio.startMusic(arenaMusic(world,l.chapter));
   store.checkpoint(id,scene.stage,scene.done,scene.combatCleared,world.options.seed);showGame();inputs.active=false;$('game-title').textContent='L'+String(l.number).padStart(3,'0')+' · '+l.title;$('objective').textContent=l.number===1?'Move right across three terraces. At each glowing panel, press Interact and read the card. After all six, walk into the glowing exit.':l.objective;updateHud();openingStory();
 }
+/** Show a story level's opening card before play starts. */
 function openingStory(){if(!scene)return;storyPurpose='intro';$('story-label').textContent='LEVEL '+String(scene.level.number).padStart(2,'0')+' · '+(scene.level.number===69||scene.level.number===74?'PARABLE CONTEXT':'BIBLE ACCOUNT');$('story-title').textContent=scene.level.title;$('story-reference').textContent=scene.level.scripture;const action=settings.input==='keyboard'?'E':settings.input==='touch'?'Interact':'L1';const instructions=scene.level.number===1?`Move right (D or stick). Press ${action} beside each glowing panel, then Continue on its card. Follow panels 1–6 in order; after panel 6, walk right into the glowing exit. Jump (W or Jump) over the two small gaps. `:'';$('story-text').textContent=scene.viewpoint+' '+scene.sourceSummary;$('story-rule').replaceChildren(el('b','INVENTED ARCHIVE CHALLENGE'),el('span',scene.level.objective));const notes=document.createElement('details');
   notes.className='story-notes';
   notes.append(el('summary','Challenge details'),el('p',instructions+scene.level.uniqueRule));
@@ -196,14 +268,23 @@ function openingStory(){if(!scene)return;storyPurpose='intro';$('story-label').t
   $('story-confirm').hidden=true;
 }
 open($('story-dialog'));}
+/** Close the story card and hand control to the player. */
 function activeStory(){closeDialogs();A.begin(scene);inputs.active=true;inputs.clear();audio.unlock();$('arena').focus();}
+/** Show a story card that the level asks for mid-play. */
 function showCard(){if(!scene||scene.pendingCard===null||$('story-dialog').open)return;inputs.active=false;inputs.clear();const card=A.card(scene,scene.pendingCard);storyPurpose='card';$('story-label').textContent=card.label;$('story-title').textContent=card.heading;$('story-reference').textContent=card.reference;$('story-text').textContent=card.text;$('story-rule').textContent=scene.level.uniqueRule;$('story-skip').hidden=true;$('story-choices').replaceChildren();$('puzzle-prompt').textContent=card.puzzle?card.prompt:'';$('story-confirm').hidden=card.puzzle;$('story-confirm').textContent='Continue →';if(card.puzzle){const rotation=(scene.pendingCard+scene.level.number)%3;for(let k=0;k<3;k++){const n=(k+rotation)%3,button=el('button',card.choices[n]);button.addEventListener('click',()=>{if(A.resolveCard(scene,n)){close($('story-dialog'));inputs.active=true;inputs.clear();audio.unlock();$('arena').focus();}else {$('puzzle-prompt').textContent='Try again. '+card.prompt;}});$('story-choices').append(button);}const clueButton=el('button','Show clue','clue-button') as HTMLButtonElement;clueButton.type='button';clueButton.addEventListener('click',()=>{$('puzzle-prompt').textContent=card.prompt+' '+card.clue;clueButton.disabled=true;});$('story-choices').append(clueButton);}open($('story-dialog'));}
+
+// ------------------------------------------------------------------------------
+// Information dialogs: context, controls, move lists, the journal and the fighter library.
+// ------------------------------------------------------------------------------
+/** Open the general information dialog with a title, label and content. */
 function info(title:string,label:string,nodes:any[],resumeAfter=false){$('info-dialog').classList.remove('controls-dialog');infoResume=resumeAfter;$('info-title').textContent=title;$('info-label').textContent=label;$('info-content').replaceChildren(...nodes);open($('info-dialog'));}
+/** Pause and show the story or arena context panel. */
 function context(){if(!world)return;const wasRunning=scene?scene.phase==='active':world.phase==='playing'||world.phase==='countdown';if(wasRunning)pause('Context');const nodes:any[]=[];if(scene){nodes.push(el('p',scene.level.scripture,'reference'),el('p',scene.sourceSummary,'context-note'),el('h3','Invented archive challenge'),el('p',scene.level.objective+' '+scene.level.uniqueRule));if(scene.level.boss)nodes.push(el('p','Training phases: '+scene.level.boss.phases.join(' '),'context-note'));}else if((world.options.storyFight ?? world.options.exhibitionOpponent)!==undefined){
   const index=world.options.storyFight ?? world.options.exhibitionOpponent;
   const fight=world.options.storyFight!==undefined?DAVID_CHAPTER[index]:DAVID_FIGHTS[index];
   nodes.push(el('h3',fight.name),el('p',index===2?'1 Samuel 17:40–50':'1 Samuel 17:34–37','reference'),el('p',fight.intro));
 }else {nodes.push(el('p','This exhibition brings characters from different historical periods together in a fictional sporting setting. Arena meetings and moves are inventions. A victory does not express divine preference.','context-note'));for(const f of world.fighters.slice(0,2)){const def=S.defs[f.hero];nodes.push(el('h3',def.name),el('p',def.scriptureReferences||''),el('p',def.storyContext||''));}}info('Story & context','BACKGROUND AND INVENTION',nodes,false);}
+/** Show the controls reference, using the player's current key bindings. */
 function controls(){
  const k=(a:string)=>keyLabel(settings.bindings[a]);
  const groups=[['Movement',[
@@ -229,6 +310,7 @@ function controls(){
  panel.append(tabs,body,el('p','Down + attack selects down moves. After a confirmed aerial Light, press Light during recovery for up to two follow-ups. Hold Heavy to charge; release to strike. Remap keys in Settings.','controls-help'));
  info('Controls','OPTIONS / CONTROLS',[panel]);$('info-dialog').classList.add('controls-dialog');
 }
+/** Show a fighter's full move list for each of their weapons and unarmed. */
 function movesInfo(hero=selectedHero){
   if(!S.defs[hero]){info('Random fighter','MOVES',[el('p','Pick a specific fighter to see their moves.')]);return;}
   const demo=moveShowcase(S,art,hero,settings.reducedMotion);
@@ -237,30 +319,62 @@ function movesInfo(hero=selectedHero){
   dialog.classList.add('showcase-dialog');
   dialog.addEventListener('close',()=>{demo.dispose();dialog.classList.remove('showcase-dialog');},{once:true});
 }
+/** Build the Fighters page: portraits, stats and move buttons. */
 function renderLibrary(){const grid=$('fighter-library');grid.replaceChildren();for(const f of C.fighters.fighters){const card=el('article','','fighter-profile');card.append(fighterPortrait(f.id),el('small',f.weaponPair.join(' / ')),el('h2',f.name),el('p',f.title));const movesButton=el('button','Moves'),contextButton=el('button','Context');movesButton.addEventListener('click',()=>movesInfo(f.id));contextButton.addEventListener('click',()=>info(f.name+' — context','BIBLE BACKGROUND · INVENTED MOVES',[el('p',f.scriptureReferences,'reference'),el('p',f.storyContext),el('p','Arena weapons and actions are invented sporting moves, separate from the biblical account.','context-note')]));card.append(movesButton,contextButton);grid.append(card);}}
+/** Show the story journal: levels finished so far. */
 function journal(){const nodes:any[]=[];for(const id of store.data.journal){const l=C.campaign.levels.find((l:any)=>l.id===id),row=el('article','','journal-row');row.append(el('h3',l.title),el('p',l.scripture,'reference'),el('p',SUMMARIES[l.number-1]));nodes.push(row);}if(!nodes.length)nodes.push(el('p','Completed story scenes will appear here with their references.'));info('Your story journal','LOCAL CHAPTER REPLAY',nodes);}
+
+// ------------------------------------------------------------------------------
+// Settings screen: key remapping, save export and import.
+// ------------------------------------------------------------------------------
+/** Fill the Settings screen from the saved settings, including the key list. */
 function renderSettings(){for(const [id,key] of [['mute','mute'],['reduced-motion','reducedMotion'],['left-handed','leftHanded'],['symbolic-finale','symbolicFinale'],['charge-toggle','chargeToggle'],['music','music'],['screen-shake','screenShake'],['flashes','flashes']])$(id).checked=settings[key];for(const [id,key] of [['touch-size','touchSize'],['touch-opacity','touchOpacity'],['deadzone','deadzone'],['ui-scale','uiScale'],['caption-speed','captionSpeed']])$(id).value=settings[key];$('save-status').textContent=store.status;$('export-replay').disabled=!lastReplay;const box=$('bindings');box.replaceChildren();stopKeyCapture();for(const key of Object.keys(settings.bindings)){const b=el('button');b.type='button';b.append(el('span',(key[0].toUpperCase()+key.slice(1)).replace(/(\d)$/,' $1')),el('kbd',keyLabel(settings.bindings[key])));b.addEventListener('click',()=>{stopKeyCapture();b.textContent='Press a key for '+key+' (Esc cancels)';b.classList.add('capturing');const handler=(event:KeyboardEvent)=>{event.preventDefault();event.stopImmediatePropagation();if(event.repeat)return;if(event.code==='Escape'&&key!=='pause'){renderSettings();return;}const r=rebind(settings.bindings,key,event.code);if(r.error){b.textContent=r.error;return;}settings.bindings=r.bindings as typeof settings.bindings;store.save();renderSettings();$('binding-note').textContent=r.swappedWith?keyLabel(event.code)+' moved to '+key+'; '+r.swappedWith+' now uses '+keyLabel(settings.bindings[r.swappedWith])+'.':key+' set to '+keyLabel(event.code)+'.';};keyCapture=handler;window.addEventListener('keydown',handler,true);});box.append(b);}const restore=el('button','Restore default keys') as HTMLButtonElement;restore.type='button';restore.addEventListener('click',()=>{settings.bindings={...DEFAULT_BINDINGS};store.save();renderSettings();$('binding-note').textContent='Default keys restored.';});box.append(restore,el('p','','binding-note'));box.lastElementChild!.id='binding-note';box.lastElementChild!.setAttribute('aria-live','polite');}
+/** The key-capture handler while the player is choosing a new key, if any. */
 let keyCapture:((e:KeyboardEvent)=>void)|null=null;
+/** Stop waiting for a new key. */
 function stopKeyCapture(){if(keyCapture)window.removeEventListener('keydown',keyCapture,true);keyCapture=null;}
+/** A short readable name for a key code ("KeyW" becomes "W"). */
 function keyLabel(code:string){return code.replace(/^Key/,'').replace(/^Digit/,'').replace(/^Arrow/,'Arrow ').replace(/(Left|Right)$/,m=>code.startsWith('Arrow')?m:' '+m[0]);}
+/** Save some text as a file on the player's device. */
 function download(text:string,name:string){const blob=new Blob([text],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a') as HTMLAnchorElement;a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+/** Download the save profile as a JSON file. */
 function exportSave(){download(store.export(),'biblhalla-save.json');}
 // Lobby rules everyone readies against; any change clears every Ready.
+
+// ------------------------------------------------------------------------------
+// Local multiplayer lobby: seats, devices, rules and the Ready check.
+// ------------------------------------------------------------------------------
+/** Who in the lobby has pressed Ready; changing the rules clears it. */
 const readyBoard=new ReadyBoard();
+/** Read each lobby seat's fighter and input device. */
 function lobbySlots(){return Array.from($('local-players').children).map((slot:any)=>({hero:slot.querySelector('.local-hero').value,input:slot.querySelector('.local-input').value}));}
+/** Read the lobby's match rules (mode, players, arena, lives, time). */
 function lobbyRules(){return {mode:$('local-mode').value,count:$('local-count').value,arena:$('local-arena').value,difficulty:$('local-difficulty').value,stocks:$('local-stocks').value,minutes:$('local-minutes').value,friendlyFire:$('friendly-fire').checked,seats:lobbySlots()};}
+/** Show whether everyone in the lobby is ready. */
 function lobbyStatus(){const slots=lobbySlots();$('local-status').textContent=readyBoard.allReady(slots)?'Everyone is ready.':'Each player checks the rules, then presses Ready.';}
+/** Build the local multiplayer lobby seats. */
 function renderLocal(){const mode=$('local-mode').value;if(mode==='teams')$('local-count').value='4';if(mode==='local')$('local-count').value='2';$('local-count').disabled=mode!=='ffa';const count=Number($('local-count').value),grid=$('local-players');const previous=Array.from(grid.querySelectorAll('.player-slot')).map((slot:any)=>({hero:slot.querySelector('.local-hero').value,input:slot.querySelector('.local-input').value}));grid.replaceChildren();const pads=inputs.pads();for(let n=0;n<count;n++){const card=el('div','','player-slot');card.append(el('h2','Player '+(n+1)+(mode==='teams'?' · Team '+(n%2+1):'')));const heroLabel=el('label','Fighter'),heroSelect=el('select','','local-hero') as HTMLSelectElement;for(const f of C.fighters.fighters){const opt=el('option',f.name) as HTMLOptionElement;opt.value=f.id;heroSelect.append(opt);}const randomOpt=el('option','Random (from match seed)') as HTMLOptionElement;randomOpt.value='random';heroSelect.append(randomOpt);heroSelect.value=previous[n]?.hero||C.fighters.fighters[n].id;heroLabel.append(heroSelect);
     if (heroSelect.value !== 'random') card.append(fighterPortrait(heroSelect.value));
     const inputLabel=el('label','Input'),inputSelect=el('select','','local-input') as HTMLSelectElement;const blank=el('option','Choose a unique device') as HTMLOptionElement;blank.value='';inputSelect.append(blank);const cpuOption=el('option','Computer player') as HTMLOptionElement;cpuOption.value=CPU_INPUT;inputSelect.append(cpuOption);if(n===0)for(const id of ['keyboard','touch']){const opt=el('option',id) as HTMLOptionElement;opt.value=id;inputSelect.append(opt);}for(const p of pads){const opt=el('option','Controller '+(p.index+1)+(inputs.padSeen.has(p.index)?' · tested':' · press a button')) as HTMLOptionElement;opt.value='pad:'+p.index;opt.disabled=!inputs.padSeen.has(p.index);inputSelect.append(opt);}inputSelect.value=previous[n]?.input||(n===0?settings.input==='touch'?'touch':'keyboard':'');inputLabel.append(inputSelect);const readyButton=el('button',readyBoard.isReady(n)?'✓ Ready':'Ready?','ready-toggle') as HTMLButtonElement;readyButton.type='button';readyButton.setAttribute('aria-pressed',String(readyBoard.isReady(n)));readyButton.addEventListener('click',()=>{const on=readyBoard.toggle(n);readyButton.textContent=on?'✓ Ready':'Ready?';readyButton.setAttribute('aria-pressed',String(on));lobbyStatus();});card.append(heroLabel,inputLabel,readyButton);grid.append(card);}}
+/** Start a local multiplayer match from the lobby. */
 function localSubmit(e:Event){e.preventDefault();const mode=$('local-mode').value,slots=Array.from($('local-players').children).map((slot:any)=>({hero:slot.querySelector('.local-hero').value,input:slot.querySelector('.local-input').value}));if(!readyBoard.allReady(slots)){$('local-status').textContent='Every player must press Ready after the final rule change.';return;}const roster=buildRoster(mode,slots,(id:string)=>inputs.pads().some((p:any)=>'pad:'+p.index===id&&inputs.padSeen.has(p.index)),(h:string)=>S.defs[h]?.name||h);if(!roster.ok){$('local-status').textContent=roster.message;return;}startGame({mode,arena:$('local-arena').value,difficulty:$('local-difficulty').value,fighters:roster.fighters,friendlyFire:$('friendly-fire').checked,stocks:Number($('local-stocks').value),matchMinutes:Number($('local-minutes').value)});}
+
+// ------------------------------------------------------------------------------
+// The game loop: one simulation tick, replays, drills and the per-frame display loop.
+// ------------------------------------------------------------------------------
+/** Play back one recorded entry of a replay; ends with a verified or mismatched result. */
 function tickReplay(){const entry=replayPlayback.entries[replayIndex++];if(!entry){world.phase='result';world.result={won:true,reason:'Replay finished'+(S.hash(world)===replayPlayback.finalHash?' — checksum verified':''),ticks:world.tick};showResult();return;}if(entry.kind==='pause')S.pause(world,entry.on);else S.step(world,entry.frames);}
+/** Turns real time into exact 60 Hz simulation ticks (see runner.ts). */
 const runner=new FixedStepRunner();
+/** The first lesson in progress, if any. */
 let lesson:Lesson|null=null,drill:DrillRun|null=null;
+/** Start one of the advanced training drills. */
 function startDrill(id:string){const def=DRILLS.find(d=>d.id===id);if(!def)return;startGame({mode:'training',hero:'david',trainingBot:'stand'});drill=new DrillRun(def);def.setup?.(world);$('game-title').textContent='Lesson: '+def.title;$('objective').textContent=def.goal;$('caption').textContent=drill.text;}
+/** Finish a drill when the player has really done it. */
 function checkDrill(){if(!drill||!world)return;if(drill.observe(world,S.P.fastFallCapQ,S.P.fallCapQ)){const title=drill.drill.title;drill=null;world.phase='result';world.result={won:true,reason:title+' — done. Try it in a match, or pick another lesson.',ticks:world.tick};showResult();}else $('caption').textContent=drill.text;}
 for(const d of DRILLS){const b=el('button',d.title) as HTMLButtonElement;b.type='button';b.addEventListener('click',()=>gate(()=>startDrill(d.id)));$('drill-list').append(b);}
 $('tutorial-skip').addEventListener('click',()=>{if(tutorial)finishTutorial('Lesson skipped. You can replay it any time from Learn.');});
+/** Training slow-motion: 1, 0.5 or 0.25 of normal speed (display time only). */
 let trainingSpeed=1,trainingFrozen=false;
 /** One fixed simulation tick of whatever is running; false stops the batch. */
 function simTick():boolean{
@@ -286,6 +400,7 @@ menuNav.onBack=()=>{if(currentScreen==='levels')screen('chapters');else if(curre
 bindArrowKeys(()=>!inputs.active);
 /** How long the final KO plays out before the results card (ms). */
 const RESULT_OUTRO_MS=1300;let outroWorld:any=null,outroStart=0;
+/** Called every display frame: advance the simulation, draw the game, update the HUD and results. */
 function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);const dt=lastTime?now-lastTime:1000/60;lastTime=now;
   if(!world){inputs.readAll();if(now-lastControllerUpdate>400){updateControllers();lastControllerUpdate=now;}}
   if(world){
@@ -304,6 +419,10 @@ function frame(now:number){if(!inputs.active)menuNav.poll(inputs.pads(),now);con
   }
   requestAnimationFrame(frame);
 }
+
+// ------------------------------------------------------------------------------
+// Button wiring: what each menu button, dialog and key does.
+// ------------------------------------------------------------------------------
 $('brand').addEventListener('click',()=>screen('home'));
 document.querySelectorAll('[data-nav]').forEach((button:any)=>button.addEventListener('click',()=>screen(button.dataset.nav)));
 document.querySelectorAll<HTMLButtonElement>('[data-home-mode]').forEach(button =>
@@ -336,10 +455,13 @@ $('import-save').addEventListener('change',async()=>{const file=$('import-save')
 // Replay playback from a file or the local library; validation lives in the simulation package.
 function playReplay(text:string){const raw=S.validateReplay(JSON.parse(text));scene=null;tutorial=false;world=S.snapshot(raw.initial);replayPlayback=raw;replayRecord=null;replayIndex=0;resultShown=false;showGame();$('game-title').textContent='Local replay';$('objective').textContent='Playing recorded semantic inputs. No network connection.';}
 $('import-replay').addEventListener('change',async()=>{const file=$('import-replay').files[0];if(!file)return;try{if(file.size>8*1048576)throw Error('Replay is too large');playReplay(await file.text());}catch(e){$('import-status').textContent='Replay failed: '+(e as Error).message;}finally{$('import-replay').value='';}});
+/** Build the saved-replays list in Settings. */
 function renderReplayLibrary(){const box=$('replay-library');box.replaceChildren();const items=replayLibrary.list();if(!items.length){box.append(el('p','Finished arena matches are kept here: the 20 newest, plus any you pin.'));return;}for(const r of items){const row=el('div','','replay-row');const play=el('button','Play') as HTMLButtonElement,pin=el('button',r.pinned?'Unpin':'Pin') as HTMLButtonElement,exp=el('button','Export') as HTMLButtonElement,del=el('button','Delete') as HTMLButtonElement;play.addEventListener('click',()=>{try{playReplay(replayLibrary.get(r.id)!);}catch(e){$('import-status').textContent='Replay failed: '+(e as Error).message;}});pin.addEventListener('click',()=>{replayLibrary.pin(r.id,!r.pinned);renderReplayLibrary();});exp.addEventListener('click',()=>download(replayLibrary.get(r.id)!,'biblhalla-replay-'+r.id+'.json'));del.addEventListener('click',()=>{replayLibrary.remove(r.id);renderReplayLibrary();});row.append(el('span',(r.pinned?'📌 ':'')+r.label+' · '+new Date(r.savedAt).toLocaleString()),play,pin,exp,del);box.append(row);}}
 for(const [id,key,isBoolean] of [['mute','mute',true],['reduced-motion','reducedMotion',true],['left-handed','leftHanded',true],['symbolic-finale','symbolicFinale',true],['charge-toggle','chargeToggle',true],['music','music',true],['screen-shake','screenShake',true],['flashes','flashes',true],['touch-size','touchSize',false],['touch-opacity','touchOpacity',false],['deadzone','deadzone',false],['ui-scale','uiScale',false],['caption-speed','captionSpeed',false]] as any)$(id).addEventListener('input',()=>{settings[key]=isBoolean?$(id).checked:Number($(id).value);applySettings();store.save();$('save-status').textContent=store.status;});
 $('game-pause').addEventListener('click',()=>pause());$('resume').addEventListener('click',resume);$('restart').addEventListener('click',retry);$('pause-controls').addEventListener('click',controls);$('pause-input').addEventListener('click',()=>chooseInput());// Quitting a match asks once: the first press arms, a second press within 5 s leaves.
+/** Leaving a match needs a second press within 5 seconds. */
 let leaveArmedUntil=0;
+/** Reset the Leave button to its first-press label. */
 function resetLeave(){leaveArmedUntil=0;$('leave-game').textContent='Return to menu';}
 $('leave-game').addEventListener('click',()=>{const now=performance.now();if(now<leaveArmedUntil){resetLeave();screen(scene?'chapters':world?.options.storyFight!==undefined?'story-fights':'modes');return;}leaveArmedUntil=now+5000;$('leave-game').textContent=scene?'Leave the level? Press again — you will restart from your last checkpoint':'Leave the match? Press again — this match will not be saved';});
 $('pause-dialog').addEventListener('close',resetLeave);$('pause-difficulty').addEventListener('change',()=>{settings.difficulty=$('pause-difficulty').value;store.save();retry();});

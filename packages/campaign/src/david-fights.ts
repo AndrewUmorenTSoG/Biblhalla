@@ -1,3 +1,6 @@
+// David's chapter fights: the three opponents (the lion, the bear and Goliath), their
+// scripted moves and timing, and the match options used to start each fight.
+
 import type { BossMove, MatchOptions } from '../../sim/src/types.ts';
 
 function strike(name: string, width: number, height: number, tell: number, active: number, recovery: number, damage: number, caption: string, frame: number): BossMove {

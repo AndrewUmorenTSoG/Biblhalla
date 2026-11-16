@@ -1,3 +1,6 @@
+// Art pipeline (Codex): builds an HTML preview page under assets/animation-production
+// so new animation can be watched in a browser before it ships.
+
 import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';import{buildSync}from'esbuild';import{ROOT,loadContent}from'../lib/content.ts';
 const all=JSON.parse(readFileSync(join(ROOT,'assets/runtime/fighters/fighters.json'),'utf8')),e=all.gideon;e.uri='data:image/png;base64,'+readFileSync(join(ROOT,e.image)).toString('base64');
 const code=buildSync({stdin:{contents:"export {Renderer} from './apps/game/src/render/renderer.ts';export {createEngine} from './packages/sim/src/index.ts';export {gideonReboundFrame} from './apps/game/src/render/gideon-rebound.ts';export {drawElements,drawCharge,drawElementProjectile} from './apps/game/src/render/elemental.ts';",resolveDir:ROOT,loader:'ts'},bundle:true,write:false,format:'iife',globalName:'Demo',minify:true}).outputFiles[0].text;

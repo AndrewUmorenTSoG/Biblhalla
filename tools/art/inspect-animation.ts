@@ -1,3 +1,6 @@
+// Art pipeline (Codex): prints a report about one kind of fighter art, for checking a
+// delivery before it is imported. Changes nothing.
+
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT } from '../lib/content.ts';

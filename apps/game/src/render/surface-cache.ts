@@ -1,3 +1,6 @@
+// Draws each arena platform surface once into an off-screen image and reuses it every
+// frame, instead of repainting the stonework 60 times a second.
+
 import { paintArenaSurface } from './arena-scenes.ts';
 
 /** Rasterize fixed collision surfaces once; changing route geometry gets a new key. */

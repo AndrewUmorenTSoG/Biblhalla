@@ -1,3 +1,6 @@
+// Art pipeline (Codex): builds an HTML preview page under assets/animation-production
+// so new animation can be watched in a browser before it ships.
+
 import {readFileSync,writeFileSync} from 'node:fs';
 import {join} from 'node:path';
 import {buildSync} from 'esbuild';

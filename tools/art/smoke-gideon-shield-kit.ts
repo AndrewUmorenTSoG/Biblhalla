@@ -1,3 +1,5 @@
+// Art pipeline (Codex): quick check that a preview page loads and draws without errors.
+
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 let draws=0;const ctx=new Proxy({} as any,{get:()=>()=>{draws++;},set:()=>true});
