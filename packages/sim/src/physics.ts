@@ -1,7 +1,7 @@
 // Movement integration and stage collision. Hurtbox and stage geometry come only
 // from content data, never from art.
 
-import type { Platform } from '../../content/src/index.ts';
+import type { Attack, Platform } from '../../content/src/index.ts';
 import type { SimContext } from './context.ts';
 import type { Fighter, Input, SimState } from './types.ts';
 import { Q, approach } from './fixed.ts';
@@ -170,6 +170,7 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   // One extra wall tick per twenty authored ticks: approximately 5% slower.
   // Gravity still advances, but one-shot attack events must not repeat.
   const slowHold=a?.kind==='attack'&&f.hero==='samson'&&((a.pace=(a.pace??0)+1)%21===0);
+  let launchAfterMove:Attack|null=null;
   let dx = 0, freezeY = false, jumpLaunch = f.jumpTick === s.tick;
   if (!a && !f.stun) {
     const cap = P.runMaxQ + P.runSpeedPerStatQ * (f.stats.speed - P.statBaseline);
@@ -191,7 +192,7 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
       if (ev.kind === 'setVelocity' && ev.atTick === a.tick) { f.vx = ev.vxQ * a.facing; f.vy = ev.vyQ; f.jumpCut = false; jumpLaunch = true; }
       if (ev.kind === 'translate' && a.tick >= ev.fromTick && a.tick < ev.toTickExclusive) { dx += ev.dxQ * a.facing; f.vy += ev.dyQ; }
     }
-    if (m.projectile?.spawnTick === a.tick) startProjectile(ctx, s, f, m, a);
+    if(m.projectile?.spawnTick===a.tick){if(m.projectile.originFromMove)launchAfterMove=m;else startProjectile(ctx,s,f,m,a);}
     const impact=m.effect==='sound'?(m.projectile?.spawnTick??m.startup):m.collisionPhases[0]?.grabTicks?(m.collisionPhases[1]?.firstTick??m.startup):m.startup;
     if(a.tick===impact&&!m.id.endsWith('_ground_pound'))event(s,'element',{fighter:f.id,hero:f.hero,weapon:f.weapon,move:m.id,effect:f.hero==='joshua'&&m.id==='shield_nlight'?'sun':m.effect,x:f.x,y:f.y,facing:a.facing});
   }
@@ -211,10 +212,11 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   // Launch velocity holds through hitstun, then decays toward zero.
   if (!f.stun) f.kx = approach(f.kx, 0, P.knockbackDecayXQ);
   moveFighter(ctx, s, f, f.vx + f.kx + dx, freezeY && a?.cancelled ? 0 : f.vy);
+  if(launchAfterMove&&a)startProjectile(ctx,s,f,launchAfterMove,a);
   if (a) {
     const m = a.move ? moves[a.move] : null;
     // Charging holds the last startup tick; it never extends active frames or adds protection.
-    if (m?.chargeable && a.tick === m.startup - 1 && i.heavyHeld && a.charge < m.chargeMaxTicks) a.charge++;
+    if (m?.chargeable && a.tick === (m.chargeHoldTick??m.startup - 1) && i.heavyHeld && a.charge < m.chargeMaxTicks) a.charge++;
     else if(!slowHold)a.tick++;
     if (a.tick >= a.duration) f.action = null;
   }

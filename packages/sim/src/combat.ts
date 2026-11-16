@@ -58,7 +58,7 @@ export function startProjectile(ctx: SimContext, s: SimState, f: Fighter, m: Att
   if (s.projectiles.some(t => t.owner === f.id && t.capClass === p.capClass)) { event(s, 'fizzle', { fighter: f.id }); return; }
   const dir = ctx.P.directionLookup[String(p.travelAngle)] || ctx.P.directionLookup['0'];
   const weapon=m.weapon??(m.ownerType==='weapon'?m.ownerId:ctx.defs[f.hero].weaponPair.find(w=>m.id.includes('_'+w+'_'))??m.ownerId);
-  const origin=ctx.defs[f.hero]?.releaseOrigins?.[weapon]??p.originUnits;
+  const origin=p.originFromMove?p.originUnits:ctx.defs[f.hero]?.releaseOrigins?.[weapon]??p.originUnits;
   const speed=p.boomerangRangeUnits?24*Q:weapon==='sling'?32*Q:p.speedQ;
   if(p.boomerangRangeUnits)a.duration=Math.max(a.duration,a.tick+(a.charge?29+Math.round(Math.min(36,a.charge)/36*19):24)+16);
   s.projectiles.push({
@@ -151,7 +151,7 @@ export function combat(ctx: SimContext, s: SimState): void {
       const interrupted=owner.stun>0||owner.action?.instance!==p.instance;
       if(!p.returning&&(interrupted||s.tick>=(p.returnAtTick??0))){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});}
       if (p.returning) {
-        const origin = ctx.defs[owner.hero].releaseOrigins?.shield ?? [30, 44];
+        const origin = moves[p.move]?.projectile?.returnOriginUnits ?? ctx.defs[owner.hero].releaseOrigins?.shield ?? [30, 44];
         const dx = owner.x + origin[0] * Q * owner.facing - p.x;
         const dy = owner.y + origin[1] * Q - p.y;
         const span = Math.max(Math.abs(dx), Math.abs(dy));
@@ -160,9 +160,9 @@ export function combat(ctx: SimContext, s: SimState): void {
         p.vx = caughtAtEnd ? dx : Math.trunc(dx * speed / span);
         p.vy = caughtAtEnd ? dy : Math.trunc(dy * speed / span);
       }
-      else {const remaining=p.rangeQ-Math.abs(p.x-(p.originX??p.x));p.vx=Math.max(0,Math.min(24*Q,remaining))*p.facing;}
+      else {const root=p.originX??p.x;p.vx=clamp(p.x+p.vx,root-p.rangeQ,root+p.rangeQ)-p.x;}
     }
-    const nx = p.x + p.vx, ny = p.y + p.vy;
+    let nx = p.x + p.vx, ny = p.y + p.vy;
     const hw = (p.size[0] * Q) / 2, hh = (p.size[1] * Q) / 2;
     // Active enemy melee deflects projectiles.
     for (const z of zones) {
@@ -173,12 +173,17 @@ export function combat(ctx: SimContext, s: SimState): void {
       }
     }
     if (removed.has(p.id)) continue;
-    for (const pl of platforms(s)) {
+    for (const pl of p.rangeQ&&p.returning?[]:platforms(s)) {
       const [x, y, w, h] = pl.rectUnits;
       const hitSolid = pl.kind === 'solid' && segmentBox(p.x, p.y, nx, ny, [x * Q - hw, y * Q - hh, w * Q + 2 * hw, h * Q + 2 * hh]);
       const hitTop = pl.kind === 'oneWay' && p.vy <= 0 && p.y >= (y + h) * Q && ny <= (y + h) * Q && nx > x * Q && nx < (x + w) * Q;
       if (hitSolid || hitTop) {
-        if(p.rangeQ){p.returning=true;break;}
+        const spec=moves[p.move]?.projectile,top=(y+h)*Q+hh;
+        if(p.rangeQ&&spec?.floorBounceVelocityQ&&!p.bounced&&p.vy<0&&p.y>=top&&ny<=top){
+          const t=(p.y-top)/Math.max(1,p.y-ny),ix=Math.round(p.x+(nx-p.x)*t);
+          if(ix>=x*Q-hw&&ix<=(x+w)*Q+hw){nx=ix;ny=top+1;p.vx=-p.facing*8*Q;p.vy=spec.floorBounceVelocityQ;p.gravity=ctx.P.gravityQ;p.bounced=true;event(s,'shieldBounce',{fighter:p.owner,x:nx,y:(y+h)*Q});event(s,'element',{fighter:p.owner,hero:s.fighters.find(f=>f.id===p.owner)?.hero,weapon:'shield',move:p.move,effect:'shieldBounce',x:nx,y:(y+h)*Q,facing:p.facing});break;}
+        }
+        if(p.rangeQ){p.returning=true;event(s,'shieldReturn',{fighter:p.owner});break;}
         removed.add(p.id);
         // A thrown weapon lands as a recoverable item of the same family.
         if (p.weapon) s.items.push({ id: ++s.entityId, x: p.x, y: p.y, vy: 512, life: R.drop.lifetimeTicks, neutral: false, weapon: p.weapon, claim: null });
@@ -189,7 +194,7 @@ export function combat(ctx: SimContext, s: SimState): void {
     for (const target of s.fighters) {
       if (!hittable(target, p.owner, p.team)||(p.hit??[]).includes(target.id)) continue;
       // Swept finite-step capsule contact; authored projectile speed is bounded.
-      const samples = Math.max(1, Math.ceil(Math.max(Math.abs(p.vx), Math.abs(p.vy)) / (8 * Q)));
+      const samples = Math.max(1, Math.ceil(Math.max(Math.abs(nx-p.x), Math.abs(ny-p.y)) / (8 * Q)));
       let contact = false;
       for (let n = 0; n <= samples && !contact; n++) {
         const cx = Math.trunc(p.x + ((nx - p.x) * n) / samples), cy = Math.trunc(p.y + ((ny - p.y) * n) / samples);

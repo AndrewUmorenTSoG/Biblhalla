@@ -63,6 +63,9 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
   }
   const pr = m.projectile;
   if (pr) {
+    if(pr.originFromMove!==undefined&&typeof pr.originFromMove!=='boolean')problems.push(`${at}: invalid authored origin flag`);
+    if(pr.floorBounceVelocityQ!==undefined&&(!Number.isInteger(pr.floorBounceVelocityQ)||pr.floorBounceVelocityQ<=0||!pr.boomerangRangeUnits))problems.push(`${at}: invalid shield floor bounce`);
+    if(pr.returnOriginUnits!==undefined&&(pr.returnOriginUnits.length!==2||!pr.returnOriginUnits.every(Number.isFinite)))problems.push(`${at}: invalid shield catch origin`);
     if(pr.boomerangRangeUnits!==undefined&&(pr.boomerangRangeUnits<1||pr.boomerangRangeUnits>160))problems.push(`${at}: returning shield exceeds four body widths`);
     if (pr.spawnTick < 0 || pr.spawnTick >= m.totalTicks) problems.push(`${at}: projectile spawn outside action`);
     if (pr.lifetimeTicks <= 0 || pr.speedQ <= 0) problems.push(`${at}: projectile has no lifetime or speed`);
@@ -70,6 +73,7 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
     if (!angles.has(String(pr.travelAngle))) problems.push(`${at}: travelAngle ${pr.travelAngle} missing from directionLookup`);
     if (pr.homing) problems.push(`${at}: homing projectiles are not supported`);
   }
+  if(m.chargeHoldTick!==undefined&&(!Number.isInteger(m.chargeHoldTick)||m.chargeHoldTick<0||m.chargeHoldTick>=m.startup))problems.push(`${at}: charge hold outside startup`);
   if (m.chargeable && m.chargeMaxTicks <= 0) problems.push(`${at}: chargeable without charge window`);
   if (m.invulnerability) problems.push(`${at}: attack-granted invulnerability is not allowed`);
 }

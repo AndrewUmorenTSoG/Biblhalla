@@ -16,11 +16,11 @@ export function drawElements(c:CanvasRenderingContext2D,world:SimState,screen:Sc
     if(hero==='caleb'&&move.endsWith('ground_pound'))kind='rock';
     if(hero==='samson')kind='dust';
     if(hero==='esther'&&weapon==='blades')kind='wind';
-    if(!['water','rock','dust','wind','sun','sound'].includes(kind))continue;
+    if(!['water','rock','dust','wind','sun','sound','shieldBounce'].includes(kind))continue;
     const p=screen(Number(e.x),Number(e.y)),t=age/22;
     c.save();c.translate(p.x,p.y);c.scale(zoom*Number(e.facing),zoom);c.globalAlpha=1-t;
     const reach=reduced?65:35+t*110;
-    if(kind==='water'){
+    if(kind==='shieldBounce'){c.strokeStyle='#f4c874';c.lineWidth=2;c.beginPath();c.ellipse(0,-3,reduced?28:18+t*35,5+t*7,0,Math.PI,Math.PI*2);c.stroke();for(let i=0;i<6;i++){c.fillStyle='#c8b38b88';c.beginPath();c.ellipse((i-2.5)*(reduced?7:7+t*7),-5-(reduced?5:Math.sin(t*Math.PI)*18),5,3,0,0,Math.PI*2);c.fill();}}else if(kind==='water'){
       for(const side of [-1,1]){c.save();c.scale(side,1);c.fillStyle='#168edbcc';c.beginPath();c.moveTo(0,0);c.quadraticCurveTo(reach*.4,-10,reach,-48*(1-t));c.quadraticCurveTo(reach+16,-12,reach+25,0);c.closePath();c.fill();c.strokeStyle='#c8f8ff';c.lineWidth=3;c.beginPath();c.moveTo(15,-5);c.quadraticCurveTo(reach*.6,-12,reach,-45*(1-t));c.stroke();c.restore();}
     }else if(kind==='rock'||kind==='dust'){
       const massive=kind==='dust';
@@ -54,6 +54,7 @@ export function drawElementProjectile(c:CanvasRenderingContext2D,p:Projectile,ow
   c.save();c.translate(x,y);c.scale(zoom*p.facing,zoom);
   let drawn=true;
   if(p.effect==='shield'){
+    if(p.move==='gideon_shield_dsig'&&!reduced){c.save();c.rotate(Math.atan2(-p.vy,p.vx*p.facing));c.strokeStyle='#f4c77988';c.lineWidth=2;for(const dy of [-7,0,7]){c.beginPath();c.moveTo(-16,dy);c.lineTo(-40,dy);c.stroke();}c.restore();}
     const scale=96*(owner?.scale??1)/standingHeight;
     c.scale(scale,scale);drawFlyingWeapon(c,'shield',0,0,0,reduced?0:tick*.65);
   }else if(p.effect==='rock'){

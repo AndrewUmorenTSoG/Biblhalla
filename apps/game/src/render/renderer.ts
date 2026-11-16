@@ -1,3 +1,4 @@
+import {gideonReboundFrame} from './gideon-rebound.ts';
 import { HitIndicators } from './hit-indicators.ts';
 import { GiantMotion, drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
@@ -37,7 +38,7 @@ const palettes=[['#688e9e','#f1d9ab','#b29a72','#4b6668'],['#939ea9','#dfbd84','
 export class Renderer{
   elementEvents:SimState['events']=[];
   shieldCatchTicks=new Map<number,number>();
-  collectElements(world:SimState){this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),world.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
+  collectElements(world:SimState){this.elementEvents??=[];this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),e.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
   runDistance=new RunDistance();
   surfaces=new SurfaceCache();
   previousProjectiles=new Map<number,{x:number;y:number}>();
@@ -163,22 +164,23 @@ export class Renderer{
 
   rig(hero:string,x:number,y:number,scale:number,facing:number,pose:string,time:number,attackTick:number=0,weapon='unarmed',label='',ghost=false,move='',recoil=0,charge=0,releaseState=''){const c=this.ctx,p=colors[hero]||colors.dru;
     const sheet=this.art[hero],frames=this.atlas[hero];
-    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const attack=this.S?.moves?.[move];const throwingShield=attack?.projectile?.effect==='shield';const shieldRelease=pose!=='hitstun'&&weapon==='shield'&&frames.release_0&&((releaseState&&(!move||throwingShield))||!move&&pose==='idle'&&!frames.equipped_shield_0||throwingShield);const releaseIndex=shieldReleaseFrame(attackTick,this.S?.moves?.[move]?.startup??16,releaseState,charge>0);const authored=this.frameFor(hero,pose,weapon,move,attackTick,time);
+    if(sheet&&sheet.complete&&sheet.naturalWidth&&frames){const attack=this.S?.moves?.[move];const throwingShield=attack?.projectile?.effect==='shield';const jumpRelease=pose!=='hitstun'&&hero==='gideon'&&move==='gideon_shield_dsig'&&frames.release_jump_0;const shieldRelease=!jumpRelease&&pose!=='hitstun'&&weapon==='shield'&&frames.release_0&&((releaseState&&(!move||throwingShield))||!move&&pose==='idle'&&!frames.equipped_shield_0||throwingShield);const releaseIndex=shieldReleaseFrame(attackTick,this.S?.moves?.[move]?.startup??16,releaseState,charge>0);const authored=this.frameFor(hero,pose,weapon,move,attackTick,time);
       const useWindup=throwingShield && !releaseState && !charge && attackTick<attack.startup;
-      const frameName=shieldRelease && !useWindup ? 'release_'+releaseIndex :
+      const frameName=jumpRelease ? 'release_jump_'+gideonReboundFrame(attackTick,releaseState,charge>0) : shieldRelease && !useWindup ? 'release_'+releaseIndex :
         charge>0 && weapon==='sling' ? (frames.equipped_sling_13?'equipped_sling_13':'slinger_cast_1') : authored;
       const frame=frames[frameName]||frames.motion_idle||frames.idle;if(frame){
       // Use the shared reference height so each sprite spans the shared 74-unit hurtbox plus head room.
       const k=scale*FIGURE_PX/frames.idle.h;const bob=pose==='run'&&!this.reduced&&!this.clips[hero]?.run?Math.abs(Math.sin(time*.25))*3*scale:pose==='happy'&&!this.reduced?Math.abs(Math.sin(time*.42))*4*scale:0;
       c.save();c.translate(x,y-bob);c.scale(facing*k,k);if(ghost)c.globalAlpha=.35;
       if((pose==='idle'||pose==='happy')&&!frameName.includes('_idle_')&&!this.reduced){const phase=hero.split('').reduce((n,ch)=>n+ch.charCodeAt(0),0)*.09;c.rotate(Math.sin(time*.065+phase)*.012);c.scale(1,1+Math.sin(time*.09+phase)*.008);}
-      if(attack&&!frames.equipped_unarmed_dodge_0&&!this.reduced&&!ghost&&pose!=='hitstun'){
+      if(attack&&!jumpRelease&&!frames.equipped_unarmed_dodge_0&&!this.reduced&&!ghost&&pose!=='hitstun'){
         // Shift weight onto the lead foot as the authored contact pose appears.
         const windup=Math.max(1,attack.startup),end=windup+attack.active;
         const weight=attackTick<windup?-Math.sin(Math.PI*attackTick/windup)*.45:
           attackTick<end?1:Math.max(0,1-(attackTick-end)/Math.max(1,attack.recovery));
         c.rotate(weight*(throwingShield?.075:.055));
       }
+      if(jumpRelease&&!this.reduced&&attackTick>=9&&attackTick<24){const u=(attackTick-9)/15,turn=u*u*(3-2*u);c.translate(0,-frame.pivotY*.5);c.rotate(-Math.PI*2*turn);c.translate(0,frame.pivotY*.5);}
       if(pose==='land'&&!this.reduced){const settle=Math.max(0,1-time/5);c.scale(1+settle*.025,1-settle*.035);}
       if(pose==='dodge'&&!this.reduced){const burst=Math.min(1,time/3)*Math.min(1,Math.max(0,17-time)/6);c.translate(0,-frame.pivotY*.45);c.rotate(-.1*burst);c.translate(0,frame.pivotY*.45);}
       if(pose==='backflip'&&!this.reduced){const t=Math.max(0,Math.min(1,time/17));const smooth=t*t*(3-2*t);c.translate(0,-frame.pivotY*.48);c.rotate(-Math.PI*2*smooth);c.translate(0,frame.pivotY*.48);}
@@ -197,6 +199,7 @@ export class Renderer{
         const gx=Math.max(0,Math.min(frame.w-10,(frame.gripX??frame.w*.74)-5)),gy=Math.max(0,Math.min(frame.h-10,(frame.gripY??frame.h*.56)-5));
         c.drawImage(sheet,frame.x+gx,frame.y+gy,10,10,gx-frame.pivotX,gy-frame.pivotY,10,10);
       }
+      if(jumpRelease&&(!releaseState||releaseState==='catch'||releaseState==='settle')){const hx=frame.gripX-frame.pivotX,hy=frame.gripY-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawFlyingWeapon(c,'shield',0,0,frame.shieldAngle??0,0);c.restore();const gx=frame.gripX-3,gy=frame.gripY-3;c.drawImage(sheet,frame.x+gx,frame.y+gy,6,6,gx-frame.pivotX,gy-frame.pivotY,6,6);}
       if(shieldRelease&&(!releaseState||(releaseState==='catch'||releaseState==='settle'))){const grips=[[.85,.32],[.23,.25],[.08,.12],[.95,.25],[.96,.25],[.94,.30],[.79,.35],[.82,.32]];const sourceIndex=useWindup?Number(frameName.match(/release_(\d+)/)?.[1]??releaseIndex):releaseIndex;const grip=grips[sourceIndex];const hx=frame.w*grip[0]-frame.pivotX,hy=frame.h*grip[1]-frame.pivotY;c.save();c.translate(hx,hy);c.scale(frames.idle.h/160,frames.idle.h/160);drawWeapon(c,'shield',0,0,0);c.restore();}
 
 
@@ -222,7 +225,7 @@ export class Renderer{
   }
   showFighterLabels = true;
   portrait(canvas:HTMLCanvasElement,hero:string){const old=this.ctx;this.ctx=canvas.getContext('2d')!;this.ctx.clearRect(0,0,canvas.width,canvas.height);this.rig(hero,canvas.width/2,canvas.height-10,Math.min(canvas.width/100,canvas.height/120),1,'idle',0,0,this.S.defs[hero].weaponPair[0]);this.ctx=old;}
-  paint(world:SimState,scene:Scene|null=null,alpha=1,elapsedMs=1000/60,active=true){const c=this.ctx;const player=world.fighters[0];const map=world.map;const isRoute=scene&&!scene.level.combatEnabled||scene?.level.number===41;
+  paint(world:SimState,scene:Scene|null=null,alpha=1,elapsedMs=1000/60,active=true){this.collectElements(world);const c=this.ctx;const player=world.fighters[0];const map=world.map;const isRoute=scene&&!scene.level.combatEnabled||scene?.level.number===41;
     let cx=0,cy=170,zoom=.85;
     if(isRoute){cx=Math.max(450,Math.min(3300,player.x/Q+200));cy=170;zoom=.95;}
     else {const live=world.fighters.filter((f:any)=>f.stocks&&!f.respawn);if(live.length){cx=live.reduce((a:number,f:any)=>a+f.x/Q,0)/live.length;cx=Math.max(-260,Math.min(260,cx));const span=Math.max(...live.map((f:any)=>f.x/Q))-Math.min(...live.map((f:any)=>f.x/Q));zoom=Math.max(.58,Math.min(.95,1000/(span+340)));cy=Math.max(140,Math.min(280,live.reduce((a:number,f:any)=>a+f.y/Q,0)/live.length));}}

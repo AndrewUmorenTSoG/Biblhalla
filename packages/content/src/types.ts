@@ -21,6 +21,9 @@ export interface CollisionPhase {
 }
 
 export interface ProjectileSpec {
+  originFromMove?: boolean;
+  returnOriginUnits?: Point;
+  floorBounceVelocityQ?: number;
   boomerangRangeUnits?: number;
   effect?: string;
   spawnTick: number;
@@ -67,6 +70,7 @@ export interface Attack {
   hitstopTicks: number;
   invulnerability: boolean;
   chargeable: boolean;
+  chargeHoldTick?: number;
   chargeMaxTicks: number;
   chargeMaxDamagePermille: number;
   chaseCancelOnConfirmedHit: boolean;

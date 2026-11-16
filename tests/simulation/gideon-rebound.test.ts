@@ -1,0 +1,15 @@
+import test from'node:test';import assert from'node:assert/strict';import{S,Q,content}from'../helpers/engine.ts';import{DEFAULT_BINDINGS}from'../../apps/game/src/storage/profile.ts';import{keyboardFrame}from'../../apps/game/src/input/keymap.ts';
+function scene(facing=1){const s=S.create({mode:'training',hero:'gideon'});s.phase='playing';const f=s.fighters[0],t=s.fighters[1];for(const p of s.fighters){p.invulnerable=p.respawn=p.hitstop=0;p.ai.next=1e9;p.ai.intent=S.input();p.y=80*Q;p.ground=s.map.main.id;}f.weapon='shield';f.x=0;f.facing=facing;t.x=-450*facing*Q;return{s,f,t};}
+test('S + Heavy selects Gideon rebound, hops without W, and releases from its drawn hand',()=>{
+ const {s,f}=scene();const keys=keyboardFrame(DEFAULT_BINDINGS,new Set(['KeyS','KeyK']),new Set(['KeyK']));S.step(s,{[f.id]:{...keys,heavyHeld:false}});assert.equal(f.action?.move,'gideon_shield_dsig');assert.equal(keys.jump,false);let released=false;
+ for(let n=0;n<40;n++){const before=f.action?.tick;S.step(s,{[f.id]:{y:-1}});if(s.events.some(e=>e.type==='projectile')){const p=s.projectiles[0],m=S.moves.gideon_shield_dsig;assert.equal(before,m.projectile!.spawnTick);assert.ok(f.y>130*Q);assert.ok(p.vx>0&&p.vy<0);assert.equal(p.x-p.vx,f.x+m.projectile!.originUnits[0]*Q);assert.equal(p.y-p.vy,f.y+m.projectile!.originUnits[1]*Q);released=true;break;}}
+ assert.ok(released);
+});
+test('floor throw mirrors, rebounds once, stays bounded and catches the same shield',()=>{
+ for(const facing of [-1,1]){const{s,f}=scene(facing);let bounces=0,caught=0,peak=0;S.startAttack(s,f,{heavy:true,y:-1});for(let n=0;n<100;n++){S.step(s,{[f.id]:{y:-1}});for(const e of s.events){if(e.type==='shieldBounce')bounces++;if(e.type==='shieldCatch')caught++;}for(const p of s.projectiles){assert.ok(Math.abs(p.x-(p.originX??0))<=160*Q);if(!p.returning&&!p.bounced)assert.equal(Math.sign(p.vx),facing);if(p.bounced&&!p.returning)peak=Math.max(peak,p.y/Q);}}assert.equal(bounces,1);assert.equal(caught,1);assert.ok(peak>140);assert.equal(f.weapon,'shield');assert.equal(s.projectiles.length,0);assert.equal(f.y,80*Q);}
+});
+test('charging waits in crouch before takeoff and changes return delay',()=>{
+ const{s,f}=scene();S.startAttack(s,f,{heavy:true,y:-1});for(let n=0;n<30;n++)S.step(s,{[f.id]:{y:-1,heavyHeld:true}});assert.equal(f.action?.tick,8);assert.equal(f.y,80*Q);assert.ok(f.action!.charge>0);assert.equal(s.projectiles.length,0);
+ for(let n=0;n<30;n++){S.step(s,{[f.id]:{y:-1}});if(s.projectiles.length){const p=s.projectiles[0];assert.ok(f.y>130*Q);assert.ok((p.returnAtTick??0)-s.tick>=29);return;}}assert.fail('charged shield did not release');
+});
+test('an interrupted jumping throw recalls its shield immediately',()=>{const{s,f}=scene();S.startAttack(s,f,{heavy:true,y:-1});for(let n=0;n<28;n++)S.step(s,{[f.id]:{y:-1}});assert.equal(s.projectiles.length,1);f.action=null;f.stun=10;S.step(s);assert.ok(!s.projectiles.length||s.projectiles[0].returning);for(let n=0;n<8;n++)S.step(s);assert.equal(s.projectiles.length,0);assert.equal(f.weapon,'shield');});

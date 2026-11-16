@@ -8,7 +8,7 @@ const jobs=JSON.parse(readFileSync(new URL('../../assets/animation-production/do
 const content=loadContent(),renderer=Object.create(Renderer.prototype) as Renderer;
 renderer.atlas=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.frames]));
 renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.clips]));
-test('all 144 down attacks show their dedicated drawing for exactly their active window',()=>{
+test('all 144 down attacks use their authored contact drawings and animated shield throw',()=>{
   assert.equal(jobs.length,12);let checked=0;
   for(const job of jobs){assert.equal(job.rows.length,12);for(const spec of job.rows){
     const move=content.attacks.attacks.find(m=>m.id===spec.id)!;assert.ok(move);
@@ -16,7 +16,7 @@ test('all 144 down attacks show their dedicated drawing for exactly their active
     assert.ok(meta[job.id].frames['down_'+spec.id]);
     for(let tick=0;tick<move.totalTicks;tick++){
       const frame=renderer.frameFor(job.id,'active','unarmed',spec.id,tick,0);
-      assert.equal(frame==='down_'+spec.id,tick>=move.startup&&tick<move.startup+move.active,`${job.id}/${spec.id}/${tick}`);
+      if(spec.id==='gideon_shield_dsig'){assert.match(frame,/^release_jump_/);if(tick>=move.startup&&tick<move.startup+move.active)assert.match(frame,/^release_jump_[78]$/);}else assert.equal(frame==='down_'+spec.id,tick>=move.startup&&tick<move.startup+move.active,`${job.id}/${spec.id}/${tick}`);
     }
     checked++;
   }}assert.equal(checked,144);

@@ -157,7 +157,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Low body dip then a small rising blade flick toward the opponent’s feet.",
+      "visualPose": "Low body dip then a small rising blade flick toward the opponentâ€™s feet.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -2294,7 +2294,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "A single upward mallet arc above the fighter’s shoulder.",
+      "visualPose": "A single upward mallet arc above the fighterâ€™s shoulder.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -4290,7 +4290,7 @@
       "ownerType": "fighter",
       "ownerId": "saul",
       "weapon": "spear",
-      "displayName": "King’s Advance",
+      "displayName": "Kingâ€™s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -5783,41 +5783,60 @@
       "ownerType": "fighter",
       "ownerId": "gideon",
       "weapon": "shield",
-      "displayName": "gideon shield dsig",
+      "displayName": "Rebounding Shield",
       "input": {
         "button": "heavy",
         "direction": "down",
         "context": "groundOrAirCancel"
       },
-      "startup": 16,
+      "startup": 24,
       "active": 8,
-      "recovery": 22,
-      "totalTicks": 46,
+      "recovery": 36,
+      "totalTicks": 68,
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
       "launchAngle": 45,
-      "delivery": "melee",
-      "collisionPhases": [
+      "delivery": "projectile",
+      "collisionPhases": [],
+      "projectile": {
+        "spawnTick": 24,
+        "originUnits": [
+          36,
+          34
+        ],
+        "originFromMove": true,
+        "returnOriginUnits": [
+          36,
+          73
+        ],
+        "travelAngle": -45,
+        "speedQ": 6144,
+        "gravityQ": 0,
+        "lifetimeTicks": 120,
+        "collisionUnits": [
+          34,
+          34
+        ],
+        "maxHits": 1,
+        "capClass": "signature",
+        "stageCollision": "despawn",
+        "homing": false,
+        "boomerangRangeUnits": 160,
+        "effect": "shield",
+        "floorBounceVelocityQ": 3072
+      },
+      "motionEvents": [
         {
-          "firstTick": 16,
-          "lastTickExclusive": 24,
-          "shape": "rect",
-          "rectUnits": [
-            -65,
-            0,
-            150,
-            48
-          ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0
+          "kind": "setVelocity",
+          "atTick": 9,
+          "vxQ": 0,
+          "vyQ": 2304
         }
       ],
-      "projectile": null,
-      "motionEvents": [],
       "oneHitPerTarget": true,
-      "totalProjectileHitBudget": null,
+      "totalProjectileHitBudget": 1,
       "hitstopTicks": 5,
       "invulnerability": false,
       "chargeable": true,
@@ -5825,9 +5844,10 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Gideon drives the mallet head across the ground in a compact frontward sweep.",
+      "visualPose": "Gideon crouches to charge, springs upward, hurls his equipped shield diagonally down-forward, then lands and catches its floor rebound.",
       "resourceCostOnActionStart": {},
-      "effect": "rock"
+      "effect": "shield",
+      "chargeHoldTick": 8
     },
     {
       "id": "jonathan_bow_nsig",
@@ -6046,7 +6066,7 @@
       "ownerType": "fighter",
       "ownerId": "jonathan",
       "weapon": "sword",
-      "displayName": "Friend’s Resolve",
+      "displayName": "Friendâ€™s Resolve",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6205,7 +6225,7 @@
       "ownerType": "fighter",
       "ownerId": "moses",
       "weapon": "staff",
-      "displayName": "Leader’s Reach",
+      "displayName": "Leaderâ€™s Reach",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6247,7 +6267,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Moses steps firmly and strikes forward with the staff’s long end at chest height.",
+      "visualPose": "Moses steps firmly and strikes forward with the staffâ€™s long end at chest height.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -6781,7 +6801,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Esther bends to a low stable stance and draws the staff’s far end across the front ground lane.",
+      "visualPose": "Esther bends to a low stable stance and draws the staffâ€™s far end across the front ground lane.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -7101,7 +7121,7 @@
       "ownerType": "fighter",
       "ownerId": "nehemiah",
       "weapon": "hammer",
-      "displayName": "Builder’s Lift",
+      "displayName": "Builderâ€™s Lift",
       "input": {
         "button": "heavy",
         "direction": "neutral",
@@ -7486,7 +7506,7 @@
       "ownerType": "fighter",
       "ownerId": "caleb",
       "weapon": "spear",
-      "displayName": "Scout’s Advance",
+      "displayName": "Scoutâ€™s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -9035,7 +9055,7 @@
       "id": "nehemiah_hammer_dlight",
       "ownerType": "fighter",
       "ownerId": "nehemiah",
-      "displayName": "Builder’s Earthbreak",
+      "displayName": "Builderâ€™s Earthbreak",
       "input": {
         "button": "light",
         "direction": "down",

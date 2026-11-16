@@ -119,6 +119,7 @@ export interface Fighter {
 }
 
 export interface Projectile {
+  bounced?: boolean;
   returnAtTick?: number;
   effect?: string;
   originX?: number;

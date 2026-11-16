@@ -1,0 +1,17 @@
+import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,sha256}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';import{figures}from'./import-defence.ts';import{GIDEON_REBOUND_TICKS}from'../../apps/game/src/render/gideon-rebound.ts';
+const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'assets/runtime/fighters/fighters-before-gideon-rebound.json');if(!existsSync(backup))writeFileSync(backup,readFileSync(file));
+const meta=JSON.parse(readFileSync(file,'utf8')),e=meta.gideon,base=readPng(join(ROOT,e.image)),source='assets/animation-production/gideon-rebound/body.png',sheet=readPng(join(ROOT,source)),poses=figures(sheet,4,4,500,64),scale=e.frames.idle.h/poses[0].image.height;
+const grips=[[.90,.373],[.887,.443],[.91,.498],[.908,.218],[.858,.10],[.788,.054],[.14,.098],[.902,.608],[.913,.55],[.898,.473],[.911,.508],[.911,.766],[.942,.352],[.933,.24],[.919,.335],[.924,.336]],angles=[0,-.15,-.4,-.5,-.5,-.8,-1.2,-.7,-.5,-.3,0,0,0,0,0,0];
+// Repack this fighter only; preserve every other fighter and all existing clips.
+const parts=Object.entries(e.frames).filter(([name])=>!name.startsWith('release_jump_')).map(([name,f]:[string,any])=>({name,image:crop(base,f.x,f.y,f.w,f.h),meta:f}));
+for(let i=0;i<16;i++){
+ const p=poses[i],image=resize(p.image,Math.round(p.image.width*scale),Math.round(p.image.height*scale));
+ parts.push({name:'release_jump_'+i,image,meta:{pivotX:Math.round(((i%4+.5)*sheet.width/4-p.originX)*scale),pivotY:image.height,gripX:Math.round(image.width*grips[i][0]),gripY:Math.round(image.height*grips[i][1]),shieldAngle:angles[i]}});
+}
+parts.sort((a,b)=>b.image.height-a.image.height||b.image.width-a.image.width);
+let x=2,y=2,rh=0;const shared=new Map<string,{x:number;y:number}>();const placed=parts.map(p=>{const key=p.image.width+'x'+p.image.height+':'+sha256(Buffer.from(p.image.data));const reuse=shared.get(key);if(reuse)return{...p,...reuse};if(x+p.image.width+2>2048){x=2;y+=rh+3;rh=0;}const out={...p,x,y};shared.set(key,{x,y});x+=p.image.width+3;rh=Math.max(rh,p.image.height);return out;});const atlas=blank(2048,y+rh+2);if(atlas.height>2048)throw Error('Gideon atlas exceeds the current texture budget: '+atlas.height);
+for(const p of placed){blit(atlas,p.image,p.x,p.y);e.frames[p.name]={...p.meta,x:p.x,y:p.y,w:p.image.width,h:p.image.height};}
+e.image='assets/runtime/fighters/gideon-rebound-packed.png';const bytes=writePng(join(ROOT,e.image),atlas);e.sha256=sha256(bytes);e.packing={width:atlas.width,height:atlas.height,bodyPixels:e.frames.idle.h,bytes:bytes.length};e.clips.gideon_shield_dsig={frames:Array.from({length:16},(_,i)=>'release_jump_'+i),ticks:GIDEON_REBOUND_TICKS,loop:false};e.reboundAnimation={source,releaseFrame:7,catchFrame:13};
+const datafile=join(ROOT,'production-pack/09_Data/attacks.json'),data=JSON.parse(readFileSync(datafile,'utf8')),move=data.attacks.find(m=>m.id==='gideon_shield_dsig');
+const point=(index:number)=>{const f=e.frames['release_jump_'+index];return[Math.round((f.gripX-f.pivotX)*96/e.frames.idle.h),Math.round((f.pivotY-f.gripY)*96/e.frames.idle.h)];};move.projectile.originUnits=point(7);move.projectile.returnOriginUnits=point(13);
+writeFileSync(datafile,JSON.stringify(data,null,2)+'\n');writeFileSync(file,JSON.stringify(meta,null,2)+'\n');console.log('Gideon: 16 rebound poses; launch/catch anchors',point(7),point(13));
