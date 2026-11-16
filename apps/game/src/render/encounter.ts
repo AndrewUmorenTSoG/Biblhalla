@@ -5,7 +5,7 @@
 import type { SimState } from '../../../../packages/sim/src/index.ts';
 import type { Scene } from '../../../../packages/campaign/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
-import { AIM_ZONE, GOLIATH_X, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
+import { AIM_ZONE, STONE_BAY_X } from '../../../../packages/campaign/src/goliath.ts';
 import { EMBER_HALF_WIDTH, LATCH_HOLD_TICKS, POST_INTEGRITY, POST_RADIUS_UNITS, SIGHT_UNITS, STONE_CHANNELS } from '../../../../packages/campaign/src/controller.ts';
 
 const TELL = 'rgba(214,164,72,.32)', TELL_EDGE = '#b5832f';
@@ -132,8 +132,18 @@ export function drawEncounter(c: CanvasRenderingContext2D, world: SimState, scen
     for (const lane of g.lanes) if (lane.state !== 'safe') zone(c, lane.x / Q - 60, 80, 120, 70, lane.state === 'active', lane.state === 'active' ? 'SPEAR LANE' : 'Spear lane marked');
     if (!g.stone) label(c, 'Stream stone — Interact', STONE_BAY_X, 130);
     if (g.advance.state !== 'idle') {
-      const x = g.advance.state === 'active' ? g.advance.x / Q : GOLIATH_X - 60;
-      zone(c, x - 40, 80, 80, 50, g.advance.state === 'active', g.advance.state === 'active' ? 'JUMP' : 'Shield advance');
+      const origin=g.impactX/Q;
+      if(g.advance.state==='tell')label(c,'Shield raised — jump the wave',origin,360);
+      else {
+        const radius=origin-g.advance.x/Q;
+        for(const side of [-1,1]){
+          const front=origin+side*radius;
+          zone(c,front-40,80,80,50,true,'JUMP');
+          c.beginPath();c.moveTo(origin,80);
+          for(let d=0;d<radius;d+=22)c.lineTo(origin+side*d,80-((d/22)%2?9:2));
+          c.lineTo(front,80);c.strokeStyle='#f9cc68';c.lineWidth=3;c.stroke();
+        }
+      }
     }
     if (g.stage === 'aim') zone(c, AIM_ZONE[0], 80, AIM_ZONE[1] - AIM_ZONE[0], 8, false, 'Aim from here — Interact');
   }

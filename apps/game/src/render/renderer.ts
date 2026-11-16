@@ -1,4 +1,5 @@
 import { HitIndicators } from './hit-indicators.ts';
+import { GiantMotion, drawGoliath, grapplePose, drawGrappledFighter } from './goliath.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
 import { handGrip, needsCarriedWeapon } from './grip.ts';
 // Canvas 2D renderer. Reads simulation state and events; never mutates them.
@@ -42,7 +43,8 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){this.hitIndicators.collect(world);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
+  giantMotion = new GiantMotion();
+  capture(world:SimState,scene?:Scene|null){this.hitIndicators.collect(world);if(scene?.level.number===41)this.giantMotion.capture(scene.goliath,scene.tick);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean;facing:number;turnUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();callouts=new Callouts();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};hitIndicators=new HitIndicators();debug=false;reduced=false;
@@ -233,7 +235,20 @@ export class Renderer{
     // Story guidance: point to the next unfinished task (witness scenes included; never in arena matches).
     if(scene&&scene.phase==='active'){const m=nextTask(scene.markers);if(m){const tx=(m.carried||m.type==='escort'&&m.stage?m.targetX:m.x),pos=screen(tx,m.y+32*Q);drawPointer(c,edgePointer(pos),m.label,Math.abs(tx-player.x)/Q/40,world.tick,this.reduced);}}
     for(const e of world.events){if(e.id<=this.lastCheerEvent)continue;this.lastCheerEvent=e.id;if(e.type==='ko'){const fallen=world.fighters.find(f=>f.id===e.fighter);if(fallen)for(const other of world.fighters)if(other.team!==fallen.team&&other.stocks&&!other.stun)this.cheerUntil.set(other.id,world.tick+36);}}
-    if(scene){const pos=screen(scene.companion.x,scene.companion.y);this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');if(scene.level.number===41){const p=screen(3550*Q,82*Q);this.rig('saul',p.x,p.y,2.7*this.camera.zoom,-1,scene.goliath.open?'recovery':'startup',scene.tick,0,'spear',scene.goliath.open?'Aim opportunity':'Goliath · reenactment');}}
+    const giant = scene?.level.number===41 ? this.giantMotion.sample(scene.goliath,scene.tick,active && !this.debug ? alpha : 1) : null;
+    if(scene && giant){
+      const landing=scene.goliath.advance.state==='active';
+      const pos=screen(giant.x,(80+(landing?0:giant.height))*Q);
+      // Include the fully extended spear in the margin.
+      const margin=450*this.camera.zoom;
+      if(pos.x>=-margin && pos.x<=this.canvas.width+margin){
+        const clock=scene.tick-(active && !this.debug ? 1-alpha : 0);
+        drawGoliath(c,pos.x,pos.y,this.camera.zoom,scene.goliath,clock,giant,active && !this.debug ? alpha : 1);
+      }
+    }else if(scene){
+      const pos=screen(scene.companion.x,scene.companion.y);
+      this.rig('ken',pos.x,pos.y,this.camera.zoom,1,'run',scene.tick,0,'unarmed','Ken');
+    }
     for(const f of world.fighters){if(!f.stocks||f.respawn){this.motion.delete(f.id);continue;}const visual=interpolatePosition(this.previous.get(f.id),f,active&&!this.debug&&!f.hitstop?alpha:1,200*Q);const p=screen(visual.x,visual.y);if(f.ground){const ground=screen(f.x,f.y);c.save();c.fillStyle='rgba(20,25,28,.22)';c.beginPath();c.ellipse(ground.x,ground.y+1,22*this.camera.zoom*f.scale,3.5*this.camera.zoom,0,0,Math.PI*2);c.fill();c.restore();}let pose=f.ai.tell>0?'startup':f.stun?'hitstun':!f.ground?(f.vy>Q?'air_rise':f.vy<-Q?'air_fall':'air_apex'):f.crouching?'crouch':Math.abs(f.vx)>100?'run':'idle';if(f.action?.kind==='attack'){const m=this.S.moves[f.action.move!];pose=f.action.tick<m.startup?'startup':f.action.tick<m.startup+m.active?'active':'recovery';}else if(f.action?.kind==='dodge')pose=f.action.airborne&&!f.action.dx&&!f.action.dy&&!this.reduced?'backflip':'dodge';else if(f.action?.kind==='dash')pose='dash';else if(f.action?.kind==='throw')pose='weapon_throw';else if(f.action?.kind==='pickup')pose='weapon_pickup';if(f.stun)pose='hitstun';
       if(pose==='idle'&&(this.cheerUntil.get(f.id)??0)>world.tick)pose='happy';
       let motion=this.motion.get(f.id);if(!motion||world.tick<motion.tick)motion={tick:world.tick,pose,time:0,ground:!!f.ground,landUntil:0,stunned:!!f.stun,facing:f.facing,turnUntil:0};
@@ -253,7 +268,12 @@ export class Renderer{
       }
       const ghost = f.action?.kind==='dodge' ? this.S.invincible(f) : !!f.invulnerable && world.tick%8<4;
       const shieldFlight=world.projectiles.find(q=>q.owner===f.id&&q.rangeQ);const catchRecent=world.tick-(this.shieldCatchTicks.get(f.id)??-100)<8;
-      this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),(f.action?.tick??0)+(active&&!f.hitstop?alpha:0),f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),ghost,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
+      const reaction=giant && (giant.move==='throw'||giant.move==='headbutt') ? grapplePose(giant) : null;
+      const victimFrame=reaction && this.atlas[f.hero]?.[reaction.frame];
+      if(victimFrame && this.art[f.hero]?.naturalWidth){
+        const scale=this.camera.zoom*f.scale*FIGURE_PX/this.atlas[f.hero].idle.h;
+        drawGrappledFighter(c,this.art[f.hero],victimFrame,giant!,p.x,p.y,scale);
+      }else this.rig(f.hero,p.x,p.y,this.camera.zoom*f.scale,f.facing,pose,pose==='run'?this.runDistance.phase(f.id,visual.x/Q,this.atlas[f.hero]?.['gait_'+f.weapon+'_0']?24:this.clips[f.hero]?.run?.ticks.reduce((a,b)=>a+b,0)??32):motion.time+(active&&!f.hitstop?alpha:0),(f.action?.tick??0)+(active&&!f.hitstop?alpha:0),f.weapon,(f.human?'P'+f.id+' · ':'')+f.name+(f.ai.tell>0?' · preparing':''),ghost,f.action?.kind==='attack'?f.action.move:'',recoil,f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup?f.action.charge:0,shieldFlight?(shieldFlight.returning?'return':'out'):catchRecent?(world.tick-(this.shieldCatchTicks.get(f.id)??0)<4?'catch':'settle'):f.weapon==='shield'&&f.action?.kind==='attack'&&this.S.moves[f.action.move!].projectile?.boomerangRangeUnits&&f.action.tick>this.S.moves[f.action.move!].startup?'settle':'');
       if(f.human&&!f.respawn)drawPlayerMark(c,f.id,p.x,p.y-(FIGURE_PX+34)*this.camera.zoom*f.scale,7);
       if(f.emote)this.emoteBubble(f.emote.id,p.x,p.y-(FIGURE_PX+(f.human?66:46))*this.camera.zoom*f.scale,world.tick-(f.emote.until-EMOTE_TICKS));
       if(f.action?.kind==='attack'&&f.action.tick<this.S.moves[f.action.move!].startup)drawCharge(c,f,p.x,p.y,this.camera.zoom*f.scale,world.tick,this.reduced);

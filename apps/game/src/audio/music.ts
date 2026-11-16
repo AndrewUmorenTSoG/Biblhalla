@@ -7,22 +7,22 @@
 export interface Arrangement { name: string; bpm: number; root: number; mode: number[]; lead: OscillatorType; leadGain: number; swing: number }
 export interface Note { beat: number; beats: number; freq: number; voice: 'drum' | 'tap' | 'bass' | 'lead'; gain: number }
 
-const DORIAN = [0, 2, 3, 5, 7, 9, 10], MIXOLYDIAN = [0, 2, 4, 5, 7, 9, 10], AEOLIAN = [0, 2, 3, 5, 7, 8, 10], PHRYGIAN_DOM = [0, 1, 4, 5, 7, 8, 10], MAJOR = [0, 2, 4, 5, 7, 9, 11];
+const DORIAN = [0, 2, 3, 5, 7, 9, 10], AEOLIAN = [0, 2, 3, 5, 7, 8, 10], PHRYGIAN_DOM = [0, 1, 4, 5, 7, 8, 10];
 
 /** One arrangement per arena, in maps.json order. */
 export const ARRANGEMENTS: Arrangement[] = [
-  { name: 'Elah terrace', bpm: 112, root: 146.83, mode: DORIAN, lead: 'triangle', leadGain: 0.05, swing: 0 },
-  { name: 'Wilderness waystation', bpm: 100, root: 130.81, mode: AEOLIAN, lead: 'sine', leadGain: 0.06, swing: 0.08 },
-  { name: 'Jericho outskirts', bpm: 124, root: 164.81, mode: PHRYGIAN_DOM, lead: 'sawtooth', leadGain: 0.025, swing: 0 },
-  { name: "Deborah's palm court", bpm: 108, root: 174.61, mode: MIXOLYDIAN, lead: 'triangle', leadGain: 0.05, swing: 0.1 },
-  { name: 'Susa garden balcony', bpm: 96, root: 155.56, mode: MAJOR, lead: 'sine', leadGain: 0.06, swing: 0.06 },
-  { name: "Jerusalem builders' court", bpm: 118, root: 138.59, mode: DORIAN, lead: 'square', leadGain: 0.02, swing: 0 },
+  { name: 'Elah terrace', bpm: 128, root: 146.83, mode: DORIAN, lead: 'triangle', leadGain: 0.05, swing: 0 },
+  { name: 'Wilderness waystation', bpm: 122, root: 130.81, mode: AEOLIAN, lead: 'sine', leadGain: 0.06, swing: 0.08 },
+  { name: 'Jericho outskirts', bpm: 130, root: 164.81, mode: PHRYGIAN_DOM, lead: 'sawtooth', leadGain: 0.025, swing: 0 },
+  { name: "Deborah's palm court", bpm: 126, root: 174.61, mode: PHRYGIAN_DOM, lead: 'triangle', leadGain: 0.05, swing: 0.1 },
+  { name: 'Susa garden balcony', bpm: 120, root: 155.56, mode: AEOLIAN, lead: 'sine', leadGain: 0.06, swing: 0.06 },
+  { name: "Jerusalem builders' court", bpm: 129, root: 138.59, mode: DORIAN, lead: 'square', leadGain: 0.02, swing: 0 },
 ];
 
 /** Shared motif as scale degrees (null = rest), two bars of eighth notes. */
-const MOTIF: (number | null)[] = [0, null, 2, 4, 3, null, 2, 1, 0, 2, 4, 5, 4, null, 2, null];
+const MOTIF: (number | null)[] = [0, 0, null, 4, 3, 2, null, 1, 0, null, 0, 4, 5, 4, 2, 1];
 /** Drum (low frame drum) and tap (high hand tap) on sixteenths across one bar. */
-const DRUM = [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0];
+const DRUM = [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0];
 const TAP = [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1];
 const BASS_DEGREES = [0, 0, 4, 3];
 /** A loop is four bars: two motif statements over a four-bar bass line. */
@@ -42,9 +42,11 @@ export function bar(a: Arrangement, index: number): Note[] {
     if (DRUM[s]) notes.push({ beat, beats: 0.4, freq: 70, voice: 'drum', gain: 0.12 });
     if (TAP[s]) notes.push({ beat, beats: 0.1, freq: 2400, voice: 'tap', gain: s % 4 === 2 ? 0.04 : 0.025 });
   }
-  notes.push({ beat: 0, beats: 1.8, freq: degreeHz(a, BASS_DEGREES[b], -1), voice: 'bass', gain: 0.07 });
-  notes.push({ beat: 2, beats: 1.8, freq: degreeHz(a, BASS_DEGREES[b], -1), voice: 'bass', gain: 0.05 });
-  // The motif plays in bars 2 and 3, a fourth higher the second time round.
+  // A low pedal drives each bar, with two short fifths pushing into the backbeat.
+  for (const eighth of [0, 1, 3, 4, 6, 7]) {
+    const fifth = eighth === 3 || eighth === 7;
+    notes.push({ beat: eighth / 2, beats: fifth ? 0.2 : 0.36, freq: degreeHz(a, BASS_DEGREES[b] + (fifth ? 4 : 0), -1), voice: 'bass', gain: eighth % 4 ? 0.05 : 0.08 });
+  }
   if (b >= 2) for (let e = 0; e < 8; e++) {
     const d = MOTIF[(b - 2) * 8 + e];
     if (d !== null) notes.push({ beat: e / 2 + (e % 2 ? a.swing : 0), beats: 0.45, freq: degreeHz(a, d, 1), voice: 'lead', gain: a.leadGain });

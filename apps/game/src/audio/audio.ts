@@ -49,6 +49,11 @@ export function recipeFor(e: SimEvent): Recipe | null {
         { wave: 'noise', from: heavy ? 900 : 1800, to: heavy ? 500 : 1200, seconds: heavy ? 0.09 : 0.05, gain: heavy ? 0.05 : 0.03 },
       ] };
     }
+    case 'shieldSlam': return { priority: 3, layers: [
+      { wave: 'triangle', from: 570, to: 180, seconds: 0.12, gain: 0.045 },
+      { wave: 'sine', from: 106, to: 44, seconds: 0.32, gain: 0.095 },
+      { wave: 'noise', from: 1200, to: 220, seconds: 0.18, gain: 0.03 },
+    ] };
     case 'shieldBlock': return { priority: 3, layers: [{ wave: 'square', from: 820, to: 760, seconds: 0.12, gain: 0.03 }, { wave: 'noise', from: 2600, to: 2200, seconds: 0.06, gain: 0.02 }] };
     case 'deflect': return { priority: 2, layers: [{ wave: 'triangle', from: 1200, to: 900, seconds: 0.1, gain: 0.04 }] };
     // A safe ring-out burst rather than a cry: a rising swell and a soft boom.

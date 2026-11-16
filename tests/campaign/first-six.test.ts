@@ -25,8 +25,8 @@ test('levels open and close with their authored companion lines', () => {
   const s = A.create('L001');
   assert.equal(s.caption, 'Ken: Let’s follow the first path together.');
   A.complete(s);
-  assert.equal(s.caption, 'Dru: We can keep going. Stay beside me.');
-  assert.equal(A.create('L084').closingLine, 'Dru: We have heard the story. Let’s carry its hope into how we treat people.');
+  assert.equal(s.caption, 'David: We can keep going. Stay beside me.');
+  assert.equal(A.create('L084').closingLine, 'David: We have heard the story. Let’s carry its hope into how we treat people.');
 });
 
 test('every wave arrival is announced at its gate 90 ticks ahead, clear of the player', () => {

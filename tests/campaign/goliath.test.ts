@@ -76,6 +76,7 @@ test('a miss returns to composure; one aimed stone from the zone completes the a
   assert.equal(s.goliath.misses, 1);
   reachAim(s);
   assert.equal(s.goliath.open, 1);
+  assert.match(s.caption, /Last time I watched the stone/);
   place(s, (AIM_ZONE[0] + AIM_ZONE[1]) / 2);
   A.step(s, { interact: true });
   assert.equal(s.phase, 'complete');
@@ -89,4 +90,110 @@ test('the opening expires back to composure if no stone is released', () => {
   for (let t = 0; t < 400 && s.goliath.stage === 'aim'; t++) A.step(s, {});
   assert.equal(s.goliath.stage, 'composure');
   assert.equal(s.phase, 'active');
+});
+
+test('Goliath telegraphs and alternates a throw and a grounding headbutt at close range', () => {
+  const s = enter(), g = s.goliath.giant, f = s.world.fighters[0];
+  for (const move of ['throw', 'headbutt']) {
+    place(s, g.x / Q - 95);
+    A.step(s, {});
+    assert.equal(g.move, 'reach');
+    for (let i = 0; i < 18; i++) A.step(s, {});
+    assert.equal(g.move, move);
+    let highest = 0;
+    for (let i = 0; i < 48 && g.move === move; i++) {
+      A.step(s, {jump:true,x:1});
+      highest = Math.max(highest, f.y / Q);
+    }
+    assert.ok(highest >= 190);
+    assert.equal(f.y, 80 * Q);
+    assert.ok(Math.abs(f.x-g.x) >= (move === 'throw' ? 340 : 145)*Q);
+    assert.equal(g.move, 'recover');
+    for (let i = 0; i < 32; i++) A.step(s, {});
+  }
+});
+
+test('Goliath takes one hop per slam and the wave reaches both sides of his shield', () => {
+  for (const side of [-1,1]) {
+    const s=enter();
+    place(s,STONE_BAY_X);
+    A.step(s,{interact:true});
+    let peaks=0, previous=0, rising=false, hit=false;
+    for(let t=0;t<180;t++){
+      const g=s.goliath;
+      if(g.advance.state==='active')place(s,(g.impactX+side*(g.impactX-g.advance.x))/Q);
+      A.step(s,{});
+      if(g.giant.height>previous)rising=true;
+      if(g.giant.height<previous&&rising){peaks++;rising=false;}
+      previous=g.giant.height;
+      if(s.world.fighters[0].x===(STONE_BAY_X-150)*Q){hit=true;break;}
+    }
+    assert.equal(peaks,1);
+    assert.ok(hit);
+  }
+});
+
+test('David carries his chosen memory from the stream to the valley ending', () => {
+  for(const memory of ['flock','brothers'] as const){
+    const s=enter();
+    s.goliath.memory=memory;
+    place(s,STONE_BAY_X);
+    A.step(s,{interact:true});
+    assert.match(s.caption,memory==='flock'?/pasture/:/brothers/);
+    reachAim(s);
+    assert.match(s.caption, memory === 'brothers' ? /Eliab/ : /leather of my sling/);
+    place(s,(AIM_ZONE[0]+AIM_ZONE[1])/2);
+    A.step(s,{interact:true});
+    assert.equal(s.phase,'complete');
+    assert.match(s.caption,memory==='flock'?/stream again/:/Bethlehem again/);
+  }
+});
+
+test('the reach warns David, can be escaped, and lifts from actual contact in either direction', () => {
+  for (const side of [-1, 1]) {
+    const s = enter(), g = s.goliath.giant, david = s.world.fighters[0];
+    place(s, g.x / Q + side * 135);
+    A.step(s, {});
+    assert.match(s.caption, /Dodge/);
+    for (let t = 0; t < 18; t++) A.step(s, {x:side});
+    assert.equal(g.move, 'recover');
+    assert.equal(g.nextGrab, 'throw');
+    assert.equal(g.recoveredFrom, 'reach');
+    assert.match(s.caption, /hand closes on air/);
+    for (let t = 0; t < 32; t++) A.step(s, {});
+
+    place(s, g.x / Q + side * 135);
+    A.step(s, {});
+    for (let t = 0; t < 17; t++) A.step(s, {});
+    david.y = 165 * Q;
+    david.ground = null;
+    david.vy = 0;
+    const beforeX = david.x, beforeY = david.y;
+    A.step(s, {});
+    assert.equal(g.move, 'throw');
+    assert.equal(david.x, beforeX);
+    assert.ok(Math.abs(david.y - beforeY) < 3 * Q);
+    A.step(s, {});
+    assert.ok(Math.abs(david.x - beforeX) < 10 * Q);
+    assert.ok(david.y > beforeY);
+  }
+});
+
+test('each shield advance sounds its warning and ground impact on their first ticks', () => {
+  const s = enter();
+  place(s, STONE_BAY_X);
+  A.step(s, { interact: true });
+  const heard: string[] = [];
+  for (let tick = 0; tick < 400 && s.goliath.stage === 'composure'; tick++) {
+    const previous = s.goliath.advance.state;
+    place(s, STONE_BAY_X - 20, previous === 'active');
+    A.step(s, {});
+    const current = s.goliath.advance.state;
+    const cues = s.world.events.filter(e => e.type === 'bossTell' || e.type === 'shieldSlam');
+    const expected = previous === 'idle' && current === 'tell' ? ['bossTell']
+      : previous === 'tell' && current === 'active' ? ['shieldSlam'] : [];
+    assert.deepEqual(cues.map(e => e.type), expected);
+    heard.push(...expected);
+  }
+  assert.deepEqual(heard, ['bossTell', 'shieldSlam', 'bossTell', 'shieldSlam']);
 });
