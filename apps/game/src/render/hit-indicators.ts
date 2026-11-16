@@ -6,7 +6,7 @@ const maxIndicators = 40;
 export class HitIndicators {
   private world: Pick<SimState, 'tick' | 'events'> | null = null;
   private lastEvent = 0;
-  private hits: { tick: number; x: number; y: number; damage: number }[] = [];
+  private hits: { tick: number; x: number; y: number; direction: number; damage: number }[] = [];
 
   collect(world: Pick<SimState, 'tick' | 'events'>): void {
     if (this.world !== world) {
@@ -18,7 +18,7 @@ export class HitIndicators {
       if (e.id <= this.lastEvent) continue;
       this.lastEvent = e.id;
       if (e.type === 'hit') {
-        this.hits.push({ tick: e.tick, x: Number(e.x), y: Number(e.y), damage: Math.floor(Number(e.damage) / 10) });
+        this.hits.push({ tick: e.tick, x: Number(e.x), y: Number(e.y), direction: Math.sign(Number(e.facing) || 0), damage: Math.floor(Number(e.damage) / 10) });
       }
     }
     while (this.hits.length && (this.hits.length > maxIndicators || world.tick - this.hits[0].tick >= lifetime)) {
@@ -39,6 +39,19 @@ export class HitIndicators {
       const age = tick - hit.tick + 1;
       ctx.globalAlpha = 1 - age / (lifetime + 1);
       if (!reduced) {
+        if (age <= 8 && hit.direction) {
+          ctx.save();
+          ctx.globalAlpha *= 0.46 * (1 - age / 9);
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          for (const offset of [-4, 3]) {
+            ctx.beginPath();
+            ctx.moveTo(pos.x - hit.direction * (21 + age), pos.y + offset + 4);
+            ctx.lineTo(pos.x + hit.direction * age, pos.y + offset);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, age * 2, 0, Math.PI * 2);
         ctx.stroke();

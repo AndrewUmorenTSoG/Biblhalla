@@ -36,3 +36,38 @@
 .hud-card.stock-lost{border-color:#e0715a;box-shadow:0 0 0 2px #e0715a99}
 .hud-card.last-life .life{color:#ff9b7a;font-weight:700}
 .hud-card.eliminated{opacity:.45}
+
+/* Arena main menu and fighter draft */
+#home{min-height:min(880px,calc(100svh - 70px));background:#101e31 linear-gradient(90deg,#091625ed 0%,#0a1c3099 32%,transparent 69%) center/cover}
+#home::before{content:"";position:absolute;inset:0;background:url("menu-art/valley.webp") 61% center/cover;z-index:0}
+.arena-menu{position:relative;padding:clamp(32px,6vh,78px) 6vw 46px;background:linear-gradient(90deg,#061424ea,rgba(6,20,36,.82) 28%,transparent 68%);min-height:inherit}
+.arena-menu h1,#setup h1{font-family:Impact,"Arial Black",system-ui,sans-serif;font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:-.045em}
+.arena-menu h1{font-size:clamp(3.8rem,8vw,8rem);margin:0 0 .24em;color:#ffdf9b;line-height:1;text-shadow:0 4px #7b482b,0 8px 18px #051323}
+.menu-stack{display:grid;gap:7px;width:min(330px,100%)}
+.menu-stack button{border-radius:2px 12px 2px 2px;text-align:left;font-weight:750;font-size:1.08rem;min-height:45px;padding:9px 20px;border:1px solid #608995;border-left:4px solid #80bcc2;background:linear-gradient(105deg,#173d50f2,#122c40ed);box-shadow:0 3px 8px #04122152}
+.menu-stack button.primary{background:linear-gradient(100deg,#fff0bd,#e9b95f);color:#172833;border-color:#f5d58d;font-size:1.3rem}
+.menu-stack button span{float:right}.menu-stack button:hover,.menu-stack button:focus-visible{transform:translateX(4px);filter:brightness(1.18)}
+#home-progress{display:block;margin:14px 0;color:#ffdfa3}
+.champion-portrait{display:block;aspect-ratio:1;background-image:url("menu-art/champions.webp");background-size:400% 300%;background-repeat:no-repeat}
+#setup{background:radial-gradient(ellipse at 20% 0%,#204459,#101f31 75%);max-width:none}
+#setup .page-heading,#setup .battle-layout{max-width:1320px;margin-inline:auto}
+#setup .fighter-choice{display:flex;flex-direction:column;background:#12293a;border-radius:4px;min-height:0;border:2px solid #405663}
+#setup .fighter-choice:has(:checked){border-color:#ffdb82;box-shadow:0 0 0 2px #aa7636}
+.fighter-choice:focus-within{outline:3px solid #a5f3fd;outline-offset:3px}
+.fighter-choice .champion-portrait{width:100%;border-bottom:1px solid #526467}
+#setup .fighter-choice b{font:800 1rem system-ui;padding:5px 8px 0}
+#setup .fighter-choice small{padding:1px 8px 6px;color:#bad2d4}
+#setup .fighter-choice:has([value=random]){justify-content:center;text-align:center;min-height:84px}
+.fighter-choice:has([value=random])::before{content:"?";font:bold 2rem Georgia;color:#edcf8e}
+.selected-info .champion-portrait{float:right;width:33%;margin:0 0 6px 8px;border:1px solid #b59555}.selected-info{display:flow-root}
+.fighter-profile .champion-portrait{width:100%;max-width:240px;margin:0 auto 10px}
+@media(min-width:1080px){#setup .roster-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:650px){#home::before{background-position:66% top}.arena-menu{padding:42px 20px;background:linear-gradient(90deg,#061424dd,transparent 110%)}.menu-stack{width:min(65vw,300px)}}
+@media(prefers-reduced-motion:reduce){.menu-stack button{transition:none}.menu-stack button:hover,.menu-stack button:focus-visible{transform:none}}
+
+.arena-menu h1,#setup h1{font-weight:700;letter-spacing:.005em}
+.player-slot .champion-portrait{width:min(100%,180px);margin:0 auto 12px}
+@media(min-width:1080px){#setup .roster-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+#setup .fighter-choice:has([value=random]){grid-column:1/-1;min-height:38px;flex-direction:row;align-items:center;gap:12px}
+#setup .fighter-choice:has([value=random])::before{font-size:1.2rem}
+#setup .fighter-choice:has([value=random]) small{padding:0}}

@@ -79,6 +79,7 @@ export interface Fighter {
   weapon: string;
   nextWeapon: number;
   jumps: number;
+  exhaustedJumps?: boolean;
   recovery: number;
   dodgeCD: number;
   dashCD: number;

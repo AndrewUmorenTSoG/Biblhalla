@@ -73,7 +73,8 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
     + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, clips: art.clips, readiness: art.readiness, arenas: arenaArt() }) + ';';
   const html = readFileSync(join(APP, 'shell.html'), 'utf8')
-    .replace('/* STYLE */', () => readFileSync(join(APP, 'style.css'), 'utf8'))
+    .replace('/* STYLE */', () => readFileSync(join(APP, 'style.css'), 'utf8')
+      .replace(/menu-art\/(champions|valley)\.webp/g, (_, name) => 'data:image/webp;base64,' + readFileSync(join(ROOT, 'assets/runtime/menu', name + '.webp')).toString('base64')))
     .replace('/* DATA */', () => data)
     .replace('/* CODE */', () => bundle.replace(/<\/script/gi, '<\\/script'));
   for (const pattern of FORBIDDEN_RUNTIME) {

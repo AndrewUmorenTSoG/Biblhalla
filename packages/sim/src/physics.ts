@@ -79,6 +79,7 @@ export function moveFighter(ctx: SimContext, s: SimState, f: Fighter, dx: number
   f.y = Math.trunc(ny);
   f.ground = contact;
   if (contact) {
+    if (f.exhaustedJumps) delete f.exhaustedJumps;
     f.groundedTicks++;
     if (f.groundedTicks >= P.groundResetContactTicks) {
       f.jumps = P.airJumps; f.recovery = P.recoveryUses; f.wallTicks = 0; f.wallRefresh = 1; f.wallUsed = 0;
@@ -128,6 +129,7 @@ function respawn(ctx: SimContext, s: SimState, f: Fighter): void {
   f.damage = s.suddenDeath ? R.suddenDeath.damageTenths : 0;
   f.invulnerable = R.respawnInvulnerabilityTicks; f.jumps = P.airJumps; f.recovery = P.recoveryUses;
   f.dodgeCD = 0; f.wallTicks = 0; f.wallRefresh = 1; f.ground = null;
+  delete f.exhaustedJumps;
   event(s, 'respawn', { fighter: f.id });
 }
 

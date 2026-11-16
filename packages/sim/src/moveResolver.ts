@@ -57,6 +57,7 @@ export function eligibleItem(ctx: SimContext, s: SimState, f: Fighter): Item | u
 
 function jump(s: SimState, f: Fighter, fromWall = false): void {
   f.ground = null; if (!fromWall) f.coyote = 0; f.action = null; f.buffer = null; f.jumpCut = true; f.jumpTick = s.tick;
+  if (f.jumps === 0) f.exhaustedJumps = true;
   event(s, 'jump', { fighter: f.id });
 }
 
@@ -85,6 +86,20 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
       if(startAttack(ctx,s,f,{...i,light:true,heavy:false},false,next)){
         f.action!.comboDepth=depth;f.vy=Math.max(f.vy,3*Q);f.chase=0;
         event(s,'airCombo',{fighter:f.id,depth});return;
+      }
+    }
+  }
+
+  // A confirmed standing jab can branch into one directional grounded follow-up.
+  const press = f.buffer;
+  if (a?.kind === 'attack' && f.ground && a.confirmed && !a.comboDepth && press?.type === 'light') {
+    const opener = moves[a.move!];
+    if (opener.id.endsWith('_nlight') && a.tick >= opener.startup + opener.active && (press.x || press.y < 0)) {
+      const follow = { ...i, x: press.x, y: press.y, light: true, heavy: false };
+      if (startAttack(ctx, s, f, follow)) {
+        f.action!.comboDepth = 1;
+        f.chase = 0;
+        return;
       }
     }
   }

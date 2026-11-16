@@ -79,3 +79,37 @@ test('earth pounds burst on landing and Nehemiah launches the rock wave from gro
     if(hero==='nehemiah')assert.ok(s.projectiles.some(p=>p.effect==='rock'));
   }
 });
+
+test('ground jab branches on confirmed contact using the buffered direction', () => {
+  for (const direction of [{ x: 1, id: 'sword_slight' }, { y: -1, id: 'sword_dlight' }]) {
+    const {s, f} = scene('david');
+    f.weapon = 'sword';
+    S.startAttack(s, f, {light: true});
+    const opener = f.action!, move = S.moves[opener.move!];
+    opener.tick = move.startup + move.active;
+    resolveAction(ctx, s, f, S.input({light: true, ...direction}));
+    assert.equal(f.action, opener);
+    opener.confirmed = true;
+    resolveAction(ctx, s, f, S.input({}));
+    assert.equal(f.action!.move, direction.id);
+    assert.equal(f.action!.comboDepth, 1);
+  }
+});
+
+test('last jump warning survives a wall refresh and clears on first landing contact', () => {
+  const {s, f} = scene();
+  f.ground = null;
+  f.coyote = 0;
+  f.jumps = 1;
+  resolveAction(ctx, s, f, S.input({jump: true}));
+  assert.equal(f.exhaustedJumps, true);
+  f.x = -560 * Q; f.y = 20 * Q;
+  S.moveFighter(s, f, Q, 0);
+  assert.ok(f.jumps > 0);
+  assert.equal(f.exhaustedJumps, true);
+  const [, bottom, , height] = s.map.main.rectUnits;
+  f.x = 0; f.y = (bottom + height + 1) * Q;
+  S.moveFighter(s, f, 0, -2 * Q);
+  assert.ok(f.ground);
+  assert.ok(!f.exhaustedJumps);
+});

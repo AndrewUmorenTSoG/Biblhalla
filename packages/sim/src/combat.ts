@@ -246,7 +246,7 @@ export function combat(ctx: SimContext, s: SimState): void {
           if ((target.comboLinks ?? 0) < MAX_CHASE_LINKS) owner.chase = P.chase.tokenTicks;
         }
       }
-      event(s, 'hit', { fighter: target.id, attacker: h.owner, x: target.x, y: target.y + 40 * Q, damage: amount });
+      event(s, 'hit', { fighter: target.id, attacker: h.owner, x: target.x, y: target.y + 40 * Q, facing: h.facing, damage: amount });
     }
     target.damage = clamp(target.damage + damage, 0, 9990);
     if (target.guard !== null) target.guard = Math.max(0, target.guard - damage);
