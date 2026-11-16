@@ -28,6 +28,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   const data = panel.querySelector<HTMLElement>('.move-data')!;
   const renderer = new Renderer(canvas, engine, art);
   renderer.reduced = reduced;
+  renderer.showFighterLabels = false;
   // Crop the normal arena camera to a ringside view.
   renderer.ctx.setTransform(1.7, 0, 0, 1.7, 360 - 640 * 1.7, 345 - 520 * 1.7);
   const def = engine.defs[hero];
@@ -106,7 +107,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     panel.querySelector('.move-input')!.textContent = inputLabel(move);
     canvas.setAttribute('aria-label', def.name + ' performing ' + move.displayName);
     data.replaceChildren();
-    for (const [name, value] of [['Startup', move.startup + 'f'], ['Active', move.active + 'f'], ['Recovery', move.recovery + 'f'], ['Damage', move.damageTenths / 10]]) {
+    for (const [name, value] of [['Startup', move.startup + 'f'], ['Active', move.active + 'f'], ['Recovery', move.recovery + 'f'], ['Base damage', move.damageTenths / 10]]) {
       const cell = document.createElement('span'), number = document.createElement('b');
       number.textContent = String(value);
       cell.append(number, String(name));
