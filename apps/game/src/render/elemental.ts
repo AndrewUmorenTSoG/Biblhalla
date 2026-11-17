@@ -40,6 +40,27 @@ export function drawBreakingTide(c:CanvasRenderingContext2D, sheet:HTMLImageElem
   c.restore();
 }
 
+/** Water wraps the staff's active spin and settles during the follow-through. */
+export function drawWaterHurricane(c:CanvasRenderingContext2D,sheet:HTMLImageElement,age:number,duration:number,reduced:boolean) {
+  if(age < -4 || age >= duration+9 || !sheet.naturalWidth) return;
+  const rise=Math.max(0,Math.min(1,(age+4)/6));
+  const fall=Math.max(0,(age-duration)/9);
+  const swell=reduced?1:1+Math.sin(age*.65)*.025;
+  c.save();
+  c.globalAlpha=.87*rise*(1-fall);
+  const width=186*swell*(.8+.2*rise),height=114*(.65+.35*rise)*(1-fall*.35);
+  const frame=reduced?0:Math.floor(Math.max(0,age)/2)%8;
+  const cell=sheet.naturalWidth/8;
+  c.drawImage(sheet,frame*cell,0,cell,sheet.naturalHeight,-width/2,-height,width,height);
+  if(!reduced) for(let i=0;i<7;i++){
+    const angle=age*.34+i*Math.PI*2/7;
+    const x=Math.cos(angle)*width*.46,y=-height*(.18+.7*i/7)+Math.sin(angle)*6;
+    c.fillStyle=i%2?'#e8faf4':'#80d4d8';c.beginPath();
+    c.ellipse(x,y,1.5,2.5,angle,0,Math.PI*2);c.fill();
+  }
+  c.restore();
+}
+
 /** Short, deterministic effects follow simulation events, never modify hitboxes. */
 export function drawElements(c:CanvasRenderingContext2D,world:SimState,screen:Screen,zoom:number,reduced:boolean){
   for(const e of world.events){
@@ -50,11 +71,20 @@ export function drawElements(c:CanvasRenderingContext2D,world:SimState,screen:Sc
     if(hero==='caleb'&&move.endsWith('ground_pound'))kind='rock';
     if(hero==='samson')kind='dust';
     if(hero==='esther'&&weapon==='blades')kind='wind';
-    if(!['water','rock','dust','wind','sun','sound','shieldBounce'].includes(kind))continue;
+    if(!['kickSpark','water','rock','dust','wind','sun','sound','shieldBounce'].includes(kind))continue;
     const p=screen(Number(e.x),Number(e.y)),t=age/22;
     c.save();c.translate(p.x,p.y);c.scale(zoom*Number(e.facing),zoom);c.globalAlpha=1-t;
     const reach=reduced?65:35+t*110;
-    if(kind==='shieldBounce'){c.strokeStyle='#f4c874';c.lineWidth=2;c.beginPath();c.ellipse(0,-3,reduced?28:18+t*35,5+t*7,0,Math.PI,Math.PI*2);c.stroke();for(let i=0;i<6;i++){c.fillStyle='#c8b38b88';c.beginPath();c.ellipse((i-2.5)*(reduced?7:7+t*7),-5-(reduced?5:Math.sin(t*Math.PI)*18),5,3,0,0,Math.PI*2);c.fill();}}else if(kind==='water'){
+    if(kind==='kickSpark'){
+      c.globalAlpha=Math.max(0,1-age/9);
+      const count=reduced?3:6;
+      for(let i=0;i<count;i++){
+        const a=i*Math.PI*2/count+.35, r=3+age*1.4;
+        c.strokeStyle=i%2?'#ffe4a3':'#d6f6f3';c.lineWidth=1.3;
+        c.beginPath();c.moveTo(Math.cos(a)*r,Math.sin(a)*r);
+        c.lineTo(Math.cos(a)*(r+3),Math.sin(a)*(r+3));c.stroke();
+      }
+    }else if(kind==='shieldBounce'){c.strokeStyle='#f4c874';c.lineWidth=2;c.beginPath();c.ellipse(0,-3,reduced?28:18+t*35,5+t*7,0,Math.PI,Math.PI*2);c.stroke();for(let i=0;i<6;i++){c.fillStyle='#c8b38b88';c.beginPath();c.ellipse((i-2.5)*(reduced?7:7+t*7),-5-(reduced?5:Math.sin(t*Math.PI)*18),5,3,0,0,Math.PI*2);c.fill();}}else if(kind==='water'){
       for(const side of [-1,1]){c.save();c.scale(side,1);c.fillStyle='#168edbcc';c.beginPath();c.moveTo(0,0);c.quadraticCurveTo(reach*.4,-10,reach,-48*(1-t));c.quadraticCurveTo(reach+16,-12,reach+25,0);c.closePath();c.fill();c.strokeStyle='#c8f8ff';c.lineWidth=3;c.beginPath();c.moveTo(15,-5);c.quadraticCurveTo(reach*.6,-12,reach,-45*(1-t));c.stroke();c.restore();}
     }else if(kind==='rock'||kind==='dust'){
       const massive=kind==='dust';

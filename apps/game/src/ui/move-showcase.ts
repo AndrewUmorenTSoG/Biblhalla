@@ -120,6 +120,14 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     for (const button of list.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.value === move.id));
     panel.querySelector('h3')!.textContent = move.displayName;
     panel.querySelector('.move-input')!.textContent = inputLabel(move);
+    const tips:Record<string,string>={
+      moses_staff_dsig:'Press Down + Heavy to spin the staff. The water hurricane catches opponents on either side. Recover before attacking again.',
+      moses_staff_slight:'Land Forward + Light, then press Down + Light as the sweep connects to vault into two aerial kicks.',
+      moses_staff_dlight:'Two airborne kicks. Link from Forward + Light for the vault combo. Tiny sparks mark each successful hit.',
+      moses_staff_ssig:'Forward + Heavy sends a breaking wave ahead. Follow its forward travel to control space.'
+    };
+    if(hero==='moses' && select.value==='staff')
+      panel.querySelector('.move-link-tip')!.textContent=tips[move.id]??'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.';
     canvas.setAttribute('aria-label', def.name + ' performing ' + move.displayName);
     data.replaceChildren();
     for (const [name, value] of [['Startup', move.startup + 'f'], ['Active', move.active + 'f'], ['Recovery', move.recovery + 'f'], ['Base damage', move.damageTenths / 10]]) {

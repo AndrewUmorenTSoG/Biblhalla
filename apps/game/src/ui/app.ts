@@ -223,7 +223,7 @@ function controls(){
  const groups=[['Movement',[
  ['Move left / right',k('left')+' / '+k('right'),'Left stick / D-pad'],
  ['Jump',k('jump'),'South button'],['Aim up',k('up'),'Stick up'],
- ['Down / crouch',k('down'),'Stick down'],['Drop through',k('down')+' + '+k('jump'),'Down + South'],
+ ['Down / crouch',k('down'),'Stick down'],['Drop through thin platforms','Hold '+k('down'),'Hold stick down'],
  ]],['Combat',[
  ['Light attack',k('light'),'West button'],['Heavy / charge',k('heavy')+' · hold / release','North button'],
  ['Dodge / dash',k('dodge'),'East button'],['Pickup / throw',k('item'),'R1'],

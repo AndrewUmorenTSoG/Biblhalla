@@ -160,6 +160,18 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
   if (f.chase > 0) f.chase--;
   if (f.buffer && --f.buffer.ticks < 0) f.buffer = null;
   if (f.stun) f.stun--; else resolveAction(ctx, s, f, i);
+  // Holding Down bypasses one-way ledges. Resolve attacks first so grounded
+  // down attacks retain their input context, and never bypass solid floors.
+  if (i.y < 0 && !f.stun) {
+    if (!f.ground && f.vy <= 0) f.drop = P.dropThroughTicks;
+    else if (!f.action && s.map.platforms.some(pl => pl.id === f.ground && pl.kind === 'oneWay')) {
+      f.drop = P.dropThroughTicks;
+      f.y -= Q;
+      f.ground = null;
+      f.coyote = 0;
+      f.crouching = false;
+    }
+  }
   // Emotes: only standing still and free; anything else ends them at once.
   if (f.emote && (f.action || f.stun || !f.ground || s.tick >= f.emote.until)) f.emote = null;
   if (i.emote >= 0 && !f.emote && f.ground && !f.action && !f.stun && !f.carry) {
