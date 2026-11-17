@@ -6,10 +6,10 @@ import type { Attack, Content } from './types.ts';
 export const EXPECTED = {
   fighters: 12,
   arenas: 6,
-  attacks: 172,
-  sharedAttacks: 93,
+  attacks: 181,
+  sharedAttacks: 102,
   signatureAttacks: 72,
-  weaponFamilies: 9,
+  weaponFamilies: 10,
   levels: 84,
   chapters: 14,
   witnessFinaleFrom: 79,
@@ -113,7 +113,7 @@ export function validateContent(c: Content, campaignCounts: {levels:number; chap
     for(const hero of Object.keys(m.fighterCollisionPhases??{}))need(fighters.some(f=>f.id===hero),`attack ${m.id}: unknown fighter contact override ${hero}`);
   }
   need(attacks.filter(m => m.ownerType === 'fighter' && /_[nsd]sig$/.test(m.id)).length === EXPECTED.signatureAttacks, 'expected 72 fighter signatures');
-  need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 93 shared/unarmed attacks');
+  need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 102 shared/unarmed attacks');
 
   // Weapon grammar: every family has the eight base slots; unarmed also has three grounded heavies.
   const families = weapons.filter(w => w.id !== 'unarmed');

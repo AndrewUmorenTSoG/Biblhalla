@@ -5035,21 +5035,21 @@
       "resourceCostOnActionStart": {}
     },
     {
-      "id": "joshua_shield_nsig",
+      "id": "joshua_axe_nsig",
       "ownerType": "fighter",
       "ownerId": "joshua",
-      "weapon": "shield",
-      "displayName": "joshua shield nsig",
+      "weapon": "axe",
+      "displayName": "Sunrise hew",
       "input": {
         "button": "heavy",
         "direction": "neutral",
         "context": "groundOrAirCancel"
       },
       "startup": 16,
-      "active": 8,
-      "recovery": 22,
-      "totalTicks": 46,
-      "damageTenths": 260,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 47,
+      "damageTenths": 250,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
@@ -5058,13 +5058,13 @@
       "collisionPhases": [
         {
           "firstTick": 16,
-          "lastTickExclusive": 24,
+          "lastTickExclusive": 23,
           "shape": "rect",
           "rectUnits": [
-            -20,
-            20,
-            60,
-            210
+            -25,
+            25,
+            110,
+            112
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0
@@ -5081,48 +5081,56 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Joshua plants the butt of his spear near his foot and thrusts the point upward with an extended rear arm.",
-      "resourceCostOnActionStart": {},
-      "effect": "sun"
+      "visualPose": "Sunrise hew",
+      "resourceCostOnActionStart": {}
     },
     {
-      "id": "joshua_shield_ssig",
+      "id": "joshua_axe_ssig",
       "ownerType": "fighter",
       "ownerId": "joshua",
-      "weapon": "shield",
-      "displayName": "joshua shield ssig",
+      "weapon": "axe",
+      "displayName": "Gatebreaker",
       "input": {
         "button": "heavy",
         "direction": "side",
         "context": "groundOrAirCancel"
       },
-      "startup": 16,
+      "startup": 17,
       "active": 8,
-      "recovery": 22,
-      "totalTicks": 46,
+      "recovery": 26,
+      "totalTicks": 51,
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
-      "launchAngle": 45,
+      "launchAngle": 22,
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 16,
-          "lastTickExclusive": 24,
+          "firstTick": 17,
+          "lastTickExclusive": 25,
           "shape": "rect",
           "rectUnits": [
-            -65,
-            0,
-            150,
-            48
+            6,
+            12,
+            108,
+            76
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0
         }
       ],
       "projectile": null,
-      "motionEvents": [],
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 17,
+          "toTickExclusive": 21,
+          "dxQ": 850,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 5,
@@ -5132,25 +5140,24 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Joshua makes a short lunge and releases one precise spear thrust into the front lane.",
-      "resourceCostOnActionStart": {},
-      "effect": "sun"
+      "visualPose": "Gatebreaker",
+      "resourceCostOnActionStart": {}
     },
     {
-      "id": "joshua_shield_dsig",
+      "id": "joshua_axe_dsig",
       "ownerType": "fighter",
       "ownerId": "joshua",
-      "weapon": "shield",
-      "displayName": "joshua shield dsig",
+      "weapon": "axe",
+      "displayName": "Threshing sweep",
       "input": {
         "button": "heavy",
         "direction": "down",
         "context": "groundOrAirCancel"
       },
-      "startup": 16,
+      "startup": 18,
       "active": 8,
-      "recovery": 22,
-      "totalTicks": 46,
+      "recovery": 26,
+      "totalTicks": 52,
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -5159,14 +5166,14 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 16,
-          "lastTickExclusive": 24,
+          "firstTick": 18,
+          "lastTickExclusive": 26,
           "shape": "rect",
           "rectUnits": [
-            -65,
+            -37,
             0,
-            150,
-            48
+            131,
+            60
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0
@@ -5183,9 +5190,8 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Joshua pivots on his back foot and sweeps the spear tip low in front, green cloak wrapping around his hips.",
-      "resourceCostOnActionStart": {},
-      "effect": "rock"
+      "visualPose": "Threshing sweep",
+      "resourceCostOnActionStart": {}
     },
     {
       "id": "deborah_staff_nsig",
@@ -9182,6 +9188,482 @@
       "resourceCostOnActionStart": {},
       "weapon": "hammer",
       "effect": "rock"
+    },
+    {
+      "id": "axe_nlight",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Crosscut",
+      "input": {
+        "button": "light",
+        "direction": "neutral",
+        "context": "ground"
+      },
+      "startup": 8,
+      "active": 5,
+      "recovery": 14,
+      "totalTicks": 27,
+      "damageTenths": 120,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": 22,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 13,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            22,
+            80,
+            52
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Crosscut",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_slight",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Driving cleave",
+      "input": {
+        "button": "light",
+        "direction": "side",
+        "context": "ground"
+      },
+      "startup": 10,
+      "active": 6,
+      "recovery": 18,
+      "totalTicks": 34,
+      "damageTenths": 140,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": 45,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            14,
+            92,
+            65
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 10,
+          "toTickExclusive": 14,
+          "dxQ": 680,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Driving cleave",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_dlight",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Hook lift",
+      "input": {
+        "button": "light",
+        "direction": "down",
+        "context": "ground"
+      },
+      "startup": 11,
+      "active": 6,
+      "recovery": 17,
+      "totalTicks": 34,
+      "damageTenths": 120,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": 90,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 17,
+          "shape": "rect",
+          "rectUnits": [
+            0,
+            0,
+            78,
+            76
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Hook lift",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_nair",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Halo sweep",
+      "input": {
+        "button": "light",
+        "direction": "neutral",
+        "context": "air"
+      },
+      "startup": 9,
+      "active": 7,
+      "recovery": 16,
+      "totalTicks": 32,
+      "damageTenths": 130,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": 90,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            -34,
+            40,
+            109,
+            81
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Halo sweep",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_sair",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Wing cleaver",
+      "input": {
+        "button": "light",
+        "direction": "side",
+        "context": "air"
+      },
+      "startup": 10,
+      "active": 6,
+      "recovery": 19,
+      "totalTicks": 35,
+      "damageTenths": 150,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": 22,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 10,
+          "lastTickExclusive": 16,
+          "shape": "rect",
+          "rectUnits": [
+            8,
+            26,
+            99,
+            62
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Wing cleaver",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_dair",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Falling crescent",
+      "input": {
+        "button": "light",
+        "direction": "down",
+        "context": "air"
+      },
+      "startup": 11,
+      "active": 7,
+      "recovery": 18,
+      "totalTicks": 36,
+      "damageTenths": 160,
+      "hitstunTicks": 13,
+      "baseForceQ": 640,
+      "growthQPerDamage": 12,
+      "launchAngle": -67,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 11,
+          "lastTickExclusive": 18,
+          "shape": "rect",
+          "rectUnits": [
+            0,
+            -57,
+            84,
+            87
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Falling crescent",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_recovery",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Rising wheel",
+      "input": {
+        "button": "heavy",
+        "direction": "neutral",
+        "context": "air"
+      },
+      "startup": 12,
+      "active": 9,
+      "recovery": 21,
+      "totalTicks": 42,
+      "damageTenths": 170,
+      "hitstunTicks": 16,
+      "baseForceQ": 1024,
+      "growthQPerDamage": 20,
+      "launchAngle": 90,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 21,
+          "shape": "rect",
+          "rectUnits": [
+            -40,
+            18,
+            116,
+            109
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "setVelocity",
+          "atTick": 12,
+          "vxQ": 0,
+          "vyQ": 3250
+        }
+      ],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 5,
+      "invulnerability": false,
+      "chargeable": true,
+      "chargeMaxTicks": 36,
+      "chargeMaxDamagePermille": 1500,
+      "chaseCancelOnConfirmedHit": false,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Rising wheel",
+      "resourceCostOnActionStart": {
+        "recovery": 1
+      },
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_ground_pound",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Plunging chop",
+      "input": {
+        "button": "heavy",
+        "direction": "down",
+        "context": "air"
+      },
+      "startup": 15,
+      "active": 12,
+      "recovery": 25,
+      "totalTicks": 52,
+      "damageTenths": 200,
+      "hitstunTicks": 16,
+      "baseForceQ": 1024,
+      "growthQPerDamage": 20,
+      "launchAngle": -90,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 15,
+          "lastTickExclusive": 27,
+          "shape": "rect",
+          "rectUnits": [
+            -26,
+            -72,
+            75,
+            105
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "setVelocity",
+          "atTick": 15,
+          "vxQ": 0,
+          "vyQ": -3800
+        }
+      ],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 5,
+      "invulnerability": false,
+      "chargeable": true,
+      "chargeMaxTicks": 36,
+      "chargeMaxDamagePermille": 1500,
+      "chaseCancelOnConfirmedHit": false,
+      "landingRule": "endActiveThenRecoveryPlus8",
+      "visualPose": "Plunging chop",
+      "resourceCostOnActionStart": {},
+      "weapon": "axe"
+    },
+    {
+      "id": "axe_air_combo",
+      "ownerType": "weapon",
+      "ownerId": "axe",
+      "displayName": "Returning edge",
+      "input": {
+        "button": "light",
+        "direction": "side",
+        "context": "air"
+      },
+      "startup": 5,
+      "active": 5,
+      "recovery": 14,
+      "totalTicks": 24,
+      "damageTenths": 90,
+      "hitstunTicks": 14,
+      "baseForceQ": 760,
+      "growthQPerDamage": 12,
+      "launchAngle": 45,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 5,
+          "lastTickExclusive": 10,
+          "shape": "rect",
+          "rectUnits": [
+            3,
+            18,
+            87,
+            55
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Returning edge",
+      "resourceCostOnActionStart": {},
+      "comboOnly": true,
+      "weapon": "axe"
     }
   ]
 }

@@ -11,6 +11,14 @@ renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])
 test('all 144 down attacks use their authored contact drawings and animated shield throw',()=>{
   assert.equal(jobs.length,12);let checked=0;
   for(const job of jobs){assert.equal(job.rows.length,12);for(const spec of job.rows){
+    if (job.id==='joshua' && spec.id.includes('shield')) {
+      const id=spec.id.replace('shield','axe'),move=content.attacks.attacks.find(m=>m.id===id)!;
+      for(let tick=0;tick<move.totalTicks;tick++) {
+        const frame=renderer.frameFor('joshua','active','axe',id,tick,0);
+        assert.equal(frame.startsWith('attack_cut_'),tick>=move.startup&&tick<move.startup+move.active,id);
+      }
+      checked++;continue;
+    }
     const move=content.attacks.attacks.find(m=>m.id===spec.id)!;assert.ok(move);
     const clip=meta[job.id].clips[spec.id];assert.equal(clip.ticks.reduce((a:number,b:number)=>a+b,0),move.totalTicks);
     assert.ok(meta[job.id].frames['down_'+spec.id]);

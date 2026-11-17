@@ -127,7 +127,7 @@
       "title": "The Steadfast Leader",
       "weaponPair": [
         "sword",
-        "shield"
+        "axe"
       ],
       "stats": {
         "power": 5,
@@ -144,9 +144,9 @@
         "joshua_sword_nsig",
         "joshua_sword_ssig",
         "joshua_sword_dsig",
-        "joshua_shield_nsig",
-        "joshua_shield_ssig",
-        "joshua_shield_dsig"
+        "joshua_axe_nsig",
+        "joshua_axe_ssig",
+        "joshua_axe_dsig"
       ],
       "scriptureReferences": "Joshua 1:6–9; 5:13–15; 6:1–20",
       "storyContext": "Led Israel after Moses; courage and obedience anchor the profile. God’s victory at Jericho is not reduced to a magic sword attack.",

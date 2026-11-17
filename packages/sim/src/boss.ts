@@ -123,6 +123,11 @@ function advanceBoss(ctx: SimContext, s: SimState, boss: Fighter, script: BossSc
   }
   // Stage transitions: gap -> tell -> active -> recovery -> gap (next move).
   if (run.stage === 'gap') {
+    const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
+    if (champion && move.kind === 'melee' && player && (player.y > boss.y + move.height*Q || player.y + 74*Q < boss.y)) {
+      run.ticks = 1;
+      return;
+    }
     if (chapter && move.kind === 'melee' && (!player || Math.abs(player.x - boss.x) > (move.width + (move.advanceUnits ?? 0) + 18) * Q)) {
       run.ticks = 1;
       return;

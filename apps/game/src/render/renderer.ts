@@ -279,22 +279,14 @@ export class Renderer{
           const walking = Math.abs(f.vx) > 100;
           let frame = walking ? 2 + Math.floor(world.tick / 5) % 4 : Math.floor(world.tick / 24) % 2;
           if (champion) {
-            const attack = run.stage !== 'gap' && !f.stun;
-            const clip = attack ? (move.kind === 'charge' ? 'charge' : move.kind === 'sweep' ? 'slam' : 'spear')
-              : walking && f.ground && !f.stun ? 'run' : null;
-            frame = f.stun ? 5 : 0;
-            const animation = clip && this.art['goliath-' + clip];
-            if (animation?.naturalWidth) {
-              sheet = animation;
-              const fraction = active && !f.hitstop ? alpha : 0;
-              const progress = (duration:number) => Math.max(0, Math.min(1, (duration - run.ticks + fraction) / duration));
-              const contact = clip === 'slam' ? 88 : clip === 'charge' ? 44 : 77;
-              const release = Math.max(99, contact + 11);
-              frame = clip === 'run' ? Math.floor(this.runDistance.phase(f.id, visual.x/Q, 132, 152)) % 132
-                : Math.floor(run.stage === 'tell' ? contact * progress(move.tell)
-                  : run.stage === 'active' ? contact + (release-contact) * progress(move.active)
-                  : release + (121-release) * progress(move.recovery));
-            }
+            const charge = move.kind === 'charge', slam = move.kind === 'sweep';
+            const row = charge ? 36 : slam ? 32 : 28;
+            if (f.stun) frame = 15;
+            else if (run.stage === 'tell') frame = run.ticks > move.tell*.7 ? row : row+1;
+            else if (run.stage === 'active') frame = row+2;
+            else if (run.stage === 'recovery' && run.ticks > move.recovery*.4) frame = row+3;
+            else if (!f.ground) frame = 14;
+            else frame = walking ? 16+Math.floor(this.runDistance.phase(f.id,visual.x/Q,12,112))%12 : 28;
           } else if (!f.ground) {
             frame = f.vy > 2*Q ? 13 : f.vy < -2*Q ? 15 : 14;
           } else if (run.stage === 'tell') {
@@ -304,12 +296,23 @@ export class Renderer{
           } else if (run.stage === 'recovery') {
             frame = run.ticks > move.recovery * .65 ? 18 : run.ticks > move.recovery * .28 ? 19 : 12;
           }
-          const animated = champion && sheet !== this.art.goliath;
-          const cell = champion && !animated ? 384 : 192;
-          const columns = animated ? 12 : champion ? 3 : 4;
-          const size = (animated ? 157 : champion ? 117 : 106) * this.camera.zoom * f.scale;
+          const cell = champion ? 384 : 192;
+          const size = (champion ? 118 : 106) * this.camera.zoom * f.scale;
           c.save(); c.translate(p.x,p.y); c.scale(f.facing,1);
-          c.drawImage(sheet,frame % columns * cell,Math.floor(frame / columns)*cell,cell,cell,animated ? -size*76/192 : -size/2,animated ? -size*188/192 : -size,size,size);
+          if (champion) {
+            c.imageSmoothingEnabled=false;
+            // Small weight shifts carry the body between drawings without blending silhouettes.
+            if (!this.reduced && !f.stun && run.stage !== 'gap') {
+              const duration = run.stage === 'tell' ? move.tell : run.stage === 'active' ? move.active : move.recovery;
+              const t = Math.max(0,Math.min(1,1-(run.ticks-(active && !f.hitstop ? alpha : 0))/duration));
+              const weight = Math.sin(Math.PI*t);
+              c.rotate(weight*(run.stage === 'tell' ? -.033 : .035));
+              c.translate(weight*size*(run.stage === 'tell' ? -.012 : .021),0);
+            }
+            c.drawImage(sheet,frame%4*cell,Math.floor(frame/4)*cell,cell,cell,-size*168/384,-size*377/384,size,size);
+          } else {
+            c.drawImage(sheet,frame%4*cell,Math.floor(frame/4)*cell,cell,cell,-size/2,-size,size,size);
+          }
           c.restore();
         }
       } else {

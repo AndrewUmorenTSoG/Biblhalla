@@ -54,13 +54,16 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
     if (!f.ground && (f.x < x*Q || f.x > (x+w)*Q || f.y < (y+h-10)*Q)) return recover(f,x*Q,(x+w)*Q,(y+h)*Q);
     const run = f.partner?.run ?? s.bossRun;
     const player = s.fighters.find(other => other.human && other.stocks && !other.respawn);
-    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && run?.stage === 'gap') {
+    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && run && (run.stage === 'gap' || ((s.options.storyFight ?? s.options.exhibitionOpponent) === 2 && run.stage === 'recovery' && run.ticks < 10))) {
       const [left, , width] = s.map.main.rectUnits;
       const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
-      const spacing = champion ? 152 : f.partner ? 45 : 60;
+      const spacing = champion ? 116 : f.partner ? 45 : 60;
       const flank = s.options.storyFight === 1 ? (f.partner ? -1 : 1) : (Math.sign(f.x - player.x) || 1);
       const destination = clamp(player.x + flank * spacing * Q, (left + 48) * Q, (left + width - 48) * Q);
       const distance = destination - f.x;
+      if (champion && f.ground && player.y < f.y - 48*Q && s.map.platforms.some(p => p.id === f.ground && p.kind === 'oneWay')) {
+        return input({jump:true, y:-1});
+      }
       return input({ x: Math.abs(distance) > 9 * Q ? Math.sign(distance) : 0, jump: !!f.ground && player.y > f.y + 55 * Q });
     }
     return input();

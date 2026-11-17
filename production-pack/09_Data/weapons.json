@@ -163,6 +163,22 @@
         "shield_air_combo"
       ],
       "groundedHeavySource": "fighterSignatures"
+    },
+    {
+      "id": "axe",
+      "identity": "Wide cleaves, rising hooks and heavy descending aerials.",
+      "attackIds": [
+        "axe_nlight",
+        "axe_slight",
+        "axe_dlight",
+        "axe_nair",
+        "axe_sair",
+        "axe_dair",
+        "axe_recovery",
+        "axe_ground_pound",
+        "axe_air_combo"
+      ],
+      "groundedHeavySource": "fighterSignatures"
     }
   ]
 }

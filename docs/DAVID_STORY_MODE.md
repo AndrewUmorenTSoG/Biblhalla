@@ -46,9 +46,9 @@ David steps onto the terrace with his sling equipped. Goliath starts with 320 gu
 
 | Phase | Pattern | How to fight it |
 | --- | --- | --- |
-| Opening challenge | Spear thrust. A 40-tick tell precedes a 220-unit thrust for 24 damage. | Jump the point. Counter from behind or use the 35-tick recovery to release a stone. |
-| Below 65% guard | Thrust → shield quake. Goliath raises his shield for 48 ticks and deals 30 damage across the floor. | Save a jump for the second attack. A shelf or a jump above the 42-unit sweep keeps David clear. |
-| Below 30% guard | Champion charge → sweep → thrust. The charge locks David’s position, warns for 42 ticks, then travels for 24 and deals 34 damage. | Move after the lane locks. Use the 54-tick charge recovery for a sling shot, then get above the following sweep. |
+| Opening challenge | Spear thrust. A 29-tick tell precedes a 179-unit thrust with a forward step for 24 damage. | Jump the point. Counter from behind or use the 25-tick recovery to release a stone. |
+| Below 65% guard | Thrust → shield quake. Goliath raises his shield for 37 ticks and deals 30 damage across the floor. | Save a jump for the second attack. A shelf or a jump above the 42-unit sweep keeps David clear. |
+| Below 30% guard | Champion charge → sweep → thrust. The charge locks David’s position, warns for 32 ticks, then travels for 21 and deals 34 damage. | Move after the lane locks. Use the 42-tick charge recovery for a sling shot, then get above the following sweep. |
 
 The game runs at 60 ticks per second. Easy, Hard, and Extremely Hard leave 40, 36, and 24 quiet ticks respectively between moves. Attack tells, hit damage, and recovery windows stay readable across difficulties.
 

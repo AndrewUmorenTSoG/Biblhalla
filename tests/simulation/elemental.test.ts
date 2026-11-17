@@ -25,7 +25,7 @@ function scene(hero='gideon',opponent='david'){
   f.x=0;t.x=50*Q;f.facing=1;return {s,f,t};
 }
 test('shield replaces the requested weapon families and returns within four body widths',()=>{
-  for(const [hero,other] of [['gideon','sword'],['nehemiah','hammer'],['joshua','sword']])assert.deepEqual(new Set(S.defs[hero].weaponPair),new Set([other,'shield']));
+  for(const [hero,other] of [['gideon','sword'],['nehemiah','hammer']])assert.deepEqual(new Set(S.defs[hero].weaponPair),new Set([other,'shield']));
   const {s,f,t}=scene('nehemiah');f.weapon='shield';t.x=400*Q;
   S.startAttack(s,f,{heavy:true,x:1});const a=f.action!,m=S.moves[a.move!];startProjectile(ctx,s,f,m,a);
   let furthest=0,returned=false;
@@ -56,9 +56,10 @@ test('Caleb punch and clap are separate hits, with a long-range sound projectile
   for(const ph of m.collisionPhases){f.hitstop=t.hitstop=0;t.x=50*Q;t.y=80*Q;a.tick=ph.firstTick+1;combat(ctx,s);}
   assert.equal(f.hits,2);assert.equal(m.projectile!.effect,'sound');assert.ok(m.projectile!.speedQ*m.projectile!.lifetimeTicks>=240*Q);
 });
-test('Moses waves hit both sides; Joshua sun beam reaches upward; Esther hurricane pushes forward',()=>{
+test('Moses waves hit both sides; Joshua’s axe launches upward; Esther hurricane pushes forward',()=>{
   const {s,f,t}=scene('moses');f.weapon='staff';t.x=-70*Q;S.startAttack(s,f,{light:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup+1;combat(ctx,s);assert.ok(t.damage>0);
-  assert.equal(S.moves.joshua_shield_nsig.effect,'sun');assert.ok(S.moves.joshua_shield_nsig.collisionPhases[0].rectUnits[3]>=200);
+  assert.deepEqual(S.defs.joshua.weaponPair,['sword','axe']);
+  const j=scene('joshua');j.f.weapon='axe';S.startAttack(j.s,j.f,{heavy:true});assert.equal(j.f.action!.move,'joshua_axe_nsig');j.f.action!.tick=S.moves.joshua_axe_nsig.startup+1;combat(ctx,j.s);assert.ok(j.t.vy>0);
   const e=scene('esther');e.f.weapon='blades';S.startAttack(e.s,e.f,{light:true,x:1});assert.equal(e.f.action!.move,'esther_blades_slight');e.f.action!.tick=9;combat(ctx,e.s);assert.ok(e.t.kx>0);
 });
 test('heavy charge is capped and damage grows; Samson receives 5% less and deals 10% extra',()=>{
