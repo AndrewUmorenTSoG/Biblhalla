@@ -42,14 +42,14 @@ The sheep scatter among the trees. Bear steps into the opening with short ears, 
 
 ## Part 003 · Goliath at Elah
 
-David steps onto the terrace with his sling equipped. Goliath starts with 170 guard and a spear. At range, watch the point of the spear. At close range, keep an escape route above the floor.
+David steps onto the terrace with his sling equipped. Goliath starts with 320 guard and a spear. At range, watch the point of the spear. At close range, keep an escape route above the floor.
 
 | Phase | Pattern | How to fight it |
 | --- | --- | --- |
-| Opening challenge | Spear thrust. A 40-tick tell precedes a 220-unit thrust for 14 damage. | Jump the point. Counter from behind or use the 35-tick recovery to release a stone. |
-| Below 65% guard | Thrust → ground sweep. The sweep warns for 48 ticks and deals 15 damage across the floor. | Save a jump for the second attack. A shelf or a jump above the 42-unit sweep keeps David clear. |
-| Below 30% guard | Champion charge → sweep → thrust. The charge locks David’s position, warns for 42 ticks, then travels for 24. | Move after the lane locks. Use the 54-tick charge recovery for a sling shot, then get above the following sweep. |
+| Opening challenge | Spear thrust. A 40-tick tell precedes a 220-unit thrust for 24 damage. | Jump the point. Counter from behind or use the 35-tick recovery to release a stone. |
+| Below 65% guard | Thrust → shield quake. Goliath raises his shield for 48 ticks and deals 30 damage across the floor. | Save a jump for the second attack. A shelf or a jump above the 42-unit sweep keeps David clear. |
+| Below 30% guard | Champion charge → sweep → thrust. The charge locks David’s position, warns for 42 ticks, then travels for 24 and deals 34 damage. | Move after the lane locks. Use the 54-tick charge recovery for a sling shot, then get above the following sweep. |
 
-The game runs at 60 ticks per second. Easy, Hard, and Extremely Hard leave 60, 36, and 24 quiet ticks respectively between moves. Attack tells, hit damage, and recovery windows stay readable across difficulties.
+The game runs at 60 ticks per second. Easy, Hard, and Extremely Hard leave 40, 36, and 24 quiet ticks respectively between moves. Attack tells, hit damage, and recovery windows stay readable across difficulties.
 
 Quick Battle also offers all three opponents for duels and boss encounters. Choose a roster fighter and an opponent separately. Exhibition results do not advance David’s chapter.

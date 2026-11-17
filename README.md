@@ -1,6 +1,6 @@
 # Biblhalla
 
-An offline biblical arena fighter and Story Archive campaign by **Kendrew Games**. Twelve fighters, six arenas, 147 authored attacks and an 84-level campaign that walks with Dru and Ken from Genesis to the empty tomb.
+An offline biblical arena fighter by **Kendrew Games**. Choose from twelve fighters and six arenas, or follow David through three encounters with Lion Man, Bear, and Goliath.
 
 Biblhalla runs entirely on the device. There is no account, server, telemetry or network access.
 

@@ -80,7 +80,7 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
 }
 
 /** Validate compiled content. Returns nothing; throws ContentError listing every problem. */
-export function validateContent(c: Content): void {
+export function validateContent(c: Content, campaignCounts: {levels:number; chapters:number} = EXPECTED): void {
   const problems: string[] = [];
   const need = (cond: unknown, msg: string) => { if (!cond) problems.push(msg); };
 
@@ -102,8 +102,8 @@ export function validateContent(c: Content): void {
   need(attacks.length === EXPECTED.attacks, `expected ${EXPECTED.attacks} attacks, found ${attacks.length}`);
   need(fighters.length === EXPECTED.fighters, `expected ${EXPECTED.fighters} fighters, found ${fighters.length}`);
   need(maps.length === EXPECTED.arenas, `expected ${EXPECTED.arenas} arenas, found ${maps.length}`);
-  need(levels.length === EXPECTED.levels, `expected ${EXPECTED.levels} levels, found ${levels.length}`);
-  need(chapters.length === EXPECTED.chapters, `expected ${EXPECTED.chapters} chapters, found ${chapters.length}`);
+  need(levels.length === campaignCounts.levels, `expected ${campaignCounts.levels} levels, found ${levels.length}`);
+  need(chapters.length === campaignCounts.chapters, `expected ${campaignCounts.chapters} chapters, found ${chapters.length}`);
 
   const ids = new Map<string, Attack>();
   for (const m of attacks) {

@@ -4,7 +4,6 @@
 import { validateContent } from '../../../packages/content/src/index.ts';
 import type { Content } from '../../../packages/content/src/index.ts';
 import { createEngine } from '../../../packages/sim/src/index.ts';
-import { createCampaign } from '../../../packages/campaign/src/index.ts';
 import { startApp } from './ui/app.ts';
 import type { RuntimeArt } from './render/renderer.ts';
 import { guardAtlas, guardClips } from './render/art-guard.ts';
@@ -40,7 +39,7 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   const clips = guardClips(raw?.clips, atlas, problems);
   // Extra action pages are small; decode them on the menu so the first attack
   // cannot show an empty frame while a lazy texture is starting to load.
-  for(const key of Object.keys(raw?.images??{}))if(!atlas[key])void images[key];
+  for(const key of Object.keys(raw?.images??{}))if(!atlas[key] && !key.startsWith('goliath-'))void images[key];
   if (problems.length) console.warn('Biblhalla art skipped:', problems);
   return { images, atlas, clips, arenas };
 }
@@ -48,9 +47,9 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
 try {
   const root = globalThis as any;
   const content = root.BiblhallaContent as Content;
-  validateContent(content);
+  validateContent(content, {levels:0,chapters:0});
   const S = createEngine(content);
-  startApp(content, S, createCampaign(S, content), loadArt(root.BiblhallaArt));
+  startApp(content, S, loadArt(root.BiblhallaArt));
 } catch (err) {
   showFatal((err as Error).message || String(err));
 }

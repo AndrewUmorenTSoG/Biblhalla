@@ -30,7 +30,6 @@ export function knownLimits(art: Record<string, string>): string[] {
     'Development build: not shipping-ready until final art approval, device QA and narrative review are complete.',
     'No physical-device certification: PC controllers, iPad touch, rotation, background pause and airplane-mode launch need manual testing.',
     'iPad: platform/ipad is unsigned source; a Mac, Xcode and a signing team are required to produce an installable app.',
-    'Story Archive: some levels still use shared controllers rather than their bespoke mechanics (see the implementation matrix).',
     'Bots: balance and win rates are unmeasured against human players.',
   ];
   const unapproved = Object.entries(art).filter(([, r]) => r !== 'runtime_alpha').map(([id]) => id);
@@ -52,7 +51,6 @@ if (import.meta.main) {
   }
 
   const { html, manifest } = build();
-  const content = loadContent();
   rmSync(OUT, { recursive: true, force: true });
   mkdirSync(OUT, { recursive: true });
   const files: Record<string, string | Buffer> = {
@@ -61,7 +59,7 @@ if (import.meta.main) {
     'test-output.txt': checks.map(c => `## ${c.name}\n${c.output}`).join('\n\n'),
     'asset-readiness.json': JSON.stringify({ fighters: manifest.runtimeArt, artCoverage: art.coverage }, null, 2),
     'KNOWN_LIMITS.md': '# Known limits\n\n' + knownLimits(manifest.runtimeArt as Record<string, string>).map(l => `- ${l}`).join('\n') + '\n',
-    'IMPLEMENTATION_MATRIX.md': readFileSync(join(ROOT, 'docs', 'IMPLEMENTATION_MATRIX.md')),
+    'DAVID_STORY_MODE.md': readFileSync(join(ROOT, 'docs', 'DAVID_STORY_MODE.md')),
   };
   for (const [name, data] of Object.entries(files)) writeFileSync(join(OUT, name), data);
   copyFileSync(join(ROOT, 'platform', 'ipad', 'README.md'), join(OUT, 'IPAD_SIGNING.md'));
@@ -69,5 +67,5 @@ if (import.meta.main) {
     .map(name => `${sha256(readFileSync(join(OUT, name)))}  ${name}`).join('\n') + '\n';
   writeFileSync(join(OUT, 'SHA256SUMS'), sums);
   const passed = (checks[1].output.match(/ℹ pass (\d+)/) ?? [])[1] ?? '?';
-  console.log(`Release written to dist/release: content ${content.hash}, page ${String(manifest.pageSha256).slice(0, 16)}, ${passed} tests passed.`);
+  console.log(`Release written to dist/release: content ${manifest.contentHash}, page ${String(manifest.pageSha256).slice(0, 16)}, ${passed} tests passed.`);
 }

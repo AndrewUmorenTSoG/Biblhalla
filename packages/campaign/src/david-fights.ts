@@ -10,14 +10,14 @@ const toss = { ...strike('Mane throw', 60, 80, 44, 16, 45, 15, 'Both paws reach 
 const swat = { ...strike('Side swat', 105, 92, 36, 12, 32, 11, 'One shoulder rolls back. Wait out the paw before stepping in.', 6), advanceUnits: 22 };
 const slam = strike('Overhead crush', 95, 155, 54, 12, 52, 19, 'The paw lifts overhead. Move past his back and punish the landing.', 8);
 const rake = strike('Double rake', 145, 65, 40, 18, 38, 14, 'Both paws drop. Jump his low reach or dodge across it.', 10);
-const thrust = strike('Spear thrust', 220, 72, 40, 12, 35, 14, 'The spear levels. Jump the point and close the distance.', 0);
-const sweep = { ...strike('Ground sweep', 0, 42, 48, 14, 40, 15, 'Goliath lowers his spear. Leave the floor before the sweep.', 0), kind: 'sweep' as const };
-const rush = { ...strike('Champion charge', 95, 110, 42, 24, 54, 17, 'He sets his shoulder. Leave his line and sling during recovery.', 0), kind: 'charge' as const };
+const thrust = strike('Spear thrust', 220, 72, 40, 12, 35, 24, 'The spear levels. Jump the point and close the distance.', 0);
+const sweep = { ...strike('Shield quake', 0, 42, 48, 14, 40, 30, 'Goliath raises his gold shield. Jump as it strikes the ground.', 0), kind: 'sweep' as const };
+const rush = { ...strike('Champion charge', 95, 110, 42, 24, 54, 34, 'He sets his shoulder. Leave his line and sling during recovery.', 0), kind: 'charge' as const };
 
 export const DAVID_FIGHTS = [
   { name: 'Lion Man', part: '001', arena: 'wilderness_waystation', skin: 'lion', hero: 'samson', scale: 1.15, guard: 750, intro: 'A lion breaks from cover at the edge of the flock. David turns to meet him before he reaches the sheep.', phases: [[claw, bite, toss], [bite, claw, toss], [toss, bite, claw]] },
   { name: 'Bear', part: '002', arena: 'deborahs_palm_court', skin: 'bear', hero: 'samson', scale: 1.32, guard: 1050, intro: 'The flock scatters among the trees. A bear rears up in the gap. David has room for a sling shot if he can draw out the heavy paw.', phases: [[swat, slam], [swat, rake, slam], [rake, swat, slam]] },
-  { name: 'Goliath', part: '003', arena: 'elah_training_terrace', skin: 'goliath', hero: 'saul', scale: 3, guard: 1700, intro: 'At Elah the two armies stand across the valley. David steps out with his sling. The champion lowers his spear.', phases: [[thrust], [thrust, sweep], [rush, sweep, thrust]] },
+  { name: 'Goliath', part: '003', arena: 'elah_training_terrace', skin: 'goliath', hero: 'saul', scale: 3, guard: 3200, intro: 'At Elah the two armies stand across the valley. David steps out with his sling. The champion lowers his spear.', phases: [[thrust], [thrust, sweep], [rush, sweep, thrust]] },
 ];
 
 export const DAVID_CHAPTER = DAVID_FIGHTS.map((fight, index) => index === 1

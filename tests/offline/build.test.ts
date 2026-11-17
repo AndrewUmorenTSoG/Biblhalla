@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { build, FORBIDDEN_RUNTIME } from '../../tools/build.ts';
-import { content } from '../helpers/engine.ts';
 
 const { html, manifest } = build();
 
@@ -15,11 +14,12 @@ test('standalone page embeds everything and makes no network requests', () => {
   assert.equal(manifest.offline, true);
 });
 
-test('embedded content is the validated canonical content', () => {
-  assert.equal(manifest.contentHash, content.hash);
-  assert.ok(html.includes(`"hash":"${content.hash}"`));
+test('offline game ships David’s chapter and excludes the retired companion campaign', () => {
+  const stripped = html.replace(/data:image\/[^;]+;base64,[A-Za-z0-9+/=]+/g, "");
+  assert.doesNotMatch(stripped, /\b(?:dru|ken|archive)\b/i);
+  assert.ok(html.includes(`"hash":"${manifest.contentHash}"`));
   assert.equal(manifest.attacks, 172);
-  assert.equal(manifest.levels, 84);
+  assert.equal(manifest.levels, 3);
 });
 
 test('only cleaned runtime art ships; raw concept sheets never do', async () => {

@@ -261,7 +261,8 @@ export function combat(ctx: SimContext, s: SimState): void {
       const raw = launchForceQ(h.m, target.damage);
       if (raw > bestRaw || (raw === bestRaw && h.instance < best.instance)) { best = h; bestRaw = raw; }
     }
-    const guardScale = 1000 + P.guardForcePermillePerStat * (target.stats.guard - P.statBaseline);
+    const armored = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2 && (target.guard ?? 0) > 0;
+    const guardScale = (armored ? 650 : 1000) + P.guardForcePermillePerStat * (target.stats.guard - P.statBaseline);
     const force = clamp(roundMul(shieldBlocks(target, best.facing) ? Math.floor(bestRaw / 2) : bestRaw, guardScale), 0, P.knockbackCapQ);
     const dir = P.directionLookup[String(best.m.launchAngle)] || P.directionLookup['22'];
     target.kx = roundMul(force, dir[0], 1024) * best.facing;

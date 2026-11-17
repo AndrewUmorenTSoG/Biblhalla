@@ -1,7 +1,7 @@
 // Story Archive scene controller. Wraps an arena simulation with objectives,
 // companions, hazards and checkpoints. Deterministic and DOM-free.
 
-import type { Content, Level, MapDef } from '../../content/src/index.ts';
+import type { Content, FighterDef, Level, MapDef } from '../../content/src/index.ts';
 import type { Engine, InputFrame, SimState } from '../../sim/src/index.ts';
 import { event } from '../../sim/src/state.ts';
 import { Q } from '../../sim/src/index.ts';
@@ -166,7 +166,14 @@ const EMPTY_TOMB_CARDS: [string, string][] = [
   ['John 20', 'John describes Mary Magdalene at the tomb and the visits of Peter and the other disciple. Mary’s encounter is told in this account.'],
 ];
 
+/** Fictional campaign companions: not in the arena roster, never selectable in versus. */
+const COMPANIONS: Record<string, Partial<FighterDef>> = {
+  dru: { id: 'dru', name: 'Dru', title: 'Story Archive companion', weaponPair: ['sword', 'staff'], stats: { power: 5, guard: 5, speed: 5 } },
+  ken: { id: 'ken', name: 'Ken', title: 'Story Archive companion', weaponPair: ['staff', 'sling'], stats: { power: 5, guard: 5, speed: 5 } },
+};
+
 export function createCampaign(S: Engine, content: Content) {
+  for (const [id, def] of Object.entries(COMPANIONS)) S.defs[id] = def as FighterDef;
   const levels = content.campaign.levels;
 
   const spec = (level: Level): LevelSpec => LEVEL_SPECS[level.number - 1];

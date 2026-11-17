@@ -1,3 +1,5 @@
+import { canonicalJson } from '../packages/content/src/index.ts';
+import { DAVID_CHAPTER } from '../packages/campaign/src/david-fights.ts';
 // Build the standalone offline game: one self-contained HTML file with content,
 // code, styles and runtime-ready art embedded. No network access at runtime.
 
@@ -65,6 +67,10 @@ function arenaArt(): Record<string, { uri: string; horizon: string; stone: strin
 
 export function build(): { html: string; manifest: Record<string, unknown> } {
   const content = loadContent();
+  content.campaign = { title:'David', publisher:'Kendrew Games', offlineOnly:true, protagonists:['David'], levelCount:0, chapterCount:0, chapters:[], levels:[], scripts:[] };
+  content.rules = {...content.rules, storyLevelCount:DAVID_CHAPTER.length, storyChapterCount:1};
+  const {hash: sourceHash, ...runtimeContent} = content;
+  content.hash = sha256(canonicalJson({content:runtimeContent, chapter:DAVID_CHAPTER})).slice(0,16);
   const bundle = buildSync({
     entryPoints: [join(APP, 'src', 'bootstrap.ts')],
     bundle: true,
@@ -79,6 +85,11 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
   for (const animal of ['lion', 'bear', 'goliath']) {
     const bytes = readFileSync(join(ROOT, 'assets', 'runtime', 'story', animal + '.png'));
     art.images[animal] = 'data:image/png;base64,' + bytes.toString('base64');
+  }
+  for (const clip of ['run','spear','slam','charge']) {
+    const name = 'goliath-' + clip;
+    const bytes = readFileSync(join(ROOT, 'assets/runtime/story', name + '.webp'));
+    art.images[name] = 'data:image/webp;base64,' + bytes.toString('base64');
   }
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
     + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, clips: art.clips, readiness: art.readiness, arenas: arenaArt() }) + ';';
@@ -99,7 +110,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     roster: content.fighters.fighters.length,
     arenas: content.maps.maps.length,
     attacks: content.attacks.attacks.length,
-    levels: content.campaign.levels.length,
+    levels: DAVID_CHAPTER.length,
     engine: 'Q8 integer, fixed 60 ticks, Canvas 2D',
     offline: true,
     runtimeArt: art.readiness,
