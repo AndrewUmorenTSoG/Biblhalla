@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { loadContent } from '../../tools/lib/content.ts';
 import { Renderer } from '../../apps/game/src/render/renderer.ts';
 const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
-const jobs=JSON.parse(readFileSync(new URL('../../assets/animation-production/down-attacks/jobs.json',import.meta.url),'utf8'));
+const jobs=JSON.parse(readFileSync(new URL('./fixtures/down-attack-jobs.json',import.meta.url),'utf8'));
 const content=loadContent(),renderer=Object.create(Renderer.prototype) as Renderer;
 renderer.atlas=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.frames]));
 renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])=>[id,v.clips]));

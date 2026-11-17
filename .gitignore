@@ -58,3 +58,7 @@ assets/runtime/fighters/moses.png
 assets/runtime/fighters/nehemiah.png
 assets/runtime/fighters/samson.png
 assets/runtime/fighters/saul.png
+
+# Codex's art production folder: source drawings, prompts, review GIFs and preview
+# pages. Kept on the local machine only; the game never loads it (see docs/art/LOCAL_ART_WORKFLOW.md).
+assets/animation-production/
