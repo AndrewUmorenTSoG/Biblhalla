@@ -135,7 +135,12 @@ export function combat(ctx: SimContext, s: SimState): void {
         ledger.push(target.id);
         if(!a.hit.includes(target.id))a.hit.push(target.id);
         a.confirmed = true;
-        const spec=ph.damagePermille?{...m,damageTenths:Math.max(1,roundMul(m.damageTenths,ph.damagePermille))}:m;
+        const spec=ph.damagePermille!==undefined||ph.forcePermille!==undefined?{
+          ...m,
+          damageTenths:Math.max(1,roundMul(m.damageTenths,ph.damagePermille??1000)),
+          baseForceQ:roundMul(m.baseForceQ,ph.forcePermille??1000),
+          growthQPerDamage:roundMul(m.growthQPerDamage,ph.forcePermille??1000)
+        }:m;
         const facing=m.effect==='water'?(Math.sign(target.x-f.x)||a.facing):a.facing;
         hits.push({ target: target.id, owner: f.id, instance: a.instance, m:spec, facing, charge: a.charge, melee: true,grabTicks:ph.grabTicks });
       }

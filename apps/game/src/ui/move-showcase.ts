@@ -121,7 +121,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     panel.querySelector('h3')!.textContent = move.displayName;
     panel.querySelector('.move-input')!.textContent = inputLabel(move);
     const tips:Record<string,string>={
-      moses_staff_dsig:'Press Down + Heavy to spin the staff. The water hurricane catches opponents on either side. Recover before attacking again.',
+      moses_staff_dsig:'Press Down + Heavy to spin the staff. The hurricane hits four times on either side: three light contacts, then a launching finish.',
       moses_staff_slight:'Land Forward + Light, then press Down + Light as the sweep connects to vault into two aerial kicks.',
       moses_staff_dlight:'Two airborne kicks. Link from Forward + Light for the vault combo. Tiny sparks mark each successful hit.',
       moses_staff_ssig:'Forward + Heavy sends a breaking wave ahead. Follow its forward travel to control space.'

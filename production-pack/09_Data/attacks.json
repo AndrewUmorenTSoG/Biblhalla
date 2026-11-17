@@ -6536,7 +6536,7 @@
       "collisionPhases": [
         {
           "firstTick": 15,
-          "lastTickExclusive": 31,
+          "lastTickExclusive": 19,
           "rectUnits": [
             -92,
             12,
@@ -6545,14 +6545,61 @@
           ],
           "hitGroup": 0,
           "shape": "rect",
-          "anchor": "fighterFeet"
+          "anchor": "fighterFeet",
+          "damagePermille": 200,
+          "forcePermille": 120
+        },
+        {
+          "firstTick": 19,
+          "lastTickExclusive": 23,
+          "rectUnits": [
+            -92,
+            12,
+            184,
+            80
+          ],
+          "hitGroup": 1,
+          "shape": "rect",
+          "anchor": "fighterFeet",
+          "damagePermille": 200,
+          "forcePermille": 120
+        },
+        {
+          "firstTick": 23,
+          "lastTickExclusive": 27,
+          "rectUnits": [
+            -92,
+            12,
+            184,
+            80
+          ],
+          "hitGroup": 2,
+          "shape": "rect",
+          "anchor": "fighterFeet",
+          "damagePermille": 200,
+          "forcePermille": 120
+        },
+        {
+          "firstTick": 27,
+          "lastTickExclusive": 31,
+          "rectUnits": [
+            -92,
+            12,
+            184,
+            80
+          ],
+          "hitGroup": 3,
+          "shape": "rect",
+          "anchor": "fighterFeet",
+          "damagePermille": 400,
+          "forcePermille": 1000
         }
       ],
       "projectile": null,
       "motionEvents": [],
-      "oneHitPerTarget": true,
+      "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
-      "hitstopTicks": 5,
+      "hitstopTicks": 2,
       "invulnerability": false,
       "chargeable": true,
       "chargeMaxTicks": 36,

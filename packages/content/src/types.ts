@@ -11,6 +11,7 @@ export type InputContext = 'ground' | 'air' | 'groundOrAirCancel';
 
 export interface CollisionPhase {
   damagePermille?: number;
+  forcePermille?: number;
   grabTicks?: number;
   firstTick: number;
   lastTickExclusive: number;

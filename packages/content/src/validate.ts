@@ -57,6 +57,7 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
   if (m.delivery === 'projectile' && !m.projectile) problems.push(`${at}: projectile attack has no projectile`);
   for (const [hero,phases]of Object.entries(m.fighterCollisionPhases??{}))if(!hero||!Array.isArray(phases)||!phases.length)problems.push(`${at}: invalid fighter contact phases`);
   for (const p of [...m.collisionPhases,...Object.values(m.fighterCollisionPhases??{}).flatMap(p=>Array.isArray(p)?p:[])]) {
+    if(p.forcePermille!==undefined&&(!Number.isInteger(p.forcePermille)||p.forcePermille<0||p.forcePermille>1000))problems.push(`${at}: invalid phase force multiplier`);
     if(p.damagePermille!==undefined&&(p.damagePermille<1||p.damagePermille>1000))problems.push(`${at}: invalid phase damage multiplier`);
     if(p.grabTicks!==undefined&&(p.grabTicks<1||p.grabTicks>30))problems.push(`${at}: invalid grab duration`);
     if (p.firstTick < 0 || p.lastTickExclusive <= p.firstTick || p.lastTickExclusive > m.totalTicks) problems.push(`${at}: collision phase timing out of range`);
