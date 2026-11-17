@@ -20,6 +20,7 @@ import { MenuNavigator, bindArrowKeys } from '../input/menu-nav.ts';
 import { Lesson } from '../training/lesson.ts';
 import { DRILLS, DrillRun } from '../training/drills.ts';
 import { buildRoster, CPU_INPUT, ReadyBoard } from './lobby.ts';
+import { presentResult } from './results.ts';
 import { moveShowcase } from './move-showcase.ts';
 import { DAVID_CHAPTER, DAVID_FIGHTS, davidFightOptions, withChapterOpponent } from '../../../../packages/campaign/src/david-fights.ts';
 
@@ -125,18 +126,19 @@ function updateHud(){if(!world)return;const box=$('hud');box.replaceChildren();f
   const seconds=Math.max(0,Math.ceil(world.remaining/60));const timer=el('div',Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),'timer');box.append(timer);
   $('touch-layer').querySelector('[data-action=item]').textContent=world.fighters[0].weapon==='unarmed'?'Pickup':'Throw';
 }
-function showResult(){if(resultShown)return;resultShown=true;inputs.active=false;inputs.clear();(document.querySelector('#result-dialog .eyebrow') as HTMLElement).textContent=replayPlayback?'REPLAY':world.options.mode==='training'?'LESSON':world.result?.won?'VICTORY':'MATCH OVER';
-  {$('result-title').textContent=replayPlayback?(S.hash(world)===replayPlayback.finalHash?'Replay verified.':'Replay checksum differs.'):world.result?.won?'Well played!':'The next round awaits.';$('result-reason').textContent=world.result?.reason||'Match complete';$('next-level').hidden=true;$('rematch').textContent=store.data.controlChecked&&tutorialFinished?'Continue →':'Play again →';const player=world.fighters[0];const places=world.result?.placements||[];if(places.length>1){const ord=(n:number)=>n+(n===1?'st':n===2?'nd':n===3?'rd':'th');$('result-stats').replaceChildren(...places.map((p:any)=>el('p',ord(p.place)+' · '+(p.human?'P'+p.fighter+' · ':'')+p.name+' · '+p.stocks+(p.stocks===1?' life':' lives')+' left · '+Math.floor(p.damageDealt/10)+' damage dealt','placement')),el('p',Math.floor(world.tick/60)+' seconds'));}else $('result-stats').textContent='Damage dealt '+Math.floor(player.damageDealt/10)+' · Hits '+player.hits+' · '+Math.floor(world.tick/60)+' seconds';if(replayRecord&&world.options.mode!=='training'){replayRecord.finalHash=S.hash(world);lastReplay=replayRecord;try{replayLibrary.add(replayRecord,(world.mode==='duel'?'Duel':world.mode)+' · '+world.fighters.map((f:any)=>f.name).join(' vs ')+' · '+world.map.name);}catch(e){}}}
+function showResult(){if(resultShown)return;resultShown=true;inputs.active=false;inputs.clear();presentResult(world,art,fighterPortrait,replayPlayback ? (S.hash(world)===replayPlayback.finalHash?'Replay verified':'Replay checksum differs') : undefined);
+  $('next-level').hidden=true;
+  $('rematch').textContent=tutorialFinished&&world.mode==='training'?'Continue →':world.result?.won?'Play again →':'Rematch →';
+  if(replayRecord&&world.options.mode!=='training'){replayRecord.finalHash=S.hash(world);lastReplay=replayRecord;try{replayLibrary.add(replayRecord,(world.mode==='duel'?'Duel':world.mode)+' · '+world.fighters.map((f:any)=>f.name).join(' vs ')+' · '+world.map.name);}catch(e){}}
   const fightIndex=world.options.storyFight;
   if(fightIndex!==undefined&&!replayPlayback){
     const won=world.result?.won;
     if(won){store.data.davidWins=Math.max(store.data.davidWins,fightIndex+1);store.save();}
-    $('result-title').textContent=won?(fightIndex===2?'David defeats Goliath':'David defeats '+DAVID_CHAPTER[fightIndex].name):'David fell to '+DAVID_CHAPTER[fightIndex].name;
     $('next-level').hidden=!won||fightIndex===2;
     $('next-level').textContent=won&&fightIndex<2?'Fight '+DAVID_CHAPTER[fightIndex+1].name+' →':'Next fight';
     $('rematch').textContent=won?'Replay fight':'Retry fight';
   } else $('next-level').textContent='Next level →';
-  open($('result-dialog'));announce($('result-title').textContent);
+  open($('result-dialog')); $('result-dialog').querySelector('button:not([hidden])')?.focus();announce($('result-outcome').textContent+' · '+$('result-title').textContent);
 }
 const portraitOrder = ['samson','david','saul','joshua','deborah','gideon','jonathan','moses','esther','miriam','nehemiah','caleb'];
 
@@ -389,7 +391,11 @@ $('game').addEventListener('change',e=>{if(!(e.target as HTMLElement).closest('d
 $('game').addEventListener('click',e=>{const el=(e.target as HTMLElement).closest('button');if(el&&!el.closest('dialog'))$('arena').focus();});
 // Reset keeps the chosen dummy and skips the 3-2-1: training restarts instantly.
 $('training-reset').addEventListener('click',()=>{if(!world)return;const bot=$('training-bot').value;if(tutorial||drill){const fresh=S.create(world.options);world.fighters.forEach((f:any,k:number)=>{const g=fresh.fighters[k];if(g)Object.assign(f,{x:g.x,y:g.y,vx:0,vy:0,kx:0,facing:g.facing,action:null,buffer:null,stun:0,hitstop:0,damage:0,ground:null,respawn:0});});renderer.capture(world);return;}startGame({...world.options,trainingBot:bot,...(['easy','hard','extreme'].includes(bot)?{difficulty:bot}:{})});if(world.options.mode==='training'){while(world.phase==='countdown')S.step(world);replayRecord=null;renderer.capture(world);}});$('training-bot').addEventListener('change',()=>{world.trainingBot=$('training-bot').value;if(['easy','hard','extreme'].includes(world.trainingBot))world.difficulty=world.trainingBot;});
-$('next-level').addEventListener('click',()=>{if(world?.options.storyFight!==undefined&&!replayPlayback)startFight(world.options.storyFight+1);});$('rematch').addEventListener('click',()=>{if(tutorialFinished&&world?.options.mode==='training'){const fn=inputNext;inputNext=null;tutorialFinished=false;screen('modes');if(fn)fn();}else retry();});$('result-menu').addEventListener('click',()=>screen(world?.options.storyFight!==undefined?'story-fights':'modes'));
+$('next-level').addEventListener('click',()=>{if(world?.options.storyFight!==undefined&&!replayPlayback)startFight(world.options.storyFight+1);});$('rematch').addEventListener('click',()=>{if(tutorialFinished&&world?.options.mode==='training'){const fn=inputNext;inputNext=null;tutorialFinished=false;screen('modes');if(fn)fn();}else retry();});$('result-menu').addEventListener('click',()=>screen('home'));
+$('result-select').addEventListener('click',()=>{
+  if(['local','ffa','teams'].includes(world.mode)){ screen('local');renderLocal(); }
+  else screen('setup');
+});
 document.querySelectorAll('[data-close]').forEach((b:any)=>b.addEventListener('click',()=>close($(b.dataset.close))));
 $('info-dialog').addEventListener('close',()=>{if(infoResume)resume();else if(world&&world.phase==='paused'&&!$('pause-dialog').open)open($('pause-dialog'));});
 $('pause-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();resume();});$('result-dialog').addEventListener('cancel',(e:Event)=>{e.preventDefault();screen(world?.options.storyFight!==undefined?'story-fights':'modes');});

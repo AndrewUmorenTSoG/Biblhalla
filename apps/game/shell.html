@@ -15,7 +15,18 @@
 </main><footer id="footer"><span>Made for playing together.</span><span id="footer-save">All content stays on this device.</span><span>Main game · development build</span></footer></div>
 <dialog id="input-dialog" aria-labelledby="input-title"><p class="eyebrow">FIRST, YOUR CONTROLS</p><h2 id="input-title">Choose how to play.</h2><p>Use a keyboard, touch controls, or a detected controller.</p><fieldset class="input-methods"><legend>Input method</legend><label><input type="radio" name="input-method" value="keyboard" checked><b>Keyboard</b><span>PC recommended</span></label><label><input type="radio" name="input-method" value="touch"><b>Touch</b><span>Tablet recommended</span></label><label><input type="radio" name="input-method" value="controller"><b>Controller</b><span>Connect & press a button</span></label></fieldset><p id="controller-status" role="status"></p><button id="confirm-input" class="primary">Continue →</button><button data-close="input-dialog">Cancel</button></dialog>
 <dialog id="pause-dialog" aria-labelledby="pause-title"><p class="eyebrow">PAUSED</p><h2 id="pause-title">Take a breath.</h2><p id="pause-copy">The whole game is paused.</p><button id="resume" class="primary">Resume →</button><button id="restart">Restart match</button><button id="pause-controls">Controls</button><button id="pause-input">Switch input method</button><button id="leave-game">Return to menu</button></dialog>
-<dialog id="result-dialog" aria-labelledby="result-title"><p class="eyebrow">ENCOUNTER COMPLETE</p><h2 id="result-title"></h2><p id="result-reason"></p><div id="result-stats"></div><button id="next-level" class="primary" hidden>Next level →</button><button id="rematch" class="primary">Play again →</button><button id="result-menu">Return to menu</button></dialog>
+<dialog id="result-dialog" aria-labelledby="result-outcome result-title">
+  <div class="result-stage">
+    <div class="result-spotlight"><div id="result-art" aria-hidden="true"></div>
+      <div class="result-caption"><span id="result-outcome"></span><h2 id="result-title"></h2><p id="result-subtitle"></p></div>
+    </div>
+    <section class="result-details"><h3 id="result-reason"></h3><dl id="result-stats"></dl>
+      <h3 id="ranking-title">Standings</h3><ol id="result-ranking" aria-labelledby="ranking-title"></ol>
+      <div class="result-actions"><button id="next-level" class="primary" hidden>Next fight →</button><button id="rematch" class="primary">Play again →</button><button id="result-select">Character select</button></div>
+      <button id="result-menu">← Main menu</button>
+    </section>
+  </div>
+</dialog>
 <dialog id="info-dialog" class="wide-dialog" aria-labelledby="info-title"><p id="info-label" class="eyebrow"></p><h2 id="info-title"></h2><div id="info-content"></div><button data-close="info-dialog" class="primary">Done</button></dialog>
 <div id="announcements" class="visually-hidden" role="status" aria-live="polite"></div>
 <script>/* DATA */</script><script>/* CODE */</script></body></html>
