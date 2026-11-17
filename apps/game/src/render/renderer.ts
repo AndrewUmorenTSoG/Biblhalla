@@ -16,7 +16,7 @@ import { paintArenaScenery } from './arena-scenes.ts';
 import { SurfaceCache } from './surface-cache.ts';
 import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence, RunDistance, goliathStride } from './animation.ts';
-import { drawBreakingTide, drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
+import { drawWaterHurricane, drawBreakingTide, drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 import { Callouts } from './callouts.ts';
 import { edgePointer, nextTask, drawPointer } from './waypoint.ts';
@@ -42,7 +42,14 @@ export class Renderer{
   elementEvents:SimState['events']=[];
   shieldCatchTicks=new Map<number,number>();
   /** Gather this tick's elemental-move and shield-catch events so their effects can be drawn. */
-  collectElements(world:SimState){this.elementEvents??=[];this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),e.tick);for(const e of world.events)if(e.type==='element'&&!this.elementEvents.some(p=>p.id===e.id))this.elementEvents.push({...e});this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
+  collectElements(world:SimState){this.elementEvents??=[];this.shieldCatchTicks??=new Map();for(const e of world.events)if(e.type==='shieldCatch')this.shieldCatchTicks.set(Number(e.fighter),e.tick);for(const e of world.events)if(!this.elementEvents.some(p=>p.id===e.id)){
+      if(e.type==='element')this.elementEvents.push({...e});
+      if(e.type==='hit'){
+        const owner=world.fighters.find(f=>f.id===e.attacker);
+        if(owner?.hero==='moses'&&owner.action?.move==='moses_staff_dlight')
+          this.elementEvents.push({...e,type:'element',effect:'kickSpark',hero:'moses',weapon:'staff',move:owner.action.move});
+      }
+    }this.elementEvents=this.elementEvents.filter(e=>world.tick-e.tick<=22).slice(-64);}
   runDistance=new RunDistance();
   surfaces=new SurfaceCache();
   previousProjectiles=new Map<number,{x:number;y:number}>();
@@ -287,6 +294,13 @@ export class Renderer{
           drawBreakingTide(c,sheet,wave.collisionPhases,age);
           c.restore();
         }
+      }
+      if(f.action?.move==='moses_staff_dsig' && this.art.waterHurricane) {
+        const move=this.S.moves.moses_staff_dsig;
+        const age=f.action.tick-1-move.startup+(active&&!f.hitstop?alpha:0);
+        c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*f.action.facing,this.camera.zoom);
+        drawWaterHurricane(c,this.art.waterHurricane,age,move.active,this.reduced);
+        c.restore();
       }
       if (f.guard !== null && encounter !== undefined && run && script) {
         const moves = script.phases[run.phase - 1];
