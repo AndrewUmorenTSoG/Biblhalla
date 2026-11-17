@@ -40,7 +40,7 @@ test('content hash is independent of JSON key order and changes with data', () =
 });
 
 test('corrupt content fails clearly before any match starts', () => {
-  rejects(c => { c.attacks.attacks.pop(); }, /expected 181 attacks/);
+  rejects(c => { c.attacks.attacks.pop(); }, /expected 182 attacks/);
   rejects(c => { c.attacks.attacks[0].totalTicks += 1; }, /totalTicks/);
   rejects(c => { c.attacks.attacks[0].collisionPhases[0].rectUnits[2] = 0; }, /zero or negative hit shape/);
   rejects(c => { c.attacks.attacks.find(m=>m.id==='shield_dlight')!.fighterCollisionPhases!.gideon[0].rectUnits[2]=0; }, /zero or negative hit shape/);

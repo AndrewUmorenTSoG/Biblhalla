@@ -15,7 +15,7 @@ import { paintArenaScenery } from './arena-scenes.ts';
 import { SurfaceCache } from './surface-cache.ts';
 import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
 import { interpolatePosition, cameraEase, runCadence, RunDistance, goliathStride } from './animation.ts';
-import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
+import { drawBreakingTide, drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 import { Callouts } from './callouts.ts';
 import { edgePointer, nextTask, drawPointer } from './waypoint.ts';
@@ -270,6 +270,17 @@ export class Renderer{
       const encounter = f.partner ? 0 : world.options.storyFight ?? world.options.exhibitionOpponent;
       const run = f.partner?.run ?? world.bossRun;
       const script = f.partner?.script ?? world.bossScript;
+      if (f.action?.move === 'moses_staff_ssig') {
+        const tick = f.action.tick - 1;
+        const wave = this.S.moves.moses_staff_ssig;
+        const sheet = this.art.breakingTide;
+        if (sheet) {
+          const age = tick-wave.startup+(active&&!f.hitstop ? alpha : 0);
+          c.save();c.translate(p.x,p.y);c.scale(this.camera.zoom*f.action.facing,this.camera.zoom);
+          drawBreakingTide(c,sheet,wave.collisionPhases,age);
+          c.restore();
+        }
+      }
       if (f.guard !== null && encounter !== undefined && run && script) {
         const moves = script.phases[run.phase - 1];
         const move = moves[run.index % moves.length];

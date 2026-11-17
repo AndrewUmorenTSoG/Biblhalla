@@ -86,6 +86,8 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     const bytes = readFileSync(join(ROOT, 'assets', 'runtime', 'story', animal + '.png'));
     art.images[animal] = 'data:image/png;base64,' + bytes.toString('base64');
   }
+  const tide = readFileSync(join(ROOT, 'assets', 'runtime', 'effects', 'breaking-tide.png'));
+  art.images.breakingTide = 'data:image/png;base64,' + tide.toString('base64');
   const data = 'globalThis.BiblhallaContent=' + JSON.stringify(content).replace(/</g, '\\u003c')
     + ';globalThis.BiblhallaArt=' + JSON.stringify({ images: art.images, atlas: art.atlas, clips: art.clips, readiness: art.readiness, arenas: arenaArt() }) + ';';
   const html = readFileSync(join(APP, 'shell.html'), 'utf8')

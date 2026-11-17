@@ -10,6 +10,36 @@ export function flame(c:CanvasRenderingContext2D,x:number,y:number,size:number,t
   c.save();c.translate(x,y);c.fillStyle='#ff6b28bb';c.beginPath();c.moveTo(-size,0);c.quadraticCurveTo(-size,-size,size*.15,-size*2.4);c.quadraticCurveTo(size*.2,-size,size,0);c.closePath();c.fill();c.fillStyle='#ffe58b';c.beginPath();c.ellipse(0,-size*.3,size*.45,size*.8,Math.sin(time*.2)*.2,0,Math.PI*2);c.fill();c.restore();
 }
 
+/** Follow the contact front, then carry the spent whitewater through recovery. */
+export function drawBreakingTide(c:CanvasRenderingContext2D, sheet:HTMLImageElement, phases:readonly {rectUnits:readonly number[]}[], age:number) {
+  const last = phases.length - 1;
+  if (last < 0 || age <= -6 || age >= last + 13 || !sheet.naturalWidth) return;
+  const phase = Math.max(0, Math.min(last, age));
+  const index = Math.floor(phase);
+  const current = phases[index].rectUnits, next = phases[Math.min(last,index+1)].rectUnits;
+  const fraction = phase-index;
+  const rise = Math.min(1,(age+6)/6);
+  const wash = Math.max(0,(age-last)/13);
+  const lead = (current[0]+current[2]+(next[0]-current[0])*fraction)*rise + 18*wash;
+  const height = (current[3]+(next[3]-current[3])*fraction)*rise*(1-wash*.9);
+  const width = (current[2]*1.35 + phase*3)*rise + 16*wash;
+  // The rising and plunging cels share a planted baseline and leading edge.
+  const cel = age < 0 ? 0 : age < last*.52 ? age/(last*.52)
+    : phase < last ? 1+(age-last*.52)/(last*.48) : 2+Math.min(1,wash*2);
+  const first = Math.floor(cel), mix = cel-first;
+  const cellWidth = sheet.naturalWidth/4;
+  c.save();
+  c.globalAlpha *= rise*(1-wash*wash);
+  const opacity = c.globalAlpha;
+  const paint = (frame:number, weight:number) => {
+    c.globalAlpha = opacity*weight;
+    c.drawImage(sheet,frame*cellWidth,0,cellWidth,sheet.naturalHeight,lead-width,-height,width,height);
+  };
+  paint(first,1-mix);
+  if (mix>0) paint(first+1,mix);
+  c.restore();
+}
+
 /** Short, deterministic effects follow simulation events, never modify hitboxes. */
 export function drawElements(c:CanvasRenderingContext2D,world:SimState,screen:Screen,zoom:number,reduced:boolean){
   for(const e of world.events){

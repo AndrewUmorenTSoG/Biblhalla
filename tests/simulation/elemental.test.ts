@@ -56,8 +56,8 @@ test('Caleb punch and clap are separate hits, with a long-range sound projectile
   for(const ph of m.collisionPhases){f.hitstop=t.hitstop=0;t.x=50*Q;t.y=80*Q;a.tick=ph.firstTick+1;combat(ctx,s);}
   assert.equal(f.hits,2);assert.equal(m.projectile!.effect,'sound');assert.ok(m.projectile!.speedQ*m.projectile!.lifetimeTicks>=240*Q);
 });
-test('Moses waves hit both sides; Joshua’s axe launches upward; Esther hurricane pushes forward',()=>{
-  const {s,f,t}=scene('moses');f.weapon='staff';t.x=-70*Q;S.startAttack(s,f,{light:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup+1;combat(ctx,s);assert.ok(t.damage>0);
+test('Moses staff spin hits behind him; Joshua’s axe launches upward; Esther hurricane pushes forward',()=>{
+  const {s,f,t}=scene('moses');f.weapon='staff';t.x=-70*Q;S.startAttack(s,f,{heavy:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup+1;combat(ctx,s);assert.ok(t.damage>0);
   assert.deepEqual(S.defs.joshua.weaponPair,['sword','axe']);
   const j=scene('joshua');j.f.weapon='axe';S.startAttack(j.s,j.f,{heavy:true});assert.equal(j.f.action!.move,'joshua_axe_nsig');j.f.action!.tick=S.moves.joshua_axe_nsig.startup+1;combat(ctx,j.s);assert.ok(j.t.vy>0);
   const e=scene('esther');e.f.weapon='blades';S.startAttack(e.s,e.f,{light:true,x:1});assert.equal(e.f.action!.move,'esther_blades_slight');e.f.action!.tick=9;combat(ctx,e.s);assert.ok(e.t.kx>0);

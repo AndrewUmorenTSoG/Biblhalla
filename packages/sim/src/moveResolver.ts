@@ -94,7 +94,8 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
   const press = f.buffer;
   if (a?.kind === 'attack' && f.ground && a.confirmed && !a.comboDepth && press?.type === 'light') {
     const opener = moves[a.move!];
-    if (opener.id.endsWith('_nlight') && a.tick >= opener.startup + opener.active && (press.x || press.y < 0)) {
+    const vault = opener.id === 'moses_staff_slight' && press.y < 0;
+    if ((vault || opener.id.endsWith('_nlight')) && a.tick >= opener.startup + opener.active && (press.x || press.y < 0)) {
       const follow = { ...i, x: press.x, y: press.y, light: true, heavy: false };
       if (startAttack(ctx, s, f, follow)) {
         f.action!.comboDepth = 1;

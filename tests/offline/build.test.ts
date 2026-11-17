@@ -18,7 +18,7 @@ test('offline game ships David’s chapter and excludes the retired companion ca
   const stripped = html.replace(/data:image\/[^;]+;base64,[A-Za-z0-9+/=]+/g, "");
   assert.doesNotMatch(stripped, /\b(?:dru|ken|archive)\b/i);
   assert.ok(html.includes(`"hash":"${manifest.contentHash}"`));
-  assert.equal(manifest.attacks, 181);
+  assert.equal(manifest.attacks, 182);
   assert.equal(manifest.levels, 3);
 });
 

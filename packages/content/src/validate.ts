@@ -6,7 +6,7 @@ import type { Attack, Content } from './types.ts';
 export const EXPECTED = {
   fighters: 12,
   arenas: 6,
-  attacks: 181,
+  attacks: 182,
   sharedAttacks: 102,
   signatureAttacks: 72,
   weaponFamilies: 10,

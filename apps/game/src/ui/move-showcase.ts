@@ -134,6 +134,9 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
 
   function loadWeapon() {
     const weapon = select.value;
+    panel.querySelector('.move-link-tip')!.textContent = hero === 'moses' && weapon === 'staff'
+      ? 'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.'
+      : 'Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.';
     const moves = engine.content.attacks.attacks.filter(m =>
       (m.ownerId === weapon && !engine.moves[hero + '_' + m.id]) || (m.ownerId === hero && m.weapon === weapon));
     list.replaceChildren();

@@ -6237,16 +6237,16 @@
       "ownerType": "fighter",
       "ownerId": "moses",
       "weapon": "staff",
-      "displayName": "Leaderâ€™s Reach",
+      "displayName": "Breaking Tide",
       "input": {
         "button": "heavy",
         "direction": "side",
         "context": "groundOrAirCancel"
       },
-      "startup": 25,
-      "active": 6,
-      "recovery": 34,
-      "totalTicks": 65,
+      "startup": 19,
+      "active": 18,
+      "recovery": 25,
+      "totalTicks": 62,
       "damageTenths": 280,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -6255,21 +6255,251 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 25,
-          "lastTickExclusive": 31,
-          "shape": "rect",
+          "firstTick": 19,
+          "lastTickExclusive": 20,
           "rectUnits": [
-            24,
-            24,
-            155,
+            12,
+            0,
+            63,
+            36
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 20,
+          "lastTickExclusive": 21,
+          "rectUnits": [
+            19,
+            0,
+            63,
+            39
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 21,
+          "lastTickExclusive": 22,
+          "rectUnits": [
+            26,
+            0,
+            63,
+            42
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 22,
+          "lastTickExclusive": 23,
+          "rectUnits": [
+            33,
+            0,
+            63,
+            45
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 23,
+          "lastTickExclusive": 24,
+          "rectUnits": [
+            40,
+            0,
+            63,
+            48
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 24,
+          "lastTickExclusive": 25,
+          "rectUnits": [
+            47,
+            0,
+            63,
+            51
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 25,
+          "lastTickExclusive": 26,
+          "rectUnits": [
+            54,
+            0,
+            63,
+            54
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 26,
+          "lastTickExclusive": 27,
+          "rectUnits": [
+            61,
+            0,
+            63,
+            57
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 27,
+          "lastTickExclusive": 28,
+          "rectUnits": [
+            68,
+            0,
+            63,
             60
           ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 28,
+          "lastTickExclusive": 29,
+          "rectUnits": [
+            75,
+            0,
+            63,
+            63
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 29,
+          "lastTickExclusive": 30,
+          "rectUnits": [
+            82,
+            0,
+            63,
+            66
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 30,
+          "lastTickExclusive": 31,
+          "rectUnits": [
+            89,
+            0,
+            63,
+            69
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 31,
+          "lastTickExclusive": 32,
+          "rectUnits": [
+            96,
+            0,
+            63,
+            72
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 32,
+          "lastTickExclusive": 33,
+          "rectUnits": [
+            103,
+            0,
+            63,
+            75
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 33,
+          "lastTickExclusive": 34,
+          "rectUnits": [
+            110,
+            0,
+            63,
+            78
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 34,
+          "lastTickExclusive": 35,
+          "rectUnits": [
+            117,
+            0,
+            63,
+            81
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 35,
+          "lastTickExclusive": 36,
+          "rectUnits": [
+            124,
+            0,
+            63,
+            84
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 36,
+          "lastTickExclusive": 37,
+          "rectUnits": [
+            131,
+            0,
+            63,
+            87
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
         }
       ],
       "projectile": null,
-      "motionEvents": [],
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 19,
+          "toTickExclusive": 35,
+          "dxQ": 640,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 5,
@@ -6279,7 +6509,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Moses steps firmly and strikes forward with the staffâ€™s long end at chest height.",
+      "visualPose": "Moses sweeps his staff forward and rides a surging crest of water.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -6287,16 +6517,16 @@
       "ownerType": "fighter",
       "ownerId": "moses",
       "weapon": "staff",
-      "displayName": "Desert Boundary",
+      "displayName": "Shepherd’s Wheel",
       "input": {
         "button": "heavy",
         "direction": "down",
         "context": "groundOrAirCancel"
       },
-      "startup": 27,
-      "active": 6,
-      "recovery": 35,
-      "totalTicks": 68,
+      "startup": 15,
+      "active": 16,
+      "recovery": 22,
+      "totalTicks": 53,
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -6305,17 +6535,17 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 27,
-          "lastTickExclusive": 33,
-          "shape": "rect",
+          "firstTick": 15,
+          "lastTickExclusive": 31,
           "rectUnits": [
-            -140,
-            0,
-            280,
-            55
+            -92,
+            12,
+            184,
+            80
           ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
         }
       ],
       "projectile": null,
@@ -6329,9 +6559,8 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Moses lowers into a braced stance and sweeps the staff across a low frontward lane, with ordinary sand dust.",
-      "resourceCostOnActionStart": {},
-      "effect": "water"
+      "visualPose": "Moses braces and spins the staff around his body.",
+      "resourceCostOnActionStart": {}
     },
     {
       "id": "moses_sling_nsig",
@@ -9072,40 +9301,60 @@
       "id": "moses_staff_dlight",
       "ownerType": "fighter",
       "ownerId": "moses",
-      "displayName": "Parting Wave",
+      "displayName": "Vault Kicks",
       "input": {
         "button": "light",
         "direction": "down",
         "context": "ground"
       },
-      "startup": 10,
-      "active": 5,
-      "recovery": 20,
-      "totalTicks": 35,
-      "damageTenths": 100,
-      "hitstunTicks": 13,
-      "baseForceQ": 640,
-      "growthQPerDamage": 12,
+      "startup": 5,
+      "active": 12,
+      "recovery": 21,
+      "totalTicks": 38,
+      "damageTenths": 65,
+      "hitstunTicks": 11,
+      "baseForceQ": 1210,
+      "growthQPerDamage": 8,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 10,
-          "lastTickExclusive": 15,
-          "shape": "rect",
+          "firstTick": 5,
+          "lastTickExclusive": 9,
           "rectUnits": [
-            -140,
-            0,
-            280,
-            55
+            5,
+            14,
+            88,
+            48
           ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        },
+        {
+          "firstTick": 13,
+          "lastTickExclusive": 17,
+          "rectUnits": [
+            7,
+            22,
+            86,
+            58
+          ],
+          "hitGroup": 1,
+          "shape": "rect",
+          "anchor": "fighterFeet"
         }
       ],
       "projectile": null,
-      "motionEvents": [],
-      "oneHitPerTarget": true,
+      "motionEvents": [
+        {
+          "kind": "setVelocity",
+          "atTick": 2,
+          "vxQ": 980,
+          "vyQ": 1460
+        }
+      ],
+      "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 3,
       "invulnerability": false,
@@ -9114,10 +9363,9 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "One low front staff sweep, fighter lowers center of gravity.",
+      "visualPose": "Moses plants his staff, vaults forward and kicks twice in midair.",
       "resourceCostOnActionStart": {},
-      "weapon": "staff",
-      "effect": "water"
+      "weapon": "staff"
     },
     {
       "id": "nehemiah_hammer_dlight",
@@ -9664,6 +9912,65 @@
       "resourceCostOnActionStart": {},
       "comboOnly": true,
       "weapon": "axe"
+    },
+    {
+      "id": "moses_staff_slight",
+      "ownerType": "fighter",
+      "ownerId": "moses",
+      "displayName": "Vaulting Sweep",
+      "input": {
+        "button": "light",
+        "direction": "side",
+        "context": "ground"
+      },
+      "startup": 8,
+      "active": 4,
+      "recovery": 15,
+      "totalTicks": 27,
+      "damageTenths": 90,
+      "hitstunTicks": 18,
+      "baseForceQ": 1500,
+      "growthQPerDamage": 4,
+      "launchAngle": 67,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 8,
+          "lastTickExclusive": 12,
+          "rectUnits": [
+            5,
+            8,
+            96,
+            59
+          ],
+          "hitGroup": 0,
+          "shape": "rect",
+          "anchor": "fighterFeet"
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 5,
+          "toTickExclusive": 10,
+          "dxQ": 720,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
+      "oneHitPerTarget": true,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 3,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": true,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "A quick forward staff sweep lifts the opponent into kicking range.",
+      "resourceCostOnActionStart": {},
+      "weapon": "staff"
     }
   ]
 }
