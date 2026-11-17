@@ -7,7 +7,12 @@ import { Renderer, type RuntimeArt } from '../render/renderer.ts';
 
 function inputLabel(move: Attack) {
   if (move.comboOnly) return 'Airborne · Light after a confirmed aerial light';
-  const context = move.input.context === 'air' ? 'Airborne' : move.input.context === 'ground' ? 'Grounded' : 'Grounded or gravity cancel';
+  const context =
+    move.input.context === 'air'
+      ? 'Airborne'
+      : move.input.context === 'ground'
+        ? 'Grounded'
+        : 'Grounded or gravity cancel';
   const direction = { neutral: 'Neutral', side: 'Side', down: 'Down' }[move.input.direction];
   return context + ' · ' + direction + ' + ' + (move.input.button === 'heavy' ? 'Heavy' : 'Light');
 }
@@ -39,7 +44,11 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     select.add(new Option(weapon[0].toUpperCase() + weapon.slice(1), weapon));
   }
   let move: Attack, world: SimState;
-  let playing = !reduced, slow = false, request = 0, last = 0, remainder = 0;
+  let playing = !reduced,
+    slow = false,
+    request = 0,
+    last = 0,
+    remainder = 0;
   let disposed = false;
   let label = 'Ready';
 
@@ -52,7 +61,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     const floor = (bottom + height) * engine.Q;
     const air = move.input.context === 'air';
     const distance = move.delivery === 'projectile' ? 135 : 46;
-    fighter.x = -distance * engine.Q / 2;
+    fighter.x = (-distance * engine.Q) / 2;
     dummy.x = -fighter.x;
     for (const f of [fighter, dummy]) {
       f.y = floor;
@@ -69,7 +78,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
       fighter.vy = 4 * engine.Q;
     }
     engine.startAttack(world, fighter, {}, false, move);
-    renderer.camera = {x: 0, y: 140, zoom: .95};
+    renderer.camera = { x: 0, y: 140, zoom: 0.95 };
     renderer.capture(world);
     last = remainder = 0;
   }
@@ -96,12 +105,15 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
 
   function frame(now: number) {
     if (disposed || !playing || !panel.isConnected) return;
-    remainder += last ? Math.min(now - last, 100) * (slow ? .5 : 1) : 0;
+    remainder += last ? Math.min(now - last, 100) * (slow ? 0.5 : 1) : 0;
     last = now;
     while (remainder >= 1000 / 60) {
       remainder -= 1000 / 60;
       advance();
-      if (world.tick > move.totalTicks + 45 && !world.projectiles.length) { reset(); break; }
+      if (world.tick > move.totalTicks + 45 && !world.projectiles.length) {
+        reset();
+        break;
+      }
     }
     draw();
     request = requestAnimationFrame(frame);
@@ -117,21 +129,32 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
 
   function selectMove(next: Attack) {
     move = next;
-    for (const button of list.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.value === move.id));
+    for (const button of list.querySelectorAll('button'))
+      button.setAttribute('aria-pressed', String(button.value === move.id));
     panel.querySelector('h3')!.textContent = move.displayName;
     panel.querySelector('.move-input')!.textContent = inputLabel(move);
-    const tips:Record<string,string>={
-      moses_staff_dsig:'Press Down + Heavy to spin the staff. The hurricane hits four times on either side: three light contacts, then a launching finish.',
-      moses_staff_slight:'Land Forward + Light, then press Down + Light as the sweep connects to vault into two aerial kicks.',
-      moses_staff_dlight:'Two airborne kicks. Link from Forward + Light for the vault combo. Tiny sparks mark each successful hit.',
-      moses_staff_ssig:'Forward + Heavy sends a breaking wave ahead. Follow its forward travel to control space.'
+    const tips: Record<string, string> = {
+      moses_staff_dsig:
+        'Press Down + Heavy to spin the staff. The hurricane hits four times on either side: three light contacts, then a launching finish.',
+      moses_staff_slight:
+        'Land Forward + Light, then press Down + Light as the sweep connects to vault into two aerial kicks.',
+      moses_staff_dlight:
+        'Two airborne kicks. Link from Forward + Light for the vault combo. Tiny sparks mark each successful hit.',
+      moses_staff_ssig: 'Forward + Heavy sends a breaking wave ahead. Follow its forward travel to control space.',
     };
-    if(hero==='moses' && select.value==='staff')
-      panel.querySelector('.move-link-tip')!.textContent=tips[move.id]??'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.';
+    if (hero === 'moses' && select.value === 'staff')
+      panel.querySelector('.move-link-tip')!.textContent =
+        tips[move.id] ?? 'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.';
     canvas.setAttribute('aria-label', def.name + ' performing ' + move.displayName);
     data.replaceChildren();
-    for (const [name, value] of [['Startup', move.startup + 'f'], ['Active', move.active + 'f'], ['Recovery', move.recovery + 'f'], ['Base damage', move.damageTenths / 10]]) {
-      const cell = document.createElement('span'), number = document.createElement('b');
+    for (const [name, value] of [
+      ['Startup', move.startup + 'f'],
+      ['Active', move.active + 'f'],
+      ['Recovery', move.recovery + 'f'],
+      ['Base damage', move.damageTenths / 10],
+    ]) {
+      const cell = document.createElement('span'),
+        number = document.createElement('b');
       number.textContent = String(value);
       cell.append(number, String(name));
       data.append(cell);
@@ -142,15 +165,19 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
 
   function loadWeapon() {
     const weapon = select.value;
-    panel.querySelector('.move-link-tip')!.textContent = hero === 'moses' && weapon === 'staff'
-      ? 'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.'
-      : 'Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.';
-    const moves = engine.content.attacks.attacks.filter(m =>
-      (m.ownerId === weapon && !engine.moves[hero + '_' + m.id]) || (m.ownerId === hero && m.weapon === weapon));
+    panel.querySelector('.move-link-tip')!.textContent =
+      hero === 'moses' && weapon === 'staff'
+        ? 'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.'
+        : 'Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.';
+    const moves = engine.content.attacks.attacks.filter(
+      m => (m.ownerId === weapon && !engine.moves[hero + '_' + m.id]) || (m.ownerId === hero && m.weapon === weapon),
+    );
     list.replaceChildren();
     for (const attack of moves) {
       const button = document.createElement('button');
-      button.type = 'button'; button.value = attack.id; button.textContent = attack.displayName;
+      button.type = 'button';
+      button.value = attack.id;
+      button.textContent = attack.displayName;
       button.onclick = () => selectMove(attack);
       list.append(button);
     }
@@ -159,17 +186,39 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   }
 
   select.onchange = loadWeapon;
-  play.onclick = () => { playing = !playing; refreshPlayback(); };
+  play.onclick = () => {
+    playing = !playing;
+    refreshPlayback();
+  };
   panel.querySelector<HTMLButtonElement>('[data-control=step]')!.onclick = () => {
     playing = false;
     if (!world.fighters[0].action && !world.projectiles.length) reset();
     advance();
     refreshPlayback();
   };
-  speed.onclick = () => { slow = !slow; speed.setAttribute('aria-pressed', String(slow)); };
-  panel.querySelector<HTMLButtonElement>('[data-control=restart]')!.onclick = () => { reset(); playing = true; refreshPlayback(); };
+  speed.onclick = () => {
+    slow = !slow;
+    speed.setAttribute('aria-pressed', String(slow));
+  };
+  panel.querySelector<HTMLButtonElement>('[data-control=restart]')!.onclick = () => {
+    reset();
+    playing = true;
+    refreshPlayback();
+  };
   loadWeapon();
   // A paused preview must still repaint when its lazily loaded sprites arrive.
-  for (const f of world!.fighters) art.images[f.hero]?.decode().then(() => { if (!disposed && !playing) draw(); }).catch(() => {});
-  return { panel, dispose() { disposed = true; cancelAnimationFrame(request); } };
+  for (const f of world!.fighters)
+    art.images[f.hero]
+      ?.decode()
+      .then(() => {
+        if (!disposed && !playing) draw();
+      })
+      .catch(() => {});
+  return {
+    panel,
+    dispose() {
+      disposed = true;
+      cancelAnimationFrame(request);
+    },
+  };
 }

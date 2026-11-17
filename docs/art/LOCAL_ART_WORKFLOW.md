@@ -18,6 +18,6 @@ All of these are in `.gitignore`. If `git status` shows a new kind of draft file
 
 ## Before each commit
 
-1. `npm test` and `npm run art:check` pass.
+1. `npm run format` (keeps the code neat), then `npm test` and `npm run art:check` pass.
 2. `npm run build` succeeds. Report the new size of `dist/PLAY.html`.
 3. `git status` shows no files from the "Stays local" list.

@@ -11,7 +11,14 @@ export type RawContent = Record<(typeof SOURCE_FILES)[number], any> & { levelScr
 export function canonicalJson(value: unknown): string {
   if (Array.isArray(value)) return '[' + value.map(canonicalJson).join(',') + ']';
   if (value && typeof value === 'object') {
-    return '{' + Object.keys(value).sort().map(k => JSON.stringify(k) + ':' + canonicalJson((value as any)[k])).join(',') + '}';
+    return (
+      '{' +
+      Object.keys(value)
+        .sort()
+        .map(k => JSON.stringify(k) + ':' + canonicalJson((value as any)[k]))
+        .join(',') +
+      '}'
+    );
   }
   return JSON.stringify(value);
 }

@@ -16,7 +16,10 @@ export interface Layer {
   gain: number;
   delay?: number;
 }
-export interface Recipe { layers: Layer[]; priority: number }
+export interface Recipe {
+  layers: Layer[];
+  priority: number;
+}
 
 /** Simultaneous voices allowed; four-player strikes stay readable instead of stacking. */
 export const MAX_VOICES = 8;
@@ -39,42 +42,120 @@ export function recipeFor(e: SimEvent): Recipe | null {
       // Weapon whoosh: wood is low and airy, bronze brighter, signatures fuller.
       const sig = /sig$|_recovery$|_ground_pound$/.test(move);
       const centre = WOOD.test(move) ? 700 : BRONZE.test(move) ? 1500 : 1000;
-      return { priority: 1, layers: [{ wave: 'noise', from: centre * 0.7, to: centre * 1.3, seconds: sig ? 0.2 : 0.11, gain: sig ? 0.05 : 0.03 }] };
+      return {
+        priority: 1,
+        layers: [
+          { wave: 'noise', from: centre * 0.7, to: centre * 1.3, seconds: sig ? 0.2 : 0.11, gain: sig ? 0.05 : 0.03 },
+        ],
+      };
     }
     case 'hit': {
       // Light tap versus a heavier signature thump, scaled by damage.
       const heavy = damage >= 100;
-      return { priority: 3, layers: [
-        { wave: 'triangle', from: heavy ? 150 : 230, to: heavy ? 70 : 140, seconds: heavy ? 0.18 : 0.09, gain: heavy ? 0.09 : 0.05 },
-        { wave: 'noise', from: heavy ? 900 : 1800, to: heavy ? 500 : 1200, seconds: heavy ? 0.09 : 0.05, gain: heavy ? 0.05 : 0.03 },
-      ] };
+      return {
+        priority: 3,
+        layers: [
+          {
+            wave: 'triangle',
+            from: heavy ? 150 : 230,
+            to: heavy ? 70 : 140,
+            seconds: heavy ? 0.18 : 0.09,
+            gain: heavy ? 0.09 : 0.05,
+          },
+          {
+            wave: 'noise',
+            from: heavy ? 900 : 1800,
+            to: heavy ? 500 : 1200,
+            seconds: heavy ? 0.09 : 0.05,
+            gain: heavy ? 0.05 : 0.03,
+          },
+        ],
+      };
     }
-    case 'shieldSlam': return { priority: 3, layers: [
-      { wave: 'triangle', from: 570, to: 180, seconds: 0.12, gain: 0.045 },
-      { wave: 'sine', from: 106, to: 44, seconds: 0.32, gain: 0.095 },
-      { wave: 'noise', from: 1200, to: 220, seconds: 0.18, gain: 0.03 },
-    ] };
-    case 'shieldBlock': return { priority: 3, layers: [{ wave: 'square', from: 820, to: 760, seconds: 0.12, gain: 0.03 }, { wave: 'noise', from: 2600, to: 2200, seconds: 0.06, gain: 0.02 }] };
-    case 'deflect': return { priority: 2, layers: [{ wave: 'triangle', from: 1200, to: 900, seconds: 0.1, gain: 0.04 }] };
+    case 'shieldSlam':
+      return {
+        priority: 3,
+        layers: [
+          { wave: 'triangle', from: 570, to: 180, seconds: 0.12, gain: 0.045 },
+          { wave: 'sine', from: 106, to: 44, seconds: 0.32, gain: 0.095 },
+          { wave: 'noise', from: 1200, to: 220, seconds: 0.18, gain: 0.03 },
+        ],
+      };
+    case 'shieldBlock':
+      return {
+        priority: 3,
+        layers: [
+          { wave: 'square', from: 820, to: 760, seconds: 0.12, gain: 0.03 },
+          { wave: 'noise', from: 2600, to: 2200, seconds: 0.06, gain: 0.02 },
+        ],
+      };
+    case 'deflect':
+      return { priority: 2, layers: [{ wave: 'triangle', from: 1200, to: 900, seconds: 0.1, gain: 0.04 }] };
     // A safe ring-out burst rather than a cry: a rising swell and a soft boom.
-    case 'ko': return { priority: 4, layers: [
-      { wave: 'noise', from: 400, to: 3000, seconds: 0.45, gain: 0.07 },
-      { wave: 'sine', from: 90, to: 45, seconds: 0.5, gain: 0.1, delay: 0.05 },
-    ] };
-    case 'jump': return { priority: 0, layers: [{ wave: 'sine', from: 330, to: 520, seconds: 0.08, gain: 0.025 }] };
-    case 'pickup': return { priority: 2, layers: [{ wave: 'sine', from: 600, to: 600, seconds: 0.06, gain: 0.035 }, { wave: 'sine', from: 900, to: 900, seconds: 0.08, gain: 0.03, delay: 0.06 }] };
-    case 'throw': return { priority: 1, layers: [{ wave: 'noise', from: 1100, to: 2200, seconds: 0.14, gain: 0.035 }] };
-    case 'projectile': return { priority: 1, layers: [{ wave: 'triangle', from: 520, to: 380, seconds: 0.1, gain: 0.03 }] };
-    case 'crate': return { priority: 1, layers: [{ wave: 'noise', from: 500, to: 300, seconds: 0.12, gain: 0.04 }] };
-    case 'respawn': return { priority: 1, layers: [{ wave: 'sine', from: 440, to: 660, seconds: 0.25, gain: 0.03 }] };
-    case 'emote': return { priority: 0, layers: [{ wave: 'sine', from: 700, to: 880, seconds: 0.09, gain: 0.025 }] };
+    case 'ko':
+      return {
+        priority: 4,
+        layers: [
+          { wave: 'noise', from: 400, to: 3000, seconds: 0.45, gain: 0.07 },
+          { wave: 'sine', from: 90, to: 45, seconds: 0.5, gain: 0.1, delay: 0.05 },
+        ],
+      };
+    case 'jump':
+      return { priority: 0, layers: [{ wave: 'sine', from: 330, to: 520, seconds: 0.08, gain: 0.025 }] };
+    case 'pickup':
+      return {
+        priority: 2,
+        layers: [
+          { wave: 'sine', from: 600, to: 600, seconds: 0.06, gain: 0.035 },
+          { wave: 'sine', from: 900, to: 900, seconds: 0.08, gain: 0.03, delay: 0.06 },
+        ],
+      };
+    case 'throw':
+      return { priority: 1, layers: [{ wave: 'noise', from: 1100, to: 2200, seconds: 0.14, gain: 0.035 }] };
+    case 'projectile':
+      return { priority: 1, layers: [{ wave: 'triangle', from: 520, to: 380, seconds: 0.1, gain: 0.03 }] };
+    case 'crate':
+      return { priority: 1, layers: [{ wave: 'noise', from: 500, to: 300, seconds: 0.12, gain: 0.04 }] };
+    case 'respawn':
+      return { priority: 1, layers: [{ wave: 'sine', from: 440, to: 660, seconds: 0.25, gain: 0.03 }] };
+    case 'emote':
+      return { priority: 0, layers: [{ wave: 'sine', from: 700, to: 880, seconds: 0.09, gain: 0.025 }] };
     // Telegraphs must be heard as well as seen, and never be the only cue.
-    case 'bossTell': case 'enemyTell': return { priority: 2, layers: [{ wave: 'sawtooth', from: 180, to: 240, seconds: 0.22, gain: 0.025 }] };
-    case 'wave': case 'arrivalCue': return { priority: 2, layers: [{ wave: 'triangle', from: 392, to: 392, seconds: 0.12, gain: 0.035 }, { wave: 'triangle', from: 523, to: 523, seconds: 0.16, gain: 0.035, delay: 0.12 }] };
-    case 'suddenDeath': return { priority: 3, layers: [{ wave: 'square', from: 220, to: 220, seconds: 0.3, gain: 0.03 }, { wave: 'square', from: 233, to: 233, seconds: 0.3, gain: 0.02 }] };
+    case 'bossTell':
+    case 'enemyTell':
+      return { priority: 2, layers: [{ wave: 'sawtooth', from: 180, to: 240, seconds: 0.22, gain: 0.025 }] };
+    case 'wave':
+    case 'arrivalCue':
+      return {
+        priority: 2,
+        layers: [
+          { wave: 'triangle', from: 392, to: 392, seconds: 0.12, gain: 0.035 },
+          { wave: 'triangle', from: 523, to: 523, seconds: 0.16, gain: 0.035, delay: 0.12 },
+        ],
+      };
+    case 'suddenDeath':
+      return {
+        priority: 3,
+        layers: [
+          { wave: 'square', from: 220, to: 220, seconds: 0.3, gain: 0.03 },
+          { wave: 'square', from: 233, to: 233, seconds: 0.3, gain: 0.02 },
+        ],
+      };
     // The result chord waits for the simulation's own result event.
-    case 'result': return { priority: 4, layers: [523, 659, 784].map((f, k) => ({ wave: 'triangle' as const, from: f, to: f, seconds: 0.6, gain: 0.03, delay: k * 0.07 })) };
-    default: return null;
+    case 'result':
+      return {
+        priority: 4,
+        layers: [523, 659, 784].map((f, k) => ({
+          wave: 'triangle' as const,
+          from: f,
+          to: f,
+          seconds: 0.6,
+          gain: 0.03,
+          delay: k * 0.07,
+        })),
+      };
+    default:
+      return null;
   }
 }
 
@@ -98,7 +179,8 @@ export class GameAudio {
     }
     this.context?.resume().catch(() => {});
     // Music asked for before the first gesture starts now.
-    if (this.arena >= 0 && this.musicOn && this.context && !this.music.playing) this.music.start(this.context, this.arena);
+    if (this.arena >= 0 && this.musicOn && this.context && !this.music.playing)
+      this.music.start(this.context, this.arena);
   }
 
   suspend(): void {
@@ -117,11 +199,17 @@ export class GameAudio {
   /** Start the arrangement for an arena (once audio is unlocked); restarting the same arena keeps playing. */
   startMusic(arena: number): void {
     this.arena = arena;
-    if (!this.musicOn || !this.context) { this.music.stop(); return; }
+    if (!this.musicOn || !this.context) {
+      this.music.stop();
+      return;
+    }
     this.music.start(this.context, arena);
   }
 
-  stopMusic(): void { this.arena = -1; this.music.stop(); }
+  stopMusic(): void {
+    this.arena = -1;
+    this.music.stop();
+  }
 
   setMusic(on: boolean): void {
     this.musicOn = on;
@@ -135,7 +223,10 @@ export class GameAudio {
     const ctx = this.context;
     if (this.mute || this.volume <= 0 || !ctx || ctx.state !== 'running') return;
     // Louder, more important cues first when many arrive in one frame.
-    const queue = heard.map(e => ({ e, r: recipeFor(e) })).filter(x => x.r).sort((a, b) => b.r!.priority - a.r!.priority);
+    const queue = heard
+      .map(e => ({ e, r: recipeFor(e) }))
+      .filter(x => x.r)
+      .sort((a, b) => b.r!.priority - a.r!.priority);
     for (const { e, r } of queue) this.voice(ctx, r!, variation(e.id));
   }
 
@@ -151,7 +242,8 @@ export class GameAudio {
     const stops: (() => void)[] = [];
     let end = now;
     for (const l of r.layers) {
-      const t0 = now + (l.delay ?? 0), t1 = t0 + l.seconds;
+      const t0 = now + (l.delay ?? 0),
+        t1 = t0 + l.seconds;
       const gain = ctx.createGain();
       gain.gain.setValueAtTime(0.0001, t0);
       gain.gain.exponentialRampToValueAtTime(l.gain * this.volume, t0 + 0.008);
@@ -177,7 +269,13 @@ export class GameAudio {
       gain.connect(ctx.destination);
       src.start(t0);
       src.stop(t1 + 0.02);
-      stops.push(() => { try { src.stop(); } catch { /* already stopped */ } });
+      stops.push(() => {
+        try {
+          src.stop();
+        } catch {
+          /* already stopped */
+        }
+      });
       end = Math.max(end, t1);
     }
     this.voices.push({ end, priority: r.priority, stop: () => stops.forEach(s => s()) });
@@ -189,6 +287,9 @@ function noiseBuffer(ctx: AudioContext): AudioBuffer {
   const data = buffer.getChannelData(0);
   // Fixed-seed noise: the same hiss every run, independent of the simulation RNG.
   let seed = 22695477;
-  for (let i = 0; i < data.length; i++) { seed = (Math.imul(seed, 1103515245) + 12345) >>> 0; data[i] = seed / 2147483648 - 1; }
+  for (let i = 0; i < data.length; i++) {
+    seed = (Math.imul(seed, 1103515245) + 12345) >>> 0;
+    data[i] = seed / 2147483648 - 1;
+  }
   return buffer;
 }

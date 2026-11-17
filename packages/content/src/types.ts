@@ -65,7 +65,7 @@ export interface Attack {
   delivery: 'melee' | 'projectile';
   collisionPhases: CollisionPhase[];
   /** A fighter's authored weapon contact may differ from the shared kit art. */
-  fighterCollisionPhases?: Record<string,CollisionPhase[]>;
+  fighterCollisionPhases?: Record<string, CollisionPhase[]>;
   projectile: ProjectileSpec | null;
   motionEvents: MotionEvent[];
   oneHitPerTarget: boolean;
@@ -82,11 +82,15 @@ export interface Attack {
   resourceCostOnActionStart: { recovery?: number };
 }
 
-export interface Stats { power: number; guard: number; speed: number }
+export interface Stats {
+  power: number;
+  guard: number;
+  speed: number;
+}
 
 export interface FighterDef {
   itemThrowOrigin?: Point;
-  releaseOrigins?: Record<string,Point>;
+  releaseOrigins?: Record<string, Point>;
   id: string;
   name: string;
   title: string;
@@ -157,7 +161,13 @@ export interface Physics {
   };
   airCancel: { firstActionTick: number; lastActionTickInclusive: number };
   chase: { tokenTicks: number; speedQ: number; durationTicks: number };
-  wall: { slideFallCapQ: number; maxCumulativeTicks: number; refreshesPerAirborneJourney: number; jumpAwayQ: number; jumpUpQ: number };
+  wall: {
+    slideFallCapQ: number;
+    maxCumulativeTicks: number;
+    refreshesPerAirborneJourney: number;
+    jumpAwayQ: number;
+    jumpUpQ: number;
+  };
   coyoteTicks: number;
   inputBufferTicks: number;
   dropThroughTicks: number;
@@ -180,12 +190,26 @@ export interface Rules {
   suddenDeath: { stocks: number; damageTenths: number; durationTicks: number };
   localMaxPlayers: number;
   pickups: {
-    initialTick: number; intervalTicks: number; jitterTicks: number; maxNeutral: number;
-    lifetimeTicks: number; acquireTicks: number; radiusUnits: number; maxVerticalUnits: number;
+    initialTick: number;
+    intervalTicks: number;
+    jitterTicks: number;
+    maxNeutral: number;
+    lifetimeTicks: number;
+    acquireTicks: number;
+    radiusUnits: number;
+    maxVerticalUnits: number;
   };
   throw: {
-    startup: number; release: number; recovery: number; speedQ: number; gravityQ: number; lifetimeTicks: number;
-    damageTenths: number; hitstunTicks: number; baseForceQ: number; growthQPerDamage: number;
+    startup: number;
+    release: number;
+    recovery: number;
+    speedQ: number;
+    gravityQ: number;
+    lifetimeTicks: number;
+    damageTenths: number;
+    hitstunTicks: number;
+    baseForceQ: number;
+    growthQPerDamage: number;
   };
   drop: { startup: number; release: number; recovery: number; lifetimeTicks: number };
   offlineOnly: boolean;
@@ -200,8 +224,17 @@ export interface Rules {
 export type Difficulty = 'easy' | 'hard' | 'extreme';
 
 export type LevelKind =
-  | 'traversal' | 'exploration' | 'puzzle' | 'escort' | 'waves' | 'survival'
-  | 'witness' | 'escape' | 'boss' | 'building' | 'stealth';
+  | 'traversal'
+  | 'exploration'
+  | 'puzzle'
+  | 'escort'
+  | 'waves'
+  | 'survival'
+  | 'witness'
+  | 'escape'
+  | 'boss'
+  | 'building'
+  | 'stealth';
 
 export interface Level {
   id: string;
@@ -227,7 +260,12 @@ export interface Level {
   requiresNetwork: boolean;
 }
 
-export interface Chapter { id: string; title: string; arc: string; levels: string[] }
+export interface Chapter {
+  id: string;
+  title: string;
+  arc: string;
+  levels: string[];
+}
 
 export interface Campaign {
   title: string;

@@ -1,0 +1,8 @@
+# Generated or external: never reformat.
+**/*.generated.ts
+production-pack/
+prototype/
+assets/
+dist/
+build/
+node_modules/

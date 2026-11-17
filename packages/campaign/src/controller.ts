@@ -15,19 +15,43 @@ export type Stage = 'entry' | 'middle_or_phase_two' | 'exit';
 export type ScenePhase = 'intro' | 'active' | 'paused' | 'complete' | 'failed';
 
 export interface Marker {
-  id: number; x: number; y: number; type: TaskType; label: string;
-  stage: number; done: boolean; carried: boolean; dropped: boolean; targetX: number;
+  id: number;
+  x: number;
+  y: number;
+  type: TaskType;
+  label: string;
+  stage: number;
+  done: boolean;
+  carried: boolean;
+  dropped: boolean;
+  targetX: number;
   /** Hold-to-secure progress in ticks (latch and rope tasks); never lost on release. */
   progress?: number;
   /** Pictogram shown on this route sign (L007); routes reconnect in sign order. */
   shape?: string;
 }
-export interface Hazard { id: number; x: number; y: number; period: number; tell: number; active: number; state?: 'tell' | 'active' | 'safe'; facing?: number }
+export interface Hazard {
+  id: number;
+  x: number;
+  y: number;
+  period: number;
+  tell: number;
+  active: number;
+  state?: 'tell' | 'active' | 'safe';
+  facing?: number;
+}
 /** Lookout sight lines: a lookout sees this far in the direction it faces. */
 export const SIGHT_UNITS = 280;
 /** Cover spots on both sides of each lookout, [x0, x1] in Q units. */
 export type Cover = [number, number];
-export interface Checkpoint { level: string; stage: Stage; progress: number[]; combatCleared: boolean; seed: number; seen?: string[] }
+export interface Checkpoint {
+  level: string;
+  stage: Stage;
+  progress: number[];
+  combatCleared: boolean;
+  seed: number;
+  seen?: string[];
+}
 /** Storm gusts: a captioned warning, then a headwind that slows grounded movement. */
 const VALLEY_JOURNAL: Record<number, string> = {
   40: 'At dusk I count the flock by touch. A lamb noses my empty hand. Beyond the ridge I hear my brothers’ camp stirring, and I wonder who is keeping watch there.',
@@ -53,24 +77,71 @@ const DAVID_JOURNAL = [
   'I walk the last rooms as a witness in the Archive. I listen before I move on.',
 ];
 /** L056: ember lanes on the floor. Ken crosses only in a safe window; nobody is ever hurt. */
-export interface EmberLane { x: number; period: number; tell: number; active: number; offset: number; state: 'safe' | 'tell' | 'active'; kenCrossed: boolean }
+export interface EmberLane {
+  x: number;
+  period: number;
+  tell: number;
+  active: number;
+  offset: number;
+  state: 'safe' | 'tell' | 'active';
+  kenCrossed: boolean;
+}
 export const EMBER_HALF_WIDTH = 55;
 /** L072 stepping stones: rise, warn, then sink, in a staggered cycle. Units, not Q. */
-export interface Stone { id: string; x: number; w: number; channel: number; offset: number; state: 'up' | 'sinking' | 'down' }
-export const STONE_CHANNELS: [number, number][] = [[600, 1120], [1600, 2120], [2600, 3120]];
+export interface Stone {
+  id: string;
+  x: number;
+  w: number;
+  channel: number;
+  offset: number;
+  state: 'up' | 'sinking' | 'down';
+}
+export const STONE_CHANNELS: [number, number][] = [
+  [600, 1120],
+  [1600, 2120],
+  [2600, 3120],
+];
 export const STONE_CYCLE = { up: 160, sinking: 40, down: 80 };
 /** A defendable post: raiders standing on it wear it down; standing on it yourself restores it. */
-export interface Post { id: number; x: number; label: string; integrity: number; /** This post is Ken himself and moves with him. */ ken?: boolean }
+export interface Post {
+  id: number;
+  x: number;
+  label: string;
+  integrity: number;
+  /** This post is Ken himself and moves with him. */ ken?: boolean;
+}
 export const POST_INTEGRITY = 240;
 export const POST_RADIUS_UNITS = 70;
-export interface Traveler { markerId: number; x: number; y: number; state: 'waiting' | 'following' | 'safe' }
+export interface Traveler {
+  markerId: number;
+  x: number;
+  y: number;
+  state: 'waiting' | 'following' | 'safe';
+}
 export const TRAVELER_REACH_UNITS = 180;
-export interface Wind { period: number; tell: number; gust: number; state: 'calm' | 'warning' | 'gust' | 'over' }
+export interface Wind {
+  period: number;
+  tell: number;
+  gust: number;
+  state: 'calm' | 'warning' | 'gust' | 'over';
+}
 /** Rising water: a telegraphed surge that sweeps the floor; ledges and the air stay safe. */
-export interface Water { period: number; tell: number; active: number; state: 'calm' | 'rising' | 'high'; ticksToSurge: number }
+export interface Water {
+  period: number;
+  tell: number;
+  active: number;
+  state: 'calm' | 'rising' | 'high';
+  ticksToSurge: number;
+}
 export interface Card {
-  heading: string; text: string; reference: string; label: string;
-  puzzle: boolean; choices: string[]; answer: number; prompt: string;
+  heading: string;
+  text: string;
+  reference: string;
+  label: string;
+  puzzle: boolean;
+  choices: string[];
+  answer: number;
+  prompt: string;
   /** Optional help text behind a Show clue button; never scored. */
   clue: string;
 }
@@ -135,7 +206,8 @@ const COOP_LIFT = /stretcher-model lifts/i;
 const STEPPING = /stepping routes/i;
 const PICTOGRAMS = /pictogram signs/i;
 const CAPTIVE_GATES = /captive gates/i;
-const DEFEND_POSTS = /^(?:protect|defend) (two|three) (regroup points|rally standards|exits|supply bays|builders’ bays)/i;
+const DEFEND_POSTS =
+  /^(?:protect|defend) (two|three) (regroup points|rally standards|exits|supply bays|builders’ bays)/i;
 /** Second halves of two-part objectives: [task type, label, count]. */
 const SECOND_TASKS: Record<number, [TaskType, string, number]> = {
   12: ['escort', 'Caravan to the shaded rest', 1],
@@ -151,7 +223,9 @@ const PARTING = /sea opens on the authored narrative cue/i;
 /** Route sections beyond this x wait for the crossing cue. */
 const FAR_SHORE_X = 2400;
 const GUST_PUSH_UNITS = 3;
-const SAFE_X = 80, MIDDLE_X = 1850, ROUTE_END_X = 3650;
+const SAFE_X = 80,
+  MIDDLE_X = 1850,
+  ROUTE_END_X = 3650;
 /** Ticks of held Interact needed to secure a latch or rope. */
 export const LATCH_HOLD_TICKS = 40;
 /** Stepping routes keep their middle checkpoint on a bank, not over a channel. */
@@ -160,16 +234,37 @@ const STEPPING_MIDDLE_X = 1400;
 const MIDDLE_RESTORE_X = 1900;
 
 const EMPTY_TOMB_CARDS: [string, string][] = [
-  ['Matthew 28', 'Matthew describes the opened tomb, the announcement to the women and the message about meeting in Galilee.'],
-  ['Mark 16:1–8', 'Mark describes the women arriving at the tomb and receiving the announcement that Jesus has risen; the passage ends with fear and amazement.'],
+  [
+    'Matthew 28',
+    'Matthew describes the opened tomb, the announcement to the women and the message about meeting in Galilee.',
+  ],
+  [
+    'Mark 16:1–8',
+    'Mark describes the women arriving at the tomb and receiving the announcement that Jesus has risen; the passage ends with fear and amazement.',
+  ],
   ['Luke 24', 'Luke describes the women at the tomb, the announcement by two men and their report to the apostles.'],
-  ['John 20', 'John describes Mary Magdalene at the tomb and the visits of Peter and the other disciple. Mary’s encounter is told in this account.'],
+  [
+    'John 20',
+    'John describes Mary Magdalene at the tomb and the visits of Peter and the other disciple. Mary’s encounter is told in this account.',
+  ],
 ];
 
 /** Fictional campaign companions: not in the arena roster, never selectable in versus. */
 const COMPANIONS: Record<string, Partial<FighterDef>> = {
-  dru: { id: 'dru', name: 'Dru', title: 'Story Archive companion', weaponPair: ['sword', 'staff'], stats: { power: 5, guard: 5, speed: 5 } },
-  ken: { id: 'ken', name: 'Ken', title: 'Story Archive companion', weaponPair: ['staff', 'sling'], stats: { power: 5, guard: 5, speed: 5 } },
+  dru: {
+    id: 'dru',
+    name: 'Dru',
+    title: 'Story Archive companion',
+    weaponPair: ['sword', 'staff'],
+    stats: { power: 5, guard: 5, speed: 5 },
+  },
+  ken: {
+    id: 'ken',
+    name: 'Ken',
+    title: 'Story Archive companion',
+    weaponPair: ['staff', 'sling'],
+    stats: { power: 5, guard: 5, speed: 5 },
+  },
 };
 
 export function createCampaign(S: Engine, content: Content) {
@@ -179,22 +274,49 @@ export function createCampaign(S: Engine, content: Content) {
   const spec = (level: Level): LevelSpec => LEVEL_SPECS[level.number - 1];
 
   /** Long side-scrolling archive route used by noncombat scenes. */
-  function middleX(s: Scene): number { return s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_X; }
+  function middleX(s: Scene): number {
+    return s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_X;
+  }
 
   function routeMap(level: Level): MapDef {
     const quiet = level.kind === 'witness';
     const base = {
-      id: 'story_' + level.id, name: level.location,
+      id: 'story_' + level.id,
+      name: level.location,
       main: { id: 'floor0', kind: 'solid', rectUnits: [-120, -120, 1260, 200], wallRecoverable: true },
       platforms: [] as MapDef['platforms'],
       blastBoundsUnits: { minX: -400, maxX: 4180, minY: -600, maxY: 950 },
-      spawnFeetUnits: [[80, 82], [160, 82]], pickupSpawnUnits: [[200, 160], [1800, 160], [3100, 160]],
+      spawnFeetUnits: [
+        [80, 82],
+        [160, 82],
+      ],
+      pickupSpawnUnits: [
+        [200, 160],
+        [1800, 160],
+        [3100, 160],
+      ],
     } as unknown as MapDef;
     base.platforms.push(
-      { id: 'floor1', kind: 'solid', rectUnits: [quiet ? 1140 : 1200, -120, quiet ? 1260 : 1200, 200], wallRecoverable: true },
-      { id: 'floor2', kind: 'solid', rectUnits: [quiet ? 2400 : 2460, -120, quiet ? 1400 : 1340, 200], wallRecoverable: true },
+      {
+        id: 'floor1',
+        kind: 'solid',
+        rectUnits: [quiet ? 1140 : 1200, -120, quiet ? 1260 : 1200, 200],
+        wallRecoverable: true,
+      },
+      {
+        id: 'floor2',
+        kind: 'solid',
+        rectUnits: [quiet ? 2400 : 2460, -120, quiet ? 1400 : 1340, 200],
+        wallRecoverable: true,
+      },
     );
-    if (!quiet) for (let n = 0; n < 6; n++) base.platforms.push({ id: 'ledge' + n, kind: 'oneWay', rectUnits: [400 + n * 500, 150 + (n % 2) * 50, 210, 16] });
+    if (!quiet)
+      for (let n = 0; n < 6; n++)
+        base.platforms.push({
+          id: 'ledge' + n,
+          kind: 'oneWay',
+          rectUnits: [400 + n * 500, 150 + (n % 2) * 50, 210, 16],
+        });
     return base;
   }
 
@@ -207,14 +329,37 @@ export function createCampaign(S: Engine, content: Content) {
     const arena = content.maps.maps[(level.chapter - 1) % 6];
     const world = S.create({
       mode: combat ? (level.kind === 'waves' ? 'story' : 'boss') : 'training',
-      hero: 'david', inputId: 'keyboard', arena: arena.id, difficulty,
-      waves: level.waves, waveEntries: script?.waveEntries, bossScript: BOSS_SCRIPTS[level.id], bossName: level.boss?.name, seed: checkpoint?.seed || 613891 + level.number,
+      hero: 'david',
+      inputId: 'keyboard',
+      arena: arena.id,
+      difficulty,
+      waves: level.waves,
+      waveEntries: script?.waveEntries,
+      bossScript: BOSS_SCRIPTS[level.id],
+      bossName: level.boss?.name,
+      seed: checkpoint?.seed || 613891 + level.number,
     });
     const s: Scene = {
-      version: 1, levelId, level, kind: level.kind, difficulty, phase: 'intro', tick: 0, stage: 'entry', done: [], carry: null,
-      pendingCard: null, combatCleared: false, caption: script ? `${script.opening.speaker === 'Dru' ? 'David' : script.opening.speaker}: ${script.opening.text.replace(/\bDru\b/g, 'David')}` : 'Ken: Let’s follow the path together.', captionUntil: 240,
-      seen: [...(checkpoint?.level === levelId ? checkpoint.seen ?? [] : [])],
-      closingLine: script ? `${script.closing.speaker === 'Dru' ? 'David' : script.closing.speaker}: ${script.closing.text.replace(/\bDru\b/g, 'David')}` : 'David: We can keep going. Stay beside me.',
+      version: 1,
+      levelId,
+      level,
+      kind: level.kind,
+      difficulty,
+      phase: 'intro',
+      tick: 0,
+      stage: 'entry',
+      done: [],
+      carry: null,
+      pendingCard: null,
+      combatCleared: false,
+      caption: script
+        ? `${script.opening.speaker === 'Dru' ? 'David' : script.opening.speaker}: ${script.opening.text.replace(/\bDru\b/g, 'David')}`
+        : 'Ken: Let’s follow the path together.',
+      captionUntil: 240,
+      seen: [...(checkpoint?.level === levelId ? (checkpoint.seen ?? []) : [])],
+      closingLine: script
+        ? `${script.closing.speaker === 'Dru' ? 'David' : script.closing.speaker}: ${script.closing.text.replace(/\bDru\b/g, 'David')}`
+        : 'David: We can keep going. Stay beside me.',
       water: null,
       sightLines: !combat && (level.kind === 'stealth' || LINE_OF_SIGHT.test(level.uniqueRule)),
       covers: [],
@@ -223,8 +368,17 @@ export function createCampaign(S: Engine, content: Content) {
       coopLift: !combat && COOP_LIFT.test(level.objective),
       stones: [],
       posts: [],
-      markers: [], hazards: [], companion: { x: 160 * Q, y: 82 * Q, following: true }, travelers: [], checkpointEvent: null, result: null,
-      goliath: createGoliath(), viewpoint: VALLEY_JOURNAL[level.number] ?? DAVID_JOURNAL[level.chapter-1], sourceSummary: SUMMARIES[level.number - 1], config: cfg, world,
+      markers: [],
+      hazards: [],
+      companion: { x: 160 * Q, y: 82 * Q, following: true },
+      travelers: [],
+      checkpointEvent: null,
+      result: null,
+      goliath: createGoliath(),
+      viewpoint: VALLEY_JOURNAL[level.number] ?? DAVID_JOURNAL[level.chapter - 1],
+      sourceSummary: SUMMARIES[level.number - 1],
+      config: cfg,
+      world,
     };
     if (!combat) {
       world.fighters = world.fighters.slice(0, 1);
@@ -245,10 +399,20 @@ export function createCampaign(S: Engine, content: Content) {
     }
     const spread = combat ? 650 : 3200;
     for (let n = 0; n < cfg.count; n++) {
-      const x = combat ? -330 + spread * (cfg.count === 1 ? 0.5 : n / (cfg.count - 1)) : 360 + (spread * (n + 0.5)) / cfg.count;
+      const x = combat
+        ? -330 + spread * (cfg.count === 1 ? 0.5 : n / (cfg.count - 1))
+        : 360 + (spread * (n + 0.5)) / cfg.count;
       const y = !combat && cfg.type === 'route' && level.number !== 75 ? (n % 2 === 0 ? 166 : 80) : 80;
       s.markers.push({
-        id: n, x: Math.round(x) * Q, y: y * Q, type: cfg.type, label: cfg.label + ' ' + (n + 1), stage: 0, done: false, carried: false, dropped: false,
+        id: n,
+        x: Math.round(x) * Q,
+        y: y * Q,
+        type: cfg.type,
+        label: cfg.label + ' ' + (n + 1),
+        stage: 0,
+        done: false,
+        carried: false,
+        dropped: false,
         targetX: combat ? (180 + n * 45) * Q : Math.round(Math.min(3600, x + 190)) * Q,
       });
     }
@@ -256,7 +420,14 @@ export function createCampaign(S: Engine, content: Content) {
       // Two panels on each safe terrace. The generic route spread placed some
       // panels beyond ledges, where the required height could not be reached.
       const panelXs = [420, 850, 1450, 2050, 2650, 3250];
-      const panelNames = ['Light', 'Sky', 'Land and plants', 'Lights in the sky', 'Living creatures', 'Humanity and rest'];
+      const panelNames = [
+        'Light',
+        'Sky',
+        'Land and plants',
+        'Lights in the sky',
+        'Living creatures',
+        'Humanity and rest',
+      ];
       s.markers.forEach((m, n) => {
         m.x = panelXs[n] * Q;
         m.y = 80 * Q;
@@ -270,7 +441,15 @@ export function createCampaign(S: Engine, content: Content) {
       let from = -120;
       STONE_CHANNELS.forEach(([a, b], n) => {
         floors.push({ id: 'shore' + n, kind: 'solid', rectUnits: [from, -120, a - from, 200], wallRecoverable: true });
-        for (let k = 0; k < 3; k++) s.stones.push({ id: `stone${n}_${k}`, x: a + 60 + k * 160, w: 80, channel: n, offset: k * 40 + n * 25, state: 'up' });
+        for (let k = 0; k < 3; k++)
+          s.stones.push({
+            id: `stone${n}_${k}`,
+            x: a + 60 + k * 160,
+            w: 80,
+            channel: n,
+            offset: k * 40 + n * 25,
+            state: 'up',
+          });
         from = b;
       });
       floors.push({ id: 'shore3', kind: 'solid', rectUnits: [from, -120, 3800 - from, 200], wallRecoverable: true });
@@ -278,26 +457,39 @@ export function createCampaign(S: Engine, content: Content) {
       s.baseFloors = floors.slice(1);
       world.map.platforms = [...s.baseFloors];
       // Each marked route ends on the far bank of its channel.
-      s.markers.forEach((m, n) => { const ch = STONE_CHANNELS[Math.min(n, 2)]; m.x = (ch[1] + 120) * Q; m.y = 80 * Q; m.targetX = m.x; });
+      s.markers.forEach((m, n) => {
+        const ch = STONE_CHANNELS[Math.min(n, 2)];
+        m.x = (ch[1] + 120) * Q;
+        m.y = 80 * Q;
+        m.targetX = m.x;
+      });
     }
     // Archive travelers wait in a safe bay at each escort marker (noncombat routes only).
     // In combat scenes the same travelers (a supply cart, a flock, refugees) wait in a safe bay while opponents are active.
-    for (const m of s.markers) if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
+    for (const m of s.markers)
+      if (m.type === 'escort') s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
     // The reenactment runs its own stages (goliath.ts); there are no task markers.
     if (level.number === GOLIATH_LEVEL) s.markers = [];
     // Pictogram routes: each sign shows a shape; routes reconnect in the order the start
     // sign shows, which zig-zags across the archive rather than running left to right.
     if (!combat && PICTOGRAMS.test(level.objective)) {
-      const xs = s.markers.map(m => m.x), order = [1, 0, 3, 2];
+      const xs = s.markers.map(m => m.x),
+        order = [1, 0, 3, 2];
       s.markers.forEach((m, n) => {
-        m.x = xs[order[n] % xs.length]; m.y = 80 * Q; m.targetX = m.x;
+        m.x = xs[order[n] % xs.length];
+        m.y = 80 * Q;
+        m.targetX = m.x;
         m.shape = PICTOGRAM_SHAPES[n % PICTOGRAM_SHAPES.length];
         m.label = `Route sign ${m.shape}`;
       });
       s.caption = `Ken: The sign shows ${s.markers.map(m => m.shape).join(' → ')}. Let us follow the shapes.`;
     }
     // Captive gates are opened by holding Interact; the people released stay in a safe zone.
-    if (CAPTIVE_GATES.test(level.objective)) for (const m of s.markers) { m.type = 'latches'; m.label = `Captive gate ${m.id + 1}`; }
+    if (CAPTIVE_GATES.test(level.objective))
+      for (const m of s.markers) {
+        m.type = 'latches';
+        m.label = `Captive gate ${m.id + 1}`;
+      }
     // Defend scenes: the named points become posts the raiders try to wear down.
     // L015: Ken is the post. Raiders press toward him; nobody is ever harmed.
     if (combat && /^protect ken/i.test(level.objective)) {
@@ -308,17 +500,40 @@ export function createCampaign(S: Engine, content: Content) {
     if (defend) {
       const n = defend[1].toLowerCase() === 'two' ? 2 : 3;
       const label = defend[2].replace(/s$/, '').replace(/’ bay$/, '’ bay');
-      for (let k = 0; k < n; k++) s.posts.push({ id: k, x: Math.round(-300 + (600 * k) / Math.max(1, n - 1)) * Q, label: `${label[0].toUpperCase()}${label.slice(1)} ${k + 1}`, integrity: POST_INTEGRITY });
+      for (let k = 0; k < n; k++)
+        s.posts.push({
+          id: k,
+          x: Math.round(-300 + (600 * k) / Math.max(1, n - 1)) * Q,
+          label: `${label[0].toUpperCase()}${label.slice(1)} ${k + 1}`,
+          integrity: POST_INTEGRITY,
+        });
       s.markers = s.markers.filter(m => m.type !== 'route');
       s.markers.forEach((m, i) => (m.id = i));
       world.guardPoints = s.posts.map(p => p.x);
     }
-    if (level.number === 71) for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
+    if (level.number === 71)
+      for (const m of s.markers) m.label = m.id < 5 ? 'Model loaf ' + (m.id + 1) : 'Model fish ' + (m.id - 4);
     if ([32, 36, 75].includes(level.number)) {
       const extra: TaskType = level.number === 75 ? 'route' : level.number === 36 ? 'escort' : 'building';
       for (let n = 0; n < 2; n++) {
-        const label = extra === 'route' ? 'Observation climb ' + (n + 1) : extra === 'escort' ? 'Traveler gate ' + (n + 1) : 'Camp station ' + (n + 1);
-        s.markers.push({ id: s.markers.length, x: (2800 + n * 350) * Q, y: (extra === 'route' ? 166 : 80) * Q, type: extra, label, stage: 0, done: false, carried: false, dropped: false, targetX: (3000 + n * 350) * Q });
+        const label =
+          extra === 'route'
+            ? 'Observation climb ' + (n + 1)
+            : extra === 'escort'
+              ? 'Traveler gate ' + (n + 1)
+              : 'Camp station ' + (n + 1);
+        s.markers.push({
+          id: s.markers.length,
+          x: (2800 + n * 350) * Q,
+          y: (extra === 'route' ? 166 : 80) * Q,
+          type: extra,
+          label,
+          stage: 0,
+          done: false,
+          carried: false,
+          dropped: false,
+          targetX: (3000 + n * 350) * Q,
+        });
       }
     }
     // Second halves of two-part objectives that the shared task list does not cover.
@@ -327,11 +542,25 @@ export function createCampaign(S: Engine, content: Content) {
       const [type, label, count] = second;
       for (let n = 0; n < count; n++) {
         // Story routes: near the exit. Arenas: across the main stage.
-        const x = combat ? -250 + n * 200 : 2700 + n * 250, target = combat ? 250 : Math.min(3550, x + 350);
-        s.markers.push({ id: s.markers.length, x: x * Q, y: 80 * Q, type, label: count > 1 ? `${label} ${n + 1}` : label, stage: 0, done: false, carried: false, dropped: false, targetX: target * Q });
+        const x = combat ? -250 + n * 200 : 2700 + n * 250,
+          target = combat ? 250 : Math.min(3550, x + 350);
+        s.markers.push({
+          id: s.markers.length,
+          x: x * Q,
+          y: 80 * Q,
+          type,
+          label: count > 1 ? `${label} ${n + 1}` : label,
+          stage: 0,
+          done: false,
+          carried: false,
+          dropped: false,
+          targetX: target * Q,
+        });
       }
     }
-    for (const m of s.markers) if (m.type === 'escort' && !s.travelers.some(t => t.markerId === m.id)) s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
+    for (const m of s.markers)
+      if (m.type === 'escort' && !s.travelers.some(t => t.markerId === m.id))
+        s.travelers.push({ markerId: m.id, x: m.x, y: m.y, state: 'waiting' });
     if (level.number === 80) {
       s.satchelClosed = false;
       s.markers[0].label = 'Close weapon satchel';
@@ -350,23 +579,56 @@ export function createCampaign(S: Engine, content: Content) {
         m.y = (ledge.rectUnits[1] + ledge.rectUnits[3]) * Q;
       });
     } else if (!combat && EMBER_COURSE.test(level.objective)) {
-      const tell = difficulty === 'easy' ? 135 : 90, period = difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220;
-      s.embers = [1000, 1900, 2800].map((x, n) => ({ x: x * Q, period, tell, active: 50, offset: n * 70, state: 'safe' as const, kenCrossed: false }));
+      const tell = difficulty === 'easy' ? 135 : 90,
+        period = difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220;
+      s.embers = [1000, 1900, 2800].map((x, n) => ({
+        x: x * Q,
+        period,
+        tell,
+        active: 50,
+        offset: n * 70,
+        state: 'safe' as const,
+        kenCrossed: false,
+      }));
     } else if (!combat && STORM.test(level.uniqueRule)) {
-      s.wind = { period: difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220, tell: difficulty === 'easy' ? 135 : 90, gust: 60, state: 'calm' };
+      s.wind = {
+        period: difficulty === 'easy' ? 300 : difficulty === 'hard' ? 260 : 220,
+        tell: difficulty === 'easy' ? 135 : 90,
+        gust: 60,
+        state: 'calm',
+      };
     } else if (!combat && ['survival', 'escape', 'stealth'].includes(level.kind)) {
       for (let n = 0; n < 4; n++) {
         const x = 700 + n * 740;
-        s.hazards.push({ id: n, x: x * Q, y: 80 * Q, period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140, tell: difficulty === 'easy' ? 90 : 60, active: 30, facing: -1 });
+        s.hazards.push({
+          id: n,
+          x: x * Q,
+          y: 80 * Q,
+          period: difficulty === 'easy' ? 240 : difficulty === 'hard' ? 180 : 140,
+          tell: difficulty === 'easy' ? 90 : 60,
+          active: 30,
+          facing: -1,
+        });
         if (s.sightLines) s.covers.push([(x - 230) * Q, (x - 150) * Q], [(x + 150) * Q, (x + 230) * Q]);
       }
     }
     if (checkpoint && checkpoint.level === levelId && checkpoint.stage !== 'exit') {
-      for (const idx of checkpoint.progress || []) if (s.markers[idx]) { s.markers[idx].done = true; s.done.push(idx); }
+      for (const idx of checkpoint.progress || [])
+        if (s.markers[idx]) {
+          s.markers[idx].done = true;
+          s.done.push(idx);
+        }
       s.combatCleared = !!checkpoint.combatCleared;
       s.stage = checkpoint.stage;
-      if (s.combatCleared) { world.phase = 'playing'; world.fighters = world.fighters.slice(0, 1); world.mode = 'training'; }
-      if (!combat && s.stage === 'middle_or_phase_two') { world.fighters[0].x = (s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_RESTORE_X) * Q; s.companion.x = (s.stones.length ? STEPPING_MIDDLE_X - 120 : 1780) * Q; }
+      if (s.combatCleared) {
+        world.phase = 'playing';
+        world.fighters = world.fighters.slice(0, 1);
+        world.mode = 'training';
+      }
+      if (!combat && s.stage === 'middle_or_phase_two') {
+        world.fighters[0].x = (s.stones.length ? STEPPING_MIDDLE_X : MIDDLE_RESTORE_X) * Q;
+        s.companion.x = (s.stones.length ? STEPPING_MIDDLE_X - 120 : 1780) * Q;
+      }
     }
     return s;
   }
@@ -374,25 +636,45 @@ export function createCampaign(S: Engine, content: Content) {
   function begin(s: Scene): void {
     if (s.phase !== 'intro') return;
     s.phase = 'active';
-    if (s.waitingPlatforms) { s.world.map.platforms.push(...s.waitingPlatforms); s.waitingPlatforms = null; }
+    if (s.waitingPlatforms) {
+      s.world.map.platforms.push(...s.waitingPlatforms);
+      s.waitingPlatforms = null;
+    }
   }
 
   function pause(s: Scene, on = true): void {
-    if (on && s.phase === 'active') { s.phase = 'paused'; S.pause(s.world, true); }
-    else if (!on && s.phase === 'paused') { s.phase = 'active'; S.pause(s.world, false); }
+    if (on && s.phase === 'active') {
+      s.phase = 'paused';
+      S.pause(s.world, true);
+    } else if (!on && s.phase === 'paused') {
+      s.phase = 'active';
+      S.pause(s.world, false);
+    }
   }
 
   function nearest(s: Scene): Marker | undefined {
     const f = s.world.fighters[0];
     return s.markers
-      .filter(m => !m.done && !(s.level.number === 1 && m.id > s.done.length)
-        && Math.abs((m.carried || (m.type === 'escort' && m.stage) ? m.targetX : m.x) - f.x) < 90 * Q && Math.abs(m.y - f.y) < 40 * Q)
+      .filter(
+        m =>
+          !m.done &&
+          !(s.level.number === 1 && m.id > s.done.length) &&
+          Math.abs((m.carried || (m.type === 'escort' && m.stage) ? m.targetX : m.x) - f.x) < 90 * Q &&
+          Math.abs(m.y - f.y) < 40 * Q,
+      )
       .sort((a, b) => Math.abs(a.x - f.x) - Math.abs(b.x - f.x) || a.id - b.id)[0];
   }
 
   function checkpoint(s: Scene): void {
     s.stage = 'middle_or_phase_two';
-    s.checkpointEvent = { level: s.levelId, stage: s.stage, progress: [...s.done], combatCleared: s.combatCleared, seed: Number(s.world.options.seed), seen: [...s.seen] };
+    s.checkpointEvent = {
+      level: s.levelId,
+      stage: s.stage,
+      progress: [...s.done],
+      combatCleared: s.combatCleared,
+      seed: Number(s.world.options.seed),
+      seen: [...s.seen],
+    };
   }
 
   function say(s: Scene, text: string, ticks: number): void {
@@ -427,10 +709,17 @@ export function createCampaign(S: Engine, content: Content) {
     const m = nearest(s);
     if (s.carry !== null) {
       const carried = s.markers[s.carry];
-      if (Math.abs(f.x - carried.targetX) < 100 * Q) { mark(s, carried); return; }
+      if (Math.abs(f.x - carried.targetX) < 100 * Q) {
+        mark(s, carried);
+        return;
+      }
       // Set down safely anywhere; it can be recovered.
-      carried.carried = false; carried.dropped = true; carried.x = f.x; carried.y = f.y;
-      s.carry = null; f.carry = false;
+      carried.carried = false;
+      carried.dropped = true;
+      carried.x = f.x;
+      carried.y = f.y;
+      s.carry = null;
+      f.carry = false;
       say(s, 'Supply set down safely. Interact to recover it.', 180);
       return;
     }
@@ -440,7 +729,11 @@ export function createCampaign(S: Engine, content: Content) {
         say(s, 'This is a two-person lift. Wait for Ken to take the other end.', 160);
         return;
       }
-      m.carried = true; m.stage = 1; s.carry = m.id; f.carry = true; f.action = null;
+      m.carried = true;
+      m.stage = 1;
+      s.carry = m.id;
+      f.carry = true;
+      f.action = null;
       say(s, 'Carry to the outlined station. Interact to set down or deliver.', 240);
       return;
     }
@@ -451,22 +744,43 @@ export function createCampaign(S: Engine, content: Content) {
       if (!m.stage) {
         m.stage = 1;
         if (traveler) traveler.state = 'following';
-        say(s, traveler ? 'Regroup: the traveler will follow you to the safe gate.' : 'Regroup: Ken will follow to the safe gate.', 200);
+        say(
+          s,
+          traveler
+            ? 'Regroup: the traveler will follow you to the safe gate.'
+            : 'Regroup: Ken will follow to the safe gate.',
+          200,
+        );
         return;
       }
       const escortX = traveler ? traveler.x : s.companion.x;
       if (Math.abs(escortX - f.x) < TRAVELER_REACH_UNITS * Q) {
-        if (traveler) { traveler.state = 'safe'; traveler.x = m.targetX; traveler.y = m.y; }
+        if (traveler) {
+          traveler.state = 'safe';
+          traveler.x = m.targetX;
+          traveler.y = m.y;
+        }
         mark(s, m);
-      } else say(s, traveler ? 'Wait at the safe gate for the traveler to catch up.' : 'Wait for Ken at the safe gate.', 160);
+      } else
+        say(
+          s,
+          traveler ? 'Wait at the safe gate for the traveler to catch up.' : 'Wait for Ken at the safe gate.',
+          160,
+        );
       return;
     }
     if (m.shape) {
       const next = s.markers.find(k => !k.done);
-      if (next && next.id !== m.id) { say(s, `This sign shows ${m.shape}. The route continues at ${next.shape} first.`, 180); return; }
+      if (next && next.id !== m.id) {
+        say(s, `This sign shows ${m.shape}. The route continues at ${next.shape} first.`, 180);
+        return;
+      }
     }
     if (s.level.number === 80 && m.id === 0) s.satchelClosed = true;
-    if (m.type === 'witness' || m.type === 'puzzle' || (m.type === 'route' && s.level.number === 1)) { s.pendingCard = m.id; return; }
+    if (m.type === 'witness' || m.type === 'puzzle' || (m.type === 'route' && s.level.number === 1)) {
+      s.pendingCard = m.id;
+      return;
+    }
     mark(s, m);
   }
 
@@ -475,16 +789,26 @@ export function createCampaign(S: Engine, content: Content) {
     if (!m) return null;
     const seenId = `${s.levelId}:${index}`;
     if (!s.seen.includes(seenId)) s.seen.push(seenId);
-    let text = s.sourceSummary, heading = m.label;
+    let text = s.sourceSummary,
+      heading = m.label;
     if (s.level.number === 84) [heading, text] = EMPTY_TOMB_CARDS[index];
-    const labels = s.level.number === 1 ? ['Light', 'Sky', 'Land and plants', 'Lights in the sky', 'Living creatures', 'Humanity and rest']
-      : s.level.number === 3 ? ['Goodness and trust', 'Broken choice', 'Life outside the garden']
-      : ['Observe the account', 'Connect the context', 'Follow the account’s order', 'Remember the source'];
+    const labels =
+      s.level.number === 1
+        ? ['Light', 'Sky', 'Land and plants', 'Lights in the sky', 'Living creatures', 'Humanity and rest']
+        : s.level.number === 3
+          ? ['Goodness and trust', 'Broken choice', 'Life outside the garden']
+          : ['Observe the account', 'Connect the context', 'Follow the account’s order', 'Remember the source'];
     return {
-      heading, text, reference: s.level.scripture,
+      heading,
+      text,
+      reference: s.level.scripture,
       label: PARABLE_LEVELS.includes(s.level.number) ? 'Parable context' : 'Bible account — original summary',
       puzzle: m.type === 'puzzle',
-      choices: [labels[index % labels.length], labels[(index + 1) % labels.length], labels[(index + 2) % labels.length]],
+      choices: [
+        labels[index % labels.length],
+        labels[(index + 1) % labels.length],
+        labels[(index + 2) % labels.length],
+      ],
       answer: 0,
       prompt: 'Select the panel for step ' + (index + 1) + ': ' + labels[index % labels.length],
       clue: `Clue: the panel you need is titled "${labels[index % labels.length]}". There is no penalty for trying.`,
@@ -496,7 +820,10 @@ export function createCampaign(S: Engine, content: Content) {
     const idx = s.pendingCard;
     if (idx === null) return false;
     const c = card(s, idx)!;
-    if (c.puzzle && answer !== c.answer) { say(s, 'Try the panel again. There is no penalty.', 180); return false; }
+    if (c.puzzle && answer !== c.answer) {
+      say(s, 'Try the panel again. There is no penalty.', 180);
+      return false;
+    }
     mark(s, s.markers[idx]);
     s.pendingCard = null;
     return true;
@@ -506,11 +833,12 @@ export function createCampaign(S: Engine, content: Content) {
     if (s.phase === 'complete') return;
     s.phase = 'complete';
     s.result = { won: true, level: s.levelId, next: s.level.nextLevel };
-    s.caption = s.level.number === GOLIATH_LEVEL
-      ? (s.goliath.memory === 'brothers'
-        ? 'David: I turn toward the ridge. My brothers are already running down to meet me. For a moment we are boys from Bethlehem again.'
-        : 'David: My sling hangs quiet. The first thing I hear is the stream again, just as it sounded before everyone began to shout.')
-      : s.closingLine;
+    s.caption =
+      s.level.number === GOLIATH_LEVEL
+        ? s.goliath.memory === 'brothers'
+          ? 'David: I turn toward the ridge. My brothers are already running down to meet me. For a moment we are boys from Bethlehem again.'
+          : 'David: My sling hangs quiet. The first thing I hear is the stream again, just as it sounded before everyone began to shout.'
+        : s.closingLine;
     checkpoint(s);
     s.checkpointEvent!.stage = 'exit';
     s.stage = 'exit';
@@ -521,17 +849,28 @@ export function createCampaign(S: Engine, content: Content) {
   function step(s: Scene, frame: InputFrame = {}): void {
     if (s.phase !== 'active' || s.pendingCard !== null) return;
     // While the world counts down (scene start or resuming from pause), the scene waits too.
-    if (s.world.phase === 'countdown') { S.step(s.world, {}); return; }
+    if (s.world.phase === 'countdown') {
+      S.step(s.world, {});
+      return;
+    }
     s.tick++;
     s.checkpointEvent = null;
     const f = s.world.fighters[0];
     const priorRespawn = f.respawn;
     const i = S.input(frame);
-    if (!s.level.combatEnabled || s.combatCleared || s.level.number === GOLIATH_LEVEL) { i.light = i.heavy = i.item = false; i.heavyHeld = false; }
+    if (!s.level.combatEnabled || s.combatCleared || s.level.number === GOLIATH_LEVEL) {
+      i.light = i.heavy = i.item = false;
+      i.heavyHeld = false;
+    }
     // Witness scenes: walking only.
-    if (s.kind === 'witness') { i.jump = i.dodge = false; i.y = 0; }
+    if (s.kind === 'witness') {
+      i.jump = i.dodge = false;
+      i.y = 0;
+    }
     // Carrying disables attacks until set down.
-    if (f.carry) { i.light = i.heavy = i.item = false; }
+    if (f.carry) {
+      i.light = i.heavy = i.item = false;
+    }
     S.step(s.world, { [f.id]: i });
     // Every boss tell is captioned, so no warning depends on colour or animation alone.
     for (const e of s.world.events) {
@@ -539,113 +878,189 @@ export function createCampaign(S: Engine, content: Content) {
       if (e.type === 'bossOpening') say(s, 'Opening! The boss is recovering.', Number(e.ticks) || 30);
       if (e.type === 'arrivalCue') say(s, `Arrival marked: ${String(e.role).replace(/_/g, ' ')}.`, 90);
     }
-    if (priorRespawn === 1 && !s.level.combatEnabled) { f.x = safeX(s); f.y = 82 * Q; f.vx = f.vy = 0; }
+    if (priorRespawn === 1 && !s.level.combatEnabled) {
+      f.x = safeX(s);
+      f.y = 82 * Q;
+      f.vx = f.vy = 0;
+    }
     // Taking a hit while carrying sets the load down where you stand; nothing is lost.
     if (f.stun > 0 && !f.respawn && s.carry !== null && !s.coopLift) {
       const m = s.markers[s.carry];
-      m.carried = false; m.dropped = true; m.x = f.x; m.y = Math.max(80 * Q, f.y);
-      s.carry = null; f.carry = false;
+      m.carried = false;
+      m.dropped = true;
+      m.x = f.x;
+      m.y = Math.max(80 * Q, f.y);
+      s.carry = null;
+      f.carry = false;
       say(s, `${m.label} was knocked from your hands — it is safe on the ground. Interact to pick it up again.`, 200);
     }
     if (f.respawn && s.carry !== null) {
       const m = s.markers[s.carry];
-      m.carried = false; m.dropped = true; m.x = safeX(s); m.y = 80 * Q;
-      s.carry = null; f.carry = false;
+      m.carried = false;
+      m.dropped = true;
+      m.x = safeX(s);
+      m.y = 80 * Q;
+      s.carry = null;
+      f.carry = false;
     }
     if (s.world.phase === 'result') {
-      if (!s.world.result!.won) { s.phase = 'failed'; s.result = { won: false, reason: s.world.result!.reason }; return; }
+      if (!s.world.result!.won) {
+        s.phase = 'failed';
+        s.result = { won: false, reason: s.world.result!.reason };
+        return;
+      }
       s.combatCleared = true;
-      s.world.phase = 'playing'; s.world.result = null; s.world.mode = 'training';
-      s.world.fighters = s.world.fighters.slice(0, 1); s.world.projectiles = [];
+      s.world.phase = 'playing';
+      s.world.result = null;
+      s.world.mode = 'training';
+      s.world.fighters = s.world.fighters.slice(0, 1);
+      s.world.projectiles = [];
       checkpoint(s);
       say(s, 'Training encounter cleared. Finish the marked archive task.', 240);
     }
     // Companion follows at a fixed spacing and never takes damage.
-    const distance = f.x - s.companion.x, maxSpeed = 5 * Q;
+    const distance = f.x - s.companion.x,
+      maxSpeed = 5 * Q;
     s.companion.x += Math.max(-maxSpeed, Math.min(maxSpeed, distance - (distance > 0 ? 100 : -100) * Q));
     s.companion.y = f.ground ? f.y : s.companion.y;
-    if (s.kind === 'witness') { s.companion.x = f.x - 80 * Q; s.companion.y = f.y; }
+    if (s.kind === 'witness') {
+      s.companion.x = f.x - 80 * Q;
+      s.companion.y = f.y;
+    }
     if (s.embers.length) {
       for (const lane of s.embers) {
         const phase = (s.tick + lane.offset) % lane.period;
         lane.state = phase < lane.tell ? 'tell' : phase < lane.tell + lane.active ? 'active' : 'safe';
-        if (lane.state === 'tell' && phase === 0 && Math.abs(f.x - lane.x) < 400 * Q) say(s, 'Embers are gathering in the marked lane.', 90);
+        if (lane.state === 'tell' && phase === 0 && Math.abs(f.x - lane.x) < 400 * Q)
+          say(s, 'Embers are gathering in the marked lane.', 90);
         if (lane.state === 'active' && Math.abs(f.x - lane.x) < EMBER_HALF_WIDTH * Q && f.y < 140 * Q) {
-          f.x = Math.max(80 * Q, lane.x - 250 * Q); f.y = 82 * Q; f.vx = f.vy = 0;
+          f.x = Math.max(80 * Q, lane.x - 250 * Q);
+          f.y = 82 * Q;
+          f.vx = f.vy = 0;
           say(s, 'Too close to the embers. Step back and wait for the lane to clear.', 160);
         }
         // Ken waits at the lane edge and crosses only with a full safe window ahead.
         const before = lane.x - (EMBER_HALF_WIDTH + 40) * Q;
         if (!lane.kenCrossed && s.companion.x > before) {
           const safeLeft = lane.state === 'safe' ? lane.period - ((s.tick + lane.offset) % lane.period) : 0;
-          if (f.x > lane.x && safeLeft > 40) { lane.kenCrossed = true; s.companion.x = lane.x + (EMBER_HALF_WIDTH + 30) * Q; say(s, 'Ken: Thanks for waiting — I am across.', 120); }
-          else s.companion.x = before;
+          if (f.x > lane.x && safeLeft > 40) {
+            lane.kenCrossed = true;
+            s.companion.x = lane.x + (EMBER_HALF_WIDTH + 30) * Q;
+            say(s, 'Ken: Thanks for waiting — I am across.', 120);
+          } else s.companion.x = before;
         }
       }
     }
     // Lifting together: Ken holds the far end beside the player for the whole carry.
-    if (s.coopLift && s.carry !== null) { s.companion.x = f.x - 60 * Q * f.facing; s.companion.y = f.y; }
+    if (s.coopLift && s.carry !== null) {
+      s.companion.x = f.x - 60 * Q * f.facing;
+      s.companion.y = f.y;
+    }
     if (s.stones.length) {
       const period = STONE_CYCLE.up + STONE_CYCLE.sinking + STONE_CYCLE.down;
       for (const st of s.stones) {
         const p = (s.tick + st.offset) % period;
         st.state = p < STONE_CYCLE.up ? 'up' : p < STONE_CYCLE.up + STONE_CYCLE.sinking ? 'sinking' : 'down';
       }
-      s.world.map.platforms = [...(s.baseFloors ?? []), ...s.stones.filter(st => st.state !== 'down').map(st => ({ id: st.id, kind: 'oneWay' as const, rectUnits: [st.x, 64, st.w, 16] as [number, number, number, number] }))];
+      s.world.map.platforms = [
+        ...(s.baseFloors ?? []),
+        ...s.stones
+          .filter(st => st.state !== 'down')
+          .map(st => ({
+            id: st.id,
+            kind: 'oneWay' as const,
+            rectUnits: [st.x, 64, st.w, 16] as [number, number, number, number],
+          })),
+      ];
       // Slipping into a channel returns you to its near bank; nobody is harmed.
       const ch = STONE_CHANNELS.find(([a, b]) => f.x > a * Q && f.x < b * Q);
       if (ch && f.y < 20 * Q) {
-        f.x = (ch[0] - 60) * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0;
+        f.x = (ch[0] - 60) * Q;
+        f.y = 82 * Q;
+        f.vx = f.vy = f.kx = 0;
         say(s, 'Back to the bank. Step only on stones that are up; a flashing stone is about to sink.', 180);
       }
     }
     if (s.posts.length && !s.combatCleared) {
       for (const p of s.posts) {
-        if (p.ken) { p.x = s.companion.x; s.world.guardPoints = [p.x]; }
-        const near = (o: typeof f) => o.stocks > 0 && !o.respawn && Math.abs(o.x - p.x) < POST_RADIUS_UNITS * Q && o.y < 200 * Q;
+        if (p.ken) {
+          p.x = s.companion.x;
+          s.world.guardPoints = [p.x];
+        }
+        const near = (o: typeof f) =>
+          o.stocks > 0 && !o.respawn && Math.abs(o.x - p.x) < POST_RADIUS_UNITS * Q && o.y < 200 * Q;
         const raiders = s.world.fighters.filter(o => !o.human && near(o)).length;
         if (raiders) p.integrity = Math.max(0, p.integrity - raiders);
         else if (near(f)) p.integrity = Math.min(POST_INTEGRITY, p.integrity + 2);
-        if (raiders && p.integrity % 60 === 0 && p.integrity > 0) say(s, `${p.label} is under pressure — get there!`, 90);
+        if (raiders && p.integrity % 60 === 0 && p.integrity > 0)
+          say(s, `${p.label} is under pressure — get there!`, 90);
         if (p.integrity === 0) {
           s.phase = 'failed';
-          s.result = { won: false, reason: p.ken ? 'The raiders reached Ken. Regroup at the checkpoint and stay close to him.' : `${p.label} was overrun. Retry from your checkpoint — nothing else is lost.` };
+          s.result = {
+            won: false,
+            reason: p.ken
+              ? 'The raiders reached Ken. Regroup at the checkpoint and stay close to him.'
+              : `${p.label} was overrun. Retry from your checkpoint — nothing else is lost.`,
+          };
           return;
         }
       }
     }
     // Following travelers walk behind the player in a short line; they cannot be harmed.
     const opponentsActive = s.world.fighters.some(o => !o.human && o.stocks > 0 && !o.respawn);
-    if (opponentsActive && s.travelers.some(t => t.state === 'following') && s.tick % 240 === 0) say(s, 'The escort waits in its safe bay until the opponents are cleared.', 150);
-    if (!opponentsActive) s.travelers.filter(t => t.state === 'following').forEach((t, n) => {
-      const gap = f.x - t.x, spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
-      t.x += Math.max(-4 * Q, Math.min(4 * Q, gap - spacing));
-      if (f.ground) t.y = f.y;
-    });
+    if (opponentsActive && s.travelers.some(t => t.state === 'following') && s.tick % 240 === 0)
+      say(s, 'The escort waits in its safe bay until the opponents are cleared.', 150);
+    if (!opponentsActive)
+      s.travelers
+        .filter(t => t.state === 'following')
+        .forEach((t, n) => {
+          const gap = f.x - t.x,
+            spacing = (60 + n * 50) * Q * (gap > 0 ? 1 : -1);
+          t.x += Math.max(-4 * Q, Math.min(4 * Q, gap - spacing));
+          if (f.ground) t.y = f.y;
+        });
     if (s.water) {
-      const w = s.water, phase = s.tick % w.period, surgeAt = w.period - w.active;
+      const w = s.water,
+        phase = s.tick % w.period,
+        surgeAt = w.period - w.active;
       w.state = phase >= surgeAt ? 'high' : phase >= surgeAt - w.tell ? 'rising' : 'calm';
       w.ticksToSurge = w.state === 'rising' ? surgeAt - phase : 0;
-      if (w.state === 'rising' && phase === surgeAt - w.tell) say(s, 'The water is rising — climb to a ledge or jump as it surges.', w.tell);
-      const onFloor = !!f.ground && s.world.map.platforms.concat(s.world.map.main).some(p => p.id === f.ground && p.kind === 'solid');
+      if (w.state === 'rising' && phase === surgeAt - w.tell)
+        say(s, 'The water is rising — climb to a ledge or jump as it surges.', w.tell);
+      const onFloor =
+        !!f.ground && s.world.map.platforms.concat(s.world.map.main).some(p => p.id === f.ground && p.kind === 'solid');
       if (w.state === 'high' && onFloor) {
-        f.x = safeX(s); f.y = 82 * Q; f.vx = f.vy = 0;
+        f.x = safeX(s);
+        f.y = 82 * Q;
+        f.vx = f.vy = 0;
         say(s, 'Swept back to the safe deck. No progress lost.', 180);
       }
     }
     if (s.kind === 'exploration' && s.tick % 240 === 1 && s.tick > s.captionUntil) {
       const next = s.markers.find(m => !m.done);
       const side = next && (next.x > f.x ? 'to the right' : 'to the left');
-      if (next) say(s, /river/i.test(s.level.objective + s.level.uniqueRule + s.level.location) ? `Listen: the river sounds are ${side}.` : `The next context marker is ${side}.`, 150);
+      if (next)
+        say(
+          s,
+          /river/i.test(s.level.objective + s.level.uniqueRule + s.level.location)
+            ? `Listen: the river sounds are ${side}.`
+            : `The next context marker is ${side}.`,
+          150,
+        );
     }
     if (s.wind) {
       const w = s.wind;
       if (s.done.length === s.markers.length) {
-        if (w.state !== 'over') { w.state = 'over'; say(s, 'The account tells of the storm being stilled. The deck is calm.', 220); }
+        if (w.state !== 'over') {
+          w.state = 'over';
+          say(s, 'The account tells of the storm being stilled. The deck is calm.', 220);
+        }
       } else {
-        const phase = s.tick % w.period, gustAt = w.period - w.gust;
+        const phase = s.tick % w.period,
+          gustAt = w.period - w.gust;
         w.state = phase >= gustAt ? 'gust' : phase >= gustAt - w.tell ? 'warning' : 'calm';
-        if (phase === gustAt - w.tell) say(s, 'A gust is coming — hold Down to brace, or keep to the middle of the deck.', w.tell);
+        if (phase === gustAt - w.tell)
+          say(s, 'A gust is coming — hold Down to brace, or keep to the middle of the deck.', w.tell);
         // A headwind slows grounded walkers but never pushes anyone off their footing.
         const footing = [s.world.map.main, ...s.world.map.platforms].find(p => p.id === f.ground);
         if (w.state === 'gust' && footing && i.y >= 0) {
@@ -659,7 +1074,12 @@ export function createCampaign(S: Engine, content: Content) {
       s.parted = null;
       say(s, 'The account describes the sea opening. The far route is now in place.', 240);
     }
-    if (!s.water && !s.wind && !s.embers.length && (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')) {
+    if (
+      !s.water &&
+      !s.wind &&
+      !s.embers.length &&
+      (s.kind === 'survival' || s.kind === 'escape' || s.kind === 'stealth')
+    ) {
       for (const h of s.hazards) {
         const phase = s.tick % h.period;
         h.state = phase < h.tell ? 'tell' : phase < h.tell + h.active ? 'active' : 'safe';
@@ -669,23 +1089,49 @@ export function createCampaign(S: Engine, content: Content) {
           const ahead = (f.x - h.x) * h.facing;
           const hidden = i.y < 0 && s.covers.some(([a, b]) => f.x >= a && f.x <= b);
           if (h.state === 'active' && ahead > 0 && ahead < SIGHT_UNITS * Q && f.y < 150 * Q && !hidden) {
-            f.x = Math.max(80 * Q, safeX(s)); f.y = 82 * Q; f.vx = f.vy = 0;
+            f.x = Math.max(80 * Q, safeX(s));
+            f.y = 82 * Q;
+            f.vx = f.vy = 0;
             say(s, 'Seen by an archive lookout. Back to the safe route — hide in cover while it watches.', 180);
           }
           continue;
         }
-        if (h.state === 'active' && Math.abs(f.x - h.x) < 45 * Q && f.y < 150 * Q && !(s.kind === 'stealth' && i.y < 0)) {
-          f.x = Math.max(80 * Q, safeX(s)); f.y = 82 * Q; f.vx = f.vy = 0;
-          say(s, s.kind === 'stealth' ? 'Seen by an archive lookout. Return to the safe route.' : 'Obstacle touched. Back to the safe checkpoint.', 180);
+        if (
+          h.state === 'active' &&
+          Math.abs(f.x - h.x) < 45 * Q &&
+          f.y < 150 * Q &&
+          !(s.kind === 'stealth' && i.y < 0)
+        ) {
+          f.x = Math.max(80 * Q, safeX(s));
+          f.y = 82 * Q;
+          f.vx = f.vy = 0;
+          say(
+            s,
+            s.kind === 'stealth'
+              ? 'Seen by an archive lookout. Return to the safe route.'
+              : 'Obstacle touched. Back to the safe checkpoint.',
+            180,
+          );
         }
       }
     }
     if (s.level.number === GOLIATH_LEVEL) {
-      stepGoliath(s.goliath, f, s.tick, i.interact, s.difficulty, {
-        say: (text, ticks) => say(s, text, ticks),
-        cue: type => event(s.world, type, { x: s.goliath.impactX, y: 80 * Q }),
-        complete: () => { s.combatCleared = true; complete(s); },
-      }, S.P.runMaxQ);
+      stepGoliath(
+        s.goliath,
+        f,
+        s.tick,
+        i.interact,
+        s.difficulty,
+        {
+          say: (text, ticks) => say(s, text, ticks),
+          cue: type => event(s.world, type, { x: s.goliath.impactX, y: 80 * Q }),
+          complete: () => {
+            s.combatCleared = true;
+            complete(s);
+          },
+        },
+        S.P.runMaxQ,
+      );
       return;
     }
     const latch = nearest(s);
@@ -709,7 +1155,10 @@ export function createCampaign(S: Engine, content: Content) {
     if (f.x > 1800 * Q && !s.level.combatEnabled && s.stage === 'entry') checkpoint(s);
     if (f.respawn) {
       f.stocks = 3;
-      if (f.respawn === 1) { f.x = safeX(s); f.y = 82 * Q; }
+      if (f.respawn === 1) {
+        f.x = safeX(s);
+        f.y = 82 * Q;
+      }
     }
   }
 

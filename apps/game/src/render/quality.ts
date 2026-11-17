@@ -21,14 +21,24 @@ export class QualityGovernor {
     if (this.samples.length < WINDOW) return false;
     const avg = this.samples.reduce((a, b) => a + b, 0) / this.samples.length;
     this.samples = [];
-    if (!this.low && avg > SLOW_MS) { this.low = true; this.goodWindows = 0; return true; }
+    if (!this.low && avg > SLOW_MS) {
+      this.low = true;
+      this.goodWindows = 0;
+      return true;
+    }
     if (this.low) {
       this.goodWindows = avg < FAST_MS ? this.goodWindows + 1 : 0;
-      if (this.goodWindows >= 4) { this.low = false; this.goodWindows = 0; return true; }
+      if (this.goodWindows >= 4) {
+        this.low = false;
+        this.goodWindows = 0;
+        return true;
+      }
     }
     return false;
   }
 }
 
 /** Particle cap for the current mode. */
-export function particleCap(low: boolean): number { return low ? 30 : 90; }
+export function particleCap(low: boolean): number {
+  return low ? 30 : 90;
+}

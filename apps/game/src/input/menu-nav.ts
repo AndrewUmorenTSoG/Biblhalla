@@ -3,10 +3,17 @@
 // Pure geometry lives in `nextFocus` so it can be tested without a browser.
 
 export type NavDirection = 'up' | 'down' | 'left' | 'right';
-export interface NavRect { x: number; y: number; w: number; h: number }
+export interface NavRect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
 
-const FOCUSABLE = 'button:not([disabled]), summary, [href], input:not([disabled]):not([type=hidden]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-const REPEAT_DELAY_MS = 380, REPEAT_RATE_MS = 140;
+const FOCUSABLE =
+  'button:not([disabled]), summary, [href], input:not([disabled]):not([type=hidden]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const REPEAT_DELAY_MS = 380,
+  REPEAT_RATE_MS = 140;
 const STICK_THRESHOLD = 0.55;
 
 /**
@@ -15,15 +22,21 @@ const STICK_THRESHOLD = 0.55;
  * counts three times, so focus prefers the control straight ahead.
  */
 export function nextFocus(from: NavRect, candidates: NavRect[], direction: NavDirection): number {
-  const cx = from.x + from.w / 2, cy = from.y + from.h / 2;
-  let best = -1, bestScore = Infinity;
+  const cx = from.x + from.w / 2,
+    cy = from.y + from.h / 2;
+  let best = -1,
+    bestScore = Infinity;
   candidates.forEach((r, i) => {
-    const x = r.x + r.w / 2, y = r.y + r.h / 2;
+    const x = r.x + r.w / 2,
+      y = r.y + r.h / 2;
     const ahead = direction === 'up' ? cy - y : direction === 'down' ? y - cy : direction === 'left' ? cx - x : x - cx;
     if (ahead <= 1) return;
     const drift = direction === 'up' || direction === 'down' ? Math.abs(x - cx) : Math.abs(y - cy);
     const score = ahead + drift * 3;
-    if (score < bestScore) { best = i; bestScore = score; }
+    if (score < bestScore) {
+      best = i;
+      bestScore = score;
+    }
   });
   return best;
 }
@@ -42,7 +55,10 @@ function visibleControls(root: ParentNode): HTMLElement[] {
   });
 }
 
-const rectOf = (el: Element): NavRect => { const r = el.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; };
+const rectOf = (el: Element): NavRect => {
+  const r = el.getBoundingClientRect();
+  return { x: r.left, y: r.top, w: r.width, h: r.height };
+};
 
 export function moveFocus(direction: NavDirection): boolean {
   const controls = visibleControls(scope());
@@ -102,18 +118,32 @@ export class MenuNavigator {
 
   poll(pads: Gamepad[], now: number): void {
     const pad = pads[0];
-    if (!pad) { this.held.clear(); return; }
+    if (!pad) {
+      this.held.clear();
+      return;
+    }
     const b = pad.buttons.map(x => x.pressed);
-    const ax = pad.axes[0] ?? 0, ay = pad.axes[1] ?? 0;
+    const ax = pad.axes[0] ?? 0,
+      ay = pad.axes[1] ?? 0;
     const dirs: Record<NavDirection, boolean> = {
-      up: !!b[12] || ay < -STICK_THRESHOLD, down: !!b[13] || ay > STICK_THRESHOLD,
-      left: !!b[14] || ax < -STICK_THRESHOLD, right: !!b[15] || ax > STICK_THRESHOLD,
+      up: !!b[12] || ay < -STICK_THRESHOLD,
+      down: !!b[13] || ay > STICK_THRESHOLD,
+      left: !!b[14] || ax < -STICK_THRESHOLD,
+      right: !!b[15] || ax > STICK_THRESHOLD,
     };
     for (const d of Object.keys(dirs) as NavDirection[]) {
-      if (!dirs[d]) { this.held.delete(d); continue; }
+      if (!dirs[d]) {
+        this.held.delete(d);
+        continue;
+      }
       const since = this.held.get(d);
-      if (since === undefined) { this.held.set(d, now); navigatePad(d); }
-      else if (now - since >= REPEAT_DELAY_MS) { this.held.set(d, now - REPEAT_DELAY_MS + REPEAT_RATE_MS); navigatePad(d); }
+      if (since === undefined) {
+        this.held.set(d, now);
+        navigatePad(d);
+      } else if (now - since >= REPEAT_DELAY_MS) {
+        this.held.set(d, now - REPEAT_DELAY_MS + REPEAT_RATE_MS);
+        navigatePad(d);
+      }
     }
     const pressed = (n: number) => b[n] && !this.previous[n];
     if (pressed(0)) (document.activeElement as HTMLElement | null)?.click();
@@ -130,10 +160,16 @@ export class MenuNavigator {
 export function bindArrowKeys(isMenuActive: () => boolean): void {
   window.addEventListener('keydown', e => {
     if (!isMenuActive()) return;
-    const map: Record<string, NavDirection> = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
+    const map: Record<string, NavDirection> = {
+      ArrowUp: 'up',
+      ArrowDown: 'down',
+      ArrowLeft: 'left',
+      ArrowRight: 'right',
+    };
     const d = map[e.key];
     if (!d) return;
-    if (e.target instanceof HTMLTextAreaElement || (e.target instanceof HTMLInputElement && e.target.type === 'text')) return;
+    if (e.target instanceof HTMLTextAreaElement || (e.target instanceof HTMLInputElement && e.target.type === 'text'))
+      return;
     if (moveFocus(d)) e.preventDefault();
   });
 }

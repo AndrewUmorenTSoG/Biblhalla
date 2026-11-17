@@ -42,8 +42,19 @@ export class MatchRecorder {
 
   private f(id: number, s: SimState): FighterStats {
     return (this.stats.fighters[id] ??= {
-      hero: s.fighters.find(x => x.id === id)?.hero ?? '?', attacks: 0, hits: 0, whiffs: 0, damageDealt: 0, kos: 0, selfKos: 0,
-      chaseUses: 0, airCancels: 0, dodges: 0, dodgeSuccesses: 0, recoveryAttempts: 0, weaponTicks: 0,
+      hero: s.fighters.find(x => x.id === id)?.hero ?? '?',
+      attacks: 0,
+      hits: 0,
+      whiffs: 0,
+      damageDealt: 0,
+      kos: 0,
+      selfKos: 0,
+      chaseUses: 0,
+      airCancels: 0,
+      dodges: 0,
+      dodgeSuccesses: 0,
+      recoveryAttempts: 0,
+      weaponTicks: 0,
     });
   }
 
@@ -60,7 +71,11 @@ export class MatchRecorder {
         this.lastHitOn.set(id, s.tick);
         const attacker = e.attacker as number;
         if (attacker) this.lastAttackerOn.set(id, attacker);
-        if (attacker) { const st = this.f(attacker, s); st.hits++; st.damageDealt += Number(e.damage || 0); }
+        if (attacker) {
+          const st = this.f(attacker, s);
+          st.hits++;
+          st.damageDealt += Number(e.damage || 0);
+        }
         const o = this.open.get(attacker);
         if (o) o.hit = true;
       }
@@ -69,7 +84,8 @@ export class MatchRecorder {
         if (s.tick - (this.lastHitOn.get(id) ?? -1e9) > SELF_KO_WINDOW) st.selfKos++;
         // Credit the KO to whoever last hit this fighter, if recently.
         const scorer = this.lastAttackerOn.get(id);
-        if (scorer !== undefined && s.tick - (this.lastHitOn.get(id) ?? -1e9) <= SELF_KO_WINDOW) this.f(scorer, s).kos++;
+        if (scorer !== undefined && s.tick - (this.lastHitOn.get(id) ?? -1e9) <= SELF_KO_WINDOW)
+          this.f(scorer, s).kos++;
       }
       if (e.type === 'result') this.stats.winners = (e.winners as number[]) ?? [];
     }
@@ -87,13 +103,21 @@ export class MatchRecorder {
         this.open.set(x.id, { instance: a.instance, hit: !!a.confirmed });
         if (a.cancelled) st.airCancels++;
       }
-      if (a?.kind === 'attack' && a.confirmed) { const o = this.open.get(x.id); if (o) o.hit = true; }
+      if (a?.kind === 'attack' && a.confirmed) {
+        const o = this.open.get(x.id);
+        if (o) o.hit = true;
+      }
       if (a?.kind === 'chase' && a.tick === 1) st.chaseUses++;
       // Dodge success: a dodge during which an enemy attack zone was active nearby and no hit landed.
-      if (a?.kind === 'dodge' && a.tick === 1) { st.dodges++; this.dodgeOpen.set(x.id, s.tick); }
+      if (a?.kind === 'dodge' && a.tick === 1) {
+        st.dodges++;
+        this.dodgeOpen.set(x.id, s.tick);
+      }
       const started = this.dodgeOpen.get(x.id);
       if (started !== undefined && a?.kind !== 'dodge') {
-        const threatened = s.fighters.some(o => o.id !== x.id && o.action?.kind === 'attack' && Math.abs(o.x - x.x) < 140 * 256);
+        const threatened = s.fighters.some(
+          o => o.id !== x.id && o.action?.kind === 'attack' && Math.abs(o.x - x.x) < 140 * 256,
+        );
         const hitSince = (this.lastHitOn.get(x.id) ?? -1) >= started;
         if (threatened && !hitSince) st.dodgeSuccesses++;
         this.dodgeOpen.delete(x.id);

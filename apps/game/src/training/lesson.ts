@@ -49,26 +49,29 @@ export class Lesson {
         break;
       case 'jump':
         // A ground jump refills air jumps; an air jump spends one.
-        for (const e of events) if (e.type === 'jump' && e.fighter === p.id) {
-          if (p.jumps === MAX_AIR_JUMPS) this.groundJump = true;
-          else if (this.groundJump) this.advance();
-        }
+        for (const e of events)
+          if (e.type === 'jump' && e.fighter === p.id) {
+            if (p.jumps === MAX_AIR_JUMPS) this.groundJump = true;
+            else if (this.groundJump) this.advance();
+          }
         break;
       case 'attack':
         if (events.some(e => e.type === 'hit' && e.fighter === d.id && e.attacker === p.id)) this.advance();
         break;
       case 'directional':
-        for (const e of events) if (e.type === 'attack' && e.fighter === p.id) {
-          const move = String(e.move);
-          this.note = `That was ${move.replace(/_/g, ' ')}.`;
-          if (/_slight$/.test(move)) this.sides.add('side');
-          if (/_dlight$/.test(move)) this.sides.add('down');
-        }
+        for (const e of events)
+          if (e.type === 'attack' && e.fighter === p.id) {
+            const move = String(e.move);
+            this.note = `That was ${move.replace(/_/g, ' ')}.`;
+            if (/_slight$/.test(move)) this.sides.add('side');
+            if (/_dlight$/.test(move)) this.sides.add('down');
+          }
         if (this.sides.size === 2) this.advance();
         break;
       case 'dodge':
         if (p.action?.kind === 'dodge' && d.action?.kind === 'attack' && Math.abs(p.x - d.x) < 140 * Q) this.advance();
-        else if (p.action?.kind === 'dodge' && p.action.dx) this.note = 'That was a directional dodge — any dodge works here, but stay close.';
+        else if (p.action?.kind === 'dodge' && p.action.dx)
+          this.note = 'That was a directional dodge — any dodge works here, but stay close.';
         break;
       case 'return': {
         const [mx, my, mw, mh] = s.map.main.rectUnits;
@@ -79,7 +82,10 @@ export class Lesson {
         break;
       }
       case 'finish':
-        if (!this.staged) { d.damage = Math.max(d.damage, 1500); this.staged = true; }
+        if (!this.staged) {
+          d.damage = Math.max(d.damage, 1500);
+          this.staged = true;
+        }
         if (events.some(e => e.type === 'ko' && e.fighter === d.id)) this.advance();
         break;
     }
@@ -92,6 +98,10 @@ export class Lesson {
     this.note = '';
   }
 
-  get text(): string { return `${LESSON_TEXT[this.step]}${this.note ? ' ' + this.note : ''}`; }
-  get progress(): string { return `${Math.min(ORDER.indexOf(this.step) + 1, 7)} / 7`; }
+  get text(): string {
+    return `${LESSON_TEXT[this.step]}${this.note ? ' ' + this.note : ''}`;
+  }
+  get progress(): string {
+    return `${Math.min(ORDER.indexOf(this.step) + 1, 7)} / 7`;
+  }
 }

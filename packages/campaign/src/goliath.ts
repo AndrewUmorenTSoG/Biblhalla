@@ -12,7 +12,10 @@ import { giantStart, giantGrapple, shieldHop, type Giant } from './giant.ts';
 
 export type GoliathStage = 'approach' | 'composure' | 'aim' | 'done';
 
-export interface Lane { x: number; state: 'safe' | 'tell' | 'active' }
+export interface Lane {
+  x: number;
+  state: 'safe' | 'tell' | 'active';
+}
 
 export interface GoliathState {
   memory: 'flock' | 'brothers';
@@ -50,10 +53,18 @@ const timing = (difficulty: string) => ({
 
 export function createGoliath(): GoliathState {
   return {
-    memory: 'flock', giant: giantStart(), impactX: GOLIATH_X * Q, stage: 'approach', open: 0, stone: false,
+    memory: 'flock',
+    giant: giantStart(),
+    impactX: GOLIATH_X * Q,
+    stage: 'approach',
+    open: 0,
+    stone: false,
     lanes: LANE_XS.map(x => ({ x: x * Q, state: 'safe' })),
     advance: { state: 'idle', x: GOLIATH_X * Q, ticks: 0 },
-    advancesCleared: 0, pauseTicks: 0, misses: 0, tell: 0,
+    advancesCleared: 0,
+    pauseTicks: 0,
+    misses: 0,
+    tell: 0,
   };
 }
 
@@ -64,7 +75,15 @@ export interface GoliathHooks {
 }
 
 /** One tick of the reenactment. `interact` is this tick's aim/collect press. */
-export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact: boolean, difficulty: string, hooks: GoliathHooks, runCap: number): void {
+export function stepGoliath(
+  g: GoliathState,
+  f: Fighter,
+  tick: number,
+  interact: boolean,
+  difficulty: string,
+  hooks: GoliathHooks,
+  runCap: number,
+): void {
   const t = timing(difficulty);
   if (g.advance.state === 'idle' && g.stage !== 'done') {
     const held = giantGrapple(g.giant, f, runCap, g.stage !== 'aim');
@@ -77,7 +96,10 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     if (held || g.giant.move === 'reach') return;
   }
   const resetTo = (x: number, text: string) => {
-    f.x = x * Q; f.y = 82 * Q; f.vx = f.vy = f.kx = 0; f.action = null;
+    f.x = x * Q;
+    f.y = 82 * Q;
+    f.vx = f.vy = f.kx = 0;
+    f.action = null;
     hooks.say(text, 150);
   };
 
@@ -95,7 +117,12 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
       g.stone = true;
       g.stage = 'composure';
       g.lanes.forEach(l => (l.state = 'safe'));
-      hooks.say(g.memory === 'flock' ? 'The stone sits in the old hollow of my palm. My hands remember the pasture. Watch his shield.' : 'Behind me, my brothers are silent. I pocket the stone. I can give them a moment to breathe. Watch his shield.', 220);
+      hooks.say(
+        g.memory === 'flock'
+          ? 'The stone sits in the old hollow of my palm. My hands remember the pasture. Watch his shield.'
+          : 'Behind me, my brothers are silent. I pocket the stone. I can give them a moment to breathe. Watch his shield.',
+        220,
+      );
     }
     return;
   }
@@ -103,22 +130,37 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
   if (g.stage === 'composure') {
     const a = g.advance;
     if (a.state === 'idle') {
-      a.state = 'tell'; a.ticks = t.advanceTell; a.x = g.giant.x; g.impactX = a.x;
+      a.state = 'tell';
+      a.ticks = t.advanceTell;
+      a.x = g.giant.x;
+      g.impactX = a.x;
       g.tell = a.ticks;
       hooks.cue('bossTell');
-      hooks.say(g.advancesCleared ? 'His shield is up again. I jump the crack as it reaches my feet.'
-        : g.memory === 'brothers' ? 'I hear my brothers behind me. Shield up! I jump when the crack reaches me.'
-        : 'Steady, as in the pasture. Shield up! I jump when the crack reaches me.', a.ticks);
+      hooks.say(
+        g.advancesCleared
+          ? 'His shield is up again. I jump the crack as it reaches my feet.'
+          : g.memory === 'brothers'
+            ? 'I hear my brothers behind me. Shield up! I jump when the crack reaches me.'
+            : 'Steady, as in the pasture. Shield up! I jump when the crack reaches me.',
+        a.ticks,
+      );
     } else if (--a.ticks <= 0) {
-      if (a.state === 'tell') { a.state = 'active'; a.ticks = ADVANCE_ACTIVE; hooks.cue('shieldSlam'); }
-      else {
+      if (a.state === 'tell') {
+        a.state = 'active';
+        a.ticks = ADVANCE_ACTIVE;
+        hooks.cue('shieldSlam');
+      } else {
         a.state = 'idle';
         g.advancesCleared++;
         if (g.advancesCleared >= ADVANCES_NEEDED) {
-          g.stage = 'aim'; g.pauseTicks = t.pause; g.open = 1;
-          const thought = g.misses ? 'Last time I watched the stone. This time I keep my eyes on him.'
-            : g.memory === 'brothers' ? 'I hear Eliab call my name. For once he sounds like my brother again.'
-            : 'His shield dips. In the hush I can hear the leather of my sling creak.';
+          g.stage = 'aim';
+          g.pauseTicks = t.pause;
+          g.open = 1;
+          const thought = g.misses
+            ? 'Last time I watched the stone. This time I keep my eyes on him.'
+            : g.memory === 'brothers'
+              ? 'I hear Eliab call my name. For once he sounds like my brother again.'
+              : 'His shield dips. In the hush I can hear the leather of my sling creak.';
           hooks.say(thought + ' I step into the marked zone and aim.', t.pause);
         }
       }
@@ -127,7 +169,7 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     if (a.state === 'active') {
       // The advance sweeps from Goliath toward the stone bay at ankle height.
       const progress = ADVANCE_ACTIVE - a.ticks;
-      const radius = ((GOLIATH_X - STONE_BAY_X) * progress / ADVANCE_ACTIVE) * Q;
+      const radius = (((GOLIATH_X - STONE_BAY_X) * progress) / ADVANCE_ACTIVE) * Q;
       a.x = g.impactX - radius;
       if (Math.abs(Math.abs(f.x - g.impactX) - radius) < 40 * Q && f.y < (82 + ADVANCE_HEIGHT) * Q) {
         a.state = 'idle';
@@ -142,7 +184,8 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
     const inZone = f.x >= AIM_ZONE[0] * Q && f.x <= AIM_ZONE[1] * Q;
     if (interact) {
       if (inZone) {
-        g.stage = 'done'; g.open = 0;
+        g.stage = 'done';
+        g.open = 0;
         hooks.say('One decisive stone. The account continues without graphic aftermath.', 360);
         hooks.complete();
         return;
@@ -150,8 +193,16 @@ export function stepGoliath(g: GoliathState, f: Fighter, tick: number, interact:
       g.misses++;
     }
     if (interact || --g.pauseTicks <= 0) {
-      g.stage = 'composure'; g.open = 0; g.advancesCleared = 0; g.advance.state = 'idle';
-      hooks.say(interact ? 'My stone skips past his heel. I crouch by the stream and choose another.' : 'His shield closes the gap. I keep the stone in my sling and wait.', 180);
+      g.stage = 'composure';
+      g.open = 0;
+      g.advancesCleared = 0;
+      g.advance.state = 'idle';
+      hooks.say(
+        interact
+          ? 'My stone skips past his heel. I crouch by the stream and choose another.'
+          : 'His shield closes the gap. I keep the stone in my sling and wait.',
+        180,
+      );
     }
   }
 }

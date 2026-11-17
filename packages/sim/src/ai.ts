@@ -16,20 +16,27 @@ function dummy(ctx: SimContext, s: SimState, f: Fighter): Input {
   // ai.tell marks the tick hitstun ends (dodge preset only).
   if (s.trainingBot === 'dodge') f.ai.tell = f.stun === 1 ? 2 : Math.max(0, f.ai.tell - 1);
   const player = s.fighters.find(p => p.human && p.stocks);
-  const toward = player ? (Math.sign(player.x - f.x) || f.facing) : f.facing;
+  const toward = player ? Math.sign(player.x - f.x) || f.facing : f.facing;
   const near = player ? Math.abs(player.x - f.x) < 90 * Q : false;
   const main = s.map.main.rectUnits;
-  const left = main[0] * Q, right = (main[0] + main[2]) * Q, top = (main[1] + main[3]) * Q;
+  const left = main[0] * Q,
+    right = (main[0] + main[2]) * Q,
+    top = (main[1] + main[3]) * Q;
   // Every preset still recovers to the stage, so practice is never interrupted by self-KOs.
   const offStage = !f.ground && (f.x < left - 10 * Q || f.x > right + 10 * Q || f.y < top - 10 * Q);
-  if (offStage || s.trainingBot === 'recover' && !f.ground) return recover(f, left, right, top);
+  if (offStage || (s.trainingBot === 'recover' && !f.ground)) return recover(f, left, right, top);
   switch (s.trainingBot) {
-    case 'jump': return input({ jump: !!f.ground && s.tick % 60 === 0, jumpHeld: true });
-    case 'approach': return input({ x: near ? 0 : toward });
-    case 'attack': return input({ x: near ? 0 : toward, light: near && s.tick % 45 === 0 });
+    case 'jump':
+      return input({ jump: !!f.ground && s.tick % 60 === 0, jumpHeld: true });
+    case 'approach':
+      return input({ x: near ? 0 : toward });
+    case 'attack':
+      return input({ x: near ? 0 : toward, light: near && s.tick % 45 === 0 });
     // Dodges on its first actionable tick after hitstun: shows the escape window.
-    case 'dodge': return input({ dodge: !f.stun && !f.action && f.ai.tell === 1 });
-    default: return input();
+    case 'dodge':
+      return input({ dodge: !f.stun && !f.action && f.ai.tell === 1 });
+    default:
+      return input();
   }
 }
 
@@ -50,21 +57,36 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(ctx, s, f);
   // Scripted bosses act only through their authored pattern (boss.ts).
   if (s.bossScript && f.guard !== null) {
-    const [x,y,w,h] = s.map.main.rectUnits;
-    if (!f.ground && (f.x < x*Q || f.x > (x+w)*Q || f.y < (y+h-10)*Q)) return recover(f,x*Q,(x+w)*Q,(y+h)*Q);
+    const [x, y, w, h] = s.map.main.rectUnits;
+    if (!f.ground && (f.x < x * Q || f.x > (x + w) * Q || f.y < (y + h - 10) * Q))
+      return recover(f, x * Q, (x + w) * Q, (y + h) * Q);
     const run = f.partner?.run ?? s.bossRun;
     const player = s.fighters.find(other => other.human && other.stocks && !other.respawn);
-    if ((s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined && player && run && (run.stage === 'gap' || ((s.options.storyFight ?? s.options.exhibitionOpponent) === 2 && run.stage === 'recovery' && run.ticks < 10))) {
+    if (
+      (s.options.storyFight ?? s.options.exhibitionOpponent) !== undefined &&
+      player &&
+      run &&
+      (run.stage === 'gap' ||
+        ((s.options.storyFight ?? s.options.exhibitionOpponent) === 2 && run.stage === 'recovery' && run.ticks < 10))
+    ) {
       const [left, , width] = s.map.main.rectUnits;
       const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
       const spacing = champion ? 116 : f.partner ? 45 : 60;
-      const flank = s.options.storyFight === 1 ? (f.partner ? -1 : 1) : (Math.sign(f.x - player.x) || 1);
+      const flank = s.options.storyFight === 1 ? (f.partner ? -1 : 1) : Math.sign(f.x - player.x) || 1;
       const destination = clamp(player.x + flank * spacing * Q, (left + 48) * Q, (left + width - 48) * Q);
       const distance = destination - f.x;
-      if (champion && f.ground && player.y < f.y - 48*Q && s.map.platforms.some(p => p.id === f.ground && p.kind === 'oneWay')) {
-        return input({jump:true, y:-1});
+      if (
+        champion &&
+        f.ground &&
+        player.y < f.y - 48 * Q &&
+        s.map.platforms.some(p => p.id === f.ground && p.kind === 'oneWay')
+      ) {
+        return input({ jump: true, y: -1 });
       }
-      return input({ x: Math.abs(distance) > 9 * Q ? Math.sign(distance) : 0, jump: !!f.ground && player.y > f.y + 55 * Q });
+      return input({
+        x: Math.abs(distance) > 9 * Q ? Math.sign(distance) : 0,
+        jump: !!f.ground && player.y > f.y + 55 * Q,
+      });
     }
     return input();
   }
@@ -88,14 +110,19 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   }
   // Wave archetypes wind up visibly before every attack (enemy catalog tells).
   if (f.role && f.ai.tell > 0) {
-    if (f.stun || f.hitstop || f.respawn) { f.ai.tell = 0; return input(); }
+    if (f.stun || f.hitstop || f.respawn) {
+      f.ai.tell = 0;
+      return input();
+    }
     f.ai.tell--;
     return f.ai.tell === 0 ? input({ x: f.ai.tellDir, [f.ai.tellButton ?? 'light']: true }) : input();
   }
   // A bot knows its own resources exactly, so recovery is planned every tick rather
   // than on the decision interval used for reading the opponent.
   const main = s.map.main.rectUnits;
-  const left = main[0] * Q, right = (main[0] + main[2]) * Q, top = (main[1] + main[3]) * Q;
+  const left = main[0] * Q,
+    right = (main[0] + main[2]) * Q,
+    top = (main[1] + main[3]) * Q;
   const beyondEdge = f.x < left - 10 * Q || f.x > right + 10 * Q;
   if (!f.ground && (beyondEdge || f.y < top - 10 * Q)) return recover(f, left, right, top);
 
@@ -113,10 +140,16 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   }
   if (f.action?.kind === 'chase') return input({ x: Math.sign(target.x - f.x) || f.facing, light: true });
 
-  if (s.tick < f.ai.next) { const held: Partial<Input> = { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false }; stayOnside(f, held, left, right); return input(held); }
+  if (s.tick < f.ai.next) {
+    const held: Partial<Input> = { ...f.ai.intent, jump: false, light: false, heavy: false, item: false, dodge: false };
+    stayOnside(f, held, left, right);
+    return input(held);
+  }
   f.ai.next = s.tick + d.decisionTicks;
 
-  const delta = seen.x - f.x, dist = Math.abs(delta) / Q, sign = Math.sign(delta) || f.facing;
+  const delta = seen.x - f.x,
+    dist = Math.abs(delta) / Q,
+    sign = Math.sign(delta) || f.facing;
   const v: Partial<Input> = { x: sign, jumpHeld: true };
   {
     if (f.weapon === 'unarmed') {
@@ -139,7 +172,8 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
         v.x = 0;
         event(s, 'bossTell', { fighter: f.id, phase: f.ai.phase });
       } else if (f.role && ARCHETYPES[f.role] && f.ground && !f.action) {
-        const a = ARCHETYPES[f.role], heavy = choose < a.heavyChance;
+        const a = ARCHETYPES[f.role],
+          heavy = choose < a.heavyChance;
         f.ai.tell = heavy ? a.heavyTell : a.lightTell;
         f.ai.tellButton = heavy ? 'heavy' : 'light';
         f.ai.tellDir = sign;
@@ -155,7 +189,10 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
       }
       if (s.difficulty !== 'easy' && seen.action === 'attack' && nextRandom(s) % 100 < 45) v.dodge = true;
     }
-    if (s.difficulty === 'extreme' && dist < 55 && f.ground && nextRandom(s) % 100 < 35) { v.x = -sign; v.dodge = true; }
+    if (s.difficulty === 'extreme' && dist < 55 && f.ground && nextRandom(s) % 100 < 35) {
+      v.x = -sign;
+      v.dodge = true;
+    }
   }
   // Raiders in defend scenes go for the nearest post when no player is close.
   if (f.role && s.guardPoints?.length && dist > 200) {
@@ -182,7 +219,10 @@ const EDGE_MARGIN_UNITS = 30;
 function stayOnside(f: Fighter, v: Partial<Input>, left: number, right: number): void {
   if (f.ground || f.jumps + f.recovery > 2) return;
   const out = (f.x > right - 60 * Q && (v.x ?? 0) > 0) || (f.x < left + 60 * Q && (v.x ?? 0) < 0);
-  if (out) { v.x = f.x > (left + right) / 2 ? -1 : 1; v.dodge = false; }
+  if (out) {
+    v.x = f.x > (left + right) / 2 ? -1 : 1;
+    v.dodge = false;
+  }
 }
 /** Heavy (signature) chance rises with the target's damage, as players go for the KO. */
 export function killHeavyChance(damageTenths: number): number {
@@ -197,7 +237,10 @@ function recover(f: Fighter, left: number, right: number, top: number): Input {
   // the nearest edge, then come back up and in.
   const under = f.y < top && f.x > left - 20 * Q && f.x < right + 20 * Q && (f.jumps > 0 || f.recovery > 0);
   const outward = f.x < (left + right) / 2 ? -1 : 1;
-  const v: Partial<Input> = { x: under ? outward : f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0, jumpHeld: true };
+  const v: Partial<Input> = {
+    x: under ? outward : f.x < left + 40 * Q ? 1 : f.x > right - 40 * Q ? -1 : 0,
+    jumpHeld: true,
+  };
   if (under) return input(v);
   if (f.action || f.stun || f.hitstop) return input(v);
   // Plan with exact own resources: drift while high, spend jumps late, and use an air

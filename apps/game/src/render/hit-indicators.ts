@@ -21,7 +21,13 @@ export class HitIndicators {
       if (e.id <= this.lastEvent) continue;
       this.lastEvent = e.id;
       if (e.type === 'hit') {
-        this.hits.push({ tick: e.tick, x: Number(e.x), y: Number(e.y), direction: Math.sign(Number(e.facing) || 0), damage: Math.floor(Number(e.damage) / 10) });
+        this.hits.push({
+          tick: e.tick,
+          x: Number(e.x),
+          y: Number(e.y),
+          direction: Math.sign(Number(e.facing) || 0),
+          damage: Math.floor(Number(e.damage) / 10),
+        });
       }
     }
     while (this.hits.length && (this.hits.length > maxIndicators || world.tick - this.hits[0].tick >= lifetime)) {
@@ -29,7 +35,12 @@ export class HitIndicators {
     }
   }
 
-  draw(ctx: CanvasRenderingContext2D, screen: (x: number, y: number) => { x: number; y: number }, tick: number, reduced: boolean): void {
+  draw(
+    ctx: CanvasRenderingContext2D,
+    screen: (x: number, y: number) => { x: number; y: number },
+    tick: number,
+    reduced: boolean,
+  ): void {
     if (!this.hits.length) return;
     ctx.save();
     ctx.strokeStyle = '#ffe9aa';

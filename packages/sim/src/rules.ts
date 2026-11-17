@@ -9,13 +9,20 @@ export { ENEMY_HERO, arrivals } from './waves.ts';
 export function knockOut(ctx: SimContext, s: SimState, f: Fighter): void {
   if (!f.stocks || f.respawn) return;
   f.stocks--;
-  f.action = null; f.buffer = null; f.stun = f.hitstop = 0; f.vx = f.vy = f.kx = 0;
-  f.weapon = 'unarmed'; f.carry = false;
+  f.action = null;
+  f.buffer = null;
+  f.stun = f.hitstop = 0;
+  f.vx = f.vy = f.kx = 0;
+  f.weapon = 'unarmed';
+  f.carry = false;
   f.respawn = f.stocks ? ctx.R.respawnDelayTicks : 0;
   if (!f.stocks) f.eliminatedAt = s.tick;
   for (const it of s.items) if (it.claim === f.id) it.claim = null;
   event(s, 'ko', { fighter: f.id, x: f.x, y: f.y });
-  if (s.mode === 'training') { f.stocks = 3; f.respawn = 60; }
+  if (s.mode === 'training') {
+    f.stocks = 3;
+    f.respawn = 60;
+  }
 }
 
 const teamsOf = (fs: Fighter[]) => [...new Set(fs.map(f => f.team))];
@@ -32,7 +39,11 @@ function startSuddenDeath(ctx: SimContext, s: SimState, contenders: Fighter[]): 
   s.suddenDeath = true;
   s.remaining = R.suddenDeath.durationTicks;
   for (const f of s.fighters) {
-    if (!ids.has(f.id)) { f.stocks = 0; f.respawn = 0; continue; }
+    if (!ids.has(f.id)) {
+      f.stocks = 0;
+      f.respawn = 0;
+      continue;
+    }
     const wasOut = f.stocks === 0;
     f.stocks = R.suddenDeath.stocks;
     f.damage = R.suddenDeath.damageTenths;
@@ -49,7 +60,11 @@ function standings(s: SimState, living: Fighter[]): { members: Fighter[]; stocks
     groups.set(key, [...(groups.get(key) ?? []), f]);
   }
   return [...groups.values()]
-    .map(members => ({ members, stocks: members.reduce((n, f) => n + f.stocks, 0), damage: members.reduce((n, f) => n + f.damage, 0) }))
+    .map(members => ({
+      members,
+      stocks: members.reduce((n, f) => n + f.stocks, 0),
+      damage: members.reduce((n, f) => n + f.damage, 0),
+    }))
     .sort((a, b) => b.stocks - a.stocks || a.damage - b.damage || a.members[0].id - b.members[0].id);
 }
 
@@ -70,7 +85,15 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
   if (!humans.some(f => f.stocks)) {
     if (s.mode === 'local' || s.mode === 'teams' || s.mode === 'ffa') {
       // Remaining fighters (computer seats) play on; the time limit still applies.
-      if (teamsOf(living).length <= 1) { finish(s, false, 'Match complete', living.map(f => f.id)); return; }
+      if (teamsOf(living).length <= 1) {
+        finish(
+          s,
+          false,
+          'Match complete',
+          living.map(f => f.id),
+        );
+        return;
+      }
       if (s.remaining > 0) return;
     } else {
       finish(s, false, 'All three lives used');
@@ -84,15 +107,27 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
     return;
   }
   if (s.remaining <= 0) {
-    if (s.options.storyFight !== undefined) { finish(s, false, 'Time expired before the opponent fell'); return; }
+    if (s.options.storyFight !== undefined) {
+      finish(s, false, 'Time expired before the opponent fell');
+      return;
+    }
     const ranked = standings(s, living);
     const tied = ranked.length > 1 && ranked[0].stocks === ranked[1].stocks && ranked[0].damage === ranked[1].damage;
     if (tied && !s.suddenDeath) {
       const top = ranked.filter(g => g.stocks === ranked[0].stocks && g.damage === ranked[0].damage);
-      startSuddenDeath(ctx, s, top.flatMap(g => g.members));
+      startSuddenDeath(
+        ctx,
+        s,
+        top.flatMap(g => g.members),
+      );
       return;
     }
     const winners = tied ? [] : ranked[0].members;
-    finish(s, winners.some(f => f.human), tied ? 'Time limit — draw' : 'Time limit — lives, then damage decide', winners.map(f => f.id));
+    finish(
+      s,
+      winners.some(f => f.human),
+      tied ? 'Time limit — draw' : 'Time limit — lives, then damage decide',
+      winners.map(f => f.id),
+    );
   }
 }

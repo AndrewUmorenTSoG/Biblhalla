@@ -23,7 +23,10 @@ const WEAPON_SLOTS = ['nlight', 'slight', 'dlight', 'nair', 'sair', 'dair', 'rec
 export class ContentError extends Error {
   readonly problems: string[];
   constructor(problems: string[]) {
-    super(`Biblhalla content failed validation (${problems.length} problem${problems.length === 1 ? '' : 's'}):\n- ` + problems.slice(0, 40).join('\n- '));
+    super(
+      `Biblhalla content failed validation (${problems.length} problem${problems.length === 1 ? '' : 's'}):\n- ` +
+        problems.slice(0, 40).join('\n- '),
+    );
     this.name = 'ContentError';
     this.problems = problems;
   }
@@ -48,46 +51,79 @@ function checkAttack(m: Attack, angles: Set<string>, problems: string[]): void {
   const at = `attack ${m.id}`;
   if (!m.id) problems.push('attack with missing id');
   if (m.startup < 1 || m.active < 1 || m.recovery < 0) problems.push(`${at}: invalid frame windows`);
-  if (m.totalTicks !== m.startup + m.active + m.recovery) problems.push(`${at}: totalTicks ${m.totalTicks} != startup+active+recovery`);
+  if (m.totalTicks !== m.startup + m.active + m.recovery)
+    problems.push(`${at}: totalTicks ${m.totalTicks} != startup+active+recovery`);
   if (!DIRECTIONS.includes(m.input?.direction)) problems.push(`${at}: unsupported direction ${m.input?.direction}`);
   if (m.input?.button !== 'light' && m.input?.button !== 'heavy') problems.push(`${at}: unsupported button`);
-  if (!angles.has(String(m.launchAngle))) problems.push(`${at}: launchAngle ${m.launchAngle} missing from directionLookup`);
+  if (!angles.has(String(m.launchAngle)))
+    problems.push(`${at}: launchAngle ${m.launchAngle} missing from directionLookup`);
   if (m.damageTenths <= 0 || m.hitstunTicks < 0 || m.baseForceQ < 0) problems.push(`${at}: invalid damage/stun/force`);
-  if (m.delivery === 'melee' && m.collisionPhases.length === 0) problems.push(`${at}: melee attack has no collision phase`);
+  if (m.delivery === 'melee' && m.collisionPhases.length === 0)
+    problems.push(`${at}: melee attack has no collision phase`);
   if (m.delivery === 'projectile' && !m.projectile) problems.push(`${at}: projectile attack has no projectile`);
-  for (const [hero,phases]of Object.entries(m.fighterCollisionPhases??{}))if(!hero||!Array.isArray(phases)||!phases.length)problems.push(`${at}: invalid fighter contact phases`);
-  for (const p of [...m.collisionPhases,...Object.values(m.fighterCollisionPhases??{}).flatMap(p=>Array.isArray(p)?p:[])]) {
-    if(p.forcePermille!==undefined&&(!Number.isInteger(p.forcePermille)||p.forcePermille<0||p.forcePermille>1000))problems.push(`${at}: invalid phase force multiplier`);
-    if(p.damagePermille!==undefined&&(p.damagePermille<1||p.damagePermille>1000))problems.push(`${at}: invalid phase damage multiplier`);
-    if(p.grabTicks!==undefined&&(p.grabTicks<1||p.grabTicks>30))problems.push(`${at}: invalid grab duration`);
-    if (p.firstTick < 0 || p.lastTickExclusive <= p.firstTick || p.lastTickExclusive > m.totalTicks) problems.push(`${at}: collision phase timing out of range`);
-    if (p.rectUnits.length !== 4 || p.rectUnits[2] <= 0 || p.rectUnits[3] <= 0) problems.push(`${at}: zero or negative hit shape`);
+  for (const [hero, phases] of Object.entries(m.fighterCollisionPhases ?? {}))
+    if (!hero || !Array.isArray(phases) || !phases.length) problems.push(`${at}: invalid fighter contact phases`);
+  for (const p of [
+    ...m.collisionPhases,
+    ...Object.values(m.fighterCollisionPhases ?? {}).flatMap(p => (Array.isArray(p) ? p : [])),
+  ]) {
+    if (
+      p.forcePermille !== undefined &&
+      (!Number.isInteger(p.forcePermille) || p.forcePermille < 0 || p.forcePermille > 1000)
+    )
+      problems.push(`${at}: invalid phase force multiplier`);
+    if (p.damagePermille !== undefined && (p.damagePermille < 1 || p.damagePermille > 1000))
+      problems.push(`${at}: invalid phase damage multiplier`);
+    if (p.grabTicks !== undefined && (p.grabTicks < 1 || p.grabTicks > 30))
+      problems.push(`${at}: invalid grab duration`);
+    if (p.firstTick < 0 || p.lastTickExclusive <= p.firstTick || p.lastTickExclusive > m.totalTicks)
+      problems.push(`${at}: collision phase timing out of range`);
+    if (p.rectUnits.length !== 4 || p.rectUnits[2] <= 0 || p.rectUnits[3] <= 0)
+      problems.push(`${at}: zero or negative hit shape`);
   }
   const pr = m.projectile;
   if (pr) {
-    if(pr.originFromMove!==undefined&&typeof pr.originFromMove!=='boolean')problems.push(`${at}: invalid authored origin flag`);
-    if(pr.floorBounceVelocityQ!==undefined&&(!Number.isInteger(pr.floorBounceVelocityQ)||pr.floorBounceVelocityQ<=0||!pr.boomerangRangeUnits))problems.push(`${at}: invalid shield floor bounce`);
-    if(pr.returnOriginUnits!==undefined&&(pr.returnOriginUnits.length!==2||!pr.returnOriginUnits.every(Number.isFinite)))problems.push(`${at}: invalid shield catch origin`);
-    if(pr.boomerangRangeUnits!==undefined&&(pr.boomerangRangeUnits<1||pr.boomerangRangeUnits>160))problems.push(`${at}: returning shield exceeds four body widths`);
+    if (pr.originFromMove !== undefined && typeof pr.originFromMove !== 'boolean')
+      problems.push(`${at}: invalid authored origin flag`);
+    if (
+      pr.floorBounceVelocityQ !== undefined &&
+      (!Number.isInteger(pr.floorBounceVelocityQ) || pr.floorBounceVelocityQ <= 0 || !pr.boomerangRangeUnits)
+    )
+      problems.push(`${at}: invalid shield floor bounce`);
+    if (
+      pr.returnOriginUnits !== undefined &&
+      (pr.returnOriginUnits.length !== 2 || !pr.returnOriginUnits.every(Number.isFinite))
+    )
+      problems.push(`${at}: invalid shield catch origin`);
+    if (pr.boomerangRangeUnits !== undefined && (pr.boomerangRangeUnits < 1 || pr.boomerangRangeUnits > 160))
+      problems.push(`${at}: returning shield exceeds four body widths`);
     if (pr.spawnTick < 0 || pr.spawnTick >= m.totalTicks) problems.push(`${at}: projectile spawn outside action`);
     if (pr.lifetimeTicks <= 0 || pr.speedQ <= 0) problems.push(`${at}: projectile has no lifetime or speed`);
     if (pr.collisionUnits[0] <= 0 || pr.collisionUnits[1] <= 0) problems.push(`${at}: projectile has zero size`);
-    if (!angles.has(String(pr.travelAngle))) problems.push(`${at}: travelAngle ${pr.travelAngle} missing from directionLookup`);
+    if (!angles.has(String(pr.travelAngle)))
+      problems.push(`${at}: travelAngle ${pr.travelAngle} missing from directionLookup`);
     if (pr.homing) problems.push(`${at}: homing projectiles are not supported`);
   }
-  if(m.chargeHoldTick!==undefined&&(!Number.isInteger(m.chargeHoldTick)||m.chargeHoldTick<0||m.chargeHoldTick>=m.startup))problems.push(`${at}: charge hold outside startup`);
+  if (
+    m.chargeHoldTick !== undefined &&
+    (!Number.isInteger(m.chargeHoldTick) || m.chargeHoldTick < 0 || m.chargeHoldTick >= m.startup)
+  )
+    problems.push(`${at}: charge hold outside startup`);
   if (m.chargeable && m.chargeMaxTicks <= 0) problems.push(`${at}: chargeable without charge window`);
   if (m.invulnerability) problems.push(`${at}: attack-granted invulnerability is not allowed`);
 }
 
 /** Validate compiled content. Returns nothing; throws ContentError listing every problem. */
-export function validateContent(c: Content, campaignCounts: {levels:number; chapters:number} = EXPECTED): void {
+export function validateContent(c: Content, campaignCounts: { levels: number; chapters: number } = EXPECTED): void {
   const problems: string[] = [];
-  const need = (cond: unknown, msg: string) => { if (!cond) problems.push(msg); };
+  const need = (cond: unknown, msg: string) => {
+    if (!cond) problems.push(msg);
+  };
 
   need(c && typeof c === 'object', 'content is missing');
   if (!c || typeof c !== 'object') throw new ContentError(problems);
-  for (const key of ['fighters', 'weapons', 'attacks', 'maps', 'physics', 'rules', 'campaign'] as const) need(c[key], `missing ${key} data`);
+  for (const key of ['fighters', 'weapons', 'attacks', 'maps', 'physics', 'rules', 'campaign'] as const)
+    need(c[key], `missing ${key} data`);
   if (problems.length) throw new ContentError(problems);
 
   checkIntegers({ physics: c.physics, rules: c.rules, maps: c.maps, attacks: c.attacks }, 'content', problems);
@@ -104,17 +140,30 @@ export function validateContent(c: Content, campaignCounts: {levels:number; chap
   need(fighters.length === EXPECTED.fighters, `expected ${EXPECTED.fighters} fighters, found ${fighters.length}`);
   need(maps.length === EXPECTED.arenas, `expected ${EXPECTED.arenas} arenas, found ${maps.length}`);
   need(levels.length === campaignCounts.levels, `expected ${campaignCounts.levels} levels, found ${levels.length}`);
-  need(chapters.length === campaignCounts.chapters, `expected ${campaignCounts.chapters} chapters, found ${chapters.length}`);
+  need(
+    chapters.length === campaignCounts.chapters,
+    `expected ${campaignCounts.chapters} chapters, found ${chapters.length}`,
+  );
 
   const ids = new Map<string, Attack>();
   for (const m of attacks) {
     if (ids.has(m.id)) problems.push(`duplicate attack id ${m.id}`);
     ids.set(m.id, m);
     checkAttack(m, angles, problems);
-    for(const hero of Object.keys(m.fighterCollisionPhases??{}))need(fighters.some(f=>f.id===hero),`attack ${m.id}: unknown fighter contact override ${hero}`);
+    for (const hero of Object.keys(m.fighterCollisionPhases ?? {}))
+      need(
+        fighters.some(f => f.id === hero),
+        `attack ${m.id}: unknown fighter contact override ${hero}`,
+      );
   }
-  need(attacks.filter(m => m.ownerType === 'fighter' && /_[nsd]sig$/.test(m.id)).length === EXPECTED.signatureAttacks, 'expected 72 fighter signatures');
-  need(attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks, 'expected 102 shared/unarmed attacks');
+  need(
+    attacks.filter(m => m.ownerType === 'fighter' && /_[nsd]sig$/.test(m.id)).length === EXPECTED.signatureAttacks,
+    'expected 72 fighter signatures',
+  );
+  need(
+    attacks.filter(m => m.ownerType === 'weapon').length === EXPECTED.sharedAttacks,
+    'expected 102 shared/unarmed attacks',
+  );
 
   // Weapon grammar: every family has the eight base slots; unarmed also has three grounded heavies.
   const families = weapons.filter(w => w.id !== 'unarmed');
@@ -131,24 +180,37 @@ export function validateContent(c: Content, campaignCounts: {levels:number; chap
     need(!fighterIds.has(f.id), `duplicate fighter ${f.id}`);
     fighterIds.add(f.id);
     need(!SACRED_NAMES.test(f.name), `fighter ${f.id}: sacred figures are never playable`);
-    need(f.weaponPair?.length === 2 && f.weaponPair[0] !== f.weaponPair[1], `fighter ${f.id}: needs two distinct weapons`);
+    need(
+      f.weaponPair?.length === 2 && f.weaponPair[0] !== f.weaponPair[1],
+      `fighter ${f.id}: needs two distinct weapons`,
+    );
     for (const w of f.weaponPair ?? []) {
       need(weaponIds.has(w), `fighter ${f.id}: unknown weapon ${w}`);
-      for (const d of DIRECTIONS) need(ids.has(`${f.id}_${w}_${SIG_SUFFIX[d]}`), `fighter ${f.id}: missing signature ${f.id}_${w}_${SIG_SUFFIX[d]}`);
+      for (const d of DIRECTIONS)
+        need(
+          ids.has(`${f.id}_${w}_${SIG_SUFFIX[d]}`),
+          `fighter ${f.id}: missing signature ${f.id}_${w}_${SIG_SUFFIX[d]}`,
+        );
     }
     for (const id of f.signatureIds ?? []) need(ids.has(id), `fighter ${f.id}: unknown signature ${id}`);
-    for (const k of ['power', 'guard', 'speed'] as const) need(isSafeInt(f.stats?.[k]) && f.stats[k] >= 1 && f.stats[k] <= 10, `fighter ${f.id}: stat ${k} out of range`);
+    for (const k of ['power', 'guard', 'speed'] as const)
+      need(isSafeInt(f.stats?.[k]) && f.stats[k] >= 1 && f.stats[k] <= 10, `fighter ${f.id}: stat ${k} out of range`);
   }
 
   for (const m of maps) {
     const at = `map ${m.id}`;
-    for (const p of [m.main, ...m.platforms]) need(p && p.rectUnits?.length === 4 && p.rectUnits[2] > 0 && p.rectUnits[3] > 0, `${at}: invalid platform ${p?.id}`);
+    for (const p of [m.main, ...m.platforms])
+      need(
+        p && p.rectUnits?.length === 4 && p.rectUnits[2] > 0 && p.rectUnits[3] > 0,
+        `${at}: invalid platform ${p?.id}`,
+      );
     need(m.main?.kind === 'solid', `${at}: main stage must be solid`);
     need(m.spawnFeetUnits?.length === 4, `${at}: needs four spawn points`);
     need(m.pickupSpawnUnits?.length >= 1, `${at}: needs pickup spawns`);
     const b = m.blastBoundsUnits;
     need(b && b.minX < b.maxX && b.minY < b.maxY, `${at}: invalid blast bounds`);
-    for (const [x, y] of m.spawnFeetUnits ?? []) need(b && x > b.minX && x < b.maxX && y > b.minY && y < b.maxY, `${at}: spawn outside blast bounds`);
+    for (const [x, y] of m.spawnFeetUnits ?? [])
+      need(b && x > b.minX && x < b.maxX && y > b.minY && y < b.maxY, `${at}: spawn outside blast bounds`);
   }
 
   // Campaign: a single sequential chain, offline, finale noncombat.
@@ -160,11 +222,13 @@ export function validateContent(c: Content, campaignCounts: {levels:number; chap
     need(l.previousLevel === (i ? levels[i - 1].id : null), `${at}: previousLevel breaks the chain`);
     need(l.nextLevel === (i < levels.length - 1 ? levels[i + 1].id : null), `${at}: nextLevel breaks the chain`);
     need(!l.unlockAfter || levelIds.has(l.unlockAfter), `${at}: unknown unlockAfter`);
-    if (l.number >= EXPECTED.witnessFinaleFrom) need(!l.combatEnabled, `${at}: finale levels must be noncombat witness scenes`);
+    if (l.number >= EXPECTED.witnessFinaleFrom)
+      need(!l.combatEnabled, `${at}: finale levels must be noncombat witness scenes`);
     if (l.boss) need(!SACRED_NAMES.test(l.boss.name), `${at}: sacred figures are never bosses`);
     for (const wave of l.waves) need(Array.isArray(wave) && wave.length > 0 && wave.length <= 8, `${at}: invalid wave`);
   });
-  for (const ch of chapters) for (const id of ch.levels) need(levelIds.has(id), `chapter ${ch.id}: unknown level ${id}`);
+  for (const ch of chapters)
+    for (const id of ch.levels) need(levelIds.has(id), `chapter ${ch.id}: unknown level ${id}`);
   const scripts = c.campaign.scripts ?? [];
   need(scripts.length === levels.length, `expected ${levels.length} level scripts, found ${scripts.length}`);
   scripts.forEach((sc, i) => {
@@ -172,10 +236,16 @@ export function validateContent(c: Content, campaignCounts: {levels:number; chap
     if (!l) return;
     need(sc.id === l.id, `level script ${i + 1} is ${sc.id}, expected ${l.id}`);
     need(!!sc.opening?.text && !!sc.closing?.text, `${sc.id}: missing companion lines`);
-    need(sc.waveEntries.length === l.waves.length, `${sc.id}: ${sc.waveEntries.length} wave entries for ${l.waves.length} waves`);
+    need(
+      sc.waveEntries.length === l.waves.length,
+      `${sc.id}: ${sc.waveEntries.length} wave entries for ${l.waves.length} waves`,
+    );
   });
 
-  need(c.rules.offlineOnly === true && c.rules.requiresNetwork === false && c.rules.requiresAccount === false, 'rules must be offline-only with no account');
+  need(
+    c.rules.offlineOnly === true && c.rules.requiresNetwork === false && c.rules.requiresAccount === false,
+    'rules must be offline-only with no account',
+  );
   for (const d of ['easy', 'hard', 'extreme'] as const) need(c.rules.difficulty?.[d], `rules missing difficulty ${d}`);
 
   if (problems.length) throw new ContentError(problems);

@@ -8,7 +8,14 @@ export const MAX_UNPINNED = 20;
 /** Browser storage is small; stay well under the usual 5 MB per-site limit. */
 export const MAX_LIBRARY_BYTES = 3 * 1024 * 1024;
 
-export interface SavedReplay { id: string; label: string; savedAt: string; pinned: boolean; bytes: number; data: string }
+export interface SavedReplay {
+  id: string;
+  label: string;
+  savedAt: string;
+  pinned: boolean;
+  bytes: number;
+  data: string;
+}
 
 export class ReplayLibrary {
   private items: SavedReplay[] = [];
@@ -19,15 +26,20 @@ export class ReplayLibrary {
     try {
       const raw = storage?.getItem(REPLAY_LIBRARY_KEY);
       const parsed = raw ? JSON.parse(raw) : [];
-      if (Array.isArray(parsed)) this.items = parsed.filter(r => r && typeof r.id === 'string' && typeof r.data === 'string');
-    } catch { this.items = []; }
+      if (Array.isArray(parsed))
+        this.items = parsed.filter(r => r && typeof r.id === 'string' && typeof r.data === 'string');
+    } catch {
+      this.items = [];
+    }
   }
 
   list(): Omit<SavedReplay, 'data'>[] {
     return this.items.map(({ data: _data, ...meta }) => meta);
   }
 
-  get(id: string): string | null { return this.items.find(r => r.id === id)?.data ?? null; }
+  get(id: string): string | null {
+    return this.items.find(r => r.id === id)?.data ?? null;
+  }
 
   /** Add a replay; the oldest unpinned replays are dropped to stay within limits. */
   add(replay: unknown, label: string, now = new Date()): string {
@@ -41,7 +53,11 @@ export class ReplayLibrary {
 
   pin(id: string, pinned = true): void {
     const r = this.items.find(x => x.id === id);
-    if (r) { r.pinned = pinned; this.trim(); this.persist(); }
+    if (r) {
+      r.pinned = pinned;
+      this.trim();
+      this.persist();
+    }
   }
 
   remove(id: string): void {
@@ -50,7 +66,8 @@ export class ReplayLibrary {
   }
 
   private trim(): void {
-    let unpinned = 0, bytes = 0;
+    let unpinned = 0,
+      bytes = 0;
     this.items = this.items.filter(r => {
       if (!r.pinned && ++unpinned > MAX_UNPINNED) return false;
       bytes += r.bytes;
@@ -59,6 +76,10 @@ export class ReplayLibrary {
   }
 
   private persist(): void {
-    try { this.storage?.setItem(REPLAY_LIBRARY_KEY, JSON.stringify(this.items)); } catch { /* storage full or denied: the library stays in memory */ }
+    try {
+      this.storage?.setItem(REPLAY_LIBRARY_KEY, JSON.stringify(this.items));
+    } catch {
+      /* storage full or denied: the library stays in memory */
+    }
   }
 }
