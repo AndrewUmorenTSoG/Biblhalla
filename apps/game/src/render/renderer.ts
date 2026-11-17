@@ -14,7 +14,7 @@ import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery } from './arena-scenes.ts';
 import { SurfaceCache } from './surface-cache.ts';
 import { drawWeapon, drawFlamingSwordPickup, drawFlyingWeapon } from './weapons.ts';
-import { interpolatePosition, cameraEase, runCadence, RunDistance } from './animation.ts';
+import { interpolatePosition, cameraEase, runCadence, RunDistance, goliathStride } from './animation.ts';
 import { drawElements, drawCharge, drawElementProjectile, drawThrowWind, flame } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 import { Callouts } from './callouts.ts';
@@ -47,7 +47,7 @@ export class Renderer{
   previousProjectiles=new Map<number,{x:number;y:number}>();
   previous=new Map<number,{x:number;y:number}>();
   lastWorld:SimState|null=null;
-  capture(world:SimState){this.hitIndicators.collect(world);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100);this.previous.set(f.id,{x:f.x,y:f.y});}}
+  capture(world:SimState){this.hitIndicators.collect(world);if(this.lastWorld!==world){this.shieldCatchTicks.clear();this.motion.clear();this.previous.clear();this.runDistance.clear();this.surfaces.clear();this.cheerUntil.clear();this.lastCheerEvent=0;this.feedback.reset();this.callouts.reset();this.lastWorld=world;this.elementEvents=[];}this.previousProjectiles.clear();for(const p of world.projectiles)this.previousProjectiles.set(p.id,{x:p.x,y:p.y});this.collectElements(world);for(const f of world.fighters){this.runDistance.capture(f.id,f.x/Q,world.tick,!!f.ground&&!f.action&&!f.stun&&!f.hitstop&&Math.abs(f.vx)>100, (world.options.storyFight ?? world.options.exhibitionOpponent) === 2 && f.guard !== null ? f.facing : 0);this.previous.set(f.id,{x:f.x,y:f.y});}}
   motion=new Map<number,{tick:number;pose:string;time:number;ground:boolean;landUntil:number;stunned:boolean;facing:number;turnUntil:number}>();
   cheerUntil=new Map<number,number>();lastCheerEvent=0;
   canvas:HTMLCanvasElement;ctx:CanvasRenderingContext2D;S:Engine;art:Record<string,HTMLImageElement>;atlas:Record<string,any>;arenas:Record<string,ArenaArt>;training:{combo:any;history:any[]}|null=null;clips:Record<string,Record<string,Clip>>;symbolic=false;feedback=new Feedback();callouts=new Callouts();quality=new QualityGovernor();camera:any={x:0,y:170,zoom:1};hitIndicators=new HitIndicators();debug=false;reduced=false;
@@ -278,6 +278,7 @@ export class Renderer{
         if (sheet?.naturalWidth) {
           const walking = Math.abs(f.vx) > 100;
           let frame = walking ? 2 + Math.floor(world.tick / 5) % 4 : Math.floor(world.tick / 24) % 2;
+          let stride: ReturnType<typeof goliathStride> | undefined;
           if (champion) {
             const charge = move.kind === 'charge', slam = move.kind === 'sweep';
             const row = charge ? 36 : slam ? 32 : 28;
@@ -286,7 +287,11 @@ export class Renderer{
             else if (run.stage === 'active') frame = row+2;
             else if (run.stage === 'recovery' && run.ticks > move.recovery*.4) frame = row+3;
             else if (!f.ground) frame = 14;
-            else frame = walking ? 16+Math.floor(this.runDistance.phase(f.id,visual.x/Q,12,112))%12 : 28;
+            else if (walking) {
+              const stepLength = 180 * 118 * f.scale / 384;
+              stride = goliathStride(this.runDistance.phase(f.id,visual.x/Q,1,stepLength));
+              frame = stride.frame;
+            } else frame = 28;
           } else if (!f.ground) {
             frame = f.vy > 2*Q ? 13 : f.vy < -2*Q ? 15 : 14;
           } else if (run.stage === 'tell') {
@@ -309,7 +314,18 @@ export class Renderer{
               c.rotate(weight*(run.stage === 'tell' ? -.033 : .035));
               c.translate(weight*size*(run.stage === 'tell' ? -.012 : .021),0);
             }
-            c.drawImage(sheet,frame%4*cell,Math.floor(frame/4)*cell,cell,cell,-size*168/384,-size*377/384,size,size);
+            c.scale(size/cell,size/cell);
+            c.translate(-168,-377-(stride?.lift ?? 0));
+            const sx=frame%4*cell, sy=Math.floor(frame/4)*cell;
+            if (stride?.footShift) {
+              const hips=298;
+              c.drawImage(sheet,sx,sy,cell,hips,0,0,cell,hips);
+              c.translate(0,hips);
+              c.transform(1,0,stride.footShift/(377-hips),1,0,0);
+              c.drawImage(sheet,sx,sy+hips,cell,cell-hips,0,0,cell,cell-hips);
+            } else {
+              c.drawImage(sheet,sx,sy,cell,cell,0,0,cell,cell);
+            }
           } else {
             c.drawImage(sheet,frame%4*cell,Math.floor(frame/4)*cell,cell,cell,-size/2,-size,size,size);
           }
