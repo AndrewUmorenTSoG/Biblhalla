@@ -5,65 +5,232 @@ import type { Settings } from '../storage/profile.ts';
 import { isGameKey, keyboardFrame } from './keymap.ts';
 
 /** The six game buttons every input device maps onto. */
-const actions=['jump','light','heavy','dodge','item','interact'];
+const actions = ['jump', 'light', 'heavy', 'dodge', 'item', 'interact'];
 /** Controller slots a human fighter is bound to that are no longer connected; any one pauses the match. */
-export function missingControllers(fighters:{human:boolean;inputId:string}[],connected:number[]):number[]{
-  return fighters.filter(f=>f.human&&/^pad:\d+$/.test(f.inputId)).map(f=>Number(f.inputId.slice(4))).filter(i=>!connected.includes(i));
+export function missingControllers(fighters: { human: boolean; inputId: string }[], connected: number[]): number[] {
+  return fighters
+    .filter(f => f.human && /^pad:\d+$/.test(f.inputId))
+    .map(f => Number(f.inputId.slice(4)))
+    .filter(i => !connected.includes(i));
 }
 /**
  * Standard-mapping controller -> semantic frame. Stick past the dead zone or D-pad;
  * opposite D-pad directions cancel to neutral. South Jump, West Light, North Heavy,
  * East or R2 Dodge, R1 Pickup/Throw, L1 Interact. Presses are rising edges.
  */
-export function padFrame(values:boolean[],axes:number[],old:boolean[],deadzone:number){
-  const edge=(n:number)=>!!values[n]&&!old[n];
-  let x=Math.abs(axes[0]||0)>deadzone?Math.sign(axes[0]):0,y=Math.abs(axes[1]||0)>deadzone?-Math.sign(axes[1]):0;
-  if(values[14]||values[15])x=(values[15]?1:0)-(values[14]?1:0);
-  if(values[12]||values[13])y=(values[12]?1:0)-(values[13]?1:0);
-  return {x,y,jump:edge(0),jumpHeld:!!values[0],light:edge(2),heavy:edge(3),heavyHeld:!!values[3],dodge:edge(1)||edge(7),item:edge(5),interact:edge(4),interactHeld:!!values[4]};
+export function padFrame(values: boolean[], axes: number[], old: boolean[], deadzone: number) {
+  const edge = (n: number) => !!values[n] && !old[n];
+  let x = Math.abs(axes[0] || 0) > deadzone ? Math.sign(axes[0]) : 0,
+    y = Math.abs(axes[1] || 0) > deadzone ? -Math.sign(axes[1]) : 0;
+  if (values[14] || values[15]) x = (values[15] ? 1 : 0) - (values[14] ? 1 : 0);
+  if (values[12] || values[13]) y = (values[12] ? 1 : 0) - (values[13] ? 1 : 0);
+  return {
+    x,
+    y,
+    jump: edge(0),
+    jumpHeld: !!values[0],
+    light: edge(2),
+    heavy: edge(3),
+    heavyHeld: !!values[3],
+    dodge: edge(1) || edge(7),
+    item: edge(5),
+    interact: edge(4),
+    interactHeld: !!values[4],
+  };
 }
 /**
  * Charge toggle (accessibility): a Heavy press starts holding the charge and the next
  * Heavy press releases it, instead of holding the button. It only changes heavyHeld,
  * which is the same legal input as holding, and never automates timing.
  */
-export function applyChargeToggle(frame:any,latch:Set<string>,id:string){
-  if(!frame)return frame;
-  const out={...frame};
-  if(frame.heavy){if(latch.has(id)){latch.delete(id);out.heavy=false;}else latch.add(id);}
-  out.heavyHeld=latch.has(id);
+export function applyChargeToggle(frame: any, latch: Set<string>, id: string) {
+  if (!frame) return frame;
+  const out = { ...frame };
+  if (frame.heavy) {
+    if (latch.has(id)) {
+      latch.delete(id);
+      out.heavy = false;
+    } else latch.add(id);
+  }
+  out.heavyHeld = latch.has(id);
   return out;
 }
 /** Collects keyboard, touch and controller input and turns it into one game-button frame per device each tick. Holds which keys are down and which were just pressed. */
-export class Inputs{
-  held:Set<string>;edges:Set<string>;touch:any;touchEdges:Set<string>;axis:any;settings:Settings;onPause:()=>void;active:boolean;controlActivity:number;padPrevious:any;padSeen:Set<number>;stick:any;stickPointer:number|null;chargeLatch:Set<string>=new Set();
+export class Inputs {
+  held: Set<string>;
+  edges: Set<string>;
+  touch: any;
+  touchEdges: Set<string>;
+  axis: any;
+  settings: Settings;
+  onPause: () => void;
+  active: boolean;
+  controlActivity: number;
+  padPrevious: any;
+  padSeen: Set<number>;
+  stick: any;
+  stickPointer: number | null;
+  chargeLatch: Set<string> = new Set();
   /** Listen for key presses and releases; clear everything when the window loses focus. */
-  constructor(settings:Settings,onPause:()=>void){this.settings=settings;this.onPause=onPause;this.held=new Set();this.edges=new Set();this.touch={};this.touchEdges=new Set();this.axis={x:0,y:0};this.active=false;this.controlActivity=0;this.padPrevious={};this.padSeen=new Set();this.stick=null;this.stickPointer=null;
-    window.addEventListener('keydown',(e:KeyboardEvent)=>{if(e.target instanceof HTMLInputElement||e.target instanceof HTMLSelectElement||e.target instanceof HTMLTextAreaElement)return;
-      if(e.code===this.settings.bindings.pause||e.code==='KeyP'&&!Object.values(this.settings.bindings).includes('KeyP')){if(this.active){e.preventDefault();this.onPause();}return;}
-      if(isGameKey(this.settings.bindings,e.code)){if(this.active)e.preventDefault();if(!this.held.has(e.code)){this.edges.add(e.code);this.controlActivity++;}this.held.add(e.code);}
-    });window.addEventListener('keyup',(e:KeyboardEvent)=>{this.held.delete(e.code);});window.addEventListener('blur',()=>this.clear());
+  constructor(settings: Settings, onPause: () => void) {
+    this.settings = settings;
+    this.onPause = onPause;
+    this.held = new Set();
+    this.edges = new Set();
+    this.touch = {};
+    this.touchEdges = new Set();
+    this.axis = { x: 0, y: 0 };
+    this.active = false;
+    this.controlActivity = 0;
+    this.padPrevious = {};
+    this.padSeen = new Set();
+    this.stick = null;
+    this.stickPointer = null;
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLSelectElement ||
+        e.target instanceof HTMLTextAreaElement
+      )
+        return;
+      if (
+        e.code === this.settings.bindings.pause ||
+        (e.code === 'KeyP' && !Object.values(this.settings.bindings).includes('KeyP'))
+      ) {
+        if (this.active) {
+          e.preventDefault();
+          this.onPause();
+        }
+        return;
+      }
+      if (isGameKey(this.settings.bindings, e.code)) {
+        if (this.active) e.preventDefault();
+        if (!this.held.has(e.code)) {
+          this.edges.add(e.code);
+          this.controlActivity++;
+        }
+        this.held.add(e.code);
+      }
+    });
+    window.addEventListener('keyup', (e: KeyboardEvent) => {
+      this.held.delete(e.code);
+    });
+    window.addEventListener('blur', () => this.clear());
   }
   /** Forget every held key, touch and stick position (used on pause, blur and menus). */
-  clear(){this.held.clear();this.edges.clear();this.touch={};this.touchEdges.clear();this.axis={x:0,y:0};this.padPrevious={};this.stickPointer=null;document.querySelectorAll('[data-action].held').forEach(e=>e.classList.remove('held'));const thumb=document.querySelector('.stick-thumb') as HTMLElement;if(thumb)thumb.style.transform='translate(-50%,-50%)';}
+  clear() {
+    this.held.clear();
+    this.edges.clear();
+    this.touch = {};
+    this.touchEdges.clear();
+    this.axis = { x: 0, y: 0 };
+    this.padPrevious = {};
+    this.stickPointer = null;
+    document.querySelectorAll('[data-action].held').forEach(e => e.classList.remove('held'));
+    const thumb = document.querySelector('.stick-thumb') as HTMLElement;
+    if (thumb) thumb.style.transform = 'translate(-50%,-50%)';
+  }
   /** This tick's keyboard frame, using the player's key bindings. */
-  keyboard(){return keyboardFrame(this.settings.bindings,this.held,this.edges);}
+  keyboard() {
+    return keyboardFrame(this.settings.bindings, this.held, this.edges);
+  }
   /** Every controller that is currently connected. */
-  pads(){return Array.from(navigator.getGamepads?.()||[]).filter((p:any)=>p&&p.connected) as Gamepad[];}
+  pads() {
+    return Array.from(navigator.getGamepads?.() || []).filter((p: any) => p && p.connected) as Gamepad[];
+  }
   /** This tick's frame for one controller; the Menu button pauses. */
-  gamepad(index:number){const pad=this.pads().find(p=>p.index===index);if(!pad)return {};const old=this.padPrevious[index]||[];const values=pad.buttons.map(b=>b.pressed);const frame=padFrame(values,[...pad.axes],old,this.settings.deadzone);
-    if(values.some(Boolean)||frame.x||frame.y){this.padSeen.add(index);this.controlActivity++;}if(values[9]&&!old[9]&&this.active)this.onPause();this.padPrevious[index]=values;return frame;
+  gamepad(index: number) {
+    const pad = this.pads().find(p => p.index === index);
+    if (!pad) return {};
+    const old = this.padPrevious[index] || [];
+    const values = pad.buttons.map(b => b.pressed);
+    const frame = padFrame(values, [...pad.axes], old, this.settings.deadzone);
+    if (values.some(Boolean) || frame.x || frame.y) {
+      this.padSeen.add(index);
+      this.controlActivity++;
+    }
+    if (values[9] && !old[9] && this.active) this.onPause();
+    this.padPrevious[index] = values;
+    return frame;
   }
   /** Read every device once for this tick (keyboard, touch, each controller), then clear the just-pressed flags. */
-  readAll(){const frames:any={keyboard:this.keyboard(),touch:{x:Math.sign(this.axis.x),y:Math.sign(this.axis.y),jumpHeld:!!this.touch.jump,heavyHeld:!!this.touch.heavy,interactHeld:!!this.touch.interact}};for(const a of actions)frames.touch[a]=this.touchEdges.has(a);for(const pad of this.pads())frames['pad:'+pad.index]=this.gamepad(pad.index);if(this.settings.chargeToggle)for(const id of Object.keys(frames))frames[id]=applyChargeToggle(frames[id],this.chargeLatch,id);this.edges.clear();this.touchEdges.clear();return frames;}
+  readAll() {
+    const frames: any = {
+      keyboard: this.keyboard(),
+      touch: {
+        x: Math.sign(this.axis.x),
+        y: Math.sign(this.axis.y),
+        jumpHeld: !!this.touch.jump,
+        heavyHeld: !!this.touch.heavy,
+        interactHeld: !!this.touch.interact,
+      },
+    };
+    for (const a of actions) frames.touch[a] = this.touchEdges.has(a);
+    for (const pad of this.pads()) frames['pad:' + pad.index] = this.gamepad(pad.index);
+    if (this.settings.chargeToggle)
+      for (const id of Object.keys(frames)) frames[id] = applyChargeToggle(frames[id], this.chargeLatch, id);
+    this.edges.clear();
+    this.touchEdges.clear();
+    return frames;
+  }
   /** Wire up the on-screen touch buttons and movement stick. */
-  bindTouch(layer:HTMLElement){
-    const ownership=new Map<number,string>();
-    const release=(id:number)=>{const a=ownership.get(id);if(!a)return;ownership.delete(id);this.touch[a]=[...ownership.values()].includes(a);if(!this.touch[a])layer.querySelector('[data-action='+a+']')?.classList.remove('held');};
-    layer.querySelectorAll('[data-action]').forEach((el:any)=>{el.addEventListener('pointerdown',(e:PointerEvent)=>{e.preventDefault();el.setPointerCapture(e.pointerId);const a=el.dataset.action;ownership.set(e.pointerId,a);this.touch[a]=true;this.touchEdges.add(a);this.controlActivity++;el.classList.add('held');});for(const ev of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(ev,((e:PointerEvent)=>release(e.pointerId)) as EventListener);});
-    const stick=layer.querySelector('.stick') as HTMLElement,thumb=layer.querySelector('.stick-thumb') as HTMLElement;this.stick=stick;
-    const move=(e:PointerEvent)=>{if(e.pointerId!==this.stickPointer)return;const r=stick.getBoundingClientRect();let x=(e.clientX-(r.x+r.width/2))/(r.width*.35),y=((r.y+r.height/2)-e.clientY)/(r.height*.35);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}this.axis={x:Math.abs(x)>.2?x:0,y:Math.abs(y)>.4?y:0};thumb.style.transform='translate(calc(-50% + '+(x*r.width*.25)+'px),calc(-50% + '+(-y*r.height*.25)+'px))';};
-    stick.addEventListener('pointerdown',(e:PointerEvent)=>{if(this.stickPointer!==null)return;e.preventDefault();this.stickPointer=e.pointerId;stick.setPointerCapture(e.pointerId);move(e);this.controlActivity++;});stick.addEventListener('pointermove',move);
-    const end=(e:PointerEvent)=>{if(e.pointerId===this.stickPointer){this.stickPointer=null;this.axis={x:0,y:0};thumb.style.transform='translate(-50%,-50%)';}};for(const ev of ['pointerup','pointercancel','lostpointercapture'])stick.addEventListener(ev,end as EventListener);
+  bindTouch(layer: HTMLElement) {
+    const ownership = new Map<number, string>();
+    const release = (id: number) => {
+      const a = ownership.get(id);
+      if (!a) return;
+      ownership.delete(id);
+      this.touch[a] = [...ownership.values()].includes(a);
+      if (!this.touch[a]) layer.querySelector('[data-action=' + a + ']')?.classList.remove('held');
+    };
+    layer.querySelectorAll('[data-action]').forEach((el: any) => {
+      el.addEventListener('pointerdown', (e: PointerEvent) => {
+        e.preventDefault();
+        el.setPointerCapture(e.pointerId);
+        const a = el.dataset.action;
+        ownership.set(e.pointerId, a);
+        this.touch[a] = true;
+        this.touchEdges.add(a);
+        this.controlActivity++;
+        el.classList.add('held');
+      });
+      for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture'])
+        el.addEventListener(ev, ((e: PointerEvent) => release(e.pointerId)) as EventListener);
+    });
+    const stick = layer.querySelector('.stick') as HTMLElement,
+      thumb = layer.querySelector('.stick-thumb') as HTMLElement;
+    this.stick = stick;
+    const move = (e: PointerEvent) => {
+      if (e.pointerId !== this.stickPointer) return;
+      const r = stick.getBoundingClientRect();
+      let x = (e.clientX - (r.x + r.width / 2)) / (r.width * 0.35),
+        y = (r.y + r.height / 2 - e.clientY) / (r.height * 0.35);
+      const len = Math.hypot(x, y);
+      if (len > 1) {
+        x /= len;
+        y /= len;
+      }
+      this.axis = { x: Math.abs(x) > 0.2 ? x : 0, y: Math.abs(y) > 0.4 ? y : 0 };
+      thumb.style.transform =
+        'translate(calc(-50% + ' + x * r.width * 0.25 + 'px),calc(-50% + ' + -y * r.height * 0.25 + 'px))';
+    };
+    stick.addEventListener('pointerdown', (e: PointerEvent) => {
+      if (this.stickPointer !== null) return;
+      e.preventDefault();
+      this.stickPointer = e.pointerId;
+      stick.setPointerCapture(e.pointerId);
+      move(e);
+      this.controlActivity++;
+    });
+    stick.addEventListener('pointermove', move);
+    const end = (e: PointerEvent) => {
+      if (e.pointerId === this.stickPointer) {
+        this.stickPointer = null;
+        this.axis = { x: 0, y: 0 };
+        thumb.style.transform = 'translate(-50%,-50%)';
+      }
+    };
+    for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture'])
+      stick.addEventListener(ev, end as EventListener);
   }
 }

@@ -2,15 +2,25 @@
 // small bobbing chevron over the marker; off screen it is an arrow pinned to the edge,
 // pointing the way, with the task name and distance.
 
-export interface ScreenPoint { x: number; y: number }
-export interface Pointer { onScreen: boolean; x: number; y: number; angle: number }
+export interface ScreenPoint {
+  x: number;
+  y: number;
+}
+export interface Pointer {
+  onScreen: boolean;
+  x: number;
+  y: number;
+  angle: number;
+}
 
 /** Where to draw the pointer for a target at `p`, inside a `w`×`h` view with `margin`. */
 export function edgePointer(p: ScreenPoint, w = 1280, h = 720, margin = 44, top = 96): Pointer {
   const inside = p.x >= margin && p.x <= w - margin && p.y >= top && p.y <= h - margin;
   if (inside) return { onScreen: true, x: p.x, y: p.y, angle: Math.PI / 2 };
-  const cx = w / 2, cy = (top + h) / 2;
-  const dx = p.x - cx, dy = p.y - cy;
+  const cx = w / 2,
+    cy = (top + h) / 2;
+  const dx = p.x - cx,
+    dy = p.y - cy;
   const angle = Math.atan2(dy, dx);
   // Scale the direction until it touches the inset view rectangle.
   const sx = dx === 0 ? Infinity : ((dx > 0 ? w - margin : margin) - cx) / dx;
@@ -25,7 +35,14 @@ export function nextTask<M extends { done: boolean }>(markers: M[]): M | null {
 }
 
 /** Draw the pointer. `distance` is in world units; `label` names the task. */
-export function drawPointer(c: CanvasRenderingContext2D, ptr: Pointer, label: string, distance: number, tick: number, reduced: boolean): void {
+export function drawPointer(
+  c: CanvasRenderingContext2D,
+  ptr: Pointer,
+  label: string,
+  distance: number,
+  tick: number,
+  reduced: boolean,
+): void {
   c.save();
   c.fillStyle = '#ffe3a1';
   c.strokeStyle = '#2a2318';
@@ -33,14 +50,27 @@ export function drawPointer(c: CanvasRenderingContext2D, ptr: Pointer, label: st
   if (ptr.onScreen) {
     const bob = reduced ? 0 : Math.sin(tick * 0.12) * 4;
     c.translate(ptr.x, ptr.y - 64 + bob);
-    c.beginPath(); c.moveTo(-11, -8); c.lineTo(11, -8); c.lineTo(0, 6); c.closePath(); c.fill(); c.stroke();
+    c.beginPath();
+    c.moveTo(-11, -8);
+    c.lineTo(11, -8);
+    c.lineTo(0, 6);
+    c.closePath();
+    c.fill();
+    c.stroke();
     c.restore();
     return;
   }
   c.translate(ptr.x, ptr.y);
   c.save();
   c.rotate(ptr.angle);
-  c.beginPath(); c.moveTo(18, 0); c.lineTo(-8, -13); c.lineTo(-3, 0); c.lineTo(-8, 13); c.closePath(); c.fill(); c.stroke();
+  c.beginPath();
+  c.moveTo(18, 0);
+  c.lineTo(-8, -13);
+  c.lineTo(-3, 0);
+  c.lineTo(-8, 13);
+  c.closePath();
+  c.fill();
+  c.stroke();
   c.restore();
   const text = `${label} · ${Math.round(distance)}m`;
   c.font = 'bold 14px system-ui';

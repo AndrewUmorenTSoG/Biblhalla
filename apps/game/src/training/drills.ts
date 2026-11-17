@@ -13,12 +13,26 @@ export interface Drill {
 
 export const DRILLS: Drill[] = [
   { id: 'fastfall', title: 'Fast fall', goal: 'Jump, then hold Down while falling to drop faster.' },
-  { id: 'weapons', title: 'Weapons', goal: 'Pick up a weapon from a crate, throw it, then pick one up and drop it with Down + Pickup.',
-    setup: s => { s.pickupTick = s.tick + 1; } },
-  { id: 'gravity', title: 'Gravity cancel', goal: 'In the air, Dodge with no direction, then Light: a grounded attack in mid-air. It spends the dodge and ends its protection.' },
+  {
+    id: 'weapons',
+    title: 'Weapons',
+    goal: 'Pick up a weapon from a crate, throw it, then pick one up and drop it with Down + Pickup.',
+    setup: s => {
+      s.pickupTick = s.tick + 1;
+    },
+  },
+  {
+    id: 'gravity',
+    title: 'Gravity cancel',
+    goal: 'In the air, Dodge with no direction, then Light: a grounded attack in mid-air. It spends the dodge and ends its protection.',
+  },
   { id: 'chase', title: 'Chase', goal: 'Land a light hit on the dummy, then Dodge toward it to chase.' },
   { id: 'dashjump', title: 'Dash jump', goal: 'Dodge sideways on the ground to dash, then Jump during the dash.' },
-  { id: 'wall', title: 'Wall jump', goal: 'Fall beside the stage wall holding toward it to slide, then Jump away. Wall help has a limit.' },
+  {
+    id: 'wall',
+    title: 'Wall jump',
+    goal: 'Fall beside the stage wall holding toward it to slide, then Jump away. Wall help has a limit.',
+  },
 ];
 
 export class DrillRun {
@@ -31,7 +45,9 @@ export class DrillRun {
   private hit = false;
   readonly drill: Drill;
 
-  constructor(drill: Drill) { this.drill = drill; }
+  constructor(drill: Drill) {
+    this.drill = drill;
+  }
 
   /** Call once per tick after `step`. Returns true when the drill completes. */
   observe(s: SimState, fastFallCapQ: number, fallCapQ: number): boolean {
@@ -51,8 +67,10 @@ export class DrillRun {
         break;
       case 'gravity':
         if (p.action?.kind === 'attack' && p.action.cancelled) this.done = true;
-        else if (p.action?.kind === 'dodge' && p.action.airborne && (p.action.dx || p.action.dy)) this.note = 'That was a directional dodge; try a neutral dodge.';
-        else if (p.action?.kind === 'dodge' && !p.action.airborne) this.note = 'That dodge was on the ground; jump first.';
+        else if (p.action?.kind === 'dodge' && p.action.airborne && (p.action.dx || p.action.dy))
+          this.note = 'That was a directional dodge; try a neutral dodge.';
+        else if (p.action?.kind === 'dodge' && !p.action.airborne)
+          this.note = 'That dodge was on the ground; jump first.';
         break;
       case 'chase':
         if (s.events.some(e => e.type === 'hit' && e.fighter === d?.id && e.attacker === p.id)) this.hit = true;
@@ -71,5 +89,7 @@ export class DrillRun {
     return this.done;
   }
 
-  get text(): string { return `${this.drill.title}: ${this.drill.goal}${this.note ? '  ' + this.note : ''}`; }
+  get text(): string {
+    return `${this.drill.title}: ${this.drill.goal}${this.note ? '  ' + this.note : ''}`;
+  }
 }

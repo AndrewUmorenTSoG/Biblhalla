@@ -21,7 +21,12 @@ function showFatal(message: string): void {
   document.body.append(box);
 }
 
-type EmbeddedArt = { images?: Record<string, string>; atlas?: Record<string, unknown>; clips?: RuntimeArt['clips']; arenas?: Record<string, { uri: string; horizon: string; stone: string }> };
+type EmbeddedArt = {
+  images?: Record<string, string>;
+  atlas?: Record<string, unknown>;
+  clips?: RuntimeArt['clips'];
+  arenas?: Record<string, { uri: string; horizon: string; stone: string }>;
+};
 
 function image(uri: string): HTMLImageElement {
   const img = new Image();
@@ -33,13 +38,17 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
   // Sheets decode on first use (17_Performance texture budget): a match decodes only its
   // own fighters and arena, and the 2.5 s countdown covers the decode.
   const images = lazyMap(raw?.images ?? {}, uri => image(uri));
-  const arenas = lazyMap(raw?.arenas ?? {}, a => ({ image: image(a.uri), horizon: a.horizon, stone: a.stone })) as NonNullable<RuntimeArt['arenas']>;
+  const arenas = lazyMap(raw?.arenas ?? {}, a => ({
+    image: image(a.uri),
+    horizon: a.horizon,
+    stone: a.stone,
+  })) as NonNullable<RuntimeArt['arenas']>;
   const problems: string[] = [];
   const atlas = guardAtlas(raw?.atlas, problems);
   const clips = guardClips(raw?.clips, atlas, problems);
   // Extra action pages are small; decode them on the menu so the first attack
   // cannot show an empty frame while a lazy texture is starting to load.
-  for(const key of Object.keys(raw?.images??{}))if(!atlas[key] && !key.startsWith('goliath-'))void images[key];
+  for (const key of Object.keys(raw?.images ?? {})) if (!atlas[key] && !key.startsWith('goliath-')) void images[key];
   if (problems.length) console.warn('Biblhalla art skipped:', problems);
   return { images, atlas, clips, arenas };
 }
@@ -47,7 +56,7 @@ function loadArt(raw: EmbeddedArt | undefined): RuntimeArt {
 try {
   const root = globalThis as any;
   const content = root.BiblhallaContent as Content;
-  validateContent(content, {levels:0,chapters:0});
+  validateContent(content, { levels: 0, chapters: 0 });
   const S = createEngine(content);
   startApp(content, S, loadArt(root.BiblhallaArt));
 } catch (err) {

@@ -19,13 +19,16 @@
     "art:check": "node tools/art/validate-art.ts",
     "art:down-attacks": "node tools/art/down-attacks.ts",
     "verify": "npm run typecheck && npm run build && npm test",
-    "release": "node tools/release.ts"
+    "release": "node tools/release.ts",
+    "format": "prettier --write \"apps/game/src/**/*.ts\" \"packages/**/*.ts\"",
+    "format:check": "prettier --check \"apps/game/src/**/*.ts\" \"packages/**/*.ts\""
   },
   "devDependencies": {
     "@types/node": "24.19.2",
     "@types/pngjs": "6.0.5",
     "esbuild": "0.28.2",
     "pngjs": "7.0.0",
+    "prettier": "3.3.3",
     "typescript": "7.0.2"
   }
 }

@@ -4,17 +4,49 @@
 // every loop is identical and the seam is clean. This is a development arrangement;
 // a composer can replace the tables without touching the scheduler.
 
-export interface Arrangement { name: string; bpm: number; root: number; mode: number[]; lead: OscillatorType; leadGain: number; swing: number }
-export interface Note { beat: number; beats: number; freq: number; voice: 'drum' | 'tap' | 'bass' | 'lead'; gain: number }
+export interface Arrangement {
+  name: string;
+  bpm: number;
+  root: number;
+  mode: number[];
+  lead: OscillatorType;
+  leadGain: number;
+  swing: number;
+}
+export interface Note {
+  beat: number;
+  beats: number;
+  freq: number;
+  voice: 'drum' | 'tap' | 'bass' | 'lead';
+  gain: number;
+}
 
-const DORIAN = [0, 2, 3, 5, 7, 9, 10], AEOLIAN = [0, 2, 3, 5, 7, 8, 10], PHRYGIAN_DOM = [0, 1, 4, 5, 7, 8, 10];
+const DORIAN = [0, 2, 3, 5, 7, 9, 10],
+  AEOLIAN = [0, 2, 3, 5, 7, 8, 10],
+  PHRYGIAN_DOM = [0, 1, 4, 5, 7, 8, 10];
 
 /** One arrangement per arena, in maps.json order. */
 export const ARRANGEMENTS: Arrangement[] = [
   { name: 'Elah terrace', bpm: 128, root: 146.83, mode: DORIAN, lead: 'triangle', leadGain: 0.05, swing: 0 },
   { name: 'Wilderness waystation', bpm: 122, root: 130.81, mode: AEOLIAN, lead: 'sine', leadGain: 0.06, swing: 0.08 },
-  { name: 'Jericho outskirts', bpm: 130, root: 164.81, mode: PHRYGIAN_DOM, lead: 'sawtooth', leadGain: 0.025, swing: 0 },
-  { name: "Deborah's palm court", bpm: 126, root: 174.61, mode: PHRYGIAN_DOM, lead: 'triangle', leadGain: 0.05, swing: 0.1 },
+  {
+    name: 'Jericho outskirts',
+    bpm: 130,
+    root: 164.81,
+    mode: PHRYGIAN_DOM,
+    lead: 'sawtooth',
+    leadGain: 0.025,
+    swing: 0,
+  },
+  {
+    name: "Deborah's palm court",
+    bpm: 126,
+    root: 174.61,
+    mode: PHRYGIAN_DOM,
+    lead: 'triangle',
+    leadGain: 0.05,
+    swing: 0.1,
+  },
   { name: 'Susa garden balcony', bpm: 120, root: 155.56, mode: AEOLIAN, lead: 'sine', leadGain: 0.06, swing: 0.06 },
   { name: "Jerusalem builders' court", bpm: 129, root: 138.59, mode: DORIAN, lead: 'square', leadGain: 0.02, swing: 0 },
 ];
@@ -29,7 +61,9 @@ const BASS_DEGREES = [0, 0, 4, 3];
 export const LOOP_BARS = 4;
 
 export function degreeHz(a: Arrangement, degree: number, octave = 0): number {
-  const n = a.mode.length, oct = Math.floor(degree / n) + octave, step = a.mode[((degree % n) + n) % n];
+  const n = a.mode.length,
+    oct = Math.floor(degree / n) + octave,
+    step = a.mode[((degree % n) + n) % n];
   return a.root * Math.pow(2, oct + step / 12);
 }
 
@@ -45,12 +79,26 @@ export function bar(a: Arrangement, index: number): Note[] {
   // A low pedal drives each bar, with two short fifths pushing into the backbeat.
   for (const eighth of [0, 1, 3, 4, 6, 7]) {
     const fifth = eighth === 3 || eighth === 7;
-    notes.push({ beat: eighth / 2, beats: fifth ? 0.2 : 0.36, freq: degreeHz(a, BASS_DEGREES[b] + (fifth ? 4 : 0), -1), voice: 'bass', gain: eighth % 4 ? 0.05 : 0.08 });
+    notes.push({
+      beat: eighth / 2,
+      beats: fifth ? 0.2 : 0.36,
+      freq: degreeHz(a, BASS_DEGREES[b] + (fifth ? 4 : 0), -1),
+      voice: 'bass',
+      gain: eighth % 4 ? 0.05 : 0.08,
+    });
   }
-  if (b >= 2) for (let e = 0; e < 8; e++) {
-    const d = MOTIF[(b - 2) * 8 + e];
-    if (d !== null) notes.push({ beat: e / 2 + (e % 2 ? a.swing : 0), beats: 0.45, freq: degreeHz(a, d, 1), voice: 'lead', gain: a.leadGain });
-  }
+  if (b >= 2)
+    for (let e = 0; e < 8; e++) {
+      const d = MOTIF[(b - 2) * 8 + e];
+      if (d !== null)
+        notes.push({
+          beat: e / 2 + (e % 2 ? a.swing : 0),
+          beats: 0.45,
+          freq: degreeHz(a, d, 1),
+          voice: 'lead',
+          gain: a.leadGain,
+        });
+    }
   return notes;
 }
 
@@ -105,12 +153,14 @@ export class MusicPlayer {
   }
 
   private pump(): void {
-    const ctx = this.ctx, bus = this.bus;
+    const ctx = this.ctx,
+      bus = this.bus;
     if (!ctx || !bus || ctx.state !== 'running') return;
     const beat = 60 / this.arrangement.bpm;
     // Keep about a second of music scheduled ahead.
     while (this.nextTime < ctx.currentTime + 1) {
-      for (const n of bar(this.arrangement, this.nextBar)) this.note(ctx, bus, n, this.nextTime + n.beat * beat, n.beats * beat);
+      for (const n of bar(this.arrangement, this.nextBar))
+        this.note(ctx, bus, n, this.nextTime + n.beat * beat, n.beats * beat);
       this.nextTime += 4 * beat;
       this.nextBar++;
     }
@@ -129,7 +179,8 @@ export class MusicPlayer {
       f.type = 'highpass';
       f.frequency.setValueAtTime(n.freq, t0);
       src.connect(f).connect(g);
-      src.start(t0); src.stop(t0 + seconds + 0.02);
+      src.start(t0);
+      src.stop(t0 + seconds + 0.02);
       return;
     }
     const o = ctx.createOscillator();
@@ -137,7 +188,8 @@ export class MusicPlayer {
     o.frequency.setValueAtTime(n.freq * (n.voice === 'drum' ? 1.6 : 1), t0);
     if (n.voice === 'drum') o.frequency.exponentialRampToValueAtTime(n.freq, t0 + 0.08);
     o.connect(g);
-    o.start(t0); o.stop(t0 + seconds + 0.02);
+    o.start(t0);
+    o.stop(t0 + seconds + 0.02);
   }
 }
 
@@ -145,6 +197,9 @@ function fixedNoise(ctx: AudioContext): AudioBuffer {
   const buffer = ctx.createBuffer(1, ctx.sampleRate / 4, ctx.sampleRate);
   const data = buffer.getChannelData(0);
   let seed = 1013904223;
-  for (let i = 0; i < data.length; i++) { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; data[i] = seed / 2147483648 - 1; }
+  for (let i = 0; i < data.length; i++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    data[i] = seed / 2147483648 - 1;
+  }
   return buffer;
 }

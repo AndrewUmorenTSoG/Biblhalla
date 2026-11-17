@@ -50,7 +50,12 @@ export interface Action {
 }
 
 /** A press held briefly until it becomes legal. `chase` is Dodge + direction after a confirmed hit. */
-export interface Buffered { type: 'jump' | 'light' | 'heavy' | 'chase'; ticks: number; x: number; y: number }
+export interface Buffered {
+  type: 'jump' | 'light' | 'heavy' | 'chase';
+  ticks: number;
+  x: number;
+  y: number;
+}
 
 export interface BotMemory {
   next: number;
@@ -75,7 +80,11 @@ export interface Fighter {
   human: boolean;
   inputId: string;
   team: number;
-  x: number; y: number; vx: number; vy: number; kx: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  kx: number;
   facing: number;
   ground: string | null;
   stocks: number;
@@ -136,7 +145,10 @@ export interface Projectile {
   move: string;
   instance: number;
   facing: number;
-  x: number; y: number; vx: number; vy: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
   gravity: number;
   life: number;
   size: [number, number];
@@ -147,14 +159,21 @@ export interface Projectile {
 
 export interface Item {
   id: number;
-  x: number; y: number; vy: number;
+  x: number;
+  y: number;
+  vy: number;
   life: number;
   neutral: boolean;
   weapon: string | null;
   claim: number | null;
 }
 
-export interface SimEvent { id: number; tick: number; type: string; [key: string]: unknown }
+export interface SimEvent {
+  id: number;
+  tick: number;
+  type: string;
+  [key: string]: unknown;
+}
 
 export type Mode = 'duel' | 'waves' | 'boss' | 'training' | 'local' | 'teams' | 'ffa' | 'story';
 export type Phase = 'countdown' | 'playing' | 'paused' | 'result';
@@ -215,17 +234,56 @@ export interface BossMove {
   caption: string;
 }
 /** Three phases (guard above 65%, above 30%, below 30%), each a move sequence. */
-export interface BossScript { phases: BossMove[][] }
-export interface BossRun { phase: number; index: number; stage: 'gap' | 'tell' | 'active' | 'recovery'; ticks: number; lockX: number; originX: number; instance: number; hit: number[] }
-export interface BossHazard { name: string; kind: BossMove['kind']; stage: 'tell' | 'active'; box: [number, number, number, number]; ticks: number }
+export interface BossScript {
+  phases: BossMove[][];
+}
+export interface BossRun {
+  phase: number;
+  index: number;
+  stage: 'gap' | 'tell' | 'active' | 'recovery';
+  ticks: number;
+  lockX: number;
+  originX: number;
+  instance: number;
+  hit: number[];
+}
+export interface BossHazard {
+  name: string;
+  kind: BossMove['kind'];
+  stage: 'tell' | 'active';
+  box: [number, number, number, number];
+  ticks: number;
+}
 
 /** The next wave arrival, shown at its gate before the opponent appears. */
-export interface WaveCue { x: number; y: number; role: string; ticks: number }
+export interface WaveCue {
+  x: number;
+  y: number;
+  role: string;
+  ticks: number;
+}
 
 /** One line of the results screen. Equal places share a number. */
-export interface Placement { fighter: number; name: string; human: boolean; team: number; place: number; stocks: number; damage: number; damageDealt: number }
+export interface Placement {
+  fighter: number;
+  name: string;
+  human: boolean;
+  team: number;
+  place: number;
+  stocks: number;
+  damage: number;
+  damageDealt: number;
+}
 
-export interface MatchResult { won: boolean; reason: string; winners: number[]; ticks: number; difficulty: string; mode: string; placements: Placement[] }
+export interface MatchResult {
+  won: boolean;
+  reason: string;
+  winners: number[];
+  ticks: number;
+  difficulty: string;
+  mode: string;
+  placements: Placement[];
+}
 
 export interface SimState {
   version: number;

@@ -39,7 +39,8 @@ export function createEngine(content: Content) {
     finish: (s: SimState, won: boolean, reason: string, winners?: number[]) => finish(s, won, reason, winners),
     createFighter: (s: SimState, cfg: FighterConfig, slot: number) => createFighter(ctx, s, cfg, slot),
     selectMove: (f: Fighter, i: InputFrame, grounded?: boolean) => selectMove(ctx, f, input(i), grounded),
-    startAttack: (s: SimState, f: Fighter, i: InputFrame, airCancel?: boolean, move?: Attack) => startAttack(ctx, s, f, input(i), airCancel, move),
+    startAttack: (s: SimState, f: Fighter, i: InputFrame, airCancel?: boolean, move?: Attack) =>
+      startAttack(ctx, s, f, input(i), airCancel, move),
     eligibleItem: (s: SimState, f: Fighter) => eligibleItem(ctx, s, f),
     moveFighter: (s: SimState, f: Fighter, dx: number, dy: number) => moveFighter(ctx, s, f, dx, dy),
     knockOut: (s: SimState, f: Fighter) => knockOut(ctx, s, f),

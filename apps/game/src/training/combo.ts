@@ -39,12 +39,15 @@ export class ComboTracker {
   observe(s: SimState): void {
     const defender = s.fighters.find(f => f.id === this.defenderId);
     if (!defender) return;
-    const hits = s.events.filter(e => e.type === 'hit' && e.fighter === this.defenderId && e.attacker === this.attackerId);
+    const hits = s.events.filter(
+      e => e.type === 'hit' && e.fighter === this.defenderId && e.attacker === this.attackerId,
+    );
     if (hits.length) {
       const linked = this.gap === 0 && this.report.hits > 0;
       this.report.lastGap = Number.isFinite(this.gap) ? this.gap : 0;
       this.report.hits = linked ? this.report.hits + hits.length : hits.length;
-      this.report.damageTenths = (linked ? this.report.damageTenths : 0) + hits.reduce((n, e) => n + Number(e.damage || 0), 0);
+      this.report.damageTenths =
+        (linked ? this.report.damageTenths : 0) + hits.reduce((n, e) => n + Number(e.damage || 0), 0);
       this.report.best = Math.max(this.report.best, this.report.hits);
       this.gap = 0;
       return;
@@ -70,7 +73,14 @@ export function describe(frame: InputFrame | undefined): string {
   if (!frame) return '';
   const dir = (frame.y ?? 0) > 0 ? '↑' : (frame.y ?? 0) < 0 ? '↓' : '';
   const side = (frame.x ?? 0) > 0 ? '→' : (frame.x ?? 0) < 0 ? '←' : '';
-  const buttons = [frame.jump && 'Jump', frame.light && 'Light', frame.heavy && 'Heavy', frame.dodge && 'Dodge', frame.item && 'Item', frame.interact && 'Interact'].filter(Boolean);
+  const buttons = [
+    frame.jump && 'Jump',
+    frame.light && 'Light',
+    frame.heavy && 'Heavy',
+    frame.dodge && 'Dodge',
+    frame.item && 'Item',
+    frame.interact && 'Interact',
+  ].filter(Boolean);
   if (!buttons.length) return '';
   return `${dir}${side}${dir || side ? ' ' : ''}${buttons.join('+')}`;
 }

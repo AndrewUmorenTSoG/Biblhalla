@@ -14,10 +14,11 @@ function label(c: CanvasRenderingContext2D, text: string, x: number, y: number):
   c.restore();
 }
 
-export function drawEncounter(c:CanvasRenderingContext2D, world:SimState):void {
+export function drawEncounter(c: CanvasRenderingContext2D, world: SimState): void {
   const cue = world.cue;
   if (cue) {
-    const x = cue.x / Q, y = cue.y / Q;
+    const x = cue.x / Q,
+      y = cue.y / Q;
     c.strokeStyle = '#b5832f';
     c.lineWidth = 3;
     c.setLineDash([8, 6]);

@@ -9,4 +9,3 @@ export function lazyMap<S, T>(source: Record<string, S>, make: (s: S) => T): Rec
   }
   return out;
 }
-

@@ -1,29 +1,128 @@
 // Per-level objective parameters and original context summaries for all 84 Story
 // Archive scenes. Counts never come from UI text.
 
-export type TaskType = 'route' | 'escort' | 'puzzle' | 'carry' | 'latches' | 'witness' | 'stealth' | 'building' | 'signals' | 'goliath';
-export interface LevelSpec { type: TaskType; count: number; label: string }
+export type TaskType =
+  | 'route'
+  | 'escort'
+  | 'puzzle'
+  | 'carry'
+  | 'latches'
+  | 'witness'
+  | 'stealth'
+  | 'building'
+  | 'signals'
+  | 'goliath';
+export interface LevelSpec {
+  type: TaskType;
+  count: number;
+  label: string;
+}
 
 const SPEC_LIST: [TaskType, number, string][] = [
-  ['route',6,'Creation day panel'],['escort',4,'River context marker'],['puzzle',3,'Cause and consequence'],['escort',3,'Traveler safe gate'],['carry',3,'Workshop plank'],['latches',3,'Cargo latch'],
-  ['route',4,'Pictogram route'],['escort',3,'Supply cart gate'],['route',2,'Captive gate'],['puzzle',4,'Promise context'],['witness',3,'Provision context'],['carry',3,'Water trough'],
-  ['route',3,'Dream viewpoint'],['carry',3,'Peaceful message'],['carry',3,'Archive page'],['stealth',3,'Lawful doorway'],['carry',1,'Message for Ken'],['carry',3,'Supply bundle'],
-  ['escort',3,'Shoreline marker'],['witness',2,'Bush context'],['escort',1,'Exit lane'],['witness',3,'Departure supply'],['route',3,'Far shore marker'],['route',3,'Supply bay'],
-  ['witness',4,'Covenant station'],['building',4,'Workshop material'],['route',1,'Sentinel exit'],['escort',3,'Safe path'],['carry',3,'Memorial token'],['route',3,'Perimeter station'],
-  ['route',2,'Regroup point'],['puzzle',3,'Call context'],['signals',3,'Lantern signal'],['route',3,'Opening window'],['carry',1,'Training gate frame'],['carry',3,'Gleaning bundle'],
-  ['witness',3,'Listening station'],['route',2,'Rally standard'],['route',3,'Ridge route'],['escort',3,'Model flock bay'],['goliath',3,'Composure station'],['stealth',2,'Quiet cave marker'],
-  ['escort',3,'Crowd lane'],['puzzle',4,'Psalm theme'],['puzzle',2,'Wisdom clue'],['carry',3,'Quarry delivery'],['route',2,'Open exit'],['route',1,'Refuge panel'],
-  ['escort',3,'River context clue'],['latches',3,'Model deck rope'],['witness',3,'Reading station'],['route',3,'Refuge approach'],['carry',3,'Archive label'],['escort',1,'Shelter marker'],
-  ['puzzle',3,'Account panel'],['escort',2,'Ember observation'],['witness',2,'Dawn viewpoint'],['building',3,'Repair material'],['witness',2,'Court dialogue checkpoint'],['building',3,'Model wall stone'],
-  ['witness',3,'Promise lookback'],['witness',2,'Announcement context'],['escort',3,'Traveler lane'],['stealth',3,'Protected route'],['witness',3,'River context'],['puzzle',3,'Response context'],
-  ['carry',3,'Model net supply'],['puzzle',4,'Teaching situation'],['carry',3,'Traveler supply'],['latches',3,'Model deck station'],['carry',7,'Model food exhibit'],['route',3,'Archive stepping route'],
-  ['building',3,'Stretcher model lift'],['route',3,'Route home marker'],['escort',3,'Crowd path'],['witness',3,'Bethany context'],['escort',3,'Observation lane'],['puzzle',3,'Teaching context'],
-  ['witness',3,'Service and supper'],['witness',2,'Restraint and arrest'],['witness',3,'Courtyard context'],['witness',2,'Distant viewpoint'],['witness',3,'Quiet journal marker'],['witness',4,'Gospel context']
+  ['route', 6, 'Creation day panel'],
+  ['escort', 4, 'River context marker'],
+  ['puzzle', 3, 'Cause and consequence'],
+  ['escort', 3, 'Traveler safe gate'],
+  ['carry', 3, 'Workshop plank'],
+  ['latches', 3, 'Cargo latch'],
+  ['route', 4, 'Pictogram route'],
+  ['escort', 3, 'Supply cart gate'],
+  ['route', 2, 'Captive gate'],
+  ['puzzle', 4, 'Promise context'],
+  ['witness', 3, 'Provision context'],
+  ['carry', 3, 'Water trough'],
+  ['route', 3, 'Dream viewpoint'],
+  ['carry', 3, 'Peaceful message'],
+  ['carry', 3, 'Archive page'],
+  ['stealth', 3, 'Lawful doorway'],
+  ['carry', 1, 'Message for Ken'],
+  ['carry', 3, 'Supply bundle'],
+  ['escort', 3, 'Shoreline marker'],
+  ['witness', 2, 'Bush context'],
+  ['escort', 1, 'Exit lane'],
+  ['witness', 3, 'Departure supply'],
+  ['route', 3, 'Far shore marker'],
+  ['route', 3, 'Supply bay'],
+  ['witness', 4, 'Covenant station'],
+  ['building', 4, 'Workshop material'],
+  ['route', 1, 'Sentinel exit'],
+  ['escort', 3, 'Safe path'],
+  ['carry', 3, 'Memorial token'],
+  ['route', 3, 'Perimeter station'],
+  ['route', 2, 'Regroup point'],
+  ['puzzle', 3, 'Call context'],
+  ['signals', 3, 'Lantern signal'],
+  ['route', 3, 'Opening window'],
+  ['carry', 1, 'Training gate frame'],
+  ['carry', 3, 'Gleaning bundle'],
+  ['witness', 3, 'Listening station'],
+  ['route', 2, 'Rally standard'],
+  ['route', 3, 'Ridge route'],
+  ['escort', 3, 'Model flock bay'],
+  ['goliath', 3, 'Composure station'],
+  ['stealth', 2, 'Quiet cave marker'],
+  ['escort', 3, 'Crowd lane'],
+  ['puzzle', 4, 'Psalm theme'],
+  ['puzzle', 2, 'Wisdom clue'],
+  ['carry', 3, 'Quarry delivery'],
+  ['route', 2, 'Open exit'],
+  ['route', 1, 'Refuge panel'],
+  ['escort', 3, 'River context clue'],
+  ['latches', 3, 'Model deck rope'],
+  ['witness', 3, 'Reading station'],
+  ['route', 3, 'Refuge approach'],
+  ['carry', 3, 'Archive label'],
+  ['escort', 1, 'Shelter marker'],
+  ['puzzle', 3, 'Account panel'],
+  ['escort', 2, 'Ember observation'],
+  ['witness', 2, 'Dawn viewpoint'],
+  ['building', 3, 'Repair material'],
+  ['witness', 2, 'Court dialogue checkpoint'],
+  ['building', 3, 'Model wall stone'],
+  ['witness', 3, 'Promise lookback'],
+  ['witness', 2, 'Announcement context'],
+  ['escort', 3, 'Traveler lane'],
+  ['stealth', 3, 'Protected route'],
+  ['witness', 3, 'River context'],
+  ['puzzle', 3, 'Response context'],
+  ['carry', 3, 'Model net supply'],
+  ['puzzle', 4, 'Teaching situation'],
+  ['carry', 3, 'Traveler supply'],
+  ['latches', 3, 'Model deck station'],
+  ['carry', 7, 'Model food exhibit'],
+  ['route', 3, 'Archive stepping route'],
+  ['building', 3, 'Stretcher model lift'],
+  ['route', 3, 'Route home marker'],
+  ['escort', 3, 'Crowd path'],
+  ['witness', 3, 'Bethany context'],
+  ['escort', 3, 'Observation lane'],
+  ['puzzle', 3, 'Teaching context'],
+  ['witness', 3, 'Service and supper'],
+  ['witness', 2, 'Restraint and arrest'],
+  ['witness', 3, 'Courtyard context'],
+  ['witness', 2, 'Distant viewpoint'],
+  ['witness', 3, 'Quiet journal marker'],
+  ['witness', 4, 'Gospel context'],
 ];
 
 export const LEVEL_SPECS: LevelSpec[] = SPEC_LIST.map(([type, count, label]) => ({ type, count, label }));
 
-export const CHAPTER_COLORS = ['#6b98a2', '#c58b51', '#bb8469', '#c59a61', '#778e74', '#ae8154', '#748e96', '#af875e', '#7b91a5', '#9a858f', '#879eaa', '#8e9d81', '#b19a76', '#869ca1'];
+export const CHAPTER_COLORS = [
+  '#6b98a2',
+  '#c58b51',
+  '#bb8469',
+  '#c59a61',
+  '#778e74',
+  '#ae8154',
+  '#748e96',
+  '#af875e',
+  '#7b91a5',
+  '#9a858f',
+  '#879eaa',
+  '#8e9d81',
+  '#b19a76',
+  '#869ca1',
+];
 
 /** Original archive summaries, one per level, kept separate from invented challenge text. */
 export const SUMMARIES: string[] = [
@@ -110,5 +209,5 @@ export const SUMMARIES: string[] = [
   'Peter’s denial is narrated without a player choice that rewrites it. The quiet path does not score a person as beyond forgiveness.',
   'The cross is described from a distant viewpoint with captions and optional symbols. There are no crucifixion controls, damage bars or alternate outcomes.',
   'The burial account provides a quiet transition. Journal markers are ordinary, and nothing collected causes the resurrection.',
-  'The empty tomb is presented with separate Gospel-context cards. The friends meet at dawn; hope is expressed through the opened path, without a combat skill gate.'
+  'The empty tomb is presented with separate Gospel-context cards. The friends meet at dawn; hope is expressed through the opened path, without a combat skill gate.',
 ];
