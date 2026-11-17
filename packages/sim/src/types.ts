@@ -197,6 +197,7 @@ export interface MatchOptions {
 
 /** One authored boss move: a locked tell, an active hazard zone, then recovery. */
 export interface BossMove {
+  impactEffect?: 'shieldQuake' | 'spearWind';
   name: string;
   kind: 'lane' | 'sweep' | 'charge' | 'slam' | 'melee';
   frame?: number;

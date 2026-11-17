@@ -8,6 +8,7 @@ import { handGrip, needsCarriedWeapon } from './grip.ts';
 // Canvas 2D renderer. Reads simulation state and events; never mutates them.
 // Floating-point camera and interpolation live here only.
 
+import { drawGoliathImpacts, goliathImpact } from './goliath-impact.ts';
 import { drawEncounter } from './encounter.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
@@ -236,10 +237,16 @@ export class Renderer{
     if(this.reduced){this.camera={x:cx,y:cy,zoom:.85};}else{const ex=cameraEase(.08,active?elapsedMs:0),ey=cameraEase(.06,active?elapsedMs:0);this.camera.x+=(cx-this.camera.x)*ex;this.camera.y+=(cy-this.camera.y)*ey;this.camera.zoom+=(zoom-this.camera.zoom)*ey;}
     const palette=Math.max(0,this.S.content.maps.maps.findIndex((m:any)=>m.id===map.id));this.background(world.tick,palette);
     if(this.quality.frame(elapsedMs))this.feedback.maxPuffs=particleCap(this.quality.low);this.callouts.update(world);this.feedback.reduced=this.reduced;this.feedback.update(world,active?Math.min(6,elapsedMs/(1000/60)):0);const cssToCanvas=this.canvas.clientWidth?this.canvas.width/this.canvas.clientWidth:1,rawShake=this.feedback.offset(world.tick),shake={x:rawShake.x*cssToCanvas,y:rawShake.y*cssToCanvas};
+    const impact=goliathImpact(world,active ? alpha : 0);
+    if(impact?.quake && impact.age<7 && this.feedback.shakeOn && !this.reduced) {
+      const t=impact.age/7;
+      shake.y+=.85*Math.cos(t*Math.PI*3)*(1-t)**2*cssToCanvas;
+    }
     c.save();c.translate(640+shake.x,460+shake.y);c.scale(this.camera.zoom,-this.camera.zoom);c.translate(-this.camera.x,-this.camera.y);
     const surfaceStyle=this.S.content.maps.maps[palette%6].id;for(const pl of [map.main,...map.platforms])this.surfaces.draw(c,surfaceStyle,pl.rectUnits,pl.kind==='solid');
     for(const it of world.items){c.save();c.translate(it.x/Q,it.y/Q);c.scale(.575,-.575);if(it.neutral||!it.weapon)drawFlamingSwordPickup(c,world.tick,this.reduced);else drawWeapon(c,it.weapon,0,-20,Math.PI/3);c.restore();}
     drawEncounter(c,world);
+    drawGoliathImpacts(c, impact, this.reduced, this.quality.low);
     c.restore();
     const screen=(x:number,y:number)=>({x:640+shake.x+(x/Q-this.camera.x)*this.camera.zoom,y:460+shake.y-(y/Q-this.camera.y)*this.camera.zoom});
     this.feedback.draw(c,screen,this.camera.zoom);

@@ -55,7 +55,7 @@ function hitTarget(ctx: SimContext, s: SimState, boss: Fighter, target: Fighter,
   target.hitstop = Math.max(target.hitstop, 5);
   target.action = null; target.buffer = null; target.ground = null;
   for (const it of s.items) if (it.claim === target.id) it.claim = null;
-  event(s, 'hit', { fighter: target.id, attacker: boss.id, x: target.x, y: target.y + 40 * Q, damage: move.damageTenths, hazard: move.name });
+  event(s, 'hit', { fighter: target.id, attacker: boss.id, x: target.x, y: target.y + 40 * Q, damage: move.damageTenths, hazard: move.name, impactEffect: move.impactEffect });
 }
 
 /** Advance the scripted boss one tick. Called after fighters move, before combat. */

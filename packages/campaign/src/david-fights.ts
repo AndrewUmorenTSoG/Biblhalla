@@ -13,8 +13,8 @@ const toss = { ...strike('Mane throw', 60, 80, 44, 16, 45, 15, 'Both paws reach 
 const swat = { ...strike('Side swat', 105, 92, 36, 12, 32, 11, 'One shoulder rolls back. Wait out the paw before stepping in.', 6), advanceUnits: 22 };
 const slam = strike('Overhead crush', 95, 155, 54, 12, 52, 19, 'The paw lifts overhead. Move past his back and punish the landing.', 8);
 const rake = strike('Double rake', 145, 65, 40, 18, 38, 14, 'Both paws drop. Jump his low reach or dodge across it.', 10);
-const thrust = { ...strike('Spear thrust', 179, 100, 29, 9, 25, 24, 'The spear levels. Jump the point and close the distance.', 0), advanceUnits: 24 };
-const sweep = { ...strike('Shield quake', 0, 42, 37, 12, 31, 30, 'Goliath raises his gold shield. Jump as it strikes the ground.', 0), kind: 'sweep' as const };
+const thrust = { ...strike('Spear thrust', 179, 100, 29, 9, 25, 24, 'The spear levels. Jump the point and close the distance.', 0), advanceUnits: 24, impactEffect: 'spearWind' as const };
+const sweep = { ...strike('Shield quake', 0, 42, 37, 12, 31, 30, 'Goliath raises his gold shield. Jump as it strikes the ground.', 0), kind: 'sweep' as const, impactEffect: 'shieldQuake' as const };
 const rush = { ...strike('Champion charge', 95, 110, 32, 21, 42, 34, 'He sets his shoulder. Leave his line and sling during recovery.', 0), kind: 'charge' as const };
 
 export const DAVID_FIGHTS = [

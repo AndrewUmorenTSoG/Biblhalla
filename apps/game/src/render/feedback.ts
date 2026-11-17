@@ -52,7 +52,7 @@ export class Feedback {
       if (e.id <= this.lastEvent) continue;
       this.lastEvent = e.id;
       const f = world.fighters.find((x: any) => x.id === e.fighter);
-      if (e.type === 'hit' && f) this.kick(shakeFor(Math.hypot(f.vx, f.vy), Number(e.damage) || 0));
+      if (e.type === 'hit' && f && e.impactEffect !== 'shieldQuake') this.kick(shakeFor(Math.hypot(f.vx, f.vy), Number(e.damage) || 0));
       if (e.type === 'ko') { this.kick(KO_SHAKE); this.add({ x: e.x, y: e.y, size: 60, life: 30, kind: 'burst' }); }
       if (e.type === 'jump' && f && !this.reduced) this.dust(f.x, f.y, 3);
     }
