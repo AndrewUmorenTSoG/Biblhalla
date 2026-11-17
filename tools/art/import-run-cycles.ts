@@ -1,3 +1,6 @@
+// Art pipeline (Codex): imports a set of finished drawings into the runtime sprite sheets
+// and updates assets/runtime/fighters/fighters.json. Run by hand after new art is drawn.
+
 import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,loadContent,sha256}from'../lib/content.ts';import{figures}from'./import-defence.ts';import{readPng,blank,resize,blit,writePng}from'./image.ts';
 const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'assets/runtime/fighters/fighters-before-run-cycles.json');if(!existsSync(backup))writeFileSync(backup,readFileSync(file));const meta=JSON.parse(readFileSync(backup,'utf8'));
 for(const def of loadContent().fighters.fighters){const e=meta[def.id],sheet=readPng(join(ROOT,existsSync(join(ROOT,`assets/animation-production/run-cycles/${def.id}-corrected.png`))?`assets/animation-production/run-cycles/${def.id}-corrected.png`:`assets/animation-production/run-cycles/${def.id}.png`)),poses=figures(sheet,4,4,1000,64),base=readPng(join(ROOT,e.image));

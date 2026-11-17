@@ -1,3 +1,6 @@
+// Art pipeline (Codex): records where each fighter's hands are in every frame so held
+// weapons line up with the drawing, and saves it into fighters.json.
+
 import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';
 import{ROOT}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';
 const file=join(ROOT,'assets/runtime/fighters/fighters.json'),meta=JSON.parse(readFileSync(file,'utf8'));

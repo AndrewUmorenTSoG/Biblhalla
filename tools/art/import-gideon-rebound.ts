@@ -1,3 +1,6 @@
+// Art pipeline (Codex): imports a set of finished drawings into the runtime sprite sheets
+// and updates assets/runtime/fighters/fighters.json. Run by hand after new art is drawn.
+
 import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,sha256}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';import{figures}from'./import-defence.ts';import{GIDEON_REBOUND_TICKS}from'../../apps/game/src/render/gideon-rebound.ts';
 const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'assets/runtime/fighters/fighters-before-gideon-rebound.json');if(!existsSync(backup))writeFileSync(backup,readFileSync(file));
 const meta=JSON.parse(readFileSync(file,'utf8')),e=meta.gideon,base=readPng(join(ROOT,e.image)),source='assets/animation-production/gideon-rebound/body.png',sheet=readPng(join(ROOT,source)),poses=figures(sheet,4,4,500,64),scale=e.frames.idle.h/poses[0].image.height;

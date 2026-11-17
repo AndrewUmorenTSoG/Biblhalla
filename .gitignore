@@ -20,3 +20,41 @@ assets/runtime/fighters/*-elemental.png
 assets/runtime/fighters/*-fluid-run.png
 assets/runtime/fighters/*-run-cycle.png
 assets/runtime/fighters/fighters-before-*.json
+
+# Intermediate fighter sheets from earlier art passes. The game ships only the sheets
+# fighters.json points at (the *-fluid-packed.png pages and Gideon's rebound and
+# shield-kit pages); these stay on disk for the import tools in tools/art.
+assets/runtime/fighters/*-attacks.png
+assets/runtime/fighters/*-down-packed.png
+assets/runtime/fighters/*-elemental-packed.png
+assets/runtime/fighters/*-equipped.png
+assets/runtime/fighters/*-movement.png
+assets/runtime/fighters/*-smooth-packed.png
+assets/runtime/fighters/*-drawn-sling.png
+assets/runtime/fighters/*-release.png
+assets/runtime/fighters/*-staff-spin.png
+assets/runtime/fighters/caleb-packed.png
+assets/runtime/fighters/david-packed.png
+assets/runtime/fighters/deborah-packed.png
+assets/runtime/fighters/esther-packed.png
+assets/runtime/fighters/gideon-packed.png
+assets/runtime/fighters/jonathan-packed.png
+assets/runtime/fighters/joshua-packed.png
+assets/runtime/fighters/miriam-packed.png
+assets/runtime/fighters/moses-packed.png
+assets/runtime/fighters/nehemiah-packed.png
+assets/runtime/fighters/samson-packed.png
+assets/runtime/fighters/saul-packed.png
+assets/runtime/fighters/gideon-fluid-packed.png
+assets/runtime/fighters/caleb.png
+assets/runtime/fighters/david.png
+assets/runtime/fighters/deborah.png
+assets/runtime/fighters/esther.png
+assets/runtime/fighters/gideon.png
+assets/runtime/fighters/jonathan.png
+assets/runtime/fighters/joshua.png
+assets/runtime/fighters/miriam.png
+assets/runtime/fighters/moses.png
+assets/runtime/fighters/nehemiah.png
+assets/runtime/fighters/samson.png
+assets/runtime/fighters/saul.png

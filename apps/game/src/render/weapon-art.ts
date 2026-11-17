@@ -1,3 +1,6 @@
+// Weapon sprite sheets: decodes the embedded weapon drawings once and draws the right
+// frame for a weapon at a given angle.
+
 import { weaponSprites } from './weapon-sprites.generated.ts';
 const images=new Map<string,HTMLImageElement>();
 // Decode embedded sheets while the title screen is visible, before a fighter

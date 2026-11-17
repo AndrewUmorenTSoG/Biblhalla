@@ -1,3 +1,6 @@
+// Art pipeline (Codex): builds an HTML preview page under assets/animation-production
+// so new animation can be watched in a browser before it ships.
+
 import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';import{ROOT}from'../lib/content.ts';
 const data=JSON.parse(readFileSync(join(ROOT,'assets/runtime/weapons/weapons.json'),'utf8'));
 for(const e of Object.values(data)as any[])e.uri='data:image/png;base64,'+readFileSync(join(ROOT,e.image)).toString('base64');

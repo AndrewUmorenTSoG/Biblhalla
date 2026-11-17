@@ -1,3 +1,6 @@
+// Goliath (story level 41 and David's chapter fights): smooth motion for the giant, his
+// slam and grapple poses, and drawing him and any fighter he is holding.
+
 import type { GoliathState } from '../../../../packages/campaign/src/goliath.ts';
 
 /** Snapshot only the coordinates that change during a tick. Combat always reads the live state. */

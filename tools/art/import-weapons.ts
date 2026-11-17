@@ -1,3 +1,6 @@
+// Art pipeline (Codex): imports a set of finished drawings into the runtime sprite sheets
+// and updates assets/runtime/fighters/fighters.json. Run by hand after new art is drawn.
+
 import{readFileSync,writeFileSync,mkdirSync}from'node:fs';import{join}from'node:path';
 import{ROOT,sha256}from'../lib/content.ts';import{figures}from'./import-defence.ts';import{readPng,blank,resize,blit,writePng}from'./image.ts';
 const sizes:Record<string,number>={sword:84,spear:118,staff:108,hammer:90,bow:85,sling:65,blades:65,gauntlets:40,shield:62};

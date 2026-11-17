@@ -1,3 +1,6 @@
+// Types shared by the whole simulation: inputs, fighters, actions, projectiles, items and
+// the match state. Positions and speeds are whole numbers in Q8 fixed point (256 = 1 unit).
+
 import type { Difficulty, LevelScript, MapDef, Stats } from '../../content/src/index.ts';
 
 /** One tick of semantic input. Axes are -1/0/1 with +y meaning up. */

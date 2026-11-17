@@ -1,3 +1,6 @@
+// Move showcase: plays a fighter's move on a small canvas in the move list, using the
+// real simulation so the preview matches the game exactly.
+
 import type { Attack } from '../../../../packages/content/src/index.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import { Renderer, type RuntimeArt } from '../render/renderer.ts';

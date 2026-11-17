@@ -1,3 +1,6 @@
+// Drawing weapons: thrown weapons in flight, the flaming-sword pickup, and drawn
+// stand-in weapons for fighters without sprite art.
+
 import {drawWeaponSprite} from './weapon-art.ts';
 export function drawFlyingWeapon(c:CanvasRenderingContext2D,kind:string,x:number,y:number,angle:number,phase:number){
  // The weapon is a rigid object: rotate its equipped artwork in flight,

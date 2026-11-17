@@ -1,3 +1,6 @@
+// Goliath's body in the simulation: where he stands, his shield hop and his grapple.
+// Combat and movement rules for the giant live here; drawing is in render/goliath.ts.
+
 import type { Fighter } from '../../sim/src/index.ts';
 import { Q } from '../../sim/src/index.ts';
 

@@ -1,3 +1,7 @@
+// Elemental effects: fire, water, wind, rock and light drawn around elemental attacks,
+// heavy-attack charge glows, elemental projectiles and the wind behind thrown weapons.
+// Drawing only; the simulation decides when each effect happens.
+
 import type { SimState, Fighter, Projectile } from '../../../../packages/sim/src/types.ts';
 import {drawFlyingWeapon} from './weapons.ts';
 type Screen=(x:number,y:number)=>{x:number;y:number};

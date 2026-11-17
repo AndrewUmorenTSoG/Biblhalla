@@ -1,3 +1,5 @@
+// Art pipeline (Codex): quick check that a preview page loads and draws without errors.
+
 import{readFileSync}from'node:fs';import vm from'node:vm';
 let draws=0;const ctx=new Proxy({}as any,{get:()=>()=>{draws++;},set:()=>true});const nodes=new Map();const node=(id:string)=>{if(!nodes.has(id))nodes.set(id,{checked:false,getContext:()=>ctx});return nodes.get(id);};const sandbox=vm.createContext({console,document:{getElementById:node},Image:class{complete=true;naturalWidth=1024;src=''},requestAnimationFrame:()=>{},structuredClone});
 const html=readFileSync('assets/animation-production/gideon-rebound/PLAY.html','utf8');for(const match of html.matchAll(/<script>([\s\S]*?)<\/script>/g))new vm.Script(match[1]).runInContext(sandbox);

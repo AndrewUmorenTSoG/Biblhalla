@@ -1,3 +1,6 @@
+// Small hit markers at the point of contact. Each marker lives for a short, fixed time and
+// the number on screen is capped so a busy four-player fight stays readable.
+
 import type { SimState } from '../../../../packages/sim/src/index.ts';
 
 const lifetime = 24;
