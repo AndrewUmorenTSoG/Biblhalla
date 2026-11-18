@@ -6,6 +6,7 @@ import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import { Renderer, type RuntimeArt } from '../render/renderer.ts';
 
 function inputLabel(move: Attack) {
+  if (move.id === 'caleb_gauntlets_nsig') return 'Grounded · Hold Heavy with no direction, then release';
   if (move.comboOnly) return 'Airborne · Light after a confirmed aerial light';
   const context =
     move.input.context === 'air'
@@ -145,6 +146,12 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     if (hero === 'moses' && select.value === 'staff')
       panel.querySelector('.move-link-tip')!.textContent =
         tips[move.id] ?? 'Vault combo: land Forward + Light, then press Down + Light to leap into two kicks.';
+    else if (select.value === 'gauntlets')
+      panel.querySelector('.move-link-tip')!.textContent =
+        'Confirmed-hit links: Neutral Light → Side Light or Down Light; Side Light → Down Light; Down Light → Neutral Heavy. Release direction before holding Heavy for the uppercut. Air Light → Light chains twice. Whiffs cannot cancel; opponents can escape gaps.';
+    else
+      panel.querySelector('.move-link-tip')!.textContent =
+        'Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.';
     canvas.setAttribute('aria-label', def.name + ' performing ' + move.displayName);
     data.replaceChildren();
     for (const [name, value] of [

@@ -45,16 +45,16 @@ test('confirmed aerial light can link twice, while whiffs and a third link canno
   f.action!.confirmed=true;f.action!.tick=10;resolveAction(ctx,s,f,S.input({light:true}));assert.equal(f.action!.comboDepth,2);
   const instance=f.action!.instance;f.action!.confirmed=true;f.action!.tick=10;resolveAction(ctx,s,f,S.input({light:true}));assert.equal(f.action!.instance,instance);
 });
-test('Samson grabs then punches and gauntlets splash nearby enemies',()=>{
-  const {s,f,t}=scene('samson');f.weapon='gauntlets';t.x=30*Q;S.startAttack(s,f,{light:true});const a=f.action!,m=S.moves[a.move!];
+test('Samson heavy grabs then punches and gauntlets splash nearby enemies',()=>{
+  const {s,f,t}=scene('samson');f.weapon='gauntlets';t.x=30*Q;S.startAttack(s,f,{heavy:true});const a=f.action!,m=S.moves[a.move!];
   a.tick=m.collisionPhases[0].firstTick+1;combat(ctx,s);assert.equal(t.grabbed?.owner,f.id);const damage=t.damage;
   f.hitstop=t.hitstop=0;t.x=24*Q;t.y=f.y+48*Q;a.tick=m.collisionPhases[1].firstTick+1;combat(ctx,s);assert.ok(t.damage>damage);assert.equal(t.grabbed,undefined);assert.equal(f.hits,2);
   const other=scene('samson');other.f.weapon='gauntlets';other.t.x=-30*Q;S.startAttack(other.s,other.f,{light:true,x:1});other.f.action!.tick=S.moves[other.f.action!.move!].startup+1;combat(ctx,other.s);assert.ok(other.t.damage>0,'small rear splash');
 });
-test('Caleb punch and clap are separate hits, with a long-range sound projectile',()=>{
+test('Caleb advancing hook is a close-range launcher without a sound projectile',()=>{
   const {s,f,t}=scene('caleb');f.weapon='gauntlets';S.startAttack(s,f,{light:true,x:1});const a=f.action!,m=S.moves[a.move!];assert.equal(m.id,'caleb_gauntlets_slight');
   for(const ph of m.collisionPhases){f.hitstop=t.hitstop=0;t.x=50*Q;t.y=80*Q;a.tick=ph.firstTick+1;combat(ctx,s);}
-  assert.equal(f.hits,2);assert.equal(m.projectile!.effect,'sound');assert.ok(m.projectile!.speedQ*m.projectile!.lifetimeTicks>=240*Q);
+  assert.equal(f.hits,1);assert.equal(m.projectile,null);assert.equal(m.launchAngle,67);
 });
 test('Moses staff spin hits behind him; Joshua’s axe launches upward; Esther hurricane pushes forward',()=>{
   const {s,f,t}=scene('moses');f.weapon='staff';t.x=-70*Q;S.startAttack(s,f,{heavy:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup+1;combat(ctx,s);assert.ok(t.damage>0);

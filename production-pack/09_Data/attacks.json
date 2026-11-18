@@ -157,7 +157,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Low body dip then a small rising blade flick toward the opponentâ€™s feet.",
+      "visualPose": "Low body dip then a small rising blade flick toward the opponent\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s feet.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -1262,65 +1262,16 @@
       "id": "gauntlets_nlight",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Front Palm",
+      "displayName": "Jab \u00b7 Cross \u00b7 Hook",
       "input": {
         "button": "light",
         "direction": "neutral",
         "context": "ground"
       },
       "startup": 6,
-      "active": 3,
-      "recovery": 14,
-      "totalTicks": 23,
-      "damageTenths": 100,
-      "hitstunTicks": 13,
-      "baseForceQ": 640,
-      "growthQPerDamage": 12,
-      "launchAngle": 22,
-      "delivery": "melee",
-      "collisionPhases": [
-        {
-          "firstTick": 6,
-          "lastTickExclusive": 9,
-          "shape": "rect",
-          "rectUnits": [
-            18,
-            28,
-            50,
-            35
-          ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0
-        }
-      ],
-      "projectile": null,
-      "motionEvents": [],
-      "oneHitPerTarget": true,
-      "totalProjectileHitBudget": null,
-      "hitstopTicks": 3,
-      "invulnerability": false,
-      "chargeable": false,
-      "chargeMaxTicks": 0,
-      "chargeMaxDamagePermille": 1000,
-      "chaseCancelOnConfirmedHit": true,
-      "landingRule": "continueAuthoredAction",
-      "visualPose": "One quick open-palm strike in front from a compact guard.",
-      "resourceCostOnActionStart": {}
-    },
-    {
-      "id": "gauntlets_slight",
-      "ownerType": "weapon",
-      "ownerId": "gauntlets",
-      "displayName": "Step Fist",
-      "input": {
-        "button": "light",
-        "direction": "side",
-        "context": "ground"
-      },
-      "startup": 8,
-      "active": 4,
-      "recovery": 17,
-      "totalTicks": 29,
+      "active": 9,
+      "recovery": 13,
+      "totalTicks": 28,
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
@@ -1329,7 +1280,88 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 8,
+          "firstTick": 6,
+          "lastTickExclusive": 8,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            22,
+            58,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 0,
+          "damagePermille": 250,
+          "forcePermille": 80
+        },
+        {
+          "firstTick": 9,
+          "lastTickExclusive": 11,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            22,
+            62,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 1,
+          "damagePermille": 250,
+          "forcePermille": 80
+        },
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            22,
+            68,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 2,
+          "damagePermille": 500,
+          "forcePermille": 1000
+        }
+      ],
+      "projectile": null,
+      "motionEvents": [],
+      "oneHitPerTarget": false,
+      "totalProjectileHitBudget": null,
+      "hitstopTicks": 2,
+      "invulnerability": false,
+      "chargeable": false,
+      "chargeMaxTicks": 0,
+      "chargeMaxDamagePermille": 1000,
+      "chaseCancelOnConfirmedHit": false,
+      "landingRule": "continueAuthoredAction",
+      "visualPose": "Compact jab, rear cross, then a forward hook. Return to guard between contacts.",
+      "resourceCostOnActionStart": {}
+    },
+    {
+      "id": "gauntlets_slight",
+      "ownerType": "weapon",
+      "ownerId": "gauntlets",
+      "displayName": "Advancing Hook",
+      "input": {
+        "button": "light",
+        "direction": "side",
+        "context": "ground"
+      },
+      "startup": 7,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 28,
+      "damageTenths": 120,
+      "hitstunTicks": 18,
+      "baseForceQ": 850,
+      "growthQPerDamage": 12,
+      "launchAngle": 67,
+      "delivery": "melee",
+      "collisionPhases": [
+        {
+          "firstTick": 7,
           "lastTickExclusive": 12,
           "shape": "rect",
           "rectUnits": [
@@ -1346,7 +1378,7 @@
       "motionEvents": [
         {
           "kind": "translate",
-          "fromTick": 8,
+          "fromTick": 7,
           "toTickExclusive": 12,
           "dxQ": 768,
           "dyQ": 0,
@@ -1369,26 +1401,26 @@
       "id": "gauntlets_dlight",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Low Jab",
+      "displayName": "Low Sweep \u00b7 Lift",
       "input": {
         "button": "light",
         "direction": "down",
         "context": "ground"
       },
       "startup": 7,
-      "active": 4,
-      "recovery": 16,
+      "active": 5,
+      "recovery": 15,
       "totalTicks": 27,
       "damageTenths": 90,
-      "hitstunTicks": 13,
-      "baseForceQ": 640,
+      "hitstunTicks": 20,
+      "baseForceQ": 780,
       "growthQPerDamage": 12,
       "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
         {
           "firstTick": 7,
-          "lastTickExclusive": 11,
+          "lastTickExclusive": 12,
           "shape": "rect",
           "rectUnits": [
             15,
@@ -1401,7 +1433,16 @@
         }
       ],
       "projectile": null,
-      "motionEvents": [],
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 7,
+          "toTickExclusive": 12,
+          "dxQ": 512,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 3,
@@ -1418,7 +1459,7 @@
       "id": "gauntlets_nair",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Upper Guard",
+      "displayName": "Rising Air Hook",
       "input": {
         "button": "light",
         "direction": "neutral",
@@ -1467,7 +1508,7 @@
       "id": "gauntlets_sair",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Air Palm",
+      "displayName": "Flying Cross",
       "input": {
         "button": "light",
         "direction": "side",
@@ -1516,7 +1557,7 @@
       "id": "gauntlets_dair",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Down Fist",
+      "displayName": "Descending Hammerfist",
       "input": {
         "button": "light",
         "direction": "down",
@@ -1565,7 +1606,7 @@
       "id": "gauntlets_recovery",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Upward Drive",
+      "displayName": "Rising Uppercut",
       "input": {
         "button": "heavy",
         "direction": "neutral",
@@ -1623,7 +1664,7 @@
       "id": "gauntlets_ground_pound",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Braced Descent",
+      "displayName": "Double-Fist Ground Pound",
       "input": {
         "button": "heavy",
         "direction": "down",
@@ -2294,7 +2335,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "A single upward mallet arc above the fighterâ€™s shoulder.",
+      "visualPose": "A single upward mallet arc above the fighter\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s shoulder.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -4290,7 +4331,7 @@
       "ownerType": "fighter",
       "ownerId": "saul",
       "weapon": "spear",
-      "displayName": "Kingâ€™s Advance",
+      "displayName": "King\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6078,7 +6119,7 @@
       "ownerType": "fighter",
       "ownerId": "jonathan",
       "weapon": "sword",
-      "displayName": "Friendâ€™s Resolve",
+      "displayName": "Friend\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Resolve",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6517,7 +6558,7 @@
       "ownerType": "fighter",
       "ownerId": "moses",
       "weapon": "staff",
-      "displayName": "Shepherd’s Wheel",
+      "displayName": "Shepherd\u00e2\u20ac\u2122s Wheel",
       "input": {
         "button": "heavy",
         "direction": "down",
@@ -7089,7 +7130,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Esther bends to a low stable stance and draws the staffâ€™s far end across the front ground lane.",
+      "visualPose": "Esther bends to a low stable stance and draws the staff\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s far end across the front ground lane.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -7409,7 +7450,7 @@
       "ownerType": "fighter",
       "ownerId": "nehemiah",
       "weapon": "hammer",
-      "displayName": "Builderâ€™s Lift",
+      "displayName": "Builder\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Lift",
       "input": {
         "button": "heavy",
         "direction": "neutral",
@@ -7794,7 +7835,7 @@
       "ownerType": "fighter",
       "ownerId": "caleb",
       "weapon": "spear",
-      "displayName": "Scoutâ€™s Advance",
+      "displayName": "Scout\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -7903,16 +7944,16 @@
       "ownerType": "fighter",
       "ownerId": "caleb",
       "weapon": "gauntlets",
-      "displayName": "Resolute Lift",
+      "displayName": "Resolute Uppercut",
       "input": {
         "button": "heavy",
         "direction": "neutral",
         "context": "groundOrAirCancel"
       },
-      "startup": 20,
-      "active": 5,
-      "recovery": 28,
-      "totalTicks": 53,
+      "startup": 14,
+      "active": 7,
+      "recovery": 24,
+      "totalTicks": 45,
       "damageTenths": 260,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -7921,14 +7962,14 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 20,
-          "lastTickExclusive": 25,
+          "firstTick": 14,
+          "lastTickExclusive": 21,
           "shape": "rect",
           "rectUnits": [
-            -23,
-            40,
-            45,
-            120
+            0,
+            20,
+            65,
+            115
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0
@@ -7945,7 +7986,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Caleb braces his back leg and rises into a compact upward fist strike.",
+      "visualPose": "Coil in a low guard while Heavy is held; release into a rising uppercut and settle back into guard.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -8012,16 +8053,16 @@
       "ownerType": "fighter",
       "ownerId": "caleb",
       "weapon": "gauntlets",
-      "displayName": "Firm Footing",
+      "displayName": "Mountain Breaker",
       "input": {
         "button": "heavy",
         "direction": "down",
         "context": "groundOrAirCancel"
       },
-      "startup": 26,
+      "startup": 20,
       "active": 6,
-      "recovery": 34,
-      "totalTicks": 66,
+      "recovery": 28,
+      "totalTicks": 54,
       "damageTenths": 270,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -8030,14 +8071,14 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 26,
-          "lastTickExclusive": 32,
+          "firstTick": 20,
+          "lastTickExclusive": 26,
           "shape": "rect",
           "rectUnits": [
-            20,
+            -35,
             0,
-            90,
-            18
+            135,
+            46
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0
@@ -8054,8 +8095,9 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Caleb crouches and sweeps a guarded fist low in front while keeping his other hand at his chest.",
-      "resourceCostOnActionStart": {}
+      "visualPose": "Raise both fists, drive them into the floor and brace as faceted rocks burst upward.",
+      "resourceCostOnActionStart": {},
+      "effect": "rock"
     },
     {
       "id": "shield_nlight",
@@ -8692,7 +8734,7 @@
       "id": "gauntlets_air_combo",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "gauntlets aerial follow-up",
+      "displayName": "Aerial Cross Follow-up",
       "input": {
         "button": "light",
         "direction": "side",
@@ -9043,74 +9085,49 @@
       "id": "caleb_gauntlets_slight",
       "ownerType": "fighter",
       "ownerId": "caleb",
-      "displayName": "Thunderclap Combo",
+      "displayName": "Advancing Hook",
       "input": {
         "button": "light",
         "direction": "side",
         "context": "ground"
       },
-      "startup": 8,
-      "active": 16,
-      "recovery": 20,
-      "totalTicks": 44,
+      "startup": 7,
+      "active": 5,
+      "recovery": 16,
+      "totalTicks": 28,
       "damageTenths": 120,
-      "hitstunTicks": 13,
-      "baseForceQ": 640,
+      "hitstunTicks": 18,
+      "baseForceQ": 850,
       "growthQPerDamage": 12,
-      "launchAngle": 22,
+      "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 8,
-          "lastTickExclusive": 11,
+          "firstTick": 7,
+          "lastTickExclusive": 12,
           "shape": "rect",
           "rectUnits": [
-            12,
-            25,
-            65,
-            48
-          ],
-          "anchor": "fighterFeet",
-          "hitGroup": 0,
-          "damagePermille": 450
-        },
-        {
-          "firstTick": 19,
-          "lastTickExclusive": 24,
-          "shape": "rect",
-          "rectUnits": [
-            10,
             20,
-            65,
-            55
+            25,
+            70,
+            42
           ],
           "anchor": "fighterFeet",
-          "hitGroup": 1,
-          "damagePermille": 550
+          "hitGroup": 0
         }
       ],
-      "projectile": {
-        "spawnTick": 19,
-        "originUnits": [
-          80,
-          44
-        ],
-        "travelAngle": 0,
-        "speedQ": 2560,
-        "gravityQ": 0,
-        "lifetimeTicks": 24,
-        "collisionUnits": [
-          24,
-          58
-        ],
-        "maxHits": 1,
-        "capClass": "light",
-        "stageCollision": "despawn",
-        "homing": false,
-        "effect": "sound"
-      },
-      "motionEvents": [],
-      "oneHitPerTarget": false,
+      "projectile": null,
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 7,
+          "toTickExclusive": 12,
+          "dxQ": 768,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
+      "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 3,
       "invulnerability": false,
@@ -9121,24 +9138,23 @@
       "landingRule": "continueAuthoredAction",
       "visualPose": "A short stepping fist strike with rear hand guarding ribs.",
       "resourceCostOnActionStart": {},
-      "weapon": "gauntlets",
-      "effect": "sound"
+      "weapon": "gauntlets"
     },
     {
       "id": "samson_gauntlets_nlight",
       "ownerType": "fighter",
       "ownerId": "samson",
-      "displayName": "Lift and Hammerfist",
+      "displayName": "Jab \u00b7 Cross \u00b7 Hook",
       "input": {
         "button": "light",
         "direction": "neutral",
         "context": "ground"
       },
-      "startup": 10,
-      "active": 17,
-      "recovery": 22,
-      "totalTicks": 49,
-      "damageTenths": 100,
+      "startup": 6,
+      "active": 9,
+      "recovery": 13,
+      "totalTicks": 28,
+      "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 640,
       "growthQPerDamage": 12,
@@ -9146,50 +9162,65 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 10,
-          "lastTickExclusive": 13,
+          "firstTick": 6,
+          "lastTickExclusive": 8,
           "shape": "rect",
           "rectUnits": [
-            10,
+            12,
             22,
-            48,
-            62
+            58,
+            48
           ],
           "anchor": "fighterFeet",
           "hitGroup": 0,
-          "grabTicks": 9,
-          "damagePermille": 100
+          "damagePermille": 250,
+          "forcePermille": 80
         },
         {
-          "firstTick": 20,
-          "lastTickExclusive": 27,
+          "firstTick": 9,
+          "lastTickExclusive": 11,
           "shape": "rect",
           "rectUnits": [
-            0,
-            30,
-            85,
-            100
+            12,
+            22,
+            62,
+            48
           ],
           "anchor": "fighterFeet",
           "hitGroup": 1,
-          "damagePermille": 900
+          "damagePermille": 250,
+          "forcePermille": 80
+        },
+        {
+          "firstTick": 12,
+          "lastTickExclusive": 15,
+          "shape": "rect",
+          "rectUnits": [
+            12,
+            22,
+            68,
+            48
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 2,
+          "damagePermille": 500,
+          "forcePermille": 1000
         }
       ],
       "projectile": null,
       "motionEvents": [],
       "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
-      "hitstopTicks": 3,
+      "hitstopTicks": 2,
       "invulnerability": false,
       "chargeable": false,
       "chargeMaxTicks": 0,
       "chargeMaxDamagePermille": 1000,
-      "chaseCancelOnConfirmedHit": true,
+      "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "One quick open-palm strike in front from a compact guard.",
+      "visualPose": "Compact jab, rear cross, then a forward hook. Return to guard between contacts.",
       "resourceCostOnActionStart": {},
-      "weapon": "gauntlets",
-      "effect": "dust"
+      "weapon": "gauntlets"
     },
     {
       "id": "esther_blades_slight",
@@ -9418,7 +9449,7 @@
       "id": "nehemiah_hammer_dlight",
       "ownerType": "fighter",
       "ownerId": "nehemiah",
-      "displayName": "Builderâ€™s Earthbreak",
+      "displayName": "Builder\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Earthbreak",
       "input": {
         "button": "light",
         "direction": "down",

@@ -90,7 +90,12 @@ function jump(s: SimState, f: Fighter, fromWall = false): void {
  * still chases at the first legal recovery tick.
  */
 export function bufferPress(ctx: SimContext, f: Fighter, i: Input): void {
-  const ticks = ctx.P.inputBufferTicks;
+  const current = f.action?.kind === 'attack' ? ctx.moves[f.action.move!] : undefined;
+  const linkWindow =
+    f.weapon === 'gauntlets' && f.action?.confirmed && current?.input.button === 'light'
+      ? Math.min(12, current.startup + current.active - f.action.tick + 2)
+      : 0;
+  const ticks = Math.max(ctx.P.inputBufferTicks, linkWindow);
   if (i.jump || i.heavy || i.light)
     f.buffer = { type: i.jump ? 'jump' : i.heavy ? 'heavy' : 'light', ticks, x: i.x, y: i.y };
   else if (i.dodge && (i.x || i.y) && f.chase > 0 && f.action?.kind === 'attack' && f.action.confirmed)
@@ -121,6 +126,21 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
 
   // A confirmed standing jab can branch into one directional grounded follow-up.
   const press = f.buffer;
+  // Gauntlet links require contact and a fresh buffered press. Two links maximum;
+  // no cancelling a whiff, no repeated heavy, and no infinite grounded chain.
+  if (a?.kind === 'attack' && f.ground && a.confirmed && f.weapon === 'gauntlets' && (a.comboDepth ?? 0) < 2 && press) {
+    const current = moves[a.move!];
+    const sweep = current.id.endsWith('_slight') && press.type === 'light' && press.y < 0;
+    const uppercut = current.id.endsWith('_dlight') && press.type === 'heavy' && !press.x && !press.y;
+    if ((sweep || uppercut) && a.tick >= current.startup + current.active) {
+      const depth = (a.comboDepth ?? 0) + 1;
+      if (startAttack(ctx, s, f, { ...i, x: press.x, y: press.y, light: sweep, heavy: uppercut })) {
+        f.action!.comboDepth = depth;
+        f.chase = 0;
+        return;
+      }
+    }
+  }
   if (a?.kind === 'attack' && f.ground && a.confirmed && !a.comboDepth && press?.type === 'light') {
     const opener = moves[a.move!];
     const vault = opener.id === 'moses_staff_slight' && press.y < 0;

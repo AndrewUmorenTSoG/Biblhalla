@@ -117,6 +117,34 @@ function debris(
   }
 }
 
+/** Caleb's floor impact: seeded facets burst, split at the apex, then erode. */
+export function drawCalebRocks(
+  c: CanvasRenderingContext2D,
+  age: number,
+  seed: number,
+  reduced: boolean,
+  slam: boolean,
+) {
+  c.save();
+  c.scale(1, -1);
+  const width = slam ? 135 : 90;
+  c.translate(slam ? -35 : -45, 0);
+  c.globalAlpha = Math.min(1, (22 - age) / 5);
+  c.strokeStyle = '#443833';
+  c.lineWidth = 1.7;
+  for (let i = 0; i < 5; i++) {
+    const root = (width * (i + 0.5)) / 5;
+    c.beginPath();
+    c.moveTo(root - 9, 0);
+    c.lineTo(root - 3, 3);
+    c.lineTo(root + 2, 1);
+    c.lineTo(root + 8, 4);
+    c.stroke();
+  }
+  debris(c, width, 54, slam ? 35 : 45, age, 22, seed, true, reduced);
+  c.restore();
+}
+
 function wind(c: CanvasRenderingContext2D, w: number, h: number, t: number) {
   for (let i = 0; i < 3; i++) {
     const travel = Math.max(0, Math.min(1, t * 1.5 - i * 0.18));
