@@ -587,6 +587,23 @@ export class Renderer {
         if (charge > 0) c.filter = 'sepia(' + Math.min(0.7, charge / 50) + ') saturate(2.2) hue-rotate(325deg)';
         c.drawImage(sheet, frame.x, frame.y, frame.w, frame.h, -frame.pivotX, -frame.pivotY, frame.w, frame.h);
         c.filter = 'none';
+        if (move === 'caleb_gauntlets_nsig' && frame.fireX !== undefined && !ghost && pose !== 'hitstun') {
+          const fade = attackTick < 21 ? 1 : Math.max(0, 1 - (attackTick - 21) / 9);
+          c.save();
+          c.globalAlpha *= fade;
+          const fx = frame.fireX - frame.pivotX,
+            fy = frame.fireY - frame.pivotY;
+          const heat = 6 + Math.min(4, charge / 9) + (attackTick >= 14 ? 3 : 0);
+          flame(c, fx, fy, heat, this.reduced ? 0 : time);
+          if (!this.reduced)
+            for (let spark = 0; spark < 4; spark++) {
+              const age = (time * 0.8 + spark * 3) % 13;
+              c.fillStyle = spark % 2 ? '#ffe7a1' : '#ef873f';
+              c.globalAlpha = fade * (1 - age / 13);
+              c.fillRect(fx + Math.sin(spark * 2.4) * (3 + age), fy - age * 2.5, 1.2, 2.2);
+            }
+          c.restore();
+        }
         if (!shieldRelease && needsCarriedWeapon(frameName, weapon)) {
           this.heldWeapon(
             weapon,

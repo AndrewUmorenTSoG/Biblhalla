@@ -59,8 +59,10 @@ function debris(
   seed: number,
   quake: boolean,
   sparse: boolean,
+  stoneScale = 1,
+  spacing = 45,
 ) {
-  const count = quake ? Math.min(26, Math.ceil(w / 45)) : 5;
+  const count = quake ? Math.min(26, Math.ceil(w / spacing)) : 5;
   for (let i = 0; i < count; i += sparse ? 2 : 1) {
     const n = noise(seed + i * 4787),
       v = noise(seed + i * 953 + 13);
@@ -71,7 +73,7 @@ function debris(
     const arc = 4 * t * (1 - t);
     const x = root + (quake ? Math.sign(root - origin) : 1) * t * (6 + 12 * v);
     const y = 1 + arc * (quake ? h * (0.28 + 0.52 * n) : 17 + 24 * n);
-    const size = quake ? 7 + 9 * v * v : 6 + 8 * v;
+    const size = (quake ? 7 + 9 * v * v : 6 + 8 * v) * stoneScale;
     c.save();
     c.globalAlpha *= Math.min(1, (1 - t) * 5);
     const dust = c.createRadialGradient(root, 2, 0, root, 2, 6 + 8 * t);
@@ -142,6 +144,36 @@ export function drawCalebRocks(
     c.stroke();
   }
   debris(c, width, 54, slam ? 35 : 45, age, 22, seed, true, reduced);
+  c.restore();
+}
+
+export function drawNehemiahRubble(
+  c: CanvasRenderingContext2D,
+  age: number,
+  seed: number,
+  reduced: boolean,
+  rush: boolean,
+) {
+  c.save();
+  c.scale(1, -1);
+  c.translate(8, 0);
+  const width = rush ? 160 : 140;
+  c.beginPath();
+  c.rect(-8, 0, width + 16, 80);
+  c.clip();
+  c.globalAlpha = Math.min(1, (22 - age) / 5);
+  c.strokeStyle = '#5b4839';
+  c.lineWidth = 2;
+  for (let i = 0; i < 7; i++) {
+    const x = (i * width) / 7;
+    c.beginPath();
+    c.moveTo(x, 1);
+    c.lineTo(x + 7, 5);
+    c.lineTo(x + 13, 2);
+    c.lineTo(x + 19, 6);
+    c.stroke();
+  }
+  debris(c, width, 75, rush ? 15 : 65, age, 22, seed, true, reduced, 1.35, 24);
   c.restore();
 }
 

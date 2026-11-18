@@ -52405,6 +52405,150 @@
         "h": 82,
         "pivotX": 53,
         "pivotY": 82
+      },
+      "attack_nehemiah_0": {
+        "x": 6,
+        "y": 6,
+        "w": 100,
+        "h": 109,
+        "pivotX": 44,
+        "pivotY": 109,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_1": {
+        "x": 166,
+        "y": 6,
+        "w": 97,
+        "h": 99,
+        "pivotX": 47,
+        "pivotY": 99,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_2": {
+        "x": 326,
+        "y": 6,
+        "w": 115,
+        "h": 109,
+        "pivotX": 44,
+        "pivotY": 109,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_smear_nehemiah_3": {
+        "x": 486,
+        "y": 6,
+        "w": 90,
+        "h": 135,
+        "pivotX": 37,
+        "pivotY": 135,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_4": {
+        "x": 6,
+        "y": 166,
+        "w": 113,
+        "h": 81,
+        "pivotX": 55,
+        "pivotY": 81,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_5": {
+        "x": 166,
+        "y": 166,
+        "w": 127,
+        "h": 64,
+        "pivotX": 58,
+        "pivotY": 64,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_6": {
+        "x": 326,
+        "y": 166,
+        "w": 107,
+        "h": 91,
+        "pivotX": 47,
+        "pivotY": 91,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_7": {
+        "x": 486,
+        "y": 166,
+        "w": 98,
+        "h": 108,
+        "pivotX": 40,
+        "pivotY": 108,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_8": {
+        "x": 6,
+        "y": 326,
+        "w": 84,
+        "h": 100,
+        "pivotX": 37,
+        "pivotY": 100,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_9": {
+        "x": 166,
+        "y": 326,
+        "w": 99,
+        "h": 102,
+        "pivotX": 47,
+        "pivotY": 102,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_10": {
+        "x": 326,
+        "y": 326,
+        "w": 112,
+        "h": 106,
+        "pivotX": 54,
+        "pivotY": 106,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_smear_nehemiah_11": {
+        "x": 486,
+        "y": 326,
+        "w": 129,
+        "h": 102,
+        "pivotX": 55,
+        "pivotY": 102,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_12": {
+        "x": 6,
+        "y": 486,
+        "w": 125,
+        "h": 108,
+        "pivotX": 52,
+        "pivotY": 108,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_13": {
+        "x": 166,
+        "y": 486,
+        "w": 137,
+        "h": 102,
+        "pivotX": 58,
+        "pivotY": 102,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_14": {
+        "x": 326,
+        "y": 486,
+        "w": 106,
+        "h": 108,
+        "pivotX": 49,
+        "pivotY": 108,
+        "sheet": "nehemiah_hammer_kit"
+      },
+      "attack_nehemiah_15": {
+        "x": 486,
+        "y": 486,
+        "w": 98,
+        "h": 111,
+        "pivotX": 41,
+        "pivotY": 111,
+        "sheet": "nehemiah_hammer_kit"
       }
     },
     "clips": {
@@ -52780,111 +52924,63 @@
       },
       "nehemiah_hammer_ssig": {
         "frames": [
-          "attack_hammer_0",
-          "attack_wind_attack_hammer_0_1",
-          "attack_wind_attack_hammer_0_2",
-          "attack_wind_attack_hammer_0_3",
-          "attack_wind_attack_hammer_1_4",
-          "attack_wind_attack_hammer_1_4",
-          "attack_wind_attack_hammer_1_5",
-          "attack_wind_attack_hammer_2_6",
-          "attack_wind_attack_hammer_2_7",
-          "attack_smear_attack_hammer_2",
-          "attack_hammer_2",
+          "attack_nehemiah_8",
+          "attack_nehemiah_9",
+          "attack_nehemiah_10",
+          "attack_smear_nehemiah_11",
+          "attack_nehemiah_12",
+          "attack_nehemiah_13",
+          "attack_nehemiah_14",
+          "attack_nehemiah_15",
           "attack_follow_attack_hammer_5_0",
-          "attack_follow_attack_hammer_5_1",
           "attack_follow_attack_hammer_5_3",
-          "attack_follow_attack_hammer_5_4",
-          "attack_follow_attack_hammer_5_5",
-          "attack_follow_attack_hammer_5_7",
-          "equipped_settle_hammer_8",
-          "equipped_settle_hammer_9",
-          "equipped_settle_hammer_11",
-          "equipped_settle_hammer_12",
+          "equipped_settle_hammer_10",
           "equipped_settle_hammer_13",
-          "equipped_settle_hammer_15",
           "equipped_hammer_idle_0"
         ],
         "ticks": [
-          2,
+          4,
+          4,
+          5,
+          5,
           3,
           3,
-          3,
-          3,
-          2,
-          3,
-          3,
-          3,
-          3,
-          6,
-          2,
-          3,
-          3,
-          3,
-          3,
-          3,
-          2,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
         ],
         "loop": false
       },
       "nehemiah_hammer_dsig": {
         "frames": [
-          "element_2_0",
-          "attack_wind_element_2_0_1",
-          "attack_wind_element_2_0_2",
-          "attack_wind_element_2_0_3",
-          "attack_wind_element_2_0_4",
-          "attack_wind_element_2_1_4",
-          "attack_wind_element_2_1_5",
-          "attack_wind_element_2_1_6",
-          "attack_wind_element_2_1_7",
-          "attack_smear_down_nehemiah_hammer_dsig",
-          "down_nehemiah_hammer_dsig",
-          "attack_follow_element_2_3_0",
-          "attack_follow_element_2_3_1",
-          "attack_follow_element_2_3_3",
-          "attack_follow_element_2_3_4",
-          "attack_follow_element_2_3_5",
-          "attack_follow_element_2_3_7",
-          "equipped_settle_hammer_8",
-          "equipped_settle_hammer_9",
-          "equipped_settle_hammer_11",
-          "equipped_settle_hammer_12",
+          "attack_nehemiah_0",
+          "attack_nehemiah_1",
+          "attack_nehemiah_2",
+          "attack_smear_nehemiah_3",
+          "attack_nehemiah_4",
+          "attack_nehemiah_5",
+          "attack_nehemiah_6",
+          "attack_nehemiah_7",
+          "equipped_settle_hammer_10",
           "equipped_settle_hammer_13",
-          "equipped_settle_hammer_15",
           "equipped_hammer_idle_0"
         ],
         "ticks": [
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
+          4,
+          4,
+          5,
+          5,
+          9,
           7,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3,
-          3
+          5,
+          5,
+          6,
+          6,
+          8
         ],
         "loop": false
       },
@@ -53900,7 +53996,15 @@
       "unarmedFrames": 12,
       "registration": "head silhouette; single model scale; feet at or above ground"
     },
-    "smoothAnimation": 1
+    "smoothAnimation": 1,
+    "pages": {
+      "nehemiah_hammer_kit": {
+        "image": "assets/runtime/fighters/nehemiah-hammer-kit.png",
+        "width": 640,
+        "height": 640,
+        "sha256": "b7b1ef814789975ad651e0711f1b4ce6dbb607ee9ddbe770ca3aa84c96577e78"
+      }
+    }
   },
   "caleb": {
     "image": "assets/runtime/fighters/caleb-fluid-packed.png",
@@ -57109,7 +57213,9 @@
         "h": 112,
         "pivotX": 57,
         "pivotY": 112,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 88,
+        "fireY": 40
       },
       "attack_caleb_uppercut_1": {
         "x": 168,
@@ -57118,7 +57224,9 @@
         "h": 100,
         "pivotX": 55,
         "pivotY": 100,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 33,
+        "fireY": 41
       },
       "attack_caleb_uppercut_2": {
         "x": 328,
@@ -57127,7 +57235,9 @@
         "h": 91,
         "pivotX": 55,
         "pivotY": 91,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 34,
+        "fireY": 40
       },
       "attack_smear_caleb_uppercut_3": {
         "x": 488,
@@ -57136,7 +57246,9 @@
         "h": 108,
         "pivotX": 55,
         "pivotY": 108,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 88,
+        "fireY": 50
       },
       "attack_caleb_uppercut_4": {
         "x": 8,
@@ -57145,7 +57257,9 @@
         "h": 127,
         "pivotX": 54,
         "pivotY": 127,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 87,
+        "fireY": 14
       },
       "attack_caleb_uppercut_5": {
         "x": 168,
@@ -57154,7 +57268,9 @@
         "h": 132,
         "pivotX": 54,
         "pivotY": 132,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 87,
+        "fireY": 11
       },
       "attack_caleb_uppercut_6": {
         "x": 328,
@@ -57163,7 +57279,9 @@
         "h": 110,
         "pivotX": 54,
         "pivotY": 110,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 85,
+        "fireY": 14
       },
       "attack_caleb_uppercut_7": {
         "x": 488,
@@ -57172,7 +57290,9 @@
         "h": 110,
         "pivotX": 55,
         "pivotY": 110,
-        "sheet": "caleb_uppercut"
+        "sheet": "caleb_uppercut",
+        "fireX": 86,
+        "fireY": 54
       }
     },
     "clips": {

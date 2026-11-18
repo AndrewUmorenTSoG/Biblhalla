@@ -149,6 +149,13 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     else if (select.value === 'gauntlets')
       panel.querySelector('.move-link-tip')!.textContent =
         'Confirmed-hit links: Neutral Light → Side Light or Down Light; Side Light → Down Light; Down Light → Neutral Heavy. Release direction before holding Heavy for the uppercut. Air Light → Light chains twice. Whiffs cannot cancel; opponents can escape gaps.';
+    else if (hero === 'nehemiah' && select.value === 'hammer')
+      panel.querySelector('.move-link-tip')!.textContent =
+        move.id === 'nehemiah_hammer_dsig'
+          ? 'Down + Heavy: Foundation Breaker. A floor smash catches nearby opponents; a second stone-breaking impact launches them. Hold Heavy to charge the windup.'
+          : move.id === 'nehemiah_hammer_ssig'
+            ? 'Forward + Heavy: Rampart Rush. Drive forward behind the hammer through heavy rubble. Walls stop the rush; a miss leaves a recovery opening.'
+            : 'Neutral Heavy lifts; Forward + Heavy rushes; Down + Heavy breaks the floor twice. Down + Light is a quick low sweep. Air Down + Heavy is the descending pound.';
     else
       panel.querySelector('.move-link-tip')!.textContent =
         'Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.';

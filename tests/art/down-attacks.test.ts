@@ -11,6 +11,12 @@ renderer.clips=Object.fromEntries(Object.entries(meta).map(([id,v]:[string,any])
 test('all 144 down attacks use their authored contact drawings and animated shield throw',()=>{
   assert.equal(jobs.length,12);let checked=0;
   for(const job of jobs){assert.equal(job.rows.length,12);for(const spec of job.rows){
+    if (spec.id === 'nehemiah_hammer_dsig') {
+      const move=content.attacks.attacks.find(m=>m.id===spec.id)!;
+      for(const [index,phase] of move.collisionPhases.entries()) for(let t=phase.firstTick;t<phase.lastTickExclusive;t++)
+        assert.equal(renderer.frameFor('nehemiah','active','hammer',move.id,t),'attack_nehemiah_'+(index+4));
+      checked++;continue;
+    }
     if (spec.id === 'moses_staff_dsig' || spec.id === 'moses_staff_dlight') {
       const m=content.attacks.attacks.find(m=>m.id===spec.id)!;
       for(const phase of m.collisionPhases) for(let t=phase.firstTick;t<phase.lastTickExclusive;t++) {

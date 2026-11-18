@@ -7450,7 +7450,7 @@
       "ownerType": "fighter",
       "ownerId": "nehemiah",
       "weapon": "hammer",
-      "displayName": "Builder\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Lift",
+      "displayName": "Builder's Lift",
       "input": {
         "button": "heavy",
         "direction": "neutral",
@@ -7500,16 +7500,16 @@
       "ownerType": "fighter",
       "ownerId": "nehemiah",
       "weapon": "hammer",
-      "displayName": "Foundation Strike",
+      "displayName": "Rampart Rush",
       "input": {
         "button": "heavy",
         "direction": "side",
         "context": "groundOrAirCancel"
       },
-      "startup": 28,
-      "active": 6,
-      "recovery": 37,
-      "totalTicks": 71,
+      "startup": 18,
+      "active": 10,
+      "recovery": 30,
+      "totalTicks": 58,
       "damageTenths": 310,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -7518,21 +7518,30 @@
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 28,
-          "lastTickExclusive": 34,
           "shape": "rect",
-          "rectUnits": [
-            24,
-            24,
-            135,
-            65
-          ],
           "anchor": "fighterFeet",
+          "firstTick": 18,
+          "lastTickExclusive": 28,
+          "rectUnits": [
+            18,
+            14,
+            100,
+            72
+          ],
           "hitGroup": 0
         }
       ],
       "projectile": null,
-      "motionEvents": [],
+      "motionEvents": [
+        {
+          "kind": "translate",
+          "fromTick": 18,
+          "toTickExclusive": 28,
+          "dxQ": 1280,
+          "dyQ": 0,
+          "blockedBySolid": true
+        }
+      ],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
       "hitstopTicks": 5,
@@ -7542,76 +7551,75 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Nehemiah plants his rear foot and rotates a mallet strike horizontally through the front lane.",
-      "resourceCostOnActionStart": {}
+      "visualPose": "Brace the mallet, rush forward behind its head through heavy rubble, then recover with exposed feet.",
+      "resourceCostOnActionStart": {},
+      "effect": "rock"
     },
     {
       "id": "nehemiah_hammer_dsig",
       "ownerType": "fighter",
       "ownerId": "nehemiah",
       "weapon": "hammer",
-      "displayName": "Wall Footing",
+      "displayName": "Foundation Breaker",
       "input": {
         "button": "heavy",
         "direction": "down",
         "context": "groundOrAirCancel"
       },
-      "startup": 30,
-      "active": 7,
-      "recovery": 39,
-      "totalTicks": 76,
+      "startup": 18,
+      "active": 16,
+      "recovery": 30,
+      "totalTicks": 64,
       "damageTenths": 290,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
       "growthQPerDamage": 22,
-      "launchAngle": 45,
+      "launchAngle": 67,
       "delivery": "melee",
       "collisionPhases": [
         {
-          "firstTick": 30,
-          "lastTickExclusive": 37,
           "shape": "rect",
-          "rectUnits": [
-            20,
-            0,
-            95,
-            35
-          ],
           "anchor": "fighterFeet",
-          "hitGroup": 0
+          "firstTick": 18,
+          "lastTickExclusive": 22,
+          "rectUnits": [
+            12,
+            0,
+            100,
+            55
+          ],
+          "hitGroup": 0,
+          "damagePermille": 350,
+          "forcePermille": 120
+        },
+        {
+          "shape": "rect",
+          "anchor": "fighterFeet",
+          "firstTick": 27,
+          "lastTickExclusive": 34,
+          "rectUnits": [
+            8,
+            0,
+            140,
+            75
+          ],
+          "hitGroup": 1,
+          "damagePermille": 650,
+          "forcePermille": 1000
         }
       ],
-      "projectile": {
-        "spawnTick": 30,
-        "originUnits": [
-          38,
-          22
-        ],
-        "travelAngle": 0,
-        "speedQ": 1792,
-        "gravityQ": 0,
-        "lifetimeTicks": 24,
-        "collisionUnits": [
-          38,
-          42
-        ],
-        "maxHits": 1,
-        "capClass": "signature",
-        "stageCollision": "despawn",
-        "homing": false,
-        "effect": "rock"
-      },
+      "projectile": null,
       "motionEvents": [],
-      "oneHitPerTarget": true,
+      "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
-      "hitstopTicks": 5,
+      "hitstopTicks": 3,
       "invulnerability": false,
       "chargeable": true,
       "chargeMaxTicks": 36,
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Nehemiah drops into a wide braced stance and strikes the floor ahead with the mallet; dust only.",
+      "visualPose": "Lift the mallet, smash the floor, then drive a second breaking pulse forward through the rubble.",
       "resourceCostOnActionStart": {},
       "effect": "rock"
     },
@@ -9449,7 +9457,7 @@
       "id": "nehemiah_hammer_dlight",
       "ownerType": "fighter",
       "ownerId": "nehemiah",
-      "displayName": "Builder\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Earthbreak",
+      "displayName": "Low Foundation Sweep",
       "input": {
         "button": "light",
         "direction": "down",
@@ -9480,26 +9488,7 @@
           "hitGroup": 0
         }
       ],
-      "projectile": {
-        "spawnTick": 12,
-        "originUnits": [
-          38,
-          22
-        ],
-        "travelAngle": 0,
-        "speedQ": 1792,
-        "gravityQ": 0,
-        "lifetimeTicks": 24,
-        "collisionUnits": [
-          38,
-          42
-        ],
-        "maxHits": 1,
-        "capClass": "light",
-        "stageCollision": "despawn",
-        "homing": false,
-        "effect": "rock"
-      },
+      "projectile": null,
       "motionEvents": [],
       "oneHitPerTarget": true,
       "totalProjectileHitBudget": null,
@@ -9512,8 +9501,7 @@
       "landingRule": "continueAuthoredAction",
       "visualPose": "Low mallet sweep along the front training floor.",
       "resourceCostOnActionStart": {},
-      "weapon": "hammer",
-      "effect": "rock"
+      "weapon": "hammer"
     },
     {
       "id": "axe_nlight",

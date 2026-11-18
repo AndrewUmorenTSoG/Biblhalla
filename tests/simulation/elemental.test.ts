@@ -72,12 +72,12 @@ test('Samson attack timing is about five percent slower without repeated attack 
   const base=duration('david'),slow=duration('samson');
   assert.ok(slow.ticks>base.ticks);assert.ok(Math.abs(slow.ticks/base.ticks-1.05)<.03);assert.equal(slow.events,1);
 });
-test('earth pounds burst on landing and Nehemiah launches the rock wave from ground contact',()=>{
+test('earth pounds burst only on landing without an extra Nehemiah damage projectile',()=>{
   for(const hero of ['caleb','nehemiah']){
     const {s,f,t}=scene(hero);t.x=400*Q;f.weapon=hero==='caleb'?'gauntlets':'hammer';f.ground=null;f.y=82*Q;
     S.startAttack(s,f,{heavy:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup;
     S.moveFighter(s,f,0,-4*Q);assert.equal(f.action!.impactTick,s.tick);assert.ok(s.events.some(e=>e.type==='element'));
-    if(hero==='nehemiah')assert.ok(s.projectiles.some(p=>p.effect==='rock'));
+    if(hero==='nehemiah')assert.equal(s.projectiles.length,0);
   }
 });
 

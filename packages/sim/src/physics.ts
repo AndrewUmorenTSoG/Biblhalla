@@ -148,8 +148,6 @@ export function moveFighter(ctx: SimContext, s: SimState, f: Fighter, dx: number
           y: f.y,
           facing: f.action.facing,
         });
-        if (f.hero === 'nehemiah' && f.weapon === 'hammer')
-          startProjectile(ctx, s, f, { ...m, projectile: moves.nehemiah_hammer_dsig.projectile }, f.action);
       }
       f.action.tick = m.startup + m.active;
       f.action.duration = m.totalTicks + 8;
@@ -312,7 +310,8 @@ export function updateFighter(ctx: SimContext, s: SimState, f: Fighter, i: Input
         : m.collisionPhases[0]?.grabTicks
           ? (m.collisionPhases[1]?.firstTick ?? m.startup)
           : m.startup;
-    if (a.tick === impact && !m.id.endsWith('_ground_pound'))
+    const secondEarthImpact = m.id === 'nehemiah_hammer_dsig' && a.tick === m.collisionPhases[1].firstTick;
+    if ((a.tick === impact || secondEarthImpact) && !m.id.endsWith('_ground_pound'))
       event(s, 'element', {
         fighter: f.id,
         hero: f.hero,

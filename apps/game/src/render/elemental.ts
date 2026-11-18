@@ -4,7 +4,7 @@
 
 import type { SimState, Fighter, Projectile } from '../../../../packages/sim/src/types.ts';
 import { drawFlyingWeapon } from './weapons.ts';
-import { drawCalebRocks } from './goliath-impact.ts';
+import { drawCalebRocks, drawNehemiahRubble } from './goliath-impact.ts';
 type Screen = (x: number, y: number) => { x: number; y: number };
 
 export function flame(c: CanvasRenderingContext2D, x: number, y: number, size: number, time: number) {
@@ -180,6 +180,8 @@ export function drawElements(
       }
     } else if (kind === 'rock' && hero === 'caleb') {
       drawCalebRocks(c, age, e.id, reduced, move === 'caleb_gauntlets_dsig');
+    } else if (kind === 'rock' && hero === 'nehemiah') {
+      drawNehemiahRubble(c, age, e.id, reduced, move === 'nehemiah_hammer_ssig');
     } else if (kind === 'rock' || kind === 'dust') {
       const massive = kind === 'dust';
       for (let i = 0; i < 12; i++) {
