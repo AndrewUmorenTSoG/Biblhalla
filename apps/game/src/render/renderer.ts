@@ -2,6 +2,7 @@
 // simulation, never changes it. Smoothing between ticks and the camera live here.
 
 import { gideonReboundFrame } from './gideon-rebound.ts';
+import { drawUppercutTrail } from './uppercut-fire.ts';
 import { HitIndicators } from './hit-indicators.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
 import { handGrip, needsCarriedWeapon } from './grip.ts';
@@ -587,6 +588,18 @@ export class Renderer {
         if (charge > 0) c.filter = 'sepia(' + Math.min(0.7, charge / 50) + ') saturate(2.2) hue-rotate(325deg)';
         c.drawImage(sheet, frame.x, frame.y, frame.w, frame.h, -frame.pivotX, -frame.pivotY, frame.w, frame.h);
         c.filter = 'none';
+        if (move === 'caleb_gauntlets_nsig' && !ghost && pose !== 'hitstun') {
+          const coil = frames.attack_caleb_uppercut_2;
+          const peak = attackTick < 21 ? frame : frames.attack_caleb_uppercut_5;
+          if (coil && peak?.fireX !== undefined)
+            drawUppercutTrail(
+              c,
+              attackTick,
+              { x: coil.fireX - coil.pivotX, y: coil.fireY - coil.pivotY },
+              { x: peak.fireX - peak.pivotX, y: peak.fireY - peak.pivotY },
+              this.reduced,
+            );
+        }
         if (move === 'caleb_gauntlets_nsig' && frame.fireX !== undefined && !ghost && pose !== 'hitstun') {
           const fade = attackTick < 21 ? 1 : Math.max(0, 1 - (attackTick - 21) / 9);
           c.save();

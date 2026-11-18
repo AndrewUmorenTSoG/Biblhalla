@@ -58002,8 +58002,7 @@
           "attack_caleb_uppercut_5",
           "attack_caleb_uppercut_6",
           "attack_caleb_uppercut_7",
-          "equipped_settle_gauntlets_11",
-          "equipped_settle_gauntlets_14",
+          "equipped_gauntlets_idle_1",
           "equipped_gauntlets_idle_0"
         ],
         "ticks": [
@@ -58013,11 +58012,10 @@
           3,
           3,
           4,
-          4,
           5,
-          5,
-          5,
-          5
+          7,
+          6,
+          6
         ],
         "loop": false
       },
