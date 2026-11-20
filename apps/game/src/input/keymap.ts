@@ -27,6 +27,14 @@ export function rebind(bindings: KeyBindings, action: string, code: string): Reb
   const clashes = Object.keys(next).filter(k => k !== action && next[k] === code && !sharable(action, k));
   for (const k of clashes) next[k] = bindings[action];
   next[action] = code;
+  // Splitting Up/Jump onto an occupied key would move its old action onto
+  // the still-shared key, creating an unintended attack + movement binding.
+  if (!bindingsAreUnique(next))
+    return {
+      bindings,
+      swappedWith: null,
+      error: 'Up and Jump share this key. Choose an unused key first, then swap.',
+    };
   return { bindings: next, swappedWith: clashes[0] ?? null, error: null };
 }
 
