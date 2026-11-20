@@ -121,6 +121,7 @@ export class Inputs {
   clear() {
     this.held.clear();
     this.edges.clear();
+    this.chargeLatch.clear();
     this.touch = {};
     this.touchEdges.clear();
     this.axis = { x: 0, y: 0 };
