@@ -7,6 +7,19 @@ import { createProfiles } from '../../apps/game/src/storage/profile.ts';
 
 const D = { ...DEFAULT_BINDINGS };
 
+test('splitting a shared Up/Jump key cannot swap an attack onto the remaining direction', () => {
+  for (const action of ['up', 'jump']) {
+    const result = rebind(D, action, D.light);
+    assert.ok(result.error);
+    assert.equal(result.bindings, D);
+    // Moving to a free key first makes the normal swap safe.
+    const split = rebind(D, action, 'Space');
+    const swapped = rebind(split.bindings, action, D.light);
+    assert.equal(swapped.error, null);
+    assert.ok(bindingsAreUnique(swapped.bindings));
+  }
+});
+
 test('choosing a key another control uses swaps the two instead of sharing it', () => {
   const r = rebind(D, 'light', 'KeyK');
   assert.equal(r.swappedWith, 'heavy');
