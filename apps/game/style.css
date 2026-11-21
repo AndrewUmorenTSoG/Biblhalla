@@ -231,3 +231,6 @@
   .result-caption {width:66%;box-sizing:border-box}
   .result-details {padding:17px}
 }
+
+#local-rule-note{grid-column:1/-1;margin:0;line-height:1.5;color:#c9d9db}
+@media(min-width:1100px){#local-rule-note{grid-column:1/5}}

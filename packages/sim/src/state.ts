@@ -125,6 +125,37 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
 }
 
 export function scheduleWave(s: SimState): void {
+  if (s.options.endless) {
+    s.wave++;
+    const roster = [
+      'david',
+      'joshua',
+      'esther',
+      'caleb',
+      'moses',
+      'nehemiah',
+      'samson',
+      'saul',
+      'miriam',
+      'gideon',
+      'jonathan',
+      'deborah',
+    ];
+    const count = Math.min(8, 2 + Math.floor((s.wave - 1) / 3));
+    s.wavePending = Array.from(
+      { length: count },
+      (_, i) => roster[(s.wave * 3 + i + (Number(s.options.seed) >>> 0)) % roster.length],
+    );
+    if (s.wave % 5 === 0)
+      s.wavePending = ['giant:' + roster[(s.wave / 5 - 1) % roster.length], ...s.wavePending.slice(0, 2)];
+    const base = ['easy', 'hard', 'extreme'].indexOf(String(s.options.difficulty || 'easy'));
+    s.difficulty = (['easy', 'hard', 'extreme'] as const)[
+      Math.min(2, Math.max(0, base) + Math.floor((s.wave - 1) / 5))
+    ];
+    s.waveWait = 0;
+    event(s, 'wave', { wave: s.wave });
+    return;
+  }
   if (s.wave >= s.waves.length) {
     finish(s, true, 'All waves cleared');
     return;
@@ -198,7 +229,10 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
     pickupTick: R.pickups.initialTick,
     pickupCycle: 0,
     pickupPriority: 0,
-    friendlyFire: mode === 'waves' || mode === 'story' || !!options.friendlyFire,
+    friendlyFire:
+      mode === 'teams' || (mode === 'waves' && options.endless)
+        ? false
+        : mode === 'waves' || mode === 'story' || !!options.friendlyFire,
     trainingBot: options.trainingBot || 'idle',
     bossName: options.bossName || 'Training champion',
     suddenDeath: false,
@@ -222,7 +256,7 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
           {
             hero: resolveHero(ctx, options.opponent, s.rng, 1) || (hero === 'samson' ? 'david' : 'samson'),
             team: 1,
-            stocks: boss ? 1 : s.stocksRule,
+            stocks: boss ? 1 : (ruleInt(options.opponentStocks, 1, 9) ?? s.stocksRule),
             guard: boss ? BOSS_GUARD : null,
             scale: boss ? 1.45 : 1,
             name: boss ? s.bossName : undefined,
@@ -230,6 +264,15 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
           1,
         ),
       );
+    }
+  }
+  if (options.fighters && mode === 'waves') scheduleWave(s);
+  if (mode === 'boss' && options.storyFight === undefined) {
+    const enemy = s.fighters.find(f => !f.human);
+    if (enemy) {
+      enemy.stocks = difficulty === 'extreme' ? 2 : 1;
+      enemy.redDamage = difficulty === 'easy' ? 7500 : difficulty === 'hard' ? 10000 : 11000;
+      enemy.guard = enemy.maxGuard = enemy.redDamage;
     }
   }
   if (options.storyFight !== undefined) {
@@ -260,14 +303,19 @@ export function pause(s: SimState, on = true): void {
  * In 2v2, teammates share their team's place. Ties share a place number.
  */
 export function placements(s: SimState, winners: number[]): Placement[] {
-  const roster = s.fighters.filter(f => !(s.mode === 'waves' || s.mode === 'story') || f.human);
+  const roster = s.fighters.filter(f =>
+    s.options.endless ? !f.waveEnemy : !(s.mode === 'waves' || s.mode === 'story') || f.human,
+  );
   const key = (f: Fighter): number[] => [
     winners.includes(f.id) ? 0 : 1,
     f.stocks ? 0 : 1,
     -f.stocks,
     f.stocks ? f.damage : -(f.eliminatedAt ?? 0),
   ];
-  const groupKey = (f: Fighter) => (s.mode === 'teams' ? `t${f.team}` : `f${f.id}`);
+  const groupKey = (f: Fighter) =>
+    s.mode === 'teams' || s.options.waveStyle === 'teams' || (s.options.endless && s.options.waveStyle === 'coop')
+      ? `t${f.team}`
+      : `f${f.id}`;
   // Teams rank by their best member.
   const best = new Map<string, number[]>();
   for (const f of roster) {

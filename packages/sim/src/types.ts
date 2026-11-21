@@ -71,6 +71,9 @@ export interface BotMemory {
 }
 
 export interface Fighter {
+  /** Accumulated damage in tenths required to reach red launch danger. */
+  redDamage?: number;
+  waveEnemy?: boolean;
   partner?: { script: BossScript; run: BossRun };
   crouching?: boolean;
   grabbed?: { owner: number; instance: number; until: number };
@@ -191,6 +194,9 @@ export interface FighterConfig {
 }
 
 export interface MatchOptions {
+  endless?: boolean;
+  waveStyle?: 'coop' | 'ffa' | 'teams';
+  opponentStocks?: number | string;
   storyFight?: number;
   exhibitionOpponent?: number;
   mode?: Mode | string;

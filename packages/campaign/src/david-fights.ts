@@ -199,6 +199,9 @@ export function withChapterOpponent(options: MatchOptions, inputId: string): Mat
   if (index < 0 || (options.mode !== 'duel' && options.mode !== 'boss')) return options;
   const encounter = davidFightOptions(index, options.difficulty ?? 'easy', inputId);
   const enemy = encounter.fighters![1];
+  const requestedStocks = Number(options.opponentStocks || options.stocks || 3);
+  const stocks =
+    Number.isInteger(requestedStocks) && requestedStocks >= 1 && requestedStocks <= 9 ? requestedStocks : 3;
   return {
     ...options,
     opponent: encounter.fighters![1].hero,
@@ -207,7 +210,7 @@ export function withChapterOpponent(options: MatchOptions, inputId: string): Mat
     bossScript: encounter.bossScript,
     fighters: [
       { hero: options.hero ?? 'david', team: 0, human: true, inputId },
-      { ...enemy, stocks: options.mode === 'boss' ? 1 : undefined },
+      { ...enemy, stocks: options.mode === 'boss' ? 1 : stocks },
     ],
   };
 }

@@ -6,6 +6,7 @@ import type { SimContext } from './context.ts';
 import type { Action, Fighter, SimState } from './types.ts';
 import { Q, clamp, roundMul } from './fixed.ts';
 import { event } from './state.ts';
+import { dangerDamage } from './danger.ts';
 import { invincible, outside, platforms } from './physics.ts';
 
 export type Box = [number, number, number, number];
@@ -432,13 +433,13 @@ export function combat(ctx: SimContext, s: SimState): void {
         damage: amount,
       });
     }
-    target.damage = clamp(target.damage + damage, 0, 9990);
+    target.damage = clamp(target.damage + damage, 0, target.redDamage ? 99990 : 9990);
     if (target.guard !== null) target.guard = Math.max(0, target.guard - damage);
     // Strongest pre-scaling launch wins; equal magnitudes go to the lower attack instance.
     let best = group[0],
       bestRaw = -1;
     for (const h of group) {
-      const raw = launchForceQ(h.m, target.damage);
+      const raw = launchForceQ(h.m, dangerDamage(target));
       if (raw > bestRaw || (raw === bestRaw && h.instance < best.instance)) {
         best = h;
         bestRaw = raw;

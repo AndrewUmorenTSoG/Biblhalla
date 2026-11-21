@@ -27,7 +27,7 @@ export function buildRoster(
       hero: slot.hero,
       human: !cpu,
       inputId: cpu ? `cpu:${n}` : slot.input,
-      team: mode === 'teams' ? n % 2 : n,
+      team: mode === 'waves' ? 0 : mode === 'teams' || mode === 'teams-waves' ? Math.floor(n / 2) : n,
       name: cpu ? `${nameOf(slot.hero)} (CPU)` : undefined,
     };
   });
