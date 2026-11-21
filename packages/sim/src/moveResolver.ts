@@ -114,7 +114,10 @@ export function resolveAction(ctx: SimContext, s: SimState, f: Fighter, i: Input
       next = moves[f.weapon + '_air_combo'];
     if (current.input.button === 'light' && a.tick >= current.startup + current.active && next) {
       const depth = (a.comboDepth ?? 0) + 1;
-      if (startAttack(ctx, s, f, { ...i, light: true, heavy: false }, false, next)) {
+      // Keep the direction captured with Light, including a neutral press.
+      // The stick may have returned to neutral or moved during hitstop.
+      const follow = { ...i, x: f.buffer.x, y: f.buffer.y, light: true, heavy: false };
+      if (startAttack(ctx, s, f, follow, false, next)) {
         f.action!.comboDepth = depth;
         f.vy = Math.max(f.vy, 3 * Q);
         f.chase = 0;
