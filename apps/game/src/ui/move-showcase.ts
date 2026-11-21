@@ -26,13 +26,15 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     <section class="move-stage"><h3></h3><p class="move-input"></p>
     <canvas width="720" height="400" aria-label="Fighter demonstration"></canvas>
     <div class="move-transport"><button type="button" data-control="play"></button>
-    <button type="button" data-control="step">Next frame</button><button type="button" data-control="restart">Replay</button><button type="button" data-control="speed" aria-pressed="false">½ speed</button><span class="move-phase"></span></div>
+    <button type="button" data-control="step">Next frame</button><button type="button" data-control="restart">Replay</button><button type="button" data-control="speed" aria-pressed="false">½ speed</button>
+    <button type="button" data-control="charge" aria-pressed="false" title="Compare a tap with holding Heavy until its charge limit">Full charge: Off</button><span class="move-phase"></span></div>
     <div class="move-data"></div><p class="move-link-tip">Ground combo: land a standing light, then press Side + Light or Down + Light as the hit finishes.</p></section>`;
   const select = panel.querySelector('select')!;
   const list = panel.querySelector<HTMLElement>('.move-list')!;
   const canvas = panel.querySelector('canvas')!;
   const play = panel.querySelector<HTMLButtonElement>('[data-control=play]')!;
   const speed = panel.querySelector<HTMLButtonElement>('[data-control=speed]')!;
+  const charge = panel.querySelector<HTMLButtonElement>('[data-control=charge]')!;
   const phase = panel.querySelector<HTMLElement>('.move-phase')!;
   const data = panel.querySelector<HTMLElement>('.move-data')!;
   const renderer = new Renderer(canvas, engine, art);
@@ -46,6 +48,7 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   }
   let move: Attack, world: SimState;
   let playing = !reduced,
+    charged = false,
     slow = false,
     request = 0,
     last = 0,
@@ -88,11 +91,15 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     const fighter = world.fighters[0];
     const action = fighter.action;
     renderer.capture(world);
-    engine.step(world, {});
+    // Use the same hold input as live play; the simulation owns the charge cap
+    // and release, including moves whose hold pose occurs before final startup.
+    engine.step(world, { [fighter.inputId]: { heavyHeld: charged && move.chargeable } });
     if (action?.kind === 'attack') {
       const tick = action.tick;
       const phaseName = tick <= move.startup ? 'Startup' : tick <= move.startup + move.active ? 'Active' : 'Recovery';
       label = phaseName + ' · ' + tick;
+      if (action.charge > 0 && tick <= move.startup)
+        label = 'Charging · ' + action.charge + '/' + move.chargeMaxTicks + 'f';
       if (fighter.hitstop > 0) label += ' · Hitstop ' + fighter.hitstop;
     } else {
       label = world.projectiles.length ? 'In flight' : 'Ready';
@@ -111,7 +118,11 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
     while (remainder >= 1000 / 60) {
       remainder -= 1000 / 60;
       advance();
-      if (world.tick > move.totalTicks + 45 && !world.projectiles.length) {
+      if (
+        world.tick > move.totalTicks + (charged && move.chargeable ? move.chargeMaxTicks : 0) + 45 &&
+        !world.fighters[0].action &&
+        !world.projectiles.length
+      ) {
         reset();
         break;
       }
@@ -130,6 +141,9 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
 
   function selectMove(next: Attack) {
     move = next;
+    charge.disabled = !move.chargeable;
+    charge.setAttribute('aria-pressed', String(charged && move.chargeable));
+    charge.textContent = move.chargeable ? 'Full charge: ' + (charged ? 'On' : 'Off') : 'Not chargeable';
     for (const button of list.querySelectorAll('button'))
       button.setAttribute('aria-pressed', String(button.value === move.id));
     panel.querySelector('h3')!.textContent = move.displayName;
@@ -200,6 +214,14 @@ export function moveShowcase(engine: Engine, art: RuntimeArt, hero: string, redu
   }
 
   select.onchange = loadWeapon;
+  charge.onclick = () => {
+    if (!move.chargeable) return;
+    charged = !charged;
+    charge.setAttribute('aria-pressed', String(charged));
+    charge.textContent = 'Full charge: ' + (charged ? 'On' : 'Off');
+    reset();
+    refreshPlayback();
+  };
   play.onclick = () => {
     playing = !playing;
     refreshPlayback();
