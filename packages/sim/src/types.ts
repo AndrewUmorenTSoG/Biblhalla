@@ -135,6 +135,8 @@ export interface Fighter {
 }
 
 export interface Projectile {
+  /** Remaining flight distance for sling stones, including arcs and bounces. */
+  travelLeftQ?: number;
   bounced?: boolean;
   returnAtTick?: number;
   effect?: string;
