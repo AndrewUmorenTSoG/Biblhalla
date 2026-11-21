@@ -221,7 +221,7 @@ export function combat(ctx: SimContext, s: SimState): void {
                 growthQPerDamage: roundMul(m.growthQPerDamage, ph.forcePermille ?? 1000),
               }
             : m;
-        const facing = m.effect === 'water' ? Math.sign(target.x - f.x) || a.facing : a.facing;
+        const facing = m.effect === 'water' || m.effect === 'wind' ? Math.sign(target.x - f.x) || a.facing : a.facing;
         hits.push({
           target: target.id,
           owner: f.id,

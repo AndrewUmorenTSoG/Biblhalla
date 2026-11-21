@@ -39,5 +39,5 @@ test('Esther turns through back and front poses while her hurricane is active',(
   const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
   const clip=meta.esther.clips.esther_blades_slight;
   const poses:string[]=clip.frames.flatMap((name:string,i:number)=>Array(clip.ticks[i]).fill(name));
-  assert.deepEqual(poses.slice(8,22),[...Array(7).fill('element_2_1'),...Array(7).fill('element_2_2')]);
+  assert.deepEqual(poses.slice(8,40),Array.from({length:16},(_,i)=>Array(2).fill('release_esther_wind_'+(i+4))).flat());
 });

@@ -5,6 +5,7 @@
 import type { SimState, Fighter, Projectile } from '../../../../packages/sim/src/types.ts';
 import { drawFlyingWeapon } from './weapons.ts';
 import { drawCalebRocks, drawNehemiahRubble } from './goliath-impact.ts';
+import { drawWhirlwind, isEstherWhirlwind } from './wind.ts';
 type Screen = (x: number, y: number) => { x: number; y: number };
 
 export function flame(c: CanvasRenderingContext2D, x: number, y: number, size: number, time: number) {
@@ -118,6 +119,9 @@ export function drawElements(
     if (hero === 'caleb' && move.endsWith('ground_pound')) kind = 'rock';
     if (hero === 'samson') kind = 'dust';
     if (hero === 'esther' && weapon === 'blades') kind = 'wind';
+    // The spinning fighter owns its layered wind, so it follows her and stops
+    // immediately when an interruption replaces the move.
+    if (kind === 'wind' && isEstherWhirlwind(move)) continue;
     if (!['kickSpark', 'water', 'rock', 'dust', 'wind', 'sun', 'sound', 'shieldBounce'].includes(kind)) continue;
     const p = screen(Number(e.x), Number(e.y)),
       t = age / 22;
@@ -206,14 +210,7 @@ export function drawElements(
       c.ellipse(0, -3, reach, massive ? 17 : 7, 0, Math.PI, 2 * Math.PI);
       c.stroke();
     } else if (kind === 'wind') {
-      c.strokeStyle = '#c7ffef';
-      c.lineWidth = 3;
-      for (let i = 0; i < 5; i++) {
-        c.beginPath();
-        const spin = reduced ? 0 : age * 0.35 + i;
-        c.ellipse(20 + t * 35, -12 - i * 16, 25 + i * 7, 7, 0, spin, spin + Math.PI * 1.5);
-        c.stroke();
-      }
+      drawWhirlwind(c, age, 12, reduced);
     } else if (kind === 'sun') {
       c.fillStyle = '#fff0a388';
       c.beginPath();

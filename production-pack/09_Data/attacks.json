@@ -157,7 +157,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Low body dip then a small rising blade flick toward the opponent\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s feet.",
+      "visualPose": "Low body dip then a small rising blade flick toward the opponentÃ¢â‚¬â„¢s feet.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -1262,7 +1262,7 @@
       "id": "gauntlets_nlight",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Jab \u00b7 Cross \u00b7 Hook",
+      "displayName": "Jab · Cross · Hook",
       "input": {
         "button": "light",
         "direction": "neutral",
@@ -1401,7 +1401,7 @@
       "id": "gauntlets_dlight",
       "ownerType": "weapon",
       "ownerId": "gauntlets",
-      "displayName": "Low Sweep \u00b7 Lift",
+      "displayName": "Low Sweep · Lift",
       "input": {
         "button": "light",
         "direction": "down",
@@ -2335,7 +2335,7 @@
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "A single upward mallet arc above the fighter\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s shoulder.",
+      "visualPose": "A single upward mallet arc above the fighterÃ¢â‚¬â„¢s shoulder.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -4331,7 +4331,7 @@
       "ownerType": "fighter",
       "ownerId": "saul",
       "weapon": "spear",
-      "displayName": "King\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Advance",
+      "displayName": "KingÃ¢â‚¬â„¢s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6119,7 +6119,7 @@
       "ownerType": "fighter",
       "ownerId": "jonathan",
       "weapon": "sword",
-      "displayName": "Friend\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Resolve",
+      "displayName": "FriendÃ¢â‚¬â„¢s Resolve",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -6558,7 +6558,7 @@
       "ownerType": "fighter",
       "ownerId": "moses",
       "weapon": "staff",
-      "displayName": "Shepherd\u00e2\u20ac\u2122s Wheel",
+      "displayName": "Shepherdâ€™s Wheel",
       "input": {
         "button": "heavy",
         "direction": "down",
@@ -6868,16 +6868,16 @@
       "ownerType": "fighter",
       "ownerId": "esther",
       "weapon": "blades",
-      "displayName": "Bold Approach",
+      "displayName": "Tempest Dance",
       "input": {
         "button": "heavy",
         "direction": "side",
         "context": "groundOrAirCancel"
       },
       "startup": 20,
-      "active": 5,
+      "active": 32,
       "recovery": 28,
-      "totalTicks": 53,
+      "totalTicks": 80,
       "damageTenths": 240,
       "hitstunTicks": 22,
       "baseForceQ": 1280,
@@ -6887,39 +6887,77 @@
       "collisionPhases": [
         {
           "firstTick": 20,
-          "lastTickExclusive": 25,
+          "lastTickExclusive": 24,
           "shape": "rect",
           "rectUnits": [
-            24,
-            24,
-            105,
-            55
+            -88,
+            8,
+            196,
+            96
           ],
           "anchor": "fighterFeet",
-          "hitGroup": 0
+          "hitGroup": 0,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 28,
+          "lastTickExclusive": 32,
+          "shape": "rect",
+          "rectUnits": [
+            -88,
+            8,
+            196,
+            96
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 1,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 36,
+          "lastTickExclusive": 40,
+          "shape": "rect",
+          "rectUnits": [
+            -88,
+            8,
+            196,
+            96
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 2,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 44,
+          "lastTickExclusive": 48,
+          "shape": "rect",
+          "rectUnits": [
+            -88,
+            8,
+            196,
+            96
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 3,
+          "damagePermille": 400,
+          "forcePermille": 1000
         }
       ],
       "projectile": null,
-      "motionEvents": [
-        {
-          "kind": "translate",
-          "fromTick": 20,
-          "toTickExclusive": 25,
-          "dxQ": 1536,
-          "dyQ": 0,
-          "blockedBySolid": true
-        }
-      ],
-      "oneHitPerTarget": true,
+      "motionEvents": [],
+      "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
-      "hitstopTicks": 5,
+      "hitstopTicks": 2,
       "invulnerability": false,
       "chargeable": true,
       "chargeMaxTicks": 36,
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Esther takes one quick advancing step and makes a single crossed blade strike in front.",
+      "visualPose": "Esther coils, turns through front, side and back views with both daggers, and whips four wind pulses around her before braking into guard.",
       "resourceCostOnActionStart": {},
       "effect": "wind"
     },
@@ -7130,7 +7168,7 @@
       "chargeMaxDamagePermille": 1500,
       "chaseCancelOnConfirmedHit": false,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "Esther bends to a low stable stance and draws the staff\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s far end across the front ground lane.",
+      "visualPose": "Esther bends to a low stable stance and draws the staffÃ¢â‚¬â„¢s far end across the front ground lane.",
       "resourceCostOnActionStart": {}
     },
     {
@@ -7843,7 +7881,7 @@
       "ownerType": "fighter",
       "ownerId": "caleb",
       "weapon": "spear",
-      "displayName": "Scout\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s Advance",
+      "displayName": "ScoutÃ¢â‚¬â„¢s Advance",
       "input": {
         "button": "heavy",
         "direction": "side",
@@ -9152,7 +9190,7 @@
       "id": "samson_gauntlets_nlight",
       "ownerType": "fighter",
       "ownerId": "samson",
-      "displayName": "Jab \u00b7 Cross \u00b7 Hook",
+      "displayName": "Jab · Cross · Hook",
       "input": {
         "button": "light",
         "direction": "neutral",
@@ -9241,9 +9279,9 @@
         "context": "ground"
       },
       "startup": 8,
-      "active": 14,
+      "active": 32,
       "recovery": 18,
-      "totalTicks": 40,
+      "totalTicks": 58,
       "damageTenths": 120,
       "hitstunTicks": 13,
       "baseForceQ": 1100,
@@ -9253,30 +9291,77 @@
       "collisionPhases": [
         {
           "firstTick": 8,
-          "lastTickExclusive": 22,
+          "lastTickExclusive": 12,
           "shape": "rect",
           "rectUnits": [
-            -32,
-            0,
-            145,
-            100
+            -78,
+            8,
+            176,
+            88
           ],
           "anchor": "fighterFeet",
-          "hitGroup": 0
+          "hitGroup": 0,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 16,
+          "lastTickExclusive": 20,
+          "shape": "rect",
+          "rectUnits": [
+            -78,
+            8,
+            176,
+            88
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 1,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 24,
+          "lastTickExclusive": 28,
+          "shape": "rect",
+          "rectUnits": [
+            -78,
+            8,
+            176,
+            88
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 2,
+          "damagePermille": 200,
+          "forcePermille": 0
+        },
+        {
+          "firstTick": 32,
+          "lastTickExclusive": 36,
+          "shape": "rect",
+          "rectUnits": [
+            -78,
+            8,
+            176,
+            88
+          ],
+          "anchor": "fighterFeet",
+          "hitGroup": 3,
+          "damagePermille": 400,
+          "forcePermille": 1000
         }
       ],
       "projectile": null,
       "motionEvents": [],
-      "oneHitPerTarget": true,
+      "oneHitPerTarget": false,
       "totalProjectileHitBudget": null,
-      "hitstopTicks": 3,
+      "hitstopTicks": 2,
       "invulnerability": false,
       "chargeable": false,
       "chargeMaxTicks": 0,
       "chargeMaxDamagePermille": 1000,
       "chaseCancelOnConfirmedHit": true,
       "landingRule": "continueAuthoredAction",
-      "visualPose": "One stepping crossed slash into the close front lane.",
+      "visualPose": "Esther coils, turns through front, side and back views with both daggers, and whips four wind pulses around her before braking into guard.",
       "resourceCostOnActionStart": {},
       "weapon": "blades",
       "effect": "wind"

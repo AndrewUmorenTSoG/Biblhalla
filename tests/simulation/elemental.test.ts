@@ -60,7 +60,7 @@ test('Moses staff spin hits behind him; Joshua’s axe launches upward; Esther h
   const {s,f,t}=scene('moses');f.weapon='staff';t.x=-70*Q;S.startAttack(s,f,{heavy:true,y:-1});f.action!.tick=S.moves[f.action!.move!].startup+1;combat(ctx,s);assert.ok(t.damage>0);
   assert.deepEqual(S.defs.joshua.weaponPair,['sword','axe']);
   const j=scene('joshua');j.f.weapon='axe';S.startAttack(j.s,j.f,{heavy:true});assert.equal(j.f.action!.move,'joshua_axe_nsig');j.f.action!.tick=S.moves.joshua_axe_nsig.startup+1;combat(ctx,j.s);assert.ok(j.t.vy>0);
-  const e=scene('esther');e.f.weapon='blades';S.startAttack(e.s,e.f,{light:true,x:1});assert.equal(e.f.action!.move,'esther_blades_slight');e.f.action!.tick=9;combat(ctx,e.s);assert.ok(e.t.kx>0);
+  const e=scene('esther');e.f.weapon='blades';S.startAttack(e.s,e.f,{light:true,x:1});assert.equal(e.f.action!.move,'esther_blades_slight');e.f.action!.tick=S.moves.esther_blades_slight.collisionPhases.at(-1)!.firstTick+1;combat(ctx,e.s);assert.ok(e.t.kx>0);
 });
 test('heavy charge is capped and damage grows; Samson receives 5% less and deals 10% extra',()=>{
   const hit=(hero:string,target:string,charge=0)=>{const {s,f,t}=scene(hero,target);f.weapon='unarmed';S.startAttack(s,f,{heavy:true,x:1});const a=f.action!,m=S.moves[a.move!];f.stats.power=t.stats.power=5;a.charge=charge;a.tick=m.startup+1;combat(ctx,s);return t.damage;};

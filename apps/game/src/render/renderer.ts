@@ -2,6 +2,7 @@
 // simulation, never changes it. Smoothing between ticks and the camera live here.
 
 import { gideonReboundFrame } from './gideon-rebound.ts';
+import { drawWhirlwind, isEstherWhirlwind } from './wind.ts';
 import { drawUppercutTrail } from './uppercut-fire.ts';
 import { HitIndicators } from './hit-indicators.ts';
 import { shieldReleaseFrame } from './shield-release.ts';
@@ -513,7 +514,7 @@ export class Renderer {
         const page = this.art[frame.sheet];
         if (page?.complete && page.naturalWidth) sheet = page;
         else {
-          frame = frames.equipped_shield_idle_0 ?? frames.motion_idle;
+          frame = frames['equipped_' + weapon + '_idle_0'] ?? frames.motion_idle;
           kitReady = false;
         }
       }
@@ -585,9 +586,19 @@ export class Renderer {
         // The weapon sits behind the near fist in the same local coordinates as
         // the sprite. It follows each run and jump frame instead of floating at
         // a fixed screen position. Attack art already includes its own weapon.
+        const whirlwind = hero === 'esther' && pose !== 'hitstun' && isEstherWhirlwind(move) && attack;
+        const windLayer = (layer: 'front' | 'back') => {
+          if (!whirlwind) return;
+          c.save();
+          c.scale(frames.idle.h / FIGURE_PX, frames.idle.h / FIGURE_PX);
+          drawWhirlwind(c, attackTick - attack.startup, attack.active, this.reduced, layer, move.endsWith('ssig'));
+          c.restore();
+        };
+        windLayer('back');
         if (charge > 0) c.filter = 'sepia(' + Math.min(0.7, charge / 50) + ') saturate(2.2) hue-rotate(325deg)';
         c.drawImage(sheet, frame.x, frame.y, frame.w, frame.h, -frame.pivotX, -frame.pivotY, frame.w, frame.h);
         c.filter = 'none';
+        windLayer('front');
         if (move === 'caleb_gauntlets_nsig' && !ghost && pose !== 'hitstun') {
           const coil = frames.attack_caleb_uppercut_2;
           const peak = attackTick < 21 ? frame : frames.attack_caleb_uppercut_5;

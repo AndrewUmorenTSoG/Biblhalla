@@ -59,6 +59,7 @@ apps/game/                    the browser game around the simulation
     callouts.ts       combo counter, KO! and GO!
     hit-indicators.ts small markers where hits land
     elemental.ts      fire, water, wind, rock and light effects
+    wind.ts           layered air streamlines around Esther's drawn dagger spin
     waypoint.ts       story arrow to the next task
     player-marks.ts   player shapes (circle, triangle, square, diamond)
     quality.ts        trims decoration on slow devices
