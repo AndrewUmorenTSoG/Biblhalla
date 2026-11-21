@@ -10,6 +10,7 @@ import { GameAudio } from '../audio/audio.ts';
 import { Renderer } from '../render/renderer.ts';
 import { paintArenaPreview } from '../render/arena-scenes.ts';
 import { damageColor } from '../render/feedback.ts';
+import { dangerDamage } from '../../../../packages/sim/src/danger.ts';
 import { playerGlyph } from '../render/player-marks.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
 import { Inputs, missingControllers } from '../input/inputs.ts';
@@ -253,7 +254,9 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       options.mode === 'training'
         ? 'Practice safely. Open Details to inspect timing and resources.'
         : options.mode === 'waves'
-          ? 'Clear three waves. Protect your three lives.'
+          ? options.endless
+            ? 'Endless survival · giant boss every 5 waves · recover 25 damage between waves.'
+            : 'Clear three waves. Protect your lives.'
           : options.mode === 'boss'
             ? 'Build damage and launch the champion out of the arena.'
             : 'Build damage. Knock opponents out. Stay on the arena.';
@@ -393,17 +396,27 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   }
   function updateHud() {
     if (!world) return;
+    if (world.options.endless)
+      $('objective').textContent =
+        'Wave ' +
+        world.wave +
+        ' · ' +
+        world.difficulty +
+        (world.wave % 5 === 0 ? ' · GIANT BOSS' : ' · Boss in ' + (5 - (world.wave % 5)) + ' waves') +
+        (world.waveResting ? ' · Recovery: −25 damage' : ' · Survive by ring-out');
     const box = $('hud');
     box.replaceChildren();
     for (const f of world.fighters) {
       if (!f.stocks && !f.human) continue;
       const card = el('div', '', 'hud-card');
+      if (world.mode === 'teams' || world.options.waveStyle === 'teams')
+        card.append(el('small', f.waveEnemy ? 'Wave opponent' : 'Team ' + (f.team + 1)));
       card.append(
         el('b', (f.human ? playerGlyph(f.id) + ' P' + f.id + ' · ' : '') + f.name),
         el('small', f.weapon === 'unarmed' ? 'Unarmed' : f.weapon),
         (() => {
           const d = el('span', String(Math.floor(f.damage / 10)), 'damage');
-          d.style.color = damageColor(f.damage);
+          d.style.color = damageColor(dangerDamage(f));
           return d;
         })(),
         el(
@@ -415,6 +428,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
           'life',
         ),
       );
+      if (f.redDamage) card.append(el('small', 'Red danger at ' + f.redDamage / 10 + ' damage · ring-out to defeat'));
       if ((world.options.storyFight ?? world.options.exhibitionOpponent) === 2 && f.guard !== null) {
         card.append(
           el(
@@ -930,9 +944,18 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   /** Build the local multiplayer lobby seats. */
   function renderLocal() {
     const mode = $('local-mode').value;
-    if (mode === 'teams') $('local-count').value = '4';
-    if (mode === 'local') $('local-count').value = '2';
-    $('local-count').disabled = mode !== 'ffa';
+    if (mode === 'teams' || mode === 'teams-waves') $('local-count').value = '4';
+    if (mode === 'local' || mode === 'waves') $('local-count').value = '2';
+    $('local-count').disabled = mode !== 'ffa' && mode !== 'ffa-waves';
+    $('local-minutes').disabled = mode.includes('waves');
+    $('local-minutes').parentElement.hidden = mode.includes('waves');
+    $('friendly-fire').checked = false;
+    $('local-rule-note').textContent = mode.includes('waves')
+      ? 'Unlimited waves · giant boss every 5 · 25 damage healed between waves. ' +
+        (mode === 'waves'
+          ? 'Both seats are allies; a computer partner is supported.'
+          : 'Outlast rival players or teams while fighting the wave. Play continues until all contenders are out.')
+      : 'Players 1–2 are Team 1; players 3–4 are Team 2. Teammates cannot damage each other.';
     const count = Number($('local-count').value),
       grid = $('local-players');
     const previous = Array.from(grid.querySelectorAll('.player-slot')).map((slot: any) => ({
@@ -943,7 +966,18 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     const pads = inputs.pads();
     for (let n = 0; n < count; n++) {
       const card = el('div', '', 'player-slot');
-      card.append(el('h2', 'Player ' + (n + 1) + (mode === 'teams' ? ' · Team ' + ((n % 2) + 1) : '')));
+      card.append(
+        el(
+          'h2',
+          'Player ' +
+            (n + 1) +
+            (mode === 'teams' || mode === 'teams-waves'
+              ? ' · Team ' + (Math.floor(n / 2) + 1)
+              : mode === 'waves'
+                ? ' · Allies'
+                : ''),
+        ),
+      );
       const heroLabel = el('label', 'Fighter'),
         heroSelect = el('select', '', 'local-hero') as HTMLSelectElement;
       for (const f of C.fighters.fighters) {
@@ -980,7 +1014,8 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
         opt.disabled = !inputs.padSeen.has(p.index);
         inputSelect.append(opt);
       }
-      inputSelect.value = previous[n]?.input || (n === 0 ? (settings.input === 'touch' ? 'touch' : 'keyboard') : '');
+      inputSelect.value =
+        previous[n]?.input || (n === 0 ? (settings.input === 'touch' ? 'touch' : 'keyboard') : CPU_INPUT);
       inputLabel.append(inputSelect);
       const readyButton = el(
         'button',
@@ -988,6 +1023,10 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
         'ready-toggle',
       ) as HTMLButtonElement;
       readyButton.type = 'button';
+      if (inputSelect.value === CPU_INPUT) {
+        readyButton.textContent = 'Computer ready';
+        readyButton.disabled = true;
+      }
       readyButton.setAttribute('aria-pressed', String(readyBoard.isReady(n)));
       readyButton.addEventListener('click', () => {
         const on = readyBoard.toggle(n);
@@ -1022,7 +1061,9 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       return;
     }
     startGame({
-      mode,
+      mode: mode.includes('waves') ? 'waves' : mode,
+      endless: mode.includes('waves'),
+      waveStyle: mode === 'ffa-waves' ? 'ffa' : mode === 'teams-waves' ? 'teams' : 'coop',
       arena: $('local-arena').value,
       difficulty: $('local-difficulty').value,
       fighters: roster.fighters,
@@ -1231,8 +1272,30 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       return;
     }
     const values = new FormData($('battle-form'));
-    gate(() => startGame(withChapterOpponent(Object.fromEntries(values.entries()), currentInputId())));
+    const options = Object.fromEntries(values.entries());
+    if (options.mode === 'waves') options.endless = true;
+    gate(() => startGame(withChapterOpponent(options, currentInputId())));
   });
+  function encounterRules() {
+    const mode = $('battle-form').elements.mode.value;
+    const difficulty = $('battle-form').elements.difficulty.value;
+    $('opponent-stocks').disabled = mode !== 'duel';
+    $('opponent-select').disabled = mode === 'waves';
+    $('battle-form').elements.matchMinutes.disabled = mode === 'waves';
+    $('battle-form').elements.matchMinutes.parentElement.hidden = mode === 'waves';
+    $('encounter-rules').textContent =
+      mode === 'boss'
+        ? (difficulty === 'easy'
+            ? '750 damage to red · 1 life.'
+            : difficulty === 'hard'
+              ? '1,000 damage to red · 1 life.'
+              : '1,100 damage to red · second life: 100 damage to red.') + ' Defeat by ring-out.'
+        : mode === 'waves'
+          ? 'Unlimited mixed opponents. Giant boss every 5 waves. Difficulty rises; 25 damage heals between waves.'
+          : 'Choose opponent lives independently of your own. Win by ring-out.';
+  }
+  $('battle-form').addEventListener('change', encounterRules);
+  encounterRules();
   $('setup-moves').addEventListener('click', () => movesInfo());
   $('local-form').addEventListener('change', () => {
     if (readyBoard.setRules(lobbyRules())) renderLocal();
@@ -1473,7 +1536,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   });
   $('result-menu').addEventListener('click', () => screen('home'));
   $('result-select').addEventListener('click', () => {
-    if (['local', 'ffa', 'teams'].includes(world.mode)) {
+    if (['local', 'ffa', 'teams'].includes(world.mode) || (world.mode === 'waves' && world.options.fighters)) {
       screen('local');
       renderLocal();
     } else screen('setup');

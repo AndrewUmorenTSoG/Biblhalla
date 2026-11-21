@@ -6,6 +6,7 @@ import type { SimContext } from './context.ts';
 import type { Action, Fighter, SimState } from './types.ts';
 import { Q, clamp, roundMul } from './fixed.ts';
 import { event } from './state.ts';
+import { dangerDamage } from './danger.ts';
 import { invincible, outside, platforms } from './physics.ts';
 
 export type Box = [number, number, number, number];
@@ -114,6 +115,7 @@ export function startProjectile(ctx: SimContext, s: SimState, f: Fighter, m: Att
     vy: roundMul(speed, dir[1], 1024),
     gravity: p.gravityQ,
     life: p.lifetimeTicks,
+    travelLeftQ: weapon === 'sling' ? Math.floor((s.map.main.rectUnits[2] * Q) / 2) : undefined,
     size: [p.collisionUnits[0], p.collisionUnits[1]],
     capClass: p.capClass,
     charge: a.charge,
@@ -265,6 +267,17 @@ export function combat(ctx: SimContext, s: SimState): void {
     }
     let nx = p.x + p.vx,
       ny = p.y + p.vy;
+    let exhausted = false;
+    if (p.travelLeftQ !== undefined) {
+      const distance = Math.ceil(Math.hypot(p.vx, p.vy));
+      const remaining = p.travelLeftQ;
+      exhausted = distance >= remaining;
+      if (exhausted && distance > 0) {
+        nx = p.x + Math.trunc((p.vx * remaining) / distance);
+        ny = p.y + Math.trunc((p.vy * remaining) / distance);
+      }
+      p.travelLeftQ = Math.max(0, remaining - distance);
+    }
     const hw = (p.size[0] * Q) / 2,
       hh = (p.size[1] * Q) / 2;
     // Active enemy melee deflects projectiles.
@@ -380,6 +393,10 @@ export function combat(ctx: SimContext, s: SimState): void {
     p.y = ny;
     p.vy -= p.gravity;
     p.life--;
+    if (exhausted) {
+      removed.add(p.id);
+      event(s, 'stoneCrumble', { x: p.x, y: p.y });
+    }
     if (caughtAtEnd) {
       removed.add(p.id);
       event(s, 'shieldCatch', { fighter: p.owner });
@@ -432,13 +449,13 @@ export function combat(ctx: SimContext, s: SimState): void {
         damage: amount,
       });
     }
-    target.damage = clamp(target.damage + damage, 0, 9990);
+    target.damage = clamp(target.damage + damage, 0, target.redDamage ? 99990 : 9990);
     if (target.guard !== null) target.guard = Math.max(0, target.guard - damage);
     // Strongest pre-scaling launch wins; equal magnitudes go to the lower attack instance.
     let best = group[0],
       bestRaw = -1;
     for (const h of group) {
-      const raw = launchForceQ(h.m, target.damage);
+      const raw = launchForceQ(h.m, dangerDamage(target));
       if (raw > bestRaw || (raw === bestRaw && h.instance < best.instance)) {
         best = h;
         bestRaw = raw;

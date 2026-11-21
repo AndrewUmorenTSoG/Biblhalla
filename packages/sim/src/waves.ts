@@ -85,7 +85,8 @@ export function arrivals(ctx: SimContext, s: SimState): void {
     if (s.cue) s.cue.ticks = s.waveWait;
     return;
   }
-  const live = s.fighters.filter(f => !f.human && f.stocks > 0).length;
+  const enemy = (f: SimState['fighters'][number]) => (s.options.endless ? !!f.waveEnemy : !f.human);
+  const live = s.fighters.filter(f => enemy(f) && f.stocks > 0).length;
   const cap = s.difficulty === 'easy' ? 2 : 3;
   if (s.wavePending.length) {
     if (live >= cap) return;
@@ -111,10 +112,18 @@ export function arrivals(ctx: SimContext, s: SimState): void {
       return;
     }
     const role = s.wavePending.shift()!;
+    const giant = s.options.endless && role.startsWith('giant:');
+    const hero = s.options.endless ? role.replace('giant:', '') : ENEMY_HERO[role] || 'joshua';
     const f = createFighter(
       ctx,
       s,
-      { hero: ENEMY_HERO[role] || 'joshua', team: 1, stocks: 1, name: role.replace(/_/g, ' ') },
+      {
+        hero,
+        team: s.options.endless ? 99 : 1,
+        stocks: 1,
+        scale: giant ? 2 : 1,
+        name: s.options.endless ? (giant ? 'Giant ' : '') + ctx.defs[hero].name : role.replace(/_/g, ' '),
+      },
       1,
     );
     f.x = s.cue.x;
@@ -122,7 +131,14 @@ export function arrivals(ctx: SimContext, s: SimState): void {
     const player = s.fighters.find(h => h.human && h.stocks);
     f.facing = player && player.x < f.x ? -1 : 1;
     f.weapon = ctx.defs[f.hero].weaponPair[0];
-    f.role = role;
+    if (s.options.endless) {
+      f.waveEnemy = true;
+      f.stats.power = Math.min(10, f.stats.power + Math.floor(s.wave / 5));
+      if (giant) {
+        f.redDamage = 3000 + Math.min(12000, s.wave * 150);
+        f.guard = f.maxGuard = f.redDamage;
+      }
+    } else f.role = role;
     f.invulnerable = 30;
     s.fighters.push(f);
     s.totalEnemies++;
@@ -131,10 +147,14 @@ export function arrivals(ctx: SimContext, s: SimState): void {
     event(s, 'arrival', { fighter: f.id, x: f.x, y: f.y });
     return;
   }
-  if (s.fighters.some(f => !f.human && f.stocks > 0)) return;
+  if (s.fighters.some(f => enemy(f) && f.stocks > 0)) return;
   // Wave cleared: remove spent opponents, rest, then start the next wave (or finish).
-  s.fighters = s.fighters.filter(f => f.human);
+  s.fighters = s.fighters.filter(f => !enemy(f));
   if (!s.waveResting) {
+    if (s.options.endless) {
+      for (const f of s.fighters) if (f.stocks) f.damage = Math.max(0, f.damage - 250);
+      event(s, 'waveRest', { wave: s.wave });
+    }
     s.waveResting = true;
     s.waveWait = WAVE_BREAK_TICKS;
     return;

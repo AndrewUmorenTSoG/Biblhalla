@@ -11,7 +11,7 @@ export interface Puff {
   age: number;
   life: number;
   size: number;
-  kind: 'smoke' | 'dust' | 'burst' | 'gravity';
+  kind: 'smoke' | 'dust' | 'burst' | 'gravity' | 'stone';
 }
 
 /** Spec limits (13_Audio_VFX): at most 2 CSS px for a light impact, 6 for a heavy one. */
@@ -73,6 +73,7 @@ export class Feedback {
         this.add({ x: e.x, y: e.y, size: 60, life: 30, kind: 'burst' });
       }
       if (e.type === 'jump' && f && !this.reduced) this.dust(f.x, f.y, 3);
+      if (e.type === 'stoneCrumble') this.add({ x: e.x, y: e.y, size: 5, life: 18, kind: 'stone' });
     }
     for (const f of world.fighters) {
       // A gravity cancel is the one airborne attack marked `cancelled` by the
@@ -133,7 +134,24 @@ export class Feedback {
       const pos = screen(p.x, p.y),
         t = p.age / p.life;
       c.save();
-      if (p.kind === 'gravity') {
+      if (p.kind === 'stone') {
+        c.globalAlpha = 1 - t;
+        for (let k = 0; k < 6; k++) {
+          const angle = (k * Math.PI) / 3;
+          const spread = this.reduced ? 3 : 3 + t * 25;
+          const x = pos.x + Math.cos(angle) * spread * zoom;
+          const y = pos.y + (Math.sin(angle) * spread + (this.reduced ? 0 : t * t * 16)) * zoom;
+          const r = p.size * (1 - t * 0.8) * zoom;
+          c.fillStyle = k % 2 ? '#a99c83' : '#716653';
+          c.beginPath();
+          c.moveTo(x - r, y);
+          c.lineTo(x - r * 0.3, y - r);
+          c.lineTo(x + r, y - r * 0.4);
+          c.lineTo(x + r * 0.5, y + r);
+          c.closePath();
+          c.fill();
+        }
+      } else if (p.kind === 'gravity') {
         c.globalAlpha = (1 - t) * 0.7;
         c.fillStyle = '#f4f0e4';
         const spread = (8 + t * 12) * zoom,

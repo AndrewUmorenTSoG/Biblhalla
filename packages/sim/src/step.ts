@@ -21,7 +21,7 @@ export function step(ctx: SimContext, s: SimState, inputs: InputFrames = {}): Si
     return s;
   }
   s.tick++;
-  s.remaining--;
+  if (!s.options.endless) s.remaining--;
   if (hasWaves(s)) {
     arrivals(ctx, s);
     if (s.result) return s;
@@ -48,7 +48,7 @@ export function step(ctx: SimContext, s: SimState, inputs: InputFrames = {}): Si
     knockOut(ctx, s, f);
     if (!f.stocks) finalKOs.push(f);
   }
-  if (hasWaves(s) && s.remaining <= 0) finish(s, false, 'Encounter time expired');
+  if (hasWaves(s) && !s.options.endless && s.remaining <= 0) finish(s, false, 'Encounter time expired');
   else checkResult(ctx, s, finalKOs);
   return s;
 }

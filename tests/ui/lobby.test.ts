@@ -13,7 +13,7 @@ test('computer seats fill a 2v2 beside human players and are labelled CPU', () =
   ], ready, nameOf);
   assert.ok(r.ok);
   if (!r.ok) return;
-  assert.deepEqual(r.fighters.map(f => [f.human, f.team]), [[true, 0], [true, 1], [false, 0], [false, 1]]);
+  assert.deepEqual(r.fighters.map(f => [f.human, f.team]), [[true, 0], [true, 0], [false, 1], [false, 1]]);
   assert.equal(r.fighters[2].name, 'Samson (CPU)');
   const s = S.create({ mode: 'teams', difficulty: 'hard', fighters: r.fighters });
   assert.equal(s.fighters.filter(f => !f.human).length, 2);

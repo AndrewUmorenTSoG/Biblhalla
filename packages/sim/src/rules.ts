@@ -9,6 +9,10 @@ export { ENEMY_HERO, arrivals } from './waves.ts';
 export function knockOut(ctx: SimContext, s: SimState, f: Fighter): void {
   if (!f.stocks || f.respawn) return;
   f.stocks--;
+  if (s.mode === 'boss' && f.redDamage && f.stocks > 0) {
+    f.redDamage = 1000;
+    f.guard = f.maxGuard = 1000;
+  }
   f.action = null;
   f.buffer = null;
   f.stun = f.hitstop = 0;
@@ -76,6 +80,10 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
   if (s.mode === 'training') return;
   const humans = s.fighters.filter(f => f.human);
   const living = s.fighters.filter(f => f.stocks);
+  if (s.mode === 'waves' && s.options.endless) {
+    if (!living.some(f => !f.waveEnemy)) finish(s, false, `Survived ${Math.max(0, s.wave - 1)} waves`);
+    return;
+  }
 
   if (VERSUS_MODES.includes(s.mode) && living.length === 0 && teamsOf(finalKOs).length > 1) {
     if (s.suddenDeath) finish(s, false, 'Simultaneous final ring-out — draw');
@@ -86,11 +94,12 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
     if (s.mode === 'local' || s.mode === 'teams' || s.mode === 'ffa') {
       // Remaining fighters (computer seats) play on; the time limit still applies.
       if (teamsOf(living).length <= 1) {
+        const winners = s.mode === 'teams' ? s.fighters.filter(f => living.some(w => w.team === f.team)) : living;
         finish(
           s,
-          false,
+          winners.some(f => f.human),
           'Match complete',
-          living.map(f => f.id),
+          winners.map(f => f.id),
         );
         return;
       }
@@ -102,8 +111,11 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
   }
   if (s.mode === 'waves' || s.mode === 'story') return;
   if (teamsOf(living).length <= 1) {
-    const ids = living.map(f => f.id);
-    finish(s, ids.includes(humans[0].id), 'Ring-out victory', ids);
+    const ids =
+      s.mode === 'teams'
+        ? s.fighters.filter(f => living.some(w => w.team === f.team)).map(f => f.id)
+        : living.map(f => f.id);
+    finish(s, ids.includes(humans[0]?.id), 'Ring-out victory', ids);
     return;
   }
   if (s.remaining <= 0) {
