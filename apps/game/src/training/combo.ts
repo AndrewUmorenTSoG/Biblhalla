@@ -56,14 +56,15 @@ export class ComboTracker {
   }
 }
 
-/** Rolling, deduplicated history of semantic inputs for the training overlay. */
+/** Rolling history of button presses; only duplicate observations of one tick are omitted. */
 export class InputHistory {
   readonly entries: { tick: number; text: string }[] = [];
 
   record(tick: number, frame: InputFrame | undefined): void {
     const text = describe(frame);
     if (!text) return;
-    if (this.entries.at(-1)?.text === text) return;
+    const previous = this.entries.at(-1);
+    if (previous?.tick === tick && previous.text === text) return;
     this.entries.push({ tick, text });
     if (this.entries.length > INPUT_HISTORY) this.entries.shift();
   }

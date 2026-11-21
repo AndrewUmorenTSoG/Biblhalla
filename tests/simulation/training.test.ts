@@ -59,7 +59,7 @@ test('input history keeps distinct presses, newest last, bounded', () => {
   h.record(2, { x: 1, light: true });
   h.record(3, { y: -1, heavy: true });
   h.record(4, { x: 1 });
-  assert.deepEqual(h.entries.map(e => e.text), ['→ Light', '↓ Heavy']);
+  assert.deepEqual(h.entries.map(e => e.text), ['→ Light', '→ Light', '↓ Heavy']);
   for (let k = 0; k < 50; k++) h.record(10 + k, { jump: k % 2 === 0, dodge: k % 2 === 1 });
   assert.equal(h.entries.length, 30);
   assert.equal(describe({ x: -1, y: 1, jump: true, light: true }), '↑← Jump+Light');
