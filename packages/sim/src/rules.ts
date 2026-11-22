@@ -134,7 +134,12 @@ export function checkResult(ctx: SimContext, s: SimState, finalKOs: Fighter[] = 
       );
       return;
     }
-    const winners = tied ? [] : ranked[0].members;
+    // Standings count living fighters, but victory belongs to the entire team.
+    const winners = tied
+      ? []
+      : s.mode === 'teams'
+        ? s.fighters.filter(f => f.team === ranked[0].members[0].team)
+        : ranked[0].members;
     finish(
       s,
       winners.some(f => f.human),
