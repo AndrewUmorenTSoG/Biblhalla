@@ -21,3 +21,6 @@ All of these are in `.gitignore`. If `git status` shows a new kind of draft file
 1. `npm run format` (keeps the code neat), then `npm test` and `npm run art:check` pass.
 2. `npm run build` succeeds. Report the new size of `dist/PLAY.html`.
 3. `git status` shows no files from the "Stays local" list.
+
+## Character style (Andrew's requirement)
+New fighters and story opponents must match the original David and Saul sprite artwork: detailed outlined, painted characters with consistent proportions and individually drawn poses. Do not substitute geometric humanoids or animate a static concept cutout. Compare the sheets and in-game motion beside the original roster before shipping. Missing textures must never fall back to a different character style.

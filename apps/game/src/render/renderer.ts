@@ -1,3 +1,4 @@
+import { SpriteReadiness } from './sprite-readiness.ts';
 // Canvas renderer: draws each frame from the simulation state. It only reads the
 // simulation, never changes it. Smoothing between ticks and the camera live here.
 
@@ -12,6 +13,8 @@ import { handGrip, needsCarriedWeapon } from './grip.ts';
 
 import { drawGoliathImpacts, goliathImpact } from './goliath-impact.ts';
 import { drawEncounter } from './encounter.ts';
+import { storyRival } from '../../../../packages/campaign/src/david-fights.ts';
+import { drawRival, rivalAnimation } from './story-rivals.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery } from './arena-scenes.ts';
@@ -490,7 +493,9 @@ export class Renderer {
         releaseState,
         charge > 0,
       );
-      const authored = this.frameFor(hero, pose, weapon, move, attackTick, time);
+      const selected = this.frameFor(hero, pose, weapon, move, attackTick, time);
+      // Old imported clips must not flash a concept portrait during a transition.
+      const authored = /^(idle$|turnaround$|light$|sig_)/.test(selected) ? 'motion_idle' : selected;
       const useWindup = throwingShield && !releaseState && !charge && attackTick < attack.startup;
       const shieldKit =
         hero === 'gideon' && pose !== 'hitstun' && /^release_(rush|lift|sweep|air|dlight)_/.test(authored);
@@ -508,7 +513,7 @@ export class Renderer {
                   ? 'equipped_sling_13'
                   : 'slinger_cast_1'
                 : authored;
-      let frame = frames[frameName] || frames.motion_idle || frames.idle;
+      let frame = frames[frameName] || frames.motion_idle;
       let kitReady = shieldKit;
       if (frame?.sheet) {
         const page = this.art[frame.sheet];
@@ -703,150 +708,46 @@ export class Renderer {
         return;
       }
     }
+    // Never replace missing artwork with a primitive cutout.
+  }
+  private spriteReadiness = new SpriteReadiness();
+  private readyKey = '';
+  private requiredSprites: (HTMLImageElement | undefined)[] = [];
+  ready(world: SimState) {
+    const encounter = world.options.storyFight ?? world.options.exhibitionOpponent;
+    const keys = new Set(
+      world.fighters
+        .filter(f => f.stocks > 0)
+        .map(f =>
+          f.partner
+            ? 'lion'
+            : f.guard !== null && encounter !== undefined
+              ? (storyRival(encounter) ?? ['lion', 'bear', 'goliath'][encounter] ?? f.hero)
+              : f.hero,
+        ),
+    );
+    const key = [...keys].sort().join('|');
+    if (key !== this.readyKey) {
+      this.readyKey = key;
+      for (const hero of [...keys])
+        for (const frame of Object.values(this.atlas[hero] ?? {}) as any[]) {
+          if (frame.sheet) keys.add(frame.sheet);
+        }
+      this.requiredSprites = [...keys].map(id => this.art[id]);
+    }
+    return this.spriteReadiness.check(this.requiredSprites);
+  }
+  loading(message: string) {
+    const c = this.ctx;
     c.save();
-    c.translate(x, y);
-    c.scale(scale * facing, scale);
-    if (ghost) c.globalAlpha = 0.35;
-    c.lineCap = 'round';
-    c.lineJoin = 'round';
-    const step = pose === 'run' ? Math.sin(time * 0.22) * 13 : 0;
-    const lift = pose === 'jump' ? 9 : 0;
-    let arm =
-      pose === 'startup' ? -1.1 : pose === 'active' ? 1.05 : pose === 'recovery' ? 0.4 : pose === 'dodge' ? 0.9 : -0.2;
-    c.strokeStyle = '#332b29';
-    c.lineWidth = 11;
-    c.beginPath();
-    c.moveTo(-9, -29);
-    c.lineTo(-10 + step, -12 - lift);
-    c.lineTo(-13 - step, 0);
-    c.moveTo(10, -29);
-    c.lineTo(10 - step, -13 - lift);
-    c.lineTo(16 + step, 0);
-    c.stroke();
-    c.strokeStyle = p[1];
-    c.lineWidth = 7;
-    c.stroke();
-    c.fillStyle = p[0];
-    c.strokeStyle = '#332b29';
-    c.lineWidth = 2.5;
-    c.beginPath();
-    c.moveTo(-18, -57);
-    c.quadraticCurveTo(0, -67, 18, -57);
-    c.lineTo(21, -24);
-    c.quadraticCurveTo(0, -16, -22, -24);
-    c.closePath();
-    c.fill();
-    c.stroke();
-    c.fillStyle = p[1];
-    this.round(-19, -32, 38, 7, 2);
-    c.strokeStyle = '#332b29';
-    c.lineWidth = 11;
-    c.beginPath();
-    c.moveTo(-16, -54);
-    c.lineTo(-23, -40 + step * 0.3);
-    c.lineTo(-16, -32);
-    c.stroke();
-    c.strokeStyle = '#c99670';
-    c.lineWidth = 7;
-    c.stroke();
-    c.save();
-    c.translate(15, -54);
-    c.rotate(arm);
-    c.strokeStyle = '#332b29';
-    c.lineWidth = 12;
-    c.beginPath();
-    c.moveTo(0, 0);
-    c.lineTo(13, 9);
-    c.lineTo(24, 0);
-    c.stroke();
-    c.strokeStyle = '#ce9f78';
-    c.lineWidth = 8;
-    c.stroke();
-    this.weapon(weapon, 25, 0, pose === 'active' ? 0.8 : -0.25, p[1]);
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.fillStyle = '#07161e';
+    c.fillRect(0, 0, c.canvas.width, c.canvas.height);
+    c.fillStyle = '#f2d18c';
+    c.font = '24px system-ui';
+    c.textAlign = 'center';
+    c.fillText(message, c.canvas.width / 2, c.canvas.height / 2);
     c.restore();
-    c.fillStyle = '#cda17a';
-    c.strokeStyle = '#332b29';
-    c.lineWidth = 2.5;
-    c.beginPath();
-    c.ellipse(0, -75, 16, 20, 0, 0, Math.PI * 2);
-    c.fill();
-    c.stroke();
-    c.fillStyle = p[2];
-    c.beginPath();
-    c.moveTo(-16, -72);
-    c.lineTo(-18, -83);
-    c.quadraticCurveTo(-5, -105, 15, -88);
-    c.lineTo(17, -73);
-    c.lineTo(8, -84);
-    c.lineTo(-4, -88);
-    c.closePath();
-    c.fill();
-    c.stroke();
-    c.fillStyle = '#382c2b';
-    c.beginPath();
-    c.arc(8, -76, 1.8, 0, Math.PI * 2);
-    c.fill();
-    c.beginPath();
-    c.moveTo(5, -64);
-    c.lineTo(12, -66);
-    c.stroke();
-    if (['moses', 'nehemiah', 'caleb', 'saul'].includes(hero)) {
-      c.fillStyle = hero === 'moses' ? '#d9d0b9' : p[2];
-      c.beginPath();
-      c.moveTo(-14, -68);
-      c.lineTo(-9, -49);
-      c.lineTo(7, -52);
-      c.lineTo(15, -68);
-      c.lineTo(4, -64);
-      c.closePath();
-      c.fill();
-      c.stroke();
-    }
-    if (['samson', 'deborah', 'miriam', 'esther'].includes(hero)) {
-      c.fillStyle = p[2];
-      c.beginPath();
-      c.moveTo(-16, -88);
-      c.quadraticCurveTo(-36, -60, -23, -36);
-      c.lineTo(-12, -44);
-      c.lineTo(-9, -80);
-      c.closePath();
-      c.fill();
-      c.stroke();
-    }
-    if (['saul', 'esther'].includes(hero)) {
-      c.fillStyle = '#d7b56e';
-      c.beginPath();
-      c.moveTo(-15, -91);
-      c.lineTo(-17, -104);
-      c.lineTo(-5, -98);
-      c.lineTo(1, -109);
-      c.lineTo(8, -97);
-      c.lineTo(17, -103);
-      c.lineTo(15, -90);
-      c.closePath();
-      c.fill();
-      c.stroke();
-    }
-    if (hero === 'david' || hero === 'jonathan') {
-      c.fillStyle = p[1];
-      c.beginPath();
-      c.moveTo(-15, -53);
-      c.lineTo(-28, -44 + step * 0.2);
-      c.lineTo(-28, -53);
-      c.lineTo(-4, -59);
-      c.closePath();
-      c.fill();
-      c.stroke();
-    }
-    c.restore();
-    if (label) {
-      c.save();
-      c.textAlign = 'center';
-      c.font = 'bold 14px system-ui';
-      c.fillStyle = '#162b33';
-      c.fillText(label, x, y - 110 * scale);
-      c.restore();
-    }
   }
   showFighterLabels = true;
   /** Draw a fighter's portrait onto a small menu canvas. */
@@ -1061,7 +962,30 @@ export class Renderer {
         drawWaterHurricane(c, this.art.waterHurricane, age, move.active, this.reduced);
         c.restore();
       }
-      if (f.guard !== null && encounter !== undefined && run && script) {
+      const rival = f.guard !== null ? storyRival(encounter) : undefined;
+      if (rival && run && script) {
+        const moves = script.phases[Math.min(run.phase, script.phases.length) - 1];
+        const move = moves[run.index % moves.length];
+        const frame = rivalAnimation(
+          f,
+          run,
+          move,
+          world.tick + (active && !f.hitstop ? alpha : 0),
+          this.runDistance.phase(f.id, visual.x / Q, 1, 100 * f.scale),
+        );
+        c.save();
+        c.translate(p.x, p.y);
+        c.scale(this.camera.zoom * f.scale * f.facing, this.camera.zoom * f.scale);
+        if (ghost) c.globalAlpha = 0.55;
+        drawRival(c, rival, frame, this.art);
+        c.restore();
+        if (this.showFighterLabels) {
+          c.font = 'bold 12px system-ui';
+          c.textAlign = 'center';
+          c.fillStyle = '#f0d5a0';
+          c.fillText(f.name, p.x, p.y - 140 * this.camera.zoom * f.scale);
+        }
+      } else if (f.guard !== null && encounter !== undefined && run && script) {
         const moves = script.phases[run.phase - 1];
         const move = moves[run.index % moves.length];
         const champion = encounter === 2;

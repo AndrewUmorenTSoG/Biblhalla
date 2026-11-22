@@ -138,7 +138,79 @@ export const DAVID_FIGHTS = [
       'At Elah the two armies stand across the valley. David steps out with his sling. The champion lowers his spear.',
     phases: [[thrust], [thrust, sweep], [rush, sweep, thrust]],
   },
+  {
+    name: 'Kedar · Dustblade',
+    part: '004',
+    arena: 'wilderness_waystation',
+    skin: 'kedar',
+    hero: 'esther',
+    scale: 1.05,
+    guard: 1200,
+    intro:
+      'I find a lone raider at the caravan road. His blade is quick, but every rush leaves an opening. I must hold my ground and protect the travellers.',
+    phases: [
+      [
+        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
+        {
+          ...strike('Sandstep lunge', 112, 66, 30, 12, 34, 15, 'He crouches low. Jump the advancing blade.', 1),
+          advanceUnits: 34,
+        },
+      ],
+      [
+        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
+        strike('Sky hook', 68, 126, 32, 11, 38, 17, 'The blade dips. Stay beside him; he is cutting upward.', 2),
+      ],
+      [
+        {
+          ...strike('Sandstep lunge', 112, 66, 30, 12, 34, 15, 'He crouches low. Jump the advancing blade.', 1),
+          advanceUnits: 34,
+        },
+        strike('Sky hook', 68, 126, 32, 11, 38, 17, 'The blade dips. Stay beside him; he is cutting upward.', 2),
+        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
+      ],
+    ],
+  },
+  {
+    name: 'Tiras · Bronze Warden',
+    part: '005',
+    arena: 'elah_training_terrace',
+    skin: 'tiras',
+    hero: 'nehemiah',
+    scale: 1.25,
+    guard: 1800,
+    intro:
+      'At the old watchtower, a bronze-armoured warden bars the road. I cannot overpower his mace. I must draw out the heavy swing and strike before he resets his shield.',
+    phases: [
+      [
+        strike('Gatebreaker', 100, 118, 40, 12, 44, 23, 'The mace rises overhead. Move behind him before it falls.', 0),
+        {
+          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
+          advanceUnits: 26,
+        },
+      ],
+      [
+        {
+          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
+          advanceUnits: 26,
+        },
+        strike('Ankle reaper', 120, 38, 36, 14, 42, 19, 'The mace drops to his side. Jump the low sweep.', 2),
+      ],
+      [
+        strike('Ankle reaper', 120, 38, 36, 14, 42, 19, 'The mace drops to his side. Jump the low sweep.', 2),
+        strike('Gatebreaker', 100, 118, 40, 12, 44, 23, 'The mace rises overhead. Move behind him before it falls.', 0),
+        {
+          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
+          advanceUnits: 26,
+        },
+      ],
+    ],
+  },
 ];
+
+export const STORY_FIGHT_COUNT = DAVID_FIGHTS.length;
+export function storyRival(index: number | undefined): 'kedar' | 'tiras' | undefined {
+  return index === 3 ? 'kedar' : index === 4 ? 'tiras' : undefined;
+}
 
 export const DAVID_CHAPTER = DAVID_FIGHTS.map((fight, index) =>
   index === 1
@@ -168,7 +240,7 @@ export function davidFightOptions(index: number, difficulty: string, inputId: st
         inputId: 'cpu',
         name: fight.name,
         team: 1,
-        stocks: 1,
+        stocks: index >= 3 ? 2 : 1,
         guard: fight.guard,
         scale: fight.scale,
       },
@@ -196,7 +268,7 @@ export function davidFightOptions(index: number, difficulty: string, inputId: st
 /** Quick Battle uses the same opponent and moves without recording a chapter victory. */
 export function withChapterOpponent(options: MatchOptions, inputId: string): MatchOptions {
   const index = DAVID_FIGHTS.findIndex(fight => fight.skin === options.opponent);
-  if (index < 0 || (options.mode !== 'duel' && options.mode !== 'boss')) return options;
+  if (index < 0 || index >= 3 || (options.mode !== 'duel' && options.mode !== 'boss')) return options;
   const encounter = davidFightOptions(index, options.difficulty ?? 'easy', inputId);
   const enemy = encounter.fighters![1];
   const requestedStocks = Number(options.opponentStocks || options.stocks || 3);

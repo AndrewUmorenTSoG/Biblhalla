@@ -4,6 +4,7 @@
 import type { Content } from '../../../../packages/content/src/index.ts';
 import { hash } from '../../../../packages/sim/src/fixed.ts';
 import { BINDABLE_KEY, bindingsAreUnique } from '../input/keymap.ts';
+import { STORY_FIGHT_COUNT } from '../../../../packages/campaign/src/david-fights.ts';
 
 export interface KeyValueStorage {
   getItem(key: string): string | null;
@@ -198,7 +199,7 @@ export function createProfiles(content: Content) {
     if (!raw || raw.schema !== PROFILE_SCHEMA || !Array.isArray(raw.completed) || raw.completed.length > ids.size)
       throw new Error('Unsupported or invalid save');
     const d = defaults();
-    if (Number.isInteger(raw.davidWins)) d.davidWins = Math.max(0, Math.min(3, raw.davidWins));
+    if (Number.isInteger(raw.davidWins)) d.davidWins = Math.max(0, Math.min(STORY_FIGHT_COUNT, raw.davidWins));
     d.completed = [
       ...new Set<string>(raw.completed.filter((id: unknown) => typeof id === 'string' && ids.has(id))),
     ].sort();
