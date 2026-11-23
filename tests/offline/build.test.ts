@@ -19,7 +19,9 @@ test('offline game ships David’s chapter and excludes the retired companion ca
   assert.doesNotMatch(stripped, /\b(?:dru|ken|archive)\b/i);
   assert.ok(html.includes(`"hash":"${manifest.contentHash}"`));
   assert.equal(manifest.attacks, 182);
-  assert.equal(manifest.levels, 3);
+  assert.equal(manifest.levels, 5);
+  assert.match(stripped, /Kedar/);
+  assert.match(stripped, /Tiras/);
 });
 
 test('only cleaned runtime art ships; raw concept sheets never do', async () => {

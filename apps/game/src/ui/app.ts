@@ -23,9 +23,11 @@ import { DRILLS, DrillRun } from '../training/drills.ts';
 import { buildRoster, CPU_INPUT, ReadyBoard } from './lobby.ts';
 import { presentResult } from './results.ts';
 import { moveShowcase } from './move-showcase.ts';
+import { prepareRival, rivalPortrait } from '../render/story-rivals.ts';
 import {
   DAVID_CHAPTER,
   DAVID_FIGHTS,
+  storyRival,
   davidFightOptions,
   withChapterOpponent,
 } from '../../../../packages/campaign/src/david-fights.ts';
@@ -138,7 +140,9 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   }
   function updateHome() {
     const total = store.data.davidWins;
-    $('home-progress').textContent = total ? total + ' of 3 fights won · David and Goliath' : '';
+    $('home-progress').textContent = total
+      ? total + ' of ' + DAVID_CHAPTER.length + ' fights won · David’s journey'
+      : '';
     $('home-continue').hidden = !total;
     $('footer-save').textContent = store.status;
   }
@@ -413,7 +417,16 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
         card.append(el('small', f.waveEnemy ? 'Wave opponent' : 'Team ' + (f.team + 1)));
       card.append(
         el('b', (f.human ? playerGlyph(f.id) + ' P' + f.id + ' · ' : '') + f.name),
-        el('small', f.weapon === 'unarmed' ? 'Unarmed' : f.weapon),
+        el(
+          'small',
+          f.guard !== null && storyRival(world.options.storyFight) === 'kedar'
+            ? 'Curved blade'
+            : f.guard !== null && storyRival(world.options.storyFight) === 'tiras'
+              ? 'Mace & shield'
+              : f.weapon === 'unarmed'
+                ? 'Unarmed'
+                : f.weapon,
+        ),
         (() => {
           const d = el('span', String(Math.floor(f.damage / 10)), 'damage');
           d.style.color = damageColor(dangerDamage(f));
@@ -488,9 +501,11 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
         store.data.davidWins = Math.max(store.data.davidWins, fightIndex + 1);
         store.save();
       }
-      $('next-level').hidden = !won || fightIndex === 2;
+      $('next-level').hidden = !won || fightIndex >= DAVID_CHAPTER.length - 1;
       $('next-level').textContent =
-        won && fightIndex < 2 ? 'Fight ' + DAVID_CHAPTER[fightIndex + 1].name + ' →' : 'Next fight';
+        won && fightIndex < DAVID_CHAPTER.length - 1
+          ? 'Fight ' + DAVID_CHAPTER[fightIndex + 1].name + ' →'
+          : 'Next fight';
       $('rematch').textContent = won ? 'Replay fight' : 'Retry fight';
     } else $('next-level').textContent = 'Next level →';
     open($('result-dialog'));
@@ -571,15 +586,36 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   function renderFights() {
     const wins = store.data.davidWins,
       grid = $('fight-grid');
-    $('fight-progress').textContent = wins + ' of 3 fights won · 1 Samuel 17';
+    $('fight-progress').textContent =
+      wins + ' of ' + DAVID_CHAPTER.length + ' fights won · Chapter One + 2 original rival trials';
     $('fight-difficulty').value = settings.difficulty;
-    $('fight-continue').textContent = wins === 3 ? 'Replay chapter →' : 'Fight as David →';
+    $('fight-continue').textContent = wins >= DAVID_CHAPTER.length ? 'Replay journey →' : 'Fight as David →';
     grid.replaceChildren();
     DAVID_CHAPTER.forEach((fight, index) => {
+      if (index === 3) {
+        const heading = el('div', '', 'rival-chapter-heading');
+        heading.append(
+          el('h2', 'The road beyond Elah'),
+          el('p', 'Two original story trials. Read the windup, evade the strike, and punish the recovery.'),
+        );
+        grid.append(heading);
+      }
       const button = el('button', '', 'level-card') as HTMLButtonElement;
       button.disabled = index > wins;
+      const rival = storyRival(index);
+      if (rival) {
+        const portrait = rivalPortrait(rival, art.images);
+        portrait.className = 'rival-preview';
+        button.append(portrait);
+      }
       button.append(
-        el('small', 'PART ' + fight.part + ' · ' + (index === 2 ? 'BOSS' : 'FIGHT ' + (index + 1))),
+        el(
+          'small',
+          'PART ' +
+            fight.part +
+            ' · ' +
+            (index >= 3 ? 'ORIGINAL RIVAL TRIAL' : index === 2 ? 'BOSS' : 'FIGHT ' + (index + 1)),
+        ),
         el('h2', fight.name),
         el('p', fight.intro),
         el(
@@ -591,6 +627,10 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
               : 'Enter fight →',
         ),
       );
+      if (rival) {
+        button.append(el('p', [...new Set(fight.phases.flat().map(move => move.name))].join(' · '), 'rival-moves'));
+        button.append(el('small', '2 lives · ring-outs only · story opponent'));
+      }
       button.addEventListener('click', () => startFight(index));
       grid.append(button);
     });
@@ -603,13 +643,15 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       return;
     }
     const fight = DAVID_CHAPTER[index];
+    const rival = storyRival(index);
+    if (rival) prepareRival(rival, art.images);
     startGame(davidFightOptions(index, settings.difficulty, currentInputId()));
     $('game-title').textContent = 'Part ' + fight.part + ' · David vs ' + fight.name;
     $('objective').textContent = 'Launch ' + fight.name + ' beyond the arena boundary.';
   }
   /** Continue David's fights from the next unbeaten one. */
   function resumeFights() {
-    startFight(store.data.davidWins === 3 ? 0 : store.data.davidWins);
+    startFight(store.data.davidWins >= DAVID_CHAPTER.length ? 0 : store.data.davidWins);
   }
   // ------------------------------------------------------------------------------
   // Information dialogs: context, controls, move lists, and the fighter library.
@@ -632,7 +674,15 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       const fight = world.options.storyFight !== undefined ? DAVID_CHAPTER[index] : DAVID_FIGHTS[index];
       nodes.push(
         el('h3', fight.name),
-        el('p', index === 2 ? '1 Samuel 17:40–50' : '1 Samuel 17:34–37', 'reference'),
+        el(
+          'p',
+          index >= 3
+            ? 'Original fictional encounter · David’s journey'
+            : index === 2
+              ? '1 Samuel 17:40–50'
+              : '1 Samuel 17:34–37',
+          'reference',
+        ),
         el('p', fight.intro),
       );
     } else {
@@ -1178,6 +1228,16 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       }
     }
     if (world) {
+      const artwork = renderer.ready(world);
+      if (artwork !== 'ready') {
+        runner.reset();
+        renderer.loading(
+          artwork === 'error' ? 'Artwork could not load. Return to the menu and retry.' : 'Preparing fighters...',
+        );
+        requestAnimationFrame(frame);
+        return;
+      }
+
       const active = replayPlayback
         ? replayIndex < replayPlayback.entries.length && world.phase !== 'result'
         : world.phase === 'playing' || world.phase === 'countdown';
@@ -1601,7 +1661,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     opt.value = 'random';
     $('opponent-select').append(opt);
   }
-  for (const fight of DAVID_FIGHTS) $('opponent-select').add(new Option(fight.name, fight.skin));
+  for (const fight of DAVID_FIGHTS.slice(0, 3)) $('opponent-select').add(new Option(fight.name, fight.skin));
   $('opponent-select').value = 'samson';
   renderRoster();
   renderLibrary();

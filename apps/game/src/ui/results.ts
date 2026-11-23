@@ -1,5 +1,7 @@
 import type { SimState } from '../../../../packages/sim/src/types.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
+import { storyRival } from '../../../../packages/campaign/src/david-fights.ts';
+import { rivalPortrait } from '../render/story-rivals.ts';
 
 function node(tag: string, text: string, cls?: string) {
   const element = document.createElement(tag);
@@ -65,7 +67,9 @@ export function presentResult(
       : undefined;
   const stage = get('result-art');
   stage.replaceChildren();
-  if (skin && art.images[skin]) {
+  const rival = focus.guard !== null ? storyRival(bossIndex) : undefined;
+  if (rival) stage.append(rivalPortrait(rival, art.images));
+  else if (skin && art.images[skin]) {
     const image = art.images[skin];
     // Boss sheets include weapon reach and foot registration. Frame the bust for the podium.
     const [x, y, size] = skin === 'goliath' ? [24, 127, 230] : [19, 15, 155];

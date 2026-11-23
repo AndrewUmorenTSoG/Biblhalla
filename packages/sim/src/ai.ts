@@ -76,7 +76,7 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
       const destination = clamp(player.x + flank * spacing * Q, (left + 48) * Q, (left + width - 48) * Q);
       const distance = destination - f.x;
       if (
-        champion &&
+        (champion || (s.options.storyFight ?? -1) >= 3) &&
         f.ground &&
         player.y < f.y - 48 * Q &&
         s.map.platforms.some(p => p.id === f.ground && p.kind === 'oneWay')

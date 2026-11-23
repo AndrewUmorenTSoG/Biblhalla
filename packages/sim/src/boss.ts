@@ -182,7 +182,7 @@ function advanceBoss(ctx: SimContext, s: SimState, boss: Fighter, script: BossSc
   if (run.stage === 'gap') {
     const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
     if (
-      champion &&
+      (champion || (s.options.storyFight ?? -1) >= 3) &&
       move.kind === 'melee' &&
       player &&
       (player.y > boss.y + move.height * Q || player.y + 74 * Q < boss.y)
@@ -228,7 +228,7 @@ function advanceBoss(ctx: SimContext, s: SimState, boss: Fighter, script: BossSc
     event(s, 'bossOpening', { fighter: boss.id, ticks: move.recovery });
   } else {
     run.stage = 'gap';
-    run.ticks = gap;
+    run.ticks = run.hit.length && move.followupGap !== undefined ? Math.max(1, Math.min(gap, move.followupGap)) : gap;
     run.index++;
   }
 }

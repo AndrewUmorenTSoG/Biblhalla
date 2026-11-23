@@ -230,6 +230,8 @@ export interface BossMove {
   frame?: number;
   grab?: boolean;
   advanceUnits?: number;
+  /** Shorter pause after full recovery, only when this attack connected. */
+  followupGap?: number;
   tell: number;
   active: number;
   recovery: number;

@@ -234,3 +234,11 @@
 
 #local-rule-note{grid-column:1/-1;margin:0;line-height:1.5;color:#c9d9db}
 @media(min-width:1100px){#local-rule-note{grid-column:1/5}}
+
+/* Story-only rival previews use the exact combat sprite rather than a roster stand-in. */
+.rival-preview { display:block; width:100%; max-width:288px; height:160px; object-fit:contain; margin:0 auto 8px; background:radial-gradient(ellipse at 50% 72%,rgba(211,176,109,.15),transparent 68%); }
+.rival-moves { color:#dfc38e; font-size:.85rem; }
+#fight-grid { align-items:start; }
+.rival-chapter-heading { grid-column:1/-1; padding:24px 0 4px; }
+.rival-chapter-heading h2 { color:#f0d5a0; margin:0 0 8px; }
+.rival-chapter-heading p { margin:0; max-width:65ch; color:#c7d1cb; }
