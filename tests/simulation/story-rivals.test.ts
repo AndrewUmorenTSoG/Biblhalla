@@ -106,3 +106,33 @@ test('rival contact advances into follow-through without reversing during recove
     assert.equal(sequence.at(-1),18+move.frame!*6+5);
   }
 });
+
+for (const index of [3, 4]) {
+  test(DAVID_FIGHTS[index].name + ' drops through a thin platform to pursue David below', () => {
+    const s = S.create(davidFightOptions(index, 'hard', 'keyboard')); s.phase = 'playing';
+    const [player, rival] = s.fighters;
+    const platform = s.map.platforms.find(p => p.kind === 'oneWay')!;
+    const [x, y, w, h] = platform.rectUnits;
+    const [, floor, , thickness] = s.map.main.rectUnits;
+    rival.x = (x + w / 2) * S.Q; rival.y = (y + h) * S.Q; rival.ground = platform.id;
+    player.x = rival.x - 60 * S.Q; player.y = (floor + thickness) * S.Q; player.ground = s.map.main.id;
+    for (const f of s.fighters) { f.respawn = f.invulnerable = 0; f.vx = f.vy = f.kx = 0; }
+    s.bossRun!.stage = 'gap'; s.bossRun!.ticks = 30;
+    for (const stage of ['tell', 'active', 'recovery'] as const) {
+      const locked = structuredClone(s); locked.bossRun!.stage = stage; locked.bossRun!.ticks = 20;
+      S.step(locked);
+      assert.equal(locked.fighters[1].ground, platform.id, stage + ' must not drop early');
+      assert.equal(locked.fighters[1].drop, 0);
+    }
+    let dropped = false, landed = false;
+    for (let tick = 0; tick < 120; tick++) {
+      S.step(s);
+      dropped ||= rival.drop > 0 && !rival.ground;
+      landed ||= rival.ground === s.map.main.id;
+      if (landed) break;
+    }
+    assert.ok(dropped, 'uses drop-through instead of waiting above the target');
+    assert.ok(landed, 'returns to the main platform');
+    assert.equal(rival.stocks, 2);
+  });
+}
