@@ -24,7 +24,12 @@ export function rivalAnimation(f: Fighter, run: BossRun, move: BossMove, time: n
   if (!f.ground) return rivalFrame('air', Math.max(0, Math.min(1, (1200 - f.vy) / 2400)));
   if (run.stage !== 'gap') {
     const duration = run.stage === 'tell' ? move.tell : run.stage === 'active' ? move.active : move.recovery;
-    return rivalFrame(run.stage, 1 - (run.ticks - (time % 1)) / duration, move.frame ?? 0);
+    const progress = Math.max(0, Math.min(1, 1 - (run.ticks - (time % 1)) / duration));
+    // Carry the contact drawing into its authored follow-through, then settle.
+    // Do not crossfade silhouettes or reverse to a windup during recovery.
+    if (run.stage === 'active') return 18 + (move.frame ?? 0) * 6 + (progress < 0.6 ? 3 : 4);
+    if (run.stage === 'recovery') return 18 + (move.frame ?? 0) * 6 + (progress < 0.25 ? 4 : 5);
+    return rivalFrame(run.stage, progress, move.frame ?? 0);
   }
   if (Math.abs(f.vx) > 100) return rivalFrame('run', ((stride % 1) + 1) % 1);
   return rivalFrame('idle', (((time % 72) + 72) % 72) / 72);
@@ -67,4 +72,67 @@ export function rivalPortrait(skin: Rival, images: Record<string, HTMLImageEleme
       .then(paint)
       .catch(() => {});
   return canvas;
+}
+
+/** Brief weapon trails and ground chips; bounded by the strike's reach, never a hitbox overlay. */
+export function drawRivalAccent(
+  c: CanvasRenderingContext2D,
+  skin: Rival,
+  run: BossRun,
+  move: BossMove,
+  scale: number,
+  fraction: number,
+  reduced: boolean,
+) {
+  if (run.stage !== 'active' && run.stage !== 'recovery') return;
+  const age =
+    run.stage === 'active'
+      ? Math.max(0, move.active + 1 - run.ticks + fraction)
+      : move.active + move.recovery - run.ticks + fraction;
+  const fade = Math.max(0, 1 - Math.max(0, age - move.active / 2) / (move.active / 2 + 8));
+  if (!fade) return;
+  const w = move.width / scale,
+    h = move.height / scale;
+  c.save();
+  c.globalAlpha *= fade * (reduced ? 0.25 : 0.65);
+  c.lineCap = 'round';
+  if (skin === 'kedar') {
+    c.strokeStyle = '#e8d8ae';
+    c.lineWidth = 1.8;
+    const u = reduced ? 1 : Math.min(1, (age + 2) / 5);
+    c.beginPath();
+    if (move.frame === 2) {
+      c.moveTo(w * 0.25, -h * 0.15);
+      c.quadraticCurveTo(w, -h * 0.4, w * 0.7, -h * u);
+    } else {
+      c.moveTo(w * 0.15, -h * 0.65);
+      c.quadraticCurveTo(w * 0.65, -h * 0.2, w * u, -h * 0.55);
+    }
+    c.stroke();
+  } else if (move.frame === 1) {
+    c.strokeStyle = '#c4d7d6';
+    c.lineWidth = 1.5;
+    for (let i = 0; i < 3; i++) {
+      c.beginPath();
+      c.moveTo(w * 0.15, -h * (0.3 + i * 0.2));
+      c.lineTo(w * 0.65, -h * (0.3 + i * 0.2));
+      c.stroke();
+    }
+  } else if (!reduced) {
+    const u = Math.min(1, age / 18);
+    for (let i = 0; i < 6; i++) {
+      const x = w * (0.25 + i * 0.12),
+        y = -Math.sin(Math.PI * u) * Math.min(h * 0.35, 12 + i * 2);
+      const r = (2 + (i % 3)) * (1 - u * 0.7);
+      c.fillStyle = i % 2 ? '#b2a287' : '#7d725f';
+      c.beginPath();
+      c.moveTo(x - r, y);
+      c.lineTo(x - r * 0.3, y - r * 1.4);
+      c.lineTo(x + r, y - r * 0.7);
+      c.lineTo(x + r * 0.65, y + r * 0.4);
+      c.closePath();
+      c.fill();
+    }
+  }
+  c.restore();
 }

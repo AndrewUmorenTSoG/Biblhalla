@@ -94,6 +94,92 @@ const rush = {
   kind: 'charge' as const,
 };
 
+// Rival attacks retain punishable recovery; a landed opener only shortens the pause afterwards.
+const crescent: BossMove = {
+  ...strike(
+    'Crescent cut',
+    76,
+    76,
+    24,
+    8,
+    24,
+    11,
+    'Blade behind the shoulder. Evade the cut; a landed cut leads into a follow-up.',
+    0,
+  ),
+  forceQ: 1000,
+  angle: 22,
+  followupGap: 8,
+};
+const sandstep: BossMove = {
+  ...strike(
+    'Sandstep lunge',
+    90,
+    62,
+    28,
+    10,
+    30,
+    15,
+    'He crouches low. Jump the advancing blade, then punish the recovery.',
+    1,
+  ),
+  advanceUnits: 42,
+  forceQ: 1500,
+  angle: 45,
+};
+const skyHook: BossMove = {
+  ...strike(
+    'Sky hook',
+    50,
+    110,
+    30,
+    9,
+    34,
+    17,
+    'The blade dips. Back away from the rising cut; do not jump into it.',
+    2,
+  ),
+  forceQ: 1650,
+  angle: 67,
+};
+const gatebreaker: BossMove = {
+  ...strike('Gatebreaker', 84, 104, 36, 10, 40, 23, 'The mace rises overhead. Cross behind him before it falls.', 0),
+  forceQ: 1800,
+  angle: 67,
+};
+const bulwark: BossMove = {
+  ...strike(
+    'Bulwark drive',
+    72,
+    82,
+    30,
+    12,
+    30,
+    16,
+    'The shield turns forward. Jump the rush; a hit can lead into another strike.',
+    1,
+  ),
+  advanceUnits: 32,
+  forceQ: 1200,
+  angle: 22,
+  followupGap: 12,
+};
+const ankleReaper: BossMove = {
+  ...strike(
+    'Ankle reaper',
+    94,
+    32,
+    32,
+    10,
+    36,
+    19,
+    'The mace drops to his side. Jump the low sweep, then land and counter.',
+    2,
+  ),
+  forceQ: 1400,
+  angle: 45,
+};
+
 export const DAVID_FIGHTS = [
   {
     name: 'Lion Man',
@@ -149,25 +235,9 @@ export const DAVID_FIGHTS = [
     intro:
       'I find a lone raider at the caravan road. His blade is quick, but every rush leaves an opening. I must hold my ground and protect the travellers.',
     phases: [
-      [
-        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
-        {
-          ...strike('Sandstep lunge', 112, 66, 30, 12, 34, 15, 'He crouches low. Jump the advancing blade.', 1),
-          advanceUnits: 34,
-        },
-      ],
-      [
-        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
-        strike('Sky hook', 68, 126, 32, 11, 38, 17, 'The blade dips. Stay beside him; he is cutting upward.', 2),
-      ],
-      [
-        {
-          ...strike('Sandstep lunge', 112, 66, 30, 12, 34, 15, 'He crouches low. Jump the advancing blade.', 1),
-          advanceUnits: 34,
-        },
-        strike('Sky hook', 68, 126, 32, 11, 38, 17, 'The blade dips. Stay beside him; he is cutting upward.', 2),
-        strike('Crescent cut', 94, 80, 26, 9, 26, 11, 'Blade behind the shoulder. Dodge the cut, then answer.', 0),
-      ],
+      [crescent, sandstep],
+      [crescent, skyHook],
+      [crescent, sandstep, skyHook],
     ],
   },
   {
@@ -181,28 +251,9 @@ export const DAVID_FIGHTS = [
     intro:
       'At the old watchtower, a bronze-armoured warden bars the road. I cannot overpower his mace. I must draw out the heavy swing and strike before he resets his shield.',
     phases: [
-      [
-        strike('Gatebreaker', 100, 118, 40, 12, 44, 23, 'The mace rises overhead. Move behind him before it falls.', 0),
-        {
-          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
-          advanceUnits: 26,
-        },
-      ],
-      [
-        {
-          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
-          advanceUnits: 26,
-        },
-        strike('Ankle reaper', 120, 38, 36, 14, 42, 19, 'The mace drops to his side. Jump the low sweep.', 2),
-      ],
-      [
-        strike('Ankle reaper', 120, 38, 36, 14, 42, 19, 'The mace drops to his side. Jump the low sweep.', 2),
-        strike('Gatebreaker', 100, 118, 40, 12, 44, 23, 'The mace rises overhead. Move behind him before it falls.', 0),
-        {
-          ...strike('Bulwark drive', 82, 86, 34, 14, 38, 16, 'The shield turns forward. Jump the short rush.', 1),
-          advanceUnits: 26,
-        },
-      ],
+      [gatebreaker, bulwark],
+      [bulwark, ankleReaper],
+      [bulwark, ankleReaper, gatebreaker],
     ],
   },
 ];

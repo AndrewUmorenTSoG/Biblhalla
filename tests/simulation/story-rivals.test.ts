@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { S, content } from '../helpers/engine.ts';
 import { DAVID_FIGHTS, davidFightOptions, storyRival, withChapterOpponent } from '../../packages/campaign/src/david-fights.ts';
 import { createProfiles, seal } from '../../apps/game/src/storage/profile.ts';
-import { rivalFrame, RIVAL_FRAME_COUNT } from '../../apps/game/src/render/story-rivals.ts';
+import { rivalFrame, rivalAnimation, RIVAL_FRAME_COUNT } from '../../apps/game/src/render/story-rivals.ts';
 
 for (const index of [3, 4]) {
   const fight = DAVID_FIGHTS[index];
@@ -65,4 +65,44 @@ test('rival sprite states occupy distinct bounded frames without frame-rate-depe
     }
   }
   assert.equal(frames.size, RIVAL_FRAME_COUNT);
+});
+
+for (const index of [3,4]) {
+  test(DAVID_FIGHTS[index].name + ' only accelerates a confirmed follow-up after full recovery', () => {
+    const opener = DAVID_FIGHTS[index].phases.flat().find(m => m.followupGap)!;
+    for (const landed of [false,true]) {
+      const s = S.create({...davidFightOptions(index,'hard','keyboard'),bossScript:{phases:[[opener],[opener],[opener]]}});
+      s.phase='playing'; const [player,boss]=s.fighters;
+      const [,y,,h]=s.map.main.rectUnits;
+      for(const f of s.fighters) {f.y=(y+h)*S.Q;f.ground=s.map.main.id;f.respawn=f.invulnerable=0;}
+      boss.x=0;player.x=300*S.Q;
+      const run=s.bossRun!;run.stage='recovery';run.ticks=opener.recovery;run.hit=landed?[player.id]:[];
+      for(let tick=1;tick<opener.recovery;tick++){S.step(s);assert.equal(run.stage,'recovery');assert.equal(s.bossHazard,null);}
+      S.step(s);assert.equal(run.stage,'gap');assert.equal(run.ticks,landed?opener.followupGap:36);
+    }
+  });
+  test(DAVID_FIGHTS[index].name + ' cancels a follow-up when interrupted', () => {
+    const s=S.create(davidFightOptions(index,'hard','keyboard'));s.phase='playing';
+    const boss=s.fighters[1];boss.respawn=0;boss.stun=10;
+    s.bossRun!.stage='active';s.bossRun!.ticks=6;s.bossRun!.hit=[s.fighters[0].id];
+    S.step(s);assert.equal(s.bossRun!.stage,'gap');assert.deepEqual(s.bossRun!.hit,[]);assert.equal(s.bossHazard,null);
+  });
+}
+test('rival launch directions are supported and distinguish launchers from forward strikes',()=>{
+  for(const fight of DAVID_FIGHTS.slice(3))for(const move of fight.phases.flat())assert.ok(content.physics.directionLookup[String(move.angle)]);
+  const kedar=DAVID_FIGHTS[3].phases.flat();
+  assert.ok(kedar.find(m=>m.name==='Sky hook')!.angle > kedar.find(m=>m.name==='Crescent cut')!.angle);
+});
+test('rival contact advances into follow-through without reversing during recovery',()=>{
+  const s=S.create(davidFightOptions(3,'hard','keyboard'));const boss=s.fighters[1];
+  boss.ground=s.map.main.id;boss.stun=boss.hitstop=0;
+  for(const move of DAVID_FIGHTS[3].phases.flat()){
+    const sequence:number[]=[];
+    for(const stage of ['tell','active','recovery'] as const){
+      const duration=move[stage];
+      for(let ticks=duration;ticks>0;ticks--)sequence.push(rivalAnimation(boss,{...s.bossRun!,stage,ticks},move,100,0));
+    }
+    assert.ok(sequence.every((frame,i)=>!i||frame>=sequence[i-1]));
+    assert.equal(sequence.at(-1),18+move.frame!*6+5);
+  }
 });

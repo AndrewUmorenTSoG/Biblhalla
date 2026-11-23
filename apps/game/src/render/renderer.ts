@@ -14,7 +14,7 @@ import { handGrip, needsCarriedWeapon } from './grip.ts';
 import { drawGoliathImpacts, goliathImpact } from './goliath-impact.ts';
 import { drawEncounter } from './encounter.ts';
 import { storyRival } from '../../../../packages/campaign/src/david-fights.ts';
-import { drawRival, rivalAnimation } from './story-rivals.ts';
+import { drawRival, rivalAnimation, drawRivalAccent } from './story-rivals.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
 import { Q } from '../../../../packages/sim/src/index.ts';
 import { paintArenaScenery } from './arena-scenes.ts';
@@ -978,6 +978,8 @@ export class Renderer {
         c.scale(this.camera.zoom * f.scale * f.facing, this.camera.zoom * f.scale);
         if (ghost) c.globalAlpha = 0.55;
         drawRival(c, rival, frame, this.art);
+        if (!f.stun && !f.hitstop && f.ground)
+          drawRivalAccent(c, rival, run, move, f.scale, active ? alpha : 0, this.reduced);
         c.restore();
         if (this.showFighterLabels) {
           c.font = 'bold 12px system-ui';
