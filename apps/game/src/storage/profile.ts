@@ -140,6 +140,8 @@ export interface SavedCheckpoint {
 
 export interface Profile {
   davidWins: number;
+  mosesWins: number;
+  storyHero: 'david' | 'moses';
   schema: typeof PROFILE_SCHEMA;
   /** Story cards seen in any level (journal context), kept across retries and content updates. */
   seenCards: string[];
@@ -166,6 +168,8 @@ export function createProfiles(content: Content) {
   const defaults = (): Profile => ({
     schema: PROFILE_SCHEMA,
     davidWins: 0,
+    mosesWins: 0,
+    storyHero: 'david',
     contentVersion: content.hash || 'main-1',
     completed: [],
     medals: {},
@@ -200,6 +204,8 @@ export function createProfiles(content: Content) {
       throw new Error('Unsupported or invalid save');
     const d = defaults();
     if (Number.isInteger(raw.davidWins)) d.davidWins = Math.max(0, Math.min(STORY_FIGHT_COUNT, raw.davidWins));
+    if (Number.isInteger(raw.mosesWins)) d.mosesWins = Math.max(0, Math.min(5, raw.mosesWins));
+    if (raw.storyHero === 'moses') d.storyHero = 'moses';
     d.completed = [
       ...new Set<string>(raw.completed.filter((id: unknown) => typeof id === 'string' && ids.has(id))),
     ].sort();

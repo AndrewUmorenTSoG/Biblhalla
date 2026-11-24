@@ -14,12 +14,12 @@ test('standalone page embeds everything and makes no network requests', () => {
   assert.equal(manifest.offline, true);
 });
 
-test('offline game ships David’s chapter and excludes the retired companion campaign', () => {
+test('offline game ships David and Moses chapters and excludes the retired companion campaign', () => {
   const stripped = html.replace(/data:image\/[^;]+;base64,[A-Za-z0-9+/=]+/g, "");
   assert.doesNotMatch(stripped, /\b(?:dru|ken|archive)\b/i);
   assert.ok(html.includes(`"hash":"${manifest.contentHash}"`));
   assert.equal(manifest.attacks, 182);
-  assert.equal(manifest.levels, 5);
+  assert.equal(manifest.levels, 10);
   assert.match(stripped, /Kedar/);
   assert.match(stripped, /Tiras/);
 });

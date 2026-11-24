@@ -2,14 +2,17 @@
 // Sources stay in ignored animation-production; only the runtime pages ship.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { PNG } from 'pngjs';
-for (const skin of ['kedar', 'tiras']) {
-  const source = PNG.sync.read(readFileSync(`assets/animation-production/rivals/${skin}-source.png`));
+for (const skin of (process.argv.includes('--moses') ? ['mage-fire','mage-shadow','mage-lightning'] : ['kedar', 'tiras'])) {
+  const source = PNG.sync.read(readFileSync(`assets/animation-production/${skin.startsWith('mage-') ? 'moses' : 'rivals'}/${skin}-source.png`));
   if (source.width % 6 || source.height % 6) throw new Error('Expected a six by six source sheet');
-  const cw = source.width / 6, ch = source.height / 6;
+  const cw = source.width / 6, cellH = source.height / 6;
   const output = new PNG({ width: 512 * 6, height: 256 * 6 });
   output.data.fill(0);
   for (let frame = 0; frame < 36; frame++) {
-    const sx = frame % 6 * cw, sy = Math.floor(frame / 6) * ch;
+    // Overhead staff tips extend into the transparent gutter above their row.
+    // Include that gutter, but reject components belonging to the previous cel.
+    const pad = skin.startsWith('mage-') && frame >= 6 ? 24 : 0;
+    const sx = frame % 6 * cw, sy = Math.floor(frame / 6) * cellH - pad, ch = cellH + pad;
     // Exclude isolated export specks and neighbouring-cell fragments before registration.
     const keep = new Uint8Array(cw * ch), seen = new Uint8Array(cw * ch);
     for (let start = 0; start < seen.length; start++) {
@@ -26,7 +29,7 @@ for (const skin of ['kedar', 'tiras']) {
           if (!seen[next] && alpha(next) > 12) {seen[next]=1;component.push(next);}
         }
       }
-      if (solid >= 100) for (const n of component) keep[n] = 1;
+      if (solid >= 100 && component.some(n => Math.floor(n / cw) >= pad + cellH * .25)) for (const n of component) keep[n] = 1;
     }
     let bottom = 0, opaque = 0;
     for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {

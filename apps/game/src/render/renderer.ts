@@ -13,6 +13,8 @@ import { handGrip, needsCarriedWeapon } from './grip.ts';
 
 import { drawGoliathImpacts, goliathImpact } from './goliath-impact.ts';
 import { drawEncounter } from './encounter.ts';
+import { drawMosesBackdrop, drawMosesPlatform, drawMosesSpells } from './moses-scenes.ts';
+import type { Rival } from './story-rivals.ts';
 import { storyRival } from '../../../../packages/campaign/src/david-fights.ts';
 import { drawRival, rivalAnimation, drawRivalAccent } from './story-rivals.ts';
 import type { Engine, SimState } from '../../../../packages/sim/src/index.ts';
@@ -718,14 +720,21 @@ export class Renderer {
     const keys = new Set(
       world.fighters
         .filter(f => f.stocks > 0)
-        .map(f =>
-          f.partner
-            ? 'lion'
-            : f.guard !== null && encounter !== undefined
-              ? (storyRival(encounter) ?? ['lion', 'bear', 'goliath'][encounter] ?? f.hero)
-              : f.hero,
+        .map(
+          f =>
+            f.skin ??
+            (f.partner
+              ? 'lion'
+              : f.guard !== null && encounter !== undefined
+                ? (storyRival(encounter) ?? ['lion', 'bear', 'goliath'][encounter] ?? f.hero)
+                : f.hero),
         ),
     );
+    if (world.options.mosesPart !== undefined) keys.add('moses-arenas');
+    if (world.options.mosesPart === 4) {
+      keys.add('moses-pharaoh-sprites');
+      keys.add('moses-throne');
+    }
     const key = [...keys].sort().join('|');
     if (key !== this.readyKey) {
       this.readyKey = key;
@@ -799,7 +808,8 @@ export class Renderer {
       0,
       this.S.content.maps.maps.findIndex((m: any) => m.id === map.id),
     );
-    this.background(world.tick, palette);
+    if (world.options.mosesPart !== undefined) drawMosesBackdrop(c, this.art, world, this.reduced);
+    else this.background(world.tick, palette);
     if (this.quality.frame(elapsedMs)) this.feedback.maxPuffs = particleCap(this.quality.low);
     this.callouts.update(world);
     this.feedback.reduced = this.reduced;
@@ -817,8 +827,10 @@ export class Renderer {
     c.scale(this.camera.zoom, -this.camera.zoom);
     c.translate(-this.camera.x, -this.camera.y);
     const surfaceStyle = this.S.content.maps.maps[palette % 6].id;
-    for (const pl of [map.main, ...map.platforms])
-      this.surfaces.draw(c, surfaceStyle, pl.rectUnits, pl.kind === 'solid');
+    for (const pl of [map.main, ...map.platforms]) {
+      if (world.options.mosesPart !== undefined) drawMosesPlatform(c, pl.rectUnits, pl.kind === 'solid');
+      else this.surfaces.draw(c, surfaceStyle, pl.rectUnits, pl.kind === 'solid');
+    }
     for (const it of world.items) {
       c.save();
       c.translate(it.x / Q, it.y / Q);
@@ -828,6 +840,7 @@ export class Renderer {
       c.restore();
     }
     drawEncounter(c, world);
+    drawMosesSpells(c, world, this.reduced);
     drawGoliathImpacts(c, impact, this.reduced, this.quality.low);
     c.restore();
     const screen = (x: number, y: number) => ({
@@ -962,7 +975,7 @@ export class Renderer {
         drawWaterHurricane(c, this.art.waterHurricane, age, move.active, this.reduced);
         c.restore();
       }
-      const rival = f.guard !== null ? storyRival(encounter) : undefined;
+      const rival = (f.skin as Rival | undefined) ?? (f.guard !== null ? storyRival(encounter) : undefined);
       if (rival && run && script) {
         const moves = script.phases[Math.min(run.phase, script.phases.length) - 1];
         const move = moves[run.index % moves.length];
@@ -978,14 +991,18 @@ export class Renderer {
         c.scale(this.camera.zoom * f.scale * f.facing, this.camera.zoom * f.scale);
         if (ghost) c.globalAlpha = 0.55;
         drawRival(c, rival, frame, this.art);
-        if (!f.stun && !f.hitstop && f.ground)
+        if (!f.stun && !f.hitstop && f.ground && !rival.startsWith('mage-'))
           drawRivalAccent(c, rival, run, move, f.scale, active ? alpha : 0, this.reduced);
         c.restore();
         if (this.showFighterLabels) {
           c.font = 'bold 12px system-ui';
           c.textAlign = 'center';
           c.fillStyle = '#f0d5a0';
-          c.fillText(f.name, p.x, p.y - 140 * this.camera.zoom * f.scale);
+          c.fillText(
+            rival.startsWith('mage-') ? f.name.replace(' Magician', '') : f.name,
+            p.x,
+            p.y - (rival.startsWith('mage-') ? 120 : 140) * this.camera.zoom * f.scale,
+          );
         }
       } else if (f.guard !== null && encounter !== undefined && run && script) {
         const moves = script.phases[run.phase - 1];

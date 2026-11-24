@@ -59,6 +59,7 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
   return {
     id: ++s.entityId,
     hero,
+    ...(cfg.skin ? { skin: cfg.skin } : {}),
     name: cfg.name || def.name,
     human: !!cfg.human,
     inputId: cfg.inputId || 'keyboard',
@@ -103,7 +104,7 @@ export function createFighter(ctx: SimContext, s: SimState, cfg: FighterConfig, 
               phase: 1,
               index: 0,
               stage: 'gap' as const,
-              ticks: 90,
+              ticks: cfg.partnerDelay ?? 90,
               lockX: 0,
               originX: 0,
               instance: 0,
@@ -187,7 +188,7 @@ export function resolveHero(ctx: SimContext, hero: string | undefined, seed: num
 
 export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
   const { content, R } = ctx;
-  const map = content.maps.maps.find(m => m.id === options.arena) || content.maps.maps[0];
+  const map = options.arenaOverride ?? content.maps.maps.find(m => m.id === options.arena) ?? content.maps.maps[0];
   const difficulty = (R.difficulty as Record<string, unknown>)[options.difficulty as string]
     ? (options.difficulty as Difficulty)
     : 'easy';
@@ -276,7 +277,7 @@ export function create(ctx: SimContext, options: MatchOptions = {}): SimState {
     }
   }
   if (options.storyFight !== undefined) {
-    s.fighters[0].weapon = 'sling';
+    s.fighters[0].weapon = options.mosesPart !== undefined ? 'staff' : 'sling';
   }
   if ((options.storyFight ?? options.exhibitionOpponent) === 2) s.fighters[1].weapon = 'spear';
   return s;

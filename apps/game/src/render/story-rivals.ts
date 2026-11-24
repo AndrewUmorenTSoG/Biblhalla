@@ -1,6 +1,6 @@
 // Painted original-roster-style cels; no procedural substitute characters.
 import type { BossMove, BossRun, Fighter } from '../../../../packages/sim/src/types.ts';
-export type Rival = 'kedar' | 'tiras';
+export type Rival = 'kedar' | 'tiras' | 'mage-fire' | 'mage-shadow' | 'mage-lightning';
 export type RivalPose = 'idle' | 'run' | 'air' | 'hurt' | 'tell' | 'active' | 'recovery';
 export const RIVAL_FRAME_COUNT = 36;
 const COUNTS = { idle: 3, run: 6, air: 6, hurt: 3, tell: 3, active: 1, recovery: 2 };

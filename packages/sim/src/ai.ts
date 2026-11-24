@@ -71,8 +71,25 @@ export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
     ) {
       const [left, , width] = s.map.main.rectUnits;
       const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
-      const spacing = champion ? 116 : f.partner ? 45 : 60;
-      const flank = s.options.storyFight === 1 ? (f.partner ? -1 : 1) : Math.sign(f.x - player.x) || 1;
+      const spacing = f.skin?.startsWith('mage-')
+        ? 180 + (f.id % 3) * 110
+        : s.options.mosesPart !== undefined
+          ? 55 + (f.id % 3) * 30
+          : champion
+            ? 116
+            : f.partner
+              ? 45
+              : 60;
+      const flank =
+        s.options.mosesPart !== undefined && !f.skin?.startsWith('mage-')
+          ? f.id % 2
+            ? -1
+            : 1
+          : s.options.storyFight === 1
+            ? f.partner
+              ? -1
+              : 1
+            : Math.sign(f.x - player.x) || 1;
       const destination = clamp(player.x + flank * spacing * Q, (left + 48) * Q, (left + width - 48) * Q);
       const distance = destination - f.x;
       if (

@@ -242,3 +242,51 @@
 .rival-chapter-heading { grid-column:1/-1; padding:24px 0 4px; }
 .rival-chapter-heading h2 { color:#f0d5a0; margin:0 0 8px; }
 .rival-chapter-heading p { margin:0; max-width:65ch; color:#c7d1cb; }
+
+/* Moses comic player: art-first panels, dialogue balloons and compact controls. */
+.moses-cinematic {
+  width:min(1200px,96vw);max-width:1200px;max-height:96dvh;overflow:auto;
+  padding:0;background:#07161e;border:1px solid #bd934b;border-radius:12px;
+  color:#f5e7c9;box-shadow:0 20px 100px #000c;
+}
+.moses-cinematic::backdrop {background:#020b12ed}
+.moses-comic-stage {position:relative;isolation:isolate}
+.moses-cinematic canvas {display:block;width:100%;max-height:54dvh;object-fit:contain;background:#07161e}
+.moses-caption {padding:18px 28px;background:linear-gradient(#112a38,#07161e)}
+.moses-caption small {display:block;color:#d8b66e;letter-spacing:.12em;margin-bottom:12px}
+.moses-cinema-actions {display:flex;gap:10px;flex-wrap:wrap}
+.moses-cinematic .moses-cinema-actions button {width:auto;flex:0 1 auto;margin:0;min-width:100px;padding:12px 18px}
+.moses-cinematic .moses-cinema-actions .primary {min-width:170px}
+.story-routes {display:flex;gap:12px;margin:16px 0}
+.story-routes button[aria-pressed=true] {background:#e9c378;color:#07161e}
+.moses-card-art {width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+.moses-level-card small {color:#e7c47f}
+.moses-level-card p {line-height:1.5}
+.comic-bubble,.comic-narration {
+  position:absolute;z-index:1;color:#172730;background:#fff2d6;max-width:440px;
+  padding:18px 24px;border:3px solid #24323a;box-shadow:4px 5px 0 #07161e88;line-height:1.4;
+}
+.comic-bubble {right:4%;top:7%;border-radius:42% 38% 36% 32% / 24% 28% 22% 26%;padding:20px 32px}
+.comic-bubble:before,.comic-bubble:after {
+  content:'';position:absolute;border:0;clip-path:polygon(0 0,100% 0,10% 100%);
+}
+.comic-bubble:before {bottom:-23px;left:40px;width:34px;height:27px;background:#24323a}
+.comic-bubble:after {bottom:-17px;left:43px;width:27px;height:21px;background:#fff2d6}
+.comic-bubble[data-voice=divine] {left:4%;right:auto;border-color:#b48735;box-shadow:0 0 28px #ffe7a344,4px 5px 0 #07161e88}
+.comic-bubble[data-voice=divine]:before {background:#b48735}
+.comic-narration {bottom:6%;left:4%;max-width:min(640px,84%);border-radius:2px;border-left:6px solid #ba8e3b;padding:12px 20px}
+.comic-bubble strong,.comic-narration strong {display:block;font:800 11px system-ui;letter-spacing:.12em;text-transform:uppercase;color:#78562a}
+.comic-bubble p,.comic-narration p {color:#172730;font:650 clamp(17px,1.7vw,23px)/1.4 system-ui;margin:5px 0 0}
+.comic-narration p {font-size:clamp(16px,1.4vw,20px)}
+.comic-narration.comic-splash {left:8%;bottom:7%;max-width:84%;background:#07161ee8;border:2px solid #e9c378;transform:rotate(-2deg);padding:14px 28px}
+.comic-splash strong {display:none}
+.comic-splash p {color:#ffe3a5;font:900 italic clamp(24px,3.5vw,48px)/1.1 system-ui;letter-spacing:-.04em;text-shadow:3px 3px #000}
+@media(max-width:650px) {
+  .moses-cinematic .moses-caption {padding:14px}
+  .moses-cinematic .moses-cinema-actions button {padding:8px 12px;min-width:80px}
+  .moses-cinematic canvas {max-height:40dvh}
+  .comic-bubble,.comic-narration {position:relative;top:auto;right:auto;left:auto!important;bottom:auto;max-width:calc(100% - 24px);margin:12px;padding:12px 18px}
+  .comic-bubble {border-radius:24px}
+  .comic-bubble:before,.comic-bubble:after {display:none}
+  .comic-bubble p,.comic-narration p {font-size:17px}
+}
