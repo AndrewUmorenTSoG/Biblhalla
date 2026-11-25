@@ -243,7 +243,8 @@ export class Renderer {
     const a = this.arenas[this.S.content.maps.maps[palette % 6].id];
     return a && a.image.complete && a.image.naturalWidth ? a : null;
   }
-  background(palette: number) {
+  /** `_tick` is kept for callers in open branches; the backdrop no longer animates with time. */
+  background(_tick: number, palette: number) {
     const c = this.ctx;
     const p = palettes[palette % 6];
     const sky = c.createLinearGradient(0, 0, 0, 650);
@@ -896,7 +897,7 @@ export class Renderer {
       0,
       this.S.content.maps.maps.findIndex((m: any) => m.id === map.id),
     );
-    this.background(palette);
+    this.background(world.tick, palette);
     if (this.quality.frame(elapsedMs)) this.feedback.maxPuffs = particleCap(this.quality.low);
     this.callouts.update(world);
     this.feedback.reduced = this.reduced;
