@@ -377,4 +377,3 @@ export function createProfiles(content: Content) {
 }
 
 export type Profiles = ReturnType<typeof createProfiles>;
-export type ProfileStore = InstanceType<Profiles['Store']>;

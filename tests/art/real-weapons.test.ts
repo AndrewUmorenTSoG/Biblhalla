@@ -1,6 +1,6 @@
-import test from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
+import test from'node:test';import assert from'node:assert/strict';import { fighterMeta } from '../helpers/art.ts';
 import{drawWeaponSprite}from'../../apps/game/src/render/weapon-art.ts';import{Renderer}from'../../apps/game/src/render/renderer.ts';
-const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+const meta=fighterMeta;
 test('thrown weapons retain the exact equipped texture and frame',()=>{
  const old=(globalThis as any).Image;(globalThis as any).Image=class{src='';complete=true;naturalWidth=1024;};
  try{for(const kind of ['sword','staff','spear','hammer','bow','sling','shield','blades','gauntlets']){const draws:any[][]=[];const c=new Proxy({}as any,{get:(_,key)=>(...args:any[])=>{if(key==='drawImage')draws.push(args);}});assert.equal(drawWeaponSprite(c,kind,0,0,0,false,0,true),true);assert.equal(drawWeaponSprite(c,kind,0,0,2,false,0,true),true);assert.deepEqual(draws[0],draws[1],kind);}}

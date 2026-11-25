@@ -1,15 +1,6 @@
 // Decorative scenery for the six arenas. Collision and playable ledges are
 // always drawn separately from maps.json, so this layer has no gameplay effect.
 
-export const arenaNames = [
-  'elah_training_terrace',
-  'wilderness_waystation',
-  'jericho_outskirts',
-  'deborahs_palm_court',
-  'susa_garden_balcony',
-  'jerusalem_builders_court',
-] as const;
-
 export interface ArenaTheme {
   stone: string;
   shadow: string;

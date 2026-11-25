@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import {S,Q} from '../helpers/engine.ts';
 import {DEFAULT_BINDINGS} from '../../apps/game/src/storage/profile.ts';
 import {keyboardFrame} from '../../apps/game/src/input/keymap.ts';
-import {readFileSync} from 'node:fs';
 import {Renderer} from '../../apps/game/src/render/renderer.ts';
 import {createContext} from '../../packages/sim/src/context.ts';
 import {combat} from '../../packages/sim/src/combat.ts';
 import {content} from '../helpers/engine.ts';
+import { fighterMeta } from '../helpers/art.ts';
 
 function scene(facing=1){
  const s=S.create({mode:'training',hero:'gideon'});s.phase='playing';
@@ -15,7 +15,7 @@ function scene(facing=1){
  f.weapon='shield';f.x=0;f.facing=facing;t.x=-450*facing*Q;return{s,f,t};
 }
 test('low shield strike visibly reaches the contact dummy when the first hit connects',()=>{
- const e=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8')).gideon;
+ const e=fighterMeta.gideon;
  const r=Object.create(Renderer.prototype);r.atlas={gideon:e.frames};r.clips={gideon:e.clips};
  for(const facing of [-1,1]){
   const{s,f,t}=scene(facing);t.x=95*Q*facing;S.startAttack(s,f,{light:true,y:-1});let connected=false;

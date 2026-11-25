@@ -29,12 +29,7 @@ packages/                     pure game logic: no DOM, storage or clock
     ai.ts             computer players (Easy, Hard, Extremely Hard)
     stats.ts          per-match statistics for balance reports
     replay.ts         replay recording, checking and playback
-  campaign/src/               Story Archive levels, wrapping a sim match
-    controller.ts     every level's tasks, hazards, companions and checkpoints
-    specs.ts          per-level task list and context summaries
-    bosses.ts         story boss move patterns
-    goliath.ts        the level 41 David and Goliath reenactment
-    giant.ts          Goliath's body in a fight (stance, shield hop, grapple)
+  campaign/src/
     david-fights.ts   David's chapter fights: lion, bear and Goliath
 apps/game/                    the browser game around the simulation
   shell.html, style.css       the page and its styles
@@ -43,7 +38,6 @@ apps/game/                    the browser game around the simulation
   src/ui/
     app.ts            menus, screens, dialogs, HUD and the per-frame game loop
     lobby.ts          local multiplayer seats and the Ready check
-    story-result.ts   wording of the story results card
     move-showcase.ts  live move previews in the move list
   src/input/
     inputs.ts         keyboard, touch and controller to game buttons
@@ -54,13 +48,11 @@ apps/game/                    the browser game around the simulation
     arena-scenes.ts   each arena's backdrop and platform surfaces
     surface-cache.ts  paints platform surfaces once and reuses them
     encounter.ts      story hazards, markers, water, wind and companions
-    goliath.ts        drawing Goliath and fighters he holds
     feedback.ts       screen shake, KO bursts, smoke and dust
     callouts.ts       combo counter, KO! and GO!
     hit-indicators.ts small markers where hits land
     elemental.ts      fire, water, wind, rock and light effects
     wind.ts           layered air streamlines around Esther's drawn dagger spin
-    waypoint.ts       story arrow to the next task
     player-marks.ts   player shapes (circle, triangle, square, diamond)
     quality.ts        trims decoration on slow devices
     animation.ts      smoothing and run-cadence helpers
@@ -89,7 +81,7 @@ platform/pc/         Windows launcher
 platform/ipad/       WKWebView wrapper source (unsigned)
 tools/               content compiler, offline build, bot and balance reports
 tools/art/           Codex's art pipeline: import, inspect and preview fighter art
-tests/               content, simulation, campaign, replay, storage, UI, art, offline
+tests/               content, simulation, replay, storage, UI, art, offline
 production-pack/     design authority and canonical data (read-only input)
 prototype/           preserved original two-fighter slice (reference only)
 ```
@@ -98,7 +90,7 @@ prototype/           preserved original two-fighter slice (reference only)
 
 - **Content.** `production-pack/09_Data/*.json` is the only gameplay data source. `tools/lib/content.ts` reads it, `compileContent` assembles and hashes it (sorted-key canonical JSON, sha256), and `validateContent` rejects anything outside the contract. The same validation runs at game startup, so corrupt content stops before any menu or match.
 - **Simulation.** `createEngine(content)` returns pure functions over a serializable `SimState`. Inputs are semantic (`x`, `y`, buttons); randomness comes only from the seeded state RNG; iteration is in ascending entity id. No trig, no wall clock, no floating-point state.
-- **Campaign.** `createCampaign(engine, content)` drives a sim match plus objectives, companions, hazards and checkpoints. It never touches the DOM.
+- **Story.** David's chapter fights (`packages/campaign/src/david-fights.ts`) are scripted matches set up through ordinary match options. The earlier 84-level companion campaign was retired from the game on 17 Nov 2026 and its code removed on 25 Nov 2026; it remains in git history.
 - **App.** The UI reads state to render and dispatches only semantic inputs, pause, and controller calls. It never edits velocities, stocks or damage.
 - **Art.** The renderer draws procedural development rigs unless a fighter in `assets/runtime/fighters/fighters.json` has shippable art (`runtime_alpha` or `concept_cut`). Concept sheets are never embedded. Collision always comes from `maps.json`.
 

@@ -29,7 +29,6 @@ import {
 } from './elemental.ts';
 import { Feedback } from './feedback.ts';
 import { Callouts } from './callouts.ts';
-import { edgePointer, nextTask, drawPointer } from './waypoint.ts';
 import { QualityGovernor, particleCap } from './quality.ts';
 import { drawPlayerMark } from './player-marks.ts';
 import { EMOTE_TICKS } from '../../../../packages/sim/src/state.ts';
@@ -244,7 +243,7 @@ export class Renderer {
     const a = this.arenas[this.S.content.maps.maps[palette % 6].id];
     return a && a.image.complete && a.image.naturalWidth ? a : null;
   }
-  background(tick: number, palette: number) {
+  background(palette: number) {
     const c = this.ctx;
     const p = palettes[palette % 6];
     const sky = c.createLinearGradient(0, 0, 0, 650);
@@ -870,7 +869,6 @@ export class Renderer {
   paint(world: SimState, _unused: null = null, alpha = 1, elapsedMs = 1000 / 60, active = true) {
     this.collectElements(world);
     const c = this.ctx;
-    const player = world.fighters[0];
     const map = world.map;
     let cx = 0,
       cy = 170,
@@ -898,7 +896,7 @@ export class Renderer {
       0,
       this.S.content.maps.maps.findIndex((m: any) => m.id === map.id),
     );
-    this.background(world.tick, palette);
+    this.background(palette);
     if (this.quality.frame(elapsedMs)) this.feedback.maxPuffs = particleCap(this.quality.low);
     this.callouts.update(world);
     this.feedback.reduced = this.reduced;
@@ -934,7 +932,7 @@ export class Renderer {
       y: 460 + shake.y - (y / Q - this.camera.y) * this.camera.zoom,
     });
     this.feedback.draw(c, screen, this.camera.zoom);
-    this.callouts.draw(c, screen, this.camera.zoom, world.tick, this.reduced);
+    this.callouts.draw(c, screen, world.tick, this.reduced);
     for (const e of world.events) {
       if (e.id <= this.lastCheerEvent) continue;
       this.lastCheerEvent = e.id;

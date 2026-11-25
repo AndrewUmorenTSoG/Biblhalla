@@ -50,11 +50,6 @@ export function bindingsAreUnique(bindings: KeyBindings): boolean {
   return keys.every((a, i) => keys.slice(i + 1).every(b => bindings[a] !== bindings[b] || sharable(a, b)));
 }
 
-/** Controls that share a key with `action` (only ever the Up/Jump pair). */
-export function sharedWith(bindings: KeyBindings, action: string): string[] {
-  return Object.keys(bindings).filter(k => k !== action && bindings[k] === bindings[action]);
-}
-
 /** Whether a key press belongs to the game (so it is captured and not scrolled). */
 export function isGameKey(bindings: KeyBindings, code: string): boolean {
   return Object.values(bindings).includes(code) || arrowFallback(bindings, code) !== null;

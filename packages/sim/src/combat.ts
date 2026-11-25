@@ -53,10 +53,6 @@ export function capsuleRect(ctx: SimContext, f: Fighter, b: Box): boolean {
   return dx * dx + dy * dy <= r * r;
 }
 
-export function overlap(a: Box, b: Box): boolean {
-  return a[0] <= b[0] + b[2] && a[0] + a[2] >= b[0] && a[1] <= b[1] + b[3] && a[1] + a[3] >= b[1];
-}
-
 /** Liang-Barsky segment vs box. */
 export function segmentBox(x: number, y: number, nx: number, ny: number, b: Box): boolean {
   let t0 = 0,

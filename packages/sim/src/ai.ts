@@ -12,7 +12,7 @@ const HISTORY = 64;
 /** Training dummy presets (12_Tutorial_and_Training): fixed, reproducible behaviours. */
 export const DUMMY_BEHAVIOURS = ['stand', 'jump', 'approach', 'attack', 'dodge', 'recover'];
 
-function dummy(ctx: SimContext, s: SimState, f: Fighter): Input {
+function dummy(s: SimState, f: Fighter): Input {
   // ai.tell marks the tick hitstun ends (dodge preset only).
   if (s.trainingBot === 'dodge') f.ai.tell = f.stun === 1 ? 2 : Math.max(0, f.ai.tell - 1);
   const player = s.fighters.find(p => p.human && p.stocks);
@@ -54,7 +54,7 @@ export const ARCHETYPES: Record<string, { lightTell: number; heavyTell: number; 
 
 export function bot(ctx: SimContext, s: SimState, f: Fighter): Input {
   if (s.mode === 'training' && s.trainingBot === 'idle') return input();
-  if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(ctx, s, f);
+  if (s.mode === 'training' && DUMMY_BEHAVIOURS.includes(s.trainingBot)) return dummy(s, f);
   // Scripted bosses act only through their authored pattern (boss.ts).
   if (s.bossScript && f.guard !== null) {
     const [x, y, w, h] = s.map.main.rectUnits;

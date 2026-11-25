@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
 import {drawElements,drawElementProjectile,drawCharge,drawThrowWind} from '../../apps/game/src/render/elemental.ts';
 import {Renderer} from '../../apps/game/src/render/renderer.ts';
+import { fighterMeta } from '../helpers/art.ts';
 function context(){const calls:{name:string,args:any[]}[]=[];const ctx=new Proxy({} as any,{get:(_,name)=> (...args:any[])=>calls.push({name:String(name),args}),set:()=>true});return {ctx,calls};}
 test('element effects expire, mirror and draw without changing simulation data',()=>{
   for(const effect of ['water','rock','dust','wind','sun','sound']){
@@ -21,7 +21,7 @@ test('renderer retains impact events across ticks and drops them after their sho
   r.collectElements({tick:33,events:[]} as any);assert.equal(r.elementEvents.length,0);
 });
 test('all slingers release into a visible stone, and thrown objects show short wind strokes',()=>{
-  const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+  const meta=fighterMeta;
   for(const hero of ['david','moses','miriam']){
     const clip=meta[hero].clips.sling_nlight;
     assert.ok(clip.frames.includes('equipped_sling_14'),hero);
@@ -31,12 +31,12 @@ test('all slingers release into a visible stone, and thrown objects show short w
   }
 });
 test('Moses staff combo plays the four drawn rotation poses in order',()=>{
-  const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+  const meta=fighterMeta;
   assert.deepEqual(meta.moses.clips.staff_air_combo.frames.filter((key:string)=>key.startsWith('moses_staff_spin_')||key.startsWith('attack_wind_moses_staff_spin_1')).map((key:string)=>key.startsWith('attack_wind')?'moses_staff_spin_1':key).filter((key:string,i:number,all:string[])=>i===0||all[i-1]!==key),[0,1,2,3].map(i=>`moses_staff_spin_${i}`));
   assert.equal(meta.moses.clips.staff_air_combo.ticks.reduce((a:number,b:number)=>a+b),26);
 });
 test('Esther turns through back and front poses while her hurricane is active',()=>{
-  const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+  const meta=fighterMeta;
   const clip=meta.esther.clips.esther_blades_slight;
   const poses:string[]=clip.frames.flatMap((name:string,i:number)=>Array(clip.ticks[i]).fill(name));
   assert.deepEqual(poses.slice(8,40),Array.from({length:16},(_,i)=>Array(2).fill('release_esther_wind_'+(i+4))).flat());

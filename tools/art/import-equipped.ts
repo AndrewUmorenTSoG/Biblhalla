@@ -2,7 +2,7 @@
 // and updates assets/runtime/fighters/fighters.json. Run by hand after new art is drawn.
 
 import {figures} from './import-defence.ts';
-import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,loadContent,sha256}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writePng}from'./image.ts';
+import{readFileSync,writeFileSync,existsSync}from'node:fs';import{join}from'node:path';import{ROOT,loadContent,sha256}from'../lib/content.ts';import{readPng,blank,resize,blit,writePng}from'./image.ts';
 const file=join(ROOT,'assets/runtime/fighters/fighters.json'),backup=join(ROOT,'assets/runtime/fighters/fighters-before-equipped.json');if(!existsSync(backup))writeFileSync(backup,readFileSync(file));const meta=JSON.parse(readFileSync(backup,'utf8')),content=loadContent();
 const defsFile=join(ROOT,'production-pack/09_Data/fighters.json'),defs=JSON.parse(readFileSync(defsFile,'utf8'));
 for(const def of content.fighters.fighters){const e=meta[def.id],sheet=readPng(join(ROOT,existsSync(join(ROOT,`assets/animation-production/equipped/${def.id}-corrected.png`))?`assets/animation-production/equipped/${def.id}-corrected.png`:`assets/animation-production/equipped/${def.id}.png`)),base=readPng(join(ROOT,e.image)),cells:any[]=[];

@@ -1,7 +1,7 @@
-import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync}from'node:fs';
+import test from 'node:test';import assert from 'node:assert/strict';import { fighterMeta } from '../helpers/art.ts';
 import{handGrip,needsCarriedWeapon}from'../../apps/game/src/render/grip.ts';
 import{Renderer}from'../../apps/game/src/render/renderer.ts';
-const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+const meta=fighterMeta;
 test('all movement and shared body combo sprites have hand positions inside their frame',()=>{
  for(const[id,e]of Object.entries(meta)as[string,any][])for(const[name,f]of Object.entries(e.frames)as[string,any][]){
   if(!needsCarriedWeapon(name,'sword'))continue;

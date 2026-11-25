@@ -6,7 +6,7 @@ import{ROOT}from'../lib/content.ts';import{readPng,blank,crop,resize,blit,writeP
 const file=join(ROOT,'assets/runtime/fighters/fighters.json'),meta=JSON.parse(readFileSync(file,'utf8'));
 const defsFile=join(ROOT,'production-pack/09_Data/fighters.json'),defs=JSON.parse(readFileSync(defsFile,'utf8'));
 const review=blank(1600,1440);let row=0;
-for(const[id,e]of Object.entries(meta)as[string,any][]){const sheet=readPng(join(ROOT,e.image));let col=0;
+for(const[,e]of Object.entries(meta)as[string,any][]){const sheet=readPng(join(ROOT,e.image));let col=0;
  for(const[name,f]of Object.entries(e.frames)as[string,any][]){
   if(!/^(motion_idle|run_|air_|land$|defence_)/.test(name))continue;
   let best=-Infinity,hx=f.w*.74,hy=f.h*.56;

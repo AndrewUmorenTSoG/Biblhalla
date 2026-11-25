@@ -4,9 +4,8 @@
 import { readFileSync,writeFileSync,existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT,loadContent,sha256 } from '../lib/content.ts';
-import { readPng,blank,crop,resize,blit,writePng } from './image.ts';
+import { readPng,blank,resize,blit,writePng } from './image.ts';
 import type { Image } from './image.ts';
-import { bounds } from './import-movement.ts';
 
 /** Extract connected figures across the sheet, not fixed cells that clip kicks. */
 export function figures(img:Image,columns=4,rows=4,minArea=1000,alphaCutoff=150){

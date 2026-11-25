@@ -91,7 +91,6 @@ export class Callouts {
   draw(
     c: CanvasRenderingContext2D,
     screen: (x: number, y: number) => { x: number; y: number },
-    zoom: number,
     tick: number,
     reduced: boolean,
   ): void {

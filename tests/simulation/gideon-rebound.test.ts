@@ -1,4 +1,4 @@
-import test from'node:test';import assert from'node:assert/strict';import{S,Q,content}from'../helpers/engine.ts';import{DEFAULT_BINDINGS}from'../../apps/game/src/storage/profile.ts';import{keyboardFrame}from'../../apps/game/src/input/keymap.ts';
+import test from'node:test';import assert from'node:assert/strict';import{S,Q}from'../helpers/engine.ts';import{DEFAULT_BINDINGS}from'../../apps/game/src/storage/profile.ts';import{keyboardFrame}from'../../apps/game/src/input/keymap.ts';
 function scene(facing=1){const s=S.create({mode:'training',hero:'gideon'});s.phase='playing';const f=s.fighters[0],t=s.fighters[1];for(const p of s.fighters){p.invulnerable=p.respawn=p.hitstop=0;p.ai.next=1e9;p.ai.intent=S.input();p.y=80*Q;p.ground=s.map.main.id;}f.weapon='shield';f.x=0;f.facing=facing;t.x=-450*facing*Q;return{s,f,t};}
 test('S + Heavy selects Gideon rebound, hops without W, and releases from its drawn hand',()=>{
  const {s,f}=scene();const keys=keyboardFrame(DEFAULT_BINDINGS,new Set(['KeyS','KeyK']),new Set(['KeyK']));S.step(s,{[f.id]:{...keys,heavyHeld:false}});assert.equal(f.action?.move,'gideon_shield_dsig');assert.equal(keys.jump,false);let released=false;

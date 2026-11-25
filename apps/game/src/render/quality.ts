@@ -2,7 +2,6 @@
 // (particles, parallax), never the simulation, hit boxes or animation length. Recovers
 // only after a long stretch of good frames, so it does not flicker between modes.
 
-export const FRAME_BUDGET_MS = 1000 / 60;
 /** Average frame time (ms) over the window that switches to low quality. */
 export const SLOW_MS = 24;
 /** Average frame time that is comfortably fast enough to go back to high. */

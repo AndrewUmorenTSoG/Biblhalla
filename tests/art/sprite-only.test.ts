@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { Renderer } from '../../apps/game/src/render/renderer.ts';
-const meta=JSON.parse(readFileSync(new URL('../../assets/runtime/fighters/fighters.json',import.meta.url),'utf8'));
+import { fighterMeta } from '../helpers/art.ts';
+const meta=fighterMeta;
 test('raw playback and runtime both use only complete sprites above the registration line',()=>{
   const renderer=Object.create(Renderer.prototype) as Renderer;
   renderer.atlas=Object.fromEntries(Object.entries(meta).map(([id,e]:[string,any])=>[id,e.frames]));

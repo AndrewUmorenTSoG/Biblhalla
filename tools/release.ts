@@ -7,7 +7,7 @@
 import { execFileSync } from 'node:child_process';
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, loadContent, sha256 } from './lib/content.ts';
+import { ROOT, sha256 } from './lib/content.ts';
 import { build } from './build.ts';
 import { validateArt } from './art/validate-art.ts';
 
