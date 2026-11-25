@@ -626,6 +626,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   function renderFights() {
     $('story-david').setAttribute('aria-pressed', String(storyRoute === 'david'));
     $('story-moses').setAttribute('aria-pressed', String(storyRoute === 'moses'));
+    $('story-chapter').textContent = storyRoute === 'moses' ? 'STORY MODE · CHAPTER TWO' : 'STORY MODE · CHAPTER ONE';
     $('story-heading').textContent = storyRoute === 'moses' ? 'Moses: The Calling' : 'David and Goliath';
     if (storyRoute === 'moses') {
       renderMosesFights();
@@ -729,6 +730,8 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       return;
     }
     storyRoute = 'moses';
+    store.data.storyHero = 'moses';
+    store.save();
     closeDialogs();
     const begin = () => {
       startGame(mosesFightOptions(index, settings.difficulty, currentInputId()));
@@ -1417,6 +1420,12 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   $('home-play').addEventListener('click', () => screen('modes'));
   $('home-continue').addEventListener('click', () => gate(resumeFights));
   $('mode-story').addEventListener('click', () => screen('story-fights'));
+  $('home-moses').onclick = () => {
+    storyRoute = 'moses';
+    store.data.storyHero = 'moses';
+    store.save();
+    screen('story-fights');
+  };
   $('fight-continue').addEventListener('click', resumeFights);
   $('story-david').onclick = () => {
     storyRoute = 'david';

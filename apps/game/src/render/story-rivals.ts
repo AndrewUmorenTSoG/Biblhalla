@@ -20,7 +20,8 @@ export function rivalFrame(pose: RivalPose, phase: number, move = 0): number {
   return offset + frame;
 }
 export function rivalAnimation(f: Fighter, run: BossRun, move: BossMove, time: number, stride: number) {
-  if (f.stun || f.hitstop) return rivalFrame('hurt', 1 - Math.min(1, Math.max(f.stun, f.hitstop) / 24));
+  // Attacker hitstop is an impact pause, not a received hit. Keep the strike silhouette.
+  if (f.stun) return rivalFrame('hurt', 1 - Math.min(1, f.stun / 24));
   if (!f.ground) return rivalFrame('air', Math.max(0, Math.min(1, (1200 - f.vy) / 2400)));
   if (run.stage !== 'gap') {
     const duration = run.stage === 'tell' ? move.tell : run.stage === 'active' ? move.active : move.recovery;
@@ -32,7 +33,9 @@ export function rivalAnimation(f: Fighter, run: BossRun, move: BossMove, time: n
     return rivalFrame(run.stage, progress, move.frame ?? 0);
   }
   if (Math.abs(f.vx) > 100) return rivalFrame('run', ((stride % 1) + 1) % 1);
-  return rivalFrame('idle', (((time % 72) + 72) % 72) / 72);
+  // Breathe out through the middle drawing instead of snapping from the last to first.
+  const idle = (((time % 96) + 96) % 96) / 96;
+  return [0, 1, 2, 1][Math.floor(idle * 4)];
 }
 
 export function prepareRival(skin: Rival, images: Record<string, HTMLImageElement>) {
