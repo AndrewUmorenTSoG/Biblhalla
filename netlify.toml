@@ -1,0 +1,14 @@
+# Netlify: build the single-file game from source and serve it.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # The build and tools run TypeScript directly, which needs Node 24 or newer.
+  NODE_VERSION = "24"
+
+# The game is one page, dist/PLAY.html. Serve it at the site's root address.
+[[redirects]]
+  from = "/"
+  to = "/PLAY.html"
+  status = 200

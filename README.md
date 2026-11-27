@@ -1,6 +1,6 @@
 # Biblhalla
 
-An offline biblical arena fighter by **Kendrew Games**. Choose from twelve fighters and six arenas, or follow David through three encounters with Lion Man, Bear, and Goliath.
+An offline biblical arena fighter. Choose from twelve fighters and six arenas, or follow David through three encounters with Lion Man, Bear, and Goliath.
 
 Biblhalla runs entirely on the device. There is no account, server, telemetry or network access.
 

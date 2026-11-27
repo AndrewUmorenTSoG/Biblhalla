@@ -67,7 +67,7 @@ function arenaArt(): Record<string, { uri: string; horizon: string; stone: strin
 
 export function build(): { html: string; manifest: Record<string, unknown> } {
   const content = loadContent();
-  content.campaign = { title:'David', publisher:'Kendrew Games', offlineOnly:true, protagonists:['David'], levelCount:0, chapterCount:0, chapters:[], levels:[], scripts:[] };
+  content.campaign = { title:'David', publisher:'Biblhalla', offlineOnly:true, protagonists:['David'], levelCount:0, chapterCount:0, chapters:[], levels:[], scripts:[] };
   content.rules = {...content.rules, storyLevelCount:DAVID_CHAPTER.length, storyChapterCount:1};
   const {hash: sourceHash, ...runtimeContent} = content;
   content.hash = sha256(canonicalJson({content:runtimeContent, chapter:DAVID_CHAPTER})).slice(0,16);
@@ -101,7 +101,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
   }
   const manifest = {
     title: 'Biblhalla',
-    publisher: 'Kendrew Games',
+    publisher: 'Biblhalla',
     contentHash: content.hash,
     pageSha256: sha256(html),
     bytes: Buffer.byteLength(html),
