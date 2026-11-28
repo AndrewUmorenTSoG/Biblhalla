@@ -1,4 +1,5 @@
 import { canonicalJson } from '../packages/content/src/index.ts';
+import { MOSES_PARTS, mosesFightOptions } from '../packages/campaign/src/moses.ts';
 import { DAVID_CHAPTER } from '../packages/campaign/src/david-fights.ts';
 // Build the standalone offline game: one self-contained HTML file with content,
 // code, styles and runtime-ready art embedded. No network access at runtime.
@@ -67,10 +68,10 @@ function arenaArt(): Record<string, { uri: string; horizon: string; stone: strin
 
 export function build(): { html: string; manifest: Record<string, unknown> } {
   const content = loadContent();
-  content.campaign = { title:'David', publisher:'Kendrew Games', offlineOnly:true, protagonists:['David'], levelCount:0, chapterCount:0, chapters:[], levels:[], scripts:[] };
-  content.rules = {...content.rules, storyLevelCount:DAVID_CHAPTER.length, storyChapterCount:1};
+  content.campaign = { title:'David and Moses', publisher:'Kendrew Games', offlineOnly:true, protagonists:['David','Moses'], levelCount:0, chapterCount:0, chapters:[], levels:[], scripts:[] };
+  content.rules = {...content.rules, storyLevelCount:DAVID_CHAPTER.length+MOSES_PARTS.length, storyChapterCount:2};
   const {hash: sourceHash, ...runtimeContent} = content;
-  content.hash = sha256(canonicalJson({content:runtimeContent, chapter:DAVID_CHAPTER})).slice(0,16);
+  content.hash = sha256(canonicalJson({content:runtimeContent, chapter:DAVID_CHAPTER,moses:MOSES_PARTS,mosesBattles:MOSES_PARTS.map((_,i)=>mosesFightOptions(i,'easy','keyboard'))})).slice(0,16);
   const bundle = buildSync({
     entryPoints: [join(APP, 'src', 'bootstrap.ts')],
     bundle: true,
@@ -82,10 +83,11 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     charset: 'utf8',
   }).outputFiles[0].text;
   const art = runtimeArt();
-  for (const animal of ['lion', 'bear', 'goliath', 'kedar', 'tiras']) {
+  for (const animal of ['lion', 'bear', 'goliath', 'kedar', 'tiras', 'mage-fire', 'mage-shadow', 'mage-lightning', 'moses-pharaoh-sprites', 'moses-sheep']) {
     const bytes = readFileSync(join(ROOT, 'assets', 'runtime', 'story', animal + '.png'));
     art.images[animal] = 'data:image/png;base64,' + bytes.toString('base64');
   }
+  for(const name of ['calling','return','staff','pharaoh','finale','arenas','throne']) art.images['moses-'+name]='data:image/webp;base64,'+readFileSync(join(ROOT,'assets/runtime/story/moses-'+name+'.webp')).toString('base64');
   const tide = readFileSync(join(ROOT, 'assets', 'runtime', 'effects', 'breaking-tide.png'));
   art.images.breakingTide = 'data:image/png;base64,' + tide.toString('base64');
   art.images.waterHurricane = 'data:image/png;base64,' + readFileSync(join(ROOT, 'assets/runtime/effects/water-hurricane.png')).toString('base64');
@@ -108,7 +110,7 @@ export function build(): { html: string; manifest: Record<string, unknown> } {
     roster: content.fighters.fighters.length,
     arenas: content.maps.maps.length,
     attacks: content.attacks.attacks.length,
-    levels: DAVID_CHAPTER.length,
+    levels: DAVID_CHAPTER.length + MOSES_PARTS.length,
     engine: 'Q8 integer, fixed 60 ticks, Canvas 2D',
     offline: true,
     runtimeArt: art.readiness,

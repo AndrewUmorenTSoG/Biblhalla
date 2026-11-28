@@ -180,6 +180,20 @@ function advanceBoss(ctx: SimContext, s: SimState, boss: Fighter, script: BossSc
   }
   // Stage transitions: gap -> tell -> active -> recovery -> gap (next move).
   if (run.stage === 'gap') {
+    // The trio moves together but only one spell winds up/strikes at a time.
+    if (
+      s.options.mosesPart === 4 &&
+      (!boss.ground ||
+        s.fighters.some(other => {
+          if (other.id === boss.id || !other.stocks || other.respawn) return false;
+          const clock = other.partner?.run ?? (other.guard !== null ? s.bossRun : null);
+          return clock?.stage === 'tell' || clock?.stage === 'active';
+        }))
+    ) {
+      run.ticks = 1;
+      return;
+    }
+
     const champion = (s.options.storyFight ?? s.options.exhibitionOpponent) === 2;
     if (
       (champion || (s.options.storyFight ?? -1) >= 3) &&

@@ -1,6 +1,7 @@
 // Semantic replays: seed + canonical initial state + ordered inputs + checksum.
 // Imported files are untrusted, so everything is bounded before execution.
 
+import { mosesFightOptions } from '../../campaign/src/moses.ts';
 import type { SimContext } from './context.ts';
 import type { InputFrames, MatchOptions, SimState } from './types.ts';
 import { RANDOM_HERO, create, pause } from './state.ts';
@@ -61,8 +62,18 @@ function checkOptions(ctx: SimContext, opts: MatchOptions): void {
   const known = (h: string | undefined) => !h || h === RANDOM_HERO || !!defs[h];
   if (!known(opts.hero) || !known(opts.opponent) || (opts.arena && !content.maps.maps.some(m => m.id === opts.arena)))
     fail('Invalid replay content');
+  if (opts.mosesPart !== undefined) {
+    if (!Number.isInteger(opts.mosesPart) || opts.mosesPart < 0 || opts.mosesPart > 4) fail('Invalid Moses part');
+    const expected = mosesFightOptions(opts.mosesPart, opts.difficulty ?? 'easy', opts.inputId ?? 'keyboard');
+    for (const key of ['mode', 'storyFight', 'arenaOverride', 'bossScript', 'fighters'] as const)
+      if (hash(opts[key]) !== hash(expected[key])) fail('Invalid Moses encounter');
+  } else if (opts.arenaOverride !== undefined) fail('Invalid custom replay arena');
   if (opts.fighters) {
-    if (!Array.isArray(opts.fighters) || opts.fighters.length < 2 || opts.fighters.length > 4)
+    if (
+      !Array.isArray(opts.fighters) ||
+      opts.fighters.length < 2 ||
+      opts.fighters.length > (opts.mosesPart === 0 ? 5 : 4)
+    )
       fail('Invalid replay players');
     for (const f of opts.fighters) {
       const ok =

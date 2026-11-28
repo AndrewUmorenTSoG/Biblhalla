@@ -136,3 +136,15 @@ for (const index of [3, 4]) {
     assert.equal(rival.stocks, 2);
   });
 }
+
+test('attacking rival keeps its contact pose during hitstop, while a stunned rival reacts', () => {
+  const s = S.create(davidFightOptions(3, 'hard', 'keyboard'));
+  const f = s.fighters[1], move = DAVID_FIGHTS[3].phases[0][0];
+  f.ground = s.map.main.id; f.stun = 0;
+  const run = {...s.bossRun!, stage: 'active' as const, ticks: move.active};
+  const contact = rivalAnimation(f, run, move, 100, 0);
+  f.hitstop = 8;
+  assert.equal(rivalAnimation(f, run, move, 100, 0), contact);
+  f.stun = 12;
+  assert.ok(rivalAnimation(f, run, move, 100, 0) < 6);
+});

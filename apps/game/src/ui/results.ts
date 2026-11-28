@@ -1,7 +1,7 @@
 import type { SimState } from '../../../../packages/sim/src/types.ts';
 import type { RuntimeArt } from '../render/renderer.ts';
 import { storyRival } from '../../../../packages/campaign/src/david-fights.ts';
-import { rivalPortrait } from '../render/story-rivals.ts';
+import { rivalPortrait, type Rival } from '../render/story-rivals.ts';
 
 function node(tag: string, text: string, cls?: string) {
   const element = document.createElement(tag);
@@ -67,7 +67,7 @@ export function presentResult(
       : undefined;
   const stage = get('result-art');
   stage.replaceChildren();
-  const rival = focus.guard !== null ? storyRival(bossIndex) : undefined;
+  const rival = (focus.skin as Rival | undefined) ?? (focus.guard !== null ? storyRival(bossIndex) : undefined);
   if (rival) stage.append(rivalPortrait(rival, art.images));
   else if (skin && art.images[skin]) {
     const image = art.images[skin];

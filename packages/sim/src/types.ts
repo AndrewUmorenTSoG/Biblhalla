@@ -71,6 +71,7 @@ export interface BotMemory {
 }
 
 export interface Fighter {
+  skin?: string;
   /** Accumulated damage in tenths required to reach red launch danger. */
   redDamage?: number;
   waveEnemy?: boolean;
@@ -184,6 +185,8 @@ export type Mode = 'duel' | 'waves' | 'boss' | 'training' | 'local' | 'teams' | 
 export type Phase = 'countdown' | 'playing' | 'paused' | 'result';
 
 export interface FighterConfig {
+  skin?: string;
+  partnerDelay?: number;
   partnerScript?: BossScript;
   hero: string;
   name?: string;
@@ -196,6 +199,8 @@ export interface FighterConfig {
 }
 
 export interface MatchOptions {
+  mosesPart?: number;
+  arenaOverride?: MapDef;
   endless?: boolean;
   waveStyle?: 'coop' | 'ffa' | 'teams';
   opponentStocks?: number | string;
@@ -224,6 +229,7 @@ export interface MatchOptions {
 
 /** One authored boss move: a locked tell, an active hazard zone, then recovery. */
 export interface BossMove {
+  element?: 'fire' | 'shadow' | 'lightning';
   impactEffect?: 'shieldQuake' | 'spearWind';
   name: string;
   kind: 'lane' | 'sweep' | 'charge' | 'slam' | 'melee';
