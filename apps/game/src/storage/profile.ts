@@ -141,6 +141,8 @@ export interface SavedCheckpoint {
 export interface Profile {
   davidWins: number;
   mosesWins: number;
+  storyStarted: boolean;
+  storyPart: number | null;
   storyHero: 'david' | 'moses';
   schema: typeof PROFILE_SCHEMA;
   /** Story cards seen in any level (journal context), kept across retries and content updates. */
@@ -170,6 +172,8 @@ export function createProfiles(content: Content) {
     davidWins: 0,
     mosesWins: 0,
     storyHero: 'david',
+    storyStarted: false,
+    storyPart: null,
     contentVersion: content.hash || 'main-1',
     completed: [],
     medals: {},
@@ -205,7 +209,17 @@ export function createProfiles(content: Content) {
     const d = defaults();
     if (Number.isInteger(raw.davidWins)) d.davidWins = Math.max(0, Math.min(STORY_FIGHT_COUNT, raw.davidWins));
     if (Number.isInteger(raw.mosesWins)) d.mosesWins = Math.max(0, Math.min(5, raw.mosesWins));
+    d.storyStarted = raw.storyStarted === true || d.davidWins > 0 || d.mosesWins > 0;
     if (raw.storyHero === 'moses') d.storyHero = 'moses';
+    const wins = d.storyHero === 'moses' ? d.mosesWins : d.davidWins;
+    d.storyPart =
+      raw.storyPart === null
+        ? null
+        : Number.isInteger(raw.storyPart) && raw.storyPart >= 0 && raw.storyPart <= Math.min(wins, 4)
+          ? raw.storyPart
+          : d.storyStarted && wins < 5
+            ? wins
+            : null;
     d.completed = [
       ...new Set<string>(raw.completed.filter((id: unknown) => typeof id === 'string' && ids.has(id))),
     ].sort();

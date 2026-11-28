@@ -66,6 +66,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   /** Sound effects and music (generated in code; see audio/audio.ts) and the canvas renderer. */
   const audio = new GameAudio(),
     renderer = new Renderer($('arena'), S, art);
+  let newJourney = false;
   let storyRoute = store.data.storyHero,
     mosesEndingShown = false,
     mosesEndingPlaying = false;
@@ -129,7 +130,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       audio.suspend();
     }
     window.scrollTo(0, 0);
-    if (name === 'home') updateHome();
+    if (name === 'home' || name === 'story-menu') updateHome();
     if (name === 'modes') {
       const choice = previousScreen === 'setup' ? 'quick' : previousScreen === 'local' ? 'local' : 'story';
       $('mode-' + choice).focus({ preventScroll: true });
@@ -149,8 +150,10 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     $('home-progress').textContent = total
       ? store.data.davidWins + ' / 5 David · ' + store.data.mosesWins + ' / 5 Moses'
       : '';
-    $('home-continue').hidden = !total;
-    $('home-continue').textContent = storyRoute === 'moses' ? 'Continue Moses →' : 'Continue David →';
+    const ongoing = store.data.storyPart !== null;
+    $('home-continue').hidden = !ongoing;
+    $('story-continue').hidden = !ongoing;
+    $('home-continue').textContent = 'Continue';
     $('footer-save').textContent = store.status;
   }
   function applySettings() {
@@ -478,6 +481,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     if (resultShown || mosesEndingPlaying) return;
     if (world.options.mosesPart === 4 && world.result?.won && !replayPlayback && !mosesEndingShown) {
       store.data.mosesWins = 5;
+      store.data.storyPart = null;
       store.save();
       mosesEndingShown = true;
       mosesEndingPlaying = true;
@@ -526,6 +530,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
         won = world.result?.won;
       if (won) {
         store.data.mosesWins = Math.max(store.data.mosesWins, part + 1);
+        store.data.storyPart = part < 4 ? part + 1 : null;
         store.save();
       }
       $('next-level').hidden = !won || part >= 4;
@@ -539,6 +544,7 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       const won = world.result?.won;
       if (won) {
         store.data.davidWins = Math.max(store.data.davidWins, fightIndex + 1);
+        store.data.storyPart = fightIndex < 4 ? fightIndex + 1 : null;
         store.save();
       }
       $('next-level').hidden = !won || fightIndex >= DAVID_CHAPTER.length - 1;
@@ -637,7 +643,11 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     $('fight-progress').textContent =
       wins + ' of ' + DAVID_CHAPTER.length + ' fights won · Chapter One + 2 original rival trials';
     $('fight-difficulty').value = settings.difficulty;
-    $('fight-continue').textContent = wins >= DAVID_CHAPTER.length ? 'Replay journey →' : 'Fight as David →';
+    $('fight-continue').textContent = newJourney
+      ? 'New game as David →'
+      : wins >= DAVID_CHAPTER.length
+        ? 'Replay journey →'
+        : 'Fight as David →';
     grid.replaceChildren();
     DAVID_CHAPTER.forEach((fight, index) => {
       if (index === 3) {
@@ -689,7 +699,11 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     grid.replaceChildren();
     $('fight-progress').textContent = wins + ' of 5 parts complete · Moses and the road to Egypt';
     $('fight-difficulty').value = settings.difficulty;
-    $('fight-continue').textContent = wins >= 5 ? 'Replay Moses journey →' : 'Continue as Moses →';
+    $('fight-continue').textContent = newJourney
+      ? 'New game as Moses →'
+      : wins >= 5
+        ? 'Replay Moses journey →'
+        : 'Continue as Moses →';
     MOSES_PARTS.forEach((part, index) => {
       const b = el('button', '', 'level-card moses-level-card');
       b.disabled = index > wins;
@@ -731,6 +745,8 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     }
     storyRoute = 'moses';
     store.data.storyHero = 'moses';
+    store.data.storyStarted = true;
+    store.data.storyPart = index;
     store.save();
     closeDialogs();
     const begin = () => {
@@ -754,6 +770,11 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
       chooseInput(() => startFight(index));
       return;
     }
+    storyRoute = 'david';
+    store.data.storyHero = 'david';
+    store.data.storyStarted = true;
+    store.data.storyPart = index;
+    store.save();
     const fight = DAVID_CHAPTER[index];
     const rival = storyRival(index);
     if (rival) prepareRival(rival, art.images);
@@ -764,10 +785,10 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
   /** Continue David's fights from the next unbeaten one. */
   function resumeFights() {
     if (storyRoute === 'moses') {
-      startMoses(store.data.mosesWins >= 5 ? 0 : store.data.mosesWins);
+      startMoses(store.data.storyPart ?? (store.data.mosesWins >= 5 ? 0 : store.data.mosesWins));
       return;
     }
-    startFight(store.data.davidWins >= DAVID_CHAPTER.length ? 0 : store.data.davidWins);
+    startFight(store.data.storyPart ?? (store.data.davidWins >= DAVID_CHAPTER.length ? 0 : store.data.davidWins));
   }
   // ------------------------------------------------------------------------------
   // Information dialogs: context, controls, move lists, and the fighter library.
@@ -1418,25 +1439,53 @@ export function startApp(C: Content, S: Engine, art: RuntimeArt): void {
     choice.addEventListener('focus', preview);
   }
   $('home-play').addEventListener('click', () => screen('modes'));
-  $('home-continue').addEventListener('click', () => gate(resumeFights));
-  $('mode-story').addEventListener('click', () => screen('story-fights'));
-  $('home-moses').onclick = () => {
-    storyRoute = 'moses';
-    store.data.storyHero = 'moses';
-    store.save();
+  const continueStory = () => {
+    newJourney = false;
+    storyRoute = store.data.storyHero;
+    gate(resumeFights);
+  };
+  $('home-continue').onclick = continueStory;
+  $('story-continue').onclick = continueStory;
+  $('mode-story').onclick = () => screen('story-menu');
+  $('story-new').onclick = () => {
+    newJourney = true;
     screen('story-fights');
   };
-  $('fight-continue').addEventListener('click', resumeFights);
+  $('fight-continue').onclick = () =>
+    gate(() => {
+      if (newJourney) {
+        newJourney = false;
+        if (storyRoute === 'moses') startMoses(0);
+        else startFight(0);
+      } else resumeFights();
+    });
+  $('splash-enter').onclick = () => {
+    $('splash-dialog').close();
+    screen('home');
+  };
+  $('home-exit').onclick = () => {
+    store.save();
+    audio.stopMusic();
+    inputs.active = false;
+    try {
+      sessionStorage.setItem('biblhalla-show-splash', '1');
+      location.reload();
+    } catch {
+      $('splash-dialog').showModal();
+    }
+  };
+  try {
+    if (sessionStorage.getItem('biblhalla-show-splash') === '1') {
+      sessionStorage.removeItem('biblhalla-show-splash');
+      $('splash-dialog').showModal();
+    }
+  } catch {}
   $('story-david').onclick = () => {
     storyRoute = 'david';
-    store.data.storyHero = 'david';
-    store.save();
     renderFights();
   };
   $('story-moses').onclick = () => {
     storyRoute = 'moses';
-    store.data.storyHero = 'moses';
-    store.save();
     renderFights();
   };
 

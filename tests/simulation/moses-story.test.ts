@@ -64,3 +64,16 @@ for(const skin of ['mage-fire','mage-shadow','mage-lightning'])test(skin+' recov
  for(let tick=0;tick<180&&!f.ground;tick++)S.step(s);
  assert.ok(f.ground);assert.equal(f.stocks,1);
 });
+
+test('story continuation saves an unfinished first battle without removing unlocked chapters', () => {
+ const profiles = createProfiles(content), store = new profiles.Store();
+ store.import(seal({...profiles.defaults(), storyHero:'moses', storyStarted:true, storyPart:0, mosesWins:5}));
+ assert.equal(store.data.storyPart,0);
+ assert.equal(store.data.mosesWins,5);
+ store.import(seal({...store.data, storyPart:null}));
+ assert.equal(store.data.storyPart,null);
+ const old:any={...profiles.defaults(), storyHero:'moses', mosesWins:2};
+ delete old.storyPart;delete old.storyStarted;
+ store.import(seal(old));assert.equal(store.data.storyPart,2);
+ store.import(seal({...old,storyPart:999}));assert.equal(store.data.storyPart,2);
+});

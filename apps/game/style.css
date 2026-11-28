@@ -290,3 +290,6 @@
   .comic-bubble:before,.comic-bubble:after {display:none}
   .comic-bubble p,.comic-narration p {font-size:17px}
 }
+#splash-dialog {width:min(90vw,760px);text-align:center;padding:clamp(32px,9vw,100px);background:linear-gradient(145deg,#07161e,#17384a);border:1px solid #cfa85c;}
+#splash-dialog::backdrop {background:#040d14;}
+#splash-title {font:900 italic clamp(36px,8vw,86px)/1.1 system-ui;color:#f2d18c;letter-spacing:-.05em;}
